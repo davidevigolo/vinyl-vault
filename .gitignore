@@ -1,2 +1,6 @@
+# cartelle
 docker/db_data/
+ignore/
+
+# file
 .DS_Store
