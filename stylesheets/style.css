@@ -1,0 +1,40 @@
+:root[data-theme="light"] {
+    --bg-page: #fafafa;
+    --bg-section: #b8daf3;
+    --bg-surface: #ffffff;
+
+    --text-primary: #1c1c1c;
+    --text-secondary: #49454f;
+    --text-muted: #49454f;
+
+    --border-default: #d9d9d9;
+    
+    --brand-primary: #005a9c;
+    --brand-primary-dark: #003e6b;
+}
+
+:root[data-theme="dark"] {
+    --bg-page: #1c1c1c;
+    --bg-section: #003861;
+    --bg-surface: #2c2c2c;
+
+    --text-primary: #fafafa;
+    --text-secondary: #d9d9d9;
+    --text-muted: #d9d9d9;
+
+    --border-default: #49454f;
+    
+    --brand-primary: #3c99dd;
+    --brand-primary-dark: #2589d0;
+}
+
+header h1 {
+    background-image: url('../assets/images/logo.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 200px; /* TBD: messo a caso, da cambiare in base al vero logo */
+    height: 100px; /* TBD: messo a caso, da cambiare in base al vero logo */
+    text-indent: -9999px;
+    overflow: hidden;
+    white-space: nowrap;
+}

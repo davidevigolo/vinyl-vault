@@ -91,3 +91,9 @@ Si utilizza con:
 $db = DbConnection::get_instance();
 $conn = $db->get_connection();
 ```
+
+## Sistema di Colori
+
+I colori sono definiti tramite variabili CSS semantiche in `stylesheets/style.css`. Utilizzare sempre le variabili invece dei valori esadecimali per garantire coerenza e facilitare il possibile cambio tema. Consultare `style-var-colors.md` per la documentazione completa delle variabili disponibili.
+
+Per testare rapidamente i colori e verificare il contrasto tra i temi, è disponibile il file `test-colors.html` che mostra tutte le variabili applicate e permette di cambiare velocemente tra tema chiaro e scuro.
