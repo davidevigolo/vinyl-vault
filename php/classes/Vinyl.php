@@ -23,85 +23,85 @@ class Vinyl {
     }
     
     // Getters
-    public function getDiskId() {
+    public function get_disk_id() {
         return $this->diskId;
     }
     
-    public function getTitle() {
+    public function get_title() {
         return $this->title;
     }
     
-    public function getDiskType() {
+    public function get_disk_type() {
         return $this->diskType;
     }
     
-    public function getEditionName() {
+    public function get_edition_name() {
         return $this->editionName;
     }
     
-    public function getReleaseDate() {
+    public function get_release_date() {
         return $this->releaseDate;
     }
     
-    public function getAuthors() {
+    public function get_authors() {
         return $this->authors;
     }
     
-    public function getGenres() {
+    public function get_genres() {
         return $this->genres;
     }
     
-    public function getTracks() {
+    public function get_tracks() {
         return $this->tracks;
     }
     
     // Setters
-    public function setDiskId($diskId) {
+    public function set_disk_id($diskId) {
         $this->diskId = $diskId;
     }
     
-    public function setTitle($title) {
+    public function set_title($title) {
         $this->title = $title;
     }
     
-    public function setDiskType($diskType) {
+    public function set_disk_type($diskType) {
         $this->diskType = $diskType;
     }
     
-    public function setEditionName($editionName) {
+    public function set_edition_name($editionName) {
         $this->editionName = $editionName;
     }
     
-    public function setReleaseDate($releaseDate) {
+    public function set_release_date($releaseDate) {
         $this->releaseDate = $releaseDate;
     }
     
-    public function addAuthor($author) {
+    public function add_author($author) {
         $this->authors[] = $author;
     }
     
-    public function setAuthors($authors) {
+    public function set_authors($authors) {
         $this->authors = $authors;
     }
     
-    public function addGenre($genre) {
+    public function add_genre($genre) {
         $this->genres[] = $genre;
     }
     
-    public function setGenres($genres) {
+    public function set_genres($genres) {
         $this->genres = $genres;
     }
     
-    public function addTrack($track) {
+    public function add_track($track) {
         $this->tracks[] = $track;
     }
     
-    public function setTracks($tracks) {
+    public function set_tracks($tracks) {
         $this->tracks = $tracks;
     }
     
     // Database operations
-    public static function getVinylById($diskId, $editionName, $db) {
+    public static function get_vinyl_by_id($diskId, $editionName, $db) {
         $query = "SELECT d.id, d.title, d.disk_type, e.edition_name, e.release_date 
                   FROM disk d 
                   JOIN edition e ON d.id = e.disk_id 
@@ -114,16 +114,16 @@ class Vinyl {
         
         if ($row = $result->fetch_assoc()) {
             $vinyl = new Vinyl($row['id'], $row['title'], $row['disk_type'], $row['edition_name'], $row['release_date']);
-            $vinyl->loadAuthors($db);
-            $vinyl->loadGenres($db);
-            $vinyl->loadTracks($db);
+            $vinyl->load_authors($db);
+            $vinyl->load_genres($db);
+            $vinyl->load_tracks($db);
             return $vinyl;
         }
         
         return null;
     }
     
-    public static function getAllVinyls($db) {
+    public static function get_all_vinyls($db) {
         $query = "SELECT d.id, d.title, d.disk_type, e.edition_name, e.release_date 
                   FROM disk d 
                   JOIN edition e ON d.id = e.disk_id 
@@ -134,15 +134,15 @@ class Vinyl {
         
         while ($row = $result->fetch_assoc()) {
             $vinyl = new Vinyl($row['id'], $row['title'], $row['disk_type'], $row['edition_name'], $row['release_date']);
-            $vinyl->loadAuthors($db);
-            $vinyl->loadGenres($db);
+            $vinyl->load_authors($db);
+            $vinyl->load_genres($db);
             $vinyls[] = $vinyl;
         }
         
         return $vinyls;
     }
     
-    private function loadAuthors($db) {
+    private function load_authors($db) {
         $query = "SELECT a.author_name 
                   FROM author a 
                   JOIN disk_author_release dar ON a.id = dar.author_id 
@@ -158,7 +158,7 @@ class Vinyl {
         }
     }
     
-    private function loadGenres($db) {
+    private function load_genres($db) {
         $query = "SELECT g.genre_name 
                   FROM genre g 
                   JOIN disk_genre_classification dgc ON g.genre_name = dgc.genre_name 
@@ -174,7 +174,7 @@ class Vinyl {
         }
     }
     
-    private function loadTracks($db) {
+    private function load_tracks($db) {
         $query = "SELECT t.title, t.duration_seconds, etp.track_number 
                   FROM track t 
                   JOIN edition_track_part_of etp ON t.id = etp.track_id 
@@ -209,7 +209,7 @@ class Vinyl {
         $stmt->execute();
     }
     
-    public function toArray() {
+    public function to_array() {
         return [
             'diskId' => $this->diskId,
             'title' => $this->title,
