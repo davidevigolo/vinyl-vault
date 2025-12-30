@@ -56,7 +56,7 @@ echo Template::render(
 
 E' buona pratica lasciare il render della pagina come ultima istruzione del file php.
 
-Facendo riferimento all'esempio precedente, elementi riutilizzati in più pagine come la lista dei vinili in tendenza, andranno gestiti in un file php a parte (p.e. `trending_vinyls.php`) che verrà incluso nel file php principale (`index.php`) e il cui output verrà assegnato alla variabile `$trending_vinyls`. In questo modo si mantiene il codice modulare e facilmente manutenibile. Esempio:
+Facendo riferimento all'esempio precedente, elementi riutilizzati in più pagine come la lista dei vinili in tendenza, andranno gestiti in un file php a parte (p.e. `trending_vinyls.php`) che verrà incluso tramite `include once` nel file php principale (`index.php`) e il cui output verrà assegnato alla variabile `$trending_vinyls`. In questo modo si mantiene il codice modulare e facilmente manutenibile. Esempio:
 ```php
 // Codice PHP per trending_vinyls.php
 ob_start();

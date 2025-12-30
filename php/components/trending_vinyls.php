@@ -1,5 +1,5 @@
 <?php
-include 'php/classes/DbConnection.php';
+include_once 'php/classes/DbConnection.php';
 function get_trending_vinyls()
 {
     $connection = DbConnection::get_instance();

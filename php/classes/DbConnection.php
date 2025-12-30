@@ -11,11 +11,14 @@ class DbConnection {
     
     private function __construct() {
         try {
-            $dsn = "mysql:host={$this->host};dbname={$this->database};charset=utf8mb4";
-            $this->connection = new PDO($dsn, $this->username, $this->password);
-            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $this->connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
+            $this->connection = new mysqli($this->host, $this->username, $this->password, $this->database);
+            
+            if ($this->connection->connect_error) {
+                throw new Exception("Errore di connessione: " . $this->connection->connect_error);
+            }
+            
+            $this->connection->set_charset("utf8mb4");
+        } catch (Exception $e) {
             die("Errore di connessione: " . $e->getMessage());
         }
     }
