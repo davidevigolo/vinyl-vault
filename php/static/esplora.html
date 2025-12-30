@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+
+<head>
+    <meta name="description"
+        content="Esplora il catalogo completo di vinili. Scopri gli arrivi della settimana, gli artisti più amati e i vinili più collezionati.">
+    <meta name="keywords"
+        content="esplora vinili, catalogo vinili, nuovi arrivi, artisti vinili, vinili collezionati">
+    <title>Esplora - Vinyl Vault</title>
+    [head]
+</head>
+
+<body>
+    [header]
+    <nav id="breadcrumb" aria-label="percorso di navigazione">
+        <p><span lang="eng">Home</span> &gt; Esplora</p>
+    </nav>
+    <main id="content">
+        <section class="hero-explore">
+            <h1>Esplora il catalogo</h1>
+        </section>
+        
+        <section id="new-arrivals" class="card-section">
+            <div class="section-header">
+                <h2>Gli arrivi della settimana</h2>
+                <a href="esplora.php?section=new" aria-label="Guarda tutti i nuovi arrivi della settimana">Guarda tutti</a>
+            </div>
+            <div class="vinyls-container">
+                [new_arrivals_vinyls]
+            </div>
+        </section>
+
+        <section id="loved-artists" class="card-section">
+            <div class="section-header">
+                <h2>Gli artisti più amati</h2>
+                <a href="esplora.php?section=artists" aria-label="Guarda tutti gli artisti più amati">Guarda tutti</a>
+            </div>
+            <div class="artists-container">
+                [loved_artists]
+            </div>
+        </section>
+
+        <section id="most-collected" class="card-section">
+            <div class="section-header">
+                <h2>I vinili più collezionati</h2>
+                <a href="esplora.php?section=collected" aria-label="Guarda tutti i vinili più collezionati">Guarda tutti</a>
+            </div>
+            <div class="vinyls-container">
+                [most_collected_vinyls]
+            </div>
+        </section>
+
+        <section id="top-rated" class="card-section">
+            <div class="section-header">
+                <h2>I vinili con valutazione maggiore</h2>
+                <a href="esplora.php?section=rated" aria-label="Guarda tutti i vinili con valutazione maggiore">Guarda tutti</a>
+            </div>
+            <div class="vinyls-container">
+                [top_rated_vinyls]
+            </div>
+        </section>
+    </main>
+    [footer]
+</body>
+
+</html>

@@ -5,11 +5,18 @@ I colori sono definiti tramite variabili CSS semantiche che indicano il loro ruo
 ## Colori Principali del Brand
 
 ### `--brand-primary` 
-Colore principale di Vinyl Vault. Utilizzato per azioni primarie, CTA e link importanti
+Colore principale di Vinyl Vault. Utilizzato per bottoni e azioni primarie
 
 ### `--brand-primary-dark`
-Variante scura del colore principale, utilizzata per hover e stati di focus
+Variante scura del colore principale, utilizzata per hover e stati di focus sui bottoni
 
+## Link
+
+### `--link-unvisited`
+Colore per i link non ancora visitati
+
+### `--link-visited`
+Colore per i link già visitati. Permette agli utenti di tracciare la navigazione e migliora l'esperienza utente
  
 ## Sfondi
 
