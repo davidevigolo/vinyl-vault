@@ -97,3 +97,27 @@ $conn = $db->get_connection();
 I colori sono definiti tramite variabili CSS semantiche in `stylesheets/style.css`. Utilizzare sempre le variabili invece dei valori esadecimali per garantire coerenza e facilitare il possibile cambio tema. Consultare `style-var-colors.md` per la documentazione completa delle variabili disponibili.
 
 Per testare rapidamente i colori e verificare il contrasto tra i temi, è disponibile il file `test-colors.html` che mostra tutte le variabili applicate e permette di cambiare velocemente tra tema chiaro e scuro.
+
+## Sistema Responsive delle Card
+
+Le card (vinili e artisti) utilizzano un sistema di layout responsive unificato per garantire una visualizzazione ottimale su tutti i dispositivi, evitando scroll orizzontale indesiderato:n 
+
+**Container**: Tutti i container di card (`.trending-vinyls-container`, `.vinyls-container`, `.artists-container`) utilizzano CSS Grid con `grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))` per adattarsi dinamicamente allo spazio disponibile.
+
+**Media queries responsive**: Per garantire una disposizione controllata su schermi di diverse dimensioni:
+- **Schermi piccoli** (≤768px): massimo 2 card per riga (`grid-template-columns: repeat(2, 1fr)`)
+- **Schermi grandi** (≥769px): massimo 4 card per riga (`grid-template-columns: repeat(4, 1fr)`)
+
+**Card flessibili**: La classe `.card` utilizza `width: 100%` con `max-width: 250px` e `margin: 0 auto` per adattarsi proporzionalmente alla griglia mantenendo dimensioni leggibili.
+
+**Limitazione contenuti**: Per evitare layout sovraffollati, i componenti della pagina esplora mostrano un massimo di 4 elementi per sezione (impostato tramite `LIMIT 4` nelle query SQL).
+
+## Sistema di Raccomandazione (in Esplora)
+
+Il sistema di raccomandazione presente nella pagina "Esplora" utilizza un approccio basato sui generi musicali per suggerire vinili rilevanti all'utente. La logica implementata prevede due modalità:
+
+**Utente autenticato**: Il sistema analizza la collezione personale dell'utente (tabella `ownership`) per identificare il genere più presente tramite la tabella `disk_genre_classification`. Una volta individuato il genere preferito, vengono raccomandati 10 vinili casuali appartenenti a quel genere che l'utente non possiede ancora. Questo approccio garantisce raccomandazioni personalizzate senza complessità algoritmica eccessiva.
+
+**Utente non autenticato**: Come fallback, vengono mostrati i 10 vinili più collezionati dalla community (maggior numero di occorrenze in `ownership`). Questo permette di offrire contenuti rilevanti anche agli utenti non loggati, mostrando le scelte più popolari.
+
+Il sistema è implementato nel componente `php/components/recommended_vinyls.php` e utilizza prepared statements per prevenire SQL injection. Quando verrà implementato il sistema di autenticazione, sarà sufficiente utilizzare `$_SESSION['user_id']` per attivare automaticamente le raccomandazioni personalizzate.
