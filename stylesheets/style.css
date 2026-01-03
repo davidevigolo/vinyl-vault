@@ -58,6 +58,29 @@ body {
     background: var(--brand-primary-dark);
 }
 
+/* Skip Links */
+
+.list-help {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: var(--bg-surface);
+    padding: 0.5rem;
+    z-index: 1000;
+}
+
+.navigation-help{
+	position: absolute;
+	text-indent: -999em;	
+}
+
+.navigation-help:focus{
+	position: static;
+	text-indent: 0em;	
+}
+
+/* End Skip Links */
+
 /* Header */
 
 #nav-links {
@@ -227,7 +250,7 @@ h2 {
     margin-left: 2rem;
 }
 
-.trending-vinyls-container{
+.card-container{
     display: flex;
     flex-direction: row;
     gap: 2rem;
@@ -259,3 +282,5 @@ h2 {
     margin: auto;
     margin-bottom: 1rem;
 }
+
+/* End Cards */

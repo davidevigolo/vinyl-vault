@@ -11,6 +11,19 @@
 </head>
 
 <body>
+    <nav aria-label="Aiuti alla navigazione" class="list-help">
+        <ul>
+            <li>
+                <a class="navigation-help" href="#content">Vai al contenuto principale</a>
+            </li>
+            <li>
+                <a class="navigation-help" href="#trending-vinyls">Vai ai vinili di tendenza</a>
+            </li>
+            <li>
+                <a class="navigation-help" href="#most-liked-vinyls">Vai ai vinili di tendenza</a>
+            </li>
+        </ul>
+    </nav>
     [header]
     <nav id="breadcrumb" aria-label="percorso di navigazione">
         <p><span lang="eng">Home</span></p>
@@ -29,7 +42,7 @@
         <section id="presentation">
             <h2>Lo strumento definitivo per il collezionista</h2>
             <p>Progettato da amanti del vinile, per collezionisti del vinile.</p>
-            <ul class="features">
+            <ul class="features" aria-label="funzionalità">
                 <li class="feature">
                     <img src="assets/images/collection-icon.jpg" alt="">
                     <h3>La tua collezione</h3>
@@ -55,16 +68,16 @@
                 sarà sempre</p>
             <a href="register.php" class="btn-primary">Crea Account</a>
         </section>
-        <section id="trending" class="card-section">
+        <section id="trending-vinyls" class="card-section">
             <h2>Vinili di tendenza</h2>
-            <div class="trending-vinyls-container">
-            [trending_vinyls]
+            <div class="card-container">
+                [trending_vinyls]
             </div>
         </section>
-        <section id="most-liked" class="card-section">
+        <section id="most-liked-vinyls" class="card-section">
             <h2>Artisti più amati</h2>
-            <div class="most-liked-artists-container">
-            [most_liked_artists]
+            <div class="card-container">
+                [most_liked_artists]
             </div>
         </section>
     </main>
