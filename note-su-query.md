@@ -30,3 +30,20 @@ Se l'utente non è autenticato o non ha collezioni, mostra i 4 vinili più colle
 **Logica**: Fa JOIN tra `author`, `disk_author_release` e `ownership`. Conta il numero di utenti distinti (`COUNT(DISTINCT o.user_id)`) che possiedono almeno un vinile di quell'artista. Ordina per `collector_count` decrescente e limita a 4 risultati.
 
 **Scopo**: Mostrare gli artisti più popolari basandosi sulla diffusione delle loro opere nelle collezioni degli utenti.
+
+## Vinili di Tendenza (`trending_vinyls.php`)
+
+**Query**: Seleziona i 4 vinili più desiderati per la home page
+
+**Logica**: Parte da `wishlist_count` (vista che raggruppa wishlist per disk_id/edition_name), fa JOIN con `disk` e `edition` per i dettagli. Utilizza due subquery per recuperare il primo author_id e author_name associato al disco (LIMIT 1 sulle subquery per evitare duplicati da dischi multi-autore).
+
+**Scopo**: Mostrare i vinili più popolari nelle wishlist degli utenti. La query evita duplicati partendo dalla vista aggregata invece di fare JOIN diretti con disk_author_release.
+
+## Vinili Più Collezionati (`most_collected_vinyls.php`)
+
+**Query**: Seleziona i 4 vinili più posseduti dagli utenti.
+
+**Logica**: Parte da `ownership`, fa JOIN con `edition` e `disk`, raggruppa per disk_id/edition_name e conta gli utenti (`COUNT(o.user_id)`). Utilizza subquery per author_id e author_name (stessa tecnica di trending_vinyls). Ordina per `ownership_count` decrescente e limita a 4.
+
+**Scopo**: Mostrare i vinili più diffusi nelle collezioni, diverso da trending (wishlist vs ownership). Indica quali vinili sono effettivamente più posseduti dalla community.
+
