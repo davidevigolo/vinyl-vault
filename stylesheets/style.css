@@ -128,14 +128,16 @@ a:hover {
 
 /* Header */
 
-#nav-links {
+.nav-links {
     list-style: none;
     gap: 1rem;
 }
 
-#nav-links li {
+.nav-links li {
     display: inline;
 }
+
+
 
 header {
     background: var(--bg-surface);
@@ -149,7 +151,7 @@ header {
     gap: 2rem;
 }
 
-header nav {
+header nav#menù {
     margin-left: auto;
 }
 
