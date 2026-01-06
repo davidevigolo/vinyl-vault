@@ -41,6 +41,13 @@ body {
     color: var(--text-primary);
 }
 
+a {
+    color: var(--text-primary);
+}
+a:hover {
+    color: var(--brand-primary);
+}
+
 .btn-primary {
     display: inline-block;
     background: var(--brand-primary);
@@ -56,6 +63,7 @@ body {
 
 .btn-primary:hover {
     background: var(--brand-primary-dark);
+    color: var(--bg-surface);
 }
 
 /* Skip Links */
@@ -83,16 +91,14 @@ body {
 
 /* Header */
 
-.nav-links {
+header .profile-nav-links, header .site-nav-links {
     list-style: none;
     gap: 1rem;
 }
 
-.nav-links li {
+header .profile-nav-links li, header .site-nav-links li {
     display: inline;
 }
-
-
 
 header {
     background: var(--bg-surface);
@@ -106,7 +112,7 @@ header {
     gap: 2rem;
 }
 
-header nav#menù {
+header nav.site-nav {
     margin-left: auto;
 }
 
@@ -128,6 +134,55 @@ h2 {
 }
 
 /* End Header */
+
+/* Footer */
+
+footer {
+    background: var(--bg-section);
+    padding: 2rem 12rem;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2rem;
+    border-top: 0.1em var(--border-default) solid;
+}
+
+footer img {
+    max-width: 150px;
+    height: auto;
+    object-fit: contain;
+}
+
+footer #footer-site-nav {
+    margin-left: auto;
+}
+
+footer .site-nav-links, footer .profile-nav-links {
+    list-style: none;
+}
+
+footer .site-nav-links li, footer .profile-nav-links li {
+    display:block;
+}
+
+footer .profile-nav-links li a {
+    background-color: transparent;
+    color: var(--text-primary);
+    text-decoration: underline;
+    margin: inherit;
+    padding: inherit;
+}
+
+footer .profile-nav-links li a:hover {
+    color: var(--brand-primary);
+    background-color: transparent;
+}
+
+footer p {
+    text-wrap: balance;
+}
+
+/* End Footer */
 
 /* Hero */
 

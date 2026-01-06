@@ -7,7 +7,8 @@ function _header(){ /* _header instead of header since header() is a PHP built-i
     ob_start();
     include_once 'php/components/profile_nav_menu.php';
     echo Template::render('static/layout/header.html',[
-        'profile_nav_menu' => profile_nav_menu()
+        'profile_nav_menu' => profile_nav_menu(),
+        'site_nav_menu' => Template::render('static/layout/site_nav_menu.html', [])
     ]);
     return ob_get_clean();
 }
