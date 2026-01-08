@@ -50,6 +50,7 @@ CREATE TABLE IF NOT EXISTS edition (
     edition_name VARCHAR(100) NOT NULL,
     release_date DATE NOT NULL,
     image_path VARCHAR(255),
+    country VARCHAR(100) NOT NULL,
 
     FOREIGN KEY (disk_id) REFERENCES disk(id) ON DELETE CASCADE,
     PRIMARY KEY (disk_id, edition_name)
@@ -78,6 +79,7 @@ CREATE TABLE IF NOT EXISTS wishlist(
     disk_id BINARY(16),
     edition_name VARCHAR(100),
     date_added DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    priority_level TINYINT NOT NULL DEFAULT 1,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (disk_id, edition_name) REFERENCES edition(disk_id, edition_name) ON DELETE CASCADE,
     PRIMARY KEY (user_id, disk_id, edition_name)
