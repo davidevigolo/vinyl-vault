@@ -87,6 +87,10 @@ a:hover {
     color: var(--bg-surface);
 }
 
+#content {
+    text-align: center;
+}
+
 /* Skip Links */
 
 .list-help {
@@ -175,7 +179,7 @@ h2 {
 /* Footer */
 
 footer {
-    background: var(--bg-section);
+    background: var(--bg-surface);
     padding: 2rem 12rem;
     display: flex;
     flex-direction: row;
@@ -517,12 +521,13 @@ footer p {
 
 #wishlist-table tbody tr {
     background: var(--bg-surface);
-    box-shadow: 0 0.1em 0.3em rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0.1em 0.5em rgba(0, 0, 0, 0.2);
 }
 
-#wishlist-table tbody td {
+#wishlist-table tbody td, #wishlist-table tbody th {
     border: 0.1em solid var(--border-default);
     border-right: 0em;
+    border-left: 0em;
     padding: 1rem;
 }
 
@@ -537,4 +542,15 @@ footer p {
     border-right: 0.1em solid var(--border-default);
     border-top-right-radius: 0.5em;
     border-bottom-right-radius: 0.5em;
+}
+
+.remove-button {
+    background: var(--brand-primary);
+    color: var(--bg-surface);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5em;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    background-color: rgb(224, 32, 32);
 }

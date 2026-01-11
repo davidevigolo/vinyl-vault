@@ -11,7 +11,7 @@ echo Template::render(
     [
         'head' => Template::render('static/layout/head.html',[]),
         'header' => _header(),
-        'wishlist' => wishlist($_GET['edit'] ?? false),
+        'wishlist' => wishlist(true),
         'footer' => footer(),
         ]
 );

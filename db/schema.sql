@@ -1,6 +1,6 @@
 USE tecweb_db;
 CREATE TABLE IF NOT EXISTS users (
-    id BINARY(16) NOT NULL DEFAULT (UUID_TO_BIN(UUID(), 1)),
+    id INT AUTO_INCREMENT,
     first_name VARCHAR(100) NOT NULL UNIQUE,
     last_name VARCHAR(100) NOT NULL,
     email VARCHAR(254) NOT NULL UNIQUE,
@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS genre (
 );
 
 CREATE TABLE IF NOT EXISTS author (
-    id BINARY(16) NOT NULL DEFAULT (UUID_TO_BIN(UUID(), 1)),
+    id INT AUTO_INCREMENT,
     author_name VARCHAR(100) NOT NULL UNIQUE,
 
     image_path VARCHAR(255),
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS author (
 );
 
 CREATE TABLE IF NOT EXISTS disk (
-    id BINARY(16) NOT NULL DEFAULT (UUID_TO_BIN(UUID(), 1)),
+    id INT AUTO_INCREMENT,
 
     title VARCHAR(200) NOT NULL,
     disk_type ENUM('EP','ALBUM','SINGLE') NOT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS disk (
 );
 
 CREATE TABLE IF NOT EXISTS track (
-    id BINARY(16) NOT NULL DEFAULT (UUID_TO_BIN(UUID(), 1)),
+    id INT AUTO_INCREMENT,
 
     title VARCHAR(200) NOT NULL,
     duration_seconds SMALLINT NOT NULL,
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS track (
 );
 
 CREATE TABLE IF NOT EXISTS edition (
-    disk_id BINARY(16),
+    disk_id INT,
     edition_name VARCHAR(100) NOT NULL,
     release_date DATE NOT NULL,
     image_path VARCHAR(255),
@@ -57,8 +57,8 @@ CREATE TABLE IF NOT EXISTS edition (
 );
 
 CREATE TABLE IF NOT EXISTS review (
-    user_id BINARY(16),
-    disk_id BINARY(16),
+    user_id INT,
+    disk_id INT,
     edition_name VARCHAR(100),
     publish_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     content TEXT NOT NULL,
@@ -68,15 +68,15 @@ CREATE TABLE IF NOT EXISTS review (
 );
 
 CREATE TABLE IF NOT EXISTS featuring (
-    author_id BINARY(16) NOT NULL,
-    track_id BINARY(16) NOT NULL,
+    author_id INT NOT NULL,
+    track_id INT NOT NULL,
 
     PRIMARY KEY (author_id, track_id)
 );
 
 CREATE TABLE IF NOT EXISTS wishlist(
-    user_id BINARY(16),
-    disk_id BINARY(16),
+    user_id INT,
+    disk_id INT,
     edition_name VARCHAR(100),
     date_added DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     priority_level TINYINT NOT NULL DEFAULT 1,
@@ -86,8 +86,8 @@ CREATE TABLE IF NOT EXISTS wishlist(
 );
 
 CREATE TABLE IF NOT EXISTS ownership(
-    user_id BINARY(16),
-    disk_id BINARY(16),
+    user_id INT,
+    disk_id INT,
     edition_name VARCHAR(100),
     date_acquired DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
@@ -96,9 +96,9 @@ CREATE TABLE IF NOT EXISTS ownership(
 );
 
 CREATE TABLE IF NOT EXISTS edition_track_part_of (
-    disk_id BINARY(16) NOT NULL,
+    disk_id INT NOT NULL,
     edition_name VARCHAR(100) NOT NULL,
-    track_id BINARY(16) NOT NULL,
+    track_id INT NOT NULL,
     track_number SMALLINT NOT NULL,
 
     FOREIGN KEY (disk_id, edition_name) REFERENCES edition(disk_id, edition_name) ON DELETE CASCADE,
@@ -107,8 +107,8 @@ CREATE TABLE IF NOT EXISTS edition_track_part_of (
 );
 
 CREATE TABLE IF NOT EXISTS disk_author_release(
-    disk_id BINARY(16) NOT NULL,
-    author_id BINARY(16) NOT NULL,
+    disk_id INT NOT NULL,
+    author_id INT NOT NULL,
 
     FOREIGN KEY (disk_id) REFERENCES disk(id) ON DELETE CASCADE,
     FOREIGN KEY (author_id) REFERENCES author(id) ON DELETE CASCADE,
@@ -116,7 +116,7 @@ CREATE TABLE IF NOT EXISTS disk_author_release(
 );
 
 CREATE TABLE IF NOT EXISTS disk_genre_classification(
-    disk_id BINARY(16) NOT NULL,
+    disk_id INT NOT NULL,
     genre_name VARCHAR(50) NOT NULL,
 
     FOREIGN KEY (disk_id) REFERENCES disk(id) ON DELETE CASCADE,

@@ -1,18 +1,18 @@
 /* Header */
 
-header{
+header {
     flex-direction: column;
     justify-content: flex-start;
     gap: 0rem;
     padding: 0rem;
 }
 
-header .site-nav{
+header .site-nav {
     margin: auto;
     width: 100%;
 }
 
-header .site-nav-links li{
+header .site-nav-links li {
     text-align: center;
     display: block;
     margin: 0rem;
@@ -20,23 +20,24 @@ header .site-nav-links li{
     border-top: 0.1rem solid var(--border-default);
 }
 
-header .site-nav-links li:last-child{
+header .site-nav-links li:last-child {
     border-bottom: 0.1rem solid var(--border-default);
 }
+
 /* End Header */
 
 /* Hero Section */
 
-.hero{
+.hero {
     display: block;
 }
 
-.hero-text{
+.hero-text {
     text-align: center;
     margin: 2rem;
 }
 
-.hero img{
+.hero img {
     display: none;
 }
 
@@ -44,7 +45,7 @@ header .site-nav-links li:last-child{
 
 /* Breadcrumbs */
 
-nav#breadcrumb{
+nav#breadcrumb {
     padding: 0.35rem 3rem;
 }
 
@@ -52,22 +53,74 @@ nav#breadcrumb{
 
 /* Presentation Section */
 
-.features{
+.features {
     flex-direction: column;
     gap: 3rem;
 }
 
-.features li{
+.features li {
     width: 100%;
     margin: auto;
     text-align: center;
 }
 
-.features img{
+.features img {
     margin: auto;
 }
 
 /* End Presentation Section */
+
+/* Card Section */
+
+.card-section {
+    margin: 0rem;
+}
+
+.card-section h2 {
+    text-align: center;
+    margin: 2rem 0rem;
+}
+
+.trending-vinyls-container,
+.vinyls-container,
+.artists-container,
+.most-liked-artists-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0rem;
+    padding: 1rem 0rem;
+    max-width: 100%;
+}
+
+.card img {
+    width: 64px;
+    height: 64px;
+    margin: 0rem;
+}
+
+.card .text-container {
+    margin: auto;
+}
+
+.card {
+    max-width: none;
+    border-radius: 0rem;
+    box-shadow: none;
+    border-top: 0.1rem solid var(--border-default);
+    border-bottom: 0rem;
+    border-left: 0rem;
+    border-right: 0rem;
+
+    display: flex;
+    align-items: left;
+    flex-direction: row;
+}
+
+.card-section a:last-child .card {
+    border-bottom: 0.1rem solid var(--border-default);
+}
+
+/* End Card Section */
 
 /* Footer */
 
@@ -84,3 +137,52 @@ div#footer-site-nav {
 }
 
 /* End Footer */
+
+/* Wishlist Section */
+
+#wishlist-table {
+    width: 100%;
+    margin: 0rem;
+}
+
+
+#wishlist-table tbody tr td:first-child {
+    border-left: 0em;
+    border-top-left-radius: 0em;
+    border-bottom-left-radius: 0em;
+}
+
+#wishlist-table tbody tr td:last-child {
+    border-right: 0em;
+    border-top-right-radius: 0em;
+    border-bottom-right-radius: 0em;
+}
+
+#wishlist-table thead {
+    display: none;
+}
+
+#wishlist-table tr,
+#wishlist-table th,
+#wishlist-table td {
+    display: block;
+    padding: 0;
+    white-space: normal;
+}
+
+#wishlist-table[data-title]:before,
+#wishlist-table td[data-title]:before {
+    content: attr(data-title) ":\00A0";
+    font-weight: bold;
+}
+
+#wishlist-table th {
+    background-color: var(--brand-primary);
+    color: #FFF;
+}
+
+#wishlist-table tr {
+    margin: 2rem 0rem;
+}
+
+/* End Wishlist Section */
