@@ -2,6 +2,53 @@
     <td aria-hidden="true"><img src="[image_url]" alt=""></td>
     <th aria-hidden="false" scope="row" data-title="Titolo">[title]</th>
     <td aria-hidden="false" data-title="Edizione">[target_edition]</td>
-    <td aria-hidden="false" data-title="Livello di Priorità">[priority_level]</td>
-    <td aria-hidden="false" data-title="Rimuovi">[remove_button]</td>
+    <td aria-hidden="false" data-title="Livello di Priorità">
+        <form action="php/controllers/manage_wishlist_item.php" method="POST">
+            <input type="hidden" name="action" value="edit"/>
+            <input type="hidden" name="disk_id" value="[disk_id]"/>
+            <input type="hidden" name="edition_name" value="[edition_name]"/>
+            <input aria-label="Livello di Priorità" type="number" max=100 min=0 name="priority_level" value="[priority_level]" required/>
+            <input type="submit" aria-label="Salva livello di priorità per [title]" value="Salva" class="save-button"/>
+        </form>
+    </td>
+    <td aria-hidden="false" data-title="Rimuovi">
+        <form action="php/controllers/manage_wishlist_item.php" method="POST">
+            <input type="hidden" name="action" value="remove"/>
+            <input type="hidden" name="disk_id" value="[disk_id]"/>
+            <input type="hidden" name="edition_name" value="[edition_name]"/>
+            <input type="submit" aria-label="Rimuovi [title] dalla lista dei desideri"
+                value="Rimuovi" class="remove-button"/>
+        </form>
+    </td>
 </tr>
+
+<!-- Dialog for editing priority level -->
+<!-- <dialog id="editDialog">
+    <form id="editForm" action="php/controllers/manage_wishlist_item.php" method="POST">
+        <label for="priority_level">Livello di Priorità:</label>
+        <input type="text" id="priority" name="priority_level" required/>
+        <input type="hidden" name="action" value="edit"/>
+        <input type="hidden" name="disk_id" value="[disk_id]"7>
+        <input type="hidden" name="edition_name" value="[edition_name]"/>
+        <button type="submit">Salva</button>
+        <button type="button">Annulla</button>
+    </form>
+</dialog> -->
+
+<script>
+function openEditDialog(diskId, priorityLevel) {
+    document.getElementById('diskId').value = diskId;
+    document.getElementById('priority').value = priorityLevel;
+    document.getElementById('editDialog').showModal();
+}
+
+function closeEditDialog() {
+    document.getElementById('editDialog').close();
+}
+
+function submitEdit(event) {
+    event.preventDefault();
+    // Add your AJAX call here to submit the form data
+    closeEditDialog();
+}
+</script>
