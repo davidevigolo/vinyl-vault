@@ -2,7 +2,7 @@ services:
   db:
     image: mysql:8.0
     container_name: tecweb_mysql
-    # platform: linux/amd64 # se ci sono problemi su  problemi su Mx scommentare
+    platform: linux/amd64 # se ci sono problemi su  problemi su Mx scommentare
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: tecweb_db
@@ -18,6 +18,7 @@ services:
   www:
     build: ./php              # costruisce l'immagine usando il dockerfile nella cartella 'php'
     container_name: tecweb_apache
+    platform: linux/amd64
     ports:
       - "8080:80"             # mappa la porta 8080 alla 80 del container
     volumes:
@@ -29,6 +30,7 @@ services:
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: tecweb_pma
+    platform: linux/amd64
     links:
       - db:db
     ports:

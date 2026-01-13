@@ -1,11 +1,33 @@
 <header>
-    <h1 class="hide">Vinyl Vault</h1> <!-- Sostituito con logo tramite image replacement -->
-    <nav id="menù" aria-label="menu principale">
-        <ul class="nav-links">
-            <li><a href="index.php"><span lang="eng">Home</span></a></li>
-            <li><a href="esplora.php">Esplora</a></li>
-            <li><a href="catalogo.php">Catalogo</a></li>
-        </ul>
-    </nav>
-    [profile_nav_menu]
+    <div class="header-container">
+        <div class="logo">
+            <!-- Mettiamo il link alla home nel logo?-->
+            <h1 class="hide" lang="en">Vinyl Vault</h1> <!-- Sostituito con logo tramite image replacement -->
+        </div>
+        <div class="header-right"> 
+            <nav id="menu" aria-label="Menù principale">
+                <!-- funzione getNavBar per evitare link circolari-->
+                <ul class="nav-links">
+                    <li><a href="index.php"><span lang="en">Home</span></a></li>
+                    <li><a href="esplora.php">Esplora</a></li>
+                    <li><a href="catalogo.php">Catalogo</a></li>
+                </ul>
+            </nav>
+
+            <div class="actions-group"> 
+                <button class="search-toggle" >
+                    <img class="search-icon" src="assets/images/search.png" alt="" /><span>Cerca nel catalogo</span>
+                </button>
+                <button class="theme-toggle">
+                <img class="theme-icon" src="assets/images/moon.png" alt="" aria-hidden="true" /><span>Cambia tema visivo</span>
+                </button>
+            </div>
+
+                    <span class="v-divider" role="presentation"></span>[profile_nav_menu]
+        </div>
+
+
+
+        
+    </div>
 </header>
