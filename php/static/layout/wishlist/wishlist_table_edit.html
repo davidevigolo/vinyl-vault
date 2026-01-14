@@ -1,3 +1,11 @@
+<h1 class="page-title">Gestisci la tua Lista Desideri</h1>
+
+<form id="wishlist-form" action="php/controllers/manage_wishlist_item.php" method="POST">
+    <input type="hidden" name="action" value="edit_multiple" />
+</form>
+
+<p id="descr" class="sr-only">Tabella organizzata per colonne, ogni riga rappresenta un disco nella lista desideri. Per
+    ogni disco è possibile modificare il livello di priorità o selezionarlo per la rimozione.</p>
 <table aria-describedby="descr" id="wishlist-table">
     <thead>
         <tr>
@@ -5,7 +13,7 @@
             <th scope="col">Titolo</th>
             <th scope="col">Edizione</th>
             <th scope="col">Priorità</th>
-            <th scope="col">Rimuovi</th>
+            <th scope="col">Seleziona</th>
         </tr>
     </thead>
     <tbody>
@@ -13,4 +21,7 @@
     </tbody>
     <caption>Lista dei desideri</caption>
 </table>
-<p id="descr" class="sr-only">Tabella che mostra i dischi presenti nella lista dei desideri con le seguenti colonne: immagine del disco, titolo, edizione, paese, anno e livello di priorità.</p>
+<div class="wishlist-actions">
+    <button type="submit" form="wishlist-form" class="btn-primary">Salva Modifiche</button>
+    <a href="wishlist.php" class="btn-cancel">Annulla</a>
+</div>

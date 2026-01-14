@@ -1,0 +1,43 @@
+# Custom error page
+ErrorDocument 404 /404.php
+
+# Prevent directory browsing
+Options -Indexes
+
+# Deny access to PHP files in subdirectories
+<FilesMatch "\.php$">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>
+
+# Allow access to PHP files in the root directory only
+<Files "index.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "wishlist.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "esplora.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "edit_wishlist.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "setuid.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "404.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+# Protect sensitive files
+<FilesMatch "^(\.htaccess|\.gitignore|.*\.md|.*\.sh)$">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>

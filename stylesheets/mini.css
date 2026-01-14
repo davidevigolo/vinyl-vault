@@ -26,6 +26,12 @@ header .site-nav-links li:last-child {
 
 /* End Header */
 
+/* Footer */
+footer{
+    position: static;
+}
+/* End Footer */
+
 /* Hero Section */
 
 .hero {
@@ -183,6 +189,16 @@ div#footer-site-nav {
 
 #wishlist-table tr {
     margin: 2rem 0rem;
+}
+
+input{
+    display: block;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+h2#empty-wishlist-heading {
+    margin-top: 0rem;
 }
 
 /* End Wishlist Section */

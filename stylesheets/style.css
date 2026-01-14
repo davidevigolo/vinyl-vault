@@ -14,6 +14,8 @@
 
     --link-unvisited: #003861;
     --link-visited: #0074C7;
+
+    --bg-error: #d93025;
 }
 
 :root[data-theme="dark"] {
@@ -32,6 +34,7 @@
 
     --link-unvisited: #b8daf3;
     --link-visited: #2589d0;
+    --bg-error: #ff6f64;
 }
 
 * {
@@ -39,13 +42,25 @@
     padding: 0;
     box-sizing: border-box;
     line-height: 1.5em;
+    transition-duration: 0.4s;
 }
 
 body {
-    font-family:  Lexend, sans-serif;
+    font-family: Lexend, sans-serif;
     background: var(--bg-page);
     color: var(--text-primary);
 }
+
+body {
+    display: grid;
+    min-height: 100vh;
+    /* 1. Header: auto */
+    /* 2. Breadcrumb: auto (prenderà solo lo spazio del testo) */
+    /* 3. Main Content: 1fr (questo si espanderà per spingere il footer) */
+    /* 4. Footer: auto */
+    grid-template-rows: auto auto minmax(0, 1fr) auto;
+}
+
 a {
     text-decoration: underline;
 }
@@ -69,11 +84,43 @@ a:hover {
     padding: 0.75rem 1.5rem;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
-    text-decoration: none;
     border-radius: 0.5em;
     transition: background 0.3s ease;
     font-size: 1rem;
     white-space: nowrap;
+}
+
+.btn-secondary {
+    display: inline-block;
+    background: var(--bg-surface);
+    color: var(--brand-primary);
+    padding: 0.75rem 1.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 0.5em;
+    border: 0.2em solid var(--brand-primary);
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    white-space: nowrap;
+}
+
+a.btn-cancel, .btn-cancel {
+    display: inline-block;
+    background: var(--bg-error);
+    color: var(--bg-surface);
+    padding: 0.75rem 1.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    text-decoration: none;
+    border-radius: 0.5em;
+    border: 0.1em solid var(--border-default);
+    transition: background 0.3s ease;
+    font-size: 1rem;
+    white-space: nowrap;
+}
+
+button[type="submit"] {
+    font-family: inherit;
 }
 
 .btn-primary:link,
@@ -102,14 +149,18 @@ a:hover {
     z-index: 1000;
 }
 
-.navigation-help{
-	position: absolute;
-	text-indent: -999em;	
+.list-help ul {
+    list-style: none;
 }
 
-.navigation-help:focus{
-	position: static;
-	text-indent: 0em;	
+.navigation-help {
+    position: absolute;
+    text-indent: -999em;
+}
+
+.navigation-help:focus {
+    position: static;
+    text-indent: 0em;
 }
 
 /* End Skip Links */
@@ -132,12 +183,14 @@ a:hover {
 
 /* Header */
 
-header .profile-nav-links, header .site-nav-links {
+header .profile-nav-links,
+header .site-nav-links {
     list-style: none;
     gap: 1rem;
 }
 
-header .profile-nav-links li, header .site-nav-links li {
+header .profile-nav-links li,
+header .site-nav-links li {
     display: inline;
 }
 
@@ -179,6 +232,9 @@ h2 {
 /* Footer */
 
 footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
     background: var(--bg-surface);
     padding: 2rem 12rem;
     display: flex;
@@ -198,12 +254,14 @@ footer #footer-site-nav {
     margin-left: auto;
 }
 
-footer .site-nav-links, footer .profile-nav-links {
+footer .site-nav-links,
+footer .profile-nav-links {
     list-style: none;
 }
 
-footer .site-nav-links li, footer .profile-nav-links li {
-    display:block;
+footer .site-nav-links li,
+footer .profile-nav-links li {
+    display: block;
 }
 
 footer .profile-nav-links li a:link {
@@ -319,7 +377,7 @@ footer p {
     margin-bottom: 1rem;
 }
 
-.features{
+.features {
     border-top: 0.1em solid var(--border-default);
     display: flex;
     flex-direction: row;
@@ -329,7 +387,7 @@ footer p {
     padding-top: 2rem;
 }
 
-.features li{
+.features li {
     display: flex;
     flex-direction: column;
     text-wrap: balance;
@@ -431,16 +489,16 @@ footer p {
 }
 
 /* Link wrapper per card cliccabili */
-.trending-vinyls-container > a,
-.vinyls-container > a,
-.artists-container > a,
-.most-liked-artists-container > a {
+.trending-vinyls-container>a,
+.vinyls-container>a,
+.artists-container>a,
+.most-liked-artists-container>a {
     text-decoration: none;
     color: inherit;
     display: block;
 }
 
-.card{
+.card {
     background: var(--bg-surface);
     border: 0.1em var(--border-default) solid;
     border-radius: 8px;
@@ -471,6 +529,7 @@ footer p {
 
 /* Responsive Cards */
 @media (max-width: 768px) {
+
     .trending-vinyls-container,
     .vinyls-container,
     .artists-container,
@@ -480,6 +539,7 @@ footer p {
 }
 
 @media (min-width: 769px) {
+
     .trending-vinyls-container,
     .vinyls-container,
     .artists-container,
@@ -512,10 +572,10 @@ footer p {
 }
 
 #wishlist-table {
-    width: calc(100% - 4rem);
+    width: 90%;
     border-collapse: separate;
     border-spacing: 0 2rem;
-    margin: 2rem;
+    margin: auto;
     text-align: center;
 }
 
@@ -524,7 +584,8 @@ footer p {
     box-shadow: 0 0.1em 0.5em rgba(0, 0, 0, 0.2);
 }
 
-#wishlist-table tbody td, #wishlist-table tbody th {
+#wishlist-table tbody td,
+#wishlist-table tbody th {
     border: 0.1em solid var(--border-default);
     border-right: 0em;
     border-left: 0em;
@@ -552,11 +613,10 @@ footer p {
     border-radius: 0.5em;
     cursor: pointer;
     transition: background 0.3s ease;
-    background-color: rgb(255, 0, 0);
+    background-color: var(--bg-error);
 }
 
 input[type="number"] {
-    width: 4rem;
     padding: 0.25rem;
     text-align: center;
     border: 0.1em solid var(--border-default);
@@ -565,7 +625,7 @@ input[type="number"] {
     color: var(--text-primary)
 }
 
-.save-button{
+.save-button {
     background: var(--brand-primary);
     color: var(--bg-surface);
     border: none;
@@ -573,4 +633,140 @@ input[type="number"] {
     border-radius: 0.5em;
     cursor: pointer;
     transition: background 0.3s ease;
+}
+
+.priority-error-message {
+    display: none;
+    color: var(--bg-error);
+    font-size: 0.9em;
+    margin: 0em;
+}
+
+#wishlist-table tbody tr img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 0.5em;
+}
+
+.wishlist-actions {
+    text-align: center;
+    margin: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.wishlist-actions button {
+    border: none;
+    cursor: pointer;
+}
+
+input[type="checkbox"] {
+    width: 1.2rem;
+    height: 1.2rem;
+    cursor: pointer;
+}
+
+h2#empty-wishlist-heading {
+    align-self: center;
+}
+
+p#empty-wishlist-paragraph {
+    margin-bottom: 8rem;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    text-wrap: balance;
+}
+
+img#empty-wishlist-image {
+    margin-top: 4rem;
+    max-width: 300px;
+    height: auto;
+}
+
+#back-to-top{
+    transition-duration: 0.4s;
+    display: block; /* Show the button when it has the 'visible' class */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 20px; /* Place the button at the bottom of the page */
+    right: 30px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: var(--bg-surface);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: var(--text-primary); /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px; /* Some padding */
+    border-radius: 10px; /* Rounded corners */
+    border: 0.1em solid var(--border-default);
+    font-size: 18px; /* Increase font size */
+}
+
+#back-to-top:hover {
+  background-color: var(--text-primary); /* Add a dark-grey background on hover */
+  color: var(--bg-surface);
+}
+
+/* 404 Error Page */
+
+.error-page {
+    border-top: 0.1em solid var(--border-default);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    padding: 2rem;
+}
+
+.error-page img {
+    max-width: 400px;
+    height: auto;
+}
+
+.error-container {
+    text-align: center;
+    max-width: 600px;
+}
+
+.error-code {
+    font-size: 8rem;
+    font-weight: 700;
+    color: var(--brand-primary);
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+
+.error-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.error-message {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.error-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-secondary:link,
+.btn-secondary:visited {
+    color: var(--brand-primary);
+}
+
+.btn-secondary:hover {
+    background: var(--brand-primary);
+    color: var(--bg-surface);
+    opacity: 1;
 }
