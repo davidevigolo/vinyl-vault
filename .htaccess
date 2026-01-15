@@ -19,6 +19,10 @@ Options -Indexes
     Order Allow,Deny
     Allow from all
 </Files>
+<Files "collection.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
 <Files "esplora.php">
     Order Allow,Deny
     Allow from all
@@ -32,6 +36,14 @@ Options -Indexes
     Allow from all
 </Files>
 <Files "404.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "manage_wishlist_item.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "manage_collection_item.php">
     Order Allow,Deny
     Allow from all
 </Files>

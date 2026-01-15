@@ -104,7 +104,8 @@ a:hover {
     white-space: nowrap;
 }
 
-a.btn-cancel, .btn-cancel {
+a.btn-cancel,
+.btn-cancel {
     display: inline-block;
     background: var(--bg-error);
     color: var(--bg-surface);
@@ -136,6 +137,7 @@ button[type="submit"] {
 
 #content {
     text-align: center;
+    padding-bottom: 3rem;
 }
 
 /* Skip Links */
@@ -228,6 +230,29 @@ h2 {
 }
 
 /* End Header */
+
+/* Page Title Banner */
+
+.page-banner {
+    background: var(--bg-section);
+    padding: 0.5rem 1.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    border-bottom: 0.1em var(--border-default) solid;
+    margin-bottom: 1.5rem;
+}
+
+.page-banner img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 0.5em;
+}
+
+/* End Page Title Banner */
 
 /* Footer */
 
@@ -571,38 +596,53 @@ footer p {
     margin: 2rem 0;
 }
 
-#wishlist-table {
-    width: 90%;
-    border-collapse: separate;
-    border-spacing: 0 2rem;
-    margin: auto;
-    text-align: center;
+.collection-grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 colonne uguali */
+    gap: 2rem;
+    /* Spazio tra le card */
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0em;
+    padding-bottom: 0rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 1.5rem;
 }
 
-#wishlist-table tbody tr {
-    background: var(--bg-surface);
-    box-shadow: 0 0.1em 0.5em rgba(0, 0, 0, 0.2);
+.collection-item {
+  background: var(--bg-surface);
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: row;
 }
 
-#wishlist-table tbody td,
-#wishlist-table tbody th {
-    border: 0.1em solid var(--border-default);
-    border-right: 0em;
-    border-left: 0em;
-    padding: 1rem;
+.collection-item img{
+    width: 150px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-right: 20px;
 }
 
-#wishlist-table tbody tr td:first-child {
-    border-left: 0.1em solid var(--border-default);
-    border-right: 0em;
-    border-top-left-radius: 0.5em;
-    border-bottom-left-radius: 0.5em;
+.collection-item-details {
+    text-align: left;
 }
 
-#wishlist-table tbody tr td:last-child {
-    border-right: 0.1em solid var(--border-default);
-    border-top-right-radius: 0.5em;
-    border-bottom-right-radius: 0.5em;
+.collection-item-details *{
+    margin: 0.2rem 0;
+}
+
+.collection-item-details h2{
+    margin-bottom: 0rem;
+}
+
+.collection-edition-name {
+    margin-bottom: 1em;
 }
 
 .remove-button {
@@ -642,14 +682,7 @@ input[type="number"] {
     margin: 0em;
 }
 
-#wishlist-table tbody tr img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 0.5em;
-}
-
-.wishlist-actions {
+.collection-grid-actions {
     text-align: center;
     margin: 2rem;
     display: flex;
@@ -657,7 +690,7 @@ input[type="number"] {
     gap: 1rem;
 }
 
-.wishlist-actions button {
+.collection-grid-actions button {
     border: none;
     cursor: pointer;
 }
@@ -668,45 +701,58 @@ input[type="checkbox"] {
     cursor: pointer;
 }
 
-h2#empty-wishlist-heading {
+h2#empty-collection-heading {
     align-self: center;
 }
 
-p#empty-wishlist-paragraph {
+p#empty-collection-paragraph {
     margin-bottom: 8rem;
     font-size: 1.2rem;
     color: var(--text-secondary);
     text-wrap: balance;
 }
 
-img#empty-wishlist-image {
+img#empty-collection-image {
     margin-top: 4rem;
     max-width: 300px;
     height: auto;
 }
 
-#back-to-top{
+#back-to-top {
     transition-duration: 0.4s;
-    display: block; /* Show the button when it has the 'visible' class */
-    position: fixed; /* Fixed/sticky position */
-    bottom: 20px; /* Place the button at the bottom of the page */
-    right: 30px; /* Place the button 30px from the right */
-    z-index: 99; /* Make sure it does not overlap */
-    border: none; /* Remove borders */
-    outline: none; /* Remove outline */
+    display: block;
+    /* Show the button when it has the 'visible' class */
+    position: fixed;
+    /* Fixed/sticky position */
+    bottom: 20px;
+    /* Place the button at the bottom of the page */
+    right: 30px;
+    /* Place the button 30px from the right */
+    z-index: 99;
+    /* Make sure it does not overlap */
+    border: none;
+    /* Remove borders */
+    outline: none;
+    /* Remove outline */
     background-color: var(--bg-surface);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    color: var(--text-primary); /* Text color */
-    cursor: pointer; /* Add a mouse pointer on hover */
-    padding: 15px; /* Some padding */
-    border-radius: 10px; /* Rounded corners */
+    color: var(--text-primary);
+    /* Text color */
+    cursor: pointer;
+    /* Add a mouse pointer on hover */
+    padding: 15px;
+    /* Some padding */
+    border-radius: 10px;
+    /* Rounded corners */
     border: 0.1em solid var(--border-default);
-    font-size: 18px; /* Increase font size */
+    font-size: 18px;
+    /* Increase font size */
 }
 
 #back-to-top:hover {
-  background-color: var(--text-primary); /* Add a dark-grey background on hover */
-  color: var(--bg-surface);
+    background-color: var(--text-primary);
+    /* Add a dark-grey background on hover */
+    color: var(--bg-surface);
 }
 
 /* 404 Error Page */

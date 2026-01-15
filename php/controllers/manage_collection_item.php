@@ -12,15 +12,14 @@ function edit_multiple_items_in_collection($user_id)
 {
     $disk_ids = $_POST['disk_id'] ?? [];
     $edition_names = $_POST['edition_name'] ?? [];
-    $priority_levels = $_POST['priority_level'] ?? [];
     $items_to_delete = $_POST['items_to_delete'] ?? [];
 
-    if (!is_array($disk_ids) || !is_array($edition_names) || !is_array($priority_levels)) {
+    if (!is_array($disk_ids) || !is_array($edition_names)) {
         return false;
     }
 
     $count = count($disk_ids);
-    if ($count !== count($edition_names) || $count !== count($priority_levels)) {
+    if ($count !== count($edition_names)) {
         return false;
     }
 
@@ -29,15 +28,14 @@ function edit_multiple_items_in_collection($user_id)
     }
 
     $connection = DbConnection::get_instance();
-    $update_query = "UPDATE wishlist SET priority_level = ? WHERE user_id = ? AND disk_id = ? AND edition_name = ?;";
-    $delete_query = "DELETE FROM wishlist WHERE user_id = ? AND disk_id = ? AND edition_name = ?;";
+    $delete_query = "DELETE FROM ownership WHERE user_id = ? AND disk_id = ? AND edition_name = ?;";
 
-    $update_stmt = mysqli_prepare($connection->get_connection(), $update_query);
     $delete_stmt = mysqli_prepare($connection->get_connection(), $delete_query);
 
-    if (!$update_stmt || !$delete_stmt) {
+    if (!$delete_stmt) {
         return false;
     }
+
     $success = true;
     for ($i = 0; $i < $count; $i++) {
         $item_key = $disk_ids[$i] . '_' . $edition_names[$i];
@@ -48,24 +46,9 @@ function edit_multiple_items_in_collection($user_id)
             if (!mysqli_stmt_execute($delete_stmt)) {
                 $success = false;
             }
-        } else {
-            $priority_level = intval($priority_levels[$i]);
-            $disk_id = intval($disk_ids[$i]);
-            $edition_name = $edition_names[$i];
-
-            // Validate priority level range
-            if ($priority_level < 0 || $priority_level > 100) {
-                $success = false;
-            } else {
-                mysqli_stmt_bind_param($update_stmt, 'iiis', $priority_level, $user_id, $disk_id, $edition_name);
-                if (!mysqli_stmt_execute($update_stmt)) {
-                    $success = false;
-                }
-            }
         }
     }
 
-    mysqli_stmt_close($update_stmt);
     mysqli_stmt_close($delete_stmt);
     return $success;
 }
@@ -78,13 +61,13 @@ if ($action === 'edit_multiple' && $user_id) {
 
 switch ($result) {
     case 0:
-        $_SESSION['wishlist_action_status'] = 'success';
+        $_SESSION['collection_action_status'] = 'success';
         break;
     case 1:
-        $_SESSION['wishlist_action_status'] = 'error';
+        $_SESSION['collection_action_status'] = 'error';
         break;
     default:
-        $_SESSION['wishlist_action_status'] = 'invalid';
+        $_SESSION['collection_action_status'] = 'invalid';
         break;
 }
-header('Location: ../../wishlist.php');
+header('Location: ../../collection.php');

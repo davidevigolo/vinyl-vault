@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="it" data-theme="dark">
+<html lang="it" data-theme="light">
 
 <head>
     <meta name="description"
-        content="Piattaforma dedicata agli appassionati di vinili per esplorare, collezionare e condividere la loro passione per la musica su vinile.">
-    <meta name="keywords"
-        content="vinili desiderati, lista dei desideri vinili, community vinili, vinylvault wishlist">
+        content="Collezione di vinili desiderati, dove gli utenti possono gestire e mostrare la loro lista dei desideri di dischi in vinile su Vinyl Vault.">
+    <meta name="keywords" content="vinili desiderati, lista dei desideri vinili, community vinili, vinylvault wishlist">
     <script src="../../scripts/wishlist.js" defer></script>
     <title>Wishlist - Vinyl Vault</title>
     [head] <!-- qui viene inserita la parte invariante dell'header-->
@@ -21,9 +20,14 @@
     </nav>
     [header]
     <nav id="breadcrumb" aria-label="percorso di navigazione">
-        <a href="index.php"><span lang="en">Home</span></a> &gt; <span>Lista Desideri</span>
+        <a href="index.php"><span lang="en">Home</span></a> &gt; <a href="profile.php"><span>Profilo</span></a> &gt;
+        <span>Lista Desideri</span>
     </nav>
     <main id="content">
+        <div class="page-banner">
+            <img src="assets/images/wishlist-icon.jpg" alt="">
+            <h1 class="page-title">La mia Lista Desideri</h1>
+        </div>
         [wishlist]
     </main>
     [footer]

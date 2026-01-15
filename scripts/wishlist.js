@@ -3,7 +3,7 @@ window.addEventListener('load', function() {
     this.document.querySelectorAll('input[name="priority_level[]"]').forEach(function(input) {
         input.addEventListener('input', function() {
             // Find the error message element
-            let errorMessage = this.parentElement.querySelector('.priority-error-message');
+            let errorMessage = document.querySelector('.priority-error-message');
             
             // Validate range
             let value = parseInt(this.value);

@@ -219,8 +219,13 @@ INSERT INTO wishlist (user_id, disk_id, edition_name, priority_level) VALUES
 ((SELECT id FROM users WHERE email = 'jane.smith@example.com' LIMIT 1), (SELECT id FROM disk WHERE title = 'The Dark Side of the Moon' LIMIT 1), '50th Anniversary', 2),
 ((SELECT id FROM users WHERE email = 'mike.johnson@example.com' LIMIT 1), (SELECT id FROM disk WHERE title = 'The Rise and Fall of Ziggy Stardust' LIMIT 1), 'Original Release', 1),
 ((SELECT id FROM users WHERE email = 'sarah.williams@example.com' LIMIT 1), (SELECT id FROM disk WHERE title = 'Abbey Road' LIMIT 1), 'Remastered 2009', 3),
-((SELECT id FROM users WHERE email = 'john.doe@example.com' LIMIT 1), (SELECT id FROM disk WHERE title = 'Kind of Blue' LIMIT 1), 'Original Release', 1);
-
+((SELECT id FROM users WHERE email = 'john.doe@example.com' LIMIT 1), (SELECT id FROM disk WHERE title = 'Kind of Blue' LIMIT 1), 'Original Release', 1),
+((SELECT id FROM users WHERE email = 'jane.smith@example.com' LIMIT 1), (SELECT id FROM disk WHERE title = 'Led Zeppelin IV' LIMIT 1), 'Original Release', 2),
+((SELECT id FROM users WHERE email = 'sarah.williams@example.com' LIMIT 1), (SELECT id FROM disk WHERE title = 'Kind of Blue' LIMIT 1), 'Original Release', 1),
+((SELECT id FROM users WHERE email = 'mike.johnson@example.com' LIMIT 1), (SELECT id FROM disk WHERE title = 'Abbey Road' LIMIT 1), 'Remastered 2009', 2),
+((SELECT id FROM users WHERE email = 'john.doe@example.com' LIMIT 1), (SELECT id FROM disk WHERE title = 'Rumours' LIMIT 1), 'Original Release', 3),
+((SELECT id FROM users WHERE email = 'sarah.williams@example.com' LIMIT 1), (SELECT id FROM disk WHERE title = 'A Night at the Opera' LIMIT 1), 'Original Release', 1),
+((SELECT id FROM users WHERE email = 'jane.smith@example.com' LIMIT 1), (SELECT id FROM disk WHERE title = 'The Rise and Fall of Ziggy Stardust' LIMIT 1), 'Original Release', 3);
 -- Insert ownership records (depends on users and editions)
 INSERT INTO ownership (user_id, disk_id, edition_name) VALUES
 ((SELECT id FROM users WHERE email = 'john.doe@example.com' LIMIT 1), (SELECT id FROM disk WHERE title = 'Abbey Road' LIMIT 1), 'Original Release'),
