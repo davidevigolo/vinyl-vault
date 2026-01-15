@@ -195,6 +195,9 @@ Placeholder accessibile quando le immagini non sono disponibili:
 // TBD: Usare image_path quando le immagini saranno caricate
 'cover_image' => 'assets/images/pollo.webp',
 ```
+## Tabella wishlist
+
+La tabella wishlist presenta una colonna dedicata alle copertine dei dischi, la colonna e ogni elemento di copertina sono nascosti agli screen reader in quanto puramente decorativi, tramite aria-hidden="true". Si sarebbe ottenuto altrimenti una ripetizione continua di informazioni non necessarie per l'utente con disabilità visive.
 
 ## Note di Sviluppo Futuro
 

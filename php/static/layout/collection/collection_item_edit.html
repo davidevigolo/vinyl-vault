@@ -1,0 +1,12 @@
+<article class="collection-item">
+    <img src="[image_url]" alt="">
+    <div class="collection-item-details">
+        <p class="collection-item-author">[author]</p>
+        <h2 class="collection-item-name">[title]</h2>
+        <p class="collection-edition-name">[edition_name]</p>
+        <p class="collection-item-release-info">[country] - <time datetime="[year_datetime]">[year]</time></p>
+        <input type="hidden" form="collection-form" name="disk_id[]" value="[disk_id]"/>
+        <input type="hidden" form="collection-form" name="edition_name[]" value="[edition_name]"/>
+        <div>Elimina: <input type="checkbox" form="collection-form" name="items_to_delete[]" value="[disk_id]_[edition_name]" aria-label="Seleziona [title] per eliminazione"/></div>
+    </div>
+</article>
