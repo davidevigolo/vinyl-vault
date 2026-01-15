@@ -24,18 +24,23 @@
             </li>
         </ul>
     </nav>
+
     [header]
+
     <nav id="breadcrumb"  aria-label="percorso di navigazione">
         <div class="center-container">
-            <p><span lang="eng">Home</span></p>  
+            <p><span lang="en">Home</span></p>  
         </div>
     </nav>
+    
+    
     <main id="content">
-        <section class="hero">
+        <!-- Banner iniziale -->
+        <section class="hero" aria-labelledby="hero-title">
             <div class="center-container">
-                <img src="assets/images/logo-full-light.png" alt="">
+                <img src="assets/images/logo-full-light.png" alt="Logo di Vinyl Vault">
                 <div class="hero-text">
-                    <h2>Il Tuo Archivio Personale del Vinile</h2>
+                    <h2 id="hero-title">Il Tuo Archivio Personale del Vinile</h2>
                     <p>Cataloga la tua collezione, scopri gemme nascoste e cura la tua lista dei desideri.</p> 
                     <p>Uno spazio puro per collezionisti: niente annunci, solo passione.</p>
                     <a href="register.php" class="btn-primary">Inizia ora</a>
@@ -43,25 +48,26 @@
             </div>
         </section>
 
-        <section id="presentation">
+        <!-- Area di presentazione (funzionalità) -->
+        <section id="presentation" aria-labelledby="hero-title">
             <div class="center-container">
-                <h2>Lo strumento definitivo per il collezionista</h2>
+                <h2 id="presentation-title">Lo strumento definitivo per il collezionista</h2>
                 <p>Progettato da amanti del vinile, per collezionisti del vinile.</p>
-                <ul class="features" aria-label="funzionalità">
+                <ul class="features" aria-label="Le nostre funzionalità">
                     <li class="feature">
-                        <img src="assets/images/collection-icon.jpg" alt="">
+                        <img src="assets/images/collection-icon.jpg" alt="" aria-hidden="true">
                         <h3>La tua collezione</h3>
                         <p>Tieni un archivio digitale dettagliato di ogni vinile nella tua libreria. Ordina per artista,
                             anno o genere.</p>
                     </li>
                     <li class="feature">
-                        <img src="assets/images/compass-icon.jpg" alt="">
+                        <img src="assets/images/compass-icon.jpg" alt="" aria-hidden="true">
                         <h3>Trova nuovi vinili</h3>
                         <p>Trova nuove uscite e classici rari nel catalogo. Vedi tendenze o cerca il nome dell'artista,
                             dell'album o dell'edizione del vinile.</p>
                     </li>
                     <li class="feature">
-                        <img src="assets/images/wishlist-icon.jpg" alt="">
+                        <img src="assets/images/wishlist-icon.jpg" alt="" aria-hidden="true">
                         <h3>La tua lista desideri</h3>
                         <p>Non dimenticare mai un disco. Salva gli album che ti piacciono in un luogo dedicato.</p>
                     </li>
@@ -69,11 +75,12 @@
             </div>
         </section>
 
-        <section id="trending-vinyls" class="card-section">
+        <!-- Vinili di tendenza -->
+        <section id="trending-vinyls" class="card-section" aria-labelledby="trending-title">
             <div class="center-container">
                 <div class="section-title">
                     <h2>Vinili di tendenza</h2>
-                    <a href=".php" class="view-all">Guarda tutti</a>
+                    <a href=".php" class="view-all" aria-label="Guarda tutti i vinili di tendenza">Guarda tutti</a>
                 </div>
                 <div class="trending-vinyls-container">
                     [trending_vinyls]
@@ -81,10 +88,11 @@
             </div>
         </section>
 
-        <section id="call-to-action" class="center-container">
+        <!-- Banner Call to Action -->
+        <section id="call-to-action" class="center-container" aria-labelledby="cta-title">
             <div class="cta-banner">
                 <div class="cta-content">
-                    <h2>Unisciti agli altri appassionati!</h2>
+                    <h2 id="cta-title">Unisciti agli altri appassionati!</h2>
                     <p>Unisciti agli altri collezionisti che stanno costruendo la loro eredità musicale oggi. È gratuito e lo
                         sarà sempre.</p>
                 </div>
@@ -94,11 +102,12 @@
             </div>
         </section>
 
-        <section id="most-liked-vinyls" class="card-section">
+        <!-- Artisti più amati -->
+        <section id="most-liked-artists" class="card-section" aria-labelledby="artists-title">
             <div class="center-container">
                 <div class="section-title">
-                    <h2>Artisti più amati</h2>
-                    <a href=".php" class="view-all">Guarda tutti</a>
+                    <h2 id="artists-title">Artisti più amati</h2>
+                    <a href=".php" class="view-all" aria-label="Guarda tutti gli artisti più amati">Guarda tutti</a>
                 </div>
                 <div class="most-liked-artists-container">
                     [most_liked_artists]
