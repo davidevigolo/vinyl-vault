@@ -1,0 +1,12 @@
+<form id="wishlist-form" action="php/controllers/manage_wishlist_item.php" method="POST">
+    <input type="hidden" name="action" value="edit_multiple" />
+</form>
+
+<section id="collection" class="collection-grid-container">
+    [wishlist_items]
+</section>
+
+<div class="wishlist-actions collection-grid-actions">
+    <button type="submit" form="wishlist-form" class="btn-primary">Salva Modifiche</button>
+    <a href="wishlist.php" class="btn-cancel">Annulla</a>
+</div>

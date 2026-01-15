@@ -1,19 +1,5 @@
-<!--<footer>
-    <img src="assets/images/logo-min.jpg" alt="Logo di Vinyl Vault">
-    <p>Il tuo Vault digitale per il suono analogico.
-        Cataloga, esplora e ama collezionare i vinili.</p>
-    <nav aria-label="Menù di navigazione del footer">
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Esplora</a></li>
-            <li><a href="#">Catalogo</a></li>
-        </ul>
-    </nav aria-label="Menù profilo del footer">
-        [profile_nav_menu]
-</footer>
--->
-
 <footer id="main-footer">
+    <a href="#top" id="back-to-top" aria-label="Torna in cima alla pagina">↑</a>
     <div class="center-container">
         <div class="footer-content">
             <div class="footer-brand">
@@ -29,15 +15,15 @@
             <div class="footer-nav">
                 <div class="footer-col">
                     <h4>Naviga</h4>
-                    <ul>
-                        <li><a href=".php">Home</a></li>
-                        <li><a href=".php">Esplora</a></li>
-                        <li><a href=".php">Catalogo</a></li>
-                    </ul>
+                    <nav class="site-nav" aria-label="Menù di navigazione principale del footer">
+                      [site_nav_menu]
+                    </nav>
                 </div>
                 <div class="footer-col">
-                    <h4>Profilo</h4>
-                    [profile_nav_menu]
+                    <h4>Profilo</h4> <!-- h4 o h3? -->
+                    <nav class="profile-nav" aria-label="Menù di navigazione del profilo utente del footer">
+                      [profile_nav_menu]
+                    </nav>
                 </div>
             </div>
         </div>

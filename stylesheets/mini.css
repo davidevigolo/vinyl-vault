@@ -1,0 +1,171 @@
+/* Header */
+
+header {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0rem;
+    padding: 0rem;
+}
+
+header .site-nav {
+    margin: auto;
+    width: 100%;
+}
+
+header .site-nav-links li {
+    text-align: center;
+    display: block;
+    margin: 0rem;
+    padding: 0.5rem 0rem;
+    border-top: 0.1rem solid var(--border-default);
+}
+
+header .site-nav-links li:last-child {
+    border-bottom: 0.1rem solid var(--border-default);
+}
+
+/* End Header */
+
+/* Footer */
+footer{
+    position: static;
+}
+/* End Footer */
+
+/* Hero Section */
+
+.hero {
+    display: block;
+}
+
+.hero-text {
+    text-align: center;
+    margin: 2rem;
+}
+
+.hero img {
+    display: none;
+}
+
+/* End Hero Section */
+
+/* Breadcrumbs */
+
+nav#breadcrumb {
+    padding: 0.35rem 3rem;
+}
+
+/* End Breadcrumbs */
+
+/* Presentation Section */
+
+.features {
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.features li {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+.features img {
+    margin: auto;
+}
+
+/* End Presentation Section */
+
+/* Card Section */
+
+.card-section {
+    margin: 0rem;
+}
+
+.card-section h2 {
+    text-align: center;
+    margin: 2rem 0rem;
+}
+
+.trending-vinyls-container,
+.vinyls-container,
+.artists-container,
+.most-liked-artists-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0rem;
+    padding: 1rem 0rem;
+    max-width: 100%;
+}
+
+.card img {
+    width: 64px;
+    height: 64px;
+    margin: 0rem;
+}
+
+.card .text-container {
+    margin: auto;
+}
+
+.card {
+    max-width: none;
+    border-radius: 0rem;
+    box-shadow: none;
+    border-top: 0.1rem solid var(--border-default);
+    border-bottom: 0rem;
+    border-left: 0rem;
+    border-right: 0rem;
+
+    display: flex;
+    align-items: left;
+    flex-direction: row;
+}
+
+.card-section a:last-child .card {
+    border-bottom: 0.1rem solid var(--border-default);
+}
+
+/* End Card Section */
+
+/* Footer */
+
+footer {
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    gap: 2rem;
+    text-align: center;
+}
+
+div#footer-site-nav {
+    margin: auto;
+}
+
+/* End Footer */
+
+/* Wishlist Section */
+
+#wishlist{
+    width: 100%;
+    padding: 0;
+    grid-template-columns: repeat(1, 1fr);
+    justify-items: center;
+}
+
+.wishlist-item{
+    width: 70%;
+    margin: auto;
+}
+
+input{
+    display: block;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+h2#empty-wishlist-heading {
+    margin-top: 0rem;
+}
+
+/* End Wishlist Section */

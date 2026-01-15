@@ -1,0 +1,14 @@
+<article class="collection-item">
+    <img src="[image_url]" alt="">
+    <div class="collection-item-details">
+        <p class="collection-item-author">[author]</p>
+        <h2 class="collection-item-name">[title]</h2>
+        <p class="collection-edition-name">[edition_name]</p>
+        <p class="collection-item-release-info">[country] - <time datetime="[year_datetime]">[year]</time></p>
+        <input type="hidden" form="wishlist-form" name="disk_id[]" value="[disk_id]"/>
+        <input type="hidden" form="wishlist-form" name="edition_name[]" value="[edition_name]"/>
+        <div>Priorità: <input aria-label="Imposta priorità di [title]" form="wishlist-form" type="number" max=100 min=0 name="priority_level[]" value="[priority_level]" required/></div>
+        <p class="priority-error-message">Inserire un valore tra 0 e 100</p>
+        <div>Elimina: <input type="checkbox" form="wishlist-form" name="items_to_delete[]" value="[disk_id]_[edition_name]" aria-label="Seleziona [title] per eliminazione"/></div>
+    </div>
+</article>

@@ -1,0 +1,51 @@
+<?php
+include_once 'php/classes/DbConnection.php';
+
+function get_wishlist(){
+    $connection = DbConnection::get_instance();
+    $query = "SELECT o.disk_id, e.image_path, d.title, a.author_name as author, e.edition_name, e.country, e.release_date
+       FROM ownership o 
+       JOIN edition e ON o.disk_id = e.disk_id AND o.edition_name = e.edition_name
+       JOIN disk d ON d.id = e.disk_id 
+       JOIN disk_author_release dar ON d.id = dar.disk_id
+       JOIN author a ON dar.author_id = a.id
+       WHERE o.user_id = " . intval($_SESSION['user_id']) . "
+       ORDER BY o.date_acquired DESC; ";
+    $result = mysqli_query($connection->get_connection(), $query);
+    if (!$result) {
+        error_log("Query failed: " . mysqli_error($connection->get_connection()));
+        return false;
+    }
+    return $result;
+}
+
+function collection($edit_mode = false)
+{
+    ob_start();
+    $collection = get_wishlist();
+    $items = '';
+    if(!$collection || mysqli_num_rows($collection) === 0){
+        echo Template::render('static/layout/collection/empty_collection.html', []);
+        return ob_get_clean();
+    }
+    if ($collection) {
+        while ($vinyl = mysqli_fetch_assoc($collection)) {
+            // TBD: Usare image_path quando le immagini saranno caricate
+            $items .= Template::render($edit_mode ? 'static/layout/collection/collection_item_edit.html' : 'static/layout/collection/collection_item.html', [
+                'title' => htmlspecialchars($vinyl['title']),
+                'author' => htmlspecialchars($vinyl['author']),
+                'edition_name' => htmlspecialchars($vinyl['edition_name']),
+                'country' => htmlspecialchars($vinyl['country']),
+                'year' => htmlspecialchars(str_replace('-', '/', $vinyl['release_date'])),
+                'year_datetime' => htmlspecialchars($vinyl['release_date']),
+                'image_url' => 'assets/images/pollo.webp',
+                'disk_id' => htmlspecialchars($vinyl['disk_id'])
+            ]);
+        }
+    }
+    echo Template::render($edit_mode ? 'static/layout/collection/collection_grid_edit.html' : 'static/layout/collection/collection_grid.html', [
+        'collection_items' => $items
+    ]);
+    return ob_get_clean();
+}
+

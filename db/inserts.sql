@@ -76,19 +76,19 @@ INSERT INTO track (title, duration_seconds) VALUES
 ('Hey Jude', 431);
 
 -- Insert editions (depends on disk)
-INSERT INTO edition (disk_id, edition_name, release_date, image_path) VALUES
-((SELECT id FROM disk WHERE title = 'Abbey Road' LIMIT 1), 'Original Release', '1969-09-26', '/assets/images/covers/abbey-road-original.jpg'),
-((SELECT id FROM disk WHERE title = 'Abbey Road' LIMIT 1), 'Remastered 2009', '2009-09-09', '/assets/images/covers/abbey-road-remastered.jpg'),
-((SELECT id FROM disk WHERE title = 'The Dark Side of the Moon' LIMIT 1), 'Original Release', '1973-03-01', '/assets/images/covers/darkside-original.jpg'),
-((SELECT id FROM disk WHERE title = 'The Dark Side of the Moon' LIMIT 1), '50th Anniversary', '2023-03-24', '/assets/images/covers/darkside-50th.jpg'),
-((SELECT id FROM disk WHERE title = 'Kind of Blue' LIMIT 1), 'Original Release', '1959-08-17', '/assets/images/covers/kindofblue-original.jpg'),
-((SELECT id FROM disk WHERE title = 'Led Zeppelin IV' LIMIT 1), 'Original Release', '1971-11-08', '/assets/images/covers/ledzep4-original.jpg'),
-((SELECT id FROM disk WHERE title = 'OK Computer' LIMIT 1), 'Original Release', '1997-05-21', '/assets/images/covers/okcomputer-original.jpg'),
-((SELECT id FROM disk WHERE title = 'A Night at the Opera' LIMIT 1), 'Original Release', '1975-11-21', '/assets/images/covers/nightopera-original.jpg'),
-((SELECT id FROM disk WHERE title = 'The Rise and Fall of Ziggy Stardust' LIMIT 1), 'Original Release', '1972-06-16', '/assets/images/covers/ziggy-original.jpg'),
-((SELECT id FROM disk WHERE title = 'Rumours' LIMIT 1), 'Original Release', '1977-02-04', '/assets/images/covers/rumours-original.jpg'),
-((SELECT id FROM disk WHERE title = 'Hey Jude' LIMIT 1), 'Original 7" Single', '1968-08-26', '/assets/images/covers/heyjude-single.jpg'),
-((SELECT id FROM disk WHERE title = 'Bohemian Rhapsody' LIMIT 1), 'Original 7" Single', '1975-10-31', '/assets/images/covers/bohemianrhapsody-single.jpg');
+INSERT INTO edition (disk_id, edition_name, release_date, image_path, country) VALUES
+((SELECT id FROM disk WHERE title = 'Abbey Road' LIMIT 1), 'Original Release', '1969-09-26', '/assets/images/covers/abbey-road-original.jpg', 'United Kingdom'),
+((SELECT id FROM disk WHERE title = 'Abbey Road' LIMIT 1), 'Remastered 2009', '2009-09-09', '/assets/images/covers/abbey-road-remastered.jpg', 'United Kingdom'),
+((SELECT id FROM disk WHERE title = 'The Dark Side of the Moon' LIMIT 1), 'Original Release', '1973-03-01', '/assets/images/covers/darkside-original.jpg', 'United Kingdom'),
+((SELECT id FROM disk WHERE title = 'The Dark Side of the Moon' LIMIT 1), '50th Anniversary', '2023-03-24', '/assets/images/covers/darkside-50th.jpg', 'United Kingdom'),
+((SELECT id FROM disk WHERE title = 'Kind of Blue' LIMIT 1), 'Original Release', '1959-08-17', '/assets/images/covers/kindofblue-original.jpg', 'United States'),
+((SELECT id FROM disk WHERE title = 'Led Zeppelin IV' LIMIT 1), 'Original Release', '1971-11-08', '/assets/images/covers/ledzep4-original.jpg', 'United Kingdom'),
+((SELECT id FROM disk WHERE title = 'OK Computer' LIMIT 1), 'Original Release', '1997-05-21', '/assets/images/covers/okcomputer-original.jpg', 'United Kingdom'),
+((SELECT id FROM disk WHERE title = 'A Night at the Opera' LIMIT 1), 'Original Release', '1975-11-21', '/assets/images/covers/nightopera-original.jpg', 'United Kingdom'),
+((SELECT id FROM disk WHERE title = 'The Rise and Fall of Ziggy Stardust' LIMIT 1), 'Original Release', '1972-06-16', '/assets/images/covers/ziggy-original.jpg', 'United Kingdom'),
+((SELECT id FROM disk WHERE title = 'Rumours' LIMIT 1), 'Original Release', '1977-02-04', '/assets/images/covers/rumours-original.jpg', 'United States'),
+((SELECT id FROM disk WHERE title = 'Hey Jude' LIMIT 1), 'Original 7" Single', '1968-08-26', '/assets/images/covers/heyjude-single.jpg', 'United Kingdom'),
+((SELECT id FROM disk WHERE title = 'Bohemian Rhapsody' LIMIT 1), 'Original 7" Single', '1975-10-31', '/assets/images/covers/bohemianrhapsody-single.jpg', 'United Kingdom');
 
 -- Insert disk-author relationships (depends on disk and author)
 INSERT INTO disk_author_release (disk_id, author_id) VALUES
@@ -214,13 +214,18 @@ INSERT INTO review (user_id, disk_id, edition_name, content) VALUES
 ((SELECT id FROM users WHERE email = 'mike.johnson@example.com' LIMIT 1), (SELECT id FROM disk WHERE title = 'A Night at the Opera' LIMIT 1), 'Original Release', 'Queen at their peak. Bohemian Rhapsody changed rock music forever.');
 
 -- Insert wishlist items (depends on users and editions)
-INSERT INTO wishlist (user_id, disk_id, edition_name) VALUES
-((SELECT id FROM users WHERE email = 'john.doe@example.com' LIMIT 1), (SELECT id FROM disk WHERE title = 'OK Computer' LIMIT 1), 'Original Release'),
-((SELECT id FROM users WHERE email = 'jane.smith@example.com' LIMIT 1), (SELECT id FROM disk WHERE title = 'The Dark Side of the Moon' LIMIT 1), '50th Anniversary'),
-((SELECT id FROM users WHERE email = 'mike.johnson@example.com' LIMIT 1), (SELECT id FROM disk WHERE title = 'The Rise and Fall of Ziggy Stardust' LIMIT 1), 'Original Release'),
-((SELECT id FROM users WHERE email = 'sarah.williams@example.com' LIMIT 1), (SELECT id FROM disk WHERE title = 'Abbey Road' LIMIT 1), 'Remastered 2009'),
-((SELECT id FROM users WHERE email = 'john.doe@example.com' LIMIT 1), (SELECT id FROM disk WHERE title = 'Kind of Blue' LIMIT 1), 'Original Release');
-
+INSERT INTO wishlist (user_id, disk_id, edition_name, priority_level) VALUES
+((SELECT id FROM users WHERE email = 'john.doe@example.com' LIMIT 1), (SELECT id FROM disk WHERE title = 'OK Computer' LIMIT 1), 'Original Release', 1),
+((SELECT id FROM users WHERE email = 'jane.smith@example.com' LIMIT 1), (SELECT id FROM disk WHERE title = 'The Dark Side of the Moon' LIMIT 1), '50th Anniversary', 2),
+((SELECT id FROM users WHERE email = 'mike.johnson@example.com' LIMIT 1), (SELECT id FROM disk WHERE title = 'The Rise and Fall of Ziggy Stardust' LIMIT 1), 'Original Release', 1),
+((SELECT id FROM users WHERE email = 'sarah.williams@example.com' LIMIT 1), (SELECT id FROM disk WHERE title = 'Abbey Road' LIMIT 1), 'Remastered 2009', 3),
+((SELECT id FROM users WHERE email = 'john.doe@example.com' LIMIT 1), (SELECT id FROM disk WHERE title = 'Kind of Blue' LIMIT 1), 'Original Release', 1),
+((SELECT id FROM users WHERE email = 'jane.smith@example.com' LIMIT 1), (SELECT id FROM disk WHERE title = 'Led Zeppelin IV' LIMIT 1), 'Original Release', 2),
+((SELECT id FROM users WHERE email = 'sarah.williams@example.com' LIMIT 1), (SELECT id FROM disk WHERE title = 'Kind of Blue' LIMIT 1), 'Original Release', 1),
+((SELECT id FROM users WHERE email = 'mike.johnson@example.com' LIMIT 1), (SELECT id FROM disk WHERE title = 'Abbey Road' LIMIT 1), 'Remastered 2009', 2),
+((SELECT id FROM users WHERE email = 'john.doe@example.com' LIMIT 1), (SELECT id FROM disk WHERE title = 'Rumours' LIMIT 1), 'Original Release', 3),
+((SELECT id FROM users WHERE email = 'sarah.williams@example.com' LIMIT 1), (SELECT id FROM disk WHERE title = 'A Night at the Opera' LIMIT 1), 'Original Release', 1),
+((SELECT id FROM users WHERE email = 'jane.smith@example.com' LIMIT 1), (SELECT id FROM disk WHERE title = 'The Rise and Fall of Ziggy Stardust' LIMIT 1), 'Original Release', 3);
 -- Insert ownership records (depends on users and editions)
 INSERT INTO ownership (user_id, disk_id, edition_name) VALUES
 ((SELECT id FROM users WHERE email = 'john.doe@example.com' LIMIT 1), (SELECT id FROM disk WHERE title = 'Abbey Road' LIMIT 1), 'Original Release'),

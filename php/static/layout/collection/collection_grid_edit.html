@@ -1,0 +1,12 @@
+<form id="collection-form" action="php/controllers/manage_collection_item.php" method="POST">
+    <input type="hidden" name="action" value="edit_multiple" />
+</form>
+
+<section id="collection" class="collection-grid-container">
+    [collection_items]
+</section>
+
+<div class="collection-actions collection-grid-actions">
+    <button type="submit" form="collection-form" class="btn-primary">Salva Modifiche</button>
+    <a href="collection.php" class="btn-cancel">Annulla</a>
+</div>
