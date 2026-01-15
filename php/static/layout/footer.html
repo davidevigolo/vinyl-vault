@@ -1,20 +1,35 @@
-<footer>
+<footer id="main-footer">
     <a href="#top" id="back-to-top" aria-label="Torna in cima alla pagina">↑</a>
-    <div>
-        <img src="assets/images/logo-min.jpg" alt="Logo di Vinyl Vault">
-        <p>Il tuo Vault digitale per il suono analogico.
-            Cataloga, esplora e ama collezionare i vinili.</p>
-    </div>
-    <div id="footer-site-nav">
-        <h2>Navigazione</h2>
-        <nav class="site-nav" aria-label="Menù di navigazione principale del footer">
-            [site_nav_menu]
-        </nav>
-    </div>
-    <div id="footer-profile-nav">
-        <h2>Profilo</h2>
-        <nav class="profile-nav" aria-label="Menù di navigazione del profilo utente del footer">
-            [profile_nav_menu]
-        </nav>
+    <div class="center-container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <span class="hide" lang="en">Vinyl Vault</span> <!-- Sostituito con logo tramite image replacement -->
+                 </div>
+                <p class="footer-description">
+                    Il tuo Vault digitale per il suono analogico.<br>
+                    Cataloga, esplora e ama collezionare i vinili.
+                </p>
+            </div>
+
+            <div class="footer-nav">
+                <div class="footer-col">
+                    <h4>Naviga</h4>
+                    <nav class="site-nav" aria-label="Menù di navigazione principale del footer">
+                      [site_nav_menu]
+                    </nav>
+                </div>
+                <div class="footer-col">
+                    <h4>Profilo</h4> <!-- h4 o h3? -->
+                    <nav class="profile-nav" aria-label="Menù di navigazione del profilo utente del footer">
+                      [profile_nav_menu]
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>2025 VinylVault. Tutti i diritti riservati. Certificato accessibilità e html/css</p>
+        </div>
     </div>
 </footer>

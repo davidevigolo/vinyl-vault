@@ -25,61 +25,87 @@
         </ul>
     </nav>
     [header]
-    <nav id="breadcrumb" aria-label="percorso di navigazione">
-        <p><span lang="en">Home</span></p>
+    <nav id="breadcrumb"  aria-label="percorso di navigazione">
+        <div class="center-container">
+            <p><span lang="eng">Home</span></p>  
+        </div>
     </nav>
     <main id="content">
         <section class="hero">
-            <img src="assets/images/logo-full-light.jpg" alt="">
-            <div class="hero-text">
-                <h2>Il tuo archivio personale del vinile</h2>
-                <p>Cataloga la tua collezione, scopri gemme nascoste e cura la tua lista dei desideri. Uno spazio puro
-                    per
-                    collezionisti: niente annunci, solo passione.</p>
-                <a href="register.php" class="btn-primary">Inizia ora</a>
+            <div class="center-container">
+                <img src="assets/images/logo-full-light.png" alt="">
+                <div class="hero-text">
+                    <h2>Il Tuo Archivio Personale del Vinile</h2>
+                    <p>Cataloga la tua collezione, scopri gemme nascoste e cura la tua lista dei desideri.</p> 
+                    <p>Uno spazio puro per collezionisti: niente annunci, solo passione.</p>
+                    <a href="register.php" class="btn-primary">Inizia ora</a>
+                </div>
             </div>
         </section>
+
         <section id="presentation">
-            <h2>Lo strumento definitivo per il collezionista</h2>
-            <p>Progettato da amanti del vinile, per collezionisti del vinile.</p>
-            <ul class="features" aria-label="funzionalità">
-                <li class="feature">
-                    <img src="assets/images/collection-icon.jpg" alt="">
-                    <h3>La tua collezione</h3>
-                    <p>Tieni un archivio digitale dettagliato di ogni vinile nella tua libreria. Ordina per artista,
-                        anno o genere.</p>
-                </li>
-                <li class="feature">
-                    <img src="assets/images/compass-icon.jpg" alt="">
-                    <h3>Trova nuovi vinili</h3>
-                    <p>Trova nuove uscite e classici rari nel catalogo. Vedi tendenze o cerca il nome dell'artista,
-                        dell'album o dell'edizione del vinile.</p>
-                </li>
-                <li class="feature">
-                    <img src="assets/images/wishlist-icon.jpg" alt="">
-                    <h3>La tua lista desideri</h3>
-                    <p>Non dimenticare mai un disco. Salva gli album che ti piacciono in un luogo dedicato.</p>
-                </li>
-            </ul>
+            <div class="center-container">
+                <h2>Lo strumento definitivo per il collezionista</h2>
+                <p>Progettato da amanti del vinile, per collezionisti del vinile.</p>
+                <ul class="features" aria-label="funzionalità">
+                    <li class="feature">
+                        <img src="assets/images/collection-icon.jpg" alt="">
+                        <h3>La tua collezione</h3>
+                        <p>Tieni un archivio digitale dettagliato di ogni vinile nella tua libreria. Ordina per artista,
+                            anno o genere.</p>
+                    </li>
+                    <li class="feature">
+                        <img src="assets/images/compass-icon.jpg" alt="">
+                        <h3>Trova nuovi vinili</h3>
+                        <p>Trova nuove uscite e classici rari nel catalogo. Vedi tendenze o cerca il nome dell'artista,
+                            dell'album o dell'edizione del vinile.</p>
+                    </li>
+                    <li class="feature">
+                        <img src="assets/images/wishlist-icon.jpg" alt="">
+                        <h3>La tua lista desideri</h3>
+                        <p>Non dimenticare mai un disco. Salva gli album che ti piacciono in un luogo dedicato.</p>
+                    </li>
+                </ul>
+            </div>
         </section>
-        <section id="call-to-action">
-            <h2>Unisciti agli altri appassionati!</h2>
-            <p>Unisciti agli altri collezionisti che stanno costruendo la loro eredità musicale oggi. È gratuito e lo
-                sarà sempre</p>
-            <a href="register.php" class="btn-primary">Crea Account</a>
-        </section>
+
         <section id="trending-vinyls" class="card-section">
-            <h2>Vinili di tendenza</h2>
-            <div class="trending-vinyls-container">
-                [trending_vinyls]
+            <div class="center-container">
+                <div class="section-title">
+                    <h2>Vinili di tendenza</h2>
+                    <a href=".php" class="view-all">Guarda tutti</a>
+                </div>
+                <div class="trending-vinyls-container">
+                    [trending_vinyls]
+                </div>
             </div>
         </section>
-        <section id="most-liked-artists" class="card-section">
-            <h2>Artisti più amati</h2>
-            <div class="most-liked-artists-container">
-                [most_liked_artists]
+
+        <section id="call-to-action" class="center-container">
+            <div class="cta-banner">
+                <div class="cta-content">
+                    <h2>Unisciti agli altri appassionati!</h2>
+                    <p>Unisciti agli altri collezionisti che stanno costruendo la loro eredità musicale oggi. È gratuito e lo
+                        sarà sempre.</p>
+                </div>
+                <div class="cta-action">
+                    <a href="register.php" class="btn-primary">Crea Account</a>
+                </div>
             </div>
         </section>
+
+        <section id="most-liked-vinyls" class="card-section">
+            <div class="center-container">
+                <div class="section-title">
+                    <h2>Artisti più amati</h2>
+                    <a href=".php" class="view-all">Guarda tutti</a>
+                </div>
+                <div class="most-liked-artists-container">
+                    [most_liked_artists]
+                </div>
+            </div>
+        </section>
+
     </main>
     [footer]
 </body>
