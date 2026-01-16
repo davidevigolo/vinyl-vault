@@ -76,7 +76,7 @@ function recommended_vinyls()
             // TBD: Implementare gestione immagini reali
             $cover_image = 'assets/images/pollo.webp';
             
-            echo Template::render('static/layout/trending_vinyl_card.html', [
+            echo Template::render('static/layout/vinyl_card.html', [
                 'disk_id' => bin2hex($vinyl['disk_id']),
                 'ed_name' => htmlspecialchars($vinyl['edition_name']),
                 'title' => htmlspecialchars($vinyl['title']),

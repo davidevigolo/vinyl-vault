@@ -36,7 +36,7 @@ function most_collected_vinyls()
     if ($mostCollected && mysqli_num_rows($mostCollected) > 0) {
         while ($vinyl = mysqli_fetch_assoc($mostCollected)) {
             // TBD: Usare image_path quando le immagini saranno caricate
-            echo Template::render('static/layout/trending_vinyl_card.html', [
+            echo Template::render('static/layout/vinyl_card.html', [
                 'disk_id' => bin2hex($vinyl['disk_id']),
                 'ed_name' => htmlspecialchars($vinyl['edition_name']),
                 'title' => htmlspecialchars($vinyl['title']),

@@ -19,6 +19,10 @@ Options -Indexes
     Order Allow,Deny
     Allow from all
 </Files>
+<Files "top_vinyls.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
 <Files "collection.php">
     Order Allow,Deny
     Allow from all

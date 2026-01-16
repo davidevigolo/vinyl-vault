@@ -32,7 +32,7 @@ function trending_vinyls()
     if ($trendingVinyls) {
         while ($vinyl = mysqli_fetch_assoc($trendingVinyls)) {
             // TBD: Usare image_path quando le immagini saranno caricate
-            echo Template::render('static/layout/trending_vinyl_card.html', [
+            echo Template::render('static/layout/vinyl_card.html', [
                 'disk_id' => bin2hex($vinyl['disk_id']),
                 'ed_name' => $vinyl['edition_name'],
                 'title' => htmlspecialchars($vinyl['title']),
