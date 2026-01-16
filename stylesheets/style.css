@@ -24,7 +24,7 @@
     --brand-primary-dark: #003E6B; /* Blu7 - Titoli */
 
     /* Interactive */
-    --link-unvisited: #003B61; /* Blu8 - Link non visitati */
+    --link-unvisited: #003861; /* Blu8 - Link non visitati */
     --link-visited: #0074C7; /* Blu5 - Link visitati */
 
     /* Search Bar */
@@ -37,7 +37,7 @@
     --bg-error: #d93025;
 }
 
-/* colori tema chiaro */
+/* colori tema scura */
 :root[data-theme="dark"] {
     /* Backgrounds */
     --bg-page: #1c1c1c;
