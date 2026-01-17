@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS genre (
 CREATE TABLE IF NOT EXISTS author (
     id INT AUTO_INCREMENT,
     author_name VARCHAR(100) NOT NULL UNIQUE,
-
+    nationality VARCHAR(100),
     image_path VARCHAR(255),
 
     PRIMARY KEY (id)

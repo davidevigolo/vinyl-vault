@@ -22,15 +22,15 @@ INSERT INTO users (first_name, last_name, email, pw_hash, bio, propic_path) VALU
 ('Sarah', 'Williams', 'sarah.williams@example.com', '$2y$10$defghijklmnopqrstuvwxy', 'Alternative music collector', '/assets/images/users/sarah.jpg');
 
 -- Insert authors/artists (no dependencies)
-INSERT INTO author (author_name, image_path) VALUES
-('The Beatles', '/assets/images/artists/beatles.jpg'),
-('Pink Floyd', '/assets/images/artists/pinkfloyd.jpg'),
-('Miles Davis', '/assets/images/artists/milesdavis.jpg'),
-('Led Zeppelin', '/assets/images/artists/ledzeppelin.jpg'),
-('Radiohead', '/assets/images/artists/radiohead.jpg'),
-('Queen', '/assets/images/artists/queen.jpg'),
-('David Bowie', '/assets/images/artists/bowie.jpg'),
-('Fleetwood Mac', '/assets/images/artists/fleetwoodmac.jpg');
+INSERT INTO author (author_name, image_path, nationality) VALUES
+('The Beatles', '/assets/images/artists/beatles.jpg', 'en'),
+('Pink Floyd', '/assets/images/artists/pinkfloyd.jpg', 'en'),
+('Miles Davis', '/assets/images/artists/milesdavis.jpg', 'en'),
+('Led Zeppelin', '/assets/images/artists/ledzeppelin.jpg', 'en'),
+('Radiohead', '/assets/images/artists/radiohead.jpg', 'en'),
+('Queen', '/assets/images/artists/queen.jpg', 'en'),
+('David Bowie', '/assets/images/artists/bowie.jpg', 'en'),
+('Fleetwood Mac', '/assets/images/artists/fleetwoodmac.jpg', 'en');
 
 -- Insert disks (no dependencies)
 INSERT INTO disk (title, disk_type) VALUES

@@ -1,0 +1,83 @@
+<form id="add-disk-form" action="/php/controllers/add_disk_controller.php" method="POST" enctype="multipart/form-data">
+
+    <div class="input-wrapper">
+        <label for="title">Titolo del Disco</label>
+        <ul class="input-hints">
+            <li>Massimo 200 caratteri</li>
+            <li>Caratteri consentiti: lettere, numeri e spazi</li>
+        </ul>
+        <input type="text" id="title" name="title" required maxlength="200" pattern="[a-zA-Z0-9àèéìòùÀÈÉÌÒÙ\s]+" required>
+        <span class="error-message" id="title-error" aria-live="polite">Obbligatorio</span>
+    </div>
+
+    <div class="input-wrapper">
+        <label for="artist">Artista</label>
+        <select id="artist" name="artist" required>
+            <option value="" disabled selected>Seleziona un artista</option>
+            [artist_options]
+        </select>
+        <span class="error-message" id="artist-error" aria-live="polite">Obbligatorio</span>
+    </div>
+
+    <div class="input-wrapper">
+        <label for="type">Tipo</label>
+        <select id="type" name="type" required>
+            <option value="" disabled selected>Seleziona un tipo</option>
+            <option value="SINGLE">Singolo</option>
+            <option value="EP">EP</option>
+            <option value="ALBUM">Album</option>
+        </select>
+        <span class="error-message" id="type-error" aria-live="polite">Obbligatorio</span>
+    </div>
+
+    <div class="input-wrapper">
+        <label for="genre">Genere</label>
+        <select id="genre" name="genre[]" required>
+            <option value="" disabled selected>Seleziona un genere</option>
+            [genre_options]
+        </select>
+        <span class="error-message" id="genre-error" aria-live="polite">Obbligatorio</span>
+    </div>
+
+    <fieldset>
+        <legend>Specifica ulteriori generi (opzionale)</legend>
+
+        <div class="input-wrapper">
+            <label for="genre">Genere aggiuntivo 1</label>
+            <select id="genre" name="genre[]">
+                <option value="" disabled selected>Seleziona un genere</option>
+                <option value="">Vuoto</option>
+                [genre_options]
+            </select>
+        </div>
+
+        <div class="input-wrapper">
+            <label for="genre">Genere aggiuntivo 2</label>
+            <select id="genre" name="genre[]">
+                <option value="" disabled selected>Seleziona un genere</option>
+                <option value="">Vuoto</option>
+                [genre_options]
+            </select>
+        </div>
+
+        <div class="input-wrapper">
+            <label for="genre">Genere aggiuntivo 3</label>
+            <select id="genre" name="genre[]">
+                <option value="" disabled selected>Seleziona un genere</option>
+                <option value="">Vuoto</option>
+                [genre_options]
+            </select>
+        </div>
+
+        <div class="input-wrapper">
+            <label for="genre">Genere aggiuntivo 4</label>
+            <select id="genre" name="genre[]">
+                <option value="" disabled selected>Seleziona un genere</option>
+                <option value="">Vuoto</option>
+                [genre_options]
+            </select>
+        </div>
+    </fieldset>
+
+    <button type="submit" value="Aggiungi Disco" class="btn-primary">Aggiungi Disco</button>
+</form>

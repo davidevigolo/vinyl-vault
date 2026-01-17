@@ -19,6 +19,10 @@ Options -Indexes
     Order Allow,Deny
     Allow from all
 </Files>
+<Files "add_disk.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
 <Files "top_vinyls.php">
     Order Allow,Deny
     Allow from all
@@ -48,6 +52,10 @@ Options -Indexes
     Allow from all
 </Files>
 <Files "manage_collection_item.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "add_disk_controller.php">
     Order Allow,Deny
     Allow from all
 </Files>

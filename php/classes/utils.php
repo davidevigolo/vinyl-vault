@@ -17,6 +17,7 @@ function check_user_logged_in(){
     }
     if(!isset($_SESSION['user_id'])) {
         header("Location: /login.php");
+        http_response_code(403);
         exit();
     }
 }

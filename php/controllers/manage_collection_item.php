@@ -2,6 +2,9 @@
 
 session_start();
 include_once '../classes/DbConnection.php';
+include_once '../classes/utils.php';
+
+check_user_logged_in();
 
 $action = $_POST['action'] ?? null;
 $user_id = $_SESSION['user_id'] ?? null;
@@ -71,3 +74,5 @@ switch ($result) {
         break;
 }
 header('Location: ../../collection.php');
+exit();
+?>

@@ -1319,3 +1319,54 @@ img#empty-collection-image {
     padding: 0.6rem;
 }
 /* End Top Vinyls Page */
+
+/* Forms */
+
+.error-message{
+    color: var(--bg-error);
+}
+
+.input-wrapper {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.input-wrapper input,
+.input-wrapper select{
+    display: block;
+}
+
+input[type="text"]{
+    width: 100%;
+    padding: 0.5rem;
+    border: 0.1em solid var(--border-default);
+    border-radius: 0.25em;
+    background-color: var(--bg-surface);
+    color: var(--text-primary);
+}
+select{
+    width: 100%;
+    padding: 0.5rem;
+    border: 0.1em solid var(--border-default);
+    border-radius: 0.25em;
+    background-color: var(--bg-surface);
+    color: var(--text-primary)
+}
+option{
+    background-color: var(--bg-surface);
+    color: var(--text-primary);
+}
+
+fieldset {
+    border: 0.1em solid var(--border-default);
+    border-radius: 0.5em;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.input-hints {
+    font-size: var(--font-tertiary);
+    color: var(--text-muted);
+    margin-top: 0.3rem;
+    margin-left: 2em;
+}
