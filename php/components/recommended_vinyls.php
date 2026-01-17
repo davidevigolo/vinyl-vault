@@ -77,11 +77,11 @@ function recommended_vinyls()
             $cover_image = 'assets/images/pollo.webp';
             
             echo Template::render('static/layout/vinyl_card.html', [
-                'disk_id' => bin2hex($vinyl['disk_id']),
+                'disk_id' => $vinyl['disk_id'],
                 'ed_name' => htmlspecialchars($vinyl['edition_name']),
                 'title' => htmlspecialchars($vinyl['title']),
                 'artist' => htmlspecialchars($vinyl['author_name']),
-                'artist_id' => bin2hex($vinyl['author_id']),
+                'artist_id' => $vinyl['author_id'],
                 'cover_image' => $cover_image
             ]);
         }
