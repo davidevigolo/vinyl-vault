@@ -161,8 +161,19 @@ footer{
     margin: 2rem;
 }
 
-.hero img {
+.hero img:not(.artist-image) {
     display: none;
+}
+
+.artist-image {
+    display: block;
+    width: 10rem;
+    height: 10rem;
+    margin: 0 auto 1rem;
+}
+
+.artist-genres {
+    justify-content: center;
 }
 
 /* End Hero Section */

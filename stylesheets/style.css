@@ -1403,24 +1403,19 @@ fieldset {
 /* Artist Page */
 
 .artist-image {
-    width: 7rem;
-    height: 7rem;
-    border-radius: 50%;
+    width: 12rem;
+    height: 12rem;
+    border-radius: 40%;
     object-fit: cover;
-}
-
-.artist-header {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    flex-wrap: wrap;
+    border: 3px solid var(--brand-primary);
+    box-shadow: 0 4px 8px rgba(0, 90, 156, 0.2);
 }
 
 .artist-genres {
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
-    margin-top: 0;
+    margin-top: 1rem;
 }
 
 .tag {
@@ -1433,20 +1428,8 @@ fieldset {
 }
 
 .card-section {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-}
-
-@media (max-width: 768px) {
-    .artist-image {
-        width: 6rem;
-        height: 6rem;
-    }
-    
-    .artist-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+    margin-top: 4rem;
+    margin-bottom: 4rem;
 }
 
 /* End Artist Page */
