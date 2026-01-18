@@ -21,6 +21,12 @@ function add_disk_to_collection($title, $artist, $type, $genres)
     if (trim($title) === '' || trim($type) === '' || trim($artist) === '') {
         return false;
     }
+
+    $regex = "/^[a-zA-Z0-9À-ÿ '´`^¨~\-,.!?()]{1,200}$/u";
+    if (preg_match($regex, $title) !== 1) {
+        return false;
+    }
+
     foreach ($genres as $genre) {
         if (trim($genre) === '') {
             return false;
