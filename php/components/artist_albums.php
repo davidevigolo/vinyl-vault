@@ -15,7 +15,6 @@ function artist_albums($artist_id)
     
     $stmt = mysqli_prepare($connection->get_connection(), $query);
     if (!$stmt) {
-        error_log("Prepare failed: " . mysqli_error($connection->get_connection()));
         return '<p>Nessun album disponibile.</p>';
     }
     mysqli_stmt_bind_param($stmt, 'i', $artist_id);

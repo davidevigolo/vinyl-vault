@@ -15,7 +15,6 @@ function artist_singles($artist_id)
     
     $stmt = mysqli_prepare($connection->get_connection(), $query);
     if (!$stmt) {
-        error_log("Prepare failed: " . mysqli_error($connection->get_connection()));
         return '<p>Nessun singolo o EP disponibile.</p>';
     }
     mysqli_stmt_bind_param($stmt, 'i', $artist_id);
@@ -23,7 +22,6 @@ function artist_singles($artist_id)
     $result = mysqli_stmt_get_result($stmt);
     
     if (!$result) {
-        error_log("Query failed: " . mysqli_error($connection->get_connection()));
         return '<p>Nessun singolo o EP disponibile.</p>';
     }
     

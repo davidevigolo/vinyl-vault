@@ -17,7 +17,6 @@ function get_artist_info($artist_id)
     $result = mysqli_stmt_get_result($stmt);
     
     if (!$result) {
-        error_log("Query failed: " . mysqli_error($connection->get_connection()));
         return false;
     }
     

@@ -36,7 +36,9 @@ function similar_artists($artist_id)
     ob_start();
     if (mysqli_num_rows($result) > 0) {
         while ($artist = mysqli_fetch_assoc($result)) {
-            $image = $artist['image_path'] ?? 'assets/images/pollo.webp';
+            $image = !empty($artist['image_path']) && file_exists($_SERVER['DOCUMENT_ROOT'] . $artist['image_path'])
+                ? $artist['image_path']
+                : 'assets/images/pollo.webp';
             
             echo Template::render('static/layout/most_liked_artists_card.html', [
                 'artist_id' => $artist['id'],

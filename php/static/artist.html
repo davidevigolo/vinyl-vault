@@ -24,7 +24,11 @@
 
     <nav id="breadcrumb" aria-label="percorso di navigazione">
         <div class="center-container">
-            <p><a href="esplora.php" aria-label="Torna alla pagina Esplora">Esplora</a> / <span class="current-page" aria-current="page">[artist_name]</span></p>
+            <ol>
+                <li><a href="index.php" aria-label="Torna alla home"><span lang="en">Home</span></a></li>
+                <li>Artista</li>
+                <li aria-current="page">[artist_name]</li>
+            </ol>
         </div>
     </nav>
 
@@ -34,11 +38,13 @@
                 <img src="[artist_image]" alt="Foto di [artist_name]" class="artist-image">
                 
                 <div class="hero-text">
-                    <h1 id="artist-name">[artist_name]</h1>
-                    <p>Piccola bio</p>
-                    <div class="artist-genres" role="list" aria-label="Generi musicali">
-                        [artist_genres]
+                    <div class="artist-header">
+                        <h1 id="artist-name">[artist_name]</h1>
+                        <div class="artist-genres" role="list" aria-label="Generi musicali">
+                            [artist_genres]
+                        </div>
                     </div>
+                    <p>Piccola bio</p>
                 </div>
             </div>
         </section>
