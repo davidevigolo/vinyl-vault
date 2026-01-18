@@ -53,7 +53,7 @@ function album_of_week()
         'album_week_title' => htmlspecialchars($album['title']),
         'album_week_artist' => htmlspecialchars($album['author_name']),
         'album_week_description' => $description,
-        'album_week_id' => bin2hex($album['disk_id']),
+        'album_week_id' => $album['disk_id'],
         'album_week_edition' => htmlspecialchars($album['edition_name'])
     ];
 }

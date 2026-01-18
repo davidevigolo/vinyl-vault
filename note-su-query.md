@@ -47,3 +47,33 @@ Se l'utente non è autenticato o non ha collezioni, mostra i 4 vinili più colle
 
 **Scopo**: Mostrare i vinili più diffusi nelle collezioni, diverso da trending (wishlist vs ownership). Indica quali vinili sono effettivamente più posseduti dalla community.
 
+## Pagina Artista (`artist.php`)
+
+### Informazioni Artista (`artist_info.php`)
+
+**Query 1: Dati Artista**
+Seleziona id, nome, nazionalità e percorso immagine dell'artista dalla tabella `author` tramite l'ID ricevuto in GET. Utilizza prepared statement per sicurezza.
+
+**Query 2: Generi Musicali**
+Recupera i generi distinti associati all'artista attraverso un JOIN tra `genre`, `disk_genre_classification` e `disk_author_release`. Ogni genere viene renderizzato come `<span class="tag" role="listitem">` per accessibilità.
+
+### Album dell'Artista (`artist_albums.php`)
+
+**Query**: Seleziona tutti gli album (disk_type = 'ALBUM') dell'artista con le relative edizioni.
+
+**Logica**: JOIN tra `disk`, `disk_author_release`, `edition` e `author`. Filtra per artist_id e disk_type. Ordina per data di rilascio decrescente per mostrare prima le uscite più recenti. Recupera anche author_name e author_id per i link interni.
+
+**Fallback immagine**: Verifica l'esistenza del file immagine sul server prima di usarlo, altrimenti utilizza `pollo.webp` come placeholder.
+
+### Singoli ed EP (`artist_singles.php`)
+
+**Query**: Seleziona singoli ed EP (disk_type IN ('SINGLE', 'EP')) dell'artista.
+
+**Logica**: Stessa struttura della query album ma con filtro diverso sul tipo di disco. Permette di separare la discografia tra produzioni complete (album) e singole tracce.
+
+### Artisti Simili (`similar_artists.php`)
+
+**Query**: Trova artisti che condividono generi musicali con l'artista corrente.
+
+**Logica**: Utilizza una subquery IN per identificare gli author_id che hanno pubblicato dischi appartenenti agli stessi generi dell'artista visualizzato. Esclude l'artista stesso (`a.id != ?`) per evitare autoreferenza. Limita a 4 risultati per non sovraccaricare la UI. La similarità è determinata dalla sovrapposizione di generi.
+

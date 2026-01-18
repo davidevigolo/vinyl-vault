@@ -121,3 +121,21 @@ Il sistema di raccomandazione presente nella pagina "Esplora" utilizza un approc
 **Utente non autenticato**: Come fallback, vengono mostrati i 10 vinili più collezionati dalla community (maggior numero di occorrenze in `ownership`). Questo permette di offrire contenuti rilevanti anche agli utenti non loggati, mostrando le scelte più popolari.
 
 Il sistema è implementato nel componente `php/components/recommended_vinyls.php` e utilizza prepared statements per prevenire SQL injection. Quando verrà implementato il sistema di autenticazione, sarà sufficiente utilizzare `$_SESSION['user_id']` per attivare automaticamente le raccomandazioni personalizzate.
+
+## Pagina Artista
+
+La pagina artista (`artist.php`) fornisce una vista dettagliata di un singolo artista, mostrando la sua discografia completa e artisti correlati.
+
+**Struttura**: La pagina utilizza il sistema di template standard con `artist.html` come base. Riceve l'ID dell'artista tramite parametro GET (`?id=1`) e valida che sia un intero positivo con `intval()`. Se l'ID è invalido o l'artista non esiste, redirect automatico a `index.php`.
+
+**Componenti modulari**: La pagina è composta da 4 componenti riutilizzabili situati in `php/components/`:
+- `artist_info.php`: Recupera dati base (nome, nazionalità, immagine) e generi musicali associati
+- `artist_albums.php`: Lista tutti gli album dell'artista con relative edizioni
+- `artist_singles.php`: Lista singoli ed EP
+- `similar_artists.php`: Suggerisce artisti con generi in comune
+
+**Fallback immagini**: Tutte le immagini (artista e copertine) implementano un controllo con `file_exists()` per verificare la presenza fisica del file. Se mancante, viene utilizzata automaticamente `assets/images/pollo.webp` come placeholder.
+
+**Accessibilità**: La pagina implementa WCAG 2.1 Level AA con skip links verso le 4 sezioni principali (contenuto, album, singoli, artisti simili), breadcrumb con `aria-current`, landmark regions semantiche, e `role="list"` per i tag dei generi. L'attributo `lang="en"` viene utilizzato per i termini inglesi come "Album" ed "EP".
+
+**CSS**: Gli stili specifici includono `.artist-image` (immagine circolare responsive: 10rem desktop, 8rem mobile), `.artist-genres` (container flex per i tag), e `.tag` (badge colorati per i generi con background brand-primary).

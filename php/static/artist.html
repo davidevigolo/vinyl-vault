@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+
+<head>
+    <meta name="description"
+        content="Scopri [artist_name] su Vinyl Vault. Esplora album, singoli, EP e artisti simili nella nostra collezione di vinili.">
+    <meta name="keywords"
+        content="[artist_name], vinili, album, singoli, discografia, artisti simili">
+    <title>[artist_name] - Vinyl Vault</title>
+    [head]
+</head>
+
+<body>
+    <nav aria-label="Aiuti alla navigazione" class="list-help">
+        <ul>
+            <li><a class="navigation-help" href="#content">Vai al contenuto principale</a></li>
+            <li><a class="navigation-help" href="#albums">Vai agli album</a></li>
+            <li><a class="navigation-help" href="#singles-ep">Vai ai singoli ed EP</a></li>
+            <li><a class="navigation-help" href="#similar-artists">Vai agli artisti simili</a></li>
+        </ul>
+    </nav>
+
+    [header]
+
+    <nav id="breadcrumb" aria-label="percorso di navigazione">
+        <div class="center-container">
+            <ol>
+                <li><a href="index.php" aria-label="Torna alla home"><span lang="en">Home</span></a></li>
+                <li>Artista</li>
+                <li aria-current="page">[artist_name]</li>
+            </ol>
+        </div>
+    </nav>
+
+    <main id="content">
+        <section class="hero" aria-labelledby="artist-name">
+            <div class="center-container">
+                <img src="[artist_image]" alt="Foto di [artist_name]" class="artist-image">
+                
+                <div class="hero-text">
+                    <div class="artist-header">
+                        <h1 id="artist-name">[artist_name]</h1>
+                        <div class="artist-genres" role="list" aria-label="Generi musicali">
+                            [artist_genres]
+                        </div>
+                    </div>
+                    <p>Piccola bio</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="albums" class="card-section" aria-labelledby="albums-title">
+            <div class="center-container">
+                <div class="section-title">
+                    <h2 id="albums-title"><span lang="en">Album</span></h2>
+                </div>
+                <div class="trending-vinyls-container">
+                    [artist_albums]
+                </div>
+            </div>
+        </section>
+
+        <section id="singles-ep" class="card-section" aria-labelledby="singles-title">
+            <div class="center-container">
+                <div class="section-title">
+                    <h2 id="singles-title">Singoli ed <abbr title="Extended Play" lang="en">EP</abbr></h2>
+                </div>
+                <div class="trending-vinyls-container">
+                    [artist_singles]
+                </div>
+            </div>
+        </section>
+
+        <section id="similar-artists" class="card-section" aria-labelledby="similar-artists-title">
+            <div class="center-container">
+                <div class="section-title">
+                    <h2 id="similar-artists-title">Artisti simili</h2>
+                </div>
+                <div class="most-liked-artists-container">
+                    [similar_artists]
+                </div>
+            </div>
+        </section>
+    </main>
+
+    [footer]
+</body>
+
+</html>
