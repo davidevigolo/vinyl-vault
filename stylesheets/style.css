@@ -19,7 +19,7 @@
 
     /* Borders & Accents */
     --border-default: #D9D9D9;
-    --border-dark: #848484;
+    --border-dark: #b2b2b2;
     --brand-primary: #005A9C; /* Blu6 - Bottoni */
     --brand-primary-dark: #003E6B; /* Blu7 - Titoli */
 
@@ -35,6 +35,9 @@
     --icon-theme-light: #e2e2e2;
   
     --bg-error: #d93025;
+
+
+    --hero-logo-img: url('../assets/images/logo-full-light.png');
 }
 
 /* colori tema scura */
@@ -67,6 +70,9 @@
     --icon-theme-light: #6B6B6B;
   
     --bg-error: #ff6f64;
+
+
+    --hero-logo-img: url('../assets/images/logo-full-dark.png');
 }
 
 /* browser che supportano clamp */
@@ -201,7 +207,6 @@ button[type="submit"] {
 
 #content {
     padding-bottom: 3rem;
-    text-align: center;
 }
 
 .center-container {
@@ -260,35 +265,29 @@ button[type="submit"] {
 header {
     background: var(--bg-page);
     border-bottom: var(--border-default) solid 0.1em;
+    top: 0;
+    position: sticky;
     width: 100%;
 }
 
 .header-container {
-    padding-left: 1em;
-    padding-right: 1em;
-    display: grid;
-    /* Colonne: Logo, Spazio Flessibile, Menu + Icone, Divisore, Profilo */
-    grid-template-columns: auto 1fr auto;
+    display: grid; 
+    grid-template-columns: 1fr 2.5fr;
     align-items: center;
-    margin: 0 auto;
+    justify-content: space-between;
     padding-top: 1.3em;
     padding-bottom: 1.3em;
-    max-width: 75em;
-    width: 100%;
-    overflow: hidden;
 }
 
 .header-right {
-    grid-column: 3;
+    justify-self: end;
     display: flex;
     align-items: center;
     gap: 1.5em;
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    padding-top: 1em;
+.header .logo {
+    justify-self: start;
 }
 
 h1.hide {
@@ -374,6 +373,10 @@ header .site-nav-links li {
 	background: var(--icon-theme);
 	text-decoration: none;
     transition: background-color 0.2s ease;
+}
+
+.menu-toggle {
+    display: none;
 }
 
 .search-toggle:hover, .theme-toggle:hover {
@@ -621,6 +624,8 @@ footer p {
 
 /* Hero Section */
 
+/* style.css */
+
 .hero {
     background: var(--bg-section);
 }
@@ -632,15 +637,23 @@ footer p {
     align-items: center;
     padding-top: 4em;
     padding-bottom: 4em;
-    
 }
 
-.hero img {
+/* Sostituito .hero img con il contenitore per la variabile */
+.hero-logo {
     width: 100%;
     max-width: 450px;
-    height: auto;
-    object-fit: contain;
+    height: 350px; /* Altezza necessaria per visualizzare il background */
+    background-image: var(--hero-logo-img);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     justify-self: end;
+
+    /* Tecnica Image Replacement per nascondere il testo Vinyl Vault */
+    text-indent: -999.9em;
+    overflow: hidden;
+    display: block;
 }
 
 .hero-text {
@@ -654,13 +667,12 @@ footer p {
     max-width: 450px;
     line-height: 1.3em;
     margin-bottom: 1rem;
-
 }
 
 .hero-text p {
     font-size: var(--font-medium);
     max-width: 460px;
-    color: #1c1c1c;
+    color: var(--text-muted);
 }
 
 .hero-text a {

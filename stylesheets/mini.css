@@ -1,30 +1,148 @@
-/* Header */
-
-header {
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 0rem;
-    padding: 0rem;
+/* General info */
+@supports (font-size: clamp(1rem, 1vi, 1rem)) {
+    :root {
+        --font-small: clamp(0.875rem, 0.8125rem + 0.2vw, 1rem);
+        --font-medium: clamp(1rem, 0.9375rem + 0.25vw, 1.125rem);
+        --font-large: clamp(1.25rem, 1.125rem + 0.5vw, 1.5rem);
+        --font-xl: clamp(1.4rem, 1.2rem + 1vw, 1.8rem);
+        --font-xxl: clamp(2rem, 1.75rem + 1.25vw, 2.3rem);
+    }
 }
 
-header .site-nav {
+/* browser che non supportano clamp */
+@supports not (font-size: clamp(1rem, 1vi, 1rem)) {
+    :root {
+        --font-small: 0.875rem;
+        --font-medium: 1rem;
+        --font-large: 1.25rem;
+        --font-xl: 1.4rem;
+        --font-xxl: 2rem;
+    }
+    @media screen and (min-width: 1280px) {
+        :root {
+            --font-small: 1rem;
+            --font-medium: 1.125rem;
+            --font-large: 1.5rem;
+            --font-xl: 1.8rem;
+            --font-xxl: 2.3rem;   
+        }
+    }
+}
+
+
+.center-container {
+    max-width: 55em;
+    padding-left: 1em;;
+    padding-right: 1em;
     margin: auto;
     width: 100%;
 }
-
-header .site-nav-links li {
-    text-align: center;
-    display: block;
-    margin: 0rem;
-    padding: 0.5rem 0rem;
-    border-top: 0.1rem solid var(--border-default);
+#breadcrumb {
+    padding: 0 0;
 }
 
-header .site-nav-links li:last-child {
-    border-bottom: 0.1rem solid var(--border-default);
+/* End general info */
+
+
+/* Header */
+
+header {
+    position: relative;
+    z-index: 1000;
+}
+
+.header-container {
+    display: grid; 
+    grid-template-columns: 0.5fr 2fr;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1.3em;
+    padding-bottom: 1.3em;
+}
+
+.header-right .nav-links, 
+.header-right .actions-group,
+.header-right .profile-nav,
+.header-right .v-divider {
+    display: none;
+}
+
+.menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    font-size: var(--font-xxl);
+    cursor: pointer;
+    color: var(--text-primary);
+    z-index: 1001;
+}
+
+.header-right.is-open {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    min-height: 20em;
+    height: auto;
+
+    background: var(--bg-surface);
+    padding: 4rem 0 2rem 0; 
+    border-bottom: 2px solid var(--border-default);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    z-index: 999;
+}
+
+.header-right.is-open .menu-toggle {
+    position: absolute;
+    top: 1rem;
+    right: 1.2rem;
+    margin: 0;
+    order: unset;
+}
+
+.header-right.is-open .nav-links,
+.header-right.is-open .actions-group,
+.header-right.is-open .profile-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 1.5rem;
+}
+
+.header-right.is-open .actions-group {
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.header-right.is-open .profile-nav ul {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    list-style: none;
+}
+
+.header-right.is-open .nav-links {
+    padding-top: 1rem;
+}
+
+.header-right.is-open .nav-links a {
+    font-size: var(--font-large);
+    text-decoration: none;
+}
+
+.v-divider {
+    display: none;
 }
 
 /* End Header */
+
 
 /* Footer */
 footer{
