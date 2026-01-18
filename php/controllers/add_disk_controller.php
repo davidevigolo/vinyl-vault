@@ -13,7 +13,6 @@ $genres = $_POST['genre'] ?? null;
 
 function add_disk_to_collection($title, $artist, $type, $genres)
 {
-    var_dump($title, $artist, $type, $genres);
     /* Validate inputs */
     if (!$title || !$artist || !$type || !$genres || !is_array($genres) || count($genres) == 0) {
         return false;
