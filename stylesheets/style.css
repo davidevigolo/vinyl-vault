@@ -1433,3 +1433,149 @@ fieldset {
 }
 
 /* End Artist Page */
+
+/* Album Page */
+
+.album-cover {
+    width: 15rem;
+    height: 15rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 90, 156, 0.15);
+}
+
+.album-title-main {
+    font-family: var(--font-secondary);
+    font-size: var(--font-xxl);
+    margin: 1rem 0 0.5rem;
+}
+
+.album-artist {
+    font-size: var(--font-large);
+    margin: 0.5rem 0;
+}
+
+.album-artist a {
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.album-artist a:hover {
+    text-decoration: underline;
+}
+
+.album-meta {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 1rem 0;
+    font-size: var(--font-medium);
+    color: var(--text-secondary);
+}
+
+.album-rating {
+    margin: 1.5rem 0;
+}
+
+.rating-stars {
+    font-size: 1.5rem;
+    color: var(--brand-primary);
+    letter-spacing: 0.2rem;
+}
+
+.rating-text {
+    margin-top: 0.5rem;
+    font-size: var(--font-medium);
+}
+
+.review-count {
+    color: var(--text-secondary);
+}
+
+/* Tracklist */
+
+.tracklist-section {
+    background-color: var(--bg-section);
+    padding: 3rem 0;
+}
+
+.tracklist {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+}
+
+.track-item {
+    display: grid;
+    grid-template-columns: 3rem 1fr auto;
+    gap: 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-default);
+    align-items: center;
+}
+
+.track-item:hover {
+    background-color: var(--bg-subsection);
+}
+
+.track-number {
+    text-align: center;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.track-title {
+    font-size: var(--font-medium);
+}
+
+.track-duration {
+    color: var(--text-secondary);
+    font-family: var(--font-tertiary);
+}
+
+/* Credits */
+
+.album-credits-section {
+    padding: 3rem 0;
+}
+
+.credits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.credit-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.credit-avatar {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.credit-name {
+    font-weight: 600;
+    margin: 0;
+}
+
+.credit-role {
+    font-size: var(--font-small);
+    color: var(--text-secondary);
+    margin: 0.25rem 0 0;
+}
+
+/* Versions */
+
+.versions-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+/* End Album Page */

@@ -39,6 +39,10 @@ Options -Indexes
     Order Allow,Deny
     Allow from all
 </Files>
+<Files "album.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
 <Files "edit_wishlist.php">
     Order Allow,Deny
     Allow from all

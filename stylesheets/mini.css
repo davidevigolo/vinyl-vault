@@ -298,3 +298,41 @@ h2#empty-wishlist-heading {
 }
 
 /* End Wishlist Section */
+
+/* Album Page Mobile */
+
+.album-cover {
+    width: 12rem;
+    height: 12rem;
+    margin: 0 auto 1rem;
+}
+
+.album-hero .hero-text {
+    text-align: center;
+}
+
+.album-meta {
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.tracklist {
+    padding: 0;
+}
+
+.track-item {
+    grid-template-columns: 2.5rem 1fr auto;
+    gap: 0.75rem;
+    padding: 0.75rem 0.5rem;
+}
+
+.credits-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.versions-container {
+    grid-template-columns: 1fr;
+}
+
+/* End Album Page Mobile */
