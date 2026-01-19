@@ -1,0 +1,282 @@
+/* General info */
+@supports (font-size: clamp(1rem, 1vi, 1rem)) {
+    :root {
+        --font-small: clamp(0.875rem, 0.8125rem + 0.2vw, 1rem);
+        --font-medium: clamp(1rem, 0.9375rem + 0.25vw, 1.125rem);
+        --font-large: clamp(1.25rem, 1.125rem + 0.5vw, 1.5rem);
+        --font-xl: clamp(1.4rem, 1.2rem + 1vw, 1.8rem);
+        --font-xxl: clamp(2rem, 1.75rem + 1.25vw, 2.3rem);
+        --font-xxxl: var(--font-xxl);
+    }
+}
+
+/* browser che non supportano clamp */
+@supports not (font-size: clamp(1rem, 1vi, 1rem)) {
+    :root {
+        --font-small: 0.875rem;
+        --font-medium: 1rem;
+        --font-large: 1.25rem;
+        --font-xl: 1.4rem;
+        --font-xxl: 2rem;
+        --font-xxxl: var(--font-xxl);
+    }
+}
+
+.center-container {
+    max-width: 75em;
+    padding-left: 1.6em;;
+    padding-right: 1.6em;
+    margin: auto;
+    width: 100%;
+    text-align: left;
+}
+
+/* End general info */
+
+
+/* Header */
+
+header {
+    position: sticky;
+}
+
+.header-container {
+    grid-template-columns: 1fr 2.5fr;
+}
+
+.header-right .nav-links, 
+.header-right .actions-group,
+.header-right .profile-nav,
+.header-right .v-divider {
+    display: flex;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;    
+}
+
+.menu-toggle {
+    display: none;
+}
+
+.v-divider {
+    display: block;
+    width: 2px;
+    height: 2em;
+    background-color: #cccccc;
+}
+
+.actions-group {
+    display: flex;
+    align-items: center;
+    gap: 0.8em;
+}
+
+header .profile-nav-links,
+header .site-nav-links {
+    list-style: none;
+    gap: 1.5rem;    
+}
+
+header .profile-nav-links li,
+header .site-nav-links li {
+    display: inline;
+}
+
+.header-right .profile-links {
+    display: flex;
+    list-style: none;
+    gap: 0.8em;
+}
+
+/* End Header */
+
+
+/* Footer */
+
+#main-footer {
+    padding: 4rem 1.5rem 2rem 1.5rem;
+}
+
+.footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    padding-right: 8em;
+    text-align: left;
+}
+
+.footer-brand {
+    align-items: flex-start;
+}
+
+#main-footer .footer-logo .hide {
+    background-position: left center;
+}
+
+.footer-description {
+    margin-top: 0.5rem;
+}
+
+.footer-nav {
+    display: flex;
+    grid-template-columns: none; 
+    gap: 4em;
+    width: auto;
+}
+
+.footer-col ul {
+    text-align: center;
+}
+
+.footer-bottom {
+    padding-top: 2rem;
+}
+
+#back-to-top {
+    width: 2em;
+    height: 2em;
+    bottom: 2em;
+    font-size: var(--font-xxl);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+#back-to-top:hover {
+    background-color: var(--text-muted);
+    color: var(--bg-surface);
+    transform: translateX(-50%) translateY(-5px);
+}
+
+/* End Footer */
+
+
+/* Breadcrumb */
+
+/* da sistemare --------------------------------------------------------------------- */
+
+/* End Breadcrumb */
+
+
+/* Home Page */
+
+/* Hero Section Overrides */
+.hero > .center-container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    text-align: left;
+}
+
+.hero-logo {
+    justify-self: end;
+}
+
+.hero-text {
+    text-align: left;
+}
+
+/* Presentation Section */
+#presentation > .center-container {
+    text-align: left;
+}
+
+.features {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.feature {
+    grid-template-columns: auto 1fr;
+    max-width: 350px;
+    margin: 0;
+}
+
+.feature img {
+    width: 60px;
+    height: 60px;
+    justify-self: start;
+    margin-right: 0;
+}
+
+.feature h3 {
+    font-size: var(--font-large);
+    align-self: center;
+}
+
+.feature > p {
+    text-align: left;
+    line-height: 1.4;
+}
+
+/* Card Section */
+#trending-vinyls > .center-container,
+#most-liked-artists > .center-container,
+#most-collected > .center-container,
+#recommendations > .center-container {
+    display: block;
+    text-align: left;
+}
+
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.section-title h2 {
+    width: auto;
+    order: unset;
+}
+
+.view-all {
+    order: unset;
+    font-size: var(--font-medium);
+}
+
+.cards-container {
+    grid-template-columns: repeat(4, 1fr);
+    order: unset;
+}
+
+.vinyl-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(255, 255, 255, 0.25);
+}
+
+.card-link-wrapper:hover {
+    opacity: 1;
+}
+
+/* Call to Action */
+#call-to-action {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    margin-bottom: 0;
+}
+
+.cta-banner {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+    padding: 3rem 8rem;
+    border-radius: 40px;
+    gap: 2rem;
+}
+
+.cta-content p {
+    max-width: 550px;
+    line-height: 1.4;
+}
+
+/* End Home Page */
+
+
+/* Explore Page */
+
+#album-week img {
+    justify-self: end;
+}
+
+/* End Esplora Page */
