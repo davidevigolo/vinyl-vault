@@ -95,15 +95,6 @@
         --font-xl: 1.4rem;
         --font-xxl: 2rem;
     }
-    @media screen and (min-width: 1280px) {
-        :root {
-            --font-small: 1rem;
-            --font-medium: 1.125rem;
-            --font-large: 1.5rem;
-            --font-xl: 1.8rem;
-            --font-xxl: 2.3rem;   
-        }
-    }
 }
 
 
@@ -115,13 +106,18 @@
     transition-duration: 0.4s;
 }
 
-body {
-    font-family: var(--font-primary);
-    background: var(--bg-page);
-    color: var(--text-primary);
+html {
+    font-optical-sizing: auto;
+    scroll-behavior: smooth;
 }
 
 body {
+    font-style: normal;
+    font-optical-sizing: auto;
+    font-family: var(--font-primary);
+    background: var(--bg-page);
+    color: var(--text-primary);
+
     display: grid;
     min-height: 100vh;
     /* Colonne: header, breadcrumb, main content, footer */
@@ -528,21 +524,21 @@ header nav.site-nav {
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     
-    width: 50px;
-    height: 50px;
+    width: 2em;
+    height: 2em;
     background-color: var(--brand-primary);
     color: var(--bg-surface);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     border-radius: 50%;
-    line-height: 0;
 
     cursor: pointer;
     text-decoration: none;
-    font-size: var(--font-large);
+    font-size: var(--font-xxl);
     font-weight: bold;
-    padding: 15px;
     border: 0.1em solid var(--border-dark);
+    margin-top: -0.3em;
 }
 
 
@@ -656,18 +652,17 @@ footer p {
     padding-bottom: 4em;
 }
 
-/* Sostituito .hero img con il contenitore per la variabile */
+
 .hero-logo {
     width: 100%;
-    max-width: 450px;
-    height: 350px; /* Altezza necessaria per visualizzare il background */
+    max-width: 35em;
+    height: 25em;
     background-image: var(--hero-logo-img);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     justify-self: end;
 
-    /* Tecnica Image Replacement per nascondere il testo Vinyl Vault */
     text-indent: -999.9em;
     overflow: hidden;
     display: block;
@@ -774,11 +769,15 @@ footer p {
 
 /* Title and Cards Vinyls*/
 
-#trending-vinyls {
+#trending-vinyls,
+#most-liked-artists,
+#most-collected {
     background: var(--bg-page);
 }
 
-#trending-vinyls > .center-container {
+#trending-vinyls > .center-container,
+#most-liked-artists > .center-container,
+#recommendations > .center-container {
     text-align: left;
     padding-top: 2.5rem;
     padding-bottom: 2.5em;
@@ -807,7 +806,9 @@ footer p {
 }
 
 /* griglia Card */
-.trending-vinyls-container {
+.trending-vinyls-container,
+.most-liked-artists-container,
+.recommended-vinyls-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
@@ -892,23 +893,11 @@ footer p {
     overflow: hidden;
 }
 
-/* Responsive Cards -> mobile */
-@media (max-width: 768px) {
-    .trending-vinyls-container,
-    .vinyls-container,
-    .artists-container,
-    .most-liked-artists-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (min-width: 769px) {
-    .trending-vinyls-container,
-    .vinyls-container,
-    .artists-container,
-    .most-liked-artists-container {
-        grid-template-columns: repeat(4, 1fr);
-    }
+.trending-vinyls-container,
+.vinyls-container,
+.artists-container,
+.most-liked-artists-container {
+    grid-template-columns: repeat(4, 1fr);
 }
 
 /* End Cards */
@@ -951,25 +940,6 @@ footer p {
 
 /* Title and Card Artist */
 
-#most-liked-artists {
-    background: var(--bg-page);
-}
-
-#most-liked-artists > .center-container {
-    text-align: left;
-    padding-top: 2.5rem;
-    padding-bottom: 2.5em;
-}
-
-.most-liked-artists-container {
-    display: grid;
-    gap: 1.5rem;
-    align-items: flex-start;
-    padding: 1rem 0;
-  /*grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    max-width: 100%;*/
-}
-
 .artist-name-display {
     font-size: var(--font-large);
     font-family: var(--font-secondary);
@@ -984,30 +954,20 @@ footer p {
     overflow: hidden;
 }
 
-/* Responsive Cards -> mobile */
-@media (max-width: 768px) {
-
-    .trending-vinyls-container,
-    .vinyls-container,
-    .artists-container,
-    .most-liked-artists-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (min-width: 769px) {
-
-    .trending-vinyls-container,
-    .vinyls-container,
-    .artists-container,
-    .most-liked-artists-container {
-        grid-template-columns: repeat(4, 1fr);
-    }
+.trending-vinyls-container,
+.vinyls-container,
+.artists-container,
+.most-liked-artists-container {
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
 }
 
 /* End Title and Card Artist */
 
 /* End Home Page*/
+
+
+/* Esplora */
 
 /* Hero Banner - Album della settimana */
 .hero-text p.hero-label {
@@ -1039,42 +999,12 @@ footer p {
     border-radius: 2rem;
 }
 
-/* Mobile Responsive */
-@media (max-width: 768px) {    
-    .banner-label {
-        margin: 0 auto;
-    }
-    
-    .banner-image img {
-        max-width: 300px;
-    }
-}
 
-/* Recommendations area */
-#recommendations > .center-container {
-    text-align: left;
-    padding-top: 2.5em;
-    padding-bottom: 2.5em;
-}
-
-/* End Recommendations area */
-
-/* Most Collected */
-#most-collected {
-    background: var(--bg-page);
-}
-
-#most-collected > .center-container {
-    text-align: left;
-    padding-top: 2.5rem;
-    padding-bottom: 2.5em;
-}
-
-
-/* End Most Collected */
+/* End Hero Banner */
 
 
 /* End Esplora Page */
+
 
 /* 404 Error Page */
 
@@ -1422,14 +1352,14 @@ fieldset {
     display: inline-block;
     padding: 0.5rem 1rem;
     background: var(--brand-primary);
-    color: white;
+    color: var(--bg-surface);
     border-radius: 2rem;
     font-size: var(--font-small);
 }
-
+/*
 .card-section {
     margin-top: 4rem;
     margin-bottom: 4rem;
 }
-
+*/
 /* End Artist Page */

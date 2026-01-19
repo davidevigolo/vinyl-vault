@@ -1,11 +1,20 @@
 /* General info */
 @supports (font-size: clamp(1rem, 1vi, 1rem)) {
     :root {
-        --font-small: clamp(0.875rem, 0.8125rem + 0.2vw, 1rem);
-        --font-medium: clamp(1rem, 0.9375rem + 0.25vw, 1.125rem);
-        --font-large: clamp(1.25rem, 1.125rem + 0.5vw, 1.5rem);
-        --font-xl: clamp(1.4rem, 1.2rem + 1vw, 1.8rem);
-        --font-xxl: clamp(2rem, 1.75rem + 1.25vw, 2.3rem);
+--font-small: clamp(1.25rem, 1.22rem + 0.15vw, 1.375rem);
+    
+    /* 2. MEDIUM (Ex Large): 22px -> 24px */
+    --font-medium: clamp(1.375rem, 1.33rem + 0.2vw, 1.5rem);
+    
+    /* 3. LARGE (Ex XL): 24px -> 28px */
+    --font-large: clamp(1.5rem, 1.4rem + 0.5vw, 1.75rem);
+    
+    /* 4. XL (Ex XXL): 28px -> 34px */
+    --font-xl: clamp(1.75rem, 1.6rem + 1vw, 2.125rem);
+    
+    /* 5. XXL (Nuovo valore contenuto): 34px -> 38px */
+    /* Più grande dell'XL ma mai oltre i 38-40px */
+    --font-xxl: clamp(2.125rem, 2.05rem + 0.5vw, 2.375rem);
     }
 }
 
@@ -18,27 +27,15 @@
         --font-xl: 1.4rem;
         --font-xxl: 2rem;
     }
-    @media screen and (min-width: 1280px) {
-        :root {
-            --font-small: 1rem;
-            --font-medium: 1.125rem;
-            --font-large: 1.5rem;
-            --font-xl: 1.8rem;
-            --font-xxl: 2.3rem;   
-        }
-    }
 }
-
 
 .center-container {
     max-width: 55em;
-    padding-left: 1em;;
-    padding-right: 1em;
+    padding-left: 1.5em;;
+    padding-right: 1.5em;
     margin: auto;
     width: 100%;
-}
-#breadcrumb {
-    padding: 0 0;
+    text-align: center;
 }
 
 /* End general info */
@@ -145,24 +142,42 @@ header {
 
 
 /* Footer */
-footer{
-    position: static;
+
+/* da sistemare */
+
+
+#back-to-top {
+    width: 3em; 
+    height: 3em;
+    font-size: var(--font-xxl); 
+    bottom: 1.5em; 
+    padding: 0;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    line-height: 2.5;
 }
 /* End Footer */
 
+
 /* Hero Section */
 
-.hero {
-    display: block;
+.hero > .center-container{
+    grid-template-columns: 1fr;
+    gap: 1.5em;
+    padding-top: 2em;
+    padding-bottom: 3em;
+    text-align: center;
+}
+
+.hero-logo {
+    justify-self: center;
+    height: 20em;
+    max-width: 30em;
 }
 
 .hero-text {
-    text-align: center;
-    margin: 2rem;
-}
-
-.hero img:not(.artist-image) {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .artist-image {
@@ -181,97 +196,148 @@ footer{
 /* Breadcrumbs */
 
 nav#breadcrumb {
-    padding: 0.35rem 3rem;
+    padding: 0.35rem 0;
+    font-size: var(--font-medium);
 }
 
 /* End Breadcrumbs */
 
+
+/* Home */
+
 /* Presentation Section */
+
+#presentation > .center-container{
+    text-align: center;
+    text-wrap: balance;
+}
+
+#presentation-title {
+    margin-bottom: 0.5em;
+}
 
 .features {
     flex-direction: column;
     gap: 3rem;
 }
 
-.features li {
-    width: 100%;
-    margin: auto;
+.feature {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr; 
+    grid-template-rows: auto auto;
+    gap: 0.5rem 1rem;
+    justify-content: center;
+    align-items: center;
+    max-width: 80%; 
+    margin: 0 auto;
+}
+.feature h3 {
+    font-size: var(--font-xl);
+    grid-column: 2;
+    grid-row: 1;
+    text-align: left;
+    margin: 0;
+}
+.feature > p {
+    font-size: var(--font-medium);
+    grid-column: 1 / span 2;
+    grid-row: 2;
     text-align: center;
+    margin-top: 0.5rem;
+    line-height: 1.5;
 }
 
-.features img {
-    margin: auto;
+.feature img {
+    grid-column: 1;
+    grid-row: 1;
+    width: 50px;
+    height: 50px;
+    margin: 0;
+    justify-self: end;
+    margin-right: 0.5em;
 }
 
 /* End Presentation Section */
 
-/* Card Section */
+/* Card Section (trending-vinyls) */
 
-.card-section {
-    margin: 0rem;
-}
-
-.card-section h2 {
+#trending-vinyls > .center-container,
+#most-liked-artists > .center-container,
+#recommendations > .center-container,
+#most-collected > .center-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    margin: 2rem 0rem;
 }
 
 .trending-vinyls-container,
 .vinyls-container,
 .artists-container,
-.most-liked-artists-container {
-    display: flex;
-    flex-direction: column;
-    gap: 0rem;
-    padding: 1rem 0rem;
-    max-width: 100%;
+.most-liked-artists-container,
+.most-collected-vinyls-container,
+.recommended-vinyls-container {
+    order: 2;
+    grid-template-columns: repeat(2, 1fr);
 }
 
-.card img {
-    width: 64px;
-    height: 64px;
-    margin: 0rem;
+.section-title {
+    display: contents; 
 }
 
-.card .text-container {
-    margin: auto;
+.section-title h2 {
+    order: 1;
+    width: 100%;
 }
 
-.card {
-    max-width: none;
-    border-radius: 0rem;
-    box-shadow: none;
-    border-top: 0.1rem solid var(--border-default);
-    border-bottom: 0rem;
-    border-left: 0rem;
-    border-right: 0rem;
-
-    display: flex;
-    align-items: left;
-    flex-direction: row;
-}
-
-.card-section a:last-child .card {
-    border-bottom: 0.1rem solid var(--border-default);
+.view-all {
+    order: 3;
+    display: inline-block;
+    font-size: var(--font-large);
 }
 
 /* End Card Section */
 
-/* Footer */
+/* Call to Action */
 
-footer {
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem;
-    gap: 2rem;
+#call-to-action {
+    padding: 1.5rem 1rem;
+    margin-bottom: 2em;
+}
+
+.cta-banner {
+    flex-direction: column; 
+    align-items: center; 
     text-align: center;
+    padding: 2.5rem 1.5rem; 
+    gap: 1.5rem;
+    border-radius: 25px; 
 }
 
-div#footer-site-nav {
-    margin: auto;
+.cta-content p {
+    max-width: 100%; 
+    line-height: 1.5;
+    text-wrap: pretty; 
 }
 
-/* End Footer */
+.cta-banner a, 
+.cta-banner button {
+    width: fit-content;
+    padding: 0.8rem 2rem;
+}
+
+/* End Call to Action */
+
+/* End Home Page */
+
+
+/* Esplora Page */
+
+#album-week img {
+    justify-self: center;
+}
+/* End Esplora Page */
+
 
 /* Wishlist Section */
 
