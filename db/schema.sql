@@ -123,3 +123,9 @@ CREATE TABLE IF NOT EXISTS disk_genre_classification(
     FOREIGN KEY (genre_name) REFERENCES genre(genre_name) ON DELETE CASCADE,
     PRIMARY KEY (disk_id, genre_name)
 );
+
+-- View per contare gli album nelle wishlist
+CREATE OR REPLACE VIEW wishlist_count AS
+SELECT disk_id, edition_name, COUNT(*) as wl_count
+FROM wishlist
+GROUP BY disk_id, edition_name;

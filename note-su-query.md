@@ -47,3 +47,62 @@ Se l'utente non è autenticato o non ha collezioni, mostra i 4 vinili più colle
 
 **Scopo**: Mostrare i vinili più diffusi nelle collezioni, diverso da trending (wishlist vs ownership). Indica quali vinili sono effettivamente più posseduti dalla community.
 
+## Pagina Artista (`artist.php`)
+
+### Informazioni Artista (`artist_info.php`)
+
+**Query 1: Dati Artista**
+Seleziona id, nome, nazionalità e percorso immagine dell'artista dalla tabella `author` tramite l'ID ricevuto in GET. Utilizza prepared statement per sicurezza.
+
+**Query 2: Generi Musicali**
+Recupera i generi distinti associati all'artista attraverso un JOIN tra `genre`, `disk_genre_classification` e `disk_author_release`. Ogni genere viene renderizzato come `<span class="tag" role="listitem">` per accessibilità.
+
+### Album dell'Artista (`artist_albums.php`)
+
+**Query**: Seleziona tutti gli album (disk_type = 'ALBUM') dell'artista con le relative edizioni.
+
+**Logica**: JOIN tra `disk`, `disk_author_release`, `edition` e `author`. Filtra per artist_id e disk_type. Ordina per data di rilascio decrescente per mostrare prima le uscite più recenti. Recupera anche author_name e author_id per i link interni.
+
+**Fallback immagine**: Verifica l'esistenza del file immagine sul server prima di usarlo, altrimenti utilizza `pollo.webp` come placeholder.
+
+### Singoli ed EP (`artist_singles.php`)
+
+**Query**: Seleziona singoli ed EP (disk_type IN ('SINGLE', 'EP')) dell'artista.
+
+**Logica**: Stessa struttura della query album ma con filtro diverso sul tipo di disco. Permette di separare la discografia tra produzioni complete (album) e singole tracce.
+
+### Artisti Simili (`similar_artists.php`)
+
+**Query**: Trova artisti che condividono generi musicali con l'artista corrente.
+
+**Logica**: Utilizza una subquery IN per identificare gli author_id che hanno pubblicato dischi appartenenti agli stessi generi dell'artista visualizzato. Esclude l'artista stesso (`a.id != ?`) per evitare autoreferenza. Limita a 4 risultati per non sovraccaricare la UI. La similarità è determinata dalla sovrapposizione di generi.
+
+## Pagina Album (`album.php`)
+
+### Informazioni Album (`album_info.php`)
+
+**Query 1: Dati Album**
+Recupera id, titolo, tipo disco, artista (id e nome), anno di rilascio, immagine, rating medio e conteggio recensioni. JOIN tra `disk`, `disk_author_release`, `author`, `edition` e `review`. Utilizza `COALESCE` per gestire album senza recensioni.
+
+**Query 2: Generi Album**
+Seleziona i generi distinti associati al disco tramite JOIN tra `genre` e `disk_genre_classification`. Ogni genere viene renderizzato come tag.
+
+### Tracklist (`album_tracklist.php`)
+
+**Query**: Recupera tutte le tracce associate al disco con numero, titolo e durata.
+
+**Logica**: JOIN tra `track` e `edition_track_part_of` filtrato per disk_id. Ordina per track_number. Se il disco ha ≤2 tracce (singoli), la sezione non viene mostrata.
+
+### Versioni Album (`album_versions.php`)
+
+**Query**: Trova altri album dello stesso artista.
+
+**Logica**: Partendo dal disk corrente, risale all'artista tramite `disk_author_release`, poi trova tutti gli altri dischi dello stesso artista. JOIN con `edition` per dettagli edizione. Esclude il disco corrente (`d2.id != ?`). Limita a 8 risultati.
+
+### Crediti Album (`album_credits.php`)
+
+**Query**: Recupera nome e immagine dell'artista principale.
+
+**Logica**: JOIN tra `author` e `disk_author_release` filtrato per disk_id. I ruoli (Co-writing, Producer) sono attualmente statici per l'artista principale.
+
+

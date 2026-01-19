@@ -29,7 +29,7 @@ function most_liked_artists()
             $artist_image = 'assets/images/pollo.webp';
             
             echo Template::render('static/layout/most_liked_artists_card.html', [
-                'artist_id' => bin2hex($artist['id']),
+                'artist_id' => $artist['id'],
                 'artist_name' => htmlspecialchars($artist['author_name']),
                 'image_path' => $artist_image
             ]);

@@ -33,10 +33,10 @@ function trending_vinyls()
         while ($vinyl = mysqli_fetch_assoc($trendingVinyls)) {
             // TBD: Usare image_path quando le immagini saranno caricate
             echo Template::render('static/layout/vinyl_card.html', [
-                'disk_id' => bin2hex($vinyl['disk_id']),
+                'disk_id' => $vinyl['disk_id'],
                 'ed_name' => $vinyl['edition_name'],
                 'title' => htmlspecialchars($vinyl['title']),
-                'artist_id' => bin2hex($vinyl['author_id']),
+                'artist_id' => $vinyl['author_id'],
                 'artist' => htmlspecialchars($vinyl['author_name']),
                 'cover_image' => 'assets/images/pollo.webp',
                 'wishlist_count' => $vinyl['wl_count']

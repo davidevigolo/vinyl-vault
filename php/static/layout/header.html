@@ -1,10 +1,18 @@
 <header>
-    <div class="header-container">
+    <div class="center-container header-container">
         <div class="logo">
             <!-- Mettiamo il link alla home nel logo?-->
             <h1 class="hide" lang="en">Vinyl Vault</h1> <!-- Sostituito con logo tramite image replacement -->
         </div>
-        <div class="header-right"> 
+        <div class="header-right">
+
+            <button class="menu-toggle" 
+                    aria-expanded="false" 
+                    aria-controls="main-nav-list" 
+                    aria-label="Apri menù di navigazione">
+                <span aria-hidden="true">☰</span>
+            </button>
+            
             <nav id="menu" aria-label="Menù di navigazione principale">
                 <!-- funzione getNavBar per evitare link circolari-->
                 <ul class="nav-links">
@@ -16,10 +24,10 @@
 
             <div class="actions-group"> 
                 <button class="search-toggle" >
-                    <img class="search-icon" src="assets/images/search.png" alt="" /><span>Cerca nel catalogo</span>
+                    <img class="search-icon" src="assets/images/search.png" alt="" /><span class="sr-only">Cerca nel catalogo</span>
                 </button>
                 <button class="theme-toggle">
-                <img class="theme-icon" src="assets/images/moon.png" alt="" aria-hidden="true" /><span>Cambia tema visivo</span>
+                    <img class="theme-icon" src="assets/images/moon.png" alt="" aria-hidden="true" /><span class="sr-only">Cambia tema visivo</span>
                 </button>
             </div>
 
