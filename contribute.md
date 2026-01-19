@@ -139,3 +139,22 @@ La pagina artista (`artist.php`) fornisce una vista dettagliata di un singolo ar
 **Accessibilità**: La pagina implementa WCAG 2.1 Level AA con skip links verso le 4 sezioni principali (contenuto, album, singoli, artisti simili), breadcrumb con `aria-current`, landmark regions semantiche, e `role="list"` per i tag dei generi. L'attributo `lang="en"` viene utilizzato per i termini inglesi come "Album" ed "EP".
 
 **CSS**: Gli stili specifici includono `.artist-image` (immagine circolare responsive: 10rem desktop, 8rem mobile), `.artist-genres` (container flex per i tag), e `.tag` (badge colorati per i generi con background brand-primary).
+
+## Pagina Album
+
+La pagina album (`album.php`) mostra i dettagli di un singolo disco con tracklist, versioni disponibili e crediti.
+
+**Struttura**: Utilizza `album.html` come template base. Riceve l'ID del disco via GET (`?id=1`) e valida con `intval()`. Redirect a `index.php` se invalido.
+
+**Componenti modulari** in `php/components/`:
+- `album_info.php`: Dati album (titolo, artista, anno, tipo, rating) e generi associati
+- `album_tracklist.php`: Lista ordinata delle tracce con durata (nascosta per singoli ≤2 tracce)
+- `album_versions.php`: Altri album dello stesso artista (max 8)
+- `album_credits.php`: Crediti artista (co-writing, producer)
+
+**Template HTML** in `php/static/layout/album/`:
+- `track_item.html`: Singola traccia nella lista
+- `credit_item.html`: Singolo credito
+
+**Accessibilità**: Skip links, breadcrumb con `aria-current`, `aria-label` su tracklist, landmark regions semantiche.
+

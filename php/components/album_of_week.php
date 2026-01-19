@@ -1,8 +1,7 @@
 <?php
 include_once 'php/classes/DbConnection.php';
 
-function get_album_of_week()
-{
+function get_album_of_week() {
     $connection = DbConnection::get_instance();
     $query = "SELECT ed.disk_id, ed.edition_name, d.title, au.author_name, au.id as author_id, 
                      ed.image_path, COUNT(o.user_id) as ownership_count
@@ -23,23 +22,20 @@ function get_album_of_week()
     return mysqli_fetch_assoc($result);
 }
 
-function album_of_week()
-{
+function album_of_week() {
     $album = get_album_of_week();
     
     if (!$album) {
-        // Fallback se non ci sono dati
         return [
             'album_week_image' => 'assets/images/pollo.webp',
-            'album_week_title' => 'TBD - Nessun album disponibile',
-            'album_week_artist' => 'N/A',
-            'album_week_description' => 'TBD - TEMPORANEO - DA IMPLEMENTARE',
+            'album_week_title' => 'Nessun album disponibile',
+            'album_week_artist' => 'Artista sconosciuto',
+            'album_week_description' => 'Al momento non ci sono abbastanza dati per determinare l\'album della settimana.',
             'album_week_id' => '#',
             'album_week_edition' => ''
         ];
     }
     
-    // TBD: Implementare gestione immagini reali
     $cover_image = 'assets/images/pollo.webp';
     
     $description = sprintf(

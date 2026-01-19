@@ -77,3 +77,32 @@ Recupera i generi distinti associati all'artista attraverso un JOIN tra `genre`,
 
 **Logica**: Utilizza una subquery IN per identificare gli author_id che hanno pubblicato dischi appartenenti agli stessi generi dell'artista visualizzato. Esclude l'artista stesso (`a.id != ?`) per evitare autoreferenza. Limita a 4 risultati per non sovraccaricare la UI. La similarità è determinata dalla sovrapposizione di generi.
 
+## Pagina Album (`album.php`)
+
+### Informazioni Album (`album_info.php`)
+
+**Query 1: Dati Album**
+Recupera id, titolo, tipo disco, artista (id e nome), anno di rilascio, immagine, rating medio e conteggio recensioni. JOIN tra `disk`, `disk_author_release`, `author`, `edition` e `review`. Utilizza `COALESCE` per gestire album senza recensioni.
+
+**Query 2: Generi Album**
+Seleziona i generi distinti associati al disco tramite JOIN tra `genre` e `disk_genre_classification`. Ogni genere viene renderizzato come tag.
+
+### Tracklist (`album_tracklist.php`)
+
+**Query**: Recupera tutte le tracce associate al disco con numero, titolo e durata.
+
+**Logica**: JOIN tra `track` e `edition_track_part_of` filtrato per disk_id. Ordina per track_number. Se il disco ha ≤2 tracce (singoli), la sezione non viene mostrata.
+
+### Versioni Album (`album_versions.php`)
+
+**Query**: Trova altri album dello stesso artista.
+
+**Logica**: Partendo dal disk corrente, risale all'artista tramite `disk_author_release`, poi trova tutti gli altri dischi dello stesso artista. JOIN con `edition` per dettagli edizione. Esclude il disco corrente (`d2.id != ?`). Limita a 8 risultati.
+
+### Crediti Album (`album_credits.php`)
+
+**Query**: Recupera nome e immagine dell'artista principale.
+
+**Logica**: JOIN tra `author` e `disk_author_release` filtrato per disk_id. I ruoli (Co-writing, Producer) sono attualmente statici per l'artista principale.
+
+

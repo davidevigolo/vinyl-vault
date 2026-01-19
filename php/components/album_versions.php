@@ -32,32 +32,29 @@ function album_versions($disk_id) {
     }
     
     ob_start();
-    echo '<section class="album-versions card-section" aria-labelledby="versions-heading">';
-    echo '<h2 id="versions-heading">Versioni</h2>';
-    echo '<div class="versions-container">';
-    
     while ($row = mysqli_fetch_assoc($result)) {
         $image = !empty($row['image_path']) && file_exists($_SERVER['DOCUMENT_ROOT'] . $row['image_path'])
             ? $row['image_path']
             : 'assets/images/pollo.webp';
         
         $release_year = date('Y', strtotime($row['release_date']));
+        $edition_info = htmlspecialchars($row['edition_name']) . ' - ' . $release_year . ' - ' . htmlspecialchars($row['country']);
         
-        echo '<a href="album.php?id=' . $row['id'] . '" class="card-link-wrapper">';
-        echo '<article class="vinyl-card">';
-        echo '<div class="card-image">';
-        echo '<img src="' . htmlspecialchars($image) . '" alt="Copertina di ' . htmlspecialchars($row['title']) . '">';
-        echo '</div>';
-        echo '<div class="card-content">';
-        echo '<p class="artist-name">' . htmlspecialchars($row['author_name']) . '</p>';
-        echo '<h3 class="album-title">' . htmlspecialchars($row['title']) . '</h3>';
-        echo '<p class="edition-info">' . htmlspecialchars($row['edition_name']) . ' - ' . $release_year . ' - ' . htmlspecialchars($row['country']) . '</p>';
-        echo '</div>';
-        echo '</article>';
-        echo '</a>';
+        echo Template::render('static/layout/vinyl_card.html', [
+            'disk_id' => $row['id'],
+            'ed_name' => $edition_info,
+            'title' => htmlspecialchars($row['title']),
+            'artist' => htmlspecialchars($row['author_name']),
+            'cover_image' => htmlspecialchars($image)
+        ]);
     }
+    $cards_html = ob_get_clean();
     
-    echo '</div>';
-    echo '</section>';
-    return ob_get_clean();
+    mysqli_stmt_close($stmt);
+    
+    return '<section class="album-versions card-section" aria-labelledby="versions-heading">'
+         . '<h2 id="versions-heading">Versioni</h2>'
+         . '<div class="versions-container">'
+         . $cards_html
+         . '</div></section>';
 }
