@@ -259,11 +259,12 @@ button[type="submit"] {
 /* Header */
 
 header {
-    background: var(--bg-page);
+    background: rgba(240, 248, 255, 0.95);
     border-bottom: var(--border-default) solid 0.1em;
     top: 0;
     position: sticky;
     width: 100%;
+    z-index: 1000;
 }
 
 .header-container {
@@ -798,9 +799,8 @@ footer p {
 }
 
 .view-all {
-    font-size: var(--font-small);
-    font-weight: 600;
-    font-style: italic;
+    font-size: var(--font-medium);
+    font-weight: 500;
     color: var(--link-unvisited);
     text-decoration: underline;
 }
