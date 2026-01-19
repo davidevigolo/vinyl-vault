@@ -1,6 +1,9 @@
 -- Sample data inserts for Vinyl Vault database
 USE tecweb_db;
 
+-- Disable foreign key checks for smooth import
+SET FOREIGN_KEY_CHECKS = 0;
+
 -- Insert genres (no dependencies)
 INSERT INTO genre (genre_name) VALUES
 ('Rock'),
@@ -86,7 +89,7 @@ INSERT INTO disk (title, disk_type) VALUES
 ('Infinity on High', 'ALBUM'),
 ('American Beauty/American Psycho', 'ALBUM'),
 -- Taylor Swift
-('The Life of a Showgirl', 'ALBUM'),
+('folklore', 'ALBUM'),
 ('Midnights', 'ALBUM'),
 ('1989', 'ALBUM'),
 -- Dua Lipa
@@ -138,11 +141,11 @@ INSERT INTO disk_author_release (disk_id, author_id) VALUES
 -- Fall Out Boy
 (23, 13), (24, 13), (25, 13),
 -- Taylor Swift
-(26, 14), (27, 14), (28, 14),
+(26, 15), (27, 15), (28, 15),
 -- Dua Lipa
-(29, 15), (30, 15),
+(29, 16), (30, 16),
 -- Arctic Monkeys
-(31, 16), (32, 16),
+(31, 14), (32, 14),
 -- Ariana Grande
 (33, 17), (34, 17), (35, 17),
 -- Singles
@@ -603,30 +606,33 @@ INSERT INTO track (title, duration_seconds) VALUES
 ('Blinding Lights', 200),
 ('In Your Eyes', 237),
 -- Good Riddance (Gracie Abrams) - ID 11
-('Best', 175),
-('I know it wont work', 215),
-('Full machine', 164),
-('Where do we go now?', 211),
-('I should hate you', 179),
-('Will you cry?', 194),
-('Amelie', 173),
-('The blue', 161),
-('Fault line', 184),
-('This is what the drugs are for', 168),
--- The Secret of Us (Gracie Abrams)
-('Champagne & Sunshine', 220),
-('Feel It Twice', 185),
-('Us', 210),
-('Risk', 215),
-('Close to You', 178),
-('That`s So True', 169),
-('Packing It Up', 181),
-('Normal Thing', 188),
-('Good Luck Charlie', 198),
-('Free Now', 193),
-('Let It Happen', 225),
-('I Felt It Too', 218),
--- SOS (SZA)
+('Best', 233),
+('I Know It Won`t Work', 245),
+('Full Machine', 255),
+('Where Do We Go Now?', 244),
+('I Should Hate You', 258),
+('Will You Cry?', 230),
+('Amelie', 259),
+('Difficult', 258),
+('This Is What the Drugs Are For', 245),
+('Fault Line', 267),
+('The Blue', 300),
+('Right Now', 350),
+-- The Secret of Us (Gracie Abrams) - ID 12
+('Felt Good About You', 164),
+('Risk', 191),
+('Blowing Smoke', 232),
+('I Love You, I`m Sorry', 157),
+('Us', 242),
+('Let It Happen', 260),
+('Tough Love', 169),
+('I Knew It, I Know You', 252),
+('Gave You I Gave You I', 269),
+('Normal Thing', 242),
+('Good Luck Charlie', 236),
+('Free Now', 214),
+('Close to You', 225),
+-- SOS (SZA) - ID 46
 ('Intro', 80),
 ('SOS', 197),
 ('Kill Bill', 154),
@@ -650,7 +656,7 @@ INSERT INTO track (title, duration_seconds) VALUES
 ('Open Arms', 192),
 ('Forgiveless', 188),
 ('Love Drought', 231),
--- Ctrl (SZA)
+-- Ctrl (SZA) - ID 47
 ('Supermodel', 183),
 ('Garden', 239),
 ('Drew Barrymore', 262),
@@ -778,13 +784,13 @@ INSERT INTO track (title, duration_seconds) VALUES
 ('Fishtail', 270),
 ('Peppers', 262),
 ('Taco Truck x VB', 273),
--- HOPE EP (NF)
+-- HOPE EP (NF) - ID 50
 ('Intro', 119),
 ('The Motto', 193),
 ('Pandemonium', 197),
 ('Returns', 217),
 ('HOPE', 231),
--- The Search (NF)
+-- The Search (NF) - ID 48
 ('Mama', 245),
 ('Careful', 232),
 ('Intro 3', 83),
@@ -797,7 +803,7 @@ INSERT INTO track (title, duration_seconds) VALUES
 ('Outcast', 217),
 ('Perception', 250),
 ('Know', 225),
--- Perception (NF)
+-- Perception (NF) - ID 49
 ('Intro II', 72),
 ('Outcast', 194),
 ('Ten Feet Down', 223),
@@ -816,7 +822,7 @@ INSERT INTO track (title, duration_seconds) VALUES
 ('All I Have', 241),
 ('Notepad', 305),
 ('Road', 258),
--- Metal Resistance (BABYMETAL)
+-- Metal Resistance (BABYMETAL) - ID 51
 ('Intro', 56),
 ('KARATE', 189),
 ('Meta Taro', 261),
@@ -830,7 +836,7 @@ INSERT INTO track (title, duration_seconds) VALUES
 ('Tales of The Destinies', 600),
 ('The One', 393),
 ('Road of Resistance', 355),
--- Metal Galaxy (BABYMETAL)
+-- Metal Galaxy (BABYMETAL) - ID 52
 ('Syncopation', 274),
 ('BABYMETAL DEATH', 245),
 ('Gimme Chocolate!!', 244),
@@ -844,7 +850,7 @@ INSERT INTO track (title, duration_seconds) VALUES
 ('Akumu no Rondo', 242),
 ('Headbangeeeeerrrrr!!!!!', 270),
 ('Ijime Dame Zettai', 360),
--- The Other One (BABYMETAL)
+-- The Other One (BABYMETAL) - ID 53
 ('METALI!!', 82),
 ('Divine Attack', 231),
 ('Mirror Mirror', 241),
@@ -918,7 +924,7 @@ INSERT INTO edition_track_part_of (disk_id, edition_name, track_id, track_number
 (1, 'Standard Edition', 10, 10), (1, 'Standard Edition', 11, 11), (1, 'Standard Edition', 12, 12),
 (1, 'Standard Edition', 13, 13), (1, 'Standard Edition', 14, 14), (1, 'Standard Edition', 15, 15),
 (1, 'Standard Edition', 16, 16), (1, 'Standard Edition', 17, 17),
--- Dark Side of the Moon (Pink Floyd) - ID 2 - Tracks 18-27
+-- The Dark Side of the Moon (Pink Floyd) - ID 2 - Tracks 18-27
 (2, 'Standard Edition', 18, 1), (2, 'Standard Edition', 19, 2), (2, 'Standard Edition', 20, 3),
 (2, 'Standard Edition', 21, 4), (2, 'Standard Edition', 22, 5), (2, 'Standard Edition', 23, 6),
 (2, 'Standard Edition', 24, 7), (2, 'Standard Edition', 25, 8), (2, 'Standard Edition', 26, 9),
@@ -926,7 +932,7 @@ INSERT INTO edition_track_part_of (disk_id, edition_name, track_id, track_number
 -- Kind of Blue (Miles Davis) - ID 3 - Tracks 28-32
 (3, 'Standard Edition', 28, 1), (3, 'Standard Edition', 29, 2), (3, 'Standard Edition', 30, 3),
 (3, 'Standard Edition', 31, 4), (3, 'Standard Edition', 32, 5),
--- Led Zeppelin IV - ID 4 - Tracks 33-40
+-- Led Zeppelin IV (Led Zeppelin) - ID 4 - Tracks 33-40
 (4, 'Standard Edition', 33, 1), (4, 'Standard Edition', 34, 2), (4, 'Standard Edition', 35, 3),
 (4, 'Standard Edition', 36, 4), (4, 'Standard Edition', 37, 5), (4, 'Standard Edition', 38, 6),
 (4, 'Standard Edition', 39, 7), (4, 'Standard Edition', 40, 8),
@@ -950,27 +956,29 @@ INSERT INTO edition_track_part_of (disk_id, edition_name, track_id, track_number
 (8, 'Standard Edition', 79, 4), (8, 'Standard Edition', 80, 5), (8, 'Standard Edition', 81, 6),
 (8, 'Standard Edition', 82, 7), (8, 'Standard Edition', 83, 8), (8, 'Standard Edition', 84, 9),
 (8, 'Standard Edition', 85, 10), (8, 'Standard Edition', 86, 11),
--- Hey Jude (The Beatles) - ID 9 (Single) - Tracks 87-88
-(9, 'Single', 87, 1), (9, 'Single', 88, 2),
--- Bohemian Rhapsody (Queen) - ID 10 (Single) - Tracks 89-90
+-- Hey Jude (The Beatles) - ID 9 - Tracks 87-88
+(9, 'Standard Edition', 87, 1), (9, 'Standard Edition', 88, 2),
+-- Bohemian Rhapsody (Queen) - ID 10 - Tracks 89-90
 (10, 'Single', 89, 1), (10, 'Single', 90, 2),
--- Good Riddance (Gracie Abrams) - ID 11 - Tracks 191-200
-(11, 'Standard Edition', 191, 1), (11, 'Standard Edition', 192, 2), (11, 'Standard Edition', 193, 3),
-(11, 'Standard Edition', 194, 4), (11, 'Standard Edition', 195, 5), (11, 'Standard Edition', 196, 6),
-(11, 'Standard Edition', 197, 7), (11, 'Standard Edition', 198, 8), (11, 'Standard Edition', 199, 9),
-(11, 'Standard Edition', 200, 10),
--- The Secret of Us (Gracie Abrams) - ID 12 (Deluxe) - Tracks 276-287
-(12, 'Deluxe Edition', 276, 1), (12, 'Deluxe Edition', 277, 2), (12, 'Deluxe Edition', 278, 3),
-(12, 'Deluxe Edition', 279, 4), (12, 'Deluxe Edition', 280, 5), (12, 'Deluxe Edition', 281, 6),
-(12, 'Deluxe Edition', 282, 7), (12, 'Deluxe Edition', 283, 8), (12, 'Deluxe Edition', 284, 9),
-(12, 'Deluxe Edition', 285, 10), (12, 'Deluxe Edition', 286, 11), (12, 'Deluxe Edition', 287, 12),
--- This Is What It Feels Like (Gracie Abrams) - ID 13 (EP) - Tracks 91-94
-(13, 'EP Edition', 91, 1), (13, 'EP Edition', 92, 2), (13, 'EP Edition', 93, 3), (13, 'EP Edition', 94, 4),
--- After Hours (The Weeknd) - ID 14 - Tracks 181-190
-(14, 'Standard Edition', 181, 1), (14, 'Standard Edition', 182, 2), (14, 'Standard Edition', 183, 3),
-(14, 'Standard Edition', 184, 4), (14, 'Standard Edition', 185, 5), (14, 'Standard Edition', 186, 6),
-(14, 'Standard Edition', 187, 7), (14, 'Standard Edition', 188, 8), (14, 'Standard Edition', 189, 9),
-(14, 'Standard Edition', 190, 10),
+-- Good Riddance (Gracie Abrams) - ID 11 - Tracks 373-384
+(11, 'Standard Edition', 373, 1), (11, 'Standard Edition', 374, 2), (11, 'Standard Edition', 375, 3),
+(11, 'Standard Edition', 376, 4), (11, 'Standard Edition', 377, 5), (11, 'Standard Edition', 378, 6),
+(11, 'Standard Edition', 379, 7), (11, 'Standard Edition', 380, 8), (11, 'Standard Edition', 381, 9),
+(11, 'Standard Edition', 382, 10), (11, 'Standard Edition', 383, 11), (11, 'Standard Edition', 384, 12),
+-- The Secret of Us (Gracie Abrams) - ID 12 - Tracks 385-397
+(12, 'Deluxe Edition', 385, 1), (12, 'Deluxe Edition', 386, 2), (12, 'Deluxe Edition', 387, 3),
+(12, 'Deluxe Edition', 388, 4), (12, 'Deluxe Edition', 389, 5), (12, 'Deluxe Edition', 390, 6),
+(12, 'Deluxe Edition', 391, 7), (12, 'Deluxe Edition', 392, 8), (12, 'Deluxe Edition', 393, 9),
+(12, 'Deluxe Edition', 394, 10), (12, 'Deluxe Edition', 395, 11), (12, 'Deluxe Edition', 396, 12),
+(12, 'Deluxe Edition', 397, 13),
+-- This Is What It Feels Like (Gracie Abrams) - ID 13 - Tracks 91-94
+(13, 'EP Edition', 91, 1), (13, 'EP Edition', 92, 2), (13, 'EP Edition', 93, 3),
+(13, 'EP Edition', 94, 4),
+-- After Hours (The Weeknd) - ID 14 - Tracks 363-372
+(14, 'Standard Edition', 363, 1), (14, 'Standard Edition', 364, 2), (14, 'Standard Edition', 365, 3),
+(14, 'Standard Edition', 366, 4), (14, 'Standard Edition', 367, 5), (14, 'Standard Edition', 368, 6),
+(14, 'Standard Edition', 369, 7), (14, 'Standard Edition', 370, 8), (14, 'Standard Edition', 371, 9),
+(14, 'Standard Edition', 372, 10),
 -- Starboy (The Weeknd) - ID 15 - Tracks 95-112
 (15, 'Standard Edition', 95, 1), (15, 'Standard Edition', 96, 2), (15, 'Standard Edition', 97, 3),
 (15, 'Standard Edition', 98, 4), (15, 'Standard Edition', 99, 5), (15, 'Standard Edition', 100, 6),
@@ -995,8 +1003,9 @@ INSERT INTO edition_track_part_of (disk_id, edition_name, track_id, track_number
 (18, 'Standard Edition', 143, 4), (18, 'Standard Edition', 144, 5), (18, 'Standard Edition', 145, 6),
 (18, 'Standard Edition', 146, 7), (18, 'Standard Edition', 147, 8), (18, 'Standard Edition', 148, 9),
 (18, 'Standard Edition', 149, 10), (18, 'Standard Edition', 150, 11), (18, 'Standard Edition', 151, 12),
--- Dont Try This (Chase Atlantic) - ID 19 (EP) - Tracks 152-155
-(19, 'EP Edition', 152, 1), (19, 'EP Edition', 153, 2), (19, 'EP Edition', 154, 3), (19, 'EP Edition', 155, 4),
+-- Dont Try This (Chase Atlantic) - ID 19 - Tracks 152-155
+(19, 'EP Edition', 152, 1), (19, 'EP Edition', 153, 2), (19, 'EP Edition', 154, 3),
+(19, 'EP Edition', 155, 4),
 -- Hybrid Theory (Linkin Park) - ID 20 - Tracks 156-165
 (20, 'Standard Edition', 156, 1), (20, 'Standard Edition', 157, 2), (20, 'Standard Edition', 158, 3),
 (20, 'Standard Edition', 159, 4), (20, 'Standard Edition', 160, 5), (20, 'Standard Edition', 161, 6),
@@ -1086,93 +1095,103 @@ INSERT INTO edition_track_part_of (disk_id, edition_name, track_id, track_number
 (35, 'Standard Edition', 349, 7), (35, 'Standard Edition', 350, 8), (35, 'Standard Edition', 351, 9),
 (35, 'Standard Edition', 352, 10), (35, 'Standard Edition', 353, 11), (35, 'Standard Edition', 354, 12),
 (35, 'Standard Edition', 355, 13), (35, 'Standard Edition', 356, 14),
--- Blinding Lights (The Weeknd) - ID 36 (Single) - Track 357
-(36, 'Single', 357, 1),
--- Save Your Tears (The Weeknd) - ID 37 (Single) - Track 358
-(37, 'Single', 358, 1),
--- In the End (Linkin Park) - ID 38 (Single) - Tracks 359-360
-(38, 'Single', 359, 1), (38, 'Single', 360, 2),
--- Sugar, We're Goin Down (Fall Out Boy) - ID 39 (Single) - Tracks 361-362
-(39, 'Single', 361, 1), (39, 'Single', 362, 2),
--- Scorpion (Drake) - ID 41 - Tracks 450-474
-(41, 'Standard Edition', 450, 1), (41, 'Standard Edition', 451, 2), (41, 'Standard Edition', 452, 3),
-(41, 'Standard Edition', 453, 4), (41, 'Standard Edition', 454, 5), (41, 'Standard Edition', 455, 6),
-(41, 'Standard Edition', 456, 7), (41, 'Standard Edition', 457, 8), (41, 'Standard Edition', 458, 9),
-(41, 'Standard Edition', 459, 10), (41, 'Standard Edition', 460, 11), (41, 'Standard Edition', 461, 12),
-(41, 'Standard Edition', 462, 13), (41, 'Standard Edition', 463, 14), (41, 'Standard Edition', 464, 15),
-(41, 'Standard Edition', 465, 16), (41, 'Standard Edition', 466, 17), (41, 'Standard Edition', 467, 18),
-(41, 'Standard Edition', 468, 19), (41, 'Standard Edition', 469, 20), (41, 'Standard Edition', 470, 21),
-(41, 'Standard Edition', 471, 22), (41, 'Standard Edition', 472, 23), (41, 'Standard Edition', 473, 24),
-(41, 'Standard Edition', 474, 25),
--- For All The Dogs (Drake) - ID 42 - Tracks 475-496
-(42, 'Standard Edition', 475, 1), (42, 'Standard Edition', 476, 2), (42, 'Standard Edition', 477, 3),
-(42, 'Standard Edition', 478, 4), (42, 'Standard Edition', 479, 5), (42, 'Standard Edition', 480, 6),
-(42, 'Standard Edition', 481, 7), (42, 'Standard Edition', 482, 8), (42, 'Standard Edition', 483, 9),
-(42, 'Standard Edition', 484, 10), (42, 'Standard Edition', 485, 11), (42, 'Standard Edition', 486, 12),
-(42, 'Standard Edition', 487, 13), (42, 'Standard Edition', 488, 14), (42, 'Standard Edition', 489, 15),
-(42, 'Standard Edition', 490, 16), (42, 'Standard Edition', 491, 17), (42, 'Standard Edition', 492, 18),
-(42, 'Standard Edition', 493, 19), (42, 'Standard Edition', 494, 20), (42, 'Standard Edition', 495, 21),
-(42, 'Standard Edition', 496, 22),
--- Did you know that there's a tunnel under Ocean Blvd (Lana Del Rey) - ID 45 - Tracks 523-538
-(45, 'Standard Edition', 523, 1), (45, 'Standard Edition', 524, 2), (45, 'Standard Edition', 525, 3),
-(45, 'Standard Edition', 526, 4), (45, 'Standard Edition', 527, 5), (45, 'Standard Edition', 528, 6),
-(45, 'Standard Edition', 529, 7), (45, 'Standard Edition', 530, 8), (45, 'Standard Edition', 531, 9),
-(45, 'Standard Edition', 532, 10), (45, 'Standard Edition', 533, 11), (45, 'Standard Edition', 534, 12),
-(45, 'Standard Edition', 535, 13), (45, 'Standard Edition', 536, 14), (45, 'Standard Edition', 537, 15),
-(45, 'Standard Edition', 538, 16),
-(46, 'Standard Edition', 72, 1), (46, 'Standard Edition', 73, 2), (46, 'Standard Edition', 74, 3),
-(46, 'Standard Edition', 75, 4), (46, 'Standard Edition', 76, 5), (46, 'Standard Edition', 77, 6),
-(46, 'Standard Edition', 78, 7), (46, 'Standard Edition', 79, 8), (46, 'Standard Edition', 80, 9),
-(46, 'Standard Edition', 81, 10), (46, 'Standard Edition', 82, 11), (46, 'Standard Edition', 83, 12),
-(46, 'Standard Edition', 84, 13), (46, 'Standard Edition', 85, 14), (46, 'Standard Edition', 86, 15),
-(46, 'Standard Edition', 87, 16), (46, 'Standard Edition', 88, 17), (46, 'Standard Edition', 89, 18),
-(46, 'Standard Edition', 90, 19), (46, 'Standard Edition', 91, 20), (46, 'Standard Edition', 92, 21),
-(46, 'Standard Edition', 93, 22), (46, 'Standard Edition', 94, 23),
-(47, 'Standard Edition', 95, 1), (47, 'Standard Edition', 96, 2), (47, 'Standard Edition', 97, 3),
-(47, 'Standard Edition', 98, 4), (47, 'Standard Edition', 99, 5), (47, 'Standard Edition', 100, 6),
-(47, 'Standard Edition', 101, 7), (47, 'Standard Edition', 102, 8), (47, 'Standard Edition', 103, 9),
-(47, 'Standard Edition', 104, 10), (47, 'Standard Edition', 105, 11), (47, 'Standard Edition', 106, 12),
-(47, 'Standard Edition', 107, 13), (47, 'Standard Edition', 108, 14),
-(40, 'Standard Edition', 109, 1), (40, 'Standard Edition', 110, 2), (40, 'Standard Edition', 111, 3),
-(40, 'Standard Edition', 112, 4), (40, 'Standard Edition', 113, 5), (40, 'Standard Edition', 114, 6),
-(40, 'Standard Edition', 115, 7), (40, 'Standard Edition', 116, 8), (40, 'Standard Edition', 117, 9),
-(40, 'Standard Edition', 118, 10), (40, 'Standard Edition', 119, 11), (40, 'Standard Edition', 120, 12),
-(40, 'Standard Edition', 121, 13), (40, 'Standard Edition', 122, 14), (40, 'Standard Edition', 123, 15),
-(40, 'Standard Edition', 124, 16), (40, 'Standard Edition', 125, 17), (40, 'Standard Edition', 126, 18),
-(40, 'Standard Edition', 127, 19), (40, 'Standard Edition', 128, 20), (40, 'Standard Edition', 129, 21),
-(43, 'Standard Edition', 130, 1), (43, 'Standard Edition', 131, 2), (43, 'Standard Edition', 132, 3),
-(43, 'Standard Edition', 133, 4), (43, 'Standard Edition', 134, 5), (43, 'Standard Edition', 135, 6),
-(43, 'Standard Edition', 136, 7), (43, 'Standard Edition', 137, 8), (43, 'Standard Edition', 138, 9),
-(43, 'Standard Edition', 139, 10), (43, 'Standard Edition', 140, 11), (43, 'Standard Edition', 141, 12),
-(44, 'Standard Edition', 142, 1), (44, 'Standard Edition', 143, 2), (44, 'Standard Edition', 144, 3),
-(44, 'Standard Edition', 145, 4), (44, 'Standard Edition', 146, 5), (44, 'Standard Edition', 147, 6),
-(44, 'Standard Edition', 148, 7), (44, 'Standard Edition', 149, 8), (44, 'Standard Edition', 150, 9),
-(44, 'Standard Edition', 151, 10), (44, 'Standard Edition', 152, 11), (44, 'Standard Edition', 153, 12),
-(44, 'Standard Edition', 154, 13), (44, 'Standard Edition', 155, 14),
-(50, 'EP Edition', 156, 1), (50, 'EP Edition', 157, 2), (50, 'EP Edition', 158, 3),
-(50, 'EP Edition', 159, 4), (50, 'EP Edition', 160, 5),
-(48, 'Standard Edition', 161, 1), (48, 'Standard Edition', 162, 2), (48, 'Standard Edition', 163, 3),
-(48, 'Standard Edition', 164, 4), (48, 'Standard Edition', 165, 5), (48, 'Standard Edition', 166, 6),
-(48, 'Standard Edition', 167, 7), (48, 'Standard Edition', 168, 8), (48, 'Standard Edition', 169, 9),
-(48, 'Standard Edition', 170, 10),
-(49, 'Standard Edition', 171, 1), (49, 'Standard Edition', 172, 2), (49, 'Standard Edition', 173, 3),
-(49, 'Standard Edition', 174, 4), (49, 'Standard Edition', 175, 5), (49, 'Standard Edition', 176, 6),
-(49, 'Standard Edition', 177, 7), (49, 'Standard Edition', 178, 8), (49, 'Standard Edition', 179, 9),
-(49, 'Standard Edition', 180, 10), (49, 'Standard Edition', 181, 11), (49, 'Standard Edition', 182, 12),
-(49, 'Standard Edition', 183, 13), (49, 'Standard Edition', 184, 14), (49, 'Standard Edition', 185, 15),
-(49, 'Standard Edition', 186, 16),
-(51, 'Standard Edition', 187, 1), (51, 'Standard Edition', 188, 2), (51, 'Standard Edition', 189, 3),
-(51, 'Standard Edition', 190, 4), (51, 'Standard Edition', 191, 5), (51, 'Standard Edition', 192, 6),
-(51, 'Standard Edition', 193, 7), (51, 'Standard Edition', 194, 8), (51, 'Standard Edition', 195, 9),
-(51, 'Standard Edition', 196, 10), (51, 'Standard Edition', 197, 11), (51, 'Standard Edition', 198, 12),
-(52, 'Standard Edition', 199, 1), (52, 'Standard Edition', 200, 2), (52, 'Standard Edition', 201, 3),
-(52, 'Standard Edition', 202, 4), (52, 'Standard Edition', 203, 5), (52, 'Standard Edition', 204, 6),
-(52, 'Standard Edition', 205, 7), (52, 'Standard Edition', 206, 8), (52, 'Standard Edition', 207, 9),
-(52, 'Standard Edition', 208, 10), (52, 'Standard Edition', 209, 11), (52, 'Standard Edition', 210, 12),
-(52, 'Standard Edition', 211, 13), (52, 'Standard Edition', 212, 14),
-(53, 'Standard Edition', 213, 1), (53, 'Standard Edition', 214, 2), (53, 'Standard Edition', 215, 3),
-(53, 'Standard Edition', 216, 4), (53, 'Standard Edition', 217, 5), (53, 'Standard Edition', 218, 6),
-(53, 'Standard Edition', 219, 7);
+-- Blinding Lights (The Weeknd) - ID 36 - Tracks 357-357
+(36, 'Standard Edition', 357, 1),
+-- Save Your Tears (The Weeknd) - ID 37 - Tracks 358-358
+(37, 'Standard Edition', 358, 1),
+-- In the End (Linkin Park) - ID 38 - Tracks 359-360
+(38, 'Standard Edition', 359, 1), (38, 'Standard Edition', 360, 2),
+-- Sugar, We`re Goin Down (Fall Out Boy) - ID 39 - Tracks 361-362
+(39, 'Standard Edition', 361, 1), (39, 'Standard Edition', 362, 2),
+-- Certified Lover Boy (Drake) - ID 40 - Tracks 432-452
+(40, 'Standard Edition', 432, 1), (40, 'Standard Edition', 433, 2), (40, 'Standard Edition', 434, 3),
+(40, 'Standard Edition', 435, 4), (40, 'Standard Edition', 436, 5), (40, 'Standard Edition', 437, 6),
+(40, 'Standard Edition', 438, 7), (40, 'Standard Edition', 439, 8), (40, 'Standard Edition', 440, 9),
+(40, 'Standard Edition', 441, 10), (40, 'Standard Edition', 442, 11), (40, 'Standard Edition', 443, 12),
+(40, 'Standard Edition', 444, 13), (40, 'Standard Edition', 445, 14), (40, 'Standard Edition', 446, 15),
+(40, 'Standard Edition', 447, 16), (40, 'Standard Edition', 448, 17), (40, 'Standard Edition', 449, 18),
+(40, 'Standard Edition', 450, 19), (40, 'Standard Edition', 451, 20), (40, 'Standard Edition', 452, 21),
+-- Scorpion (Drake) - ID 41 - Tracks 453-477
+(41, 'Standard Edition', 453, 1), (41, 'Standard Edition', 454, 2), (41, 'Standard Edition', 455, 3),
+(41, 'Standard Edition', 456, 4), (41, 'Standard Edition', 457, 5), (41, 'Standard Edition', 458, 6),
+(41, 'Standard Edition', 459, 7), (41, 'Standard Edition', 460, 8), (41, 'Standard Edition', 461, 9),
+(41, 'Standard Edition', 462, 10), (41, 'Standard Edition', 463, 11), (41, 'Standard Edition', 464, 12),
+(41, 'Standard Edition', 465, 13), (41, 'Standard Edition', 466, 14), (41, 'Standard Edition', 467, 15),
+(41, 'Standard Edition', 468, 16), (41, 'Standard Edition', 469, 17), (41, 'Standard Edition', 470, 18),
+(41, 'Standard Edition', 471, 19), (41, 'Standard Edition', 472, 20), (41, 'Standard Edition', 473, 21),
+(41, 'Standard Edition', 474, 22), (41, 'Standard Edition', 475, 23), (41, 'Standard Edition', 476, 24),
+(41, 'Standard Edition', 477, 25),
+-- For All The Dogs (Drake) - ID 42 - Tracks 478-499
+(42, 'Standard Edition', 478, 1), (42, 'Standard Edition', 479, 2), (42, 'Standard Edition', 480, 3),
+(42, 'Standard Edition', 481, 4), (42, 'Standard Edition', 482, 5), (42, 'Standard Edition', 483, 6),
+(42, 'Standard Edition', 484, 7), (42, 'Standard Edition', 485, 8), (42, 'Standard Edition', 486, 9),
+(42, 'Standard Edition', 487, 10), (42, 'Standard Edition', 488, 11), (42, 'Standard Edition', 489, 12),
+(42, 'Standard Edition', 490, 13), (42, 'Standard Edition', 491, 14), (42, 'Standard Edition', 492, 15),
+(42, 'Standard Edition', 493, 16), (42, 'Standard Edition', 494, 17), (42, 'Standard Edition', 495, 18),
+(42, 'Standard Edition', 496, 19), (42, 'Standard Edition', 497, 20), (42, 'Standard Edition', 498, 21),
+(42, 'Standard Edition', 499, 22),
+-- Born to Die (Lana Del Rey) - ID 43 - Tracks 500-511
+(43, 'Standard Edition', 500, 1), (43, 'Standard Edition', 501, 2), (43, 'Standard Edition', 502, 3),
+(43, 'Standard Edition', 503, 4), (43, 'Standard Edition', 504, 5), (43, 'Standard Edition', 505, 6),
+(43, 'Standard Edition', 506, 7), (43, 'Standard Edition', 507, 8), (43, 'Standard Edition', 508, 9),
+(43, 'Standard Edition', 509, 10), (43, 'Standard Edition', 510, 11), (43, 'Standard Edition', 511, 12),
+-- Norman Fucking Rockwell! (Lana Del Rey) - ID 44 - Tracks 512-525
+(44, 'Standard Edition', 512, 1), (44, 'Standard Edition', 513, 2), (44, 'Standard Edition', 514, 3),
+(44, 'Standard Edition', 515, 4), (44, 'Standard Edition', 516, 5), (44, 'Standard Edition', 517, 6),
+(44, 'Standard Edition', 518, 7), (44, 'Standard Edition', 519, 8), (44, 'Standard Edition', 520, 9),
+(44, 'Standard Edition', 521, 10), (44, 'Standard Edition', 522, 11), (44, 'Standard Edition', 523, 12),
+(44, 'Standard Edition', 524, 13), (44, 'Standard Edition', 525, 14),
+-- Did you know that there's a tunnel under Ocean Blvd (Lana Del Rey) - ID 45 - Tracks 526-541
+(45, 'Standard Edition', 526, 1), (45, 'Standard Edition', 527, 2), (45, 'Standard Edition', 528, 3),
+(45, 'Standard Edition', 529, 4), (45, 'Standard Edition', 530, 5), (45, 'Standard Edition', 531, 6),
+(45, 'Standard Edition', 532, 7), (45, 'Standard Edition', 533, 8), (45, 'Standard Edition', 534, 9),
+(45, 'Standard Edition', 535, 10), (45, 'Standard Edition', 536, 11), (45, 'Standard Edition', 537, 12),
+(45, 'Standard Edition', 538, 13), (45, 'Standard Edition', 539, 14), (45, 'Standard Edition', 540, 15),
+(45, 'Standard Edition', 541, 16),
+-- SOS (SZA) - ID 46 - Tracks 398-420
+(46, 'Standard Edition', 398, 1), (46, 'Standard Edition', 399, 2), (46, 'Standard Edition', 400, 3),
+(46, 'Standard Edition', 401, 4), (46, 'Standard Edition', 402, 5), (46, 'Standard Edition', 403, 6),
+(46, 'Standard Edition', 404, 7), (46, 'Standard Edition', 405, 8), (46, 'Standard Edition', 406, 9),
+(46, 'Standard Edition', 407, 10), (46, 'Standard Edition', 408, 11), (46, 'Standard Edition', 409, 12),
+(46, 'Standard Edition', 410, 13), (46, 'Standard Edition', 411, 14), (46, 'Standard Edition', 412, 15),
+(46, 'Standard Edition', 413, 16), (46, 'Standard Edition', 414, 17), (46, 'Standard Edition', 415, 18),
+(46, 'Standard Edition', 416, 19), (46, 'Standard Edition', 417, 20), (46, 'Standard Edition', 418, 21),
+(46, 'Standard Edition', 419, 22), (46, 'Standard Edition', 420, 23),
+-- Ctrl (SZA) - ID 47 - Tracks 421-431
+(47, 'Standard Edition', 421, 1), (47, 'Standard Edition', 422, 2), (47, 'Standard Edition', 423, 3),
+(47, 'Standard Edition', 424, 4), (47, 'Standard Edition', 425, 5), (47, 'Standard Edition', 426, 6),
+(47, 'Standard Edition', 427, 7), (47, 'Standard Edition', 428, 8), (47, 'Standard Edition', 429, 9),
+(47, 'Standard Edition', 430, 10), (47, 'Standard Edition', 431, 11),
+-- The Search (NF) - ID 48 - Tracks 547-558
+(48, 'Standard Edition', 547, 1), (48, 'Standard Edition', 548, 2), (48, 'Standard Edition', 549, 3),
+(48, 'Standard Edition', 550, 4), (48, 'Standard Edition', 551, 5), (48, 'Standard Edition', 552, 6),
+(48, 'Standard Edition', 553, 7), (48, 'Standard Edition', 554, 8), (48, 'Standard Edition', 555, 9),
+(48, 'Standard Edition', 556, 10), (48, 'Standard Edition', 557, 11), (48, 'Standard Edition', 558, 12),
+-- Perception (NF) - ID 49 - Tracks 559-576
+(49, 'Standard Edition', 559, 1), (49, 'Standard Edition', 560, 2), (49, 'Standard Edition', 561, 3),
+(49, 'Standard Edition', 562, 4), (49, 'Standard Edition', 563, 5), (49, 'Standard Edition', 564, 6),
+(49, 'Standard Edition', 565, 7), (49, 'Standard Edition', 566, 8), (49, 'Standard Edition', 567, 9),
+(49, 'Standard Edition', 568, 10), (49, 'Standard Edition', 569, 11), (49, 'Standard Edition', 570, 12),
+(49, 'Standard Edition', 571, 13), (49, 'Standard Edition', 572, 14), (49, 'Standard Edition', 573, 15),
+(49, 'Standard Edition', 574, 16), (49, 'Standard Edition', 575, 17), (49, 'Standard Edition', 576, 18),
+-- HOPE EP (NF) - ID 50 - Tracks 542-546
+(50, 'EP Edition', 542, 1), (50, 'EP Edition', 543, 2), (50, 'EP Edition', 544, 3),
+(50, 'EP Edition', 545, 4), (50, 'EP Edition', 546, 5),
+-- Metal Resistance (BABYMETAL) - ID 51 - Tracks 577-589
+(51, 'Standard Edition', 577, 1), (51, 'Standard Edition', 578, 2), (51, 'Standard Edition', 579, 3),
+(51, 'Standard Edition', 580, 4), (51, 'Standard Edition', 581, 5), (51, 'Standard Edition', 582, 6),
+(51, 'Standard Edition', 583, 7), (51, 'Standard Edition', 584, 8), (51, 'Standard Edition', 585, 9),
+(51, 'Standard Edition', 586, 10), (51, 'Standard Edition', 587, 11), (51, 'Standard Edition', 588, 12),
+(51, 'Standard Edition', 589, 13),
+-- Metal Galaxy (BABYMETAL) - ID 52 - Tracks 590-602
+(52, 'Standard Edition', 590, 1), (52, 'Standard Edition', 591, 2), (52, 'Standard Edition', 592, 3),
+(52, 'Standard Edition', 593, 4), (52, 'Standard Edition', 594, 5), (52, 'Standard Edition', 595, 6),
+(52, 'Standard Edition', 596, 7), (52, 'Standard Edition', 597, 8), (52, 'Standard Edition', 598, 9),
+(52, 'Standard Edition', 599, 10), (52, 'Standard Edition', 600, 11), (52, 'Standard Edition', 601, 12),
+(52, 'Standard Edition', 602, 13),
+-- The Other One (BABYMETAL) - ID 53 - Tracks 603-608
+(53, 'Standard Edition', 603, 1), (53, 'Standard Edition', 604, 2), (53, 'Standard Edition', 605, 3),
+(53, 'Standard Edition', 606, 4), (53, 'Standard Edition', 607, 5), (53, 'Standard Edition', 608, 6);
 
 INSERT INTO review (user_id, disk_id, edition_name, content) VALUES
 (1, 20, 'Standard Edition', 'Hybrid Theory is a masterpiece that defined a generation. The raw emotion and energy in every track is incredible.'),
@@ -1205,3 +1224,6 @@ INSERT INTO ownership (user_id, disk_id, edition_name) VALUES
 (3, 46, 'Standard Edition'),
 (4, 51, 'Standard Edition'),
 (1, 48, 'Standard Edition');
+
+-- Re-enable foreign key checks
+SET FOREIGN_KEY_CHECKS = 1;
