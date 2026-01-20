@@ -296,16 +296,15 @@ INSERT INTO track (title, duration_seconds) VALUES
 -- Bohemian Rhapsody (Queen) - ID 10 (Single)
 ('Bohemian Rhapsody', 355),
 ('I`m in Love with My Car', 195),
--- This Is What It Feels Like (Gracie Abrams) - ID 13 (EP)
-('This Is What It Feels Like', 183),
-('I Miss You I`m Sorry', 192),
-('Long Sleeves', 211),
-('Rockland', 176),
--- Starboy (The Weeknd) - ID 15
-('Starboy', 230),
-('Party Monster', 247),
-('False Alarm', 220),
-('Reminder', 215),
+-- Gracie Abrams
+('Good Riddance', 183),
+('The Secret of Us', 192),
+('This Is What It Feels Like', 211),
+-- The Weeknd
+('After Hours', 230),
+('Starboy', 247),
+('Dawn FM', 220),
+('Party Monster', 215),
 ('Rockin', 220),
 ('Secrets', 267),
 ('True Colors', 203),
@@ -957,7 +956,7 @@ INSERT INTO edition_track_part_of (disk_id, edition_name, track_id, track_number
 (8, 'Standard Edition', 82, 7), (8, 'Standard Edition', 83, 8), (8, 'Standard Edition', 84, 9),
 (8, 'Standard Edition', 85, 10), (8, 'Standard Edition', 86, 11),
 -- Hey Jude (The Beatles) - ID 9 - Tracks 87-88
-(9, 'Standard Edition', 87, 1), (9, 'Standard Edition', 88, 2),
+(9, 'Single', 87, 1), (9, 'Single', 88, 2),
 -- Bohemian Rhapsody (Queen) - ID 10 - Tracks 89-90
 (10, 'Single', 89, 1), (10, 'Single', 90, 2),
 -- Good Riddance (Gracie Abrams) - ID 11 - Tracks 373-384
@@ -1096,14 +1095,15 @@ INSERT INTO edition_track_part_of (disk_id, edition_name, track_id, track_number
 (35, 'Standard Edition', 352, 10), (35, 'Standard Edition', 353, 11), (35, 'Standard Edition', 354, 12),
 (35, 'Standard Edition', 355, 13), (35, 'Standard Edition', 356, 14),
 -- Blinding Lights (The Weeknd) - ID 36 - Tracks 357-357
-(36, 'Standard Edition', 357, 1),
+(36, 'Single', 357, 1),
 -- Save Your Tears (The Weeknd) - ID 37 - Tracks 358-358
-(37, 'Standard Edition', 358, 1),
+(37, 'Single', 358, 1),
 -- In the End (Linkin Park) - ID 38 - Tracks 359-360
-(38, 'Standard Edition', 359, 1), (38, 'Standard Edition', 360, 2),
+(38, 'Single', 359, 1), (38, 'Single', 360, 2),
 -- Sugar, We`re Goin Down (Fall Out Boy) - ID 39 - Tracks 361-362
-(39, 'Standard Edition', 361, 1), (39, 'Standard Edition', 362, 2),
--- Certified Lover Boy (Drake) - ID 40 - Tracks 432-452
+(39, 'Single', 361, 1), (39, 'Single', 362, 2),
+
+-- Drake
 (40, 'Standard Edition', 432, 1), (40, 'Standard Edition', 433, 2), (40, 'Standard Edition', 434, 3),
 (40, 'Standard Edition', 435, 4), (40, 'Standard Edition', 436, 5), (40, 'Standard Edition', 437, 6),
 (40, 'Standard Edition', 438, 7), (40, 'Standard Edition', 439, 8), (40, 'Standard Edition', 440, 9),
@@ -1126,7 +1126,7 @@ INSERT INTO edition_track_part_of (disk_id, edition_name, track_id, track_number
 (42, 'Standard Edition', 481, 4), (42, 'Standard Edition', 482, 5), (42, 'Standard Edition', 483, 6),
 (42, 'Standard Edition', 484, 7), (42, 'Standard Edition', 485, 8), (42, 'Standard Edition', 486, 9),
 (42, 'Standard Edition', 487, 10), (42, 'Standard Edition', 488, 11), (42, 'Standard Edition', 489, 12),
-(42, 'Standard Edition', 490, 13), (42, 'Standard Edition', 491, 14), (42, 'Standard Edition', 492, 15),
+(42, 'Standard Edition', 490,  13), (42, 'Standard Edition', 491, 14), (42, 'Standard Edition', 492, 15),
 (42, 'Standard Edition', 493, 16), (42, 'Standard Edition', 494, 17), (42, 'Standard Edition', 495, 18),
 (42, 'Standard Edition', 496, 19), (42, 'Standard Edition', 497, 20), (42, 'Standard Edition', 498, 21),
 (42, 'Standard Edition', 499, 22),

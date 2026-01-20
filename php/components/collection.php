@@ -1,9 +1,9 @@
 <?php
 include_once 'php/classes/DbConnection.php';
 
-function get_wishlist(){
+function get_collection(){
     $connection = DbConnection::get_instance();
-    $query = "SELECT o.disk_id, e.image_path, d.title, a.author_name as author, e.edition_name, e.country, e.release_date
+    $query = "SELECT o.disk_id, e.image_path, d.title, a.author_name as author, a.id as author_id, e.edition_name, e.country, e.release_date
        FROM ownership o 
        JOIN edition e ON o.disk_id = e.disk_id AND o.edition_name = e.edition_name
        JOIN disk d ON d.id = e.disk_id 
@@ -22,7 +22,7 @@ function get_wishlist(){
 function collection($edit_mode = false)
 {
     ob_start();
-    $collection = get_wishlist();
+    $collection = get_collection();
     $items = '';
     if(!$collection || mysqli_num_rows($collection) === 0){
         echo Template::render('static/layout/collection/empty_collection.html', []);
@@ -34,6 +34,7 @@ function collection($edit_mode = false)
             $items .= Template::render($edit_mode ? 'static/layout/collection/collection_item_edit.html' : 'static/layout/collection/collection_item.html', [
                 'title' => htmlspecialchars($vinyl['title']),
                 'author' => htmlspecialchars($vinyl['author']),
+                'author_id' => htmlspecialchars($vinyl['author_id']),
                 'edition_name' => htmlspecialchars($vinyl['edition_name']),
                 'country' => htmlspecialchars($vinyl['country']),
                 'year' => htmlspecialchars(str_replace('-', '/', $vinyl['release_date'])),

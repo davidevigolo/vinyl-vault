@@ -37,45 +37,48 @@ function get_genre_options()
     return $genres;
 }
 
-function add_disk_form()
+function add_disk_form($result)
 {
-    $artists = get_artists();
-    
-    // Group artists by nationality
-    $grouped_artists = [];
-    foreach ($artists as $artist) {
-        $nationality = $artist['nationality'];
-        if (!isset($grouped_artists[$nationality])) {
-            $grouped_artists[$nationality] = [];
-        }
-        $grouped_artists[$nationality][] = $artist;
-    }
-    
-    // Sort nationalities for consistent display
-    ksort($grouped_artists);
-    
-    // Build HTML with optgroups
-    $artist_options = '';
-    foreach ($grouped_artists as $nationality => $artists_in_group) {
-        $artist_options .= '<optgroup label="' . htmlspecialchars(strtoupper($nationality)) . '">';
-        foreach ($artists_in_group as $artist) {
-            if ($artist['nationality'] != "it") {
-                $artist_options .= '<option value="' . htmlspecialchars($artist['id']) . '" lang="' . htmlspecialchars($artist['nationality']) . '">' . htmlspecialchars($artist['author_name']) . '</option>';
-            } else {
-                $artist_options .= '<option value="' . htmlspecialchars($artist['id']) . '">' . htmlspecialchars($artist['author_name']) . '</option>';
+    if ($result === 'success') {
+        return Template::render('static/layout/add_disk/add_disk_success.html', []);
+    } else {
+        $artists = get_artists();
+
+        // Group artists by nationality
+        $grouped_artists = [];
+        foreach ($artists as $artist) {
+            $nationality = $artist['nationality'];
+            if (!isset($grouped_artists[$nationality])) {
+                $grouped_artists[$nationality] = [];
             }
+            $grouped_artists[$nationality][] = $artist;
         }
-        $artist_options .= '</optgroup>';
+
+        // Sort nationalities for consistent display
+        ksort($grouped_artists);
+
+        // Build HTML with optgroups
+        $artist_options = '';
+        foreach ($grouped_artists as $nationality => $artists_in_group) {
+            $artist_options .= '<optgroup label="' . htmlspecialchars(strtoupper($nationality)) . '">';
+            foreach ($artists_in_group as $artist) {
+                if ($artist['nationality'] != "it") {
+                    $artist_options .= '<option value="' . htmlspecialchars($artist['id']) . '" lang="' . htmlspecialchars($artist['nationality']) . '">' . htmlspecialchars($artist['author_name']) . '</option>';
+                } else {
+                    $artist_options .= '<option value="' . htmlspecialchars($artist['id']) . '">' . htmlspecialchars($artist['author_name']) . '</option>';
+                }
+            }
+            $artist_options .= '</optgroup>';
+        }
+
+        $genre_options = get_genre_options();
+        $genre_options = array_map(function ($genre) {
+            return "<option value=\"" . htmlspecialchars($genre) . "\">" . htmlspecialchars($genre) . "</option>";
+        }, $genre_options);
+
+        return Template::render('static/layout/add_disk/add_disk_form.html', [
+            'artist_options' => $artist_options,
+            'genre_options' => implode('', $genre_options),
+        ]);
     }
-    
-    $genre_options = get_genre_options();
-    $genre_options = array_map(function($genre) {
-        return "<option value=\"" . htmlspecialchars($genre) . "\">" . htmlspecialchars($genre) . "</option>";
-    }, $genre_options);
-
-    return Template::render('static/layout/add_disk/add_disk_form.html', [
-        'artist_options' => $artist_options,
-        'genre_options' => implode('', $genre_options),
-    ]);
-
 }

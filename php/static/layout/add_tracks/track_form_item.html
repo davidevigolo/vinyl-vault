@@ -1,0 +1,14 @@
+<fieldset id="track-[index]" class="track-fieldset">
+    <legend>Traccia [index]</legend>
+    <div class="input-wrapper track-inputs">
+        <div class="input-track-title">
+            <label for="title-[index]">Titolo della traccia</label>
+            <input type="text" id="title-[index]" name="title[]" maxlength="200"
+                pattern="[a-zA-Z0-9àèéìòùÀÈÉÌÒÙ\s]+">
+        </div>
+        <div class="input-track-duration">
+            <label for="duration-[index]">Durata (in secondi)</label>
+            <input type="number" id="duration-[index]" name="duration[]" class="track-duration" hidden>
+        </div>
+    </div>
+</fieldset>

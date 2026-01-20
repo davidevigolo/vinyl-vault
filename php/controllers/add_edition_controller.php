@@ -4,24 +4,18 @@ include_once '../classes/utils.php';
 
 check_user_logged_in();
 
+$release_date = $_POST['release-date'] ?? null;
+$disk_id = $_POST['disk'] ?? null;
 $name = $_POST['name'] ?? null;
-$nationality = $_POST['nationality'] ?? null;
+$country = $_POST['country'] ?? null;
 $image = $_FILES['photo'] ?? null;
 
-function add_artist_to_collection($name, $nationality, $image): bool
+function addEdition($disk_id, $name, $release_date, $country, $image)
 {
-    if(!$name || !$nationality || !$image) {
+    if (!$disk_id || !$name || !$release_date || !$country || !$image) {
         return false;
     }
     if ($image['error'] !== UPLOAD_ERR_OK) {
-        return false;
-    }
-    $name = trim($name);
-    $regex = "/^[a-zA-ZÀ-ÿ '´`^¨~-]{1,100}$/u";
-    if (preg_match($regex, $name) !== 1) {
-        return false;
-    }
-    if (in_array($nationality, array_keys(get_nationality_codes())) === false) {
         return false;
     }
     // Get file extension
@@ -35,41 +29,45 @@ function add_artist_to_collection($name, $nationality, $image): bool
         return false;
     }
 
+    $name = trim($name);
+    $regex = "/^[a-zA-ZÀ-ÿ '´`^¨~-]{1,100}$/u";
+    if (preg_match($regex, $name) !== 1) {
+        return false;
+    }
+    if (in_array($country, array_keys(get_nationality_codes())) === false) {
+        return false;
+    }
+
     $connection = DbConnection::get_instance();
+    // Insert edition without image_path first
+    $query = "INSERT INTO edition (disk_id, edition_name, release_date, country) VALUES (?, ?, ?, ?);";
     mysqli_begin_transaction($connection->get_connection());
-    
-    // Insert artist without image_path first
-    $query = "INSERT INTO author (author_name, nationality) VALUES (?, ?);";
     $stmt = mysqli_prepare($connection->get_connection(), $query);
     if (!$stmt) {
         mysqli_rollback($connection->get_connection());
         return false;
     }
-    mysqli_stmt_bind_param($stmt, 'ss', $name, $nationality);
+    mysqli_stmt_bind_param($stmt, 'isss', $disk_id, $name, $release_date, $country);
     $success = mysqli_stmt_execute($stmt);
-    
     if (!$success) {
         mysqli_rollback($connection->get_connection());
         return false;
     }
-    
-    // Get the inserted artist ID
-    $artist_id = mysqli_insert_id($connection->get_connection());
+    // Get the inserted edition ID
+    $edition_id = mysqli_insert_id($connection->get_connection());
     mysqli_stmt_close($stmt);
-    
-    // Generate image path with artist ID
-    $image_path = 'artist_' . $artist_id . '.' . $file_extension;
-    
-    // Update the record with image path
-    $query = "UPDATE author SET image_path = ? WHERE id = ?;";
-    $stmt = mysqli_prepare($connection->get_connection(), $query);
-    if (!$stmt) {
+    // Generate image path with edition ID
+    $image_path = 'edition_' . $edition_id . '.' . $file_extension;
+    // Update edition with image_path
+    $update_query = "UPDATE edition SET image_path = ? WHERE edition_id = ?;";
+    $update_stmt = mysqli_prepare($connection->get_connection(), $update_query);
+    if (!$update_stmt) {
         mysqli_rollback($connection->get_connection());
         return false;
     }
-    mysqli_stmt_bind_param($stmt, 'si', $image_path, $artist_id);
-    $success = mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
+    mysqli_stmt_bind_param($update_stmt, 'si', $image_path, $edition_id);
+    $success = mysqli_stmt_execute($update_stmt);
+    mysqli_stmt_close($update_stmt);
     if ($success) {
         // Resolve absolute upload path and ensure directory exists
         $upload_dir = dirname(__DIR__, 2) . '/assets/uploaded_images';
@@ -86,7 +84,7 @@ function add_artist_to_collection($name, $nationality, $image): bool
         $move_ok = move_uploaded_file($file_tmp, $destination);
         $success = $success && $move_ok;
     }
-    if(!$success) {
+    if (!$success) {
         mysqli_rollback($connection->get_connection());
         return false;
     }
@@ -94,7 +92,7 @@ function add_artist_to_collection($name, $nationality, $image): bool
     return true;
 }
 
-$result = add_artist_to_collection($name, $nationality, $image);
-header('Location: ../../add_artist.php?result=' . ($result ? 'success' : 'fail'));
+$success = addEdition($disk_id, $name, $release_date, $country, $image);
+header('Location: ../pages/add_edition.php?result=' . ($success ? 'success' : 'fail'));
 exit();
 ?>

@@ -1,2 +1,5 @@
-Aggiungere opt-group per artista in base alla nazionalità
-// Implementare aria-live per il form collection e wishlist
+optgroup per nazionalità -> mettere nome nazione non codice
+test aggiunta form con transactions
+aggiungere gestione errori form
+notifica raggiungimento limite tracce bottone javascript
+controlla univocità tracce per edizione, il fatto che viene creata al momento sul form

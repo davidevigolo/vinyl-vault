@@ -82,3 +82,19 @@ function get_nationality_codes()
         'ec' => 'Ecuador',
     ];
 }
+
+/**
+ * Generates HTML script tags for the given array of script names.
+ * Use this only in main templates, not components.
+ *
+ * @param array $script_names An array of script file names.
+ * @return string The generated HTML script tags.
+ */
+function get_validation_scripts($script_names)
+{
+    $scripts_html = '';
+    foreach ($script_names as $script_name) {
+        $scripts_html .= '<script src="scripts/' . htmlspecialchars($script_name) . '" defer></script>' . "\n";
+    }
+    return $scripts_html;
+}

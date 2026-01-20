@@ -6,7 +6,8 @@
             <li>Massimo 200 caratteri</li>
             <li>Caratteri consentiti: lettere, numeri e spazi</li>
         </ul>
-        <input type="text" id="title" name="title" required maxlength="200" pattern="[a-zA-Z0-9àèéìòùÀÈÉÌÒÙ\s]+" required>
+        <input type="text" id="title" name="title" required maxlength="200" pattern="[a-zA-Z0-9àèéìòùÀÈÉÌÒÙ\s]+"
+            required>
         <span class="error-message" id="title-error" aria-live="polite">Obbligatorio</span>
     </div>
 
@@ -17,6 +18,7 @@
             [artist_options]
         </select>
         <span class="error-message" id="artist-error" aria-live="polite">Obbligatorio</span>
+        <p>Non trovi l'artista? <a href="add_artist.php" aria-label="Aggiungi artista">Aggiungilo</a></p>
     </div>
 
     <div class="input-wrapper">
@@ -44,7 +46,7 @@
 
         <div class="input-wrapper">
             <label for="genre">Genere aggiuntivo 1</label>
-            <select id="genre" name="genre[]">
+            <select class="genre" name="genre[]">
                 <option value="" disabled selected>Seleziona un genere</option>
                 <option value="">Vuoto</option>
                 [genre_options]
@@ -53,7 +55,7 @@
 
         <div class="input-wrapper">
             <label for="genre">Genere aggiuntivo 2</label>
-            <select id="genre" name="genre[]">
+            <select class="genre" name="genre[]">
                 <option value="" disabled selected>Seleziona un genere</option>
                 <option value="">Vuoto</option>
                 [genre_options]
@@ -62,7 +64,7 @@
 
         <div class="input-wrapper">
             <label for="genre">Genere aggiuntivo 3</label>
-            <select id="genre" name="genre[]">
+            <select class="genre" name="genre[]">
                 <option value="" disabled selected>Seleziona un genere</option>
                 <option value="">Vuoto</option>
                 [genre_options]
@@ -71,7 +73,7 @@
 
         <div class="input-wrapper">
             <label for="genre">Genere aggiuntivo 4</label>
-            <select id="genre" name="genre[]">
+            <select class="genre" name="genre[]">
                 <option value="" disabled selected>Seleziona un genere</option>
                 <option value="">Vuoto</option>
                 [genre_options]
@@ -79,5 +81,5 @@
         </div>
     </fieldset>
 
-    <button type="submit" value="Aggiungi Disco" class="btn-primary">Aggiungi Disco</button>
+    <button type="submit" class="btn-primary">Aggiungi Disco</button>
 </form>

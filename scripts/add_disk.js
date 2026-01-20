@@ -48,6 +48,16 @@ window.addEventListener('load', function () {
         validateSelect(this, errorMessage);
     });
 
+    this.document.querySelectorAll('.genre').forEach(function(element) {
+        element.addEventListener('input', function () {
+            // Find the error message element
+            let errorMessage = document.getElementById('genre-error');
+
+            // Validate selected
+            validateSelect(this, errorMessage);
+        });
+    });
+
     this.document.getElementById('type').addEventListener('input', function () {
         // Find the error message element
         let errorMessage = document.getElementById('type-error');

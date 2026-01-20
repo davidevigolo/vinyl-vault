@@ -5,7 +5,7 @@
     <meta name="description"
         content="Aggiungi un nuovo artista su vinyl vault. Aiuta anche tu a rendere questa community il più completa possibile!">
     <meta name="keywords" content="aggiunta artista, nuovo artista, vinyl vault aggiungi artista">
-    <script src="../../scripts/add_artist.js" defer></script>
+    [validation_scripts]
     <title>Aggiungi artista - Vinyl Vault</title>
     [head] <!-- qui viene inserita la parte invariante dell'header-->
 </head>
@@ -20,13 +20,18 @@
     </nav>
     [header]
     <nav id="breadcrumb" aria-label="percorso di navigazione">
-        <a href="index.php"><span lang="en">Home</span></a> &gt;<span> Aggiungi Artista</span>
+        <ol>
+            <li><a href="index.php"><span lang="en">Home</span></a></li>
+            <li>
+                <p>Aggiungi Artista</p>
+            </li>
+        </ol>
     </nav>
     <main id="content">
         <div class="page-banner">
             <h1 class="page-title">Aggiungi Artista</h1>
         </div>
-        <div class="center-container">[add_artist_form]</div>
+        <section class="center-container" id="form">[add_artist_form]</section>
     </main>
     [footer]
 </body>

@@ -1,0 +1,45 @@
+<form id="add-tracks-form" action="/php/controllers/add_tracks_controller.php" method="POST"
+    enctype="multipart/form-data">
+
+    <div class="input-wrapper">
+        <label for="disk">Seleziona il disco</label>
+        <select id="disk" name="disk" required>
+            <option value="" disabled selected>Seleziona un disco</option>
+            [disk_options]
+        </select>
+        <span class="error-message" id="disk-error" aria-live="polite">Obbligatorio</span>
+    </div>
+
+    <div class="input-wrapper">
+        <label for="edition">Seleziona l'edizione</label>
+        <select id="edition" name="edition" required>
+            <option value="" disabled selected>Seleziona l'edizione</option>
+            [edition_options]
+        </select>
+        <span class="error-message" id="edition-error" aria-live="polite">Obbligatorio</span>
+    </div>
+    <ul class="input-hints">
+        <li>Massimo 200 caratteri</li>
+        <li>Caratteri consentiti: lettere, numeri e spazi</li>
+    </ul>
+    <fieldset id="track-0" class="track-fieldset">
+        <legend>Traccia 1</legend>
+        <div class="input-wrapper track-inputs">
+            <div class="input-track-title">
+                <label for="title-0">Titolo della traccia</label>
+                <input type="text" id="title-0" name="title[]" required maxlength="200"
+                    pattern="[a-zA-Z0-9àèéìòùÀÈÉÌÒÙ\s]+" required>
+                <span class="error-message" id="title-0-error" aria-live="polite">Obbligatorio</span>
+            </div>
+            <div class="input-track-duration">
+                <label for="duration-0">Durata (in secondi)</label>
+                <input type="number" id="duration-0" name="duration[]" class="track-duration" required hidden>
+                <span class="error-message" id="duration-0-error" aria-live="polite">Obbligatorio</span>
+            </div>
+        </div>
+    </fieldset>
+    [track_form_items]
+    <button type="button" id="add-track-button" class="btn-secondary">Aggiungi un'altra traccia</button>
+
+    <button type="submit" class="btn-primary">Salva Tracce</button>
+</form>

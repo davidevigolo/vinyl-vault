@@ -3,7 +3,7 @@ include_once 'php/classes/DbConnection.php';
 
 function get_wishlist(){
     $connection = DbConnection::get_instance();
-    $query = "SELECT w.disk_id, e.image_path, d.title, a.author_name as author, e.edition_name, e.country, e.release_date, w.priority_level
+    $query = "SELECT w.disk_id, e.image_path, d.title, a.author_name as author, a.id as author_id, e.edition_name, e.country, e.release_date, w.priority_level
        FROM wishlist w 
        JOIN edition e ON w.disk_id = e.disk_id AND w.edition_name = e.edition_name
        JOIN disk d ON d.id = e.disk_id 
@@ -34,6 +34,7 @@ function wishlist($edit_mode = false)
             $items .= Template::render($edit_mode ? 'static/layout/wishlist/wishlist_item_edit.html' : 'static/layout/wishlist/wishlist_item.html', [
                 'title' => htmlspecialchars($vinyl['title']),
                 'author' => htmlspecialchars($vinyl['author']),
+                'author_id' => htmlspecialchars($vinyl['author_id']),
                 'edition_name' => htmlspecialchars($vinyl['edition_name']),
                 'country' => htmlspecialchars($vinyl['country']),
                 'year' => htmlspecialchars(str_replace('-', '/', $vinyl['release_date'])),
