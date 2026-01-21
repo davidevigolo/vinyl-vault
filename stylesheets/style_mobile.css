@@ -140,19 +140,7 @@ a:hover {
     opacity: 0.8;
 }
 
-.btn-primary {
-    display: inline-block;
-    background: var(--brand-primary);
-    color: var(--bg-page);
-    padding: 0.55rem 1.5rem;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    border-radius: 0.5em;
-    transition: background 0.3s ease;
-    font-size: var(--font-medium);
-    white-space: nowrap;
-    text-decoration: none;
-}
+
 
 .btn-secondary {
     margin: auto;
@@ -178,7 +166,7 @@ a.btn-cancel,
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
     text-decoration: none;
-    border-radius: 1em;
+    border-radius: 0.5em;
     border: 0.1em solid var(--border-default);
     transition: background 0.3s ease;
     font-size: var(--font-medium);
@@ -1023,3 +1011,134 @@ footer .profile-links a:hover {
 
 
 /* manca album page mobile ---------------------------------------------------------->
+
+
+/* Collection & Wishlist pages */
+
+.page-title {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.collection-grid-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+    padding: 0;
+    padding-top: 0em;
+    padding-bottom: 0rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 1.5rem;
+    width: 100%;
+    justify-items: center;
+}
+
+.collection-item {
+  background: var(--bg-surface);
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: row;
+}
+
+.collection-item img{
+    width: 150px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-right: 20px;
+}
+
+.collection-item-details {
+    text-align: left;
+}
+
+.collection-item-details *{
+    margin: 0.2rem 0;
+}
+
+.collection-item-details h2{
+    margin-bottom: 0rem;
+}
+
+.collection-edition-name {
+    margin-bottom: 1em;
+}
+
+.remove-button {
+    background: var(--brand-primary);
+    color: var(--bg-surface);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5em;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    background-color: var(--bg-error);
+}
+
+input[type="number"] {
+    padding: 0.25rem;
+    text-align: center;
+    border: 0.1em solid var(--border-default);
+    border-radius: 0.25em;
+    background-color: var(--bg-surface);
+    color: var(--text-primary)
+}
+
+.save-button {
+    background: var(--brand-primary);
+    color: var(--bg-surface);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5em;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.priority-error-message {
+    display: none;
+    color: var(--bg-error);
+    font-size: 0.9em;
+    margin: 0em;
+}
+
+.collection-grid-actions {
+    text-align: center;
+    margin: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.collection-grid-actions button {
+    border: none;
+    cursor: pointer;
+}
+
+input[type="checkbox"] {
+    width: 1.2rem;
+    height: 1.2rem;
+    cursor: pointer;
+}
+
+h2#empty-collection-heading {
+    align-self: center;
+}
+
+p#empty-collection-paragraph {
+    margin-bottom: 8rem;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    text-wrap: balance;
+}
+
+img#empty-collection-image {
+    margin-top: 4rem;
+    max-width: 300px;
+    height: auto;
+}
+
+/* End Collection & Wishlist pages */

@@ -280,3 +280,13 @@ header .site-nav-links li {
 }
 
 /* End Esplora Page */
+
+
+/* Collection & Wishlist pages */
+
+.collection-grid-container {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 1em 0;
+}
+
+/* End Collection & Wishlist pages */
