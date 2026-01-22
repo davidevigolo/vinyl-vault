@@ -8,7 +8,7 @@ La struttura delle directory va a separare in maniera netta struttura presentazi
 ```
 ## Sistema di Template e Placeholder
 
- E' importante notare che non vanno codificate come placeholder parti che vanno valorizzate dal content editor, in quanto quest'ultimo si interfaccia solamente coi file html e non con i file php. Possono essere invece codificate come placeholder parti che variano in base al contenuto del database o in base a logiche di business (p.e. lista vinili in tendenza, lista categorie, ecc).
+E' importante notare che non vanno codificate come placeholder parti che vanno valorizzate dal content editor, in quanto quest'ultimo si interfaccia solamente coi file html e non con i file php. Possono essere invece codificate come placeholder parti che variano in base al contenuto del database o in base a logiche di business (p.e. lista vinili in tendenza, lista categorie, ecc).
 
 Per ogni pagina html deve esserci un corrispondente php. Le parti comuni del codice html che verranno riutilizzate vanno inserite nei file di layout (header.html, head.html, footer.html, ecc) nella directory `php/static/layout` e richiamate nei file html tramite i placeholder. Ad esempio, per inserire l'header in ogni pagina html si userà il placeholder `\[header\]` che verrà sostituito con il contenuto del file `php/static/layout/header.html`. E' compito poi del php sostituire i placeholder con il contenuto adeguato. Questo si fa tramite il metodo `Template::render()` (v. esempio sotto).
 ```html

@@ -63,6 +63,10 @@ Options -Indexes
     Order Allow,Deny
     Allow from all
 </Files>
+<Files "unsetuid.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
 <Files "404.php">
     Order Allow,Deny
     Allow from all
@@ -88,6 +92,10 @@ Options -Indexes
     Allow from all
 </Files>
 <Files "add_tracks_controller.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "login.php">
     Order Allow,Deny
     Allow from all
 </Files>
