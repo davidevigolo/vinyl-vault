@@ -11,6 +11,7 @@
     --bg-section: #D5EDFF; /* Blu0 - Banner principali */
     --bg-subsection: #B8DAF3; /* Blu1 - Banner secondari */
     --bg-surface: #FFFFFF;
+    --bg-header: rgba(240, 248, 255, 0.95);
 
      /* Texts */
      --text-primary: #1C1C1C;
@@ -36,7 +37,8 @@
   
     --bg-error: #d93025;
 
-
+    /* Images */
+    --small-logo-img: url('../assets/images/logo-min-light.png');
     --hero-logo-img: url('../assets/images/logo-full-light.png');
 }
 
@@ -47,6 +49,7 @@
     --bg-section: #002845; /* Blu9 - Banner principali */
     --bg-subsection: #003861; /* Blu8 - Banner secondari */
     --bg-surface: #000000;
+    --bg-header: rgba(36, 40, 44, 0.95); 
 
      /* Texts */
      --text-primary: #FAFAFA;
@@ -71,7 +74,7 @@
   
     --bg-error: #ff6f64;
 
-
+    --small-logo-img: url('../assets/images/logo-min-dark.png');
     --hero-logo-img: url('../assets/images/logo-full-dark.png');
 }
 
@@ -268,7 +271,7 @@ button[type="submit"] {
 
 h1.hide {
     display: block;
-    background-image: url('../assets/images/logo-min.png');
+    background-image: var(--small-logo-img);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: left center;
@@ -307,7 +310,7 @@ h1.hide {
 }
 
 header {
-    background: rgba(240, 248, 255, 0.95);
+    background: var(--bg-header);
     border-bottom: var(--border-default) solid 0.1em;
     top: 0;
     position: relative;
@@ -480,7 +483,7 @@ header {
 #main-footer .footer-logo .hide {
     /* Image Replacement Technique */    
     display: block;
-    background-image: url('../assets/images/logo-min.png');
+    background-image: var(--small-logo-img);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -890,7 +893,7 @@ footer .profile-links a:hover {
 .cta-content h2 {
     font-size: var(--font-xl);
     font-weight: 700;
-    color: #1c1c1c;
+    color: var(--text-primary);
     margin-bottom: 0.5rem;
 }
 
