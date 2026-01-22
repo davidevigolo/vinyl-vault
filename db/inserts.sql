@@ -1102,8 +1102,7 @@ INSERT INTO edition_track_part_of (disk_id, edition_name, track_id, track_number
 (38, 'Single', 359, 1), (38, 'Single', 360, 2),
 -- Sugar, We`re Goin Down (Fall Out Boy) - ID 39 - Tracks 361-362
 (39, 'Single', 361, 1), (39, 'Single', 362, 2),
-
--- Drake
+-- Certified Lover Boy (Drake) - ID 40 - Tracks 432-452
 (40, 'Standard Edition', 432, 1), (40, 'Standard Edition', 433, 2), (40, 'Standard Edition', 434, 3),
 (40, 'Standard Edition', 435, 4), (40, 'Standard Edition', 436, 5), (40, 'Standard Edition', 437, 6),
 (40, 'Standard Edition', 438, 7), (40, 'Standard Edition', 439, 8), (40, 'Standard Edition', 440, 9),
