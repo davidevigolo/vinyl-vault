@@ -1,20 +1,20 @@
 /* General info */
 @supports (font-size: clamp(1rem, 1vi, 1rem)) {
     :root {
---font-small: clamp(1.25rem, 1.22rem + 0.15vw, 1.375rem);
-    
-    /* 2. MEDIUM (Ex Large): 22px -> 24px */
-    --font-medium: clamp(1.375rem, 1.33rem + 0.2vw, 1.5rem);
-    
-    /* 3. LARGE (Ex XL): 24px -> 28px */
-    --font-large: clamp(1.5rem, 1.4rem + 0.5vw, 1.75rem);
-    
-    /* 4. XL (Ex XXL): 28px -> 34px */
-    --font-xl: clamp(1.75rem, 1.6rem + 1vw, 2.125rem);
-    
-    /* 5. XXL (Nuovo valore contenuto): 34px -> 38px */
-    /* Più grande dell'XL ma mai oltre i 38-40px */
-    --font-xxl: clamp(2.125rem, 2.05rem + 0.5vw, 2.375rem);
+        --font-small: clamp(1.25rem, 1.22rem + 0.15vw, 1.375rem);
+
+        /* 2. MEDIUM (Ex Large): 22px -> 24px */
+        --font-medium: clamp(1.375rem, 1.33rem + 0.2vw, 1.5rem);
+
+        /* 3. LARGE (Ex XL): 24px -> 28px */
+        --font-large: clamp(1.5rem, 1.4rem + 0.5vw, 1.75rem);
+
+        /* 4. XL (Ex XXL): 28px -> 34px */
+        --font-xl: clamp(1.75rem, 1.6rem + 1vw, 2.125rem);
+
+        /* 5. XXL (Nuovo valore contenuto): 34px -> 38px */
+        /* Più grande dell'XL ma mai oltre i 38-40px */
+        --font-xxl: clamp(2.125rem, 2.05rem + 0.5vw, 2.375rem);
     }
 }
 
@@ -31,7 +31,7 @@
 
 .center-container {
     max-width: 55em;
-    padding-left: 1.5em;;
+    padding-left: 1.5em;
     padding-right: 1.5em;
     margin: auto;
     width: 100%;
@@ -49,7 +49,7 @@ header {
 }
 
 .header-container {
-    display: grid; 
+    display: grid;
     grid-template-columns: 0.5fr 2fr;
     align-items: center;
     justify-content: space-between;
@@ -57,7 +57,7 @@ header {
     padding-bottom: 1.3em;
 }
 
-.header-right .nav-links, 
+.header-right .nav-links,
 .header-right .actions-group,
 .header-right .profile-nav,
 .header-right .v-divider {
@@ -79,7 +79,7 @@ header {
     flex-direction: column;
     align-items: center;
     justify-items: center;
-    
+
     position: absolute;
     top: 100%;
     left: 0;
@@ -88,9 +88,9 @@ header {
     height: auto;
 
     background: var(--bg-surface);
-    padding: 4rem 0 2rem 0; 
+    padding: 4rem 0 2rem 0;
     border-bottom: 2px solid var(--border-default);
-    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
     z-index: 999;
 }
 
@@ -147,20 +147,21 @@ header {
 
 
 #back-to-top {
-    width: 3em; 
+    width: 3em;
     height: 3em;
-    font-size: var(--font-xxl); 
-    bottom: 1.5em; 
+    font-size: var(--font-xxl);
+    bottom: 1.5em;
     padding: 0;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
     line-height: 2.5;
 }
+
 /* End Footer */
 
 
 /* Hero Section */
 
-.hero > .center-container{
+.hero>.center-container {
     grid-template-columns: 1fr;
     gap: 1.5em;
     padding-top: 2em;
@@ -207,7 +208,7 @@ nav#breadcrumb {
 
 /* Presentation Section */
 
-#presentation > .center-container{
+#presentation>.center-container {
     text-align: center;
     text-wrap: balance;
 }
@@ -223,14 +224,15 @@ nav#breadcrumb {
 
 .feature {
     display: grid;
-    grid-template-columns: 0.5fr 1fr; 
+    grid-template-columns: 0.5fr 1fr;
     grid-template-rows: auto auto;
     gap: 0.5rem 1rem;
     justify-content: center;
     align-items: center;
-    max-width: 80%; 
+    max-width: 80%;
     margin: 0 auto;
 }
+
 .feature h3 {
     font-size: var(--font-xl);
     grid-column: 2;
@@ -238,7 +240,8 @@ nav#breadcrumb {
     text-align: left;
     margin: 0;
 }
-.feature > p {
+
+.feature>p {
     font-size: var(--font-medium);
     grid-column: 1 / span 2;
     grid-row: 2;
@@ -261,10 +264,10 @@ nav#breadcrumb {
 
 /* Card Section (trending-vinyls) */
 
-#trending-vinyls > .center-container,
-#most-liked-artists > .center-container,
-#recommendations > .center-container,
-#most-collected > .center-container {
+#trending-vinyls>.center-container,
+#most-liked-artists>.center-container,
+#recommendations>.center-container,
+#most-collected>.center-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -282,7 +285,7 @@ nav#breadcrumb {
 }
 
 .section-title {
-    display: contents; 
+    display: contents;
 }
 
 .section-title h2 {
@@ -306,21 +309,21 @@ nav#breadcrumb {
 }
 
 .cta-banner {
-    flex-direction: column; 
-    align-items: center; 
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    padding: 2.5rem 1.5rem; 
+    padding: 2.5rem 1.5rem;
     gap: 1.5rem;
-    border-radius: 25px; 
+    border-radius: 25px;
 }
 
 .cta-content p {
-    max-width: 100%; 
+    max-width: 100%;
     line-height: 1.5;
-    text-wrap: pretty; 
+    text-wrap: pretty;
 }
 
-.cta-banner a, 
+.cta-banner a,
 .cta-banner button {
     width: fit-content;
     padding: 0.8rem 2rem;
@@ -336,24 +339,25 @@ nav#breadcrumb {
 #album-week img {
     justify-self: center;
 }
+
 /* End Esplora Page */
 
 
 /* Wishlist Section */
 
-#wishlist{
+#wishlist {
     width: 100%;
     padding: 0;
     grid-template-columns: repeat(1, 1fr);
     justify-items: center;
 }
 
-.wishlist-item{
+.wishlist-item {
     width: 70%;
     margin: auto;
 }
 
-input{
+input {
     display: block;
     width: 100%;
     margin-top: 0.5rem;

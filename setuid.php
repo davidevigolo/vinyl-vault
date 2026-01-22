@@ -3,4 +3,3 @@
 session_start();
 $_SESSION['user_id'] = 1;
 echo "User ID set to 1 for testing purposes.";
-?>
