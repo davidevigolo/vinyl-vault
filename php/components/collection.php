@@ -3,7 +3,7 @@ include_once 'php/classes/DbConnection.php';
 
 function get_wishlist(){
     $connection = DbConnection::get_instance();
-    $query = "SELECT o.disk_id, e.image_path, d.title, a.author_name as author, e.edition_name, e.country, e.release_date
+    $query = "SELECT o.disk_id, e.image_path, d.title, a.author_name as author, e.edition_name, e.country, e.release_date, o.rating
        FROM ownership o 
        JOIN edition e ON o.disk_id = e.disk_id AND o.edition_name = e.edition_name
        JOIN disk d ON d.id = e.disk_id 
@@ -39,7 +39,8 @@ function collection($edit_mode = false)
                 'year' => htmlspecialchars(str_replace('-', '/', $vinyl['release_date'])),
                 'year_datetime' => htmlspecialchars($vinyl['release_date']),
                 'image_url' => 'assets/images/pollo.webp',
-                'disk_id' => htmlspecialchars($vinyl['disk_id'])
+                'disk_id' => htmlspecialchars($vinyl['disk_id']),
+                'rating_value'  => intval($vinyl['rating'] ?? 0)
             ]);
         }
     }

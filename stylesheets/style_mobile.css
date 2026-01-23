@@ -13,10 +13,10 @@
     --bg-surface: #FFFFFF;
     --bg-header: rgba(240, 248, 255, 0.95);
 
-     /* Texts */
-     --text-primary: #1C1C1C;
-     --text-secondary: #0074C7;  /* Blu5 - Altri testi */
-     --text-muted: #474747;
+    /* Texts */
+    --text-primary: #1C1C1C;
+    --text-secondary: #005A9C;  /* Blu6 - Altri testi */
+    --text-muted: #474747;
 
     /* Borders & Accents */
     --border-default: #D9D9D9;
@@ -51,10 +51,10 @@
     --bg-surface: #000000;
     --bg-header: rgba(36, 40, 44, 0.95); 
 
-     /* Texts */
-     --text-primary: #FAFAFA;
-     --text-secondary: #2589D0;  /* Blu4 - Altri testi */
-     --text-muted: #a1a1a1;
+    /* Texts */
+    --text-primary: #FAFAFA;
+    --text-secondary: #3c99dd;  /* Blu3 - Altri testi */
+    --text-muted: #a1a1a1;
 
     /* Borders & Accents */
     --border-default: #49454f;
@@ -804,6 +804,7 @@ footer .profile-links a:hover {
     color: inherit;
     display: block;
     height: 100%;
+    weight: 100%;
 }
 
 .vinyl-card {
@@ -1043,8 +1044,8 @@ footer .profile-links a:hover {
 }
 
 .page-banner img {
-    width: 60px;
-    height: 60px;
+    width: 5em;
+    height: 5em;
     object-fit: contain;
     border-radius: 0.5em;
 }
@@ -1064,49 +1065,166 @@ footer .profile-links a:hover {
     grid-template-columns: repeat(1, 1fr);
     gap: 2rem;
     padding: 0;
-    padding-top: 0em;
+    padding-top: 1em;
     padding-bottom: 0rem;
     margin: 0 auto;
-    margin-top: 1.5rem;
+    gap: 2.5em;
     width: 100%;
     justify-items: center;
 }
 
 .collection-item {
+    align-items: center;
     background: var(--bg-surface);
     border: 1px solid var(--border-dark);
-    border-radius: 1.3em;
-    padding: 1.5rem;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    display: flex;
-    flex-direction: row;
+    border-radius: 1.3em;
+    padding: 1.5rem 2rem;
+    flex-direction: column;
+    
     width: 100%;
-    min-width: 0;
+    height: auto;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.collection-item img{
-    width: 150px;
-    height: auto;
-    object-fit: contain;
-    border-radius: 8px;
-    margin-right: 20px;
+.collection-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(255, 255, 255, 0.25);
+}
+
+.disk-info {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+.collection-item img {
+    width: 15em;
+    height: 15em;
+    object-fit: cover;
+    border-radius: 1rem;
+    aspect-ratio: 1 / 1; 
+    flex-shrink: 0;
 }
 
 .collection-item-details {
-    text-align: left;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0 3em;
 }
 
-.collection-item-details *{
-    margin: 0.2rem 0;
+.delete-selection {
+    margin-top: 2em;
+    color: var(--bg-error);
+    font-size: var(--font-large);
 }
 
-.collection-item-details h2{
-    margin-bottom: 0rem;
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    justify-content: center;
+    line-height: 1;
 }
 
-.collection-edition-name {
-    margin-bottom: 1em;
+.checkbox-container input[type="checkbox"] {
+    width: 45px;
+    height: 45px;
+    margin: 0;
+    vertical-align: middle;
+}
+
+.collection-item .artist-name {
+    font-size: var(--font-medium);
+    margin-bottom: 0;
+}
+
+.collection-item .album-title {
+    font-size: var(--font-xl);
+}
+
+.collection-item .edition-info {
+    font-size: var(--font-large);
+}
+
+.release-info {
+    font-size: var(--font-medium);
+    font-family: var(--font-secondary);
+    color: var(--text-muted);
+
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.collection-rating-section {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    border-top: 1px solid var(--border-default);
+    padding-top: 1.5em;
+    margin-top: 0.5em;
+    flex-direction: column;
+}
+
+.stars-container {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    cursor: pointer;
+}
+
+.star {
+    font-size: 3rem;
+    color: var(--border-dark);
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s ease, transform 0.1s ease;
+}
+
+.star:hover {
+    transform: scale(1.3);
+}
+
+.star.active {
+    color: var(--brand-primary);
+}
+
+.stars-container.readonly {
+    cursor: default;
+}
+
+.stars-container.readonly .star {
+    cursor: default;
+    pointer-events: none;
+}
+
+.evaluation-label {
+    margin: 0;
+    font-size: var(--font-small);
+    color: var(--text-muted);
+}
+
+.btn-reset-stars {
+    background: none;
+    border: none;
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: 0.5rem;
+    transition: background 0.2s;
+    font-size: var(--font-xxl);
+    color: var(--bg-error)
+}
+
+.btn-reset-stars:hover {
+    color: var(--text-muted);
 }
 
 .remove-button {
@@ -1156,12 +1274,6 @@ input[type="number"] {
 
 .collection-grid-actions button {
     border: none;
-    cursor: pointer;
-}
-
-input[type="checkbox"] {
-    width: 1.2rem;
-    height: 1.2rem;
     cursor: pointer;
 }
 

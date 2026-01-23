@@ -90,6 +90,7 @@ CREATE TABLE IF NOT EXISTS ownership(
     disk_id INT,
     edition_name VARCHAR(100),
     date_acquired DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    rating TINYINT DEFAULT NULL CHECK (rating >= 0 AND rating <= 5),
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (disk_id, edition_name) REFERENCES edition(disk_id, edition_name) ON DELETE CASCADE,
     PRIMARY KEY (user_id, disk_id, edition_name)

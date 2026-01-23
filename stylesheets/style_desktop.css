@@ -286,7 +286,53 @@ header .site-nav-links li {
 
 .collection-grid-container {
     grid-template-columns: repeat(2, 1fr);
-    padding: 1em 0;
 }
 
+.collection-item img {
+    width: 12em;
+    height: 12em;
+}
+
+.collection-item-details {
+    padding: 0 0 0 2em;
+}
+
+.collection-rating-section {
+    justify-content: space-between;
+}
+
+.star {
+    font-size: 2.2rem;
+}
+
+.delete-selection {
+    margin-top: 1.5em;
+}
+
+.btn-reset-stars {
+    width: 1em;
+    height: 1em;
+}
+
+.checkbox-container input[type="checkbox"] {
+    /* Checkbox più piccola rispetto al "tappone" per dita del mobile */
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.collection-grid-actions {
+    /* Spostiamo i bottoni di gestione a destra */
+    justify-content: flex-end;
+}
+
+/* Empty State */
+img#empty-collection-image {
+    max-width: 450px;
+    margin-top: 2rem;
+}
+
+p#empty-collection-paragraph {
+    font-size: 1.5rem;
+}
 /* End Collection & Wishlist pages */
