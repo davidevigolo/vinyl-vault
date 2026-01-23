@@ -1024,11 +1024,6 @@ footer .profile-links a:hover {
 /* End 404 Page */
 
 
-
-
-/* manca album page mobile ---------------------------------------------------------->
-
-
 /* Collection & Wishlist pages */
 
 .page-banner {
@@ -1423,13 +1418,15 @@ img#empty-collection-image {
     font-size: var(--font-medium);
 }
 
-.album-genres {
+.album-genres,
+.artist-genres {
     display: flex;
     justify-content: center;
     gap: 0.3em;
 }
 
-.album-genres span {
+.album-genres span,
+.artist-genres span {
     background-color: var(--bg-subsection);
     color: var(--text-secondary);
     font-size: var(--font-small);
@@ -1483,7 +1480,10 @@ img#empty-collection-image {
 }
 
 #tracklist-heading,
-#versions-heading {
+#versions-heading,
+#albums-title,
+#singles-title,
+#similar-artists-title {
     width: 100%;
     color: var(--brand-primary-dark);
     font-size: var(--font-xxxl);
@@ -1583,3 +1583,33 @@ img#empty-collection-image {
 
 /* End Album Page */
 
+
+/* Artist Page */
+
+#albums-title,
+#singles-title,
+#similar-artists-title {
+    margin-top: 1.2em;
+}
+
+.hero .artist-image {
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+#artist-name {
+    font-size: var(--font-xxxl);
+    margin-bottom: 0.2em;
+    font-family: var(--font-secondary);
+}
+
+.hero-text h1 + p {
+    font-size: var(--font-small);
+    margin-bottom: 1rem;
+    display: block;
+}
+
+/* Artist Page */
