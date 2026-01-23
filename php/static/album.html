@@ -14,12 +14,14 @@
     [header]
 
     <nav id="breadcrumb" aria-label="Breadcrumb">
-      <ol>
-        <li><a href="index.php">Home</a></li>
-        <li><a href="esplora.php">Esplora</a></li>
-        <li><a href="artist.php?id=[artist_id]">[artist_name]</a></li>
-        <li aria-current="page">[album_title]</li>
-      </ol>
+      <div class="center-container">
+        <ol>
+          <li><a href="index.php">Home</a></li>
+          <li><a href="esplora.php">Esplora</a></li>
+          <li><a href="artist.php?id=[artist_id]">[artist_name]</a></li>
+          <li aria-current="page">[album_title]</li>
+        </ol>
+      </div>
     </nav>
 
     <main id="content">
@@ -38,7 +40,9 @@
             <div class="album-genres" role="list" aria-label="Generi musicali">
               [album_genres]
             </div>
+
             <div class="album-rating" role="img" aria-label="Valutazione media [average_rating] su 5 stelle, basata su [review_count] recensioni">
+              <p class="rating-label">Valutazione dei collezionisti</p>
               <div class="rating-stars" aria-hidden="true">
                 <span class="stars">★★★★★</span>
               </div>

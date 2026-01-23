@@ -335,3 +335,22 @@ p#empty-collection-paragraph {
     font-size: 1.5rem;
 }
 /* End Collection & Wishlist pages */
+
+
+
+
+
+/* Album Page
+
+
+.album-artist a::after{
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease-out;
+}
+
+.album-artist a:hover::after {
+    transform: scaleX(1); 
+}
+
+*/
