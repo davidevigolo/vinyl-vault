@@ -1451,15 +1451,8 @@ img#empty-collection-image {
     margin-top: 8px;
 }
 
-.rating-stars {
-    font-size: 2.8rem;
-    letter-spacing: 2px;
-    color: #0056b3; /* Blu delle stelle */
-    margin-bottom: 5px;
-}
-
-/* Se vuoi simulare le stelle vuote/piene con il testo ★★☆☆☆ */
 .stars {
+    padding-top: 0.3em;
     display: inline-block;
     font-size: 3rem;
     color: var(--border-dark);
@@ -1523,7 +1516,7 @@ img#empty-collection-image {
 
 .track-number {
     text-align: center;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--text-secondary);
     font-size: var(--font-large);
     font-family: var(--font-tertiary);
