@@ -20,4 +20,13 @@ window.addEventListener('load', function() {
             }
         });
     });
+
+        this.document.querySelectorAll('.priority-fill').forEach(function(bar) {
+        const level = bar.getAttribute('data-level');
+        if (level !== null) {
+            setTimeout(() => {
+                bar.style.width = level + '%';
+            }, 100);
+        }
+    });
 });

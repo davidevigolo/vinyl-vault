@@ -6,7 +6,7 @@
             <h2 class="album-title">[title]</h2>
             <p class="edition-info">[edition_name]</p>
             <p class="release-info">[country] - <time datetime="[year_datetime]">[year]</time></p>
-                    <div class="collection-rating-section" data-disk-id="123" data-edition="Standard">
+            <div class="collection-rating-section">
                 <div class="stars-container">
                     <span class="star" data-value="1">★</span>
                     <span class="star" data-value="2">★</span>
@@ -23,20 +23,13 @@
             <input type="hidden" form="collection-form" name="disk_id[]" value="[disk_id]"/>
             <input type="hidden" form="collection-form" name="edition_name[]" value="[edition_name]"/>
 
-            
+            <input type="hidden" name="rating" class="rating-input" value="[rating_value]">
         </div>
-        
     </div>
     <div class="delete-selection">
-                <label class="checkbox-container">
-                    <input 
-                        type="checkbox" 
-                        form="collection-form" 
-                        name="items_to_delete[]" 
-                        value="[disk_id]_[edition_name]" 
-                        aria-label="Seleziona [title] per eliminazione"
-                    />
-                <span class="label-text">Elimina disco</span>
-                </label>
-        </div>
+        <label class="checkbox-container">
+            <input type="checkbox" form="collection-form" name="items_to_delete[]" value="[disk_id]_[edition_name]" aria-label="Seleziona [title] per l'eliminazione"/>
+            <span class="label-text">Elimina disco</span>
+        </label>
+    </div>
 </article>

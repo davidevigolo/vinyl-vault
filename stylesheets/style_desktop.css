@@ -153,7 +153,9 @@ header .site-nav-links li {
 
 
 /* Breadcrumb */
-
+#breadcrumb {
+    font-size: var(--font-medium);
+}
 /* da sistemare --------------------------------------------------------------------- */
 
 /* End Breadcrumb */
@@ -315,18 +317,15 @@ header .site-nav-links li {
 }
 
 .checkbox-container input[type="checkbox"] {
-    /* Checkbox più piccola rispetto al "tappone" per dita del mobile */
     width: 24px;
     height: 24px;
     cursor: pointer;
 }
 
 .collection-grid-actions {
-    /* Spostiamo i bottoni di gestione a destra */
     justify-content: flex-end;
 }
 
-/* Empty State */
 img#empty-collection-image {
     max-width: 450px;
     margin-top: 2rem;
