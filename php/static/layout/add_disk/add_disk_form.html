@@ -1,4 +1,4 @@
-<form id="add-disk-form" action="/php/controllers/add_disk_controller.php" method="POST" enctype="multipart/form-data">
+<form id="add-disk-form" action="add_disk.php" method="POST" enctype="multipart/form-data">
 
     <div class="input-wrapper">
         <label for="title">Titolo del Disco</label>
@@ -6,8 +6,7 @@
             <li>Massimo 200 caratteri</li>
             <li>Caratteri consentiti: lettere, numeri e spazi</li>
         </ul>
-        <input type="text" id="title" name="title" required maxlength="200" pattern="[a-zA-Z0-9àèéìòùÀÈÉÌÒÙ\s]+"
-            required>
+        <input type="text" id="title" name="title" required maxlength="200" pattern="[a-zA-Z0-9àèéìòùÀÈÉÌÒÙ\s]+" value="[title]" required>
         <span class="error-message" id="title-error" aria-live="polite">Obbligatorio</span>
     </div>
 

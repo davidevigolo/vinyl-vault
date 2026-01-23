@@ -1,47 +1,37 @@
 <?php
 
-session_start();
-include_once '../classes/DbConnection.php';
-include_once '../classes/utils.php';
+include_once 'php/classes/DbConnection.php';
+include_once 'php/classes/utils.php';
 
-check_user_logged_in();
-
-$title = $_POST['title'] ?? null;
-$artist = $_POST['artist'] ?? null;
-$type = $_POST['type'] ?? null;
-$genres = $_POST['genre'] ?? null;
-
-$genres = array_filter($genres, fn($value) => trim($value) !== '');
-
-function add_disk_to_collection($title, $artist, $type, $genres)
+function add_disk_to_collection($title, $artist, $type, $genres): array
 {
 
     /* Validate inputs */
     if (!$title || !$artist || !$type || !$genres || !is_array($genres) || count($genres) == 0) {
-        return false;
+        return ['success' => false, 'error' => 'Uno o più campi devono ancora essere compilati'];
     }
 
     if (trim($title) === '' || trim($type) === '' || trim($artist) === '') {
-        return false;
+        return ['success' => false, 'error' => 'Uno o più campi devono ancora essere compilati'];
     }
 
     $regex = "/^[a-zA-Z0-9À-ÿ '´`^¨~\-,.!?()]{1,200}$/u";
     if (preg_match($regex, $title) !== 1) {
-        return false;
+        return ['success' => false, 'error' => 'Formato titolo non valido', 'fields_to_reset' => ['title']];
     }
 
     foreach ($genres as $genre) {
         if (trim($genre) === '') {
-            return false;
+            return ['success' => false, 'error' => 'Uno o più generi non sono validi', 'fields_to_reset' => ['genre']];
         }
     }
 
     if (strlen($title) > 200) {
-        return false;
+        return ['success' => false, 'error' => 'Titolo troppo lungo', 'fields_to_reset' => ['title']];
     }
 
     if (!in_array($type, ['SINGLE', 'EP', 'ALBUM'])) {
-        return false;
+        return ['success' => false, 'error' => 'Tipo di disco non valido', 'fields_to_reset' => ['type']];
     }
 
     /* Insert into database */
@@ -57,7 +47,7 @@ function add_disk_to_collection($title, $artist, $type, $genres)
 
     if (!$stmt || !$stmt_author || !$stmt_genre) {
         mysqli_rollback($connection->get_connection());
-        return false;
+        return ['success' => false, 'error' => 'Abbiamo riscontrato un errore, probabilmente stai provando ad inserire un disco già presente nel nostro database. Se il problema persiste contattaci a vinylvault@gmail.com'];
     }
     mysqli_stmt_bind_param($stmt, 'ss', $title, $type);
     $success = mysqli_stmt_execute($stmt);
@@ -65,7 +55,7 @@ function add_disk_to_collection($title, $artist, $type, $genres)
 
     if (!$success) {
         mysqli_rollback($connection->get_connection());
-        return false;
+        return ['success' => false, 'error' => 'Abbiamo riscontrato un errore, probabilmente stai provando ad inserire un disco già presente nel nostro database. Se il problema persiste contattaci a vinylvault@gmail.com'];
     }
 
     $disk_id = mysqli_insert_id($connection->get_connection());
@@ -74,7 +64,7 @@ function add_disk_to_collection($title, $artist, $type, $genres)
     mysqli_stmt_close($stmt_author);
     if (!$success) {
         mysqli_rollback($connection->get_connection());
-        return false;
+        return ['success' => false, 'error' => 'Abbiamo riscontrato un errore, probabilmente stai provando ad inserire un disco già presente nel nostro database. Se il problema persiste contattaci a vinylvault@gmail.com'];
     }
 
     foreach ($genres as $genre) {
@@ -82,16 +72,11 @@ function add_disk_to_collection($title, $artist, $type, $genres)
         $success = mysqli_stmt_execute($stmt_genre);
         if (!$success) {
             mysqli_rollback($connection->get_connection());
-            return false;
+            return ['success' => false, 'error' => 'Abbiamo riscontrato un errore, probabilmente stai provando ad inserire un disco già presente nel nostro database. Se il problema persiste contattaci a vinylvault@gmail.com'];
         }
     }
     mysqli_stmt_close($stmt_genre);
     mysqli_commit($connection->get_connection());
 
-    return true;
+    return ['success' => true];
 }
-
-$result = add_disk_to_collection($title, $artist, $type, $genres);
-header('Location: ../../add_disk.php?result=' . ($result ? 'success' : 'error'));
-exit();
-?>

@@ -1,12 +1,12 @@
-<form id="add-artist-form" action="/php/controllers/add_artist_controller.php" method="POST" enctype="multipart/form-data">
-
+[errors]
+<form id="add-artist-form" action="add_artist.php" method="POST" enctype="multipart/form-data">
     <div class="input-wrapper">
         <label for="name">Nome dell'artista</label>
         <ul class="input-hints">
             <li>Massimo 100 caratteri</li>
             <li>Caratteri consentiti: lettere, numeri e spazi</li>
         </ul>
-        <input type="text" id="name" name="name" required maxlength="100" pattern="[a-zA-Z0-9àèéìòùÀÈÉÌÒÙ\s]+" required>
+        <input type="text" id="name" name="name" required maxlength="100" pattern="[a-zA-Z0-9àèéìòùÀÈÉÌÒÙ\s]+" value="[name]" required>
         <span class="error-message" id="name-error" aria-live="polite">Obbligatorio</span>
     </div>
 

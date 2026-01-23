@@ -37,48 +37,47 @@ function get_genre_options()
     return $genres;
 }
 
-function add_disk_form($result)
+function add_disk_form($title, $_artist, $type, $_genres, $errors): string
 {
-    if ($result === 'success') {
-        return Template::render('static/layout/add_disk/add_disk_success.html', []);
-    } else {
-        $artists = get_artists();
+    $artists = get_artists();
 
-        // Group artists by nationality
-        $grouped_artists = [];
-        foreach ($artists as $artist) {
-            $nationality = $artist['nationality'];
-            if (!isset($grouped_artists[$nationality])) {
-                $grouped_artists[$nationality] = [];
-            }
-            $grouped_artists[$nationality][] = $artist;
+    // Group artists by nationality
+    $grouped_artists = [];
+    foreach ($artists as $artist) {
+        $nationality = $artist['nationality'];
+        if (!isset($grouped_artists[$nationality])) {
+            $grouped_artists[$nationality] = [];
         }
-
-        // Sort nationalities for consistent display
-        ksort($grouped_artists);
-
-        // Build HTML with optgroups
-        $artist_options = '';
-        foreach ($grouped_artists as $nationality => $artists_in_group) {
-            $artist_options .= '<optgroup label="' . htmlspecialchars(strtoupper($nationality)) . '">';
-            foreach ($artists_in_group as $artist) {
-                if ($artist['nationality'] != "it") {
-                    $artist_options .= '<option value="' . htmlspecialchars($artist['id']) . '" lang="' . htmlspecialchars($artist['nationality']) . '">' . htmlspecialchars($artist['author_name']) . '</option>';
-                } else {
-                    $artist_options .= '<option value="' . htmlspecialchars($artist['id']) . '">' . htmlspecialchars($artist['author_name']) . '</option>';
-                }
-            }
-            $artist_options .= '</optgroup>';
-        }
-
-        $genre_options = get_genre_options();
-        $genre_options = array_map(function ($genre) {
-            return "<option value=\"" . htmlspecialchars($genre) . "\">" . htmlspecialchars($genre) . "</option>";
-        }, $genre_options);
-
-        return Template::render('static/layout/add_disk/add_disk_form.html', [
-            'artist_options' => $artist_options,
-            'genre_options' => implode('', $genre_options),
-        ]);
+        $grouped_artists[$nationality][] = $artist;
     }
+
+    // Sort nationalities for consistent display
+    ksort($grouped_artists);
+
+    // Build HTML with optgroups
+    $artist_options = '';
+    foreach ($grouped_artists as $nationality => $artists_in_group) {
+        $artist_options .= '<optgroup label="' . htmlspecialchars(strtoupper($nationality)) . '">';
+        foreach ($artists_in_group as $artist) {
+            $selected = ($_artist !== null && $_artist == $artist['id']) ? ' selected' : '';
+            if ($artist['nationality'] != "it") {
+                $artist_options .= '<option value="' . htmlspecialchars($artist['id']) . '" lang="' . htmlspecialchars($artist['nationality']) . '"' . $selected . '>' . htmlspecialchars($artist['author_name']) . '</option>';
+            } else {
+                $artist_options .= '<option value="' . htmlspecialchars($artist['id']) . '"' . $selected . '>' . htmlspecialchars($artist['author_name']) . '</option>';
+            }
+        }
+        $artist_options .= '</optgroup>';
+    }
+
+    $genres = get_genre_options();
+    $genre_options = array_map(function ($genre) use ($_genres) {
+        $selected = (in_array($genre, $_genres)) ? ' selected' : '';
+        if($selected === ' selected') $_genres = array_diff($_genres, [$genre]);
+        return "<option value=\"" . htmlspecialchars($genre) . "\"" . $selected . ">" . htmlspecialchars($genre) . "</option>";
+    }, $genres);
+    return Template::render('static/layout/add_disk/add_disk_form.html', [
+        'artist_options' => $artist_options,
+        'genre_options' => implode('', $genre_options),
+        'title' => isset($title) ? htmlspecialchars($title) : ''
+    ]);
 }

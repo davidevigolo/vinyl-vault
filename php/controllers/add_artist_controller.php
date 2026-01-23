@@ -1,38 +1,32 @@
 <?php
-include_once '../classes/DbConnection.php';
-include_once '../classes/utils.php';
+include_once 'php/classes/DbConnection.php';
+include_once 'php/classes/utils.php';
 
-check_user_logged_in();
-
-$name = $_POST['name'] ?? null;
-$nationality = $_POST['nationality'] ?? null;
-$image = $_FILES['photo'] ?? null;
-
-function add_artist_to_collection($name, $nationality, $image): bool
+function add_artist_to_collection($name, $nationality, $image): array
 {
     if(!$name || !$nationality || !$image) {
-        return false;
+        return ['success' => false, 'error' => 'Uno o più campi devono ancora essere compilati'];
     }
     if ($image['error'] !== UPLOAD_ERR_OK) {
-        return false;
+        return ['success' => false, 'error' => 'Errore durante il caricamento dell\'immagine, controlla il formato e la dimensione del file'];
     }
     $name = trim($name);
     $regex = "/^[a-zA-ZÀ-ÿ '´`^¨~-]{1,100}$/u";
     if (preg_match($regex, $name) !== 1) {
-        return false;
+        return ['success' => false, 'error' => 'Formato nome non valido', 'fields_to_reset' => ['name']];
     }
     if (in_array($nationality, array_keys(get_nationality_codes())) === false) {
-        return false;
+        return ['success' => false, 'error' => 'Nazionalità non valida', 'fields_to_reset' => ['nationality'] ];
     }
     // Get file extension
     $file_extension = strtolower(pathinfo($image['name'], PATHINFO_EXTENSION));
     $allowed_extensions = ['jpg', 'jpeg', 'webp'];
     if (!in_array($file_extension, $allowed_extensions)) {
-        return false;
+        return ['success' => false, 'error' => 'Estensione file non valida', 'fields_to_reset' => ['photo'] ];
     }
 
     if ($image['size'] > 2 * 1024 * 1024) { // 2MB limit
-        return false;
+        return ['success' => false, 'error' => 'Dimensione file superiore al limite', 'fields_to_reset' => ['photo'] ];
     }
 
     $connection = DbConnection::get_instance();
@@ -43,14 +37,14 @@ function add_artist_to_collection($name, $nationality, $image): bool
     $stmt = mysqli_prepare($connection->get_connection(), $query);
     if (!$stmt) {
         mysqli_rollback($connection->get_connection());
-        return false;
+        return ['success' => false, 'error' => 'Abbiamo riscontrato un errore, probabilmente stai provando ad inserire un artista già presente nel nostro database. Se il problema persiste contattaci a vinylvault@gmail.com'];
     }
     mysqli_stmt_bind_param($stmt, 'ss', $name, $nationality);
     $success = mysqli_stmt_execute($stmt);
     
     if (!$success) {
         mysqli_rollback($connection->get_connection());
-        return false;
+        return ['success' => false, 'error' => 'Abbiamo riscontrato un errore, probabilmente stai provando ad inserire un artista già presente nel nostro database. Se il problema persiste contattaci a vinylvault@gmail.com'];
     }
     
     // Get the inserted artist ID
@@ -65,7 +59,7 @@ function add_artist_to_collection($name, $nationality, $image): bool
     $stmt = mysqli_prepare($connection->get_connection(), $query);
     if (!$stmt) {
         mysqli_rollback($connection->get_connection());
-        return false;
+        return ['success' => false, 'error' => 'Abbiamo riscontrato un errore, probabilmente stai provando ad inserire un artista già presente nel nostro database. Se il problema persiste contattaci a vinylvault@gmail.com'];
     }
     mysqli_stmt_bind_param($stmt, 'si', $image_path, $artist_id);
     $success = mysqli_stmt_execute($stmt);
@@ -78,7 +72,7 @@ function add_artist_to_collection($name, $nationality, $image): bool
         }
         if (!is_writable($upload_dir)) {
             mysqli_rollback($connection->get_connection());
-            return false;
+            return ['success' => false, 'error' => 'Stiamo riscontrando dei problemi con le immagini, non ti preoccupare, il problema verrà risolto a breve!'];
         }
 
         $file_tmp = $image['tmp_name'];
@@ -88,13 +82,9 @@ function add_artist_to_collection($name, $nationality, $image): bool
     }
     if(!$success) {
         mysqli_rollback($connection->get_connection());
-        return false;
+        return ['success' => false, 'error' => 'Errore durante il salvataggio dell\'immagine, probabilmente è già presente un\'immagine per questo artista. Se il problema persiste contattaci a vinylvault@gmail.com'];
     }
     mysqli_commit($connection->get_connection());
-    return true;
+    return ['success' => true];
 }
-
-$result = add_artist_to_collection($name, $nationality, $image);
-header('Location: ../../add_artist.php?result=' . ($result ? 'success' : 'fail'));
-exit();
 ?>
