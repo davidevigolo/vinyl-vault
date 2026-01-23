@@ -33,37 +33,44 @@ function get_editions()
     return $editions;
 }
 
-function add_tracks_form($result)
+function add_tracks_form($_disk, $_edition, $_titles, $_durations, $errors = []): string
 {
     $disks = get_disks();
     $editions = get_editions();
     $edition_options = '';
     $track_form_items = '';
+
     foreach ($disks as $disk) {
         $edition_options .= '<optgroup label="' . htmlspecialchars($disk['title']) . '" data-disk-id="' . htmlspecialchars($disk['id']) . '">';
         foreach ($editions as $edition) {
             if ($edition['disk_id'] === $disk['id']) {
-                $edition_options .= '<option value="' . htmlspecialchars($edition['edition_name']) . '">' . htmlspecialchars($edition['edition_name']) . '</option>';
+                $selected = (isset($_edition) && $_edition === $edition['edition_name']) ? ' selected' : '';
+                $edition_options .= '<option value="' . htmlspecialchars($edition['edition_name']) . '"' . $selected . '>' . htmlspecialchars($edition['edition_name']) . '</option>';
             }
         }
         $edition_options .= '</optgroup>';
     }
-    for ($i = 1; $i <= 20; $i++) {
+    $first_track_title = isset($_titles[0]) ? htmlspecialchars($_titles[0]) : '';
+    $first_track_duration = isset($_durations[0]) ? htmlspecialchars($_durations[0]) : '';
+    for ($i = 2; $i < 20; $i++) {
         $track_form_items .= Template::render('static/layout/add_tracks/track_form_item.html', [
             'index' => $i + 1,
+            'track_title' => isset($_titles[$i - 1]) ? htmlspecialchars($_titles[$i - 1]) : '',
+            'track_duration' => isset($_durations[$i - 1]) ? htmlspecialchars($_durations[$i - 1]) : '',
+            'display' => isset($_titles[$i - 1]) ? 'true' : 'false'
         ]);
     }
-    if ($result === 'success') {
-        return Template::render('static/layout/add_tracks/add_tracks_success.html', []);
-    } else {
-        $nationality_codes = get_nationality_codes();
-        $disks = get_disks();
-        return Template::render('static/layout/add_tracks/add_tracks_form.html', [
-            'disk_options' => implode('', array_map(function ($disk) {
-                return '<option value="' . htmlspecialchars($disk['id']) . '">' . htmlspecialchars($disk['title']) . '</option>';
-            }, $disks)),
-            'edition_options' => $edition_options,
-            'track_form_items' => $track_form_items,
-        ]);
-    }
+
+    $disks = get_disks();
+    return Template::render('static/layout/add_tracks/add_tracks_form.html', [
+        'disk_options' => implode('', array_map(function ($disk) use($_disk) {
+            $selected = (isset($_disk) && intval($_disk) == $disk['id']) ? ' selected' : '';
+            return '<option value="' . htmlspecialchars($disk['id']) . '"' . $selected . '>' . htmlspecialchars($disk['title']) . '</option>';
+        }, $disks)),
+        'edition_options' => $edition_options,
+        'track_form_items' => $track_form_items,
+        'first_track_title' => $first_track_title,
+        'first_track_duration' => $first_track_duration,
+        'errors' => isset($errors) && !empty($errors) ? '<ul>' . implode('', array_map(fn($error) => '<li>' . htmlspecialchars($error) . '</li>', $errors)) . '</ul>' : ''
+    ]);
 }

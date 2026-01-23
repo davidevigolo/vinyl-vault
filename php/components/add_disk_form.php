@@ -69,15 +69,51 @@ function add_disk_form($title, $_artist, $type, $_genres, $errors): string
         $artist_options .= '</optgroup>';
     }
 
+    $type_options = [
+        'SINGLE' => 'Singolo',
+        'EP' => 'EP',
+        'ALBUM' => 'Album'
+    ];
+    $type_options = array_map(function ($value, $label) use ($type) {
+        $selected = ($value === $type) ? ' selected' : '';
+        return "<option value=\"" . htmlspecialchars($value) . "\"" . $selected . ">" . htmlspecialchars($label) . "</option>";
+    }, array_keys($type_options), array_values($type_options));
+
     $genres = get_genre_options();
-    $genre_options = array_map(function ($genre) use ($_genres) {
-        $selected = (in_array($genre, $_genres)) ? ' selected' : '';
-        if($selected === ' selected') $_genres = array_diff($_genres, [$genre]);
-        return "<option value=\"" . htmlspecialchars($genre) . "\"" . $selected . ">" . htmlspecialchars($genre) . "</option>";
+    $genre = array_shift($_genres);
+    $genre_options = array_map(function ($genre_option) use ($genre) {
+        $selected = ($genre_option === $genre) ? ' selected' : '';
+        return "<option value=\"" . htmlspecialchars($genre_option) . "\"" . $selected . ">" . htmlspecialchars($genre_option) . "</option>";
     }, $genres);
+
+    $additional_genres = [];
+    for($i = 0; $i < 5; $i++) {
+        if(count($_genres) > 0){
+            $genre = array_shift($_genres);
+            $additional_genre_options = array_map(function ($genre_option) use ($genre) {
+                $selected = ($genre_option === $genre) ? ' selected' : '';
+                return "<option value=\"" . htmlspecialchars($genre_option) . "\"" . $selected . ">" . htmlspecialchars($genre_option) . "</option>";
+            }, $genres);
+            $additional_genres[] = Template::render('static/layout/add_disk/genre_form_item.html', [
+                'index' => $i + 1,
+                'additional_genre_options' => implode('', $additional_genre_options)
+            ]);
+        } else {
+            $additional_genre_options = array_map(function ($genre_option) {
+                return "<option value=\"" . htmlspecialchars($genre_option) . "\"" . ">" . htmlspecialchars($genre_option) . "</option>";
+            }, $genres);
+            $additional_genres[] = Template::render('static/layout/add_disk/genre_form_item.html', [
+                'index' => $i + 1,
+                'additional_genre_options' => implode('', $additional_genre_options)
+            ]);
+        }
+    }
     return Template::render('static/layout/add_disk/add_disk_form.html', [
         'artist_options' => $artist_options,
+        'type_options' => implode('', $type_options),
         'genre_options' => implode('', $genre_options),
+        'additional_genres' => implode('', $additional_genres),
+        'errors' => isset($errors) && !empty($errors) ? '<ul>' . implode('', array_map(fn($error) => '<li>' . htmlspecialchars($error) . '</li>', $errors)) . '</ul>' : '',
         'title' => isset($title) ? htmlspecialchars($title) : ''
     ]);
 }

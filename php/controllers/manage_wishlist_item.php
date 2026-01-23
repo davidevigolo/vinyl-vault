@@ -92,4 +92,3 @@ switch ($result) {
 }
 header('Location: ../../wishlist.php');
 exit();
-?>

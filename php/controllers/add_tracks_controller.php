@@ -1,21 +1,13 @@
 <?php
-include_once '../classes/DbConnection.php';
-include_once '../classes/utils.php';
+include_once 'php/classes/DbConnection.php';
+include_once 'php/classes/utils.php';
 
 check_user_logged_in();
 
-$disk = $_POST['disk'] ?? null;
-$edition = $_POST['edition'] ?? null;
-$titles = $_POST['title'] ?? [];
-$durations = $_POST['duration'] ?? [];
-
-$titles = array_filter($titles, fn($value) => trim($value) !== '');
-$durations = array_filter($durations, fn($value) => trim($value) !== '');
-
-function add_tracks($disk, $edition, $titles, $durations)
+function add_tracks($disk, $edition, $titles, $durations): array
 {
     if (!$disk || !$edition || empty($titles) || !is_array($titles) || empty($durations) || !is_array($durations) || count($titles) !== count($durations)) {
-        return false;
+        return ['success' => false, 'error' => 'Uno o più campi devono ancora essere compilati'];
     }
 
     $count = count($titles);
@@ -23,20 +15,23 @@ function add_tracks($disk, $edition, $titles, $durations)
         $track_name = trim($titles[$i]);
         $duration = trim($durations[$i]);
         if (empty($track_name)) {
-            return false;
+            return ['success' => false, 'error' => 'Il titolo della traccia non può essere vuoto'];
         }
         $regex = "/^[a-zA-Z0-9àèéìòùÀÈÉÌÒÙ\s]{1,200}$/u";
         if (preg_match($regex, $track_name) !== 1) {
-            return false;
+            return ['success' => false, 'error' => 'Il titolo della traccia contiene caratteri non validi'];
         }
         if ($duration < 0 || $duration > 32767) { //limit of SMALLINT in database
-            return false;
+            return ['success' => false, 'error' => 'La durata della traccia non è valida'];
         }
     }
 
     $connection = DbConnection::get_instance();
     $query = "INSERT INTO track (title, duration_seconds) VALUES (?, ?);";
     $link_query = "INSERT INTO edition_track_part_of (disk_id, edition_name, track_id, track_number) VALUES (?, ?, ?, ?);";
+    $check_duplicate_track_query = "SELECT COUNT(*) as count FROM edition_track_part_of etp
+        JOIN track t ON etp.track_id = t.id
+        WHERE etp.disk_id = ? AND etp.edition_name = ? AND t.title = ?;";
     mysqli_begin_transaction($connection->get_connection());
 
     foreach ($titles as $index => $track_name) {
@@ -46,44 +41,61 @@ function add_tracks($disk, $edition, $titles, $durations)
         $stmt = mysqli_prepare($connection->get_connection(), $query);
         if (!$stmt) {
             mysqli_rollback($connection->get_connection());
-            return false;
+            return ['success' => false, 'error' => 'Abbiamo riscontrato un errore durante l\'inserimento della traccia, probabilmente stai provando ad inserire una traccia già presente per il disco corrente. Se il problema persiste contattaci a vinylvault@gmail.com'];
         }
 
         $success = mysqli_stmt_bind_param($stmt, 'si', $track_name, $duration);
         if (!$success) {
             mysqli_rollback($connection->get_connection());
-            return false;
+            return ['success' => false, 'error' => 'Abbiamo riscontrato un errore durante l\'inserimento della traccia, probabilmente stai provando ad inserire una traccia già presente per il disco corrente. Se il problema persiste contattaci a vinylvault@gmail.com'];
         }
         $success = mysqli_stmt_execute($stmt);
         if (!$success) {
             mysqli_rollback($connection->get_connection());
-            return false;
+            return ['success' => false, 'error' => 'Abbiamo riscontrato un errore durante l\'inserimento della traccia, probabilmente stai provando ad inserire una traccia già presente per il disco corrente. Se il problema persiste contattaci a vinylvault@gmail.com'];
         }
-        mysqli_stmt_close($stmt);
         $track_id = mysqli_insert_id($connection->get_connection());
+        mysqli_stmt_close($stmt);
+        $stmt_check = mysqli_prepare($connection->get_connection(), $check_duplicate_track_query);
+        if (!$stmt_check) {
+            mysqli_rollback($connection->get_connection());
+            return ['success' => false, 'error' => 'Abbiamo riscontrato un errore durante l\'inserimento della traccia, probabilmente stai provando ad inserire una traccia già presente per il disco corrente. Se il problema persiste contattaci a vinylvault@gmail.com'];
+        }
+        $success = mysqli_stmt_bind_param($stmt_check, 'iss', $disk, $edition, $track_name);
+        if (!$success) {
+            mysqli_rollback($connection->get_connection());
+            return ['success' => false, 'error' => 'Abbiamo riscontrato un errore durante l\'inserimento della traccia, probabilmente stai provando ad inserire una traccia già presente per il disco corrente. Se il problema persiste contattaci a vinylvault@gmail.com'];
+        }
+        $success = mysqli_stmt_execute($stmt_check);
+        mysqli_stmt_store_result($stmt_check);
+        mysqli_stmt_bind_result($stmt_check, $count);
+        mysqli_stmt_fetch($stmt_check);
+        if ($count > 1) {
+            mysqli_rollback($connection->get_connection());
+            return ['success' => false, 'error' => 'La traccia "' . htmlspecialchars($track_name) . '" è già presente per questa edizione. Titoli delle tracce devono essere univoci all\'interno di una stessa edizione.'];
+        }
+        if (!$success) {
+            mysqli_rollback($connection->get_connection());
+            return ['success' => false, 'error' => 'Abbiamo riscontrato un errore durante l\'inserimento della traccia, probabilmente stai provando ad inserire una traccia già presente per il disco corrente. Se il problema persiste contattaci a vinylvault@gmail.com'];
+        }
+        mysqli_stmt_close($stmt_check);
         $stmt_link = mysqli_prepare($connection->get_connection(), $link_query);
         if (!$stmt_link) {
             mysqli_rollback($connection->get_connection());
-            return false;
+            return ['success' => false, 'error' => 'Abbiamo riscontrato un errore durante l\'inserimento della traccia, probabilmente stai provando ad inserire una traccia già presente per il disco corrente. Se il problema persiste contattaci a vinylvault@gmail.com'];
         }
         $success = mysqli_stmt_bind_param($stmt_link, 'issi', $disk, $edition, $track_id, $track_number);
         if (!$success) {
             mysqli_rollback($connection->get_connection());
-            return false;
+            return ['success' => false, 'error' => 'Abbiamo riscontrato un errore durante l\'inserimento della traccia, probabilmente stai provando ad inserire una traccia già presente per il disco corrente. Se il problema persiste contattaci a vinylvault@gmail.com'];
         }
         $success = mysqli_stmt_execute($stmt_link);
         if (!$success) {
-            error_log("Failed to link track to edition: " . mysqli_error($connection->get_connection()));
             mysqli_rollback($connection->get_connection());
-            return false;
+            return ['success' => false, 'error' => 'Abbiamo riscontrato un errore durante l\'inserimento della traccia, probabilmente stai provando ad inserire una traccia già presente per il disco corrente. Se il problema persiste contattaci a vinylvault@gmail.com'];
         }
         mysqli_stmt_close($stmt_link);
     }
     mysqli_commit($connection->get_connection());
-    return true;
+    return ['success' => true];
 }
-
-$success = add_tracks($disk, $edition, $titles, $durations);
-header('Location: ../pages/add_tracks.php?result=' . ($success ? 'success' : 'fail'));
-exit();
-?>

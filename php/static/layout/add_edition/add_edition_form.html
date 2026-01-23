@@ -1,4 +1,5 @@
-<form id="add-disk-form" action="/php/controllers/add_disk_controller.php" method="POST" enctype="multipart/form-data">
+[errors]
+<form id="add-disk-form" action="/add_edition.php" method="POST" enctype="multipart/form-data">
 
     <fieldset>
         <legend>Seleziona disco</legend>
@@ -22,9 +23,9 @@
                 <li>Se impostata <span lang="en">Standard Edition</span>, non valorizzare il campo</li>
             </ul>
             <input type="text" id="name" name="name" required maxlength="100" pattern="[a-zA-Z0-9àèéìòùÀÈÉÌÒÙ\s]+"
-                required>
+                value="[name]" [name_enabled] required>
             <div class="checkbox-wrapper">
-                <input type="checkbox" id="standard-edition-checkbox" name="standard-edition" value="1" checked>
+                <input type="checkbox" id="standard-edition-checkbox" name="standard-edition" [standard_edition]>
                 <label for="standard-edition-checkbox">Imposta <span lang="en">Standard Edition</span></label>
             </div>
             <span class="error-message" id="name-error" aria-live="polite">Obbligatorio</span>
@@ -34,7 +35,7 @@
             <ul class="input-hints">
                 <li>Compresa tra 1887 e l'anno corrente</li>
             </ul>
-            <input type="date" id="release-date" name="release-date" min="1887-01-01" required>
+            <input type="date" id="release-date" name="release-date" min="1887-01-01" required value="[release_date]">
             <span class="error-message" id="release-date-error" aria-live="polite">Obbligatorio</span>
         </div>
 

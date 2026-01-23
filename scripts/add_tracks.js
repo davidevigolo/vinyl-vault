@@ -1,5 +1,5 @@
-this.document.getElementById('edition').setAttribute('disabled', 'true');
-this.document.querySelectorAll('.track-fieldset').forEach((fieldset, index) => index > 0 ? fieldset.style.display = 'none' : null);
+this.document.getElementById('disk').value == '' ? this.document.getElementById('edition').setAttribute('disabled', 'true') : null;
+this.document.querySelectorAll('.track-fieldset').forEach((fieldset, index) => fieldset.getAttribute('data-display') === 'false' ? fieldset.style.display = 'none' : null);
 
 this.document.getElementById('disk').addEventListener('input', function () {
     let errorMessage = document.getElementById('disk-error');
@@ -16,9 +16,8 @@ this.document.getElementById('edition').addEventListener('input', function () {
     validateSelect(this, errorMessage);
 });
 
-this.document.getElementById('track-0').addEventListener('input', function () {
+this.document.getElementById('title-0').addEventListener('input', function () {
         let errorMessage = document.getElementById('title-0-error');
-        validateSelect(this, errorMessage);
         errorMessage.textContent = validateTrackTitle(this);
 });
 
@@ -26,6 +25,8 @@ this.document.getElementById('add-track-button').addEventListener('click', funct
     const hiddenFieldset = Array.from(document.querySelectorAll('.track-fieldset')).find(fieldset => getComputedStyle(fieldset).display === 'none');
     if (hiddenFieldset) {
         hiddenFieldset.style.display = 'block';
+    }else {
+        alert('Hai raggiunto il numero massimo di tracce aggiungibili.');
     }
 });
 

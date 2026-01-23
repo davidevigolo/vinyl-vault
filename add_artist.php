@@ -12,11 +12,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'] ?? null;
     $nationality = $_POST['nationality'] ?? null;
     $image = $_FILES['photo'] ?? null;
-    
+
     include_once 'php/controllers/add_artist_controller.php';
-    $result = add_artist_to_collection($name, $nationality, $image);
+    $result = add_artist($name, $nationality, $image);
     if ($result['success']) {
-        echo Template::render('static/layout/add_artist/add_artist_success.html', []);
+        echo Template::render(
+            'static/add_artist.html',
+            [
+                'head' => Template::render('static/layout/head.html', []),
+                'header' => _header(),
+                'add_artist_form' => Template::render('static/layout/add_artist/add_artist_success.html', []),
+                'footer' => footer(),
+                'validation_scripts' => $result === 'success' ? '' : get_validation_scripts(['add_artist.js'])
+            ]
+        );
         exit();
     }
 
@@ -42,7 +51,7 @@ echo Template::render(
     [
         'head' => Template::render('static/layout/head.html', []),
         'header' => _header(),
-        'add_artist_form' => add_artist_form('', '', []),
+        'add_artist_form' => $result ? Template::render('static/layout/add_artist/add_artist_success.html', []) : add_artist_form('', '', []),
         'footer' => footer(),
         'validation_scripts' => $result === 'success' ? '' : get_validation_scripts(['add_artist.js'])
     ]

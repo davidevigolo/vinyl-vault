@@ -2,7 +2,7 @@
 include_once 'php/classes/DbConnection.php';
 include_once 'php/classes/utils.php';
 
-function add_artist_to_collection($name, $nationality, $image): array
+function add_artist($name, $nationality, $image): array
 {
     if(!$name || !$nationality || !$image) {
         return ['success' => false, 'error' => 'Uno o più campi devono ancora essere compilati'];

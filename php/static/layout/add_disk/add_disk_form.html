@@ -1,3 +1,4 @@
+[errors]
 <form id="add-disk-form" action="add_disk.php" method="POST" enctype="multipart/form-data">
 
     <div class="input-wrapper">
@@ -24,9 +25,7 @@
         <label for="type">Tipo</label>
         <select id="type" name="type" required>
             <option value="" disabled selected>Seleziona un tipo</option>
-            <option value="SINGLE">Singolo</option>
-            <option value="EP">EP</option>
-            <option value="ALBUM">Album</option>
+            [type_options]
         </select>
         <span class="error-message" id="type-error" aria-live="polite">Obbligatorio</span>
     </div>
@@ -43,41 +42,7 @@
     <fieldset>
         <legend>Specifica ulteriori generi (opzionale)</legend>
 
-        <div class="input-wrapper">
-            <label for="genre">Genere aggiuntivo 1</label>
-            <select class="genre" name="genre[]">
-                <option value="" disabled selected>Seleziona un genere</option>
-                <option value="">Vuoto</option>
-                [genre_options]
-            </select>
-        </div>
-
-        <div class="input-wrapper">
-            <label for="genre">Genere aggiuntivo 2</label>
-            <select class="genre" name="genre[]">
-                <option value="" disabled selected>Seleziona un genere</option>
-                <option value="">Vuoto</option>
-                [genre_options]
-            </select>
-        </div>
-
-        <div class="input-wrapper">
-            <label for="genre">Genere aggiuntivo 3</label>
-            <select class="genre" name="genre[]">
-                <option value="" disabled selected>Seleziona un genere</option>
-                <option value="">Vuoto</option>
-                [genre_options]
-            </select>
-        </div>
-
-        <div class="input-wrapper">
-            <label for="genre">Genere aggiuntivo 4</label>
-            <select class="genre" name="genre[]">
-                <option value="" disabled selected>Seleziona un genere</option>
-                <option value="">Vuoto</option>
-                [genre_options]
-            </select>
-        </div>
+        [additional_genres]
     </fieldset>
 
     <button type="submit" class="btn-primary">Aggiungi Disco</button>

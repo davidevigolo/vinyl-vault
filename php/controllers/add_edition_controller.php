@@ -1,41 +1,60 @@
 <?php
-include_once '../classes/DbConnection.php';
-include_once '../classes/utils.php';
+include_once 'php/classes/DbConnection.php';
+include_once 'php/classes/utils.php';
 
-check_user_logged_in();
-
-$release_date = $_POST['release-date'] ?? null;
-$disk_id = $_POST['disk'] ?? null;
-$name = $_POST['name'] ?? null;
-$country = $_POST['country'] ?? null;
-$image = $_FILES['photo'] ?? null;
-
-function addEdition($disk_id, $name, $release_date, $country, $image)
+// Helper function to get all disk IDs from the database
+function get_all_disk_ids()
 {
-    if (!$disk_id || !$name || !$release_date || !$country || !$image) {
-        return false;
+    $connection = DbConnection::get_instance()->get_connection();
+    $ids = [];
+    $result = mysqli_query($connection, "SELECT id FROM disk");
+    if ($result) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $ids[] = $row['id'];
+        }
+        mysqli_free_result($result);
+    }
+    return $ids;
+}
+
+function add_edition($disk_id, $name, $release_date, $country, $is_standard_edition, $image)
+{
+    if (!$disk_id || (!$name && !$is_standard_edition) || !$release_date || !$country || !$image) {
+        return ['success' => false, 'error' => 'Uno o più campi devono ancora essere compilati'];
+    }
+    if ($is_standard_edition) {
+        $name = 'Standard Edition';
     }
     if ($image['error'] !== UPLOAD_ERR_OK) {
-        return false;
+        return ['success' => false, 'error' => 'Errore durante il caricamento dell\'immagine'];
     }
     // Get file extension
     $file_extension = strtolower(pathinfo($image['name'], PATHINFO_EXTENSION));
     $allowed_extensions = ['jpg', 'jpeg', 'webp'];
     if (!in_array($file_extension, $allowed_extensions)) {
-        return false;
+        return ['success' => false, 'error' => 'Formato immagine non supportato'];
     }
 
     if ($image['size'] > 2 * 1024 * 1024) { // 2MB limit
-        return false;
+        return ['success' => false, 'error' => 'L\'immagine supera la dimensione massima di 2MB'];
     }
 
     $name = trim($name);
     $regex = "/^[a-zA-ZÀ-ÿ '´`^¨~-]{1,100}$/u";
     if (preg_match($regex, $name) !== 1) {
-        return false;
+        return ['success' => false, 'error' => 'Nome edizione non valido', 'fields_to_reset' => ['name']];
     }
     if (in_array($country, array_keys(get_nationality_codes())) === false) {
-        return false;
+        return ['success' => false, 'error' => 'Paese di rilascio non valido', 'fields_to_reset' => ['country']];
+    }
+    if (!in_array($disk_id, get_all_disk_ids())) {
+        return ['success' => false, 'error' => 'ID disco non valido', 'fields_to_reset' => ['disk']];
+    }
+    // Check that the release year is not in the future
+    $release_year = (int) date('Y', strtotime($release_date));
+    $current_year = (int) date('Y');
+    if ($release_year > $current_year) {
+        return ['success' => false, 'error' => 'La data di rilascio non può essere oltre l\'anno corrente', 'fields_to_reset' => ['release-date']];
     }
 
     $connection = DbConnection::get_instance();
@@ -45,27 +64,26 @@ function addEdition($disk_id, $name, $release_date, $country, $image)
     $stmt = mysqli_prepare($connection->get_connection(), $query);
     if (!$stmt) {
         mysqli_rollback($connection->get_connection());
-        return false;
+        return ['success' => false, 'error' => 'Abbiamo riscontrato un errore durante l\'inserimento dell\'edizione, probabilmente stai provando ad inserire un\'edizione già presente nel nostro database. Se il problema persiste contattaci a vinylvault@gmail.com'];
     }
     mysqli_stmt_bind_param($stmt, 'isss', $disk_id, $name, $release_date, $country);
     $success = mysqli_stmt_execute($stmt);
     if (!$success) {
         mysqli_rollback($connection->get_connection());
-        return false;
+        return ['success' => false, 'error' => 'Abbiamo riscontrato un errore durante l\'inserimento dell\'edizione, probabilmente stai provando ad inserire un\'edizione già presente nel nostro database. Se il problema persiste contattaci a vinylvault@gmail.com'];
     }
     // Get the inserted edition ID
-    $edition_id = mysqli_insert_id($connection->get_connection());
     mysqli_stmt_close($stmt);
     // Generate image path with edition ID
-    $image_path = 'edition_' . $edition_id . '.' . $file_extension;
+    $image_path = 'edition_' . $disk_id . '_' . $name . '.' . $file_extension;
     // Update edition with image_path
-    $update_query = "UPDATE edition SET image_path = ? WHERE edition_id = ?;";
+    $update_query = "UPDATE edition SET image_path = ? WHERE edition_name = ?;";
     $update_stmt = mysqli_prepare($connection->get_connection(), $update_query);
     if (!$update_stmt) {
         mysqli_rollback($connection->get_connection());
-        return false;
+        return ['success' => false, 'error' => 'Abbiamo riscontrato un errore durante l\'inserimento dell\'edizione, probabilmente stai provando ad inserire un\'edizione già presente nel nostro database. Se il problema persiste contattaci a vinylvault@gmail.com'];
     }
-    mysqli_stmt_bind_param($update_stmt, 'si', $image_path, $edition_id);
+    mysqli_stmt_bind_param($update_stmt, 'ss', $image_path, $name);
     $success = mysqli_stmt_execute($update_stmt);
     mysqli_stmt_close($update_stmt);
     if ($success) {
@@ -76,7 +94,7 @@ function addEdition($disk_id, $name, $release_date, $country, $image)
         }
         if (!is_writable($upload_dir)) {
             mysqli_rollback($connection->get_connection());
-            return false;
+            return ['success' => false, 'error' => 'Stiamo riscontrando dei problemi con le immagini, non ti preoccupare, il problema verrà risolto a breve!'];
         }
 
         $file_tmp = $image['tmp_name'];
@@ -86,13 +104,8 @@ function addEdition($disk_id, $name, $release_date, $country, $image)
     }
     if (!$success) {
         mysqli_rollback($connection->get_connection());
-        return false;
+        return ['success' => false, 'error' => 'Errore durante il salvataggio dell\'immagine, probabilmente è già presente un\'immagine per questa edizione. Se il problema persiste contattaci a vinylvault@gmail.com'];
     }
     mysqli_commit($connection->get_connection());
-    return true;
+    return ['success' => true];
 }
-
-$success = addEdition($disk_id, $name, $release_date, $country, $image);
-header('Location: ../pages/add_edition.php?result=' . ($success ? 'success' : 'fail'));
-exit();
-?>

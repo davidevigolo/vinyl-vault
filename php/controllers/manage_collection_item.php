@@ -75,4 +75,3 @@ switch ($result) {
 }
 header('Location: ../../collection.php');
 exit();
-?>

@@ -3,7 +3,7 @@
 include_once 'php/classes/DbConnection.php';
 include_once 'php/classes/utils.php';
 
-function add_disk_to_collection($title, $artist, $type, $genres): array
+function add_disk($title, $artist, $type, $genres): array
 {
 
     /* Validate inputs */
