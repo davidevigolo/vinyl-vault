@@ -4,7 +4,8 @@ CREATE TABLE IF NOT EXISTS users (
     first_name VARCHAR(100) NOT NULL UNIQUE,
     last_name VARCHAR(100) NOT NULL,
     email VARCHAR(254) NOT NULL UNIQUE,
-    pw_hash CHAR(255) NOT NULL,
+    pw_hash VARCHAR(255) NOT NULL, -- see why 255 at https://www.php.net/manual/en/function.password-hash.php
+    is_admin TINYINT(1) NOT NULL DEFAULT 0,
 
     bio TEXT,
     propic_path VARCHAR(255),

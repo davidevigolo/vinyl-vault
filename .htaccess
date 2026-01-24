@@ -75,6 +75,14 @@ Options -Indexes
     Order Allow,Deny
     Allow from all
 </Files>
+<Files "login_controller.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "passwords.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
 
 # Protect sensitive files
 <FilesMatch "^(\.htaccess|\.gitignore|.*\.md|.*\.sh)$">

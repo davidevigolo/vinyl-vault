@@ -1,21 +1,23 @@
 <?php
-function get_logged_user(){
+function get_logged_user() {
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
     if (isset($_SESSION['user_id'])) {
         return [
             'user_id' => $_SESSION['user_id'],
+            'is_admin' => $_SESSION['is_admin'],
+            'first_name' => $_SESSION['first_name'],
         ];
     }
     return null;
 }
 
-function check_user_logged_in(){
+function check_user_logged_in() {
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
-    if(!isset($_SESSION['user_id'])) {
+    if (!isset($_SESSION['user_id'])) {
         header("Location: /login.php");
         http_response_code(403);
         exit();
