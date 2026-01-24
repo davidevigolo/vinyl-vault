@@ -1510,3 +1510,234 @@ fieldset {
 
 /* End Album Page */
 
+/* Catalog Page */
+
+.catalog-page {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.filters-sidebar {
+    width: 250px;
+    flex-shrink: 0;
+}
+
+.catalog-main {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Filter Groups */
+
+.filter-group {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.filter-group legend {
+    font-weight: 600;
+    padding: 0 0.5rem;
+}
+
+/* Year Range Inputs */
+
+.year-range-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.year-inputs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.year-inputs input[type="number"] {
+    width: 5rem;
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+}
+
+.year-range-sliders {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.year-range-sliders input[type="range"] {
+    flex: 1;
+}
+
+/* Genre Checkboxes */
+
+.genre-options {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+}
+
+.filter-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.filter-option input[type="checkbox"] {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.filter-option label {
+    cursor: pointer;
+}
+
+/* Filter Buttons */
+
+.filter-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+/* Active Filters */
+
+.active-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.filter-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    background-color: var(--brand-primary);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: var(--font-small);
+    cursor: pointer;
+}
+
+.filter-tag:hover {
+    background-color: var(--brand-secondary);
+}
+
+.filter-tag:focus {
+    outline: 2px solid var(--focus-color);
+    outline-offset: 2px;
+}
+
+/* Mobile Filter Toggles */
+
+.filter-toggles {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.filter-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.filter-toggle[aria-expanded="true"] {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.mobile-filter-panel {
+    border: 1px solid var(--border-color);
+    border-top: none;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    padding: 1.5rem;
+    margin-top: -1rem;
+    margin-bottom: 1.5rem;
+    background-color: var(--bg-primary);
+}
+
+.mobile-filter-panel h3 {
+    margin-top: 0;
+}
+
+/* Catalog Controls */
+
+.catalog-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.results-count {
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.sort-control select {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: var(--bg-primary);
+    cursor: pointer;
+}
+
+/* Catalog Grid */
+
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-secondary);
+}
+
+/* Load More Button */
+
+.load-more-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.load-more-btn {
+    min-width: 200px;
+}
+
+.load-more-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.end-message {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-top: 1rem;
+}
+
+/* End Catalog Page */
+

@@ -245,6 +245,7 @@ header .site-nav-links li {
 .vinyl-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 15px rgba(255, 255, 255, 0.25);
+    z-index: 10;
 }
 
 .card-link-wrapper:hover {
@@ -478,3 +479,83 @@ p#empty-collection-paragraph {
 
 
 /* Page Artist Page */
+
+/* Catalog Page Desktop Overrides */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.catalog-page {
+    flex-direction: row;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.filters-sidebar {
+    display: block;
+    width: 280px;
+    flex-shrink: 0;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-default);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 120px;
+    align-self: flex-start;
+    max-height: calc(100vh - 140px);
+    overflow-y: auto;
+    z-index: 5;
+}
+
+.filter-toggles,
+.mobile-filters-header {
+    display: none;
+}
+
+.mobile-filter-panel {
+    display: none;
+}
+
+.active-filters-mobile {
+    display: none;
+}
+
+.catalog-controls {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.results-info {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+}
+
+.sort-control {
+    width: auto;
+}
+
+.sort-control select {
+    width: auto;
+}
+
+.catalog-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.filter-actions {
+    flex-direction: column;
+}
+
+.apply-filters,
+.reset-filters {
+    width: 100%;
+}
+
+/* End Catalog Page Desktop */

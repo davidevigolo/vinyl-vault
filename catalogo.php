@@ -1,0 +1,72 @@
+<?php
+
+require 'php/classes/resources.php';
+
+include 'php/components/catalog_vinyls.php';
+
+$genre_filter = isset($_GET['genre']) ? (is_array($_GET['genre']) ? $_GET['genre'] : [$_GET['genre']]) : null;
+$year_min = isset($_GET['year_min']) ? intval($_GET['year_min']) : null;
+$year_max = isset($_GET['year_max']) ? intval($_GET['year_max']) : null;
+$sort_by = isset($_GET['sort']) ? $_GET['sort'] : 'collected';
+
+// load ALL results
+$catalog_data = get_catalog_vinyls($genre_filter, $year_min, $year_max, $sort_by, 1000);
+$total_count = count($catalog_data);
+
+$genres_list = get_all_genres();
+$year_range = get_year_range();
+
+$active_filters = [];
+
+// Always show year filter with current values
+$display_year_min = $year_min ?: $year_range['min'];
+$display_year_max = $year_max ?: $year_range['max'];
+$year_label = "$display_year_min - $display_year_max";
+$active_filters[] = [
+    'label' => $year_label,
+    'type' => 'year',
+    'value' => ''
+];
+
+// Add genre filters after
+if ($genre_filter && is_array($genre_filter)) {
+    foreach ($genre_filter as $genre) {
+        $active_filters[] = [
+            'label' => $genre, // Don't escape here, will be escaped in render
+            'type' => 'genre',
+            'value' => $genre
+        ];
+    }
+}
+
+// Generate reset  URL that preservea year filters
+$reset_params = [];
+if ($year_min) $reset_params['year_min'] = $year_min;
+if ($year_max) $reset_params['year_max'] = $year_max;
+if ($sort_by !== 'collected') $reset_params['sort'] = $sort_by;
+$reset_url = 'catalogo.php' . (empty($reset_params) ? '' : '?' . http_build_query($reset_params));
+
+include 'php/components/header.php';
+include 'php/components/footer.php';
+
+echo Template::render(
+    'static/catalogo.html',
+    [
+        'head' => Template::render('static/layout/head.html',[]),
+        'header' => _header(),
+        'footer' => footer(),
+        'catalog_vinyls' => render_catalog_cards($catalog_data),
+        'genres_options' => render_genres_checkboxes($genres_list),
+        'year_min' => $year_range['min'],
+        'year_max' => $year_range['max'],
+        'year_min_selected' => $year_min ?: $year_range['min'],
+        'year_max_selected' => $year_max ?: $year_range['max'],
+        'reset_url' => $reset_url,
+        'active_filters' => render_active_filters($active_filters),
+        'sort_selected_collected' => $sort_by === 'collected' ? 'selected' : '',
+        'sort_selected_recent' => $sort_by === 'recent' ? 'selected' : '',
+        'sort_selected_az' => $sort_by === 'az' ? 'selected' : '',
+        'total_results' => $total_count,
+        'has_more_display' => $total_count > 6 ? '' : 'style="display:none"'
+    ]
+);
