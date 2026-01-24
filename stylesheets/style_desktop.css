@@ -153,7 +153,9 @@ header .site-nav-links li {
 
 
 /* Breadcrumb */
-
+#breadcrumb {
+    font-size: var(--font-medium);
+}
 /* da sistemare --------------------------------------------------------------------- */
 
 /* End Breadcrumb */
@@ -286,7 +288,193 @@ header .site-nav-links li {
 
 .collection-grid-container {
     grid-template-columns: repeat(2, 1fr);
-    padding: 1em 0;
 }
 
+.collection-item img {
+    width: 12em;
+    height: 12em;
+}
+
+.collection-item-details {
+    padding: 0 0 0 2em;
+}
+
+.collection-rating-section {
+    justify-content: space-between;
+}
+
+.star {
+    font-size: 2.2rem;
+}
+
+.delete-selection {
+    margin-top: 1.5em;
+}
+
+.btn-reset-stars {
+    width: 1em;
+    height: 1em;
+}
+
+.checkbox-container input[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.collection-grid-actions {
+    justify-content: flex-end;
+}
+
+img#empty-collection-image {
+    max-width: 450px;
+    margin-top: 2rem;
+}
+
+p#empty-collection-paragraph {
+    font-size: 1.5rem;
+}
 /* End Collection & Wishlist pages */
+
+
+
+
+/* Album Page */
+
+.album-hero .center-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2.5rem;
+    text-align: left;
+    padding: 4rem 0;
+    align-items: center;
+}
+
+.album-cover {
+    width: 18rem;
+    height: 18rem;
+}
+
+.album-hero .hero-text {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+}
+
+.album-genres { 
+    grid-column: 1; 
+    justify-content: flex-start; 
+    margin-top: 1rem;
+}
+
+.album-genres span,
+.artist-genres span {
+    font-size: var(--font-medium);
+}
+    
+
+.album-rating {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    margin-top: 0;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tracklist {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 5rem;
+    padding: 2.5rem 3.5rem;
+    position: relative;
+}
+
+.tracklist::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 2rem;
+    bottom: 2rem;
+    width: 1px;
+    background-color: var(--border-dark);
+    opacity: 0.6;
+}
+
+.tracklist {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-dark);
+    border-radius: 1.3em;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    min-width: 0;
+    list-style: none;
+}
+
+.track-item {
+    padding-bottom: 0.5rem;
+}
+
+/* End Album Page */
+
+
+/* Artist Page */
+
+.artist-hero .center-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2.5rem; 
+    text-align: left;
+    padding: 4rem 1.5rem;
+}
+
+.artist-hero .artist-image {
+    flex: 1; 
+    max-width: 18rem;
+    height: 18rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.artist-hero .hero-text {
+    flex: 1.2;
+    display: grid;
+    grid-template-columns: 1fr auto; 
+    align-items: start;
+    gap: 0 2rem;
+}
+
+#artist-name {
+    grid-column: 1;
+    grid-row: 1;
+    font-size: var(--font-xxxl);
+    margin: 0;
+}
+
+.artist-hero .hero-text p {
+    grid-column: 1;
+    grid-row: 2;
+    margin-top: 0.5rem;
+    font-size: var(--font-medium);
+    color: var(--text-primary);
+}
+
+.artist-genres {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0;
+    justify-content: center;
+}
+
+
+
+/* Page Artist Page */

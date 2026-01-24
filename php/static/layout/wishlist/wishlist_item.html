@@ -1,10 +1,20 @@
+<!-- cambiare il [disk-id]-->
 <article class="collection-item">
-    <img src="[image_url]" alt="">
-    <div class="collection-item-details">
-        <p class="collection-item-author"><a href="artist.php?id=[author_id]">[author]</a></p>
-        <h2 class="collection-item-name"><a href="album.php?id=[disk_id]">[title]</a></h2>
-        <p class="collection-edition-name">[edition_name]</p>
-        <p class="collection-item-release-info">[country] - <time datetime="[year_datetime]">[year]</time></p>
-        <p class="collection-item-priority-level">Priorità: [priority_level]</p>
-    </div>
+    <a href="album.php?id=[disk_id]" class="card-link-wrapper disk-info" aria-label="Vai alla pagina di [title] di [artist]">
+        <img src="[image_url]" alt="Copertina dell'album [title] di [artist]">
+        <div class="collection-item-details">
+            <p class="artist-name">[author]</p>
+            <h2 class="album-title">[title]</h2> <p class="edition-info">[edition_name]</p>
+            <p class="release-info">[country] - <time datetime="[year_datetime]">[year]</time></p>
+
+            <div class="priority-wrapper">
+                <span id="p-label-[disk_id]" class="evaluation-label">Priorità d'acquisto</span>
+                    <div class="priority-meter" role="progressbar" aria-labelledby="p-label-[disk_id]" aria-valuenow="[priority_level]" aria-valuemin="0" aria-valuemax="100">
+                    <div class="priority-fill" data-level="[priority_level]"></div>
+                </div>
+                <span class="priority-number">[priority_level]%</span> <!-- aria ?-->
+            </div>
+
+        </div>
+    </a>
 </article>

@@ -1213,16 +1213,16 @@ INSERT INTO wishlist (user_id, disk_id, edition_name, priority_level) VALUES
 (2, 44, 'Standard Edition', 4),
 (3, 52, 'Standard Edition', 5);
 
-INSERT INTO ownership (user_id, disk_id, edition_name) VALUES
-(1, 20, 'Standard Edition'),
-(2, 14, 'Standard Edition'),
-(3, 11, 'Standard Edition'),
-(4, 29, 'Standard Edition'),
-(1, 33, 'Standard Edition'),
-(2, 40, 'Standard Edition'),
-(3, 46, 'Standard Edition'),
-(4, 51, 'Standard Edition'),
-(1, 48, 'Standard Edition');
+INSERT INTO ownership (user_id, disk_id, edition_name, rating) VALUES
+(1, 20, 'Standard Edition', 5),
+(2, 14, 'Standard Edition', 4),
+(3, 11, 'Standard Edition', 0),
+(4, 29, 'Standard Edition', 3),
+(1, 33, 'Standard Edition', 2),
+(2, 40, 'Standard Edition', 5),
+(3, 46, 'Standard Edition', 4),
+(4, 51, 'Standard Edition', 1),
+(1, 48, 'Standard Edition', NULL);
 
 -- Re-enable foreign key checks
 SET FOREIGN_KEY_CHECKS = 1;
