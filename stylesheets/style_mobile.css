@@ -828,7 +828,8 @@ footer .profile-links a:hover {
 }
 
 .card-image img {
-    width: 13em;
+    width: 100%; /* width 13em; */
+    height: auto;
     aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 1rem;
