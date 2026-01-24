@@ -3,19 +3,6 @@ include_once 'php/classes/DbConnection.php';
 include_once 'php/classes/utils.php';
 
 // Helper function to get all disk IDs from the database
-function get_all_disk_ids()
-{
-    $connection = DbConnection::get_instance()->get_connection();
-    $ids = [];
-    $result = mysqli_query($connection, "SELECT id FROM disk");
-    if ($result) {
-        while ($row = mysqli_fetch_assoc($result)) {
-            $ids[] = $row['id'];
-        }
-        mysqli_free_result($result);
-    }
-    return $ids;
-}
 
 function add_edition($disk_id, $name, $release_date, $country, $is_standard_edition, $image)
 {

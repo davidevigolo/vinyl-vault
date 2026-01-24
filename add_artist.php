@@ -23,14 +23,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'header' => _header(),
                 'add_artist_form' => Template::render('static/layout/add_artist/add_artist_success.html', []),
                 'footer' => footer(),
-                'validation_scripts' => $result === 'success' ? '' : get_validation_scripts(['add_artist.js'])
+                'validation_scripts' => $result === 'success' ? '' : get_validation_scripts(['add_artist.js','photo_validator.js'])
             ]
         );
         exit();
     }
 
-    $name = $result['fields_to_reset'] && in_array('name', $result['fields_to_reset']) ? '' : $name;
-    $nationality = $result['fields_to_reset'] && in_array('nationality', $result['fields_to_reset']) ? '' : $nationality;
+    $name = isset($result['fields_to_reset']) && in_array('name', $result['fields_to_reset']) ? '' : $name;
+    $nationality = isset($result['fields_to_reset']) && in_array('nationality', $result['fields_to_reset']) ? '' : $nationality;
 
     echo Template::render(
         'static/add_artist.html',
@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'header' => _header(),
             'add_artist_form' => add_artist_form($name, $nationality, $result['error'] ? [$result['error']] : []),
             'footer' => footer(),
-            'validation_scripts' => $result === 'success' ? '' : get_validation_scripts(['add_artist.js'])
+            'validation_scripts' => $result === 'success' ? '' : get_validation_scripts(['add_artist.js','photo_validator.js'])
         ]
     );
     exit();

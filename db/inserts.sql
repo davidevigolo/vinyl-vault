@@ -27,33 +27,33 @@ INSERT INTO users (first_name, last_name, email, pw_hash, bio, propic_path) VALU
 -- Insert authors/artists (no dependencies)
 -- Classic Rock & Jazz Artists
 INSERT INTO author (author_name, image_path, nationality) VALUES
-('The Beatles', '/assets/images/artists/beatles.jpg', 'en'),
-('Pink Floyd', '/assets/images/artists/pinkfloyd.jpg', 'en'),
-('Miles Davis', '/assets/images/artists/milesdavis.jpg', 'en'),
-('Led Zeppelin', '/assets/images/artists/ledzeppelin.jpg', 'en'),
-('Radiohead', '/assets/images/artists/radiohead.jpg', 'en'),
-('Queen', '/assets/images/artists/queen.jpg', 'en'),
-('David Bowie', '/assets/images/artists/bowie.jpg', 'en'),
-('Fleetwood Mac', '/assets/images/artists/fleetwoodmac.jpg', 'en'),
+('The Beatles', '/assets/images/artists/beatles.jpg', 'us'),
+('Pink Floyd', '/assets/images/artists/pinkfloyd.jpg', 'us'),
+('Miles Davis', '/assets/images/artists/milesdavis.jpg', 'us'),
+('Led Zeppelin', '/assets/images/artists/ledzeppelin.jpg', 'us'),
+('Radiohead', '/assets/images/artists/radiohead.jpg', 'us'),
+('Queen', '/assets/images/artists/queen.jpg', 'us'),
+('David Bowie', '/assets/images/artists/bowie.jpg', 'us'),
+('Fleetwood Mac', '/assets/images/artists/fleetwoodmac.jpg', 'us'),
 -- Modern Pop & Indie Artists
-('Gracie Abrams', '/assets/images/artists/gracieabrams.jpg', 'en'),
-('The Weeknd', '/assets/images/artists/theweeknd.jpg', 'en'),
-('Chase Atlantic', '/assets/images/artists/chaseatlantic.jpg', 'en'),
+('Gracie Abrams', '/assets/images/artists/gracieabrams.jpg', 'us'),
+('The Weeknd', '/assets/images/artists/theweeknd.jpg', 'us'),
+('Chase Atlantic', '/assets/images/artists/chaseatlantic.jpg', 'us'),
 -- Rock & Alternative Artists
-('Linkin Park', '/assets/images/artists/linkinpark.jpg', 'en'),
-('Fall Out Boy', '/assets/images/artists/falloutboy.jpg', 'en'),
-('Arctic Monkeys', '/assets/images/artists/arcticmonkeys.jpg', 'en'),
+('Linkin Park', '/assets/images/artists/linkinpark.jpg', 'us'),
+('Fall Out Boy', '/assets/images/artists/falloutboy.jpg', 'us'),
+('Arctic Monkeys', '/assets/images/artists/arcticmonkeys.jpg', 'us'),
 -- Pop Superstars
-('Taylor Swift', '/assets/images/artists/taylorswift.jpg', 'en'),
-('Dua Lipa', '/assets/images/artists/dualipa.jpg', 'en'),
-('Ariana Grande', '/assets/images/artists/arianagrande.jpg', 'en'),
+('Taylor Swift', '/assets/images/artists/taylorswift.jpg', 'us'),
+('Dua Lipa', '/assets/images/artists/dualipa.jpg', 'us'),
+('Ariana Grande', '/assets/images/artists/arianagrande.jpg', 'us'),
 -- Hip Hop & R&B Artists
-('Drake', '/assets/images/artists/drake.jpg', 'en'),
-('Lana Del Rey', '/assets/images/artists/lanadelrey.jpg', 'en'),
-('SZA', '/assets/images/artists/sza.jpg', 'en'),
-('NF', '/assets/images/artists/nf.jpg', 'en'),
+('Drake', '/assets/images/artists/drake.jpg', 'us'),
+('Lana Del Rey', '/assets/images/artists/lanadelrey.jpg', 'us'),
+('SZA', '/assets/images/artists/sza.jpg', 'us'),
+('NF', '/assets/images/artists/nf.jpg', 'us'),
 -- Metal Artists
-('BABYMETAL', '/assets/images/artists/babymetal.jpg', 'ja');
+('BABYMETAL', '/assets/images/artists/babymetal.jpg', 'jp');
 
 -- Insert disks (no dependencies)
 -- Classic albums (The Beatles, Pink Floyd, Queen, etc.)

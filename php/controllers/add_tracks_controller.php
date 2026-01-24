@@ -4,10 +4,47 @@ include_once 'php/classes/utils.php';
 
 check_user_logged_in();
 
+function get_editions_for_disk($disk_id): array
+{
+    $connection = DbConnection::get_instance();
+    $query = "SELECT edition_name FROM edition WHERE disk_id = ? ORDER BY edition_name ASC;";
+    $stmt = mysqli_prepare($connection->get_connection(), $query);
+    if (!$stmt) {
+        error_log(mysqli_error($connection->get_connection()));
+        return [];
+    }
+    $success = mysqli_stmt_bind_param($stmt, 'i', $disk_id);
+    if (!$success) {
+        error_log(mysqli_error($connection->get_connection()));
+        return [];
+    }
+    $success = mysqli_stmt_execute($stmt);
+    if (!$success) {
+        error_log(mysqli_error($connection->get_connection()));
+        return [];
+    }
+    mysqli_stmt_store_result($stmt);
+    mysqli_stmt_bind_result($stmt, $edition_name);
+    $editions = [];
+    while (mysqli_stmt_fetch($stmt)) {
+        $editions[] = $edition_name;
+    }
+    mysqli_stmt_close($stmt);
+    return $editions;
+}
+
 function add_tracks($disk, $edition, $titles, $durations): array
 {
     if (!$disk || !$edition || empty($titles) || !is_array($titles) || empty($durations) || !is_array($durations) || count($titles) !== count($durations)) {
         return ['success' => false, 'error' => 'Uno o più campi devono ancora essere compilati'];
+    }
+
+    if(!in_array($disk, get_all_disk_ids())) {
+        return ['success' => false, 'error' => 'Il disco selezionato non esiste sul database', 'fields_to_reset' => ['disk', 'edition']];
+    }
+
+    if(!in_array($edition, get_editions_for_disk($disk))) {
+        return ['success' => false, 'error' => 'L\'edizione selezionata non esiste per il disco selezionato', 'fields_to_reset' => ['edition']];
     }
 
     $count = count($titles);

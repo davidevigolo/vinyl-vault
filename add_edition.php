@@ -33,6 +33,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 
+    $release_date = isset($result['fields_to_reset']) && in_array('release-date', $result['fields_to_reset']) ? '' : $release_date;
+    $disk_id = isset($result['fields_to_reset']) && in_array('disk', $result['fields_to_reset']) ? '' : $disk_id;
+    $name = isset($result['fields_to_reset']) && in_array('name', $result['fields_to_reset']) ? '' : $name;
+    $country = isset($result['fields_to_reset']) && in_array('country', $result['fields_to_reset']) ? '' : $country;
+    $is_standard_edition = isset($result['fields_to_reset']) && in_array('standard-edition', $result['fields_to_reset']) ? false : $is_standard_edition;
+
     echo Template::render(
         'static/add_edition.html',
         [

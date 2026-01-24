@@ -87,4 +87,3 @@ function add_artist($name, $nationality, $image): array
     mysqli_commit($connection->get_connection());
     return ['success' => true];
 }
-?>

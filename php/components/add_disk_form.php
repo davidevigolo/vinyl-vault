@@ -53,15 +53,17 @@ function add_disk_form($title, $_artist, $type, $_genres, $errors): string
 
     // Sort nationalities for consistent display
     ksort($grouped_artists);
+    $nationality_codes = get_nationality_codes();
+    $languages = get_nationality_languages();
 
     // Build HTML with optgroups
     $artist_options = '';
     foreach ($grouped_artists as $nationality => $artists_in_group) {
-        $artist_options .= '<optgroup label="' . htmlspecialchars(strtoupper($nationality)) . '">';
+        $artist_options .= '<optgroup label="' . htmlspecialchars(strtoupper($nationality_codes[$nationality])) . '">';
         foreach ($artists_in_group as $artist) {
             $selected = ($_artist !== null && $_artist == $artist['id']) ? ' selected' : '';
             if ($artist['nationality'] != "it") {
-                $artist_options .= '<option value="' . htmlspecialchars($artist['id']) . '" lang="' . htmlspecialchars($artist['nationality']) . '"' . $selected . '>' . htmlspecialchars($artist['author_name']) . '</option>';
+                $artist_options .= '<option value="' . htmlspecialchars($artist['id']) . '" lang="' . htmlspecialchars($languages[$artist['nationality']]) . '"' . $selected . '>' . htmlspecialchars($artist['author_name']) . '</option>';
             } else {
                 $artist_options .= '<option value="' . htmlspecialchars($artist['id']) . '"' . $selected . '>' . htmlspecialchars($artist['author_name']) . '</option>';
             }

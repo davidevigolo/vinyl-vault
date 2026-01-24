@@ -31,6 +31,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 
+    $title = isset($result['fields_to_reset']) && in_array('title', $result['fields_to_reset']) ? '' : $title;
+    $artist = isset($result['fields_to_reset']) && in_array('artist', $result['fields_to_reset']) ? '' : $artist;
+    $type = isset($result['fields_to_reset']) && in_array('type', $result['fields_to_reset']) ? '' : $type;
+    $genres = isset($result['fields_to_reset']) && in_array('genre', $result['fields_to_reset']) ? [] : $genres;
+
     echo Template::render(
         'static/add_disk.html',
         [

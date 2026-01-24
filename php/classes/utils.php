@@ -83,6 +83,65 @@ function get_nationality_codes()
     ];
 }
 
+function get_nationality_languages()
+{
+    return [
+        'it' => 'it',
+        'us' => 'en',
+        'uk' => 'en',
+        'fr' => 'fr',
+        'de' => 'de',
+        'es' => 'es',
+        'jp' => 'ja',
+        'ca' => 'en',
+        'au' => 'en',
+        'br' => 'pt',
+        'mx' => 'es',
+        'ar' => 'es',
+        'cl' => 'es',
+        'co' => 'es',
+        'pe' => 'es',
+        'nl' => 'nl',
+        'be' => 'nl', // Belgium: Dutch is most common, could also be 'fr'
+        'ch' => 'de', // Switzerland: German is most common, could also be 'fr', 'it'
+        'at' => 'de',
+        'se' => 'sv',
+        'no' => 'no',
+        'dk' => 'da',
+        'fi' => 'fi',
+        'pl' => 'pl',
+        'cz' => 'cs',
+        'hu' => 'hu',
+        'ro' => 'ro',
+        'bg' => 'bg',
+        'gr' => 'el',
+        'pt' => 'pt',
+        'ie' => 'en',
+        'ru' => 'ru',
+        'ua' => 'uk',
+        'tr' => 'tr',
+        'il' => 'he',
+        'sa' => 'ar',
+        'ae' => 'ar',
+        'in' => 'hi', // India: Hindi is most common, could also be 'en'
+        'cn' => 'zh',
+        'kr' => 'ko',
+        'th' => 'th',
+        'vn' => 'vi',
+        'id' => 'id',
+        'my' => 'ms',
+        'sg' => 'en', // Singapore: English is official, could also be 'zh', 'ms', 'ta'
+        'ph' => 'tl',
+        'nz' => 'en',
+        'za' => 'en',
+        'eg' => 'ar',
+        'ng' => 'en',
+        've' => 'es',
+        'uy' => 'es',
+        'ec' => 'es',
+    ];
+}
+
 /**
  * Generates HTML script tags for the given array of script names.
  * Use this only in main templates, not components.
@@ -97,4 +156,18 @@ function get_validation_scripts($script_names)
         $scripts_html .= '<script src="scripts/' . htmlspecialchars($script_name) . '" defer></script>' . "\n";
     }
     return $scripts_html;
+}
+
+function get_all_disk_ids()
+{
+    $connection = DbConnection::get_instance()->get_connection();
+    $ids = [];
+    $result = mysqli_query($connection, "SELECT id FROM disk");
+    if ($result) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $ids[] = $row['id'];
+        }
+        mysqli_free_result($result);
+    }
+    return $ids;
 }

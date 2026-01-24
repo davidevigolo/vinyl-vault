@@ -32,6 +32,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     );
         exit();
     }
+    $disk = isset($result['fields_to_reset']) && in_array('disk', $result['fields_to_reset']) ? '' : $disk;
+    $edition = isset($result['fields_to_reset']) && in_array('edition', $result['fields_to_reset']) ? '' : $edition;
+    $titles = isset($result['fields_to_reset']) && in_array('title', $result['fields_to_reset']) ? [] : $titles;
+    $durations = isset($result['fields_to_reset']) && in_array('duration', $result['fields_to_reset']) ? [] : $durations;
 
     echo Template::render(
         'static/add_tracks.html',
