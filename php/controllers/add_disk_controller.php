@@ -1,7 +1,10 @@
 <?php
 
-include_once 'php/classes/DbConnection.php';
-include_once 'php/classes/utils.php';
+include_once '../classes/DbConnection.php';
+include_once '../classes/utils.php';
+
+session_start();
+check_user_logged_in();
 
 function add_disk($title, $artist, $type, $genres): array
 {
@@ -86,7 +89,7 @@ function add_disk($title, $artist, $type, $genres): array
         if (!$success) {
             error_log(mysqli_error($connection->get_connection()));
             mysqli_rollback($connection->get_connection());
-            return ['success' => false, 'error' => 'Hai inserito almeno due generi identici per questo disco. Rimuovi i duplicati e riprova.', 'fields_to_reset' => ['genre'] ];
+            return ['success' => false, 'error' => 'I valori dei generi per questo disco non sono validi. Rimuovi i duplicati e riprova.', 'fields_to_reset' => ['genre'] ];
         }
     }
     mysqli_stmt_close($stmt_genre);
@@ -94,3 +97,15 @@ function add_disk($title, $artist, $type, $genres): array
 
     return ['success' => true];
 }
+
+$title = $_POST['title'] ?? null;
+$artist = $_POST['artist'] ?? null;
+$type = $_POST['type'] ?? null;
+$genres = $_POST['genre'] ?? null;
+$_SESSION['add_disk_result'] = add_disk($title, $artist, $type, $genres);
+$_SESSION['add_disk_result']['title'] = in_array('title', $_SESSION['add_disk_result']['fields_to_reset'] ?? []) ? '' : $title;
+$_SESSION['add_disk_result']['type'] = in_array('type', $_SESSION['add_disk_result']['fields_to_reset'] ?? []) ? '' : $type;
+$_SESSION['add_disk_result']['artist'] = in_array('artist', $_SESSION['add_disk_result']['fields_to_reset'] ?? []) ? '' : $artist;
+$_SESSION['add_disk_result']['genres'] = in_array('genre', $_SESSION['add_disk_result']['fields_to_reset'] ?? []) ? [] : $genres;
+header('Location: ' . '../../add_disk.php');
+exit();

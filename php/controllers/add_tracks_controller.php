@@ -1,6 +1,6 @@
 <?php
-include_once 'php/classes/DbConnection.php';
-include_once 'php/classes/utils.php';
+include_once '../classes/DbConnection.php';
+include_once '../classes/utils.php';
 
 check_user_logged_in();
 
@@ -39,11 +39,11 @@ function add_tracks($disk, $edition, $titles, $durations): array
         return ['success' => false, 'error' => 'Uno o più campi devono ancora essere compilati'];
     }
 
-    if(!in_array($disk, get_all_disk_ids())) {
+    if (!in_array($disk, get_all_disk_ids())) {
         return ['success' => false, 'error' => 'Il disco selezionato non esiste sul database', 'fields_to_reset' => ['disk', 'edition']];
     }
 
-    if(!in_array($edition, get_editions_for_disk($disk))) {
+    if (!in_array($edition, get_editions_for_disk($disk))) {
         return ['success' => false, 'error' => 'L\'edizione selezionata non esiste per il disco selezionato', 'fields_to_reset' => ['edition']];
     }
 
@@ -58,8 +58,8 @@ function add_tracks($disk, $edition, $titles, $durations): array
         if (preg_match($regex, $track_name) !== 1) {
             return ['success' => false, 'error' => 'Il titolo della traccia contiene caratteri non validi'];
         }
-        if ($duration < 0 || $duration > 32767) { //limit of SMALLINT in database
-            return ['success' => false, 'error' => 'La durata della traccia non è valida'];
+        if ($duration < 1 || $duration > 32767) { //limit of SMALLINT in database
+            return ['success' => false, 'error' => 'La durata delle tracce deve essere maggiore di 1'];
         }
     }
 
@@ -136,3 +136,19 @@ function add_tracks($disk, $edition, $titles, $durations): array
     mysqli_commit($connection->get_connection());
     return ['success' => true];
 }
+
+$disk = $_POST['disk'] ?? null;
+$edition = $_POST['edition'] ?? null;
+$titles = $_POST['title'] ?? [];
+$durations = $_POST['duration'] ?? [];
+
+$titles = array_filter($titles, fn($value) => trim($value) !== '');
+$durations = array_filter($durations, fn($value) => trim($value) !== '');
+
+$_SESSION['add_tracks_result'] = add_tracks($disk, $edition, $titles, $durations);
+$_SESSION['add_tracks_result']['disk'] = in_array('disk', $_SESSION['add_tracks_result']['fields_to_reset'] ?? []) ? '' : $disk;
+$_SESSION['add_tracks_result']['edition'] = in_array('edition', $_SESSION['add_tracks_result']['fields_to_reset'] ?? []) ? '' : $edition;
+$_SESSION['add_tracks_result']['titles'] = in_array('titles', $_SESSION['add_tracks_result']['fields_to_reset'] ?? []) ? [] : $titles;
+$_SESSION['add_tracks_result']['durations'] = in_array('durations', $_SESSION['add_tracks_result']['fields_to_reset'] ?? []) ? [] : $durations;
+header('Location: ../../add_tracks.php');
+exit();

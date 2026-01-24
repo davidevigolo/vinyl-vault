@@ -16,9 +16,33 @@ this.document.getElementById('edition').addEventListener('input', function () {
     validateSelect(this, errorMessage);
 });
 
-this.document.getElementById('title-0').addEventListener('input', function () {
-        let errorMessage = document.getElementById('title-0-error');
-        errorMessage.textContent = validateTrackTitle(this);
+// General validation for all track inputs using event delegation
+this.document.addEventListener('input', function (event) {
+    if (event.target.name === 'title[]') {
+        const index = event.target.id.split('-')[1];
+        const errorMessage = document.getElementById(`title-${index}-error`);
+        if (errorMessage) {
+            const error = validateTrackTitle(event.target);
+            // For index 0, always show errors. For others, only show if field has value
+            if (index === '0') {
+                errorMessage.textContent = error;
+            } else {
+                errorMessage.textContent = event.target.value.trim() === '' ? '' : error;
+            }
+        }
+    } else if (event.target.name === 'duration[]') {
+        const index = event.target.id.split('-')[1];
+        const errorMessage = document.getElementById(`duration-${index}-error`);
+        if (errorMessage) {
+            const error = validateTrackDuration(event.target);
+            // For index 0, always show errors. For others, only show if field has value
+            if (index === '0') {
+                errorMessage.textContent = error;
+            } else {
+                errorMessage.textContent = event.target.value.trim() === '' ? '' : error;
+            }
+        }
+    }
 });
 
 this.document.getElementById('add-track-button').addEventListener('click', function () {
@@ -43,6 +67,25 @@ function validateTrackTitle(input)  {
     } else if (!value.match(pattern)) {
         errorMessage += 'Caratteri non validi nel titolo';
     }else {
+        errorMessage = '';
+    }
+    return errorMessage;
+}
+
+function validateTrackDuration(input) {
+    let errorMessage = '';
+    let value = input.value.trim();
+    let numValue = parseInt(value, 10);
+
+    if (value === '') {
+        errorMessage = 'Obbligatorio';
+    } else if (isNaN(numValue)) {
+        errorMessage = 'Deve essere un numero';
+    } else if (numValue < 1) {
+        errorMessage = 'Minimo 1 secondo';
+    } else if (numValue > 32767) {
+        errorMessage = 'Massimo 32767 secondi';
+    } else {
         errorMessage = '';
     }
     return errorMessage;

@@ -8,56 +8,34 @@ include 'php/components/add_tracks_form.php';
 
 check_user_logged_in();
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $disk = $_POST['disk'] ?? null;
-    $edition = $_POST['edition'] ?? null;
-    $titles = $_POST['title'] ?? [];
-    $durations = $_POST['duration'] ?? [];
-
-    $titles = array_filter($titles, fn($value) => trim($value) !== '');
-    $durations = array_filter($durations, fn($value) => trim($value) !== '');
-
-    include_once 'php/controllers/add_tracks_controller.php';
-    $result = add_tracks($disk, $edition, $titles, $durations);
-    if ($result['success']) {
-        echo Template::render(
+if(isset($_SESSION['add_tracks_result']['success']) && $_SESSION['add_tracks_result']['success']) {
+    unset($_SESSION['add_tracks_result']);
+    echo Template::render(
         'static/add_tracks.html',
         [
             'head' => Template::render('static/layout/head.html', []),
             'header' => _header(),
             'add_tracks_form' => Template::render('static/layout/add_tracks/add_tracks_success.html', []),
             'footer' => footer(),
-            'validation_scripts' => get_validation_scripts(['add_tracks.js'])
-        ]
-    );
-        exit();
-    }
-    $disk = isset($result['fields_to_reset']) && in_array('disk', $result['fields_to_reset']) ? '' : $disk;
-    $edition = isset($result['fields_to_reset']) && in_array('edition', $result['fields_to_reset']) ? '' : $edition;
-    $titles = isset($result['fields_to_reset']) && in_array('title', $result['fields_to_reset']) ? [] : $titles;
-    $durations = isset($result['fields_to_reset']) && in_array('duration', $result['fields_to_reset']) ? [] : $durations;
-
-    echo Template::render(
-        'static/add_tracks.html',
-        [
-            'head' => Template::render('static/layout/head.html', []),
-            'header' => _header(),
-            'add_tracks_form' => add_tracks_form($disk, $edition, $titles, $durations, $result['error'] ? [$result['error']] : []),
-            'footer' => footer(),
-            'validation_scripts' => get_validation_scripts(['add_tracks.js'])
+            'validation_scripts' => ''
         ]
     );
     exit();
 }
 
-$result = isset($_GET['result']) ? $_GET['result'] : false;
+$disk = $_SESSION['add_tracks_result']['disk'] ?? '';
+$edition = $_SESSION['add_tracks_result']['edition'] ?? '';
+$titles = $_SESSION['add_tracks_result']['titles'] ?? [];
+$durations = $_SESSION['add_tracks_result']['durations'] ?? [];
+$errors = isset($_SESSION['add_tracks_result']['error']) ? [$_SESSION['add_tracks_result']['error']] : [];
+unset($_SESSION['add_tracks_result']);
 echo Template::render(
     'static/add_tracks.html',
     [
         'head' => Template::render('static/layout/head.html', []),
         'header' => _header(),
-        'add_tracks_form' => $result ? Template::render('static/layout/add_tracks/add_tracks_success.html', []) : add_tracks_form('', '', [], [], []),
+        'add_tracks_form' => add_tracks_form($disk, $edition, $titles, $durations, $errors),
         'footer' => footer(),
-        'validation_scripts' => $result === 'success' ? '' : get_validation_scripts(['add_tracks.js'])
+        'validation_scripts' => get_validation_scripts(['add_tracks.js'])
     ]
 );

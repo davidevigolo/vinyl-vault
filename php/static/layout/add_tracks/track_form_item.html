@@ -5,10 +5,12 @@
             <label for="title-[index]">Titolo della traccia</label>
             <input type="text" id="title-[index]" name="title[]" maxlength="200"
                 pattern="[a-zA-Z0-9àèéìòùÀÈÉÌÒÙ\s]+" value="[track_title]">
+            <span class="error-message" id="title-[index]-error" aria-live="polite"></span>
         </div>
         <div class="input-track-duration">
             <label for="duration-[index]">Durata (in secondi)</label>
-            <input type="number" id="duration-[index]" name="duration[]" class="track-duration" value="[track_duration]">
+            <input type="number" id="duration-[index]" name="duration[]" class="track-duration" value="[track_duration]" min="1" max="32767">
+            <span class="error-message" id="duration-[index]-error" aria-live="polite"></span>
         </div>
     </div>
 </fieldset>

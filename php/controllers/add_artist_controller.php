@@ -1,6 +1,9 @@
 <?php
-include_once 'php/classes/DbConnection.php';
-include_once 'php/classes/utils.php';
+include_once '../classes/DbConnection.php';
+include_once '../classes/utils.php';
+
+session_start();
+check_user_logged_in();
 
 function add_artist($name, $nationality, $image): array
 {
@@ -87,3 +90,13 @@ function add_artist($name, $nationality, $image): array
     mysqli_commit($connection->get_connection());
     return ['success' => true];
 }
+
+$name = $_POST['name'] ?? null;
+$nationality = $_POST['nationality'] ?? null;
+$image = $_FILES['photo'] ?? null;
+
+$_SESSION['add_artist_result'] = add_artist($name, $nationality, $image);
+$_SESSION['add_artist_result']['name'] = in_array('name', $_SESSION['add_artist_result']['fields_to_reset'] ?? []) ? '' : $name;
+$_SESSION['add_artist_result']['nationality'] = in_array('nationality', $_SESSION['add_artist_result']['fields_to_reset'] ?? []) ? '' : $nationality;
+header('Location: ' . '../../add_artist.php');
+exit();

@@ -1,8 +1,9 @@
 <?php
-include_once 'php/classes/DbConnection.php';
-include_once 'php/classes/utils.php';
+include_once '../classes/DbConnection.php';
+include_once '../classes/utils.php';
 
-// Helper function to get all disk IDs from the database
+session_start();
+check_user_logged_in();
 
 function add_edition($disk_id, $name, $release_date, $country, $is_standard_edition, $image)
 {
@@ -96,3 +97,18 @@ function add_edition($disk_id, $name, $release_date, $country, $is_standard_edit
     mysqli_commit($connection->get_connection());
     return ['success' => true];
 }
+
+$disk_id = $_POST['disk'] ?? null;
+$name = $_POST['name'] ?? null;
+$release_date = $_POST['release-date'] ?? null;
+$country = $_POST['country'] ?? null;
+$is_standard_edition = isset($_POST['standard-edition']) ? true : false;
+$image = $_FILES['photo'] ?? null;
+$_SESSION['add_edition_result'] = add_edition($disk_id, $name, $release_date, $country, $is_standard_edition, $image);
+$_SESSION['add_edition_result']['disk'] = in_array('disk', $_SESSION['add_edition_result']['fields_to_reset'] ?? []) ? '' : $disk_id;
+$_SESSION['add_edition_result']['name'] = in_array('name', $_SESSION['add_edition_result']['fields_to_reset'] ?? []) ? '' : $name;
+$_SESSION['add_edition_result']['release_date'] = in_array('release-date', $_SESSION['add_edition_result']['fields_to_reset'] ?? []) ? '' : $release_date;
+$_SESSION['add_edition_result']['country'] = in_array('country', $_SESSION['add_edition_result']['fields_to_reset'] ?? []) ? '' : $country;
+$_SESSION['add_edition_result']['is_standard_edition'] = in_array('is_standard_edition', $_SESSION['add_edition_result']['fields_to_reset'] ?? []) ? false : $is_standard_edition;
+header('Location: ../../add_edition.php');
+exit();
