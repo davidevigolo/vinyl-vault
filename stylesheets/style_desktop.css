@@ -281,7 +281,7 @@ header .site-nav-links li {
     justify-self: end;
 }
 
-/* End Esplora Page */
+/* End Explore Page */
 
 
 /* Collection & Wishlist pages */
@@ -334,9 +334,12 @@ img#empty-collection-image {
 p#empty-collection-paragraph {
     font-size: 1.5rem;
 }
+
+.collection-priority-section input[type="number"] {
+    background-color: var(--text-muted);
+}
+
 /* End Collection & Wishlist pages */
-
-
 
 
 /* Album Page */
@@ -474,6 +477,56 @@ p#empty-collection-paragraph {
     justify-content: center;
 }
 
+/* End Artist Page */
 
 
-/* Page Artist Page */
+/* Top Vinyls Page */
+
+#top-vinyls-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1.5rem;
+    margin: 2rem auto;
+}
+
+#top-vinyls-grid > *:first-child {
+    grid-column: 1 / 7; 
+}
+
+#top-vinyls-grid > *:nth-child(2),
+#top-vinyls-grid > *:nth-child(3) {
+    grid-column: span 3;
+}
+
+#top-vinyls-grid > *:nth-child(n+4) {
+    grid-column: span 2;
+}
+
+#top-vinyls-grid > *:nth-child(2) .vinyl-card,
+#top-vinyls-grid > *:nth-child(3) .vinyl-card {
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    align-items: center;
+
+}
+#top-vinyls-grid > *:nth-child(2) .vinyl-card img,
+#top-vinyls-grid > *:nth-child(3) .vinyl-card img {
+    width: 90%;
+}
+
+#top-vinyls-grid > *:nth-child(2) .artist-name,
+#top-vinyls-grid > *:nth-child(3) .artist-name {
+    font-size: var(--font-medium);
+}
+
+#top-vinyls-grid > *:nth-child(2) .album-title,
+#top-vinyls-grid > *:nth-child(3) .album-title {
+    font-size: var(--font-xl);
+}
+
+#top-vinyls-grid > *:nth-child(2) .edition-info,
+#top-vinyls-grid > *:nth-child(3) .edition-info {
+    font-size: var(--font-large);
+}
+
+/* End Top Vinyls Page */

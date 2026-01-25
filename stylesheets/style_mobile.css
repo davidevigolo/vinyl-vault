@@ -504,7 +504,7 @@ header {
     grid-template-columns: 1fr 1fr; 
     gap: 2rem;
     width: 100%;
-    max-width: 500px;
+    max-width: 20em;
 }
 
 .footer-col h3 {
@@ -801,10 +801,9 @@ footer .profile-links a:hover {
 /* Vinyl Card Base */
 .card-link-wrapper {
     text-decoration: none;
-    color: inherit;
     display: block;
     height: 100%;
-    weight: 100%;
+    width: 100%;
 }
 
 .vinyl-card {
@@ -821,8 +820,13 @@ footer .profile-links a:hover {
     min-width: 0;
 }
 
+.vinyl-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(255, 255, 255, 0.25);
+}
+
 .card-image img {
-    width: 13em;
+    width: 100%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 1rem;
@@ -888,7 +892,7 @@ footer .profile-links a:hover {
     text-align: center;
     padding: 2.5rem 1.5rem;
     gap: 1.5rem;
-    border-radius: 25px;
+    border-radius: 1.3em;
 }
 
 .cta-content h2 {
@@ -921,7 +925,7 @@ footer .profile-links a:hover {
     background-color: var(--bg-subsection);
     color: var(--brand-primary-dark);
     padding: 0.3rem 0.8rem;
-    border-radius: 20px;
+    border-radius: 1.3em;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
@@ -938,7 +942,7 @@ footer .profile-links a:hover {
 
 #album-week img {
     width: 100%;
-    max-width: 400px;
+    max-width: 22em;
     height: auto;
     object-fit: contain;
     border-radius: 2rem;
@@ -1360,6 +1364,7 @@ img#empty-collection-image {
     font-size: var(--font-small);
     text-align: center;
     transition: all 0.3s ease;
+    font-weight: 700;
 }
 
 .collection-priority-section input::-webkit-outer-spin-button,
@@ -1613,3 +1618,78 @@ img#empty-collection-image {
 }
 
 /* Artist Page */
+
+
+/* Top Vinyls Page */
+
+#top-vinyls-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.vinyl-card {
+    align-items: center;
+    position: relative;
+    justify-content: center;
+}
+
+.vinyl-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 1rem;
+    object-fit: cover;
+}
+
+#top-vinyls-grid > *:first-child {
+    grid-column: 1 / 3;
+}
+
+#top-vinyls-grid > *:first-child .card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-color: var(--bg-subsection);
+    color: var(--brand-primary-dark);
+    padding: 0.1rem 0.5rem;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: var(--font-xl);
+    box-shadow: 0 0 13px 3px var(--bg-search);
+    border: 1px solid var(--bg-surface);
+}
+
+.badge abbr {
+    text-decoration: none;
+    border-bottom: none;
+}
+
+#top-vinyls-grid > *:first-child .vinyl-card {
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1.2rem;
+}
+
+#top-vinyls-grid > *:first-child .artist-name {
+    font-size: var(--font-medium);
+}
+
+#top-vinyls-grid > *:first-child .album-title {
+    font-size: var(--font-xl);
+}
+
+#top-vinyls-grid > *:first-child .edition-info {
+    font-size: var(--font-large);
+}
+
+/* End Top Vinyls Page */
