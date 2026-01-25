@@ -80,22 +80,28 @@ function edit_multiple_items_in_collection($user_id)
     return $success;
 }
 
-$result = -1;
-if ($action === 'edit_multiple' && $user_id) {
-    $op_result = edit_multiple_items_in_collection($user_id);
-    $result = $op_result ? 0 : 1;
+$action = $_POST['action'] ?? null;
+$user_id = $_SESSION['user_id'] ?? null;
+$disk_id = $_POST['disk_id'] ?? null;
+$edition_name = $_POST['edition_name'] ?? null;
+$items_to_delete = $_POST['items_to_delete'] ?? [];
+$ratings = $_POST['rating'] ?? [];
+$result = edit_multiple_items_in_collection($user_id, $disk_id, $edition_name, $items_to_delete, $ratings);
+$_SESSION['manage_collection_result'] = $result;
+// Build associative arrays for items_to_delete and ratings
+$items_to_delete_assoc = [];
+foreach ($disk_id as $idx => $d_id) {
+    $key = $d_id . '_' . $edition_name[$idx];
+    $items_to_delete_assoc[$key] = in_array($key, $items_to_delete);
 }
 
-switch ($result) {
-    case 0:
-        $_SESSION['collection_action_status'] = 'success';
-        break;
-    case 1:
-        $_SESSION['collection_action_status'] = 'error';
-        break;
-    default:
-        $_SESSION['collection_action_status'] = 'invalid';
-        break;
+$ratings_assoc = [];
+foreach ($disk_id as $idx => $d_id) {
+    $key = $d_id . '_' . $edition_name[$idx];
+    $ratings_assoc[$key] = isset($ratings[$idx]) ? $ratings[$idx] : null;
 }
-header('Location: ../../collection.php');
+
+$_SESSION['manage_collection_result']['items_to_delete'] = $items_to_delete_assoc;
+$_SESSION['manage_collection_result']['rating'] = $ratings_assoc;
+header('Location:' . ($_SESSION['manage_collection_result']['success'] ? '../../collection.php' : '../../collection.php?edit=true'));
 exit();

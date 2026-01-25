@@ -39,15 +39,18 @@ function wishlist($edit_mode = false)
                 'country' => htmlspecialchars($vinyl['country']),
                 'year' => htmlspecialchars(str_replace('-', '/', $vinyl['release_date'])),
                 'year_datetime' => htmlspecialchars($vinyl['release_date']),
-                'priority_level' => htmlspecialchars($vinyl['priority_level']),
-                'image_url' => 'assets/images/pollo.webp',
+                'priority_level' => isset($_SESSION['manage_wishlist_result']['priority_levels'][$vinyl['disk_id'] . '_' . $vinyl['edition_name']]) ? htmlspecialchars($_SESSION['manage_wishlist_result']['priority_levels'][$vinyl['disk_id'] . '_' . $vinyl['edition_name']]) : htmlspecialchars($vinyl['priority_level']),
+                'checked' => (isset($_SESSION['manage_wishlist_result']['items_to_delete'][$vinyl['disk_id'] . '_' . $vinyl['edition_name']]) && $_SESSION['manage_wishlist_result']['items_to_delete'][$vinyl['disk_id'] . '_' . $vinyl['edition_name']]) ? 'checked' : '',
+                'image_url' => htmlspecialchars($vinyl['image_path']) ?: 'assets/images/pollo.webp',
                 'disk_id' => htmlspecialchars($vinyl['disk_id'])
             ]);
         }
     }
     echo Template::render($edit_mode ? 'static/layout/wishlist/wishlist_grid_edit.html' : 'static/layout/wishlist/wishlist_grid.html', [
-        'wishlist_items' => $items
+        'wishlist_items' => $items,
+        'errors' => isset($_SESSION['manage_wishlist_result']['error']) ? $_SESSION['manage_wishlist_result']['error'] : ''
     ]);
+    unset($_SESSION['manage_wishlist_result']);
     return ob_get_clean();
 }
 

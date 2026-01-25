@@ -1,7 +1,8 @@
 <?php
 include_once 'php/classes/DbConnection.php';
 
-function get_collection(){
+function get_collection()
+{
     $connection = DbConnection::get_instance();
     $query = "SELECT o.disk_id, e.image_path, d.title, a.author_name as author, a.id as author_id, e.edition_name, e.country, e.release_date, o.rating
        FROM ownership o 
@@ -24,7 +25,7 @@ function collection($edit_mode = false)
     ob_start();
     $collection = get_collection();
     $items = '';
-    if(!$collection || mysqli_num_rows($collection) === 0){
+    if (!$collection || mysqli_num_rows($collection) === 0) {
         echo Template::render('static/layout/collection/empty_collection.html', []);
         return ob_get_clean();
     }
@@ -39,15 +40,18 @@ function collection($edit_mode = false)
                 'country' => htmlspecialchars($vinyl['country']),
                 'year' => htmlspecialchars(str_replace('-', '/', $vinyl['release_date'])),
                 'year_datetime' => htmlspecialchars($vinyl['release_date']),
-                'image_url' => 'assets/images/pollo.webp',
+                'image_url' => htmlspecialchars($vinyl['image_path']) ?: 'assets/images/pollo.webp',
                 'disk_id' => htmlspecialchars($vinyl['disk_id']),
-                'rating_value'  => intval($vinyl['rating'] ?? 0)
+                'rating_value' => isset($_SESSION['manage_collection_result']['rating']) ? intval($_SESSION['manage_collection_result']['rating'][$vinyl['disk_id'] . '_' . $vinyl['edition_name']] ?? 0) : intval($vinyl['rating'] ?? 0),
+                'checked' => (isset($_SESSION['manage_collection_result']['items_to_delete'][$vinyl['disk_id'] . '_' . $vinyl['edition_name']]) && $_SESSION['manage_collection_result']['items_to_delete'][$vinyl['disk_id'] . '_' . $vinyl['edition_name']]) ? 'checked' : ''
             ]);
         }
     }
     echo Template::render($edit_mode ? 'static/layout/collection/collection_grid_edit.html' : 'static/layout/collection/collection_grid.html', [
-        'collection_items' => $items
+        'collection_items' => $items,
+        'errors' => isset($_SESSION['manage_collection_result']['error']) ? $_SESSION['manage_collection_result']['error'] : ''
     ]);
+    unset($_SESSION['manage_collection_result']);
     return ob_get_clean();
 }
 
