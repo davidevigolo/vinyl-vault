@@ -26,7 +26,7 @@ function most_liked_artists()
     if ($mostLikedArtists && mysqli_num_rows($mostLikedArtists) > 0) {
         while ($artist = mysqli_fetch_assoc($mostLikedArtists)) {
             // TBD: Implementare gestione immagini reali
-            $artist_image = 'assets/images/pollo.webp';
+            $artist_image = htmlspecialchars($artist['image_path']) ?: 'assets/images/artist_placeholder.webp';
             
             echo Template::render('static/layout/most_liked_artists_card.html', [
                 'artist_id' => $artist['id'],

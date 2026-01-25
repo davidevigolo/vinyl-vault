@@ -14,11 +14,10 @@
                     <span class="star" data-value="4">★</span>
                     <span class="star" data-value="5">★</span>
                     
-                    <button type="button" class="btn-reset-stars">×</button>
+                    <button type="button" class="btn-reset-stars" aria-label="Resetta valutazione">×</button>
                 </div>
                 <p class="evaluation-label">Valutazione personale</p>
-                
-                <input type="hidden" name="rating" class="rating-input" value="0">
+                <input type="hidden" name="rating[]" form="collection-form" class="rating-input" value="0">
             </div>
             <input type="hidden" form="collection-form" name="disk_id[]" value="[disk_id]"/>
             <input type="hidden" form="collection-form" name="edition_name[]" value="[edition_name]"/>
@@ -28,8 +27,8 @@
     </div>
     <div class="delete-selection">
         <label class="checkbox-container">
-            <input type="checkbox" form="collection-form" name="items_to_delete[]" value="[disk_id]_[edition_name]" aria-label="Seleziona [title] per l'eliminazione"/>
-            <span class="label-text">Elimina disco</span>
+            <label class="label-text" for="delete-[disk_id]-[edition_name]">Seleziona per eliminare</label>
+            <input type="checkbox" form="collection-form" id="delete-[disk_id]-[edition_name]" name="items_to_delete[]" value="[disk_id]_[edition_name]" aria-label="Seleziona [title] per l'eliminazione" [checked]/>
         </label>
     </div>
 </article>

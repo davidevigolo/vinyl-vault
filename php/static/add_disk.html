@@ -3,9 +3,10 @@
 
 <head>
     <meta name="description"
-        content="Aggiungi un nuovo disco vinyl vault. Aiuta anche tu a rendere questa community il più completa possibile!">
-    <meta name="keywords" content="aggiunta vinile, aggiunta disco, nuovo disco, nuovo vinile, vinyl vault aggiungi disco">
-    <script src="../../scripts/add_disk.js" defer></script>
+        content="Aggiungi un nuovo disco su vinyl vault. Aiuta anche tu a rendere questa community il più completa possibile!">
+    <meta name="keywords"
+        content="aggiunta vinile, aggiunta disco, nuovo disco, nuovo vinile, vinyl vault aggiungi disco">
+    [validation_scripts]
     <title>Aggiungi disco - Vinyl Vault</title>
     [head] <!-- qui viene inserita la parte invariante dell'header-->
 </head>
@@ -21,14 +22,19 @@
     [header]
     <nav id="breadcrumb" aria-label="percorso di navigazione">
         <div class="center-container">
-            <a href="index.php"><span lang="en">Home</span></a> &gt;Aggiungi Disco
+            <ol>
+                <li><a href="index.php"><span lang="en">Home</span></a></li>
+                <li>
+                    <p>Aggiungi Disco</p>
+                </li>
+            </ol>
         </div>
     </nav>
     <main id="content">
         <div class="page-banner">
             <h1 class="page-title">Aggiungi Disco</h1>
         </div>
-        <div class="center-container">[add_disk_form]</div>
+        <section class="center-container" id="form">[add_disk_form]</section>
     </main>
     [footer]
 </body>

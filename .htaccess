@@ -23,6 +23,18 @@ Options -Indexes
     Order Allow,Deny
     Allow from all
 </Files>
+<Files "add_artist.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "add_edition.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "add_tracks.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
 <Files "top_vinyls.php">
     Order Allow,Deny
     Allow from all
@@ -68,6 +80,18 @@ Options -Indexes
     Allow from all
 </Files>
 <Files "add_disk_controller.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "add_artist_controller.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "add_edition_controller.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "add_tracks_controller.php">
     Order Allow,Deny
     Allow from all
 </Files>
