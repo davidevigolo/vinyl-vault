@@ -7,6 +7,8 @@ function get_logged_user()
     if (isset($_SESSION['user_id'])) {
         return [
             'user_id' => $_SESSION['user_id'],
+            'is_admin' => $_SESSION['is_admin'],
+            'first_name' => $_SESSION['first_name'],
         ];
     }
     return null;
