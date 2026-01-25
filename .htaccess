@@ -51,7 +51,7 @@ Options -Indexes
     Order Allow,Deny
     Allow from all
 </Files>
-<Files "unsetuid.php">
+<Files "logout.php">
     Order Allow,Deny
     Allow from all
 </Files>
@@ -72,6 +72,18 @@ Options -Indexes
     Allow from all
 </Files>
 <Files "login.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "login_controller.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "register.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "passwords.php">
     Order Allow,Deny
     Allow from all
 </Files>

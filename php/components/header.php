@@ -24,7 +24,7 @@ function header_profile_nav_menu($is_logged_in) {
 function header_nav_menu_logged_links() {
     $currentPage = basename($_SERVER["PHP_SELF"]);
     return [
-        'profile' => $currentPage == 'profile.php' ? '<span class="btn-primary disabled">Profilo</span>' : '<a href="logout.php" class="btn-primary">Profilo</a>',
+        'profile' => $currentPage == 'profile.php' ? '<span class="btn-primary disabled">Profilo</span>' : '<a href="profile.php" class="btn-primary">Profilo</a>',
         'logout' => '<a href="logout.php" class="btn-primary">Logout</a>'
     ];
 }
