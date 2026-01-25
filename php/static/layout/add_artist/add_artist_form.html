@@ -1,0 +1,29 @@
+[errors]
+<form id="add-artist-form" action="php/controllers/add_artist_controller.php" method="POST" enctype="multipart/form-data">
+    <div class="input-wrapper">
+        <label for="name">Nome dell'artista</label>
+        <ul class="input-hints">
+            <li>Massimo 100 caratteri</li>
+            <li>Caratteri consentiti: lettere, numeri e spazi</li>
+        </ul>
+        <input type="text" id="name" name="name" required maxlength="100" pattern="[a-zA-Z0-9àèéìòùÀÈÉÌÒÙ\s]+" value="[name]" required>
+        <span class="error-message" id="name-error" aria-live="polite">Obbligatorio</span>
+    </div>
+
+    <div class="input-wrapper">
+        <label for="nationality">Nazionalità</label>
+        <select id="nationality" name="nationality" required>
+            <option value="" disabled selected>Seleziona la nazionalità</option>
+            [nationality_options]
+        </select>
+        <span class="error-message" id="nationality-error" aria-live="polite">Obbligatorio</span>
+    </div>
+
+    <div class="input-wrapper">
+        <label for="photo">Foto dell'artista</label>
+        <input type="file" id="photo" name="photo" accept="image/*" required>
+        <span class="error-message" id="photo-error" aria-live="polite">Obbligatorio</span>
+    </div>
+
+    <button type="submit" class="btn-primary">Aggiungi Artista</button>
+</form>

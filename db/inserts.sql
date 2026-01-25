@@ -27,33 +27,33 @@ INSERT INTO users (first_name, last_name, username, email, pw_hash, bio, propic_
 -- Insert authors/artists (no dependencies)
 -- Classic Rock & Jazz Artists
 INSERT INTO author (author_name, image_path, nationality) VALUES
-('The Beatles', '/assets/images/artists/beatles.jpg', 'en'),
-('Pink Floyd', '/assets/images/artists/pinkfloyd.jpg', 'en'),
-('Miles Davis', '/assets/images/artists/milesdavis.jpg', 'en'),
-('Led Zeppelin', '/assets/images/artists/ledzeppelin.jpg', 'en'),
-('Radiohead', '/assets/images/artists/radiohead.jpg', 'en'),
-('Queen', '/assets/images/artists/queen.jpg', 'en'),
-('David Bowie', '/assets/images/artists/bowie.jpg', 'en'),
-('Fleetwood Mac', '/assets/images/artists/fleetwoodmac.jpg', 'en'),
+('The Beatles', '/assets/images/artists/beatles.jpg', 'us'),
+('Pink Floyd', '/assets/images/artists/pinkfloyd.jpg', 'us'),
+('Miles Davis', '/assets/images/artists/milesdavis.jpg', 'us'),
+('Led Zeppelin', '/assets/images/artists/ledzeppelin.jpg', 'us'),
+('Radiohead', '/assets/images/artists/radiohead.jpg', 'us'),
+('Queen', '/assets/images/artists/queen.jpg', 'us'),
+('David Bowie', '/assets/images/artists/bowie.jpg', 'us'),
+('Fleetwood Mac', '/assets/images/artists/fleetwoodmac.jpg', 'us'),
 -- Modern Pop & Indie Artists
-('Gracie Abrams', '/assets/images/artists/gracieabrams.jpg', 'en'),
-('The Weeknd', '/assets/images/artists/theweeknd.jpg', 'en'),
-('Chase Atlantic', '/assets/images/artists/chaseatlantic.jpg', 'en'),
+('Gracie Abrams', '/assets/images/artists/gracieabrams.jpg', 'us'),
+('The Weeknd', '/assets/images/artists/theweeknd.jpg', 'us'),
+('Chase Atlantic', '/assets/images/artists/chaseatlantic.jpg', 'us'),
 -- Rock & Alternative Artists
-('Linkin Park', '/assets/images/artists/linkinpark.jpg', 'en'),
-('Fall Out Boy', '/assets/images/artists/falloutboy.jpg', 'en'),
-('Arctic Monkeys', '/assets/images/artists/arcticmonkeys.jpg', 'en'),
+('Linkin Park', '/assets/images/artists/linkinpark.jpg', 'us'),
+('Fall Out Boy', '/assets/images/artists/falloutboy.jpg', 'us'),
+('Arctic Monkeys', '/assets/images/artists/arcticmonkeys.jpg', 'us'),
 -- Pop Superstars
-('Taylor Swift', '/assets/images/artists/taylorswift.jpg', 'en'),
-('Dua Lipa', '/assets/images/artists/dualipa.jpg', 'en'),
-('Ariana Grande', '/assets/images/artists/arianagrande.jpg', 'en'),
+('Taylor Swift', '/assets/images/artists/taylorswift.jpg', 'us'),
+('Dua Lipa', '/assets/images/artists/dualipa.jpg', 'us'),
+('Ariana Grande', '/assets/images/artists/arianagrande.jpg', 'us'),
 -- Hip Hop & R&B Artists
-('Drake', '/assets/images/artists/drake.jpg', 'en'),
-('Lana Del Rey', '/assets/images/artists/lanadelrey.jpg', 'en'),
-('SZA', '/assets/images/artists/sza.jpg', 'en'),
-('NF', '/assets/images/artists/nf.jpg', 'en'),
+('Drake', '/assets/images/artists/drake.jpg', 'us'),
+('Lana Del Rey', '/assets/images/artists/lanadelrey.jpg', 'us'),
+('SZA', '/assets/images/artists/sza.jpg', 'us'),
+('NF', '/assets/images/artists/nf.jpg', 'us'),
 -- Metal Artists
-('BABYMETAL', '/assets/images/artists/babymetal.jpg', 'ja');
+('BABYMETAL', '/assets/images/artists/babymetal.jpg', 'jp');
 
 -- Insert disks (no dependencies)
 -- Classic albums (The Beatles, Pink Floyd, Queen, etc.)
@@ -296,16 +296,15 @@ INSERT INTO track (title, duration_seconds) VALUES
 -- Bohemian Rhapsody (Queen) - ID 10 (Single)
 ('Bohemian Rhapsody', 355),
 ('I`m in Love with My Car', 195),
--- This Is What It Feels Like (Gracie Abrams) - ID 13 (EP)
-('This Is What It Feels Like', 183),
-('I Miss You I`m Sorry', 192),
-('Long Sleeves', 211),
-('Rockland', 176),
--- Starboy (The Weeknd) - ID 15
-('Starboy', 230),
-('Party Monster', 247),
-('False Alarm', 220),
-('Reminder', 215),
+-- Gracie Abrams
+('Good Riddance', 183),
+('The Secret of Us', 192),
+('This Is What It Feels Like', 211),
+-- The Weeknd
+('After Hours', 230),
+('Starboy', 247),
+('Dawn FM', 220),
+('Party Monster', 215),
 ('Rockin', 220),
 ('Secrets', 267),
 ('True Colors', 203),
@@ -1126,7 +1125,7 @@ INSERT INTO edition_track_part_of (disk_id, edition_name, track_id, track_number
 (42, 'Standard Edition', 481, 4), (42, 'Standard Edition', 482, 5), (42, 'Standard Edition', 483, 6),
 (42, 'Standard Edition', 484, 7), (42, 'Standard Edition', 485, 8), (42, 'Standard Edition', 486, 9),
 (42, 'Standard Edition', 487, 10), (42, 'Standard Edition', 488, 11), (42, 'Standard Edition', 489, 12),
-(42, 'Standard Edition', 490, 13), (42, 'Standard Edition', 491, 14), (42, 'Standard Edition', 492, 15),
+(42, 'Standard Edition', 490,  13), (42, 'Standard Edition', 491, 14), (42, 'Standard Edition', 492, 15),
 (42, 'Standard Edition', 493, 16), (42, 'Standard Edition', 494, 17), (42, 'Standard Edition', 495, 18),
 (42, 'Standard Edition', 496, 19), (42, 'Standard Edition', 497, 20), (42, 'Standard Edition', 498, 21),
 (42, 'Standard Edition', 499, 22),
@@ -1214,16 +1213,59 @@ INSERT INTO wishlist (user_id, disk_id, edition_name, priority_level) VALUES
 (2, 44, 'Standard Edition', 4),
 (3, 52, 'Standard Edition', 5);
 
-INSERT INTO ownership (user_id, disk_id, edition_name, rating) VALUES
-(1, 20, 'Standard Edition', 5),
-(2, 14, 'Standard Edition', 4),
-(3, 11, 'Standard Edition', 0),
-(4, 29, 'Standard Edition', 3),
-(1, 33, 'Standard Edition', 2),
-(2, 40, 'Standard Edition', 5),
-(3, 46, 'Standard Edition', 4),
-(4, 51, 'Standard Edition', 1),
-(1, 48, 'Standard Edition', NULL);
+-- Insert ownership (user's owned editions with date_acquired and rating)
+INSERT INTO ownership (user_id, disk_id, edition_name, date_acquired, rating) VALUES
+-- John Doe's collection (Classic rock enthusiast)
+(1, 1, 'Standard Edition', '2010-05-12 14:30:00', 5),
+(1, 2, 'Standard Edition', '2012-08-23 16:45:00', 5),
+(1, 4, 'Standard Edition', '2011-03-15 10:20:00', 4),
+(1, 6, 'Standard Edition', '2013-11-20 12:00:00', 5),
+(1, 20, 'Standard Edition', '2001-11-15 15:30:00', 5),
+(1, 31, 'Standard Edition', '2014-02-10 17:00:00', 4),
+(1, 33, 'Standard Edition', '2024-04-05 09:15:00', 2),
+(1, 48, 'Standard Edition', '2024-01-10 11:00:00', NULL),
+-- Jane Smith's collection (Jazz and R&B lover)
+(2, 3, 'Standard Edition', '2016-06-18 13:20:00', 5),
+(2, 12, 'Deluxe Edition', '2024-07-15 10:45:00', 5),
+(2, 14, 'Standard Edition', '2020-04-22 14:30:00', 4),
+(2, 16, 'Standard Edition', '2022-02-08 16:00:00', 4),
+(2, 40, 'Standard Edition', '2021-10-01 12:30:00', 5),
+(2, 44, 'Standard Edition', '2019-09-15 15:45:00', 4),
+(2, 46, 'Standard Edition', '2023-01-20 11:20:00', 5),
+(2, 47, 'Standard Edition', '2018-03-10 13:00:00', 4),
+-- Mike Johnson's collection (Rock and metal fan)
+(3, 5, 'Standard Edition', '2018-05-25 10:00:00', 5),
+(3, 7, 'Standard Edition', '2014-07-12 14:15:00', 4),
+(3, 8, 'Standard Edition', '2015-09-05 16:30:00', 5),
+(3, 11, 'Standard Edition', '2023-03-20 09:00:00', 0),
+(3, 21, 'Standard Edition', '2004-06-08 12:45:00', 5),
+(3, 22, 'Standard Edition', '2008-02-14 15:00:00', 4),
+(3, 23, 'Standard Edition', '2006-08-30 11:30:00', 5),
+(3, 38, 'Single', '2002-05-15 13:20:00', 5),
+(3, 46, 'Standard Edition', '2023-02-10 10:30:00', 4),
+(3, 51, 'Standard Edition', '2017-05-20 14:00:00', 5),
+(3, 52, 'Standard Edition', '2018-08-12 16:15:00', 5),
+-- Sarah Williams's collection (Alternative and indie)
+(4, 13, 'EP Edition', '2023-01-15 12:00:00', 4),
+(4, 17, 'Standard Edition', '2021-04-10 11:45:00', 4),
+(4, 18, 'Standard Edition', '2019-09-20 13:30:00', 3),
+(4, 26, 'Standard Edition', '2020-08-25 15:00:00', 5),
+(4, 27, 'Standard Edition', '2022-11-10 10:20:00', 5),
+(4, 28, 'Standard Edition', '2015-01-30 14:45:00', 4),
+(4, 29, 'Standard Edition', '2020-04-15 16:30:00', 3),
+(4, 31, 'Standard Edition', '2013-12-05 12:15:00', 4),
+(4, 34, 'Standard Edition', '2019-03-08 11:00:00', 4),
+(4, 43, 'Standard Edition', '2012-05-20 13:45:00', 3),
+(4, 51, 'Standard Edition', '2017-06-18 15:20:00', 1),
+-- Additional cross-user collections
+(1, 36, 'Single', '2020-12-15 10:00:00', 5),
+(1, 41, 'Standard Edition', '2018-07-22 14:30:00', 5),
+(2, 15, 'Standard Edition', '2017-02-10 12:00:00', 3),
+(2, 26, 'Standard Edition', '2020-09-05 15:30:00', 5),
+(3, 14, 'Standard Edition', '2020-05-18 11:15:00', 3),
+(3, 29, 'Standard Edition', '2020-06-12 13:00:00', 4),
+(4, 20, 'Standard Edition', '2002-03-25 16:00:00', 5),
+(4, 46, 'Standard Edition', '2023-03-15 10:45:00', 5);
 
 -- Re-enable foreign key checks
 SET FOREIGN_KEY_CHECKS = 1;

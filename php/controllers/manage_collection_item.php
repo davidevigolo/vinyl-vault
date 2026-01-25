@@ -16,6 +16,7 @@ function edit_multiple_items_in_collection($user_id)
     $disk_ids = $_POST['disk_id'] ?? [];
     $edition_names = $_POST['edition_name'] ?? [];
     $items_to_delete = $_POST['items_to_delete'] ?? [];
+    $rating = $_POST['rating'] ?? [];
 
     if (!is_array($disk_ids) || !is_array($edition_names)) {
         return false;
@@ -30,12 +31,22 @@ function edit_multiple_items_in_collection($user_id)
         return true; // No items to update is considered success
     }
 
-    $connection = DbConnection::get_instance();
-    $delete_query = "DELETE FROM ownership WHERE user_id = ? AND disk_id = ? AND edition_name = ?;";
+    foreach($rating as $rate) {
+        if (!is_numeric($rate) || intval($rate) < 0 || intval($rate) > 5) {
+            return false;
+        }
+    }
 
+    $connection = DbConnection::get_instance();
+    mysqli_begin_transaction($connection->get_connection());
+    $delete_query = "DELETE FROM ownership WHERE user_id = ? AND disk_id = ? AND edition_name = ?;";
+    $update_rating_query = "UPDATE ownership SET rating = ? WHERE user_id = ? AND disk_id = ? AND edition_name = ?;";
+    $update_stmt = mysqli_prepare($connection->get_connection(), $update_rating_query);
     $delete_stmt = mysqli_prepare($connection->get_connection(), $delete_query);
 
-    if (!$delete_stmt) {
+    if (!$delete_stmt || !$update_stmt) {
+        error_log(mysqli_error($connection->get_connection()));
+        mysqli_rollback($connection->get_connection());
         return false;
     }
 
@@ -47,32 +58,50 @@ function edit_multiple_items_in_collection($user_id)
             $disk_id = intval($disk_ids[$i]);
             mysqli_stmt_bind_param($delete_stmt, 'iis', $user_id, $disk_id, $edition_names[$i]);
             if (!mysqli_stmt_execute($delete_stmt)) {
+                error_log(mysqli_error($connection->get_connection()));
+                mysqli_rollback($connection->get_connection());
+                $success = false;
+            }
+        }
+        else {
+            $disk_id = intval($disk_ids[$i]);
+            $personal_rating = intval($rating[$i]);
+            mysqli_stmt_bind_param($update_stmt, 'iiis', $personal_rating, $user_id, $disk_id, $edition_names[$i]);
+            if (!mysqli_stmt_execute($update_stmt)) {
+                error_log(mysqli_error($connection->get_connection()));
+                mysqli_rollback($connection->get_connection());
                 $success = false;
             }
         }
     }
-
     mysqli_stmt_close($delete_stmt);
+    mysqli_stmt_close($update_stmt);
+    mysqli_commit($connection->get_connection());
     return $success;
 }
 
-$result = -1;
-if ($action === 'edit_multiple' && $user_id) {
-    $op_result = edit_multiple_items_in_collection($user_id);
-    $result = $op_result ? 0 : 1;
+$action = $_POST['action'] ?? null;
+$user_id = $_SESSION['user_id'] ?? null;
+$disk_id = $_POST['disk_id'] ?? null;
+$edition_name = $_POST['edition_name'] ?? null;
+$items_to_delete = $_POST['items_to_delete'] ?? [];
+$ratings = $_POST['rating'] ?? [];
+$result = edit_multiple_items_in_collection($user_id, $disk_id, $edition_name, $items_to_delete, $ratings);
+$_SESSION['manage_collection_result'] = $result;
+// Build associative arrays for items_to_delete and ratings
+$items_to_delete_assoc = [];
+foreach ($disk_id as $idx => $d_id) {
+    $key = $d_id . '_' . $edition_name[$idx];
+    $items_to_delete_assoc[$key] = in_array($key, $items_to_delete);
 }
 
-switch ($result) {
-    case 0:
-        $_SESSION['collection_action_status'] = 'success';
-        break;
-    case 1:
-        $_SESSION['collection_action_status'] = 'error';
-        break;
-    default:
-        $_SESSION['collection_action_status'] = 'invalid';
-        break;
+$ratings_assoc = [];
+foreach ($disk_id as $idx => $d_id) {
+    $key = $d_id . '_' . $edition_name[$idx];
+    $ratings_assoc[$key] = isset($ratings[$idx]) ? $ratings[$idx] : null;
 }
-header('Location: ../../collection.php');
+
+$_SESSION['manage_collection_result']['items_to_delete'] = $items_to_delete_assoc;
+$_SESSION['manage_collection_result']['rating'] = $ratings_assoc;
+header('Location:' . ($_SESSION['manage_collection_result']['success'] ? '../../collection.php' : '../../collection.php?edit=true'));
 exit();
-?>

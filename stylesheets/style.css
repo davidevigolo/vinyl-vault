@@ -1330,6 +1330,62 @@ fieldset {
     margin-left: 2em;
 }
 
+.checkbox-wrapper {
+    display: block;
+    align-items: center;
+    gap: 0.5rem;
+    margin-right: 1.5rem;
+    margin-left: 0.5rem;
+}
+
+.input-wrapper .checkbox-wrapper *{
+    display: inline;
+}
+
+input{
+    margin: 0.5em 0 0.5em 0;
+}
+
+input:disabled{
+    background-color: var(--border-dark);
+    color: var(--text-muted);
+}
+
+.track-inputs {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.input-track-title {
+    flex: 5;
+    margin-right: 1rem;
+}
+
+.input-track-duration {
+    flex: 1;
+}
+
+.input-track-duration input{
+    width: 100%;
+    padding: 0.5rem;
+    border: 0.1em solid var(--border-default);
+    border-radius: 0.25em;
+    background-color: var(--bg-surface);
+    color: var(--text-primary);
+}
+
+#add-track-button{
+    display:block;
+}
+/* End Forms */
+
+/* Success Message */
+
+#form{
+    text-align: center;
+}
+
 /* Artist Page */
 
 .artist-image {
@@ -1453,10 +1509,6 @@ fieldset {
     color: var(--text-secondary);
 }
 
-.track-title {
-    font-size: var(--font-medium);
-}
-
 .track-duration {
     color: var(--text-secondary);
     font-family: var(--font-tertiary);
@@ -1509,4 +1561,3 @@ fieldset {
 }
 
 /* End Album Page */
-
