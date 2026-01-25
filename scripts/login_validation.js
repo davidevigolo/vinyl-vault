@@ -25,7 +25,7 @@ const showError = (input, errorId, message) => {
         wrapper.appendChild(errorElement);
     }
 
-    errorElement.textContent = message;
+    errorElement.innerHTML = message;
     input.classList.add('input-error');
 }
 
@@ -78,4 +78,3 @@ updateButtonState();
 
 emailInput.addEventListener('input', (event) => checkEmail(event))
 passwordInput.addEventListener('input', (event) => checkPassword(event))
-

@@ -18,11 +18,11 @@ INSERT INTO genre (genre_name) VALUES
 ('Metal');
 
 -- Insert users (no dependencies)
-INSERT INTO users (first_name, last_name, email, pw_hash, bio, propic_path, is_admin) VALUES
-('Maria', 'Rossi', 'admin@admin.com', '$2y$10$j8Hsc4sabUF5Kv9NfbRTMu/W9aWIzECeTSZEACtqnJ1QeKbN6.KNm' /*admin*/, 'Music enthusiast and vinyl collector', '/assets/images/users/admin.jpg', 1),
-('Stan', 'Smith', 'user@user.com', '$2y$10$IERZN9gEazLu0ot6Wb.gBerkvFZLnJEAiQOeR3ainGlxA..L2u9c.' /*user*/, 'Jazz lover and audiophile', '/assets/images/users/user.jpg', 0),
-('Mike', 'Johnson', 'mike.johnson@example.com', '$2y$10$cdefghijklmnopqrstuvwx', 'Rock and roll fan', '/assets/images/users/mike.jpg', 0),
-('Sarah', 'Williams', 'sarah.williams@example.com', '$2y$10$defghijklmnopqrstuvwxy', 'Alternative music collector', '/assets/images/users/sarah.jpg', 0);
+INSERT INTO users (first_name, last_name, username, email, pw_hash, bio, propic_path, is_admin) VALUES
+('Maria', 'Rossi','admin', 'admin@admin.com', '$2y$10$j8Hsc4sabUF5Kv9NfbRTMu/W9aWIzECeTSZEACtqnJ1QeKbN6.KNm' /*admin*/, 'Music enthusiast and vinyl collector', '/assets/images/users/admin.jpg', 1),
+('Stan', 'Smith', 'user', 'user@user.com', '$2y$10$IERZN9gEazLu0ot6Wb.gBerkvFZLnJEAiQOeR3ainGlxA..L2u9c.' /*user*/, 'Jazz lover and audiophile', '/assets/images/users/user.jpg', 0),
+('Mike', 'Johnson', 'mikeJohn1234', 'mike.johnson@example.com', '$2y$10$cdefghijklmnopqrstuvwx', 'Rock and roll fan', '/assets/images/users/mike.jpg', 0),
+('Sarah', 'Williams', 'sssaaraahh','sarah.williams@example.com', '$2y$10$defghijklmnopqrstuvwxy', 'Alternative music collector', '/assets/images/users/sarah.jpg', 0);
 
 -- Insert authors/artists (no dependencies)
 -- Classic Rock & Jazz Artists

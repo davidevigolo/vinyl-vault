@@ -1,7 +1,8 @@
 USE tecweb_db;
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT,
-    first_name VARCHAR(100) NOT NULL UNIQUE,
+    first_name VARCHAR(100) NOT NULL,
+    username VARCHAR(100) NOT NULL UNIQUE,
     last_name VARCHAR(100) NOT NULL,
     email VARCHAR(254) NOT NULL UNIQUE,
     pw_hash VARCHAR(255) NOT NULL, -- see why 255 at https://www.php.net/manual/en/function.password-hash.php

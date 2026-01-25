@@ -7,12 +7,12 @@ function login($req) {
     $password = $req['password'] ?? '';
 
     if (empty($email)) {
-        $errors['email'] = 'L\'email è obbligatoria';
+        $errors['email'] = 'L\'<span lang="en">email</span> è obbligatoria';
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errors['email'] = 'Formato email non valido';
+        $errors['email'] = 'Formato <span lang="en">email</span> non valido';
     }
     if (empty($password)) {
-        $errors['password'] = 'La password è obbligatoria';
+        $errors['password'] = 'La <span lang="en">password</span> è obbligatoria';
     }
     if (!empty($errors)) {
         return ['success' => false, 'errors' => $errors];
@@ -37,6 +37,6 @@ function login($req) {
         }
     }
 
-    $errors['auth'] = "Email o password non corretti";
+    $errors['auth'] = 'Login fallito: <span lang="en">email</span> o <span lang="en">password</span> non corretti';
     return ['success' => false, 'errors' => $errors];
 }
