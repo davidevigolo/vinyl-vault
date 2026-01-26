@@ -616,4 +616,13 @@ p#empty-collection-paragraph {
     margin-bottom: 3rem;
 }
 
-/* End Login Page */
+/* End Login & Registration Page */
+
+
+/* Add Artist Page */
+
+#add-artist-form label {
+    font-size: var(--font-large);
+}
+
+/* End Add Artist Page */
