@@ -528,25 +528,34 @@ p#empty-collection-paragraph {
 /* End Top Vinyls Page */
 
 
-/* Login Page */
+/* Login & Registration Page */
 
-.center-container:has(.login) {
+.center-container:has(#login),
+.center-container:has(#registration) {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100%;
+    padding: 2rem 0;
 }
 
-.login {
+.login-titles,
+.registration-titles {
+    text-align: center;
+    width: 100%;
+}
+
+#login,
+#registration {
     display: grid;
     grid-template-columns: 1fr 1.1fr; 
     padding: 0;
     align-items: stretch;
 }
 
-.login::after {
+#login::after {
     grid-column: 2;
-    grid-row: 1 / span 10;
+    grid-row: 1 / span 20;
     width: 100%;
     height: 100%;
     margin: 0;
@@ -554,8 +563,18 @@ p#empty-collection-paragraph {
     background-position: right center;
 }
 
-.login h2, 
-.login p, 
+#registration::after {
+    grid-column: 1;
+    grid-row: 1 / span 10;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    aspect-ratio: auto;
+    background-position: 35% center;
+}
+
+#login h2, 
+#login p, 
 #login-form {
     grid-column: 1;
     padding-left: 2rem;
@@ -563,27 +582,37 @@ p#empty-collection-paragraph {
     width: 100%;
 }
 
-.login h2 {
-    margin-top: 3rem;
-}
-
-.login h2 + p {
-    margin-bottom: 2rem;
-    width: 90%;
-    justify-self: center;
-}
-
-
-
-#login-form {
-    margin-bottom: 1rem;
-}
-
-#login-btn {
+#registration h2, 
+#registration-form,
+#password-requirements {
+    grid-column: 2;
+    padding-left: 2rem;
+    padding-right: 2rem;
     width: 100%;
 }
 
-.login > p:last-of-type {
+#password-requirements ul {
+    padding-left: 2.5em;
+    padding-top: 0.5em;
+}
+
+#login-form legend,
+#registration-form legend {
+    padding-top: 2em;
+}
+
+#login-form,
+#registration-form {
+    margin-bottom: 1rem;
+}
+
+#login-btn,
+#registration-btn {
+    width: 100%;
+}
+
+#login > p:last-of-type,
+#registration > p:last-of-type {
     margin-bottom: 3rem;
 }
 

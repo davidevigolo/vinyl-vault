@@ -1694,9 +1694,36 @@ img#empty-collection-image {
 /* End Top Vinyls Page */
 
 
-/* Login Page */
+/* Login & Registration Page */
 
-.login {
+.login-titles,
+.registration-titles {
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    padding: 0 1.5rem;
+}
+
+.login-titles h2,
+.registration-titles h2 {
+    font-size: var(--font-xxxl);
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.login-titles p,
+.registration-titles p {
+    font-size: var(--font-medium);
+    color: var(--text-muted);
+    text-align: center;
+    padding-bottom: 0.7em;
+    display: inline-block;
+    text-wrap: balance;
+    width: auto;
+}
+
+#login,
+#registration {
     background-color: var(--bg-section);
     border: 1px solid var(--border-default);
     border-radius: 1.3em;
@@ -1704,43 +1731,40 @@ img#empty-collection-image {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    margin-top: 3rem;
     margin-bottom: 3rem;
+    width: 100%;
 }
 
-.login::after {
+
+#login::after,
+#registration::after {
     content: "";
     display: block;
     width: calc(100% + 3rem);
     margin-left: -1.5rem;
     aspect-ratio: 16 / 9;
-    background-image: url('../assets/images/login-image.jpg');
     background-size: cover;
     background-position: center;
     margin-top: 2rem;
     margin-bottom: 0;
 }
 
-.login h2 {
-    font-size: var(--font-xxxl);
-    text-align: center;
+#login::after {
+    background-image: url('../assets/images/login-image.jpg');
 }
 
-.login h2 + p {
-    font-size: var(--font-medium);
-    text-align: center;
-    padding-bottom: 0.7em;
-    margin-bottom: 3em;
-    border-bottom: 0.1em var(--text-muted) solid;
-    text-wrap: balance;
+#registration::after {
+    background-image: url('../assets/images/registration-image.jpg');
 }
 
-#login-form fieldset {
+#login-form fieldset,
+#registration-form fieldset {
     border: none;
     padding: 0;
 }
 
-#login-form legend {
+#login-form legend,
+#registration-form legend {
     font-weight: 700;
     color: var(--text-secondary);
     font-family: var(--font-secondary);
@@ -1749,53 +1773,74 @@ img#empty-collection-image {
     text-align: center;
 }
 
-#login-form .input-wrapper {
+#login-form .input-wrapper,
+#registration-form .input-wrapper {
     text-align: left;
-    margin-bottom: 1rem;
+    margin-bottom: 2.4rem;
 }
 
-#login-form label {
+#login-form label,
+#registration-form label {
     display: block;
     font-weight: 600;
     margin-bottom: 1rem;
     font-size: var(--font-medium);
 }
 
-#login-form input {
+#login-form input,
+#registration-form input {
     width: 100%;
     padding: 0.8rem;
+    border: 1px solid var(--border-default);
     border-radius: 0.5em;
     font-size: 1rem;
+    background-color: var(--bg-surface);
 }
 
-#login-btn {
+#login-btn,
+#registration-btn {
     width: 100%;
     margin-top: 1rem;
 }
 
-#login-form {
+#login-form,
+#registration-form {
     margin-bottom: 1.5em;
 }
 
-.login > p:last-of-type {
+#login > p:last-of-type,
+#registration > p:last-of-type {
     font-size: var(--font-medium);
     text-align: center;
     margin-bottom: 1.5em;
-    text-align: center;
 }
 
-/* Forms */
+#password-requirements {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    color: var(--text-muted);
+}
 
-.error-message{
+#password-requirements ul {
+    padding-left: 1em;
+    padding-top: 0.5em;
+}
+
+#password-requirements ul li {
+    color: var(--text-muted);
+}
+
+.error-message {
     color: var(--bg-error);
 }
 
-.input-hints {
-    font-size: var(--font-tertiary);
+.input-example {
     color: var(--text-muted);
     margin-top: 0.3rem;
-    margin-left: 2em;
+    margin-left: 1em; 
+    
 }
 
-/* End Login Page */
-
+/* Ens Login & Registration page */
