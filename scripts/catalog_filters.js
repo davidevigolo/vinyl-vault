@@ -205,14 +205,6 @@ document.addEventListener('DOMContentLoaded', () => {
             applyButton.addEventListener('click', (e) => {
                 e.preventDefault();
 
-                // Validate year inputs before submit
-                const yearInputs = form.querySelectorAll('input[type="number"]');
-                yearInputs.forEach(input => {
-                    let value = parseInt(input.value);
-                    if (isNaN(value) || value < 1900) input.value = 1900;
-                    if (value > 2026) input.value = 2026;
-                });
-
                 // Restore action temporarily for submit
                 form.setAttribute('action', originalAction);
 
@@ -225,25 +217,6 @@ document.addEventListener('DOMContentLoaded', () => {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             return false;
-        });
-
-        // Validate year inputs on blur
-        const yearInputs = form.querySelectorAll('input[type="number"]');
-        yearInputs.forEach(input => {
-            input.addEventListener('blur', () => {
-                let value = parseInt(input.value);
-                if (isNaN(value) || value < 1900) value = 1900;
-                if (value > 2026) value = 2026;
-                input.value = value;
-            });
-
-            // Prevent Enter from submitting
-            input.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter') {
-                    e.preventDefault();
-                    input.blur();
-                }
-            });
         });
 
         // Prevent checkboxes from triggering any form submission

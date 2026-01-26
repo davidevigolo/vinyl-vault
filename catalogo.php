@@ -49,6 +49,18 @@ $reset_url = 'catalogo.php' . (empty($reset_params) ? '' : '?' . http_build_quer
 include 'php/components/header.php';
 include 'php/components/footer.php';
 
+function render_year_options($start_year, $end_year, $selected_year) {
+    $options = '';
+    for ($i = $start_year; $i <= $end_year; $i++) {
+        $selected = $i == $selected_year ? 'selected' : '';
+        $options .= "<option value=\"$i\" $selected>$i</option>";
+    }
+    return $options;
+}
+
+$year_min_options = render_year_options($year_range['min'], $year_range['max'], $year_min ?: $year_range['min']);
+$year_max_options = render_year_options($year_range['min'], $year_range['max'], $year_max ?: $year_range['max']);
+
 echo Template::render(
     'static/catalogo.html',
     [
@@ -61,6 +73,8 @@ echo Template::render(
         'year_max' => $year_range['max'],
         'year_min_selected' => $year_min ?: $year_range['min'],
         'year_max_selected' => $year_max ?: $year_range['max'],
+        'year_min_options' => $year_min_options,
+        'year_max_options' => $year_max_options,
         'reset_url' => $reset_url,
         'active_filters' => render_active_filters($active_filters),
         'sort_selected_collected' => $sort_by === 'collected' ? 'selected' : '',

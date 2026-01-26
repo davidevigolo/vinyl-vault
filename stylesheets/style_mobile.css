@@ -1998,6 +1998,31 @@ img#empty-collection-image {
     width: 100%;
 }
 
+.mobile-filter-panel .btn-primary {
+    width: 100%;
+    padding: 0.8rem 2rem;
+    font-size: var(--font-large);
+    text-transform: none;
+    letter-spacing: normal;
+    border: none;
+    border-radius: 25px;
+    box-shadow: none;
+}
+
+.styled-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-default);
+    border-radius: 5px;
+    padding: 0.5em 1em;
+    font-size: 1rem;
+    color: var(--text-primary);
+    cursor: pointer;
+    width: 48%;
+}
+
 .results-count {
     font-weight: 600;
     color: var(--text-secondary);
