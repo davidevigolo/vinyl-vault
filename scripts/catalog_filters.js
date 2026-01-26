@@ -19,6 +19,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     const desktopForm = document.getElementById('filters-form');
+    const applyButton = document.getElementById('apply-filters-btn');
+    if (applyButton) {
+        applyButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            saveScrollAndSubmit(desktopForm);
+        });
+    }
     const mobileForms = document.querySelectorAll('.mobile-filter-form');
     
     // Create screen reader announcement area if not exists
@@ -110,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const checkboxes = desktopForm.querySelectorAll('input[type="checkbox"]');
         checkboxes.forEach(checkbox => {
             checkbox.addEventListener('change', () => {
-                saveScrollAndSubmit(desktopForm);
+                // saveScrollAndSubmit(desktopForm);
             });
         });
         
@@ -184,62 +191,94 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // Auto-submit for mobile filters
+    // Manual submit for mobile filters (with apply button)
     mobileForms.forEach(form => {
-        const checkboxes = form.querySelectorAll('input[type="checkbox"]');
-        checkboxes.forEach(checkbox => {
-            checkbox.addEventListener('change', () => {
-                saveScrollAndSubmit(form);
-            });
-        });
+        // Store original action and remove it temporarily to prevent accidental submits
+        const originalAction = form.getAttribute('action');
+        form.removeAttribute('action');
 
-        const yearInputs = form.querySelectorAll('input[type="number"]');
-        let mobileYearTimer;
+        // Find the apply button
+        const applyButton = form.querySelector('.btn-apply-mobile-filter');
 
-        yearInputs.forEach(input => {
-            // Debounced submit on input for better UX
-            input.addEventListener('input', () => {
-                clearTimeout(mobileYearTimer);
-                mobileYearTimer = setTimeout(() => {
-                    // Validate before submit
+        // Handle ONLY button click for submission
+        if (applyButton) {
+            applyButton.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                // Validate year inputs before submit
+                const yearInputs = form.querySelectorAll('input[type="number"]');
+                yearInputs.forEach(input => {
                     let value = parseInt(input.value);
                     if (isNaN(value) || value < 1900) input.value = 1900;
                     if (value > 2026) input.value = 2026;
-                    saveScrollAndSubmit(form);
-                }, 800); // Longer delay for mobile to avoid too many submits
-            });
+                });
 
+                // Restore action temporarily for submit
+                form.setAttribute('action', originalAction);
+
+                // Sync params and submit
+                saveScrollAndSubmit(form);
+            });
+        }
+
+        // ALWAYS prevent form submission (can only submit via button click above)
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            return false;
+        });
+
+        // Validate year inputs on blur
+        const yearInputs = form.querySelectorAll('input[type="number"]');
+        yearInputs.forEach(input => {
             input.addEventListener('blur', () => {
-                clearTimeout(mobileYearTimer);
                 let value = parseInt(input.value);
                 if (isNaN(value) || value < 1900) value = 1900;
                 if (value > 2026) value = 2026;
                 input.value = value;
-
-                saveScrollAndSubmit(form);
             });
 
-            input.addEventListener('keypress', (e) => {
+            // Prevent Enter from submitting
+            input.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter') {
                     e.preventDefault();
-                    clearTimeout(mobileYearTimer);
                     input.blur();
                 }
+            });
+        });
+
+        // Prevent checkboxes from triggering any form submission
+        const checkboxes = form.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+
+            checkbox.addEventListener('change', (e) => {
+                e.stopPropagation();
+            });
+        });
+
+        // Prevent labels from triggering form submission
+        const labels = form.querySelectorAll('label');
+        labels.forEach(label => {
+            label.addEventListener('click', (e) => {
+                e.stopPropagation();
             });
         });
     });
     
     // Mobile filter toggles
     const filterToggles = document.querySelectorAll('[data-filter]');
+
     filterToggles.forEach(toggle => {
         toggle.addEventListener('click', () => {
             const filterId = toggle.getAttribute('aria-controls');
             const filterPanel = document.getElementById(filterId);
-            
+
             if (!filterPanel) return;
-            
+
             const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-            
+
             // Close all other panels
             filterToggles.forEach(otherToggle => {
                 if (otherToggle !== toggle) {
@@ -251,22 +290,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
             });
-            
+
             // Toggle current panel
             toggle.setAttribute('aria-expanded', !isExpanded);
             if (isExpanded) {
                 filterPanel.setAttribute('hidden', '');
             } else {
                 filterPanel.removeAttribute('hidden');
-                // Move focus to first input in panel for better keyboard navigation
-                const firstInput = filterPanel.querySelector('input');
-                if (firstInput) {
-                    setTimeout(() => firstInput.focus(), 100);
-                }
             }
         });
-        
-        // Add keyboard support (Enter and Space) TDB
+
+        // Add keyboard support (Enter and Space)
         toggle.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
