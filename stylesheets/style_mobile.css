@@ -1387,7 +1387,6 @@ img#empty-collection-image {
     margin: 0;
 }
 
-
 /* End Collection & Wishlist pages */
 
 
@@ -1693,3 +1692,110 @@ img#empty-collection-image {
 }
 
 /* End Top Vinyls Page */
+
+
+/* Login Page */
+
+.login {
+    background-color: var(--bg-section);
+    border: 1px solid var(--border-default);
+    border-radius: 1.3em;
+    padding: 2.5rem 1.5rem 0 1.5rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.login::after {
+    content: "";
+    display: block;
+    width: calc(100% + 3rem);
+    margin-left: -1.5rem;
+    aspect-ratio: 16 / 9;
+    background-image: url('../assets/images/login-image.jpg');
+    background-size: cover;
+    background-position: center;
+    margin-top: 2rem;
+    margin-bottom: 0;
+}
+
+.login h2 {
+    font-size: var(--font-xxxl);
+    text-align: center;
+}
+
+.login h2 + p {
+    font-size: var(--font-medium);
+    text-align: center;
+    padding-bottom: 0.7em;
+    margin-bottom: 3em;
+    border-bottom: 0.1em var(--text-muted) solid;
+    text-wrap: balance;
+}
+
+#login-form fieldset {
+    border: none;
+    padding: 0;
+}
+
+#login-form legend {
+    font-weight: 700;
+    color: var(--text-secondary);
+    font-family: var(--font-secondary);
+    font-size: var(--font-xl);
+    margin-bottom: 0.5em;
+    text-align: center;
+}
+
+#login-form .input-wrapper {
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+#login-form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-size: var(--font-medium);
+}
+
+#login-form input {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 0.5em;
+    font-size: 1rem;
+}
+
+#login-btn {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+#login-form {
+    margin-bottom: 1.5em;
+}
+
+.login > p:last-of-type {
+    font-size: var(--font-medium);
+    text-align: center;
+    margin-bottom: 1.5em;
+    text-align: center;
+}
+
+/* Forms */
+
+.error-message{
+    color: var(--bg-error);
+}
+
+.input-hints {
+    font-size: var(--font-tertiary);
+    color: var(--text-muted);
+    margin-top: 0.3rem;
+    margin-left: 2em;
+}
+
+/* End Login Page */
+

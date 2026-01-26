@@ -335,10 +335,6 @@ p#empty-collection-paragraph {
     font-size: 1.5rem;
 }
 
-.collection-priority-section input[type="number"] {
-    background-color: var(--text-muted);
-}
-
 /* End Collection & Wishlist pages */
 
 
@@ -530,3 +526,65 @@ p#empty-collection-paragraph {
 }
 
 /* End Top Vinyls Page */
+
+
+/* Login Page */
+
+.center-container:has(.login) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+}
+
+.login {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr; 
+    padding: 0;
+    align-items: stretch;
+}
+
+.login::after {
+    grid-column: 2;
+    grid-row: 1 / span 10;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    aspect-ratio: auto;
+    background-position: right center;
+}
+
+.login h2, 
+.login p, 
+#login-form {
+    grid-column: 1;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    width: 100%;
+}
+
+.login h2 {
+    margin-top: 3rem;
+}
+
+.login h2 + p {
+    margin-bottom: 2rem;
+    width: 90%;
+    justify-self: center;
+}
+
+
+
+#login-form {
+    margin-bottom: 1rem;
+}
+
+#login-btn {
+    width: 100%;
+}
+
+.login > p:last-of-type {
+    margin-bottom: 3rem;
+}
+
+/* End Login Page */
