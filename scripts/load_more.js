@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial count update
     updateVisibleCount();
     
-    // Sort dropdown change handler
+    // dropdown change handler
     if (sortSelect) {
         sortSelect.addEventListener('change', (e) => {
             const url = new URL(window.location.href);

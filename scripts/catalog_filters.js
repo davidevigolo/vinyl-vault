@@ -5,10 +5,10 @@ if ('scrollRestoration' in history) {
 
 document.addEventListener('DOMContentLoaded', () => {
     
-    // Restore scroll position
+    // restore scroll position
     const savedScroll = sessionStorage.getItem('catalogScrollPosition');
     if (savedScroll) {
-        // Use requestAnimationFrame to ensure DOM is ready
+        // requestAnimationFrame to ensure DOM is ready
         requestAnimationFrame(() => {
             window.scrollTo({
                 top: parseInt(savedScroll),
@@ -43,8 +43,58 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // to save scroll and submit
     function saveScrollAndSubmit(form) {
+        // For mobile forms, sync all URL parameters before submit
+        if (form.classList.contains('mobile-filter-form')) {
+            syncMobileFormParams(form);
+        }
         sessionStorage.setItem('catalogScrollPosition', window.scrollY.toString());
         form.submit();
+    }
+
+    // Sync URL parameters to mobile forms to preserve all filters
+    function syncMobileFormParams(form) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const container = form.querySelector('.hidden-params-container');
+        if (!container) return;
+
+        // Clear existing hidden inputs
+        container.innerHTML = '';
+
+        // Get form's own parameter names to skip them
+        const formInputs = form.querySelectorAll('input[name]:not([type="hidden"])');
+        const formParamNames = new Set();
+        formInputs.forEach(input => {
+            const name = input.name;
+            if (name) {
+                // Handle array names like genre[]
+                const baseName = name.replace('[]', '');
+                formParamNames.add(baseName);
+            }
+        });
+
+        // Add all URL params that are NOT in this form
+        for (const [key, value] of urlParams.entries()) {
+            const baseKey = key.replace('[]', '');
+            if (!formParamNames.has(baseKey) && !formParamNames.has(key)) {
+                const hiddenInput = document.createElement('input');
+                hiddenInput.type = 'hidden';
+                hiddenInput.name = key;
+                hiddenInput.value = value;
+                container.appendChild(hiddenInput);
+            }
+        }
+
+        // Always add sort parameter if not present in URL but selected
+        if (!urlParams.has('sort')) {
+            const sortSelect = document.getElementById('sort-select');
+            if (sortSelect && sortSelect.value && sortSelect.value !== 'collected') {
+                const hiddenInput = document.createElement('input');
+                hiddenInput.type = 'hidden';
+                hiddenInput.name = 'sort';
+                hiddenInput.value = sortSelect.value;
+                container.appendChild(hiddenInput);
+            }
+        }
     }
     
     // Save scroll position when clicking reset button
@@ -94,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 updateYearTag();
                 saveScrollAndSubmit(desktopForm);
-            }, 300); // Wait 300ms after user stops typing
+            }, 300); // Wait 300ms after user stops typing in order to have a "slowish" refresh
         }
         
         if (yearMinInput) {
@@ -142,21 +192,37 @@ document.addEventListener('DOMContentLoaded', () => {
                 saveScrollAndSubmit(form);
             });
         });
-        
+
         const yearInputs = form.querySelectorAll('input[type="number"]');
+        let mobileYearTimer;
+
         yearInputs.forEach(input => {
+            // Debounced submit on input for better UX
+            input.addEventListener('input', () => {
+                clearTimeout(mobileYearTimer);
+                mobileYearTimer = setTimeout(() => {
+                    // Validate before submit
+                    let value = parseInt(input.value);
+                    if (isNaN(value) || value < 1900) input.value = 1900;
+                    if (value > 2026) input.value = 2026;
+                    saveScrollAndSubmit(form);
+                }, 800); // Longer delay for mobile to avoid too many submits
+            });
+
             input.addEventListener('blur', () => {
+                clearTimeout(mobileYearTimer);
                 let value = parseInt(input.value);
                 if (isNaN(value) || value < 1900) value = 1900;
                 if (value > 2026) value = 2026;
                 input.value = value;
-                
+
                 saveScrollAndSubmit(form);
             });
-            
+
             input.addEventListener('keypress', (e) => {
                 if (e.key === 'Enter') {
                     e.preventDefault();
+                    clearTimeout(mobileYearTimer);
                     input.blur();
                 }
             });
