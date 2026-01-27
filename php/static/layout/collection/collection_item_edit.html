@@ -1,28 +1,27 @@
-<article class="collection-item">
+<article class="collection-item" role="listitem">
     <div class="disk-info">
-        <img src="[image_url]" alt="">
+        <img src="[image_url]" alt="Copertina dell'album [title] di [author]">
         <div class="collection-item-details">
             <p class="artist-name">[author]</p>
             <h2 class="album-title">[title]</h2>
             <p class="edition-info">[edition_name]</p>
             <p class="release-info">[country] - <time datetime="[year_datetime]">[year]</time></p>
-            <div class="collection-rating-section">
-                <div class="stars-container">
-                    <span class="star" data-value="1">★</span>
-                    <span class="star" data-value="2">★</span>
-                    <span class="star" data-value="3">★</span>
-                    <span class="star" data-value="4">★</span>
-                    <span class="star" data-value="5">★</span>
-                    
-                    <button type="button" class="btn-reset-stars" aria-label="Resetta valutazione">×</button>
+            <fieldset class="collection-rating-section">
+                <legend class="evaluation-label">Valutazione personale</legend>
+                <div class="stars-container" role="group" aria-label="Seleziona valutazione da 1 a 5 stelle">
+                    <button type="button" class="star" data-value="1" aria-label="1 stella">★</button>
+                    <button type="button" class="star" data-value="2" aria-label="2 stelle">★</button>
+                    <button type="button" class="star" data-value="3" aria-label="3 stelle">★</button>
+                    <button type="button" class="star" data-value="4" aria-label="4 stelle">★</button>
+                    <button type="button" class="star" data-value="5" aria-label="5 stelle">★</button>
+
+                    <button type="button" class="btn-reset-stars" aria-label="Rimuovi valutazione">×</button>
                 </div>
-                <p class="evaluation-label">Valutazione personale</p>
-                <input type="hidden" name="rating[]" form="collection-form" class="rating-input" value="0">
-            </div>
+
+                <input type="hidden" name="rating[]" form="collection-form" class="rating-input" value="[rating_value]">
+            </fieldset>
             <input type="hidden" form="collection-form" name="disk_id[]" value="[disk_id]"/>
             <input type="hidden" form="collection-form" name="edition_name[]" value="[edition_name]"/>
-
-            <input type="hidden" name="rating" class="rating-input" value="[rating_value]">
         </div>
     </div>
     <div class="delete-selection">

@@ -99,6 +99,10 @@ Options -Indexes
     Order Allow,Deny
     Allow from all
 </Files>
+<Files "catalogo.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
 <Files "login_controller.php">
     Order Allow,Deny
     Allow from all

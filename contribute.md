@@ -158,3 +158,23 @@ La pagina album (`album.php`) mostra i dettagli di un singolo disco con tracklis
 
 **Accessibilità**: Skip links, breadcrumb con `aria-current`, `aria-label` su tracklist, landmark regions semantiche.
 
+## Ricerca Catalogo
+
+Il catalogo (`catalogo.php`) implementa ricerca testuale su titolo, artista e edizione.
+
+**Parametro**: Termine via GET (`?q=termine`), sanitizzato con `trim()` e usato con prepared statements + `LIKE`.
+
+**Preservazione filtri**: Hidden inputs generati da `render_search_hidden_params()` mantengono anno, genere e sort attivi durante la ricerca.
+
+**Filtro removibile**: La ricerca appare come tag nei filtri attivi, rimovibile tramite `build_remove_filter_url('search', $value)`.
+
+## Filtri Mobile Catalogo
+
+Pannelli espandibili con bottone "Applica" per evitare submit accidentali.
+
+**Struttura**: Due form (`mobile-form-anno`, `mobile-form-genere`) con `hidden-params-container` per sincronizzare parametri.
+
+**JavaScript**: L'action viene rimossa al load e ripristinata solo al click su "Applica". Submit bloccato con `preventDefault()`.
+
+**Toggle**: Gestiti con `aria-expanded` e attributo `hidden`, supporto tastiera Enter/Space.
+
