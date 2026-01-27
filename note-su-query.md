@@ -105,4 +105,57 @@ Seleziona i generi distinti associati al disco tramite JOIN tra `genre` e `disk_
 
 **Logica**: JOIN tra `author` e `disk_author_release` filtrato per disk_id. I ruoli (Co-writing, Producer) sono attualmente statici per l'artista principale.
 
+## Pagina Profilo (`profile.php`)
+
+### Statistiche Profilo (`profile_statistics()`)
+
+**Query 1: Conteggio Collezione**
+```sql
+SELECT COUNT(*) as count FROM ownership WHERE user_id = $user_id
+```
+Conta il numero totale di dischi posseduti dall'utente nella tabella `ownership`.
+
+**Query 2: Conteggio Wishlist**
+```sql
+SELECT COUNT(*) as count FROM wishlist WHERE user_id = $user_id
+```
+Conta il numero totale di dischi nella lista desideri dell'utente.
+
+**Query 3: Conteggio Artisti Unici**
+```sql
+SELECT COUNT(DISTINCT a.id) as count 
+FROM ownership o 
+JOIN disk d ON o.disk_id = d.id 
+JOIN disk_author_release dar ON d.id = dar.disk_id 
+JOIN author a ON dar.author_id = a.id 
+WHERE o.user_id = $user_id
+```
+Conta quanti artisti diversi sono presenti nella collezione dell'utente. Utilizza `DISTINCT` per evitare duplicati da dischi multi-autore o edizioni multiple dello stesso artista.
+
+**Scopo**: Fornire metriche di riepilogo per la dashboard del profilo utente.
+
+### Artisti Preferiti (`favorite_artists()`)
+
+**Query**:
+```sql
+SELECT a.id, a.author_name, a.image_path, COUNT(DISTINCT o.disk_id) as disk_count
+FROM ownership o
+JOIN disk d ON o.disk_id = d.id
+JOIN disk_author_release dar ON d.id = dar.disk_id
+JOIN author a ON dar.author_id = a.id
+WHERE o.user_id = $user_id
+GROUP BY a.id, a.author_name, a.image_path
+ORDER BY disk_count DESC, a.author_name ASC
+LIMIT 3
+```
+
+**Logica**: Analizza la collezione dell'utente per identificare i 3 artisti con più dischi posseduti. Utilizza `COUNT(DISTINCT o.disk_id)` per contare i dischi unici per ogni artista. Il doppio ordinamento (`disk_count DESC, author_name ASC`) garantisce che in caso di parità venga rispettato l'ordine alfabetico.
+
+**Rendering Dinamico**: La funzione PHP costruisce dinamicamente la lista mostrando solo gli artisti effettivamente presenti (1, 2 o 3 elementi), evitando placeholder vuoti. Se non ci sono artisti (collezione vuota), viene mostrato un messaggio di stato vuoto.
+
+**Scopo**: Mostrare quali artisti dominano la collezione dell'utente, fornendo insight sulla loro preferenza musicale.
+
+### Preview Collezione e Wishlist
+
+Le funzioni `collection_cards()` e `wishlist_cards()` riutilizzano le query esistenti `get_collection()` e `get_wishlist()` definite nei componenti, limitando il risultato ai primi 4 elementi tramite logica PHP (`$i < 4`). Questo approccio mantiene la coerenza con le pagine collezione/wishlist complete.
 

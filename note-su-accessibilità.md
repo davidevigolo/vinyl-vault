@@ -199,6 +199,20 @@ Placeholder accessibile quando le immagini non sono disponibili:
 
 La tabella wishlist presenta una colonna dedicata alle copertine dei dischi, la colonna e ogni elemento di copertina sono nascosti agli screen reader in quanto puramente decorativi, tramite aria-hidden="true". Si sarebbe ottenuto altrimenti una ripetizione continua di informazioni non necessarie per l'utente con disabilità visive.
 
+## Stati Vuoti Accessibili
+Ogni sezione con contenuto dinamico gestisce lo stato vuoto con messaggi accessibili:
+```html
+<!-- Empty state con role status per live region -->
+<div class="empty-state" role="status" aria-live="polite">
+    <p class="sr-only">Collezione vuota</p>
+    <p class="empty-message">Nessun disco nella collezione. 
+        <a href="esplora.php">Esplora il catalogo</a> per iniziare.</p>
+</div>
+```
+
+L'attributo `role="status"` con `aria-live="polite"` garantisce che screen reader annuncino lo stato vuoto senza interrompere la navigazione corrente.
+
+
 ## Form Ricerca Catalogo
 
 ```html

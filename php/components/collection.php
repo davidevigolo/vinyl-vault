@@ -1,8 +1,7 @@
 <?php
 include_once 'php/classes/DbConnection.php';
 
-function get_collection()
-{
+function get_collection() {
     $connection = DbConnection::get_instance();
     $query = "SELECT o.disk_id, e.image_path, d.title, a.author_name as author, a.id as author_id, e.edition_name, e.country, e.release_date, o.rating
        FROM ownership o 
@@ -20,8 +19,7 @@ function get_collection()
     return $result;
 }
 
-function collection($edit_mode = false)
-{
+function collection($edit_mode = false) {
     ob_start();
     $collection = get_collection();
     $items = '';
