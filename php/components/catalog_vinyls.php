@@ -181,10 +181,13 @@ function get_year_range() {
     $query = "SELECT MIN(YEAR(release_date)) as min_year, MAX(YEAR(release_date)) as max_year FROM edition";
     $result = mysqli_query($connection->get_connection(), $query);
     $row = mysqli_fetch_assoc($result);
-    
+
+    $current_year = intval(date('Y'));
+    $db_max = $row['max_year'] ? intval($row['max_year']) : $current_year;
+
     return [
         'min' => $row['min_year'] ?: 1950,
-        'max' => $row['max_year'] ?: date('Y')
+        'max' => max($db_max, $current_year)
     ];
 }
 
@@ -214,16 +217,17 @@ function render_catalog_cards($vinyls, $search_query = null) {
     return ob_get_clean();
 }
 
-function render_genres_checkboxes($genres) {
+function render_genres_checkboxes($genres, $prefix = '') {
     $current_genres = isset($_GET['genre']) ? (is_array($_GET['genre']) ? $_GET['genre'] : [$_GET['genre']]) : [];
-    
+
     ob_start();
     foreach ($genres as $genre) {
         $checked = in_array($genre, $current_genres) ? 'checked' : '';
         $genre_escaped = htmlspecialchars($genre);
+        $id = $prefix . 'genre-' . strtolower($genre_escaped);
         echo '<div class="filter-option">';
-        echo '<input type="checkbox" id="genre-' . strtolower($genre_escaped) . '" name="genre[]" value="' . $genre_escaped . '" ' . $checked . '>';
-        echo '<label for="genre-' . strtolower($genre_escaped) . '">' . $genre_escaped . '</label>';
+        echo '<input type="checkbox" id="' . $id . '" name="genre[]" value="' . $genre_escaped . '" ' . $checked . '>';
+        echo '<label for="' . $id . '">' . $genre_escaped . '</label>';
         echo '</div>';
     }
     return ob_get_clean();
