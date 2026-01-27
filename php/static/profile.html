@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+
+<head>
+    <meta name="description" content="">
+    <meta name="keywords"
+        content="vinili, collezione di vinili, musica su vinile, catalogo vinili, esplora vinili, community vinili">
+    <title>Profilo - Vinyl Vault</title>
+    [head] <!-- qui viene inserita la parte invariante dell'header-->
+</head>
+
+<body>
+    <nav aria-label="Aiuti alla navigazione" class="list-help">
+        <ul>
+            <li>
+                <a class="navigation-help" href="#content">Vai al contenuto</a>
+            </li>
+            <li>
+                <a class="navigation-help" href="#profile-data">Vai all'anagrafica</a>
+            </li>
+            <li>
+                <a class="navigation-help" href="#profile-stats">Vai alle statistiche</a>
+            </li>
+            <li>
+                <a class="navigation-help" href="#collection">Vai alla collezione</a>
+            </li>
+            <li>
+                <a class="navigation-help" href="#wishlist">Vai alla lista dei desideri</a>
+            </li>
+            <li>
+                <a class="navigation-help" href="#favorite-artists">Vai agli artisti preferiti</a>
+            </li>
+        </ul>
+    </nav>
+
+    [header]
+
+    <nav id="breadcrumb" aria-label="percorso di navigazione">
+        <div class="center-container">
+            <ol>
+                <li><a href="index.php"><span lang="en">Home</span></a></li>
+                <li aria-current="page">Profilo</li>
+            </ol>
+        </div>
+    </nav>
+
+    <main id="content" class="center-container">
+        <section id="profile-data" aria-labelledby="profile-heading">
+            <img id="propic" src="[propic_path]" alt="">
+
+            <h2 id="profile-heading">[username]</h2>
+            <p id="user-name">[first_name] [last_name]</p>
+
+            <p id="user-bio">[user_bio]</p>
+
+            <a href="edit_profile.php" id="edit-profile-button" class="btn-primary">Modifica profilo</a>
+        </section>
+
+        <section id="profile-stats" aria-labelledby="profile-stats-title">
+            <h2 id="profile-stats-title">Statistiche</h2>
+            <ol>
+                <li id="colllection-disk-count-item">
+                    <h3>Dischi posseduti</h3>
+                    [collection-disk-count]
+                </li>
+                <li id="wishlist-disk-count-item">
+                    <h3>Nella lista dei desideri</h3>
+                    [wishlist-disk-count]
+                </li>
+                <li id="collection-artist-count-item">
+                    <h3>Artisti collezionati</h3>
+                    [collection-artist-count]
+                </li>
+            </ol>
+        </section>
+
+        <section id="collection" class="card-section" aria-labelledby="collection-title">
+            <div class="section-title">
+                <h2 id="collection-title">La mia collezione</h2>
+                <a href="collection.php" class="view-all" aria-label="Guarda tutti i vinili collezionati">Guarda
+                    tutti</a>
+            </div>
+            <div class="cards-container">
+                [collection]
+            </div>
+        </section>
+
+        <section id="wishlist" class="card-section" aria-labelledby="wishlist-title">
+            <div class="section-title">
+                <h2 id="wishlist-title">Lista dei Desideri</h2>
+                <a href="wishlist.php" class="view-all"
+                    aria-label="Guarda tutti i vinili nella lista dei desideri">Guarda
+                    tutti</a>
+            </div>
+            <div class="cards-container">
+                [wishlist]
+            </div>
+        </section>
+
+        <section id="favorite-artists" aria-labelledby="fav-artists-title">
+            <h2 id="fav-artists-title">Artisti Preferiti</h2>
+            [favorite-artists-content]
+        </section>
+    </main>
+
+    [footer]
+
+</body>
+
+</html>

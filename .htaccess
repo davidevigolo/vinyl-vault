@@ -111,6 +111,10 @@ Options -Indexes
     Order Allow,Deny
     Allow from all
 </Files>
+<Files "profile.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
 <Files "passwords.php">
     Order Allow,Deny
     Allow from all

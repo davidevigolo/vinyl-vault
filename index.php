@@ -11,10 +11,10 @@ include 'php/components/footer.php';
 echo Template::render(
     'static/index.html',
     [
-        'head' => Template::render('static/layout/head.html',[]),
+        'head' => Template::render('static/layout/head.html', []),
         'header' => _header(),
         'trending_vinyls' => trending_vinyls(),
         'most_liked_artists' => most_liked_artists(),
         'footer' => footer(),
-        ]
+    ]
 );
