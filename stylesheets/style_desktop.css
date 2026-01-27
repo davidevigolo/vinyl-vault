@@ -625,4 +625,10 @@ p#empty-collection-paragraph {
     font-size: var(--font-large);
 }
 
+#add-artist-btn {
+    width: auto;
+    display: block;
+    margin: auto;
+}
+
 /* End Add Artist Page */
