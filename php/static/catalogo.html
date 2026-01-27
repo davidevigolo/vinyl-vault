@@ -119,98 +119,100 @@
                     </form>
                 </aside>
 
-                <!-- Mobile Filters Toggle -->
-                <div class="mobile-filters-header">
-                    <button 
-                        type="button" 
-                        class="filter-toggle" 
-                        aria-expanded="false" 
-                        aria-controls="mobile-filter-anno"
-                        data-filter="anno"
-                    >
-                        <span>Anno di pubblicazione</span>
-                    </button>
-                    <button 
-                        type="button" 
-                        class="filter-toggle" 
-                        aria-expanded="false" 
-                        aria-controls="mobile-filter-genere"
-                        data-filter="genere"
-                    >
-                        <span>Genere</span>
-                    </button>
-                </div>
 
-                <!-- Mobile Filter Panels (Hidden by default) -->
-                <div id="mobile-filter-anno" class="mobile-filter-panel" hidden>
-                    <div class="filter-panel-content">
-                        <h3>Anno di pubblicazione</h3>
-                        <form method="GET" action="catalogo.php" class="mobile-filter-form" id="mobile-form-anno">
-                            <div class="year-inputs">
-                                <label for="year-min-mobile" class="sr-only">Anno minimo di pubblicazione</label>
-                                <select id="year-min-mobile" name="year_min" aria-label="Anno minimo di pubblicazione" title="Filtra da anno" class="styled-select">
-                                    [year_min_options]
-                                </select>
-                                <span aria-hidden="true">-</span>
-                                <span class="sr-only">fino a</span>
-                                <label for="year-max-mobile" class="sr-only">Anno massimo di pubblicazione</label>
-                                <select id="year-max-mobile" name="year_max" aria-label="Anno massimo di pubblicazione" title="Filtra fino ad anno" class="styled-select">
-                                    [year_max_options]
-                                </select>
+
+                <div class="mobile-filters-container">
+                    <div class="mobile-filter-group">
+                        <button 
+                            type="button" 
+                            class="filter-toggle" 
+                            aria-expanded="false" 
+                            aria-controls="mobile-filter-anno"
+                            data-filter="anno"
+                        >
+                            <span>Anno di pubblicazione</span>
+                        </button>
+                        <div id="mobile-filter-anno" class="mobile-filter-panel" hidden>
+                            <div class="filter-panel-content">
+                                <h3>Anno di pubblicazione</h3>
+                                <form method="GET" action="catalogo.php" class="mobile-filter-form" id="mobile-form-anno">
+                                    <div class="year-inputs">
+                                        <label for="year-min-mobile" class="sr-only">Anno minimo di pubblicazione</label>
+                                        <select id="year-min-mobile" name="year_min" aria-label="Anno minimo di pubblicazione" title="Filtra da anno" class="styled-select">
+                                            [year_min_options]
+                                        </select>
+                                        <span aria-hidden="true">-</span>
+                                        <span class="sr-only">fino a</span>
+                                        <label for="year-max-mobile" class="sr-only">Anno massimo di pubblicazione</label>
+                                        <select id="year-max-mobile" name="year_max" aria-label="Anno massimo di pubblicazione" title="Filtra fino ad anno" class="styled-select">
+                                            [year_max_options]
+                                        </select>
+                                    </div>
+                                    <div class="hidden-params-container"></div>
+                                    <button type="submit" class="btn-apply-mobile-filter btn-primary">Applica</button>
+                                </form>
                             </div>
-                            <!-- Hidden inputs to preserve other filters -->
-                            <div class="hidden-params-container"></div>
-                            <button type="submit" class="btn-apply-mobile-filter btn-primary">Applica</button>
-                        </form>
+                        </div>
                     </div>
-                </div>
 
-                <div id="mobile-filter-genere" class="mobile-filter-panel" hidden>
-                    <div class="filter-panel-content">
-                        <h3>Genere</h3>
-                        <form method="GET" action="catalogo.php" class="mobile-filter-form" id="mobile-form-genere">
-                            <div class="genre-options">
-                                [genres_options_mobile]
+                    <div class="mobile-filter-group">
+                        <button 
+                            type="button" 
+                            class="filter-toggle" 
+                            aria-expanded="false" 
+                            aria-controls="mobile-filter-genere"
+                            data-filter="genere"
+                            >
+                            <span>Genere</span>
+                        </button>
+                        <div id="mobile-filter-genere" class="mobile-filter-panel" hidden>
+                            <div class="filter-panel-content">
+                                <h3>Genere</h3>
+                                <form method="GET" action="catalogo.php" class="mobile-filter-form" id="mobile-form-genere">
+                                    <div class="genre-options">
+                                        [genres_options_mobile]
+                                    </div>
+                                    <div class="hidden-params-container"></div>
+                                    <button type="submit" class="btn-apply-mobile-filter btn-primary">Applica</button>
+                                </form>
                             </div>
-                            <!-- Hidden inputs to preserve other filters -->
-                            <div class="hidden-params-container"></div>
-                            <button type="submit" class="btn-apply-mobile-filter btn-primary">Applica</button>
-                        </form>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Main Content Area -->
                 <div class="catalog-main">
-                    <!-- Mobile Reset Button -->
+                    <div class="active-filters-inline" role="region" aria-label="Filtri attivi">
+                        [active_filters]
+                    </div>
+
                     <div class="mobile-reset-container">
                         <a href="[reset_url]" class="btn-reset-all" role="button" aria-label="Elimina tutti i filtri">Elimina tutti i filtri</a>
                     </div>
 
+                    <div class="results-info">
+                        <p class="results-count" aria-live="polite" aria-atomic="true">
+                            <span class="sr-only">Numero di risultati:</span>
+                            [total_results] risultati
+                        </p>
+                    </div>
+
                     <!-- Sort Control -->
-                    <div class="catalog-controls">
-                        <div class="results-info">
-                            <p class="results-count" aria-live="polite" aria-atomic="true">
-                                <span class="sr-only">Numero di risultati:</span>
-                                [total_results] risultati
-                            </p>
-                            <div class="active-filters-inline" role="region" aria-label="Filtri attivi">
-                                [active_filters]
-                            </div>
-                        </div>
-                        <div class="sort-control">
-                            <label for="sort-select" class="sr-only">Ordina risultati per</label>
-                            <select id="sort-select" name="sort" aria-label="Ordina risultati del catalogo">
-                                <option value="collected" [sort_selected_collected]>Più collezionati</option>
-                                <option value="recent" [sort_selected_recent]>Più recenti</option>
-                                <option value="az" [sort_selected_az]>A-Z</option>
-                            </select>
-                        </div>
+                    <div class="sort-control">
+                        <label for="sort-select" class="sr-only">Ordina risultati per</label>
+                        <select id="sort-select" name="sort" aria-label="Ordina risultati del catalogo">
+                            <option value="collected" [sort_selected_collected]>Più collezionati</option>
+                            <option value="recent" [sort_selected_recent]>Più recenti</option>
+                            <option value="az" [sort_selected_az]>A-Z</option>
+                        </select>
                     </div>
 
                     <!-- Vinyl Cards Grid -->
                     <div class="catalog-grid" id="catalog-grid" role="feed" aria-label="Lista vinili" aria-busy="false">
                         [catalog_vinyls]
                     </div>
+                        
+                    
 
                     <!-- Load More Button -->
                     <div class="load-more-container" [has_more_display]>

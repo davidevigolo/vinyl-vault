@@ -1654,11 +1654,11 @@ img#empty-collection-image {
     display: block;
 }
 
-/* Catalog Page - Mobile First */
+/* Catalog Page */
 
 .catalog-header {
     background-color: var(--bg-section);
-    padding: 2rem 0;
+    padding: 3rem 0;
     text-align: center;
 }
 
@@ -1709,7 +1709,7 @@ img#empty-collection-image {
 .search-bar-container .btn-clear-search {
     padding: 0.5rem 0.75rem;
     background-color: var(--bg-error);
-    color: white;
+    color: var(--bg-surface);
     border: none;
     cursor: pointer;
     font-size: 1.25rem;
@@ -1722,7 +1722,7 @@ img#empty-collection-image {
 }
 
 .search-bar-container .btn-clear-search:hover {
-    background-color: #b82a23;
+    background-color: var(--bg-error);
 }
 
 .search-bar-container .btn-clear-search:focus-visible {
@@ -1737,7 +1737,7 @@ img#empty-collection-image {
 .catalog-page {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 0.8rem;
     padding: 2rem 0;
 }
 
@@ -1747,7 +1747,8 @@ img#empty-collection-image {
 
 /* Mobile reset button container - visible on mobile */
 .mobile-reset-container {
-    margin-bottom: 1rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--border-default);
 }
 
 .sidebar-reset {
@@ -1761,7 +1762,7 @@ img#empty-collection-image {
     background: var(--bg-error);
     color: var(--bg-surface);
     border: none;
-    border-radius: 8px;
+    border-radius: 1.3em;
     font-size: var(--font-medium);
     font-family: inherit;
     font-weight: 600;
@@ -1777,7 +1778,7 @@ img#empty-collection-image {
 }
 
 .btn-reset-all:hover {
-    background: #b82a23;
+    background: var(--bg-error);
     color: var(--bg-surface);
     transform: translateY(-1px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
@@ -1797,10 +1798,17 @@ img#empty-collection-image {
 
 .filter-group {
     border: 1px solid var(--border-default);
-    border-radius: 12px;
+    border-radius: 1.3em;
     padding: 1.5rem;
     margin-bottom: 1.5rem;
     background-color: var(--bg-surface);
+}
+
+.mobile-filters-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
 }
 
 .filter-group legend {
@@ -1833,12 +1841,13 @@ img#empty-collection-image {
     width: 5rem;
     padding: 0.5rem;
     border: 2px solid var(--border-default);
-    border-radius: 8px;
+    border-radius: 1.3em;
     background-color: var(--bg-surface);
     font-size: var(--font-medium);
     font-family: inherit;
     text-align: center;
     font-weight: 500;
+    text-align-last: center;
 }
 
 .year-inputs input[type="number"]:focus {
@@ -1870,7 +1879,7 @@ img#empty-collection-image {
     width: 1.25rem;
     height: 1.25rem;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 1.3em;
     accent-color: var(--brand-primary);
 }
 
@@ -1925,9 +1934,9 @@ img#empty-collection-image {
     gap: 0.5rem;
     padding: 0.5rem 1rem;
     background-color: var(--brand-primary);
-    color: white;
+    color: var(--bg-surface);
     border: none;
-    border-radius: 20px;
+    border-radius: 1.3em;
     font-size: var(--font-small);
     font-family: inherit;
     cursor: pointer;
@@ -1977,7 +1986,7 @@ img#empty-collection-image {
     width: 100%;
     padding: 0.75rem;
     margin-top: 0.5rem;
-    border-radius: 8px;
+    border-radius: 1.3em;
     font-weight: 500;
 }
 
@@ -2000,7 +2009,7 @@ img#empty-collection-image {
     background-color: var(--bg-surface);
     color: var(--text-primary);
     border: 2px solid var(--border-default);
-    border-radius: 12px;
+    border-radius: 1.3em;
     cursor: pointer;
     font-size: var(--font-medium);
     font-family: inherit;
@@ -2022,14 +2031,14 @@ img#empty-collection-image {
 .filter-toggle[aria-expanded="true"] {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+    background-color: var(--bg-subsection);
 }
 
 .mobile-filter-panel {
     border: 1px solid var(--border-default);
     border-top: none;
-    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    border-radius: 0 0 1.3em 1.3em;
     padding: 1.5rem;
-    margin-top: -1rem;
     margin-bottom: 1.5rem;
     background-color: var(--bg-surface);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -2038,6 +2047,8 @@ img#empty-collection-image {
 .mobile-filter-panel h3 {
     margin-top: 0;
     margin-bottom: 1rem;
+    font-family: var(--font-secondary);
+    font-size: var(--font-large);
 }
 
 .filter-panel-content form {
@@ -2057,9 +2068,7 @@ img#empty-collection-image {
 }
 
 .results-info {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    margin-bottom: 0.5rem;
     width: 100%;
 }
 
@@ -2070,7 +2079,7 @@ img#empty-collection-image {
     text-transform: none;
     letter-spacing: normal;
     border: none;
-    border-radius: 25px;
+    border-radius: 1.3em;
     box-shadow: none;
 }
 
@@ -2091,7 +2100,10 @@ img#empty-collection-image {
 .results-count {
     font-weight: 600;
     color: var(--text-secondary);
+    font-size: var(--font-large);
     margin: 0;
+    padding-bottom: 1em;
+    padding-top: 1em;
 }
 
 .active-filters-inline {
@@ -2099,18 +2111,20 @@ img#empty-collection-image {
     flex-wrap: wrap;
     gap: 0.5rem;
     align-items: center;
+    margin-bottom: 1.5rem;
 }
 
 .active-filters-inline:empty {
     display: none;
+    margin-bottom: 0;
 }
 
 .btn-reset-filters {
     padding: 0.4rem 0.8rem;
     background-color: var(--danger);
-    color: white;
+    color: var(--bg-surface);
     border: none;
-    border-radius: 20px;
+    border-radius: 1.3em;
     font-size: 0.85rem;
     cursor: pointer;
     text-decoration: none;
@@ -2124,19 +2138,22 @@ img#empty-collection-image {
 
 .sort-control {
     width: 100%;
+    margin-bottom: 2rem;
 }
 
 .sort-control select {
-    width: 100%;
-    padding: 0.75rem 1rem;
+    width: 15em;
+    height: 3em;
     border: 2px solid var(--border-default);
-    border-radius: 8px;
+    border-radius: 1.3em;
     background-color: var(--bg-surface);
     color: var(--text-primary);
     cursor: pointer;
     font-size: var(--font-medium);
     font-family: inherit;
     font-weight: 500;
+    text-align: center;
+    text-align-last: center;
 }
 
 .sort-control select:focus {
@@ -2153,7 +2170,7 @@ img#empty-collection-image {
 
 .catalog-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: 1fr 1fr;
     gap: 1rem;
     margin-bottom: 2rem;
     transition: opacity 0.3s ease;
@@ -2263,7 +2280,7 @@ html:not(.js-enabled) .load-more-container {
 
 /* End Catalog Page */
 
-/* Artist Page */
+/* End Artist Page */
 
 
 /* Top Vinyls Page */
