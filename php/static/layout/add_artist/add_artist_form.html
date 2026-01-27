@@ -1,33 +1,49 @@
-[errors]
-<form id="add-artist-form" action="php/controllers/add_artist_controller.php" method="POST" enctype="multipart/form-data">
-    <fieldset>
-        <legend>Informazioni artista</legend>
+<h2 class="add-pages-title">Aggiungi Artista</h2>
+<div id="add-pages">
 
-        <div class="input-wrapper">
-            <label for="name">Nome dell'artista</label>
-            <input type="text" id="name" name="name" required maxlength="100" pattern="[a-zA-Z0-9àèéìòùÀÈÉÌÒÙ\s]+" value="[name]" required>
-            <ul class="input-examples">
-                <li>Massimo 100 caratteri</li>
-                <li>Caratteri consentiti: lettere, numeri e spazi</li>
-            </ul>
-            <span class="error-message" id="name-error" aria-live="polite">Obbligatorio</span>
-        </div>
+    [errors]
 
-        <div class="input-wrapper">
-            <label for="nationality">Nazionalità</label>
-            <select id="nationality" name="nationality" required>
-                <option value="" disabled selected>Seleziona la nazionalità</option>
-                [nationality_options]
-            </select>
-            <span class="error-message" id="nationality-error" aria-live="polite">Obbligatorio</span>
-        </div>
+    <form id="add-pages-form" action="php/controllers/add_artist_controller.php" method="POST" enctype="multipart/form-data">
+        <fieldset>
+            <legend>Informazioni artista</legend>
 
-        <div class="input-wrapper">
-            <label for="photo">Foto dell'artista</label>
-            <input type="file" id="photo" name="photo" accept="image/*" required>
-            <span class="error-message" id="photo-error" aria-live="polite">Obbligatorio</span>
-        </div>
+            <div class="input-wrapper">
+                <div class="label-container">
+                    <label for="name">Nome dell'artista</label>
+                    <span class="error-message" id="name-error" aria-live="polite">Obbligatorio</span>
+                </div>
+            
+                <input type="text" id="name" name="name" required maxlength="100" pattern="[a-zA-Z0-9àèéìòùÀÈÉÌÒÙ\s]+" value="[name]" required>
+                <ul class="input-examples">
+                    <li>Massimo 100 caratteri</li>
+                    <li>Caratteri consentiti: lettere, numeri e spazi</li>
+                </ul>
+                
+            </div>
 
-        <button type="submit" id="add-artist-btn" class="btn-primary">Aggiungi Artista</button>
-    </fieldset>
-</form>
+            <div class="input-wrapper">
+                <div class="label-container">
+                        <label for="nationality">Nazionalità</label>
+                    <span class="error-message" id="nationality-error" aria-live="polite">Obbligatorio</span>
+                </div>
+                
+                <select id="nationality" name="nationality" required>
+                    <option value="" disabled selected>Seleziona la nazionalità</option>
+                    [nationality_options]
+                </select>
+            </div>
+
+            <div class="input-wrapper">
+                <div class="label-container">
+                    <label for="photo">Foto dell'artista</label>
+                    <span class="error-message" id="photo-error" aria-live="polite">Obbligatorio</span>
+                </div>
+                <input type="file" id="photo" name="photo" accept="image/*" required>
+            </div>
+
+        </fieldset>
+
+        <button type="submit" class="btn-primary add-pages-btn">Aggiungi Artista</button>
+    </form>
+
+</div>

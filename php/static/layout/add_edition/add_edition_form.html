@@ -1,59 +1,83 @@
-[errors]
-<form id="add-disk-form" action="php/controllers/add_edition_controller.php" method="POST" enctype="multipart/form-data">
+<h2 class="add-pages-title">Aggiungi Edizione</h2>
+<div id="add-pages">
 
-    <fieldset>
-        <legend>Seleziona disco</legend>
-        <div class="input-wrapper">
-            <label for="disk">Seleziona disco</label>
-            <select id="disk" name="disk" required>
-                <option value="" disabled selected>Seleziona un disco</option>
-                [disk_options]
-            </select>
-            <span class="error-message" id="disk-error" aria-live="polite">Obbligatorio</span>
-        </div>
-    </fieldset>
+    [errors]
 
-    <fieldset>
-        <legend>Dettagli edizione</legend>
-        <div class="input-wrapper">
-            <label for="name">Nome dell'edizione</label>
-            <ul class="input-hints">
-                <li>Massimo 100 caratteri</li>
-                <li>Caratteri consentiti: lettere, numeri e spazi</li>
-                <li>Se impostata <span lang="en">Standard Edition</span>, non valorizzare il campo</li>
-            </ul>
-            <input type="text" id="name" name="name" required maxlength="100" pattern="[a-zA-Z0-9àèéìòùÀÈÉÌÒÙ\s]+"
-                value="[name]" [name_enabled] required>
-            <div class="checkbox-wrapper">
-                <input type="checkbox" id="standard-edition-checkbox" name="standard-edition" [standard_edition]>
-                <label for="standard-edition-checkbox">Imposta <span lang="en">Standard Edition</span></label>
+    <form id="add-pages-form" action="php/controllers/add_edition_controller.php" method="POST" enctype="multipart/form-data">
+
+        <fieldset>
+            <legend>Seleziona disco</legend>
+            
+            <div class="input-wrapper">
+                <div class="label-container">
+                    <label for="disk">Seleziona disco</label>
+                    <span class="error-message" id="disk-error" aria-live="polite">Obbligatorio</span>
+                </div>
+                <select id="disk" name="disk" required>
+                    <option value="" disabled selected>Seleziona un disco</option>
+                    [disk_options]
+                </select>
             </div>
-            <span class="error-message" id="name-error" aria-live="polite">Obbligatorio</span>
-        </div>
-        <div class="input-wrapper">
-            <label for="release-date">Data di rilascio</label>
-            <ul class="input-hints">
-                <li>Compresa tra 1887 e l'anno corrente</li>
-            </ul>
-            <input type="date" id="release-date" name="release-date" min="1887-01-01" required value="[release_date]">
-            <span class="error-message" id="release-date-error" aria-live="polite">Obbligatorio</span>
-        </div>
+        </fieldset>
 
-        <div class="input-wrapper">
-            <label for="country">Paese di rilascio</label>
-            <select id="country" name="country" required>
-                <option value="" disabled selected>Seleziona un paese</option>
-                [country_options]
-            </select>
-            <span class="error-message" id="country-error" aria-live="polite">Obbligatorio</span>
-        </div>
+        <fieldset>
+            <legend>Dettagli edizione</legend>
+            
+            <div class="input-wrapper">
+                <div class="label-container">
+                    <label for="name">Nome dell'edizione</label>
+                    <span class="error-message" id="name-error" aria-live="polite">Obbligatorio</span>
+                </div>
 
-        <div class="input-wrapper">
-            <label for="photo">Foto del vinile</label>
-            <input type="file" id="photo" name="photo" accept="image/*" required>
-            <span class="error-message" id="photo-error" aria-live="polite">Obbligatorio</span>
-        </div>
-    </fieldset>
+                <input type="text" id="name" name="name" required maxlength="100" pattern="[a-zA-Z0-9àèéìòùÀÈÉÌÒÙ\s]+"
+                    value="[name]" [name_enabled] required>
 
-    <button type="submit" class="btn-primary">Aggiungi Edizione</button>
-</form>
+                <ul class="input-">
+                    <li>Massimo 100 caratteri</li>
+                    <li>Caratteri consentiti: lettere, numeri e spazi</li>
+                    <li>Se impostata <span lang="en">Standard Edition</span>, non valorizzare il campo</li>
+                </ul>
+
+                <div class="checkbox-wrapper">
+                    <input type="checkbox" id="standard-edition-checkbox" name="standard-edition" [standard_edition]>
+                    <label for="standard-edition-checkbox">Imposta <span lang="en">Standard Edition</span></label>
+                </div>
+            </div>
+
+            <div class="input-wrapper">
+                <div class="label-container">
+                    <label for="release-date">Data di rilascio</label>
+                    <span class="error-message" id="release-date-error" aria-live="polite">Obbligatorio</span>
+                </div>
+                
+                <input type="date" id="release-date" name="release-date" min="1887-01-01" required value="[release_date]">
+
+                <ul class="input-">
+                    <li>Compresa tra 1887 e l'anno corrente</li>
+                </ul>
+            </div>
+
+            <div class="input-wrapper">
+                <div class="label-container">
+                    <label for="country">Paese di rilascio</label>
+                    <span class="error-message" id="country-error" aria-live="polite">Obbligatorio</span>
+                </div>
+                <select id="country" name="country" required>
+                    <option value="" disabled selected>Seleziona un paese</option>
+                    [country_options]
+                </select>
+            </div>
+
+            <div class="input-wrapper">
+                <div class="label-container">
+                    <label for="photo">Foto del vinile</label>
+                    <span class="error-message" id="photo-error" aria-live="polite">Obbligatorio</span>
+                </div>
+                <input type="file" id="photo" name="photo" accept="image/*" required>
+            </div>
+        </fieldset>
+
+        <button type="submit" class="btn-primary add-pages-btn">Aggiungi Edizione</button>
+    </form>
+
+</div>

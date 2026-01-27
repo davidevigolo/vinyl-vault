@@ -43,7 +43,7 @@
     --icon-theme: #F0F0F0;
     --icon-theme-light: #e2e2e2;
 
-    --bg-error: #d93025;
+    --bg-error: #c52b20;
 
     /* Button text on colored backgrounds */
     --text-on-primary: #FFFFFF;
@@ -68,7 +68,7 @@
     --text-primary: #FAFAFA;
     --text-secondary: #3c99dd;
     /* Blu3 - Altri testi */
-    --text-muted: #a1a1a1;
+    --text-muted: #A1A1A1;
 
     /* Borders & Accents */
     --border-default: #49454f;
@@ -94,7 +94,7 @@
     --bg-error: #ff6f64;
 
     /* Button text on colored backgrounds */
-    --text-on-primary: #FFFFFF;
+    --text-on-primary: #000000;
 
     --small-logo-img: url('../assets/images/logo-min-dark.png');
     --hero-logo-img: url('../assets/images/logo-full-dark.png');
@@ -102,24 +102,25 @@
 
 @supports (font-size: clamp(1rem, 1vi, 1rem)) {
     :root {
-        --font-small: clamp(1.25rem, 1.22rem + 0.15vw, 1.375rem);
-        --font-medium: clamp(1.375rem, 1.33rem + 0.2vw, 1.5rem);
-        --font-large: clamp(1.5rem, 1.4rem + 0.5vw, 1.75rem);
-        --font-xl: clamp(1.75rem, 1.6rem + 1vw, 2.125rem);
-        --font-xxl: clamp(2.125rem, 2.05rem + 0.5vw, 2.375rem);
-        --font-xxxl: clamp(2.375rem, 2.25rem + 1vw, 2.875rem);
+        /* Versione bilanciata: una via di mezzo tra i due estremi */
+        --font-small: clamp(1rem, 0.98rem + 0.1vw, 1.1rem);       /* ~16px - 17.5px */
+        --font-medium: clamp(1.1rem, 1.05rem + 0.2vw, 1.25rem);   /* ~17.5px - 20px */
+        --font-large: clamp(1.25rem, 1.2rem + 0.3vw, 1.45rem);    /* ~20px - 23px */
+        --font-xl: clamp(1.5rem, 1.4rem + 0.6vw, 1.8rem);         /* ~24px - 29px */
+        --font-xxl: clamp(1.8rem, 1.7rem + 0.8vw, 2.15rem);       /* ~29px - 34px */
+        --font-xxxl: clamp(2.15rem, 2rem + 1vw, 2.6rem);          /* ~34px - 41px */
     }
 }
 
-/* browser che non supportano clamp */
+/* Browser che non supportano clamp */
 @supports not (font-size: clamp(1rem, 1vi, 1rem)) {
     :root {
-        --font-small: 1.25rem;
-        --font-medium: 1.375rem;
-        --font-large: 1.5rem;
-        --font-xl: 1.75rem;
-        --font-xxl: 2.125rem;
-        --font-xxxl: 2.375rem;
+        --font-small: 1.05rem;
+        --font-medium: 1.15rem;
+        --font-large: 1.35rem;
+        --font-xl: 1.6rem;
+        --font-xxl: 1.9rem;
+        --font-xxxl: 2.3rem;
     }
 }
 
@@ -1381,6 +1382,7 @@ img#empty-collection-image {
     font-size: var(--font-medium);
     font-weight: 600;
     color: var(--text-muted);
+    text-wrap: balance;
 }
 
 .priority-input-wrapper {
@@ -2191,7 +2193,7 @@ html:not(.js-enabled) .load-more-container {
     color: var(--text-primary);
 }
 
-.noscript-message p:first-child {
+.noscript-message p:first-of-type {
     margin-top: 0;
 }
 
@@ -2286,11 +2288,11 @@ html:not(.js-enabled) .load-more-container {
     object-fit: cover;
 }
 
-#top-vinyls-grid>*:first-child {
+#top-vinyls-grid >*:first-child {
     grid-column: 1 / 3;
 }
 
-#top-vinyls-grid>*:first-child .card-content {
+#top-vinyls-grid >*:first-child .card-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -2324,15 +2326,15 @@ html:not(.js-enabled) .load-more-container {
     padding: 1.2rem;
 }
 
-#top-vinyls-grid>*:first-child .artist-name {
+#top-vinyls-grid >*:first-child .artist-name {
     font-size: var(--font-medium);
 }
 
-#top-vinyls-grid>*:first-child .album-title {
+#top-vinyls-grid >*:first-child .album-title {
     font-size: var(--font-xl);
 }
 
-#top-vinyls-grid>*:first-child .edition-info {
+#top-vinyls-grid >*:first-child .edition-info {
     font-size: var(--font-large);
 }
 
@@ -2403,14 +2405,14 @@ html:not(.js-enabled) .load-more-container {
 
 #login-form fieldset,
 #registration-form fieldset,
-#add-artist-form fieldset {
+#add-pages-form fieldset {
     border: none;
     padding: 0;
 }
 
 #login-form legend,
 #registration-form legend,
-#add-artist-form legend {
+#add-pages-form legend {
     font-weight: 700;
     color: var(--text-secondary);
     font-family: var(--font-secondary);
@@ -2419,26 +2421,34 @@ html:not(.js-enabled) .load-more-container {
     text-align: center;
 }
 
-#login-form .input-wrapper,
-#registration-form .input-wrapper,
-#add-artist-form .input-wrapper {
-    text-align: left;
-    margin-bottom: 2.4rem;
+
+.label-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.8rem;
+    width: 100%;
 }
 
 #login-form label,
 #registration-form label,
-#add-artist-form label {
+#add-pages-form label {
     display: block;
     font-weight: 600;
-    margin-bottom: 1rem;
     font-family: var(--font-secondary);
-    font-size: var(--font-medium);
+    font-size: var(--font-large);
+}
+
+#login-form .input-wrapper,
+#registration-form .input-wrapper,
+#add-pages-form .input-wrapper {
+    text-align: left;
+    margin-bottom: 2.4rem;
 }
 
 #login-form input,
 #registration-form input,
-#add-artist-form input {
+#add-pages-form input {
     width: 100%;
     padding: 0.8rem;
     border: 1px solid var(--border-default);
@@ -2449,14 +2459,14 @@ html:not(.js-enabled) .load-more-container {
 
 #login-btn,
 #registration-btn,
-#add-artist-btn {
+#add-pages-btn {
     width: 100%;
     margin-top: 1rem;
 }
 
 #login-form,
 #registration-form,
-#add-artist-form {
+#add-pages-form{
     margin-bottom: 1.5em;
 }
 
@@ -2468,7 +2478,7 @@ html:not(.js-enabled) .load-more-container {
 }
 
 #password-requirements,
-#add-artist-form ul {
+#add-pages-form ul {
     padding-left: 2rem;
     padding-right: 2rem;
     width: 100%;
@@ -2482,7 +2492,7 @@ html:not(.js-enabled) .load-more-container {
 }
 
 #password-requirements ul li,
-#add-artist-form ul li {
+#add-pages-form ul li{
     color: var(--text-muted);
 }
 
@@ -2500,9 +2510,9 @@ html:not(.js-enabled) .load-more-container {
 /* End Login & Registration page */
 
 
-/* Add Artist Page */
+/* Add Pages */
 
-.add-artist-title {
+.add-pages-title {
     text-align: center;
     margin-top: 3rem;
     margin-bottom: 2rem;
@@ -2513,11 +2523,11 @@ html:not(.js-enabled) .load-more-container {
     padding-bottom: 0.7em;
 }
 
-#add-artist {
+#add-pages {
     background-color: var(--bg-section);
     border: 1px solid var(--border-default);
     border-radius: 1.3em;
-    padding: 2.5rem 1.5rem;
+    padding: 2rem 1.5rem 0 1.5rem;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -2525,7 +2535,14 @@ html:not(.js-enabled) .load-more-container {
     width: 100%;
 }
 
-#nationality {
+#nationality,
+#disk,
+#country,
+#artist,
+#type,
+#genre,
+.genre,
+#edition {
     width: 100%;
     height: 2.7em;
     border: 0.15em solid var(--border-default);
@@ -2537,15 +2554,84 @@ html:not(.js-enabled) .load-more-container {
 }
 
 
-#nationality input:focus {
+#nationality input:focus,
+#disk input:focus,
+#country input:focus,
+#artist input:focus,
+#type input:focus,
+#genre input:focus,
+.genre input:focus,
+#edition input:focus {
     outline: none;
     border-color: var(--brand-primary);
     box-shadow: 0 0 0 3px rgba(0, 90, 156, 0.2);
 }
 
-#add-artist-form ul {
+#add-pages-form ul {
     padding-left: 3em;
     padding-top: 0.5em;
 }
 
-/* End Add Artist Page */
+#add-pages-success {
+    background-color: var(--bg-section);
+    border: 1px solid var(--border-default);
+    font-size: var(--font-large);
+    border-radius: 1.3em;
+    padding: 3rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    text-wrap: balance;
+
+}
+
+#add-pages-success a:first-of-type{
+    margin-top: 2em;
+}
+
+#add-pages-form fieldset:first-of-type {
+    margin-bottom: 2em;
+}
+
+#add-pages-form .checkbox-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    justify-content: center;/*flex-start;*/
+}
+
+#add-pages-form .checkbox-wrapper input[type="checkbox"] {
+    width: 45px;
+    height: 45px;
+    margin: 0;
+    cursor: pointer;
+    accent-color: var(--brand-primary);
+}
+
+#add-pages-form .checkbox-wrapper label {
+    display: inline ; 
+    margin-bottom: 0; 
+    cursor: pointer;
+    font-size: var(--font-medium);
+    font-weight: 600;
+    line-height: 1;
+    font-family: var(--font-primary);
+}
+
+.track-fieldset {
+    margin-top: 1em;
+}
+
+#edition:disabled {
+    color: var(--text-primary);
+    background-color: var(--border-default);
+}
+
+/* End Add Pages */

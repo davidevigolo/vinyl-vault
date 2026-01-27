@@ -705,19 +705,16 @@ header {
 /* End Login & Registration Page */
 
 
-/* Add Artist Page */
+/* Add Pages */
 
-#add-artist-form label {
+#add-pages-form label {
     font-size: var(--font-large);
 }
 
-#add-artist-btn {
-    width: auto;
-    display: block;
-    margin: auto;
+#add-pages-form{
+    text-align: center; /* Centra i bottoni al suo interno */
 }
-
-/* End Add Artist Page */
+/* End Add Pages */
 
 /* Stili desktop per Catalog */
 /* Altri stili (login, register, etc) */

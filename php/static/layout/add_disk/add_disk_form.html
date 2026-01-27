@@ -1,49 +1,76 @@
-[errors]
-<form id="add-disk-form" action="php/controllers/add_disk_controller.php" method="POST" enctype="multipart/form-data">
+<h2 class="add-pages-title">Aggiungi Disco</h2>
+<div id="add-pages">
 
-    <div class="input-wrapper">
-        <label for="title">Titolo del Disco</label>
-        <ul class="input-hints">
-            <li>Massimo 200 caratteri</li>
-            <li>Caratteri consentiti: lettere, numeri e spazi</li>
-        </ul>
-        <input type="text" id="title" name="title" required maxlength="200" pattern="[a-zA-Z0-9àèéìòùÀÈÉÌÒÙ\s]+" value="[title]" required>
-        <span class="error-message" id="title-error" aria-live="polite">Obbligatorio</span>
-    </div>
+    [errors]
+    <form id="add-pages-form" action="php/controllers/add_disk_controller.php" method="POST" enctype="multipart/form-data">
+        <fieldset>
+            <legend>Informazioni disco</legend>
 
-    <div class="input-wrapper">
-        <label for="artist">Artista</label>
-        <select id="artist" name="artist" required>
-            <option value="" disabled selected>Seleziona un artista</option>
-            [artist_options]
-        </select>
-        <span class="error-message" id="artist-error" aria-live="polite">Obbligatorio</span>
-        <p>Non trovi l'artista? <a href="add_artist.php" aria-label="Aggiungi artista">Aggiungilo</a></p>
-    </div>
+            <div class="input-wrapper">
+                <div class="label-container">
+                    <label for="title">Titolo del Disco</label>
+                    <span class="error-message" id="title-error" aria-live="polite">Obbligatorio</span>
+                </div>
 
-    <div class="input-wrapper">
-        <label for="type">Tipo</label>
-        <select id="type" name="type" required>
-            <option value="" disabled selected>Seleziona un tipo</option>
-            [type_options]
-        </select>
-        <span class="error-message" id="type-error" aria-live="polite">Obbligatorio</span>
-    </div>
+                <input type="text" id="title" name="title" required maxlength="200" pattern="[a-zA-Z0-9àèéìòùÀÈÉÌÒÙ\s]+" value="[title]" required>
 
-    <div class="input-wrapper">
-        <label for="genre">Genere</label>
-        <select id="genre" name="genre[]" required>
-            <option value="" disabled selected>Seleziona un genere</option>
-            [genre_options]
-        </select>
-        <span class="error-message" id="genre-error" aria-live="polite">Obbligatorio</span>
-    </div>
+                <ul class="input-examples">
+                    <li>Massimo 200 caratteri</li>
+                    <li>Caratteri consentiti: lettere, numeri e spazi</li>
+                </ul>
 
-    <fieldset>
-        <legend>Specifica ulteriori generi (opzionale)</legend>
+            </div>
 
-        [additional_genres]
-    </fieldset>
+            <div class="input-wrapper">
+                <div class="label-container">
+                    <label for="artist">Artista</label>
+                    <span class="error-message" id="artist-error" aria-live="polite">Obbligatorio</span>
+                </div>
 
-    <button type="submit" class="btn-primary">Aggiungi Disco</button>
-</form>
+                <select id="artist" name="artist" required>
+                    <option value="" disabled selected>Seleziona un artista</option>
+                    [artist_options]
+                </select>
+
+                <p>Non trovi l'artista? <a href="add_artist.php" aria-label="Aggiungi artista">Aggiungilo</a></p>
+
+            </div>
+
+            <div class="input-wrapper">
+                <div class="label-container">
+                    <label for="type">Tipo</label>
+                    <span class="error-message" id="type-error" aria-live="polite">Obbligatorio</span>
+                </div>
+
+                <select id="type" name="type" required>
+                    <option value="" disabled selected>Seleziona un tipo</option>
+                    [type_options]
+                </select>
+
+            </div>
+
+            <div class="input-wrapper">
+                <div class="label-container">
+                    <label for="genre">Genere</label>
+                    <span class="error-message" id="genre-error" aria-live="polite">Obbligatorio</span>
+                </div>
+
+                <select id="genre" name="genre[]" required>
+                    <option value="" disabled selected>Seleziona un genere</option>
+                    [genre_options]
+                </select>
+
+            </div>
+
+        </fieldset>
+
+        <fieldset>
+            <legend>Specifica ulteriori generi (opzionale)</legend>
+
+            [additional_genres]
+        </fieldset>
+
+        <button type="submit" class="btn-primary add-pages-btn">Aggiungi Disco</button>
+    </form>
+
+</div>

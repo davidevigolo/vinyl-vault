@@ -52,7 +52,7 @@ function add_tracks_form($_disk, $_edition, $_titles, $_durations, $errors = [])
     }
     $first_track_title = isset($_titles[0]) ? htmlspecialchars($_titles[0]) : '';
     $first_track_duration = isset($_durations[0]) ? htmlspecialchars($_durations[0]) : '';
-    for ($i = 1; $i < 20; $i++) {
+    for ($i = 1; $i < 35; $i++) {
         $track_form_items .= Template::render('static/layout/add_tracks/track_form_item.html', [
             'index' => $i + 1,
             'track_title' => isset($_titles[$i]) ? htmlspecialchars($_titles[$i - 1]) : '',
