@@ -21,7 +21,7 @@ function login($req) {
     require_once 'php/classes/DbConnection.php';
     $conn = DbConnection::get_instance()->get_connection();
 
-    $query = "SELECT id, first_name, pw_hash, is_admin FROM users WHERE email = ? LIMIT 1";
+    $query = "SELECT * FROM users WHERE email = ? LIMIT 1";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -30,9 +30,14 @@ function login($req) {
     if ($row = $result->fetch_assoc()) {
         if (password_verify($password, $row['pw_hash'])) {
             assert(session_regenerate_id(true));
+
             $_SESSION['user_id'] = $row['id'];
-            $_SESSION['first_name'] = $row['first_name'];
-            $_SESSION['is_admin'] = $row['is_admin'];
+
+            // populate session with the remaining data
+            unset($row['id']);
+            unset($row['pw_hash']);
+            $_SESSION = array_merge($_SESSION, $row);
+
             return ['success' => true];
         }
     }

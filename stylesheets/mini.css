@@ -405,4 +405,29 @@ h2#empty-wishlist-heading {
     grid-template-columns: 1fr;
 }
 
+/* Catalog Mobile Styles */
+
+.catalog-page {
+    flex-direction: column;
+}
+
+.filters-sidebar {
+    display: none;
+}
+
+.filter-toggles {
+    display: flex;
+}
+
+.catalog-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.catalog-controls {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+}
 /* End Album Page Mobile */

@@ -75,6 +75,7 @@ function register($req) {
         session_regenerate_id(true);
         $_SESSION['user_id'] = $new_user_id;
         $_SESSION['first_name'] = $first_name;
+        $_SESSION['last_name'] = $last_name;
         $_SESSION['username'] = $username;
         $_SESSION['is_admin'] = 0;
 
@@ -97,7 +98,7 @@ function check_user_exists($conn, $column, $value) {
     $stmt = $conn->prepare($query);
     $stmt->bind_param("s", $value);
     $stmt->execute();
-    $stmt->store_result(); // Optimized for checking existence
+    $stmt->store_result();
     $exists = $stmt->num_rows > 0;
     $stmt->close();
 

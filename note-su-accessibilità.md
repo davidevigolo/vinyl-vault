@@ -199,6 +199,67 @@ Placeholder accessibile quando le immagini non sono disponibili:
 
 La tabella wishlist presenta una colonna dedicata alle copertine dei dischi, la colonna e ogni elemento di copertina sono nascosti agli screen reader in quanto puramente decorativi, tramite aria-hidden="true". Si sarebbe ottenuto altrimenti una ripetizione continua di informazioni non necessarie per l'utente con disabilità visive.
 
+## Stati Vuoti Accessibili
+Ogni sezione con contenuto dinamico gestisce lo stato vuoto con messaggi accessibili:
+```html
+<!-- Empty state con role status per live region -->
+<div class="empty-state" role="status" aria-live="polite">
+    <p class="sr-only">Collezione vuota</p>
+    <p class="empty-message">Nessun disco nella collezione. 
+        <a href="esplora.php">Esplora il catalogo</a> per iniziare.</p>
+</div>
+```
+
+L'attributo `role="status"` con `aria-live="polite"` garantisce che screen reader annuncino lo stato vuoto senza interrompere la navigazione corrente.
+
+
+## Form Ricerca Catalogo
+
+```html
+<form method="GET" action="catalogo.php" role="search" aria-label="Cerca nel catalogo">
+    <label for="catalog-search" class="sr-only">Cerca un disco, un artista o una versione</label>
+    <input type="search" id="catalog-search" name="q" ... >
+    <button type="submit" aria-label="Avvia ricerca nel catalogo">
+        <span aria-hidden="true">🔍</span>
+        <span class="sr-only">Cerca</span>
+    </button>
+</form>
+```
+
+**Accessibilità**: `role="search"` per landmark, label nascosta con `.sr-only`, icona decorativa con `aria-hidden`, testo alternativo per screen reader.
+
+**Risultati**: Contatore con `aria-live="polite"` annuncia cambiamenti, messaggio vuoto con `role="status"`.
+
+## Sistema Rating Collezione
+
+Le stelle di valutazione usano `<button>` invece di `<span>` per essere accessibili da tastiera.
+
+```html
+<fieldset class="collection-rating-section">
+    <legend>Valutazione personale</legend>
+    <div class="stars-container" role="group" aria-label="Seleziona valutazione da 1 a 5 stelle">
+        <button type="button" class="star" data-value="1" aria-label="1 stella">★</button>
+        <!-- ... -->
+    </div>
+</fieldset>
+```
+
+**Tastiera**: Frecce direzionali per navigare, Home/End per primo/ultimo, Enter/Space per selezionare.
+
+**ARIA dinamico**: `aria-pressed` aggiornato via JS al cambio rating.
+
+## Filtri Attivi Removibili
+
+I filtri attivi (genere, ricerca) sono `<button>` con `aria-label` descrittivo:
+
+```html
+<button type="button" class="filter-tag remove-filter-btn"
+        data-href="..."
+        aria-label="Rimuovi filtro Rock">
+    Rock <span aria-hidden="true">×</span>
+</button>
+```
+
 ## Note di Sviluppo Futuro
 
 ### Da implementare quando necessario:
