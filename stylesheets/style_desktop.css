@@ -517,6 +517,10 @@ header {
     display: none;
 }
 
+.mobile-reset-container {
+    display: none;
+}
+
 .active-filters-mobile {
     display: none;
 }

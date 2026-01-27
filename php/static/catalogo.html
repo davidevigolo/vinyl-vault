@@ -167,7 +167,7 @@
                         <h3>Genere</h3>
                         <form method="GET" action="catalogo.php" class="mobile-filter-form" id="mobile-form-genere">
                             <div class="genre-options">
-                                [genres_options]
+                                [genres_options_mobile]
                             </div>
                             <!-- Hidden inputs to preserve other filters -->
                             <div class="hidden-params-container"></div>
@@ -178,6 +178,11 @@
 
                 <!-- Main Content Area -->
                 <div class="catalog-main">
+                    <!-- Mobile Reset Button -->
+                    <div class="mobile-reset-container">
+                        <a href="[reset_url]" class="btn-reset-all" role="button" aria-label="Elimina tutti i filtri">Elimina tutti i filtri</a>
+                    </div>
+
                     <!-- Sort Control -->
                     <div class="catalog-controls">
                         <div class="results-info">
