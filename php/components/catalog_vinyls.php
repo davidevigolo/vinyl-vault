@@ -219,7 +219,7 @@ function render_active_filters($filters) {
         } else {
             // Genre filters are removable
             $remove_url = build_remove_filter_url($filter['type'], $filter['value']);
-            echo '<button type="button" class="filter-tag" onclick="window.location.href=\'' . $remove_url . '\'" aria-label="Rimuovi filtro ' . htmlspecialchars($filter['label']) . '">';
+            echo '<button type="button" class="filter-tag remove-filter-btn" data-href="' . $remove_url . '" aria-label="Rimuovi filtro ' . htmlspecialchars($filter['label']) . '">';
             echo htmlspecialchars($filter['label']);
             echo ' <span aria-hidden="true">×</span>';
             echo '</button>';

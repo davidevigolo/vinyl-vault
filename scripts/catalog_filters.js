@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         container.innerHTML = '';
 
         // Get form's own parameter names to skip them
-        const formInputs = form.querySelectorAll('input[name]:not([type="hidden"])');
+        const formInputs = form.querySelectorAll('input[name]:not([type="hidden"]), select[name]');
         const formParamNames = new Set();
         formInputs.forEach(input => {
             const name = input.name;
@@ -111,6 +111,16 @@ document.addEventListener('DOMContentLoaded', () => {
             sessionStorage.setItem('catalogScrollPosition', window.scrollY.toString());
         });
     }
+    
+    // Save scroll position when clicking a remove filter button
+    const removeFilterButtons = document.querySelectorAll('.remove-filter-btn');
+    removeFilterButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            sessionStorage.setItem('catalogScrollPosition', window.scrollY.toString());
+            window.location.href = button.dataset.href;
+        });
+    });
     
     // Auto-submit on checkbox change (desktop)
     if (desktopForm) {
