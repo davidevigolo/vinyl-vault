@@ -2120,8 +2120,42 @@ img#empty-collection-image {
     display: block;
 }
 
-.catalog-item-hidden {
+/* Items nascosti solo quando JS è attivo */
+html.js-enabled .catalog-item-hidden {
     display: none;
+}
+
+/* Senza JS: mostra primi 50 items, nascondi il resto */
+html:not(.js-enabled) .catalog-item:nth-child(n+51) {
+    display: none;
+}
+
+/* Nascondi "Carica altri" senza JS */
+html:not(.js-enabled) .load-more-container {
+    display: none;
+}
+
+/* Messaggio noscript */
+.noscript-message {
+    background-color: var(--bg-section);
+    border: 2px solid var(--brand-primary);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.noscript-message p {
+    margin: 0.5rem 0;
+    color: var(--text-primary);
+}
+
+.noscript-message p:first-child {
+    margin-top: 0;
+}
+
+.noscript-message p:last-child {
+    margin-bottom: 0;
 }
 
 .empty-state {
