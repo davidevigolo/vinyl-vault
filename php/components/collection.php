@@ -1,9 +1,10 @@
 <?php
 include_once 'php/classes/DbConnection.php';
 
-function get_wishlist(){
+function get_collection()
+{
     $connection = DbConnection::get_instance();
-    $query = "SELECT o.disk_id, e.image_path, d.title, a.author_name as author, e.edition_name, e.country, e.release_date, o.rating
+    $query = "SELECT o.disk_id, e.image_path, d.title, a.author_name as author, a.id as author_id, e.edition_name, e.country, e.release_date, o.rating
        FROM ownership o 
        JOIN edition e ON o.disk_id = e.disk_id AND o.edition_name = e.edition_name
        JOIN disk d ON d.id = e.disk_id 
@@ -22,9 +23,9 @@ function get_wishlist(){
 function collection($edit_mode = false)
 {
     ob_start();
-    $collection = get_wishlist();
+    $collection = get_collection();
     $items = '';
-    if(!$collection || mysqli_num_rows($collection) === 0){
+    if (!$collection || mysqli_num_rows($collection) === 0) {
         echo Template::render('static/layout/collection/empty_collection.html', []);
         return ob_get_clean();
     }
@@ -34,19 +35,23 @@ function collection($edit_mode = false)
             $items .= Template::render($edit_mode ? 'static/layout/collection/collection_item_edit.html' : 'static/layout/collection/collection_item.html', [
                 'title' => htmlspecialchars($vinyl['title']),
                 'author' => htmlspecialchars($vinyl['author']),
+                'author_id' => htmlspecialchars($vinyl['author_id']),
                 'edition_name' => htmlspecialchars($vinyl['edition_name']),
                 'country' => htmlspecialchars($vinyl['country']),
                 'year' => htmlspecialchars(str_replace('-', '/', $vinyl['release_date'])),
                 'year_datetime' => htmlspecialchars($vinyl['release_date']),
-                'image_url' => 'assets/images/pollo.webp',
+                'image_url' => htmlspecialchars($vinyl['image_path']) ?: 'assets/images/pollo.webp',
                 'disk_id' => htmlspecialchars($vinyl['disk_id']),
-                'rating_value'  => intval($vinyl['rating'] ?? 0)
+                'rating_value' => isset($_SESSION['manage_collection_result']['rating']) ? intval($_SESSION['manage_collection_result']['rating'][$vinyl['disk_id'] . '_' . $vinyl['edition_name']] ?? 0) : intval($vinyl['rating'] ?? 0),
+                'checked' => (isset($_SESSION['manage_collection_result']['items_to_delete'][$vinyl['disk_id'] . '_' . $vinyl['edition_name']]) && $_SESSION['manage_collection_result']['items_to_delete'][$vinyl['disk_id'] . '_' . $vinyl['edition_name']]) ? 'checked' : ''
             ]);
         }
     }
     echo Template::render($edit_mode ? 'static/layout/collection/collection_grid_edit.html' : 'static/layout/collection/collection_grid.html', [
-        'collection_items' => $items
+        'collection_items' => $items,
+        'errors' => isset($_SESSION['manage_collection_result']['error']) ? $_SESSION['manage_collection_result']['error'] : ''
     ]);
+    unset($_SESSION['manage_collection_result']);
     return ob_get_clean();
 }
 

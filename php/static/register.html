@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+
+<head>
+    <meta name="description" content="">
+    <meta name="keywords" content="vinili, collezione di vinili, registrati ai vinili">
+    <title>Registrati - Vinyl Vault</title>
+    [head] <!-- qui viene inserita la parte invariante dell'head -->
+    <script src="scripts/registration_validation.js" defer></script>
+</head>
+
+<body>
+    <nav aria-label="Aiuti alla navigazione" class="list-help">
+        <ul>
+            <li>
+                <a class="navigation-help" href="#content">Vai al <span lang="en">form</span> di registrazione</a>
+            </li>
+        </ul>
+    </nav>
+
+    [header]
+
+    <nav id="breadcrumb" aria-label="Breadcrumb">
+        <div class="center-container">
+            <ol>
+                <li><a href="index.php">Home</a></li>
+                <li>Registrati</li>
+            </ol>
+        </div>
+    </nav>
+
+    <main id="content">
+        <div class="center-container">
+            <div class="registration-titles">
+                <h2>Inizia la tua collezione</h2>
+                <p>Cataloga, esplora e cura il tuo viaggio nel mondo dei vinili.</p>
+            </div>
+
+            <div id="registration">
+
+                <form action="" method="POST" id="registration-form">
+                    <fieldset>
+                        <legend>Dati registrazione</legend>
+
+                        <div class="input-wrapper">
+                            <label for="first-name">Nome</label>
+                            <input type="text" name="first-name" id="first-name-input" placeholder="Maria"
+                                autocomplete="given-name" required="required" value="[first-name-value]" />
+                            <p class="input-example">Esempio: Maria</p>
+                            [first-name-error]
+                        </div>
+
+                        <div class="input-wrapper">
+                            <label for="last-name">Cognome</label>
+                            <input type="text" name="last-name" id="last-name-input" placeholder="Rossi"
+                                autocomplete="family-name" required="required" value="[last-name-value]" />
+                            <p class="input-example">Esempio: Rossi</p>
+                            [last-name-error]
+                        </div>
+
+                        <div class="input-wrapper">
+                            <label for="email" lang="en">Email</label>
+                            <input type="email" name="email" id="email-input" placeholder="maria.rossi@gmail.com"
+                                autocomplete="email" required="required" value="[email-value]" />
+                            <p class="input-example">Esempio: maria.rossi@gmail.com</p>
+                            [email-error]
+                        </div>
+
+                        <div class="input-wrapper">
+                            <label for="username" lang="en">Username</label>
+                            <input type="text" name="username" id="username-input" placeholder="maryrossi4321"
+                                autocomplete="username" required="required" value="[username-value]" />
+                            <p class="input-example">Esempio: maryrossi4321</p>
+                            [username-error]
+                        </div>
+
+                        <div class="input-wrapper">
+                            <label for="password" lang="en">Password</label>
+                            <input type="password" name="password" id="password-input" autocomplete="new-password"
+                                required="required" />
+                            <div id="password-requirements">
+                                La password deve contenere almeno:
+                                <ul>
+                                    <li>12 caratteri</li>
+                                    <li>2 numeri</li>
+                                    <li>2 caratteri speciali</li>
+                                </ul>
+                            </div>
+                            [password-error]
+                        </div>
+
+                        <div class="input-wrapper">
+                            <label for="password-confirm">Conferma <span lang="en">password</span></label>
+                            <input type="password" name="password-confirm" id="password-confirm-input" required="required" />
+                            [password-confirm-error]
+                        </div>
+
+                        [registration-error]
+
+                        <button type="submit" id="login-btn" class="btn-primary">Registrati</button>
+                    </fieldset>
+                </form>
+
+                <p>Hai già un <span lang="en">account</span>? <a href="login.php">Accedi</a></p>
+            </div>
+        </div>
+    </main>
+
+    [footer]
+
+</body>
+
+</html>

@@ -3,9 +3,10 @@
 
 <head>
     <meta name="description" content="">
-    <meta name="keywords" content="vinili, collezione di vinili, musica su vinile, catalogo vinili, esplora vinili, community vinili">
+    <meta name="keywords" content="vinili, collezione di vinili, accedi ai vinili,">
     <title>Accedi - Vinyl Vault</title>
-    [head] <!-- qui viene inserita la parte invariante dell'header-->
+    [head] <!-- qui viene inserita la parte invariante dell'head -->
+    <script src="scripts/login_validation.js" defer></script>
 </head>
 
 <body>
@@ -20,14 +21,49 @@
     [header]
 
     <nav id="breadcrumb" aria-label="Breadcrumb">
-      <ol>
-        <li><a href="index.php">Home</a></li>
-        <li>Accedi</li>
-      </ol>
+        <div class="center-container">
+            <ol>
+                <li><a href="index.php">Home</a></li>
+                <li>Accedi</li>
+            </ol>
+        </div>
     </nav>
+    
+    <main id="content">
+        <div class="center-container">
+                <div class="login-titles">
+                <h2>Accedi</h2>
+                <p>Torna alla tua collezione personale e alla lista dei desideri.</p>
+            </div>
 
-    <main id="content" class="center-container">
-        Main content
+            <div id="login">
+                <form action="" method="POST" id="login-form">
+                    <fieldset>
+                        <legend>Credenziali utente</legend>
+
+                        <div class="input-wrapper">
+                            <label for="email" lang="en">Email</label>
+                            <input type="email" name="email" id="email-input" placeholder="maria.rossi@gmail.com"
+                                autocomplete="email" required="required" />
+                            [email-error]
+                        </div>
+
+                        <div class="input-wrapper">
+                            <label for="password" lang="en">Password</label>
+                            <input type="password" name="password" id="password-input" autocomplete="current-password"
+                                required="required" />
+                            [password-error]
+                        </div>
+
+                        [auth-error]
+
+                        <button type="submit" id="login-btn" class="btn-primary">Accedi</button>
+                    </fieldset>
+                </form>
+
+                <p>Nuovo su <span lang="en">VinylVault</span>? <a href="register.php">Registrati</a></p>
+            </div>   
+        </div>
     </main>
 
     [footer]

@@ -110,7 +110,7 @@ html {
     padding: 0;
     box-sizing: border-box;
     line-height: 1.5em;
-    transition-duration: 0.4s;
+    transition-duration: 0.3s;
 }
 
 html {
@@ -508,7 +508,7 @@ header {
     grid-template-columns: 1fr 1fr; 
     gap: 2rem;
     width: 100%;
-    max-width: 500px;
+    max-width: 20em;
 }
 
 .footer-col h3 {
@@ -805,10 +805,9 @@ footer .profile-links a:hover {
 /* Vinyl Card Base */
 .card-link-wrapper {
     text-decoration: none;
-    color: inherit;
     display: block;
     height: 100%;
-    weight: 100%;
+    width: 100%;
 }
 
 .vinyl-card {
@@ -827,8 +826,13 @@ footer .profile-links a:hover {
     z-index: 1;
 }
 
+.vinyl-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(255, 255, 255, 0.25);
+}
+
 .card-image img {
-    width: 100%; /* width 13em; */
+    width: 100%;
     height: auto;
     aspect-ratio: 1 / 1;
     object-fit: cover;
@@ -895,7 +899,7 @@ footer .profile-links a:hover {
     text-align: center;
     padding: 2.5rem 1.5rem;
     gap: 1.5rem;
-    border-radius: 25px;
+    border-radius: 1.3em;
 }
 
 .cta-content h2 {
@@ -928,7 +932,7 @@ footer .profile-links a:hover {
     background-color: var(--bg-subsection);
     color: var(--brand-primary-dark);
     padding: 0.3rem 0.8rem;
-    border-radius: 20px;
+    border-radius: 1.3em;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
@@ -945,7 +949,7 @@ footer .profile-links a:hover {
 
 #album-week img {
     width: 100%;
-    max-width: 400px;
+    max-width: 22em;
     height: auto;
     object-fit: contain;
     border-radius: 2rem;
@@ -1367,6 +1371,7 @@ img#empty-collection-image {
     font-size: var(--font-small);
     text-align: center;
     transition: all 0.3s ease;
+    font-weight: 700;
 }
 
 .collection-priority-section input::-webkit-outer-spin-button,
@@ -1388,7 +1393,6 @@ img#empty-collection-image {
     font-size: var(--font-small);
     margin: 0;
 }
-
 
 /* End Collection & Wishlist pages */
 
@@ -2219,4 +2223,388 @@ html:not(.js-enabled) .load-more-container {
 }
 
 /* End Catalog Page */
+
 /* Artist Page */
+
+
+/* Top Vinyls Page */
+
+#top-vinyls-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.vinyl-card {
+    align-items: center;
+    position: relative;
+    justify-content: center;
+}
+
+.vinyl-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 1rem;
+    object-fit: cover;
+}
+
+#top-vinyls-grid > *:first-child {
+    grid-column: 1 / 3;
+}
+
+#top-vinyls-grid > *:first-child .card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-color: var(--bg-subsection);
+    color: var(--brand-primary-dark);
+    padding: 0.1rem 0.5rem;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: var(--font-xl);
+    box-shadow: 0 0 13px 3px var(--bg-search);
+    border: 1px solid var(--bg-surface);
+}
+
+.badge abbr {
+    text-decoration: none;
+    border-bottom: none;
+}
+
+#top-vinyls-grid > *:first-child .vinyl-card {
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1.2rem;
+}
+
+#top-vinyls-grid > *:first-child .artist-name {
+    font-size: var(--font-medium);
+}
+
+#top-vinyls-grid > *:first-child .album-title {
+    font-size: var(--font-xl);
+}
+
+#top-vinyls-grid > *:first-child .edition-info {
+    font-size: var(--font-large);
+}
+
+/* End Top Vinyls Page */
+
+
+/* Login & Registration Page */
+
+.login-titles,
+.registration-titles {
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    padding: 0 1.5rem;
+}
+
+.login-titles h2,
+.registration-titles h2 {
+    font-size: var(--font-xxxl);
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.login-titles p,
+.registration-titles p {
+    font-size: var(--font-medium);
+    color: var(--text-muted);
+    text-align: center;
+    padding-bottom: 0.7em;
+    display: inline-block;
+    text-wrap: balance;
+    width: auto;
+}
+
+#login,
+#registration {
+    background-color: var(--bg-section);
+    border: 1px solid var(--border-default);
+    border-radius: 1.3em;
+    padding: 2.5rem 1.5rem 0 1.5rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3rem;
+    width: 100%;
+}
+
+#login::after,
+#registration::after {
+    content: "";
+    display: block;
+    width: calc(100% + 3rem);
+    margin-left: -1.5rem;
+    aspect-ratio: 16 / 9;
+    background-size: cover;
+    background-position: center;
+    margin-top: 2rem;
+    margin-bottom: 0;
+}
+
+#login::after {
+    background-image: url('../assets/images/login-image.jpg');
+}
+
+#registration::after {
+    background-image: url('../assets/images/registration-image.jpg');
+}
+
+#login-form fieldset,
+#registration-form fieldset,
+#add-artist-form fieldset {
+    border: none;
+    padding: 0;
+}
+
+#login-form legend,
+#registration-form legend,
+#add-artist-form legend  {
+    font-weight: 700;
+    color: var(--text-secondary);
+    font-family: var(--font-secondary);
+    font-size: var(--font-xl);
+    margin-bottom: 0.9em;
+    text-align: center;
+}
+
+#login-form .input-wrapper,
+#registration-form .input-wrapper,
+#add-artist-form .input-wrapper {
+    text-align: left;
+    margin-bottom: 2.4rem;
+}
+
+#login-form label,
+#registration-form label,
+#add-artist-form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-family: var(--font-secondary);
+    font-size: var(--font-medium);
+}
+
+#login-form input,
+#registration-form input,
+#add-artist-form input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--border-default);
+    border-radius: 0.5em;
+    font-size: 1rem;
+    background-color: var(--bg-surface);
+}
+
+#login-btn,
+#registration-btn,
+#add-artist-btn {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+#login-form,
+#registration-form,
+#add-artist-form {
+    margin-bottom: 1.5em;
+}
+
+#login > p:last-of-type,
+#registration > p:last-of-type {
+    font-size: var(--font-medium);
+    text-align: center;
+    margin-bottom: 1.5em;
+}
+
+#password-requirements,
+#add-artist-form ul {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    color: var(--text-muted);
+}
+
+#password-requirements ul {
+    padding-left: 1em;
+    padding-top: 0.5em;
+}
+
+#password-requirements ul li,
+#add-artist-form ul li {
+    color: var(--text-muted);
+}
+
+.error-message {
+    color: var(--bg-error);
+}
+
+.input-example {
+    color: var(--text-muted);
+    margin-top: 0.3rem;
+    margin-left: 1em; 
+    
+}
+
+/* End Login & Registration page */
+
+
+/* Add Artist Page */
+
+.add-artist-title {
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    padding: 0 1.5rem;
+    font-size: var(--font-xxxl);
+    margin-bottom: 0.5rem;
+    text-align: center;
+    padding-bottom: 0.7em;
+}
+
+#add-artist {
+    background-color: var(--bg-section);
+    border: 1px solid var(--border-default);
+    border-radius: 1.3em;
+    padding: 2.5rem 1.5rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3rem;
+    width: 100%;
+}
+
+#nationality {
+    width: 100%;
+    height: 2.7em;
+    border: 0.15em solid var(--border-default);
+    border-radius: 0.5em;
+    background-color: var(--bg-surface);
+    color: var(--brand-primary);
+    font-size: var(--font-small);
+    text-align: center;
+}
+
+
+#nationality input:focus {
+    outline: none;
+    border-color: var(--brand-primary);
+    box-shadow: 0 0 0 3px rgba(0, 90, 156, 0.2);
+}
+
+#add-artist-form ul {
+    padding-left: 3em;
+    padding-top: 0.5em;
+}
+
+/*
+#form {
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+}
+
+#add-artist-form {
+    background-color: var(--bg-section);
+    border: 1px solid var(--border-default);
+    border-radius: 1.3em;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+
+#add-artist-form .input-wrapper {
+    margin-bottom: 1.8rem;
+    display: flex;
+    flex-direction: column;
+}
+
+
+#add-artist-form label {
+    font-weight: 700;
+    color: var(--brand-primary-dark);
+    font-family: var(--font-secondary);
+    font-size: var(--font-large);
+    margin-bottom: 0.4rem;
+}
+
+
+.input-hints {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 0.8rem;
+}
+
+.input-hints li {
+    font-size: var(--font-small);
+    color: var(--text-muted);
+    position: relative;
+    padding-left: 1.2rem;
+    line-height: 1.3;
+}
+
+.input-hints li::before {
+    content: "•";
+    position: absolute;
+    left: 0.3rem;
+    color: var(--brand-primary);
+    font-weight: bold;
+}
+
+
+#add-artist-form input[type="text"],
+#add-artist-form select,
+#add-artist-form input[type="file"] {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--border-default);
+    border-radius: 0.5em;
+    font-size: 1rem;
+    font-family: var(--font-primary);
+    background-color: var(--bg-surface);
+    color: var(--text-primary);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+#add-artist-form input:focus,
+#add-artist-form select:focus {
+    outline: none;
+    border-color: var(--brand-primary);
+    box-shadow: 0 0 0 3px rgba(0, 90, 156, 0.1);
+}
+
+
+#add-artist-form input[type="file"] {
+    padding: 0.6rem;
+    font-size: var(--font-small);
+    cursor: pointer;
+}
+
+
+#add-artist-form .error-message {
+    color: var(--bg-error);
+    font-size: var(--font-small);
+    margin-top: 0.5rem;
+    font-weight: 600;
+    display: block; /* Assicura che vada a capo */
+}
+
+
+/* End Add Artist Page */
