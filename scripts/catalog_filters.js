@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const checkboxes = desktopForm.querySelectorAll('input[type="checkbox"]');
         checkboxes.forEach(checkbox => {
             checkbox.addEventListener('change', () => {
-                // saveScrollAndSubmit(desktopForm);
+                saveScrollAndSubmit(desktopForm);
             });
         });
         
