@@ -35,22 +35,32 @@
                 <h1>Trova musica su VinylVault</h1>
                 <p>Esplora e filtra l'infinito catalogo e trova il vinile adatto a te.</p>
                 
-                <!-- Search Bar (placeholder) -->
+                <!-- Search Bar -->
                 <div class="search-bar-container">
-                    <form role="search" aria-label="Cerca nel catalogo">
+                    <form method="GET" action="catalogo.php" role="search" aria-label="Cerca nel catalogo" id="search-form">
                         <label for="catalog-search" class="sr-only">Cerca un disco, un artista o una versione</label>
-                        <input 
-                            type="search" 
-                            id="catalog-search" 
-                            name="q" 
+                        <input
+                            type="search"
+                            id="catalog-search"
+                            name="q"
+                            value="[search_value]"
                             placeholder="Cerca un disco, un artista o una versione"
                             aria-label="Campo di ricerca"
                             title="Cerca vinili per titolo, artista o versione"
+                            autocomplete="off"
                         >
-                        <button type="submit" aria-label="Cerca">
-                            <!-- TBD ricerca e cambio bottone-->
-                            <span aria-hidden="true">🔍</span>
+                        <button
+                            type="button"
+                            id="clear-search-btn"
+                            class="btn-clear-search"
+                            aria-label="Cancella ricerca"
+                            title="Cancella ricerca"
+                            [clear_search_hidden]
+                        >
+                            <span aria-hidden="true">×</span>
                         </button>
+                        <!-- Preserve current filters when searching -->
+                        [search_hidden_params]
                     </form>
                 </div>
             </div>
@@ -103,7 +113,6 @@
                                 [genres_options]
                             </div>
                         </fieldset>
-                        <button type="submit" class="btn-primary" id="apply-filters-btn">Applica</button>
                     </form>
                 </aside>
 
@@ -172,7 +181,10 @@
                     <!-- Sort Control -->
                     <div class="catalog-controls">
                         <div class="results-info">
-                            <p class="results-count" aria-live="polite" aria-atomic="true">[total_results] risultati</p>
+                            <p class="results-count" aria-live="polite" aria-atomic="true">
+                                <span class="sr-only">Numero di risultati:</span>
+                                [total_results] risultati
+                            </p>
                             <div class="active-filters-inline" role="region" aria-label="Filtri attivi">
                                 [active_filters]
                             </div>

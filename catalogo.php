@@ -8,15 +8,25 @@ $genre_filter = isset($_GET['genre']) ? (is_array($_GET['genre']) ? $_GET['genre
 $year_min = isset($_GET['year_min']) ? intval($_GET['year_min']) : null;
 $year_max = isset($_GET['year_max']) ? intval($_GET['year_max']) : null;
 $sort_by = isset($_GET['sort']) ? $_GET['sort'] : 'collected';
+$search_query = isset($_GET['q']) ? trim($_GET['q']) : null;
 
-// load ALL results
-$catalog_data = get_catalog_vinyls($genre_filter, $year_min, $year_max, $sort_by, 1000);
+// load ALL results (with search if provided)
+$catalog_data = get_catalog_vinyls($genre_filter, $year_min, $year_max, $sort_by, 1000, $search_query);
 $total_count = count($catalog_data);
 
 $genres_list = get_all_genres();
 $year_range = get_year_range();
 
 $active_filters = [];
+
+// Add search filter first if present
+if ($search_query) {
+    $active_filters[] = [
+        'label' => 'Ricerca: "' . $search_query . '"',
+        'type' => 'search',
+        'value' => $search_query
+    ];
+}
 
 // Always show year filter with current values
 $display_year_min = $year_min ?: $year_range['min'];
@@ -32,7 +42,7 @@ $active_filters[] = [
 if ($genre_filter && is_array($genre_filter)) {
     foreach ($genre_filter as $genre) {
         $active_filters[] = [
-            'label' => $genre, // Don't escape here, will be escaped in render
+            'label' => $genre,
             'type' => 'genre',
             'value' => $genre
         ];
@@ -67,7 +77,7 @@ echo Template::render(
         'head' => Template::render('static/layout/head.html',[]),
         'header' => _header(),
         'footer' => footer(),
-        'catalog_vinyls' => render_catalog_cards($catalog_data),
+        'catalog_vinyls' => render_catalog_cards($catalog_data, $search_query),
         'genres_options' => render_genres_checkboxes($genres_list),
         'year_min' => $year_range['min'],
         'year_max' => $year_range['max'],
@@ -81,6 +91,10 @@ echo Template::render(
         'sort_selected_recent' => $sort_by === 'recent' ? 'selected' : '',
         'sort_selected_az' => $sort_by === 'az' ? 'selected' : '',
         'total_results' => $total_count,
-        'has_more_display' => $total_count > 6 ? '' : 'style="display:none"'
+        'has_more_display' => $total_count > 6 ? '' : 'style="display:none"',
+        'search_value' => htmlspecialchars($search_query ?? ''),
+        'search_results_message' => $search_query ? 'Risultati per "' . htmlspecialchars($search_query) . '"' : '',
+        'search_hidden_params' => render_search_hidden_params(),
+        'clear_search_hidden' => $search_query ? '' : 'hidden'
     ]
 );

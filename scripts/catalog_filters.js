@@ -19,13 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     const desktopForm = document.getElementById('filters-form');
-    const applyButton = document.getElementById('apply-filters-btn');
-    if (applyButton) {
-        applyButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            saveScrollAndSubmit(desktopForm);
-        });
-    }
     const mobileForms = document.querySelectorAll('.mobile-filter-form');
     
     // Create screen reader announcement area if not exists
@@ -299,6 +292,68 @@ document.addEventListener('DOMContentLoaded', () => {
             const url = new URL(window.location.href);
             url.searchParams.set('sort', e.target.value);
             window.location.href = url.toString();
+        });
+    }
+
+    // Debounced search functionality
+    const searchForm = document.getElementById('search-form');
+    const searchInput = document.getElementById('catalog-search');
+    const clearSearchBtn = document.getElementById('clear-search-btn');
+    let searchTimer;
+
+    if (searchInput && searchForm) {
+        // Update clear button visibility
+        function updateClearButtonVisibility() {
+            if (clearSearchBtn) {
+                if (searchInput.value.trim() !== '') {
+                    clearSearchBtn.removeAttribute('hidden');
+                } else {
+                    clearSearchBtn.setAttribute('hidden', '');
+                }
+            }
+        }
+
+        // Initialize visibility
+        updateClearButtonVisibility();
+
+        // Debounced search on input
+        searchInput.addEventListener('input', () => {
+            updateClearButtonVisibility();
+
+            clearTimeout(searchTimer);
+            searchTimer = setTimeout(() => {
+                const query = searchInput.value.trim();
+                // Only auto-search if there's text or if clearing a previous search
+                const currentQuery = new URLSearchParams(window.location.search).get('q');
+                if (query !== '' || currentQuery) {
+                    announceFilterChange('Ricerca in corso...');
+                    sessionStorage.setItem('catalogScrollPosition', window.scrollY.toString());
+                    searchForm.submit();
+                }
+            }, 1000); // 1 second debounce
+        });
+
+        // Clear search button
+        if (clearSearchBtn) {
+            clearSearchBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                searchInput.value = '';
+                updateClearButtonVisibility();
+
+                // Remove q parameter and reload
+                const url = new URL(window.location.href);
+                url.searchParams.delete('q');
+                sessionStorage.setItem('catalogScrollPosition', window.scrollY.toString());
+                window.location.href = url.toString();
+            });
+        }
+
+        // Still allow Enter to search immediately
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                clearTimeout(searchTimer);
+                // Let the form submit naturally
+            }
         });
     }
 });

@@ -1,28 +1,35 @@
 <?php
 include_once 'php/classes/DbConnection.php';
 
-function get_catalog_vinyls($genres = null, $year_min = null, $year_max = null, $sort_by = 'collected', $limit = 6) {
+function get_catalog_vinyls($genres = null, $year_min = null, $year_max = null, $sort_by = 'collected', $limit = 6, $search = null) {
     $connection = DbConnection::get_instance();
-    
+
     $query = "SELECT ed.disk_id, ed.edition_name, d.title, ed.image_path,
-                (SELECT a.id FROM disk_author_release dar 
-                 JOIN author a ON dar.author_id = a.id 
-                 WHERE dar.disk_id = ed.disk_id 
+                (SELECT a.id FROM disk_author_release dar
+                 JOIN author a ON dar.author_id = a.id
+                 WHERE dar.disk_id = ed.disk_id
                  LIMIT 1) as author_id,
-                (SELECT a.author_name FROM disk_author_release dar 
-                 JOIN author a ON dar.author_id = a.id 
-                 WHERE dar.disk_id = ed.disk_id 
+                (SELECT a.author_name FROM disk_author_release dar
+                 JOIN author a ON dar.author_id = a.id
+                 WHERE dar.disk_id = ed.disk_id
                  LIMIT 1) as author_name,
                 YEAR(ed.release_date) as year,
-                (SELECT COUNT(*) FROM ownership o 
+                (SELECT COUNT(*) FROM ownership o
                  WHERE o.disk_id = ed.disk_id AND o.edition_name = ed.edition_name) as collection_count
               FROM edition ed
               JOIN disk d ON ed.disk_id = d.id";
-    
+
     $conditions = [];
     $params = [];
     $types = '';
-    
+
+    // Join per la ricerca testuale (necessario per cercare nell'autore)
+    $need_author_join = ($search !== null && trim($search) !== '');
+    if ($need_author_join) {
+        $query .= " LEFT JOIN disk_author_release dar_search ON d.id = dar_search.disk_id";
+        $query .= " LEFT JOIN author a_search ON dar_search.author_id = a_search.id";
+    }
+
     if ($genres && is_array($genres) && count($genres) > 0) {
         $query .= " JOIN disk_genre_classification dgc ON d.id = dgc.disk_id";
         $placeholders = implode(',', array_fill(0, count($genres), '?'));
@@ -32,21 +39,36 @@ function get_catalog_vinyls($genres = null, $year_min = null, $year_max = null, 
             $types .= 's';
         }
     }
-    
+
+    // Ricerca testuale su titolo, artista e edizione
+    if ($search !== null && trim($search) !== '') {
+        $search_term = '%' . trim($search) . '%';
+        $conditions[] = "(d.title LIKE ? OR a_search.author_name LIKE ? OR ed.edition_name LIKE ?)";
+        $params[] = $search_term;
+        $params[] = $search_term;
+        $params[] = $search_term;
+        $types .= 'sss';
+    }
+
     if ($year_min) {
         $conditions[] = "YEAR(ed.release_date) >= ?";
         $params[] = $year_min;
         $types .= 'i';
     }
-    
+
     if ($year_max) {
         $conditions[] = "YEAR(ed.release_date) <= ?";
         $params[] = $year_max;
         $types .= 'i';
     }
-    
+
     if (count($conditions) > 0) {
         $query .= " WHERE " . implode(' AND ', $conditions);
+    }
+
+    // Group by per evitare duplicati quando si fa JOIN con autori
+    if ($need_author_join) {
+        $query .= " GROUP BY ed.disk_id, ed.edition_name";
     }
     
     switch ($sort_by) {
@@ -166,9 +188,12 @@ function get_year_range() {
     ];
 }
 
-function render_catalog_cards($vinyls) {
+function render_catalog_cards($vinyls, $search_query = null) {
     if (empty($vinyls)) {
-        return '<p class="empty-state">Nessun vinile trovato con questi filtri.</p>';
+        $message = $search_query
+            ? 'Nessun vinile trovato per "' . htmlspecialchars($search_query) . '". Prova con altri termini di ricerca.'
+            : 'Nessun vinile trovato con questi filtri.';
+        return '<p class="empty-state" role="status">' . $message . '</p>';
     }
     
     $initial_visible = 6;
@@ -208,7 +233,7 @@ function render_active_filters($filters) {
     if (empty($filters)) {
         return '';
     }
-    
+
     ob_start();
     foreach ($filters as $filter) {
         if ($filter['type'] === 'year') {
@@ -216,6 +241,13 @@ function render_active_filters($filters) {
             echo '<span class="filter-tag filter-tag-static" aria-label="Filtro anno attivo">';
             echo htmlspecialchars($filter['label']);
             echo '</span>';
+        } elseif ($filter['type'] === 'search') {
+            // Search filter - removable
+            $remove_url = build_remove_filter_url('search', $filter['value']);
+            echo '<button type="button" class="filter-tag filter-tag-search remove-filter-btn" data-href="' . $remove_url . '" aria-label="Rimuovi ricerca ' . htmlspecialchars($filter['value']) . '">';
+            echo htmlspecialchars($filter['label']);
+            echo ' <span aria-hidden="true">×</span>';
+            echo '</button>';
         } else {
             // Genre filters are removable
             $remove_url = build_remove_filter_url($filter['type'], $filter['value']);
@@ -228,9 +260,27 @@ function render_active_filters($filters) {
     return ob_get_clean();
 }
 
+function render_search_hidden_params() {
+    $params = $_GET;
+    // Remove q since it's in the visible input
+    unset($params['q']);
+
+    ob_start();
+    foreach ($params as $key => $value) {
+        if (is_array($value)) {
+            foreach ($value as $v) {
+                echo '<input type="hidden" name="' . htmlspecialchars($key) . '[]" value="' . htmlspecialchars($v) . '">';
+            }
+        } else {
+            echo '<input type="hidden" name="' . htmlspecialchars($key) . '" value="' . htmlspecialchars($value) . '">';
+        }
+    }
+    return ob_get_clean();
+}
+
 function build_remove_filter_url($type, $value = null) {
     $params = $_GET;
-    
+
     if ($type === 'genre' && $value) {
         // Remove specific genre from array
         if (isset($params['genre'])) {
@@ -248,7 +298,9 @@ function build_remove_filter_url($type, $value = null) {
     } elseif ($type === 'year') {
         unset($params['year_min']);
         unset($params['year_max']);
+    } elseif ($type === 'search') {
+        unset($params['q']);
     }
-    
+
     return 'catalogo.php' . (count($params) > 0 ? '?' . http_build_query($params) : '');
 }
