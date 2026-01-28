@@ -224,7 +224,9 @@ function render_genres_checkboxes($genres, $prefix = '') {
     foreach ($genres as $genre) {
         $checked = in_array($genre, $current_genres) ? 'checked' : '';
         $genre_escaped = htmlspecialchars($genre);
-        $id = $prefix . 'genre-' . strtolower($genre_escaped);
+        // Crea un ID valido: solo lettere, numeri, trattini
+        $id_safe = preg_replace('/[^a-z0-9-]/', '-', strtolower($genre));
+        $id = $prefix . 'genre-' . $id_safe;
         echo '<div class="filter-option">';
         echo '<input type="checkbox" id="' . $id . '" name="genre[]" value="' . $genre_escaped . '" ' . $checked . '>';
         echo '<label for="' . $id . '">' . $genre_escaped . '</label>';

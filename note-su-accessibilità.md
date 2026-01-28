@@ -260,6 +260,37 @@ I filtri attivi (genere, ricerca) sono `<button>` con `aria-label` descrittivo:
 </button>
 ```
 
+## Gestione Focus nei Filtri Catalogo
+
+Il sistema preserva il focus dopo refresh dei filtri per consentire navigazione fluida da tastiera.
+
+**Meccanismo**: `sessionStorage` salva l'ID dell'elemento attivo prima del submit, ripristinato al reload con `requestAnimationFrame`.
+
+```javascript
+// Prima del submit
+sessionStorage.setItem('focusElementId', checkbox.id);
+
+// Al caricamento
+const focusElementId = sessionStorage.getItem('focusElementId');
+if (focusElementId) {
+    document.getElementById(focusElementId)?.focus();
+}
+```
+
+**Transizione visiva**: Fade-out CSS (opacity 0.6) prima del submit per feedback visivo non intrusivo, accessibile perché puramente decorativo.
+
+## Hint Validazione Anno
+
+Quando l'utente inserisce anni fuori range (1900-2026), appare un messaggio amichevole dopo il reload.
+
+```html
+<div id="year-hint" class="year-hint" role="status" aria-live="polite">
+    Oops! Gli anni validi vanno dal 1900 al 2026
+</div>
+```
+
+**Accessibilità**: `role="status"` e `aria-live="polite"` annunciano il messaggio agli screen reader senza interrompere la navigazione. L'hint scompare dopo 5 secondi con animazione CSS (`max-height`, `opacity`).
+
 ## Note di Sviluppo Futuro
 
 ### Da implementare quando necessario:
