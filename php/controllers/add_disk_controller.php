@@ -36,7 +36,7 @@ function add_disk($title, $artist, $type, $genres): array
     $array_unique_genres = array_unique($genres);
 
     if(count($array_unique_genres) !== count($genres)) {
-        return ['success' => false, 'error' => 'Hai inserito almeno due generi identici per questo disco. Rimuovi i duplicati e riprova.', 'fields_to_reset' => ['genre'] ];
+        return ['success' => false, 'error' => 'Hai inserito almeno due generi identici per questo disco. Rimuovi i duplicati e riprova.' ];
     }
 
     if (strlen($title) > 200) {

@@ -1520,6 +1520,25 @@ img#empty-collection-image {
     vertical-align: middle;
 }
 
+/* Album info section */
+.album-info-section {
+    border: 1px solid var(--border-dark);
+    border-radius: 1.3em;
+    margin: 2rem 0 2rem 0;
+    background-color: var(--bg-section);
+    padding-top: 3rem;
+    padding-bottom: 4em;
+    text-align: center;
+}
+
+.album-info-section dt{
+    font-family: var(--font-secondary);
+    color: var(--brand-primary-dark);
+    font-size: var(--font-large);
+    font-weight: 600;
+    font-style: italic;
+}
+
 /* Tracklist */
 
 .tracklist-section {
