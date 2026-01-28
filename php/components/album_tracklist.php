@@ -1,14 +1,14 @@
 <?php
 include_once 'php/classes/DbConnection.php';
 
-function album_tracklist($disk_id) {
+function album_tracklist($disk_id, $edition_name) {
     $connection = DbConnection::get_instance();
     
     $stmt = mysqli_prepare($connection->get_connection(),
         "SELECT t.id, t.title, t.duration_seconds, etp.track_number
          FROM track t
          JOIN edition_track_part_of etp ON t.id = etp.track_id
-         WHERE etp.disk_id = ?
+         WHERE etp.disk_id = ? AND etp.edition_name = ?
          ORDER BY etp.track_number ASC"
     );
     
@@ -17,7 +17,7 @@ function album_tracklist($disk_id) {
         return '<p class="empty-state">Errore nel caricamento della tracklist.</p>';
     }
     
-    mysqli_stmt_bind_param($stmt, 'i', $disk_id);
+    mysqli_stmt_bind_param($stmt, 'is', $disk_id, $edition_name);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
     

@@ -38,7 +38,7 @@ function album_versions($disk_id) {
             : 'assets/images/pollo.webp';
         
         $release_year = date('Y', strtotime($row['release_date']));
-        $edition_info = htmlspecialchars($row['edition_name']) . ' - ' . $release_year . ' - ' . htmlspecialchars($row['country']);
+        $edition_info = htmlspecialchars($row['edition_name']);
         
         echo Template::render('static/layout/vinyl_card.html', [
             'disk_id' => $row['id'],

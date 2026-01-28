@@ -372,6 +372,13 @@ p#empty-collection-paragraph {
 .artist-genres span {
     font-size: var(--font-medium);
 }
+
+/* Album info section*/
+
+.album-info-section {
+    text-align: left;
+    padding: 3rem 1.5rem;
+}
     
 
 .album-rating {
