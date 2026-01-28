@@ -38,7 +38,7 @@ function trending_vinyls()
                 'title' => htmlspecialchars($vinyl['title']),
                 'artist_id' => $vinyl['author_id'],
                 'artist' => htmlspecialchars($vinyl['author_name']),
-                'cover_image' => htmlspecialchars($vinyl['image_path']) ?: 'assets/images/pollo.webp',
+                'cover_image' => htmlspecialchars($vinyl['image_path']) ?:  ?: 'assets/images/vinyl_placeholder.jpg',
                 'wishlist_count' => $vinyl['wl_count']
             ]);
         }

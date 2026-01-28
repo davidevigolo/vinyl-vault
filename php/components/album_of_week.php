@@ -27,7 +27,7 @@ function album_of_week() {
     
     if (!$album) {
         return [
-            'album_week_image' => 'assets/images/pollo.webp',
+            'album_week_image' => 'assets/images/vinyl_placeholder.jpg',
             'album_week_title' => 'Nessun album disponibile',
             'album_week_artist' => 'Artista sconosciuto',
             'album_week_description' => 'Al momento non ci sono abbastanza dati per determinare l\'album della settimana.',
@@ -36,7 +36,7 @@ function album_of_week() {
         ];
     }
     
-    $cover_image = 'assets/images/pollo.webp';
+    $cover_image = htmlspecialchars($album['image_path']) ?: 'assets/images/vinyl_placeholder.jpg';
     
     $description = sprintf(
         "Il vinile di questa settimana è <strong>%s</strong> di <strong>%s</strong>",

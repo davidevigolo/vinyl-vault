@@ -33,9 +33,6 @@ function album_versions($disk_id) {
     
     ob_start();
     while ($row = mysqli_fetch_assoc($result)) {
-        $image = !empty($row['image_path']) && file_exists($_SERVER['DOCUMENT_ROOT'] . $row['image_path'])
-            ? $row['image_path']
-            : 'assets/images/pollo.webp';
         
         $release_year = date('Y', strtotime($row['release_date']));
         $edition_info = htmlspecialchars($row['edition_name']);
@@ -45,7 +42,7 @@ function album_versions($disk_id) {
             'ed_name' => $edition_info,
             'title' => htmlspecialchars($row['title']),
             'artist' => htmlspecialchars($row['author_name']),
-            'cover_image' => htmlspecialchars($image)
+            'cover_image' => htmlspecialchars($row['image_path']) ?: 'assets/images/vinyl_placeholder.jpg'
         ]);
     }
     $cards_html = ob_get_clean();

@@ -35,14 +35,13 @@ function most_collected_vinyls()
     
     if ($mostCollected && mysqli_num_rows($mostCollected) > 0) {
         while ($vinyl = mysqli_fetch_assoc($mostCollected)) {
-            // TBD: Usare image_path quando le immagini saranno caricate
             echo Template::render('static/layout/vinyl_card.html', [
                 'disk_id' => $vinyl['disk_id'],
                 'ed_name' => htmlspecialchars($vinyl['edition_name']),
                 'title' => htmlspecialchars($vinyl['title']),
                 'artist_id' => $vinyl['author_id'],
                 'artist' => htmlspecialchars($vinyl['author_name']),
-                'cover_image' => htmlspecialchars($vinyl['image_path']) ?: 'assets/images/pollo.webp'
+                'cover_image' => htmlspecialchars($vinyl['image_path']) ?: 'assets/images/vinyl_placeholder.jpg'
             ]);
         }
     } else {

@@ -73,8 +73,6 @@ function recommended_vinyls()
     
     if ($recommendations && mysqli_num_rows($recommendations) > 0) {
         while ($vinyl = mysqli_fetch_assoc($recommendations)) {
-            // TBD: Implementare gestione immagini reali
-            $cover_image = 'assets/images/pollo.webp';
             
             echo Template::render('static/layout/vinyl_card.html', [
                 'disk_id' => $vinyl['disk_id'],
@@ -82,7 +80,7 @@ function recommended_vinyls()
                 'title' => htmlspecialchars($vinyl['title']),
                 'artist' => htmlspecialchars($vinyl['author_name']),
                 'artist_id' => $vinyl['author_id'],
-                'cover_image' => $cover_image
+                'cover_image' => htmlspecialchars($vinyl['image_path']) ?: 'assets/images/pollo.webp'
             ]);
         }
     } else {

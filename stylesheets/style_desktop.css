@@ -153,7 +153,8 @@ header .site-nav-links li {
 
 
 /* Breadcrumb */
-#breadcrumb {
+#breadcrumb > .center-container {
+    text-align: center;
     font-size: var(--font-medium);
 }
 /* da sistemare --------------------------------------------------------------------- */

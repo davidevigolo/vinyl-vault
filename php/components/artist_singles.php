@@ -28,16 +28,13 @@ function artist_singles($artist_id)
     ob_start();
     if (mysqli_num_rows($result) > 0) {
         while ($single = mysqli_fetch_assoc($result)) {
-            $image = !empty($single['image_path']) && file_exists($_SERVER['DOCUMENT_ROOT'] . $single['image_path']) 
-                ? $single['image_path'] 
-                : 'assets/images/pollo.webp';
             
             echo Template::render('static/layout/vinyl_card.html', [
                 'disk_id' => $single['disk_id'],
                 'ed_name' => htmlspecialchars($single['edition_name']),
                 'title' => htmlspecialchars($single['title']),
                 'artist' => htmlspecialchars($single['author_name']),
-                'cover_image' => htmlspecialchars($image)
+                'cover_image' => htmlspecialchars($single['image_path']) ?: 'assets/images/vinyl_placeholder.jpg'
             ]);
         }
     } else {

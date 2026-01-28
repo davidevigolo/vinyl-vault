@@ -42,7 +42,7 @@ function top_artists()
             // TBD: Usare image_path quando le immagini saranno caricate
             echo Template::render('static/layout/top_artists/top_artists_card.html', [
                 'artist' => htmlspecialchars($vinyl['author_name']),
-                'cover_image' => htmlspecialchars($vinyl['image_path']) ?: 'assets/images/pollo.webp',
+                'cover_image' => htmlspecialchars($vinyl['image_path']) ?:  ?: 'assets/images/artist_placeholder.jpg',
                 'span_class' => $span,
                 'direction' => $i > 3 ? 'direction-vertical' : 'direction-horizontal',
                 'index' => $i,

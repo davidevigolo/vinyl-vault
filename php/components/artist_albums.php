@@ -28,16 +28,13 @@ function artist_albums($artist_id)
     ob_start();
     if (mysqli_num_rows($result) > 0) {
         while ($album = mysqli_fetch_assoc($result)) {
-            $image = !empty($album['image_path']) && file_exists($_SERVER['DOCUMENT_ROOT'] . $album['image_path']) 
-                ? $album['image_path'] 
-                : 'assets/images/pollo.webp';
             
             echo Template::render('static/layout/vinyl_card.html', [
                 'disk_id' => $album['disk_id'],
                 'ed_name' => htmlspecialchars($album['edition_name']),
                 'title' => htmlspecialchars($album['title']),
                 'artist' => htmlspecialchars($album['author_name']),
-                'cover_image' => htmlspecialchars($image)
+                'cover_image' => htmlspecialchars($album['image_path']) ?: 'assets/images/vinyl_placeholder.jpg'
             ]);
         }
     } else {

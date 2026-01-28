@@ -29,7 +29,6 @@ function collection($edit_mode = false) {
     }
     if ($collection) {
         while ($vinyl = mysqli_fetch_assoc($collection)) {
-            // TBD: Usare image_path quando le immagini saranno caricate
             $items .= Template::render($edit_mode ? 'static/layout/collection/collection_item_edit.html' : 'static/layout/collection/collection_item.html', [
                 'title' => htmlspecialchars($vinyl['title']),
                 'author' => htmlspecialchars($vinyl['author']),
@@ -38,7 +37,7 @@ function collection($edit_mode = false) {
                 'country' => htmlspecialchars($vinyl['country']),
                 'year' => htmlspecialchars(str_replace('-', '/', $vinyl['release_date'])),
                 'year_datetime' => htmlspecialchars($vinyl['release_date']),
-                'image_url' => htmlspecialchars($vinyl['image_path']) ?: 'assets/images/pollo.webp',
+                'image_url' => htmlspecialchars($vinyl['image_path']) ?: 'assets/images/vinyl_placeholder.jpg',
                 'disk_id' => htmlspecialchars($vinyl['disk_id']),
                 'rating_value' => isset($_SESSION['manage_collection_result']['rating']) ? intval($_SESSION['manage_collection_result']['rating'][$vinyl['disk_id'] . '_' . $vinyl['edition_name']] ?? 0) : intval($vinyl['rating'] ?? 0),
                 'checked' => (isset($_SESSION['manage_collection_result']['items_to_delete'][$vinyl['disk_id'] . '_' . $vinyl['edition_name']]) && $_SESSION['manage_collection_result']['items_to_delete'][$vinyl['disk_id'] . '_' . $vinyl['edition_name']]) ? 'checked' : ''

@@ -628,7 +628,8 @@ footer .profile-links a:hover {
 #breadcrumb ol {
     list-style: none;
     display: flex;
-    align-items: center;
+    justify-content: center;
+    text-align: center;
     gap: 0.5rem;
     padding: 0;
     margin: 0;

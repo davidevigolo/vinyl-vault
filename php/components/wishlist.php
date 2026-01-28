@@ -30,7 +30,7 @@ function wishlist($edit_mode = false)
     }
     if ($wishlist) {
         while ($vinyl = mysqli_fetch_assoc($wishlist)) {
-            // TBD: Usare image_path quando le immagini saranno caricate
+
             $items .= Template::render($edit_mode ? 'static/layout/wishlist/wishlist_item_edit.html' : 'static/layout/wishlist/wishlist_item.html', [
                 'title' => htmlspecialchars($vinyl['title']),
                 'author' => htmlspecialchars($vinyl['author']),
@@ -41,7 +41,7 @@ function wishlist($edit_mode = false)
                 'year_datetime' => htmlspecialchars($vinyl['release_date']),
                 'priority_level' => isset($_SESSION['manage_wishlist_result']['priority_levels'][$vinyl['disk_id'] . '_' . $vinyl['edition_name']]) ? htmlspecialchars($_SESSION['manage_wishlist_result']['priority_levels'][$vinyl['disk_id'] . '_' . $vinyl['edition_name']]) : htmlspecialchars($vinyl['priority_level']),
                 'checked' => (isset($_SESSION['manage_wishlist_result']['items_to_delete'][$vinyl['disk_id'] . '_' . $vinyl['edition_name']]) && $_SESSION['manage_wishlist_result']['items_to_delete'][$vinyl['disk_id'] . '_' . $vinyl['edition_name']]) ? 'checked' : '',
-                'image_url' => htmlspecialchars($vinyl['image_path']) ?: 'assets/images/pollo.webp',
+                'image_url' => htmlspecialchars($vinyl['image_path']) ?: 'assets/images/vinyl_placeholder.jpg',
                 'disk_id' => htmlspecialchars($vinyl['disk_id'])
             ]);
         }
