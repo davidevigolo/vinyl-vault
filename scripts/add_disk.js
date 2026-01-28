@@ -65,6 +65,36 @@ window.addEventListener('load', function () {
         // Validate selected
         validateSelect(this, errorMessage);
     });
+
+    this.document.getElementById('label').addEventListener('input', function () {
+        // Find the error message element
+        let errorMessage = document.getElementById('label-error');
+        let pattern = /^[a-zA-Z0-9àèéìòùÀÈÉÌÒÙ\s]*$/;
+
+        // Validate range
+        let value = this.value.trim();
+        if (value.length < 1) {
+            if (errorMessage) {
+                errorMessage.textContent = 'Obbligatorio';
+            }
+        }
+        if (value.length > 200) {
+            if (errorMessage) {
+                errorMessage.textContent = 'L\'etichetta discografica non deve superare i 200 caratteri';
+            }
+        }
+        if (value.length >= 1 && value.length <= 200) {
+            // Hide error message
+            if (errorMessage) {
+                errorMessage.textContent = '';
+            }
+        }
+        if(!value.match(pattern)) {
+            if (errorMessage) {
+                errorMessage.textContent = 'Caratteri non validi nell\'etichetta discografica';
+            }
+        }
+    });
 });
 
 function validateSelect(element, errorMessage) {

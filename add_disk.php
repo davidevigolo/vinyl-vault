@@ -26,6 +26,7 @@ if (isset($_SESSION['add_disk_result']['success']) && $_SESSION['add_disk_result
 $title = $_SESSION['add_disk_result']['title'] ?? '';
 $artist = $_SESSION['add_disk_result']['artist'] ?? '';
 $type = $_SESSION['add_disk_result']['type'] ?? '';
+$label = $_SESSION['add_disk_result']['label'] ?? '';
 $genres = $_SESSION['add_disk_result']['genres'] ?? [];
 $errors = isset($_SESSION['add_disk_result']['error']) ? [$_SESSION['add_disk_result']['error']] : [];
 unset($_SESSION['add_disk_result']);
@@ -35,7 +36,7 @@ echo Template::render(
     [
         'head' => Template::render('static/layout/head.html', []),
         'header' => _header(),
-        'add_disk_form' => add_disk_form($title, $artist, $type, $genres, $errors),
+        'add_disk_form' => add_disk_form($title, $artist, $type, $label, $genres, $errors),
         'footer' => footer(),
         'validation_scripts' => get_validation_scripts(['add_disk.js'])
     ]

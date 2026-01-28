@@ -37,7 +37,7 @@ function get_genre_options()
     return $genres;
 }
 
-function add_disk_form($title, $_artist, $type, $_genres, $errors): string
+function add_disk_form($title, $_artist, $type, $label, $_genres, $errors): string
 {
     $artists = get_artists();
 
@@ -113,6 +113,7 @@ function add_disk_form($title, $_artist, $type, $_genres, $errors): string
     return Template::render('static/layout/add_disk/add_disk_form.html', [
         'artist_options' => $artist_options,
         'type_options' => implode('', $type_options),
+        'label' => htmlspecialchars($label),
         'genre_options' => implode('', $genre_options),
         'additional_genres' => implode('', $additional_genres),
         'errors' => isset($errors) && !empty($errors) ? '<ul>' . implode('', array_map(fn($error) => '<li>' . htmlspecialchars($error) . '</li>', $errors)) . '</ul>' : '',

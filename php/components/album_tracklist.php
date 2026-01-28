@@ -22,10 +22,12 @@ function album_tracklist($disk_id, $edition_name) {
     $result = mysqli_stmt_get_result($stmt);
     
     $track_count = mysqli_num_rows($result);
-    if ($track_count === 0 || $track_count <= 2) {
+    $is_signle = $track_count === 1;
+    if ($track_count === 0 || $track_count < 1) {
+        error_log("Tracklist not found or too short for disk_id: $disk_id, edition_name: $edition_name");
         return '';
     }
-    
+
     ob_start();
     while ($row = mysqli_fetch_assoc($result)) {
         $minutes = floor($row['duration_seconds'] / 60);
@@ -42,6 +44,13 @@ function album_tracklist($disk_id, $edition_name) {
     
     mysqli_stmt_close($stmt);
     
+    if($is_signle) {
+        return '<section id="tracklist-section" class="tracklist-section" aria-labelledby="tracklist-heading">'
+             . '<div class="center-container">'
+             . '<h2 id="tracklist-heading">Singolo</h2>'
+             . $tracks_html
+             . '</div></section>';
+    }
     return '<section id="tracklist-section" class="tracklist-section" aria-labelledby="tracklist-heading">'
          . '<div class="center-container">'
          . '<h2 id="tracklist-heading">Tracklist</h2>'
