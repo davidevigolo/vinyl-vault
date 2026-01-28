@@ -570,7 +570,7 @@ p#empty-collection-paragraph {
 
 .filters-sidebar {
     display: block;
-    width: 280px;
+    width: 17em;
     flex-shrink: 0;
     position: sticky;
     top: 120px;
@@ -587,55 +587,68 @@ p#empty-collection-paragraph {
     display: none;
 }
 
+.filter-group legend {
+    font-family: var(--font-secondary);
+    font-size: var(--font-large);
+    text-align: center;
+    color: var(--text-secondary)
+}
+
+.filter-option input[type="checkbox"] {
+    width: 2em;
+    height: 2em;
+    margin-right: 0.8em;
+}
+
 /* End Catalog Page Desktop */
 
 
 /* Top Vinyls Page */
 
-#top-vinyls-grid {
+#top-vinyls {
     grid-template-columns: repeat(6, 1fr);
     gap: 1.5rem;
     margin: 2rem auto;
 }
 
-#top-vinyls-grid > *:first-child {
+#top-vinyls > *:first-child {
     grid-column: 1 / 7;
 }
 
-#top-vinyls-grid > *:nth-child(2),
-#top-vinyls-grid > *:nth-child(3) {
+#top-vinyls > *:nth-child(2),
+#top-vinyls > *:nth-child(3) {
     grid-column: span 3;
 }
 
-#top-vinyls-grid > *:nth-child(n+4) {
+#top-vinyls > *:nth-child(n+4) {
     grid-column: span 2;
 }
 
-#top-vinyls-grid > *:nth-child(2) .vinyl-card,
-#top-vinyls-grid > *:nth-child(3) .vinyl-card {
+#top-vinyls > *:nth-child(2) .vinyl-card,
+#top-vinyls > *:nth-child(3) .vinyl-card {
     display: flex;
     flex-direction: row;
     text-align: left;
     align-items: center;
 
 }
-#top-vinyls-grid > *:nth-child(2) .vinyl-card img,
-#top-vinyls-grid > *:nth-child(3) .vinyl-card img {
+#top-vinyls > *:nth-child(2) .vinyl-card img,
+#top-vinyls > *:nth-child(3) .vinyl-card img {
     width: 90%;
 }
 
-#top-vinyls-grid > *:nth-child(2) .artist-name,
-#top-vinyls-grid > *:nth-child(3) .artist-name {
+#top-vinyls > *:nth-child(2) .artist-name,
+#top-vinyls > *:nth-child(3) .artist-name {
     font-size: var(--font-medium);
 }
 
-#top-vinyls-grid > *:nth-child(2) .album-title,
-#top-vinyls-grid > *:nth-child(3) .album-title {
+#top-vinyls > *:nth-child(2) .album-title,
+#top-vinyls > *:nth-child(3) .album-title {
     font-size: var(--font-xl);
 }
 
-#top-vinyls-grid > *:nth-child(2) .edition-info,
-#top-vinyls-grid > *:nth-child(3) .edition-info {
+#top-vinyls > *:nth-child(2) .edition-info,
+#top-vinyls > *:nth-child(3) .edition-info {
     font-size: var(--font-large);
 }
 
