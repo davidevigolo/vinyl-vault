@@ -664,10 +664,10 @@ INSERT INTO edition (disk_id, edition_name, release_date, image_path, country) V
 (113, 'Red Edition', '2020-09-18', '/assets/images/editions/nuda_red.jpg', 'IT'),
 (114, 'Standard Edition', '2023-09-29', '/assets/images/editions/vortice_std.jpg', 'IT'),
 (114, 'Ruby Red Edition', '2023-09-29', '/assets/images/editions/vortice_red.jpg', 'IT'),
-(115, 'Standard Single', '2022-09-02', '/assets/images/editions/anna_bellissima.jpg', 'IT'),
-(116, 'Standard Single', '2023-03-31', '/assets/images/editions/anna_monamour.jpg', 'IT'),
-(117, 'Standard Single', '2023-09-08', '/assets/images/editions/anna_sola.jpg', 'IT'),
-(118, 'Standard Single', '2024-02-07', '/assets/images/editions/anna_sinceramente.jpg', 'IT'),
+(115, 'Standard Single', '2022-09-02', '/assets/images/editions/annalisa_bellissima.jpg', 'IT'),
+(116, 'Standard Single', '2023-03-31', '/assets/images/editions/annalisa_monamour.jpg', 'IT'),
+(117, 'Standard Single', '2023-09-08', '/assets/images/editions/annalisa_sola.jpg', 'IT'),
+(118, 'Standard Single', '2024-02-07', '/assets/images/editions/annalisa_sinceramente.jpg', 'IT'),
 
 -- Nirvana (IDs 211-218)
 (119, 'Standard Edition', '1989-06-15', '/assets/images/editions/bleach_std.jpg', 'US'),
@@ -1197,48 +1197,47 @@ INSERT INTO track (title, duration_seconds) VALUES
 ('Lana Intro', 90), ('New Song 1', 180), ('New Song 2', 210),
 ('Bed', 235), ('Euphraxia', 210), ('Castles', 189), ('Aftermath', 221), ('Ur', 235), ('Child''s Play', 216);
 
+
 INSERT INTO edition_track_part_of (disk_id, edition_name, track_id, track_number) VALUES
 -- Edizioni Speciali (Beatles, Radiohead, Babymetal, Pink Floyd)
 (45, 'Marble Blue Edition', 284, 1), -- Now and Then
-(49, 'Opaque White Edition', 317, 1), (49, 'Opaque White Edition', 318, 2), (49, 'Opaque White Edition', 319, 3),
-(62, 'Translucent Red Edition', 364, 1), (62, 'Translucent Red Edition', 365, 2), (62, 'Translucent Red Edition', 366, 3),
-(69, 'Red Edition', 389, 1), (69, 'Red Edition', 390, 2), (69, 'Red Edition', 391, 3),
-(71, 'Transparent Red Edition', 400, 1), (71, 'Transparent Red Edition', 401, 2), (71, 'Transparent Red Edition', 402, 3),
-(72, 'Clear Edition', 404, 1), (72, 'Clear Edition', 405, 2), (72, 'Clear Edition', 406, 3),
-(78, 'Blue Edition', 457, 1), (78, 'Blue Edition', 458, 2), (78, 'Blue Edition', 706, 3),
+(49, 'Opaque White Edition', 317, 1), (49, 'Opaque White Edition', 318, 2), (49, 'Opaque White Edition', 319, 3), -- A Moon Shaped Pool
+(62, 'Translucent Red Edition', 364, 1), (62, 'Translucent Red Edition', 365, 2), (62, 'Translucent Red Edition', 366, 3), -- Honeymoon
+(69, 'Red Edition', 389, 1), (69, 'Red Edition', 390, 2), (69, 'Red Edition', 391, 3), -- Babymetal
+(71, 'Transparent Red Edition', 400, 1), (71, 'Transparent Red Edition', 401, 2), (71, 'Transparent Red Edition', 402, 3), -- Metal Galaxy
+(72, 'Clear Edition', 404, 1), (72, 'Clear Edition', 405, 2), (72, 'Clear Edition', 406, 3), -- The Other One
+(78, 'Blue Edition', 457, 1), (78, 'Blue Edition', 458, 2), (78, 'Blue Edition', 705, 3), -- The Division Bell (Poles Apart ID: 705)
 
 -- Edizioni Speciali (PTN, Calm, Madonna, Annalisa)
-(83, 'Green Edition', 466, 1), (83, 'Green Edition', 467, 2), (83, 'Green Edition', 468, 3),
-(84, 'Pink Edition', 476, 1), (84, 'Pink Edition', 477, 2), (84, 'Pink Edition', 478, 3),
-(86, 'White Edition', 472, 1), (86, 'White Edition', 473, 2), -- EP
-(94, 'Pink Edition', 493, 1), (94, 'Pink Edition', 494, 2), (94, 'Pink Edition', 495, 3),
-(106, 'Translucent Blue Edition', 533, 1), (106, 'Translucent Blue Edition', 707, 2), (106, 'Translucent Blue Edition', 708, 3),
-(113, 'Red Edition', 548, 1), (113, 'Red Edition', 549, 2), (113, 'Red Edition', 709, 3),
-(114, 'Ruby Red Edition', 550, 1), (114, 'Ruby Red Edition', 551, 2), (114, 'Ruby Red Edition', 552, 3),
+(83, 'Green Edition', 466, 1), (83, 'Green Edition', 467, 2), (83, 'Green Edition', 468, 3), -- Fuori dall'hype
+(84, 'Pink Edition', 476, 1), (84, 'Pink Edition', 477, 2), (84, 'Pink Edition', 478, 3), -- Fake News
+(86, 'White Edition', 472, 1), (86, 'White Edition', 473, 2), -- Ahia! (EP)
+(94, 'Pink Edition', 493, 1), (94, 'Pink Edition', 494, 2), (94, 'Pink Edition', 495, 3), -- Calm
+(106, 'Translucent Blue Edition', 533, 1), (106, 'Translucent Blue Edition', 707, 2), (106, 'Translucent Blue Edition', 680, 3), -- Madame X (I Don't Search ID: 707, Dark Ballet ID: 680)
+(113, 'Red Edition', 548, 1), (113, 'Red Edition', 549, 2), (113, 'Red Edition', 708, 3), -- Nuda (Graffiti ID: 708)
+(114, 'Ruby Red Edition', 550, 1), (114, 'Ruby Red Edition', 551, 2), (114, 'Ruby Red Edition', 552, 3), -- Vortice
 (114, 'Standard Edition', 550, 1), (114, 'Standard Edition', 551, 2), (114, 'Standard Edition', 552, 3),
 
 -- Nirvana, AC/DC, Rolling Stones (Album & EP)
-(122, 'Standard EP', 710, 1), (122, 'Standard EP', 711, 2),
-(125, 'Standard Single', 562, 1), (126, 'Standard Single', 571, 1),
-(127, 'Standard Edition', 712, 1), (127, 'Standard Edition', 713, 2), (127, 'Standard Edition', 714, 3),
-(128, 'Standard Edition', 715, 1), (128, 'Standard Edition', 716, 2), (128, 'Standard Edition', 717, 3),
-(129, 'Standard Edition', 718, 1), (129, 'Standard Edition', 719, 2), (129, 'Standard Edition', 720, 3),
-(131, 'Standard EP', 574, 1), (131, 'Standard EP', 575, 2),
-(134, 'Standard Edition', 721, 1), (134, 'Standard Edition', 722, 2), (134, 'Standard Edition', 723, 3),
-(135, 'Standard Edition', 724, 1), (135, 'Standard Edition', 725, 2), (135, 'Standard Edition', 726, 3),
-(136, 'Standard Edition', 727, 1), (136, 'Standard Edition', 728, 2), (136, 'Standard Edition', 729, 3),
-(138, 'Standard EP', 598, 1), (138, 'Standard EP', 730, 2),
-(139, 'Standard EP', 731, 1), (139, 'Standard EP', 732, 2),
-(140, 'Standard Single', 618, 1), (141, 'Standard Single', 622, 1),
+(122, 'Standard EP', 709, 1), (122, 'Standard EP', 710, 2), -- Hormoaning (Aneurysm ID: 709, Even in His Youth ID: 710)
+(125, 'Standard Single', 562, 1), (126, 'Standard Single', 571, 1), -- Nirvana Singles
+(127, 'Standard Edition', 711, 1), (127, 'Standard Edition', 712, 2), (127, 'Standard Edition', 713, 3), -- Stiff Upper Lip (IDs 711-713)
+(128, 'Standard Edition', 714, 1), (128, 'Standard Edition', 715, 2), (128, 'Standard Edition', 716, 3), -- Black Ice (IDs 714-716)
+(129, 'Standard Edition', 717, 1), (129, 'Standard Edition', 718, 2), (129, 'Standard Edition', 719, 3), -- Rock or Bust (IDs 717-719)
+(131, 'Standard EP', 574, 1), (131, 'Standard EP', 575, 2), -- '74 Jailbreak
+(134, 'Standard Edition', 720, 1), (134, 'Standard Edition', 721, 2), (134, 'Standard Edition', 722, 3), -- Bridges to Babylon (IDs 720-722)
+(135, 'Standard Edition', 723, 1), (135, 'Standard Edition', 724, 2), (135, 'Standard Edition', 725, 3), -- A Bigger Bang (IDs 723-725)
+(136, 'Standard Edition', 726, 1), (136, 'Standard Edition', 727, 2), (136, 'Standard Edition', 728, 3), -- Blue & Lonesome (IDs 726-728)
+(138, 'Standard EP', 598, 1), (138, 'Standard EP', 729, 2), -- Five by Five (2120 S. Michigan ID: 729)
+(139, 'Standard EP', 730, 1), (139, 'Standard EP', 731, 2), -- Got Live (Under My Thumb ID: 730, Cloud ID: 731)
+(140, 'Standard Single', 618, 1), (141, 'Standard Single', 622, 1), -- Stones Singles
 
 -- SZA (Album & EP)
-(142, 'Standard Edition', 624, 1), (142, 'Standard Edition', 625, 2), (142, 'Standard Edition', 626, 3),
-(143, 'Standard Edition', 631, 1), (143, 'Standard Edition', 632, 2), (143, 'Standard Edition', 633, 3),
-(144, 'Standard Edition', 733, 1), (144, 'Standard Edition', 734, 2), (144, 'Standard Edition', 735, 3),
-(145, 'Standard EP', 736, 1), (145, 'Standard EP', 737, 2),
-(146, 'Standard EP', 738, 1), (146, 'Standard EP', 739, 2),
-(147, 'Standard EP', 740, 1), (147, 'Standard EP', 741, 2),
-(148, 'Standard Single', 634, 1), (149, 'Standard Single', 638, 1);
+(144, 'Standard Edition', 732, 1), (144, 'Standard Edition', 733, 2), (144, 'Standard Edition', 734, 3), -- Lana (IDs 732-734)
+(145, 'Standard EP', 735, 1), (145, 'Standard EP', 736, 2), -- See.SZA.Run (IDs 735-736)
+(146, 'Standard EP', 737, 1), (146, 'Standard EP', 738, 2), -- S (IDs 737-738)
+(147, 'Standard EP', 739, 1), (147, 'Standard EP', 740, 2), -- Z (IDs 739-740)
+(148, 'Standard Single', 634, 1), (149, 'Standard Single', 638, 1); -- Kill Bill, Saturn
 
 -- Re-enable foreign key checks
 SET FOREIGN_KEY_CHECKS = 1;

@@ -342,6 +342,7 @@ header {
     top: 0;
     position: relative;
     width: 100%;
+    z-index: 1005;
 }
 
 .header-container {
@@ -1561,6 +1562,18 @@ img#empty-collection-image {
 }
 
 .tracklist {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-dark);
+    border-radius: 1.3em;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    min-width: 0;
+    list-style: none;
+}
+
+.tracklist-single {
     background: var(--bg-surface);
     border: 1px solid var(--border-dark);
     border-radius: 1.3em;

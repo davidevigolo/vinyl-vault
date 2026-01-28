@@ -392,38 +392,25 @@ p#empty-collection-paragraph {
 }
 
 .tracklist {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 5rem;
-    padding: 2.5rem 3.5rem;
-    position: relative;
-}
-
-.tracklist::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 2rem;
-    bottom: 2rem;
-    width: 1px;
-    background-color: var(--border-dark);
-    opacity: 0.6;
-}
-
-.tracklist {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-dark);
-    border-radius: 1.3em;
+    column-count: 2;
+    column-gap: 2rem;
+    column-rule: 1px solid var(--border-default);
+    display: block;
     padding: 1.5rem;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    flex-direction: column;
-    min-width: 0;
-    list-style: none;
+}
+
+.tracklist-single {
+    display: block;
+    padding: 1.5rem;
 }
 
 .track-item {
-    padding-bottom: 0.5rem;
+    break-inside: avoid;
+    display: grid;
+    grid-template-columns: 3rem 1fr auto;
+    gap: 1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-default);
 }
 
 /* End Album Page */
@@ -516,8 +503,6 @@ p#empty-collection-paragraph {
 }
 
 .active-filters-inline .filter-tag {
-    background-color: var(--bg-subsection);
-    color: var(--brand-primary-dark);
     border: none;
     padding: 0.3rem 0.8rem;
     border-radius: 20px;
