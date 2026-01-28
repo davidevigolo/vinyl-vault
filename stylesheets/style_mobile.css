@@ -2717,3 +2717,9 @@ body.page-transitioning {
     margin-top: 0.5rem;
     opacity: 1;
 }
+
+#add-track-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}

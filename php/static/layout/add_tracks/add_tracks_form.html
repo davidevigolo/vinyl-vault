@@ -47,10 +47,9 @@
                         <label for="title-0">Titolo della traccia</label>
                         <span class="error-message" id="title-0-error" aria-live="polite">Obbligatorio</span>
                     </div>
-                    
+                    <p class="input-example"><abbr title="ad esempio">es.</abbr> <span lang="en">"Speak to Me"</span></p>
                     <input type="text" id="title-0" name="title[]" required maxlength="200"
                         pattern="[a-zA-Z0-9àèéìòùÀÈÉÌÒÙ\s]+" value="[first_track_title]" required>
-                    
                 </div>
 
                 <div class="input-wrapper input-track-duration">
@@ -68,6 +67,7 @@
 
         [track_form_items]
 
+        <p class="error-message" id="max-tracks-error"></p>
         <button type="button" id="add-track-button" class="btn-secondary add-pages-btn">Aggiungi un'altra traccia</button>
 
         <button type="submit" class="btn-primary add-pages-btn">Salva Tracce</button>

@@ -33,6 +33,23 @@ function get_editions()
     return $editions;
 }
 
+function get_disk_type($disk_id){
+    $connection = DbConnection::get_instance();
+    $query = "SELECT disk_type FROM disk WHERE id = ?";
+    $stmt = mysqli_prepare($connection->get_connection(), $query);
+    if (!$stmt) {
+        error_log(mysqli_error($connection->get_connection()));
+        return null;
+    }
+    mysqli_stmt_bind_param($stmt, 'i', $disk_id);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    if ($row = mysqli_fetch_assoc($result)) {
+        return $row['disk_type'];
+    }
+    return null;
+}
+
 function add_tracks_form($_disk, $_edition, $_titles, $_durations, $errors = []): string
 {
     $disks = get_disks();
@@ -52,7 +69,7 @@ function add_tracks_form($_disk, $_edition, $_titles, $_durations, $errors = [])
     }
     $first_track_title = isset($_titles[0]) ? htmlspecialchars($_titles[0]) : '';
     $first_track_duration = isset($_durations[0]) ? htmlspecialchars($_durations[0]) : '';
-    for ($i = 1; $i < 35; $i++) {
+    for ($i = 1; $i < 20; $i++) {
         $track_form_items .= Template::render('static/layout/add_tracks/track_form_item.html', [
             'index' => $i + 1,
             'track_title' => isset($_titles[$i]) ? htmlspecialchars($_titles[$i - 1]) : '',
@@ -65,7 +82,7 @@ function add_tracks_form($_disk, $_edition, $_titles, $_durations, $errors = [])
     return Template::render('static/layout/add_tracks/add_tracks_form.html', [
         'disk_options' => implode('', array_map(function ($disk) use($_disk) {
             $selected = (isset($_disk) && intval($_disk) == $disk['id']) ? ' selected' : '';
-            return '<option value="' . htmlspecialchars($disk['id']) . '"' . $selected . '>' . htmlspecialchars($disk['title']) . '</option>';
+            return '<option value="' . htmlspecialchars($disk['id']) . '"' . $selected . ' data-disk-type="' . htmlspecialchars(get_disk_type($disk['id'])) . '">' . htmlspecialchars($disk['title']) .' (' . htmlspecialchars(get_disk_type_display_names()[get_disk_type($disk['id'])]) . ') </option>';
         }, $disks)),
         'edition_options' => $edition_options,
         'track_form_items' => $track_form_items,
