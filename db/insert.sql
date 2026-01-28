@@ -1047,5 +1047,198 @@ INSERT INTO ownership (user_id, disk_id, edition_name, date_acquired, rating) VA
 (4, 142, 'Standard Edition', '2024-04-22 17:00:00', 2);  -- Ctrl
 
 
+
+
+-- aggiunte
+INSERT INTO track (title, duration_seconds) VALUES
+-- Taylor Swift Holiday Collection (Disk 6)
+('Last Christmas', 203), ('Christmas When You Were Mine', 186),
+-- My Dear Melancholy, (Disk 32)
+('Call Out My Name', 228), ('Try Me', 221),
+-- The Beatles - Magical Mystery Tour (Disk 36)
+('Magical Mystery Tour', 171), ('The Fool on the Hill', 168), ('I Am the Walrus', 276),
+-- The Beatles - Yellow Submarine (Disk 38)
+('Only a Northern Song', 204), ('All Together Now', 131), ('Hey Bulldog', 191),
+-- The Beatles - Long Tall Sally (Disk 41)
+('Long Tall Sally', 123), ('I Call Your Name', 129),
+-- The Beatles - Magical Mystery Tour EP (Disk 42)
+('Your Mother Should Know', 149), ('Hello, Goodbye', 211),
+-- Linkin Park - Hybrid Theory EP (Disk 56)
+('Carousel', 180), ('Technique', 40),
+-- Lana Del Rey - Lana Del Ray (Disk 59)
+('Kill Kill', 237), ('Queen of the Gas Station', 224), ('Gramma', 230),
+-- Lana Del Rey - Tropico (Disk 65)
+('Body Electric', 233), ('Bel Air', 239),
+-- Pink Floyd - The Endless River (Disk 79)
+('Things Left Unsaid', 266), ('It''s What We Do', 357), ('Ebb and Flow', 115),
+-- PTN - Hello World (Disk 85)
+('Hello World', 212), ('Melting Pot', 200), ('Nightmare', 185),
+-- 5SOS - Sounds Good Feels Good (Disk 92)
+('Money', 174), ('She''s Kicking 20', 195), ('Castaway', 214),
+-- 5SOS - Don't Stop EP (Disk 97)
+('Don''t Stop', 169), ('Rejects', 169),
+-- Madonna - Hard Candy (Disk 103)
+('Candy Shop', 255), ('Miles Away', 288), ('She''s Not Me', 365),
+-- Madonna - MDNA (Disk 104)
+('Girl Gone Wild', 223), ('Gang Bang', 285), ('I''m Addicted', 273),
+-- Madonna - Rebel Heart (Disk 105)
+('Living for Love', 218), ('Devil Pray', 245), ('Ghosttown', 251),
+-- Madonna - Madame X (Disk 106 - Aggiunta)
+('Dark Ballet', 254), ('God Control', 379),
+-- Annalisa - Bye Bye (Disk 112)
+('Ogni festa', 198), ('Il mondo prima di te', 218), ('Un domani', 223),
+-- Annalisa - Nuda (Disk 113 - Aggiunta)
+('Nuda', 181), ('Tsunami', 194);
+
+INSERT INTO edition_track_part_of (disk_id, edition_name, track_id, track_number) VALUES
+-- EP (2 tracce)
+(6, 'Standard Edition', 639, 1), (6, 'Standard Edition', 640, 2),
+(32, 'Standard Edition', 641, 1), (32, 'Standard Edition', 642, 2),
+(41, 'Standard Edition', 649, 1), (41, 'Standard Edition', 650, 2),
+(42, 'Standard Edition', 651, 1), (42, 'Standard Edition', 652, 2),
+(56, 'Standard EP', 653, 1), (56, 'Standard EP', 654, 2),
+(65, 'Standard EP', 658, 1), (65, 'Standard EP', 659, 2),
+(97, 'Standard EP', 669, 1), (97, 'Standard EP', 670, 2),
+
+-- ALBUM (3 tracce)
+(36, 'Standard Edition', 643, 1), (36, 'Standard Edition', 644, 2), (36, 'Standard Edition', 645, 3),
+(38, 'Standard Edition', 646, 1), (38, 'Standard Edition', 647, 2), (38, 'Standard Edition', 648, 3),
+(59, 'Standard Edition', 655, 1), (59, 'Standard Edition', 656, 2), (59, 'Standard Edition', 657, 3),
+(79, 'Standard Edition', 660, 1), (79, 'Standard Edition', 661, 2), (79, 'Standard Edition', 662, 3),
+(85, 'Standard Edition', 663, 1), (85, 'Standard Edition', 664, 2), (85, 'Standard Edition', 665, 3),
+(92, 'Standard Edition', 666, 1), (92, 'Standard Edition', 667, 2), (92, 'Standard Edition', 668, 3),
+(102, 'Pink Edition', 527, 1), (102, 'Pink Edition', 528, 2), (102, 'Pink Edition', 510, 3), -- Riutilizzo ID Madonna
+(103, 'Standard Edition', 671, 1), (103, 'Standard Edition', 672, 2), (103, 'Standard Edition', 673, 3),
+(104, 'Standard Edition', 674, 1), (104, 'Standard Edition', 675, 2), (104, 'Standard Edition', 676, 3),
+(105, 'Standard Edition', 677, 1), (105, 'Standard Edition', 678, 2), (105, 'Standard Edition', 679, 3),
+(106, 'Standard Edition', 533, 1), (106, 'Standard Edition', 680, 2), (106, 'Standard Edition', 681, 3),
+(112, 'Standard Edition', 682, 1), (112, 'Standard Edition', 683, 2), (112, 'Standard Edition', 684, 3),
+(113, 'Standard Edition', 685, 1), (113, 'Standard Edition', 686, 2), (113, 'Standard Edition', 548, 3),
+
+-- SINGOLI (1 traccia - Riutilizzo ID esistenti)
+(107, 'Standard Single', 504, 1), -- Holiday
+(108, 'Standard Single', 505, 1), -- Like a Virgin
+(109, 'Standard Single', 515, 1), -- Vogue
+(110, 'Standard Single', 527, 1), -- Hung Up
+(111, 'Standard Single', 534, 1); -- Popular
+
+
+INSERT INTO track (title, duration_seconds) VALUES
+-- Tracce generiche per riempire le edizioni mancanti
+('The Lakes', 211), ('Mirrorball (Live)', 232), ('Invisible String (Instrumental)', 252), -- folklore extras
+('Hits Different', 234), ('You''re Losing Me', 278), ('Snow on the Beach (Feat. More Lana)', 230), -- Midnights extras
+('Houdini (Extended Edit)', 359), ('Training Season (Vinyl Version)', 305), ('Illusion (Alternative Mix)', 220), -- Radical Optimism extras
+('Sweetener Live', 208), ('Breathin (Acapella)', 198), ('Eternal Sunshine Mix', 210), -- Ariana extras
+('Abbey Road Medley', 960), ('Yellow Submarine (Alt)', 158), ('Now and Then (Extended)', 300), -- Beatles extras
+('Decks Dark (Live)', 281), ('Ful Stop (Live)', 360), ('Identikit (Live)', 287); -- Radiohead extras
+
+INSERT INTO edition_track_part_of (disk_id, edition_name, track_id, track_number) VALUES
+-- TAYLOR SWIFT & DUA LIPA (Album - 3 tracce)
+(4, 'Meet Me Behind The Mall (Grey Edition)', 47, 1), (4, 'Meet Me Behind The Mall (Grey Edition)', 48, 2), (4, 'Meet Me Behind The Mall (Grey Edition)', 687, 3),
+(5, 'Blood Moon Edition', 63, 1), (5, 'Blood Moon Edition', 65, 2), (5, 'Blood Moon Edition', 690, 3),
+(11, 'Pink Edition', 78, 1), (11, 'Pink Edition', 79, 2), (11, 'Pink Edition', 80, 3),
+(12, 'Neon Pink Edition', 89, 1), (12, 'Neon Pink Edition', 90, 2), (12, 'Neon Pink Edition', 93, 3),
+(13, 'Red Edition', 100, 1), (13, 'Red Edition', 101, 2), (13, 'Red Edition', 693, 3),
+
+-- ARIANA GRANDE & THE WEEKND (Album - 3 tracce)
+(21, 'Peach Edition', 126, 1), (21, 'Peach Edition', 127, 2), (21, 'Peach Edition', 696, 3),
+(24, 'Ruby Edition', 171, 1), (24, 'Ruby Edition', 172, 2), (24, 'Ruby Edition', 698, 3),
+(29, 'Gold with Red Splatter Edition', 213, 1), (29, 'Gold with Red Splatter Edition', 221, 2), (29, 'Gold with Red Splatter Edition', 223, 3),
+(30, 'Silver Edition', 226, 1), (30, 'Silver Edition', 229, 2), (30, 'Silver Edition', 231, 3),
+
+-- NIRVANA (Disk 119-121)
+-- Bleach (Standard & White)
+(119, 'Standard Edition', 555, 1), (119, 'Standard Edition', 556, 2), (119, 'Standard Edition', 557, 3),
+(119, 'White Edition', 555, 1), (119, 'White Edition', 556, 2), (119, 'White Edition', 557, 3),
+-- Nevermind (Anniversary & Standard)
+(120, 'Silver Edition (Anniversary)', 558, 1), (120, 'Silver Edition (Anniversary)', 559, 2), (120, 'Silver Edition (Anniversary)', 560, 3),
+(120, 'Standard Edition', 558, 1), (120, 'Standard Edition', 559, 2), (120, 'Standard Edition', 560, 3),
+-- In Utero (Clear & Standard)
+(121, 'Clear Edition', 570, 1), (121, 'Clear Edition', 571, 2), (121, 'Clear Edition', 572, 3),
+(121, 'Standard Edition', 570, 1), (121, 'Standard Edition', 571, 2), (121, 'Standard Edition', 572, 3),
+
+-- AC/DC & ROLLING STONES (Album - 3 tracce)
+-- Power Up (Red & Standard)
+(130, 'Red Edition', 594, 1), (130, 'Red Edition', 595, 2), (130, 'Red Edition', 597, 3),
+(130, 'Standard Edition', 594, 1), (130, 'Standard Edition', 595, 2), (130, 'Standard Edition', 597, 3),
+-- Hackney Diamonds (Clear & Standard)
+(137, 'Clear Edition', 622, 1), (137, 'Clear Edition', 623, 2), (137, 'Clear Edition', 701, 3),
+(137, 'Standard Edition', 622, 1), (137, 'Standard Edition', 623, 2), (137, 'Standard Edition', 701, 3),
+
+-- SZA & SINGOLI (SZA 3 tracce, Singoli 1 traccia)
+(142, 'Translucent Green Edition', 624, 1), (142, 'Translucent Green Edition', 625, 2), (142, 'Translucent Green Edition', 626, 3),
+(143, 'Transparent Blue Edition', 631, 1), (143, 'Transparent Blue Edition', 632, 2), (143, 'Transparent Blue Edition', 633, 3),
+(115, 'Standard Single', 550, 1), -- Bellissima
+(116, 'Standard Single', 551, 1), -- Mon Amour
+(117, 'Standard Single', 552, 1), -- Ragazza Sola
+(118, 'Standard Single', 554, 1), -- Sinceramente
+(123, 'Standard Single', 558, 1), -- Smells Like Teen Spirit
+(124, 'Standard Single', 560, 1), -- Come as You Are
+(132, 'Standard Single', 592, 1), -- Thunderstruck
+(133, 'Standard Single', 597, 1); -- Shot in the Dark
+
+
+INSERT INTO track (title, duration_seconds) VALUES
+-- Pink Floyd / Madonna / Annalisa Extras
+('Poles Apart', 424), ('Craving', 201), ('I Don''t Search I Find', 298), ('Graffiti', 210),
+-- Nirvana (Hormoaning)
+('Aneurysm', 276), ('Even in His Youth', 183),
+-- AC/DC (Stiff Upper Lip, Black Ice, Rock or Bust)
+('Stiff Upper Lip', 215), ('Can''t Stop Rock ''n'' Roll', 242), ('Safe in New York City', 233),
+('Rock ''n'' Roll Train', 261), ('Big Jack', 237), ('War Machine', 189),
+('Rock or Bust', 183), ('Play Ball', 167), ('Rock the Blues Away', 204),
+-- Rolling Stones (Bridges to Babylon, A Bigger Bang, Blue & Lonesome)
+('Flip the Switch', 208), ('Anybody Seen My Baby?', 271), ('Saint of Me', 315),
+('Rough Justice', 191), ('Rain Fall Down', 294), ('Streets of Love', 310),
+('Just Your Fool', 136), ('Commit a Crime', 218), ('Blue and Lonesome', 312),
+-- Rolling Stones (EP Extras)
+('2120 South Michigan Avenue', 218), ('Under My Thumb (Live)', 220), ('Get Off of My Cloud (Live)', 175),
+-- SZA (Lana, See.SZA.Run, S, Z)
+('Lana Intro', 90), ('New Song 1', 180), ('New Song 2', 210),
+('Bed', 235), ('Euphraxia', 210), ('Castles', 189), ('Aftermath', 221), ('Ur', 235), ('Child''s Play', 216);
+
+INSERT INTO edition_track_part_of (disk_id, edition_name, track_id, track_number) VALUES
+-- Edizioni Speciali (Beatles, Radiohead, Babymetal, Pink Floyd)
+(45, 'Marble Blue Edition', 284, 1), -- Now and Then
+(49, 'Opaque White Edition', 317, 1), (49, 'Opaque White Edition', 318, 2), (49, 'Opaque White Edition', 319, 3),
+(62, 'Translucent Red Edition', 364, 1), (62, 'Translucent Red Edition', 365, 2), (62, 'Translucent Red Edition', 366, 3),
+(69, 'Red Edition', 389, 1), (69, 'Red Edition', 390, 2), (69, 'Red Edition', 391, 3),
+(71, 'Transparent Red Edition', 400, 1), (71, 'Transparent Red Edition', 401, 2), (71, 'Transparent Red Edition', 402, 3),
+(72, 'Clear Edition', 404, 1), (72, 'Clear Edition', 405, 2), (72, 'Clear Edition', 406, 3),
+(78, 'Blue Edition', 457, 1), (78, 'Blue Edition', 458, 2), (78, 'Blue Edition', 706, 3),
+
+-- Edizioni Speciali (PTN, Calm, Madonna, Annalisa)
+(83, 'Green Edition', 466, 1), (83, 'Green Edition', 467, 2), (83, 'Green Edition', 468, 3),
+(84, 'Pink Edition', 476, 1), (84, 'Pink Edition', 477, 2), (84, 'Pink Edition', 478, 3),
+(86, 'White Edition', 472, 1), (86, 'White Edition', 473, 2), -- EP
+(94, 'Pink Edition', 493, 1), (94, 'Pink Edition', 494, 2), (94, 'Pink Edition', 495, 3),
+(106, 'Translucent Blue Edition', 533, 1), (106, 'Translucent Blue Edition', 707, 2), (106, 'Translucent Blue Edition', 708, 3),
+(113, 'Red Edition', 548, 1), (113, 'Red Edition', 549, 2), (113, 'Red Edition', 709, 3),
+(114, 'Ruby Red Edition', 550, 1), (114, 'Ruby Red Edition', 551, 2), (114, 'Ruby Red Edition', 552, 3),
+(114, 'Standard Edition', 550, 1), (114, 'Standard Edition', 551, 2), (114, 'Standard Edition', 552, 3),
+
+-- Nirvana, AC/DC, Rolling Stones (Album & EP)
+(122, 'Standard EP', 710, 1), (122, 'Standard EP', 711, 2),
+(125, 'Standard Single', 562, 1), (126, 'Standard Single', 571, 1),
+(127, 'Standard Edition', 712, 1), (127, 'Standard Edition', 713, 2), (127, 'Standard Edition', 714, 3),
+(128, 'Standard Edition', 715, 1), (128, 'Standard Edition', 716, 2), (128, 'Standard Edition', 717, 3),
+(129, 'Standard Edition', 718, 1), (129, 'Standard Edition', 719, 2), (129, 'Standard Edition', 720, 3),
+(131, 'Standard EP', 574, 1), (131, 'Standard EP', 575, 2),
+(134, 'Standard Edition', 721, 1), (134, 'Standard Edition', 722, 2), (134, 'Standard Edition', 723, 3),
+(135, 'Standard Edition', 724, 1), (135, 'Standard Edition', 725, 2), (135, 'Standard Edition', 726, 3),
+(136, 'Standard Edition', 727, 1), (136, 'Standard Edition', 728, 2), (136, 'Standard Edition', 729, 3),
+(138, 'Standard EP', 598, 1), (138, 'Standard EP', 730, 2),
+(139, 'Standard EP', 731, 1), (139, 'Standard EP', 732, 2),
+(140, 'Standard Single', 618, 1), (141, 'Standard Single', 622, 1),
+
+-- SZA (Album & EP)
+(142, 'Standard Edition', 624, 1), (142, 'Standard Edition', 625, 2), (142, 'Standard Edition', 626, 3),
+(143, 'Standard Edition', 631, 1), (143, 'Standard Edition', 632, 2), (143, 'Standard Edition', 633, 3),
+(144, 'Standard Edition', 733, 1), (144, 'Standard Edition', 734, 2), (144, 'Standard Edition', 735, 3),
+(145, 'Standard EP', 736, 1), (145, 'Standard EP', 737, 2),
+(146, 'Standard EP', 738, 1), (146, 'Standard EP', 739, 2),
+(147, 'Standard EP', 740, 1), (147, 'Standard EP', 741, 2),
+(148, 'Standard Single', 634, 1), (149, 'Standard Single', 638, 1);
+
 -- Re-enable foreign key checks
 SET FOREIGN_KEY_CHECKS = 1;
