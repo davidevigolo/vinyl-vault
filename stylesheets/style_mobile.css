@@ -1305,20 +1305,27 @@ input[type="number"] {
     cursor: pointer;
 }
 
+.center-container .empty-collection-state {
+    text-align: center;
+}
+
 h2#empty-collection-heading {
     align-self: center;
+    font-family: var(--font-secondary);
+    font-size: var(--font-xxl);
+    margin-bottom: 1em;
+    color: var(--text-secondary);
 }
 
 p#empty-collection-paragraph {
     margin-bottom: 8rem;
     font-size: 1.2rem;
-    color: var(--text-secondary);
     text-wrap: balance;
 }
 
 img#empty-collection-image {
     margin-top: 4rem;
-    max-width: 300px;
+    max-width: 30em;
     height: auto;
 }
 
@@ -2664,192 +2671,6 @@ html:not(.js-enabled) .load-more-container {
 
 /* Profile Page */
 
-/* --- Profilo - Layout Generale --- */
 
-#profile-data {
-    background-color: var(--bg-section);
-    padding: 2.5rem 1.5rem;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    grid-template-rows: auto auto 1fr;
-    column-gap: 1.5rem;
-    text-align: left;
-    margin-bottom: 2rem;
-    align-items: center;
-}
-
-#propic {
-    grid-row: 1 / span 3;
-    width: 8rem;
-    height: 8rem;
-    border-radius: 50%;
-    border: 0.15rem solid var(--border-dark);
-    background-color: var(--bg-surface);
-    object-fit: cover;
-}
-
-#profile-heading {
-    grid-column: 2;
-    font-size: var(--font-xxl);
-    margin: 0;
-    line-height: 1.1;
-}
-
-#user-name {
-    grid-column: 2;
-    color: var(--text-secondary);
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: var(--font-small);
-    font-style: italic;
-    margin-top: 0.2rem;
-}
-
-#user-bio {
-    grid-column: 2;
-    color: var(--text-primary);
-    font-size: var(--font-medium);
-    margin-top: 0.5rem;
-    white-space: pre-line;
-}
-
-#edit-profile-button {
-    grid-column: 2;
-    justify-self: end;
-    margin-top: 0;
-    font-size: var(--font-small);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-/* --- Statistiche --- */
-
-#profile-stats {
-    margin-bottom: 3rem;
-}
-
-#profile-stats-title {
-    display: none; /* Titolo nascosto come da screenshot */
-}
-
-#profile-stats ol {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 0;
-}
-
-#profile-stats li {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-dark);
-    border-radius: 1rem;
-    padding: 1.2rem;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    font-weight: 800;
-    font-size: var(--font-xl);
-    color: var(--link-unvisited);
-    position: relative;
-}
-
-#profile-stats h3 {
-    font-size: var(--font-small);
-    text-transform: uppercase;
-    color: var(--text-primary);
-    margin-bottom: 0.3rem;
-    font-weight: 700;
-}
-
-/* --- Sezioni Collezione e Wishlist --- */
-
-.card-section {
-    padding-bottom: 3rem;
-    text-align: left;
-}
-
-.section-title {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 1.5rem;
-    border-bottom: none;
-}
-
-.section-title h2 {
-    font-family: var(--font-secondary);
-    font-style: italic;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: var(--link-unvisited);
-    font-size: var(--font-xl);
-}
-
-.view-all {
-    font-size: var(--font-small);
-    font-weight: 600;
-}
-
-/* --- Artisti Preferiti --- */
-
-#favorite-artists {
-    background-color: var(--bg-section);
-    border-radius: 2rem;
-    padding: 2rem 1.5rem;
-    margin: 2rem 0 4rem 0;
-    text-align: left;
-}
-
-#fav-artists-title {
-    font-family: var(--font-secondary);
-    font-style: italic;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: var(--link-unvisited);
-    font-size: var(--font-xl);
-    margin-bottom: 1.5rem;
-}
-
-/* Struttura interna ipotizzata per [favorite-artists-content] */
-.fav-artist-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.2rem;
-}
-
-.fav-artist-img {
-    width: 4.5rem;
-    height: 4.5rem;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.fav-artist-info h3 {
-    font-size: var(--font-medium);
-    margin: 0;
-    color: var(--text-primary);
-}
-
-.fav-artist-info p {
-    font-size: var(--font-small);
-    color: var(--text-muted);
-}
-
-/* --- Responsive per Tablet/Desktop (mini) --- */
-
-@media (min-width: 600px) {
-    #profile-stats ol {
-        flex-direction: row;
-    }
-    
-    #profile-stats li {
-        flex: 1;
-    }
-}
 
 /* End Profile Page */

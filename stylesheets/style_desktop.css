@@ -328,7 +328,7 @@ header .site-nav-links li {
 }
 
 img#empty-collection-image {
-    max-width: 450px;
+    max-width: 25em;
     margin-top: 2rem;
 }
 
@@ -757,5 +757,4 @@ p#empty-collection-paragraph {
 }
 /* End Add Pages */
 
-/* Stili desktop per Catalog */
-/* Altri stili (login, register, etc) */
+
