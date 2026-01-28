@@ -210,7 +210,7 @@ function render_catalog_cards($vinyls, $search_query = null) {
             'title' => htmlspecialchars($vinyl['title']),
             'artist_id' => $vinyl['author_id'],
             'artist' => htmlspecialchars($vinyl['author_name']),
-            'cover_image' => 'assets/images/pollo.webp'
+            'cover_image' => htmlspecialchars($vinyl['image_path']),
         ]);
         echo '</div>';
     }

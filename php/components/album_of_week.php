@@ -36,7 +36,7 @@ function album_of_week() {
         ];
     }
     
-    $cover_image = 'assets/images/pollo.webp';
+    $cover_image = htmlspecialchars($album['image_path']);
     
     $description = sprintf(
         "Il vinile di questa settimana è <strong>%s</strong> di <strong>%s</strong>",
