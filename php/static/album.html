@@ -1,70 +1,92 @@
 <!DOCTYPE html>
 <html lang="it">
-  <head>
-    [head]
-  </head>
-  <body>
-    <nav class="list-help">
-      <ul>
-        <li><a href="#content" class="navigation-help">Vai al contenuto</a></li>
-        <li><a href="#menu" class="navigation-help">Vai al menu</a></li>
-      </ul>
-    </nav>
 
-    [header]
+<head>
+  [head]
+</head>
 
-    <nav id="breadcrumb" aria-label="Breadcrumb">
+<body>
+  <nav class="list-help">
+    <ul>
+      <li><a href="#content" class="navigation-help">Vai al contenuto</a></li>
+      <li><a href="#menu" class="navigation-help">Vai al menu</a></li>
+    </ul>
+  </nav>
+
+  [header]
+
+  <nav id="breadcrumb" aria-label="Breadcrumb">
+    <div class="center-container">
+      <ol>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="esplora.php">Esplora</a></li>
+        <li><a href="artist.php?id=[artist_id]">[artist_name]</a></li>
+        <li aria-current="page">[album_title]</li>
+      </ol>
+    </div>
+  </nav>
+
+  <main id="content">
+    <section class="hero album-hero">
       <div class="center-container">
-        <ol>
-          <li><a href="index.php">Home</a></li>
-          <li><a href="esplora.php">Esplora</a></li>
-          <li><a href="artist.php?id=[artist_id]">[artist_name]</a></li>
-          <li aria-current="page">[album_title]</li>
-        </ol>
-      </div>
-    </nav>
+        <img src="[album_image]" alt="Copertina di [album_title]" class="album-cover">
+        <div class="hero-text">
+          <h1 class="album-title-main">[album_title]</h1>
+          <p class="album-artist">
+            <a href="artist.php?id=[artist_id]">[artist_name]</a>
+          </p>
+          <p class="album-edition">[album_edition]</p>
+          <div class="album-meta">
+            <span class="album-year">[release_year]</span>
+            <span class="album-type">[disk_type]</span>
+          </div>
+          <div class="album-genres" role="list" aria-label="Generi musicali">
+            [album_genres]
+          </div>
 
-    <main id="content">
-      <section class="hero album-hero">
-        <div class="center-container">
-          <img src="[album_image]" alt="Copertina di [album_title]" class="album-cover">
-          <div class="hero-text">
-            <h1 class="album-title-main">[album_title]</h1>
-            <p class="album-artist">
-              <a href="artist.php?id=[artist_id]">[artist_name]</a>
+          <div class="album-rating" role="img"
+            aria-label="Valutazione media [average_rating] su 5 stelle, basata su [review_count] recensioni">
+            <p class="rating-label">Valutazione dei collezionisti</p>
+            <div class="rating-stars" aria-hidden="true">
+              <span class="stars">★★★★★</span>
+            </div>
+            <p class="rating-text">
+              <strong>[average_rating]</strong> <span class="review-count">([review_count] recensioni)</span>
             </p>
-            <div class="album-meta">
-              <span class="album-year">[release_year]</span>
-              <span class="album-type">[disk_type]</span>
-            </div>
-            <div class="album-genres" role="list" aria-label="Generi musicali">
-              [album_genres]
-            </div>
-
-            <div class="album-rating" role="img" aria-label="Valutazione media [average_rating] su 5 stelle, basata su [review_count] recensioni">
-              <p class="rating-label">Valutazione dei collezionisti</p>
-              <div class="rating-stars" aria-hidden="true">
-                <span class="stars">★★★★★</span>
-              </div>
-              <p class="rating-text">
-                <strong>[average_rating]</strong> <span class="review-count">([review_count] recensioni)</span>
-              </p>
-            </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <div class="center-container">
+      <section class="album-info-section">
+        <dl>
+          <dt>Data di rilascio:</dt>
+          <dd>[release_date]</dd>
+          <dt>Paese:</dt>
+          <dd>[country]</dd>
+          <dt>Etichetta:</dt>
+          <dd>[label]</dd>
+          <dt>Persone che ce l'hanno:</dt>
+          <dd>[ownership_count]</dd>
+          <dt>Persone che lo vogliono:</dt>
+          <dd>[wishlist_count]</dd>
+        </dl>
       </section>
+    </div>
 
-      [album_tracklist]
+    [album_tracklist]
 
-      [album_versions]
+    [album_versions]
 
-      <section class="album-credits-section">
-        <div class="center-container">
-          [album_credits]
-        </div>
-      </section>
-    </main>
+    <section class="album-credits-section">
+      <div class="center-container">
+        [album_credits]
+      </div>
+    </section>
+  </main>
 
-    [footer]
-  </body>
+  [footer]
+</body>
+
 </html>
