@@ -2652,3 +2652,13 @@ html:not(.js-enabled) .load-more-container {
 }
 
 /* End Add Pages */
+
+/* Page Transitions */
+body {
+    opacity: 1;
+    transition: opacity 0.15s ease-out;
+}
+
+body.page-transitioning {
+    opacity: 0.6;
+}

@@ -178,3 +178,19 @@ Pannelli espandibili con bottone "Applica" per evitare submit accidentali.
 
 **Toggle**: Gestiti con `aria-expanded` e attributo `hidden`, supporto tastiera Enter/Space.
 
+## Filtri Anno Desktop
+
+Submit debounced (500ms) sugli input anno per aggiornamento real-time durante la digitazione.
+
+**Focus preservation**: `sessionStorage.focusElementId` mantiene il focus sull'input dopo il reload.
+
+**Validazione**: Range 1900-2026 al blur e prima del submit.
+
+## Transizioni Pagina Catalogo
+
+Fade-out visivo (opacity 0.6, 150ms) prima di ogni navigazione filtri per UX più fluida.
+
+**CSS**: Classe `.page-transitioning` su body, definita in `style_mobile.css`.
+
+**Applicato a**: checkbox, input anno, sort, ricerca, rimozione filtri, reset.
+
