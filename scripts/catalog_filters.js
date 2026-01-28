@@ -30,6 +30,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Show year hint after reload if year was corrected
+    if (sessionStorage.getItem('showYearHint')) {
+        sessionStorage.removeItem('showYearHint');
+        requestAnimationFrame(() => {
+            const yearContainer = document.querySelector('.year-range-container');
+            if (yearContainer) {
+                let hint = document.getElementById('year-hint');
+                if (!hint) {
+                    hint = document.createElement('div');
+                    hint.id = 'year-hint';
+                    hint.className = 'year-hint';
+                    hint.setAttribute('role', 'status');
+                    hint.setAttribute('aria-live', 'polite');
+                    yearContainer.appendChild(hint);
+                }
+                hint.textContent = 'Oops! Gli anni validi vanno dal 1900 al 2026';
+                hint.classList.add('visible');
+                setTimeout(() => {
+                    hint.classList.remove('visible');
+                }, 5000);
+            }
+        });
+    }
+
 
     const desktopForm = document.getElementById('filters-form');
     const mobileForms = document.querySelectorAll('.mobile-filter-form');
@@ -163,8 +187,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function validateYearInput(input) {
             let value = parseInt(input.value);
-            if (isNaN(value) || value < 1900) value = 1900;
-            if (value > 2026) value = 2026;
+            let corrected = false;
+
+            if (isNaN(value) || value < 1900) {
+                value = 1900;
+                corrected = true;
+            }
+            if (value > 2026) {
+                value = 2026;
+                corrected = true;
+            }
+
+            if (corrected) {
+                sessionStorage.setItem('showYearHint', 'true');
+            }
+
             input.value = value;
         }
 
@@ -176,13 +213,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateYearTag();
                 sessionStorage.setItem('focusElementId', inputId);
                 saveScrollAndSubmit(desktopForm);
-            }, 500);
+            }, 800);
         }
 
         if (yearMinInput) {
             yearMinInput.addEventListener('input', () => {
                 updateYearTag();
-                debouncedYearSubmit('year-min');
+                // Solo se l'anno ha 4 cifre
+                if (yearMinInput.value.length >= 4) {
+                    debouncedYearSubmit('year-min');
+                }
             });
 
             yearMinInput.addEventListener('blur', () => {
@@ -205,7 +245,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (yearMaxInput) {
             yearMaxInput.addEventListener('input', () => {
                 updateYearTag();
-                debouncedYearSubmit('year-max');
+                // Solo se l'anno ha 4 cifre
+                if (yearMaxInput.value.length >= 4) {
+                    debouncedYearSubmit('year-max');
+                }
             });
 
             yearMaxInput.addEventListener('blur', () => {
