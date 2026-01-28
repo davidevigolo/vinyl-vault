@@ -2668,9 +2668,33 @@ html:not(.js-enabled) .load-more-container {
 
 /* End Add Pages */
 
+/* Page Transitions */
+body {
+    opacity: 1;
+    transition: opacity 0.15s ease-out;
+}
 
-/* Profile Page */
+body.page-transitioning {
+    opacity: 0.6;
+}
 
+/* Year Input Hint */
+.year-hint {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    background: var(--bg-subsection);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    max-height: 0;
+    padding: 0 0.8rem;
+    margin-top: 0;
+    opacity: 0;
+    transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease, margin 0.3s ease;
+}
 
-
-/* End Profile Page */
+.year-hint.visible {
+    max-height: 5rem;
+    padding: 0.4rem 0.8rem;
+    margin-top: 0.5rem;
+    opacity: 1;
+}
