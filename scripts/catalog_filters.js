@@ -17,7 +17,44 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         sessionStorage.removeItem('catalogScrollPosition');
     }
-    
+
+    // Restore focus after filter submit
+    const focusElementId = sessionStorage.getItem('focusElementId');
+    if (focusElementId) {
+        sessionStorage.removeItem('focusElementId');
+        requestAnimationFrame(() => {
+            const element = document.getElementById(focusElementId);
+            if (element) {
+                element.focus();
+            }
+        });
+    }
+
+    // Show year hint after reload if year was corrected
+    if (sessionStorage.getItem('showYearHint')) {
+        sessionStorage.removeItem('showYearHint');
+        requestAnimationFrame(() => {
+            const yearContainer = document.querySelector('.year-range-container');
+            if (yearContainer) {
+                let hint = document.getElementById('year-hint');
+                if (!hint) {
+                    hint = document.createElement('div');
+                    hint.id = 'year-hint';
+                    hint.className = 'year-hint';
+                    hint.setAttribute('role', 'status');
+                    hint.setAttribute('aria-live', 'polite');
+                    yearContainer.appendChild(hint);
+                }
+                hint.textContent = 'Oops! Gli anni validi vanno dal 1900 al 2026';
+                hint.classList.add('visible');
+                setTimeout(() => {
+                    hint.classList.remove('visible');
+                }, 5000);
+            }
+        });
+    }
+
+
     const desktopForm = document.getElementById('filters-form');
     const mobileForms = document.querySelectorAll('.mobile-filter-form');
     
@@ -41,14 +78,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    // to save scroll and submit
+    // to save scroll and submit with smooth transition
     function saveScrollAndSubmit(form) {
         // For mobile forms, sync all URL parameters before submit
         if (form.classList.contains('mobile-filter-form')) {
             syncMobileFormParams(form);
         }
         sessionStorage.setItem('catalogScrollPosition', window.scrollY.toString());
-        form.submit();
+
+        // Add fade-out effect before submit
+        document.body.classList.add('page-transitioning');
+        setTimeout(() => {
+            form.submit();
+        }, 150);
     }
 
     // Sync URL parameters to mobile forms to preserve all filters
@@ -102,6 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (resetButton) {
         resetButton.addEventListener('click', (e) => {
             sessionStorage.setItem('catalogScrollPosition', window.scrollY.toString());
+            document.body.classList.add('page-transitioning');
         });
     }
     
@@ -111,7 +154,10 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', (e) => {
             e.preventDefault();
             sessionStorage.setItem('catalogScrollPosition', window.scrollY.toString());
-            window.location.href = button.dataset.href;
+            document.body.classList.add('page-transitioning');
+            setTimeout(() => {
+                window.location.href = button.dataset.href;
+            }, 150);
         });
     });
     
@@ -120,16 +166,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const checkboxes = desktopForm.querySelectorAll('input[type="checkbox"]');
         checkboxes.forEach(checkbox => {
             checkbox.addEventListener('change', () => {
+                sessionStorage.setItem('focusElementId', checkbox.id);
                 saveScrollAndSubmit(desktopForm);
             });
         });
         
-        // Real-time year tag update and debounced submit
+        // Year filter handling
         const yearMinInput = document.getElementById('year-min');
         const yearMaxInput = document.getElementById('year-max');
         const yearTag = document.querySelector('.filter-tag-static');
-        let submitTimer;
-        
+        let yearSubmitTimer;
+
         function updateYearTag() {
             if (yearTag && yearMinInput && yearMaxInput) {
                 const minVal = yearMinInput.value || '1900';
@@ -137,61 +184,89 @@ document.addEventListener('DOMContentLoaded', () => {
                 yearTag.textContent = `${minVal} - ${maxVal}`;
             }
         }
-        
-        function debouncedSubmit() {
-            clearTimeout(submitTimer);
-            submitTimer = setTimeout(() => {
-                // Validate before submit
-                if (yearMinInput) {
-                    let val = parseInt(yearMinInput.value);
-                    if (isNaN(val) || val < 1900) yearMinInput.value = 1900;
-                    if (val > 2026) yearMinInput.value = 2026;
-                }
-                if (yearMaxInput) {
-                    let val = parseInt(yearMaxInput.value);
-                    if (isNaN(val) || val < 1900) yearMaxInput.value = 1900;
-                    if (val > 2026) yearMaxInput.value = 2026;
-                }
-                updateYearTag();
-                saveScrollAndSubmit(desktopForm);
-            }, 300); // Wait 300ms after user stops typing in order to have a "slowish" refresh
+
+        function validateYearInput(input) {
+            let value = parseInt(input.value);
+            let corrected = false;
+
+            if (isNaN(value) || value < 1900) {
+                value = 1900;
+                corrected = true;
+            }
+            if (value > 2026) {
+                value = 2026;
+                corrected = true;
+            }
+
+            if (corrected) {
+                sessionStorage.setItem('showYearHint', 'true');
+            }
+
+            input.value = value;
         }
-        
+
+        function debouncedYearSubmit(inputId) {
+            clearTimeout(yearSubmitTimer);
+            yearSubmitTimer = setTimeout(() => {
+                if (yearMinInput) validateYearInput(yearMinInput);
+                if (yearMaxInput) validateYearInput(yearMaxInput);
+                updateYearTag();
+                sessionStorage.setItem('focusElementId', inputId);
+                saveScrollAndSubmit(desktopForm);
+            }, 800);
+        }
+
         if (yearMinInput) {
             yearMinInput.addEventListener('input', () => {
                 updateYearTag();
-                debouncedSubmit();
+                // Solo se l'anno ha 4 cifre
+                if (yearMinInput.value.length >= 4) {
+                    debouncedYearSubmit('year-min');
+                }
+            });
+
+            yearMinInput.addEventListener('blur', () => {
+                validateYearInput(yearMinInput);
+                updateYearTag();
+            });
+
+            yearMinInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    clearTimeout(yearSubmitTimer);
+                    validateYearInput(yearMinInput);
+                    updateYearTag();
+                    sessionStorage.setItem('focusElementId', 'year-min');
+                    saveScrollAndSubmit(desktopForm);
+                }
             });
         }
+
         if (yearMaxInput) {
             yearMaxInput.addEventListener('input', () => {
                 updateYearTag();
-                debouncedSubmit();
-            });
-        }
-        
-        // Auto-submit on year input blur (desktop)
-        const yearInputs = desktopForm.querySelectorAll('input[type="number"]');
-        yearInputs.forEach(input => {
-            input.addEventListener('blur', () => {
-                // Validate range
-                let value = parseInt(input.value);
-                if (isNaN(value) || value < 1900) value = 1900;
-                if (value > 2026) value = 2026;
-                input.value = value;
-                
-                updateYearTag(); // Update tag after validation
-                saveScrollAndSubmit(desktopForm);
-            });
-            
-            // Submit on Enter key
-            input.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    e.preventDefault();
-                    input.blur();
+                // Solo se l'anno ha 4 cifre
+                if (yearMaxInput.value.length >= 4) {
+                    debouncedYearSubmit('year-max');
                 }
             });
-        });
+
+            yearMaxInput.addEventListener('blur', () => {
+                validateYearInput(yearMaxInput);
+                updateYearTag();
+            });
+
+            yearMaxInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    clearTimeout(yearSubmitTimer);
+                    validateYearInput(yearMaxInput);
+                    updateYearTag();
+                    sessionStorage.setItem('focusElementId', 'year-max');
+                    saveScrollAndSubmit(desktopForm);
+                }
+            });
+        }
     }
     
     // Manual submit for mobile filters (with apply button)
@@ -291,7 +366,12 @@ document.addEventListener('DOMContentLoaded', () => {
         sortSelect.addEventListener('change', (e) => {
             const url = new URL(window.location.href);
             url.searchParams.set('sort', e.target.value);
-            window.location.href = url.toString();
+            sessionStorage.setItem('catalogScrollPosition', window.scrollY.toString());
+            sessionStorage.setItem('focusElementId', 'sort-select');
+            document.body.classList.add('page-transitioning');
+            setTimeout(() => {
+                window.location.href = url.toString();
+            }, 150);
         });
     }
 
@@ -328,7 +408,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (query !== '' || currentQuery) {
                     announceFilterChange('Ricerca in corso...');
                     sessionStorage.setItem('catalogScrollPosition', window.scrollY.toString());
-                    searchForm.submit();
+                    sessionStorage.setItem('focusElementId', 'catalog-search');
+                    document.body.classList.add('page-transitioning');
+                    setTimeout(() => {
+                        searchForm.submit();
+                    }, 150);
                 }
             }, 1000); // 1 second debounce
         });
@@ -344,7 +428,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const url = new URL(window.location.href);
                 url.searchParams.delete('q');
                 sessionStorage.setItem('catalogScrollPosition', window.scrollY.toString());
-                window.location.href = url.toString();
+                sessionStorage.setItem('focusElementId', 'catalog-search');
+                document.body.classList.add('page-transitioning');
+                setTimeout(() => {
+                    window.location.href = url.toString();
+                }, 150);
             });
         }
 

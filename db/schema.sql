@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS disk (
     id INT AUTO_INCREMENT,
     label VARCHAR(100),
 
-    title VARCHAR(200) NOT NULL UNIQUE,
+    title VARCHAR(200) NOT NULL,
     disk_type ENUM('EP','ALBUM','SINGLE') NOT NULL,
 
     PRIMARY KEY (id)
