@@ -48,8 +48,9 @@ function album_tracklist($disk_id, $edition_name) {
         return '<section id="tracklist-section" class="tracklist-section" aria-labelledby="tracklist-heading">'
              . '<div class="center-container">'
              . '<h2 id="tracklist-heading">Singolo</h2>'
+             . '<div class="tracklist-single">'
              . $tracks_html
-             . '</div></section>';
+             . '</div></div></section>';
     }
     return '<section id="tracklist-section" class="tracklist-section" aria-labelledby="tracklist-heading">'
          . '<div class="center-container">'
