@@ -6,12 +6,7 @@ include_once '../classes/utils.php';
 
 check_user_logged_in();
 
-$action = $_POST['action'] ?? null;
-$user_id = $_SESSION['user_id'] ?? null;
-$disk_id = $_POST['disk_id'] ?? null;
-$edition_name = $_POST['edition_name'] ?? null;
-
-function edit_multiple_items_in_collection($user_id)
+function edit_multiple_items_in_collection($user_id,$disk_ids, $edition_names, $items_to_delete, $rating) : array
 {
     $disk_ids = $_POST['disk_id'] ?? [];
     $edition_names = $_POST['edition_name'] ?? [];
@@ -19,21 +14,21 @@ function edit_multiple_items_in_collection($user_id)
     $rating = $_POST['rating'] ?? [];
 
     if (!is_array($disk_ids) || !is_array($edition_names)) {
-        return false;
+        return ['success' => false, 'error' => 'Alcuni dati devono ancora essere compilati'];
     }
 
     $count = count($disk_ids);
     if ($count !== count($edition_names)) {
-        return false;
+        return ['success' => false, 'error' => 'Alcuni dati devono ancora essere compilati'];
     }
 
     if ($count === 0) {
-        return true; // No items to update is considered success
+        return ['success' => true]; // No items to update is considered success
     }
 
     foreach($rating as $rate) {
         if (!is_numeric($rate) || intval($rate) < 0 || intval($rate) > 5) {
-            return false;
+            return ['success' => false, 'error' => 'Valutazioni non valide, devono essere comrprese tra 0 e 5'];
         }
     }
 
@@ -47,7 +42,7 @@ function edit_multiple_items_in_collection($user_id)
     if (!$delete_stmt || !$update_stmt) {
         error_log(mysqli_error($connection->get_connection()));
         mysqli_rollback($connection->get_connection());
-        return false;
+        return ['success' => false, 'error' => ''];
     }
 
     $success = true;
@@ -77,7 +72,7 @@ function edit_multiple_items_in_collection($user_id)
     mysqli_stmt_close($delete_stmt);
     mysqli_stmt_close($update_stmt);
     mysqli_commit($connection->get_connection());
-    return $success;
+    return $success ? ['success' => true] : ['success' => false, 'error' => 'Si è verificato un errore durante l\'aggiornamento della tua collezione. Probabilmente i dati che hai inserito non sono validi, prova ad aggiornare la pagina e riprovare' ];
 }
 
 $action = $_POST['action'] ?? null;

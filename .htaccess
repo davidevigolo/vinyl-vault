@@ -95,6 +95,10 @@ Options -Indexes
     Order Allow,Deny
     Allow from all
 </Files>
+<Files "album_actions_controller.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
 <Files "login.php">
     Order Allow,Deny
     Allow from all

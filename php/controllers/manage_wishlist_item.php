@@ -60,7 +60,7 @@ function edit_multiple_items_in_collection($disk_ids, $edition_names, $priority_
 
     mysqli_stmt_close($update_stmt);
     mysqli_stmt_close($delete_stmt);
-    return ['success' => $success, 'error' => $success ? '' : 'Si è verificato un errore durante l\'aggiornamento della tua wishlist. Probabilmente i dati che hai inserito non sono validi, prova ad aggiornare la pagina e riprovare'];
+    return ['success' => $success, 'error' => $success ? '' : 'Si è verificato un errore durante l\'aggiornamento della tua lista dei desideri. Probabilmente i dati che hai inserito non sono validi, prova ad aggiornare la pagina e riprovare'];
 }
 
 $user_id = $_SESSION['user_id'] ?? null;
