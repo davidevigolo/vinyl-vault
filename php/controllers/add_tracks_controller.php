@@ -64,6 +64,39 @@ function add_tracks($disk, $edition, $titles, $durations): array
     }
 
     $connection = DbConnection::get_instance();
+    $query = "SELECT type FROM disk WHERE id = ?";
+    $stmt = mysqli_prepare($connection->get_connection(), $query);
+    if (!$stmt) {
+        return ['success' => false, 'error' => 'Errore interno durante il controllo del tipo di disco'];
+    }
+    $success = mysqli_stmt_bind_param($stmt, 'i', $disk);
+    if (!$success) {
+        mysqli_stmt_close($stmt);
+        return ['success' => false, 'error' => 'Errore interno durante il controllo del tipo di disco'];
+    }
+    $success = mysqli_stmt_execute($stmt);
+    if (!$success) {
+        mysqli_stmt_close($stmt);
+        return ['success' => false, 'error' => 'Errore interno durante il controllo del tipo di disco'];
+    }
+    mysqli_stmt_bind_result($stmt, $disk_type);
+    mysqli_stmt_fetch($stmt);
+    mysqli_stmt_close($stmt);
+
+    $max_tracks = [
+        'SINGLE' => 1,
+        'EP' => 6,
+        'ALBUM' => 20
+    ];
+
+    if (!isset($max_tracks[$disk_type])) {
+        return ['success' => false, 'error' => 'Tipo di disco non valido'];
+    }
+
+    if (count($titles) > $max_tracks[$disk_type]) {
+        return ['success' => false, 'error' => 'Il numero massimo di tracce per un disco di tipo ' . htmlspecialchars($disk_type) . ' è ' . $max_tracks[$disk_type]];
+    }
+
     $query = "INSERT INTO track (title, duration_seconds) VALUES (?, ?);";
     $link_query = "INSERT INTO edition_track_part_of (disk_id, edition_name, track_id, track_number) VALUES (?, ?, ?, ?);";
     $check_duplicate_track_query = "SELECT COUNT(*) as count FROM edition_track_part_of etp

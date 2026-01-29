@@ -1,53 +1,50 @@
+this.document.getElementById('country').addEventListener('input', function () {
+    // Find the error message element
+    let errorMessage = document.getElementById('country-error');
+    validateSelect(this, errorMessage);
+});
 
-window.addEventListener('load', function () {
-    this.document.getElementById('country').addEventListener('input', function () {
-        // Find the error message element
-        let errorMessage = document.getElementById('country-error');
-        validateSelect(this, errorMessage);
-    });
+this.document.getElementById('name').addEventListener('input', function () {
+    validate_name(this);
+});
 
-    this.document.getElementById('name').addEventListener('input', function() {
-        validate_name(this);
-    });
+this.document.getElementById('standard-edition-checkbox').addEventListener('change', function () {
+    let nameInput = document.getElementById('name');
+    let nameError = document.getElementById('name-error');
 
-        this.document.getElementById('standard-edition-checkbox').addEventListener('change', function () {
-            let nameInput = document.getElementById('name');
-            let nameError = document.getElementById('name-error');
+    if (this.checked) {
+        nameInput.disabled = true;
+        nameError.textContent = '';
+    } else {
+        nameInput.disabled = false;
+        nameInput.focus();
+        validate_name(nameInput);
+    }
+});
 
-            if (this.checked) {
-                nameInput.disabled = true;
-                nameError.textContent = '';
-            } else {
-                nameInput.disabled = false;
-                nameInput.focus();
-                validate_name(nameInput);
-            }
-        });
+this.document.getElementById('release-date').addEventListener('input', function () {
+    // Find the error message element
+    let errorMessage = document.getElementById('release-date-error');
+    let value = this.value.trim();
 
-    this.document.getElementById('release-date').addEventListener('input', function () {
-        // Find the error message element
-        let errorMessage = document.getElementById('release-date-error');
-        let value = this.value.trim();
-
-        if (value.length < 1) {
+    if (value.length < 1) {
+        if (errorMessage) {
+            errorMessage.textContent = 'Obbligatorio';
+        }
+    }
+    if (value.length > 0) {
+        let year = parseInt(value);
+        let currentYear = new Date().getFullYear();
+        if (year < 1887 || year > currentYear) {
             if (errorMessage) {
-                errorMessage.textContent = 'Obbligatorio';
+                errorMessage.textContent = 'La data di rilascio deve essere tra 1887 e ' + currentYear;
+            }
+        } else {
+            if (errorMessage) {
+                errorMessage.textContent = '';
             }
         }
-        if (value.length > 0) {
-            let year = parseInt(value);
-            let currentYear = new Date().getFullYear();
-            if (year < 1887 || year > currentYear) {
-                if (errorMessage) {
-                    errorMessage.textContent = 'La data di rilascio deve essere tra 1887 e ' + currentYear;
-                }
-            } else {
-                if (errorMessage) {
-                    errorMessage.textContent = '';
-                }
-            }
-        }
-    });
+    }
 });
 
 function validateSelect(element, errorMessage) {
