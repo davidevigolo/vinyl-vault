@@ -28,7 +28,7 @@
             </ol>
         </div>
     </nav>
-    
+
     <main id="content">
         <div class="center-container">
             <div class="login-titles">
@@ -42,16 +42,24 @@
                         <legend>Credenziali utente</legend>
 
                         <div class="input-wrapper">
-                            <label for="email" lang="en">Email</label>
+                            <label for="email">
+                                <span lang="en">Email</span>
+                                <span class="required-field">(Obbligatorio)</span>
+                            </label>
                             <input type="email" name="email" id="email-input" placeholder="maria.rossi@gmail.com"
                                 autocomplete="email" required="required" />
                             [email-error]
                         </div>
 
                         <div class="input-wrapper">
-                            <label for="password" lang="en">Password</label>
+                            <label for="password">
+                                <span lang="en">Password</span>
+                                <span class="required-field">(Obbligatorio)</span>
+                            </label>
                             <input type="password" name="password" id="password-input" autocomplete="current-password"
                                 required="required" />
+                            <p id="email-error-container" aria-live="polite" class="error-message">La <span
+                                    lang="en">password</span> è obbligatoria</p>
                             [password-error]
                         </div>
 
@@ -62,7 +70,7 @@
                 </form>
 
                 <p>Nuovo su <span lang="en">VinylVault</span>? <a href="register.php">Registrati</a></p>
-            </div>   
+            </div>
         </div>
     </main>
 

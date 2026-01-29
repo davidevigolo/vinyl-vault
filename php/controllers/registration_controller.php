@@ -21,9 +21,13 @@ function register($req) {
 
     if (empty($first_name)) {
         $errors['first_name'] = 'Il nome è obbligatorio';
+    } elseif (preg_match('/[0-9]/', $first_name)) {
+        $errors['first_name'] = 'Il nome non può contenere numeri';
     }
     if (empty($last_name)) {
         $errors['last_name'] = 'Il cognome è obbligatorio';
+    } elseif (preg_match('/[0-9]/', $last_name)) {
+        $errors['last_name'] = 'Il cognome non può contenere numeri';
     }
     if (empty($username)) {
         $errors['username'] = 'Lo <span lang="en">username</span> è obbligatorio';

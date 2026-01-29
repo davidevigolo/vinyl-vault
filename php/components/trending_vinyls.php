@@ -1,7 +1,6 @@
 <?php
 include_once 'php/classes/DbConnection.php';
-function get_trending_vinyls()
-{
+function get_trending_vinyls() {
     $connection = DbConnection::get_instance();
     $query = "SELECT w.disk_id, w.edition_name, d.title, ed.image_path, w.wl_count,
                 (SELECT a.id FROM disk_author_release dar 
@@ -25,8 +24,7 @@ function get_trending_vinyls()
     return $result;
 }
 
-function trending_vinyls()
-{
+function trending_vinyls() {
     ob_start();
     $trendingVinyls = get_trending_vinyls();
     if ($trendingVinyls) {
@@ -38,7 +36,7 @@ function trending_vinyls()
                 'title' => htmlspecialchars($vinyl['title']),
                 'artist_id' => $vinyl['author_id'],
                 'artist' => htmlspecialchars($vinyl['author_name']),
-                'cover_image' => htmlspecialchars($vinyl['image_path']) ?:  ?: 'assets/images/vinyl_placeholder.jpg',
+                'cover_image' => htmlspecialchars($vinyl['image_path']) ? htmlspecialchars($vinyl['image_path']) : 'assets/images/vinyl_placeholder.jpg',
                 'wishlist_count' => $vinyl['wl_count']
             ]);
         }
