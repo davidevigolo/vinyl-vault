@@ -1674,7 +1674,8 @@ img#empty-collection-image {
     margin-top: 1.2em;
 }
 
-.hero .artist-image {
+.hero .artist-image,
+.hero #profile-image {
     width: 20rem;
     height: 20rem;
     border-radius: 50%;
@@ -1688,7 +1689,6 @@ img#empty-collection-image {
     font-family: var(--font-secondary);
 }
 
-.hero-text h1+p {
     font-size: var(--font-small);
     margin-bottom: 1rem;
     display: block;
@@ -2737,3 +2737,80 @@ body.page-transitioning {
     cursor: not-allowed;
     transform: none;
 }
+
+/* Profile page */
+
+#profile-heading {
+    font-size: var(--font-xxxl);
+    margin-bottom: 0;
+}
+
+#user-name {
+    font-size: var(--font-xl);
+    font-family: var(--font-secondary);
+    color: var(--text-secondary);
+    font-weight: 600;
+    margin-bottom: 0.3em;
+}
+
+#user-bio {
+    font-size: var(--font-medium);
+}
+
+#profile-stats {
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border-default);
+    padding: 1.5rem 0;
+}
+
+#profile-stats-title {
+    width: 100%;
+    color: var(--brand-primary-dark);
+    font-size: var(--font-xxxl);
+    font-family: var(--font-secondary);
+    font-weight: 600;
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+
+#profile-stats ol {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    max-width: 55em;
+    margin: auto;
+    padding: 0 1rem;
+}
+
+#profile-stats li {
+    text-align: center;
+    display: flex;
+    flex-direction: column-reverse;
+    
+    gap: 0.2rem;
+}
+
+/* Lo stile per il numero (placeholder [count]) */
+#profile-stats li span, 
+#profile-stats li {
+    font-size: var(--font-large);
+    font-weight: 700;
+    color: var(--brand-primary-dark);
+}
+
+/* --- Sezione Artisti Preferiti (stile simile a Artisti Simili) --- */
+#favorite-artists {
+    padding-top: 2rem;
+    text-align: center;
+}
+
+#fav-artists-title {
+    color: var(--brand-primary-dark);
+    font-size: var(--font-xxl);
+    font-family: var(--font-secondary);
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+/* Add Profile page */
