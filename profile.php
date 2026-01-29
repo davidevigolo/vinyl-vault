@@ -21,6 +21,7 @@ echo Template::render('static/profile.html', array_merge(
         'head' => Template::render('static/layout/head.html', []),
         'header' => _header(),
         'footer' => footer(),
+        'remove-propic-disabled' => ($_SESSION['propic_path'] ?? '') === 'assets/images/default-avatar.png' ? 'disabled="disabled"' : '',
     ]
 ));
 

@@ -1,8 +1,7 @@
 <?php
 include_once 'php/classes/DbConnection.php';
 
-function get_top_vinyls()
-{
+function get_top_vinyls() {
     $connection = DbConnection::get_instance();
     $query = "SELECT a.author_name, d.title, e.edition_name, e.image_path, COUNT(o.user_id) AS ownership_count
                 FROM disk d
@@ -22,29 +21,28 @@ function get_top_vinyls()
     return $result;
 }
 
-function top_vinyls()
-{
+function top_vinyls() {
     $ordinali = [
-    1 => "Primo",
-    2 => "Secondo",
-    3 => "Terzo",
-    4 => "Quarto",
-    5 => "Quinto",
-    6 => "Sesto",
-    7 => "Settimo",
-    8 => "Ottavo",
-    9 => "Nono",
-    10 => "Decimo",
-    11 => "Undicesimo",
-    12 => "Dodicesimo",
-    13 => "Tredicesimo",
-    14 => "Quattordicesimo",
-    15 => "Quindicesimo",
-    16 => "Sedicesimo",
-    17 => "Diciassettesimo",
-    18 => "Diciottesimo",
-    19 => "Diciannovesimo",
-    20 => "Ventesimo"
+        1 => "Primo",
+        2 => "Secondo",
+        3 => "Terzo",
+        4 => "Quarto",
+        5 => "Quinto",
+        6 => "Sesto",
+        7 => "Settimo",
+        8 => "Ottavo",
+        9 => "Nono",
+        10 => "Decimo",
+        11 => "Undicesimo",
+        12 => "Dodicesimo",
+        13 => "Tredicesimo",
+        14 => "Quattordicesimo",
+        15 => "Quindicesimo",
+        16 => "Sedicesimo",
+        17 => "Diciassettesimo",
+        18 => "Diciottesimo",
+        19 => "Diciannovesimo",
+        20 => "Ventesimo"
     ];
     ob_start();
     $topVinyls = get_top_vinyls();
@@ -58,7 +56,7 @@ function top_vinyls()
                 'artist' => htmlspecialchars($vinyl['author_name']),
                 'title' => htmlspecialchars($vinyl['title']),
                 'ed_name' => htmlspecialchars($vinyl['edition_name']),
-                'cover_image' => htmlspecialchars($vinyl['image_path']) ?:  ?: 'assets/images/vinyl_placeholder.jpg',
+                'cover_image' => htmlspecialchars($vinyl['image_path']) ? htmlspecialchars($vinyl['image_path']) : 'assets/images/vinyl_placeholder.jpg',
                 'span_class' => $span,
                 'direction' => $i > 3 ? 'direction-vertical' : 'direction-horizontal',
                 'index' => $i,

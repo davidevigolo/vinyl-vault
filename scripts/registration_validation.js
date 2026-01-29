@@ -41,6 +41,8 @@ const clearError = (input, errorId) => {
 
 const isTextValid = (text) => text.trim().length > 0;
 
+const hasNumbers = (text) => /[0-9]/.test(text);
+
 const isEmailValid = (email) => email.trim().length > 0 && emailRegex.test(email);
 
 const getPasswordError = (password) => {
@@ -61,7 +63,9 @@ const doPasswordsMatch = (pwd, confirmPwd) => pwd === confirmPwd;
 const updateButtonState = () => {
     const isFormValid =
         isTextValid(firstNameInput.value) &&
+        !hasNumbers(firstNameInput.value) &&
         isTextValid(lastNameInput.value) &&
+        !hasNumbers(lastNameInput.value) &&
         isEmailValid(emailInput.value) &&
         isTextValid(usernameInput.value) &&
         getPasswordError(passwordInput.value) === null &&
@@ -79,6 +83,8 @@ const checkRequiredText = (event, errorId, fieldName) => {
     const input = event.target;
     if (!isTextValid(input.value)) {
         showError(input, errorId, `Il ${fieldName} è obbligatorio`);
+    } else if (hasNumbers(input.value)) {
+        showError(input, errorId, `Il ${fieldName} non può contenere numeri`);
     } else {
         clearError(input, errorId);
     }

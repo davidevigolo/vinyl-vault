@@ -43,23 +43,32 @@
                         <legend>Dati registrazione</legend>
 
                         <div class="input-wrapper">
-                            <label for="first-name">Nome</label>
+                            <label for="first-name">
+                                Nome
+                                <span class="required-field">(Obbligatorio)</span>
+                            </label>
                             <input type="text" name="first-name" id="first-name-input" placeholder="Maria"
-                                autocomplete="given-name" required="required" value="[first-name-value]" />
+                                autocomplete="given-name" required="required" value="[first-name-value]" pattern="[^0-9]*" title="Il nome non può contenere numeri" />
                             <p class="input-example">Esempio: Maria</p>
                             [first-name-error]
                         </div>
 
                         <div class="input-wrapper">
-                            <label for="last-name">Cognome</label>
+                            <label for="last-name">
+                                Cognome
+                                <span class="required-field">(Obbligatorio)</span>
+                            </label>
                             <input type="text" name="last-name" id="last-name-input" placeholder="Rossi"
-                                autocomplete="family-name" required="required" value="[last-name-value]" />
+                                autocomplete="family-name" required="required" value="[last-name-value]" pattern="[^0-9]*" title="Il cognome non può contenere numeri" />
                             <p class="input-example">Esempio: Rossi</p>
                             [last-name-error]
                         </div>
 
                         <div class="input-wrapper">
-                            <label for="email" lang="en">Email</label>
+                            <label for="email">
+                                <span lang="en">Email</span>
+                                <span class="required-field">(Obbligatorio)</span>
+                            </label>
                             <input type="email" name="email" id="email-input" placeholder="maria.rossi@gmail.com"
                                 autocomplete="email" required="required" value="[email-value]" />
                             <p class="input-example">Esempio: maria.rossi@gmail.com</p>
@@ -67,7 +76,10 @@
                         </div>
 
                         <div class="input-wrapper">
-                            <label for="username" lang="en">Username</label>
+                            <label for="username">
+                                <span lang="en">Username</span>
+                                <span class="required-field">(Obbligatorio)</span>
+                            </label>
                             <input type="text" name="username" id="username-input" placeholder="maryrossi4321"
                                 autocomplete="username" required="required" value="[username-value]" />
                             <p class="input-example">Esempio: maryrossi4321</p>
@@ -75,7 +87,10 @@
                         </div>
 
                         <div class="input-wrapper">
-                            <label for="password" lang="en">Password</label>
+                            <label for="password">
+                                <span lang="en">Password</span>
+                                <span class="required-field">(Obbligatorio)</span>
+                            </label>
                             <input type="password" name="password" id="password-input" autocomplete="new-password"
                                 required="required" />
                             <div id="password-requirements">
@@ -90,8 +105,12 @@
                         </div>
 
                         <div class="input-wrapper">
-                            <label for="password-confirm">Conferma <span lang="en">password</span></label>
-                            <input type="password" name="password-confirm" id="password-confirm-input" required="required" />
+                            <label for="password-confirm">
+                                Conferma <span lang="en">password</span>
+                                <span class="required-field">(Obbligatorio)</span>
+                            </label>
+                            <input type="password" name="password-confirm" id="password-confirm-input"
+                                required="required" />
                             [password-confirm-error]
                         </div>
 
