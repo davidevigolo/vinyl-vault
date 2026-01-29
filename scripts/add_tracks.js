@@ -1,13 +1,45 @@
 this.document.getElementById('disk').value == '' ? this.document.getElementById('edition').setAttribute('disabled', 'true') : null;
+this.document.getElementById('disk').value == '' ? this.document.getElementById('add-track-button').setAttribute('disabled', 'true') : null;
 this.document.querySelectorAll('.track-fieldset').forEach((fieldset, index) => fieldset.getAttribute('data-display') === 'false' ? fieldset.style.display = 'none' : null);
 
 this.document.getElementById('disk').addEventListener('input', function () {
     let errorMessage = document.getElementById('disk-error');
     let editionInput = document.getElementById('edition');
+    let addTrackButton = document.getElementById('add-track-button');
     editionInput.value = '';
     
     validateSelect(this, errorMessage);
     editionInput.removeAttribute('disabled');
+    
+    // Reset and hide all track fieldsets
+    document.querySelectorAll('.track-fieldset').forEach((fieldset, index) => {
+        // Clear all inputs within the fieldset
+        fieldset.querySelectorAll('input').forEach(input => {
+            input.value = '';
+        });
+        
+        // Clear all error messages within the fieldset
+        fieldset.querySelectorAll('[id$="-error"]').forEach(errorMsg => {
+            errorMsg.textContent = '';
+        });
+        
+        // Hide all track fieldsets except the first one
+        if (index > 0) {
+            fieldset.style.display = 'none';
+        }
+    });
+    
+    // Clear the max tracks error if it exists
+    const maxTracksError = document.querySelector('#max-tracks-error');
+    if (maxTracksError) {
+        maxTracksError.textContent = '';
+    }
+    
+    if (this.value.trim() !== '') {
+        addTrackButton.removeAttribute('disabled');
+    } else {
+        addTrackButton.setAttribute('disabled', 'true');
+    }
 });
 
 this.document.getElementById('edition').addEventListener('input', function () {
@@ -46,11 +78,29 @@ this.document.addEventListener('input', function (event) {
 });
 
 this.document.getElementById('add-track-button').addEventListener('click', function () {
+    const diskSelect = document.getElementById('disk');
+    const selectedOption = diskSelect.options[diskSelect.selectedIndex];
+    const diskType = selectedOption ? selectedOption.getAttribute('data-disk-type') : null;
+    
+    const maxTracks = getMaxTracksForDiskType(diskType);
+    const visibleTracksCount = Array.from(document.querySelectorAll('.track-fieldset')).filter(fieldset => getComputedStyle(fieldset).display !== 'none').length;
+    
+    if (visibleTracksCount >= maxTracks) {
+        const errorMessage = document.querySelector('#max-tracks-error');
+        if (errorMessage) {
+            errorMessage.textContent = 'Hai raggiunto il numero massimo di tracce per il tipo di disco selezionato';
+        }
+        return;
+    }else{
+        const errorMessage = document.querySelector('#max-tracks-error');
+        if (errorMessage) {
+            errorMessage.textContent = '';
+        }
+    }
+    
     const hiddenFieldset = Array.from(document.querySelectorAll('.track-fieldset')).find(fieldset => getComputedStyle(fieldset).display === 'none');
     if (hiddenFieldset) {
         hiddenFieldset.style.display = 'block';
-    }else {
-        alert('Hai raggiunto il numero massimo di tracce aggiungibili.');
     }
 });
 
@@ -98,6 +148,18 @@ function validateSelect(element, errorMessage) {
             errorMessage.textContent = '';
         }
     }
+}
+
+function getMaxTracksForDiskType(diskType) {
+    if (!diskType) return 30; // Default if no disk type is selected
+    
+    const limits = {
+        'SINGLE': 1,
+        'EP': 6,
+        'Album': 30
+    };
+    
+    return limits[diskType] || 30;
 }
 
 function filterEditionsByDisk(diskId) {

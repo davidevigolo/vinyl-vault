@@ -173,3 +173,24 @@ function get_all_disk_ids()
     }
     return $ids;
 }
+
+function get_max_tracks_by_type($disk_type){
+    switch ($disk_type) {
+        case 'ALBUM':
+            return 20;
+        case 'EP':
+            return 6;
+        case 'SINGLE':
+            return 1;
+        default:
+            return 0;
+    }
+}
+
+function get_disk_type_display_names(){
+    return [
+        'SINGLE' => 'Singolo',
+        'EP' => 'EP',
+        'ALBUM' => 'Album'
+    ];
+}

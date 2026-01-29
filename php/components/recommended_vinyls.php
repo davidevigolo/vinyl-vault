@@ -73,6 +73,8 @@ function recommended_vinyls()
     
     if ($recommendations && mysqli_num_rows($recommendations) > 0) {
         while ($vinyl = mysqli_fetch_assoc($recommendations)) {
+            // TBD: Implementare gestione immagini reali
+            $cover_image = htmlspecialchars($vinyl['image_path']);
             
             echo Template::render('static/layout/vinyl_card.html', [
                 'disk_id' => $vinyl['disk_id'],
