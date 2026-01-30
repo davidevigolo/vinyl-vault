@@ -35,6 +35,7 @@ function user_info() {
     ];
 }
 
+/* ottimizzata -> controllare
 function profile_statistics() {
     $connection = DbConnection::get_instance();
     $user_id = intval($_SESSION['user_id']);
@@ -76,6 +77,35 @@ function profile_statistics() {
         'wishlist-disk-count' => htmlspecialchars($wishlist_count),
         'collection-artist-count' => htmlspecialchars($artists_count)
     ];
+}*/
+function profile_statistics() {
+    $connection = DbConnection::get_instance();
+    $user_id = intval($_SESSION['user_id']);
+
+    // Una singola query per ottenere tutti e tre i conteggi contemporaneamente
+    $query = "SELECT 
+        (SELECT COUNT(*) FROM ownership WHERE user_id = $user_id) as collection_count,
+        (SELECT COUNT(*) FROM wishlist WHERE user_id = $user_id) as wishlist_count,
+        (SELECT COUNT(DISTINCT dar.author_id) 
+         FROM ownership o 
+         JOIN disk_author_release dar ON o.disk_id = dar.disk_id 
+         WHERE o.user_id = $user_id) as artists_count";
+
+    $result = mysqli_query($connection->get_connection(), $query);
+    
+    $stats = [
+        'collection-disk-count' => 0,
+        'wishlist-disk-count' => 0,
+        'collection-artist-count' => 0
+    ];
+
+    if ($result && $row = mysqli_fetch_assoc($result)) {
+        $stats['collection-disk-count'] = $row['collection_count'];
+        $stats['wishlist-disk-count'] = $row['wishlist_count'];
+        $stats['collection-artist-count'] = $row['artists_count'];
+    }
+
+    return $stats;
 }
 
 function collection_cards() {
@@ -94,7 +124,7 @@ function collection_cards() {
             'title' => htmlspecialchars($vinyl['title']),
             'artist' => htmlspecialchars($vinyl['author']),
             'ed_name' => htmlspecialchars($vinyl['edition_name']),
-            'cover_image' => 'assets/images/pollo.webp',
+            'cover_image' => htmlspecialchars($vinyl['image_path']) ?: 'assets/images/vinyl_placeholder.jpg',
             'disk_id' => htmlspecialchars($vinyl['disk_id'])
         ]);
     }
@@ -118,7 +148,7 @@ function wishlist_cards() {
             'title' => htmlspecialchars($vinyl['title']),
             'artist' => htmlspecialchars($vinyl['author']),
             'ed_name' => htmlspecialchars($vinyl['edition_name']),
-            'cover_image' => 'assets/images/pollo.webp',
+            'cover_image' => htmlspecialchars($vinyl['image_path']) ?: 'assets/images/vinyl_placeholder.jpg',
             'disk_id' => htmlspecialchars($vinyl['disk_id'])
         ]);
     }
@@ -139,11 +169,10 @@ function favorite_artists() {
               WHERE o.user_id = $user_id
               GROUP BY a.id, a.author_name, a.image_path
               ORDER BY disk_count DESC, a.author_name ASC
-              LIMIT 3";
+              LIMIT 4";
 
     $result = mysqli_query($connection->get_connection(), $query);
 
-    # TODO Usare immagini degli artisti quando saranno caricate
     // If no artists, render empty state
     if (!$result || mysqli_num_rows($result) === 0) {
         return ['favorite-artists-content' => Template::render('static/layout/profile/empty_favorite_artists.html', [])];

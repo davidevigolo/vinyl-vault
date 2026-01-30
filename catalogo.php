@@ -11,7 +11,7 @@ $sort_by = isset($_GET['sort']) ? $_GET['sort'] : 'collected';
 $search_query = isset($_GET['q']) ? trim($_GET['q']) : null;
 
 // load ALL results (with search if provided)
-$catalog_data = get_catalog_vinyls($genre_filter, $year_min, $year_max, $sort_by, 1000, $search_query);
+$catalog_data = get_catalog_vinyls($genre_filter, $year_min, $year_max, $sort_by, 300, $search_query);
 $total_count = count($catalog_data);
 
 $genres_list = get_all_genres();

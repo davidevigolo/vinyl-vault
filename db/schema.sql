@@ -133,3 +133,13 @@ CREATE OR REPLACE VIEW wishlist_count AS
 SELECT disk_id, edition_name, COUNT(*) as wl_count
 FROM wishlist
 GROUP BY disk_id, edition_name;
+
+-- Index per velocizzare
+CREATE INDEX idx_ownership_user ON ownership(user_id);
+CREATE INDEX idx_ownership_disk_edition ON ownership(disk_id, edition_name);
+CREATE INDEX idx_ownership_date ON ownership(date_acquired);
+CREATE INDEX idx_wishlist_user ON wishlist(user_id);
+CREATE INDEX idx_dar_disk ON disk_author_release(disk_id);
+CREATE INDEX idx_dar_author ON disk_author_release(author_id);
+CREATE INDEX idx_author_name ON author(author_name);
+CREATE INDEX idx_edition_lookup ON edition(disk_id, edition_name);

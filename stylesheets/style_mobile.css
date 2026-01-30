@@ -102,23 +102,22 @@
 
 @supports (font-size: clamp(1rem, 1vi, 1rem)) {
     :root {
-        /* Versione bilanciata: una via di mezzo tra i due estremi */
-        --font-small: clamp(1rem, 0.98rem + 0.1vw, 1.1rem);       /* ~16px - 17.5px */
-        --font-medium: clamp(1.1rem, 1.05rem + 0.2vw, 1.25rem);   /* ~17.5px - 20px */
-        --font-large: clamp(1.25rem, 1.2rem + 0.3vw, 1.45rem);    /* ~20px - 23px */
-        --font-xl: clamp(1.5rem, 1.4rem + 0.6vw, 1.8rem);         /* ~24px - 29px */
-        --font-xxl: clamp(1.8rem, 1.7rem + 0.8vw, 2.15rem);       /* ~29px - 34px */
-        --font-xxxl: clamp(2.15rem, 2rem + 1vw, 2.6rem);          /* ~34px - 41px */
+        --font-small: clamp(1.1rem, 1.08rem + 0.15vw, 1.2rem);
+        --font-medium: clamp(1.25rem, 1.2rem + 0.25vw, 1.4rem);
+        --font-large: clamp(1.4rem, 1.35rem + 0.4vw, 1.6rem);
+        --font-xl: clamp(1.65rem, 1.55rem + 0.7vw, 1.95rem);
+        --font-xxl: clamp(1.8rem, 1.7rem + 0.8vw, 2.15rem);
+        --font-xxxl: clamp(2.15rem, 2rem + 1vw, 2.6rem);
     }
 }
 
 /* Browser che non supportano clamp */
 @supports not (font-size: clamp(1rem, 1vi, 1rem)) {
     :root {
-        --font-small: 1.05rem;
-        --font-medium: 1.15rem;
-        --font-large: 1.35rem;
-        --font-xl: 1.6rem;
+        --font-small: 1.15rem;
+        --font-medium: 1.32rem;
+        --font-large: 1.50rem;
+        --font-xl: 1.80rem;
         --font-xxl: 1.9rem;
         --font-xxxl: 2.3rem;
     }
@@ -685,14 +684,14 @@ footer .profile-links a:hover {
 .hero-text h2 {
     font-size: var(--font-xxxl);
     text-wrap: balance;
-    max-width: 450px;
+    max-width: 30em;
     line-height: 1.3em;
     margin-bottom: 1rem;
 }
 
 .hero-text p {
     font-size: var(--font-medium);
-    max-width: 460px;
+    max-width: 30em;
     color: var(--text-muted);
 }
 
@@ -781,17 +780,12 @@ footer .profile-links a:hover {
     line-height: 1.5;
 }
 
-/* Card Section */
-#trending-vinyls,
-#most-liked-artists,
-#most-collected {
-    background: var(--bg-page);
-}
-
-#trending-vinyls>.center-container,
-#most-liked-artists>.center-container,
-#recommendations>.center-container,
-#most-collected>.center-container {
+#trending-vinyls > .center-container,
+#most-liked-artists > .center-container,
+#recommendations > .center-container,
+#most-collected > .center-container,
+#collection > .center-container,
+#wishlist > .center-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -863,7 +857,7 @@ footer .profile-links a:hover {
 }
 
 .card-image img {
-    width: 100%;
+    width: auto;
     height: auto;
     aspect-ratio: 1 / 1;
     object-fit: cover;
@@ -871,7 +865,7 @@ footer .profile-links a:hover {
 }
 
 .artist-name {
-    font-size: var(--font-small);
+    font-size: var(--font-medium);
     color: var(--text-secondary);
     margin-bottom: 0.8rem;
     display: -webkit-box;
@@ -1522,6 +1516,38 @@ img#empty-collection-image {
     vertical-align: middle;
 }
 
+#content .album-actions {
+    padding-top: 1.5em;
+    font-size: var(--font-medium);
+}
+
+.album-action-form {
+    margin-bottom: 1em;
+}
+
+#content .alert-add-vinyl {
+    font-size: var(--font-xl);
+    font-family: var(--font-secondary);
+    color: var(--text-secondary);
+    font-weight: 600;
+    background-color: var(--bg-page);
+    padding: 0.5em;
+    border-radius: 1.3em;
+    border: 2px dashed var(--border-dark);
+    width: 60vw;
+}
+
+#content #action-result.alert-add-vinyl {
+    all: unset;
+    display: block;
+    margin-top: 1rem;
+    text-align: center;
+    font-size: var(--font-large);
+    font-family: var(--font-primary);
+    color: var(--text-primary);
+}
+
+
 /* Album info section */
 .album-info-section {
     border: 1px solid var(--border-dark);
@@ -1689,6 +1715,8 @@ img#empty-collection-image {
     font-family: var(--font-secondary);
 }
 
+.hero-text h1+p,
+#user-bio {
     font-size: var(--font-small);
     margin-bottom: 1rem;
     display: block;
@@ -2347,10 +2375,12 @@ html:not(.js-enabled) .load-more-container {
 }
 
 .vinyl-card img {
-    width: 100%;
+    width: 30vw;
     height: auto;
-    border-radius: 1rem;
+    border-radius: 1.3rem;
+    aspect-ratio: 1 / 1;
     object-fit: cover;
+    display: block;
 }
 
 #top-vinyls >*:first-child {
@@ -2758,8 +2788,6 @@ body.page-transitioning {
 }
 
 #profile-stats {
-    background: var(--bg-surface);
-    border-bottom: 1px solid var(--border-default);
     padding: 1.5rem 0;
 }
 
@@ -2777,40 +2805,126 @@ body.page-transitioning {
 #profile-stats ol {
     display: flex;
     flex-direction: column;
+    gap: 1.2rem;
     list-style: none;
-    max-width: 55em;
-    margin: auto;
-    padding: 0 1rem;
 }
 
 #profile-stats li {
-    text-align: center;
-    display: flex;
-    flex-direction: column-reverse;
-    
-    gap: 0.2rem;
-}
+    display: grid;
+    grid-template-columns: 1fr 0.5fr; 
+    align-items: left;
+    padding: 1.5rem 2rem;
+    border: 2px dashed var(--border-dark);
+    border-radius: 1.5rem;
 
-/* Lo stile per il numero (placeholder [count]) */
-#profile-stats li span, 
-#profile-stats li {
-    font-size: var(--font-large);
+    font-size: var(--font-xxxl);
     font-weight: 700;
-    color: var(--brand-primary-dark);
+    line-height: 1.1;
+    color: var(--text-secondary);
 }
 
-/* --- Sezione Artisti Preferiti (stile simile a Artisti Simili) --- */
-#favorite-artists {
-    padding-top: 2rem;
-    text-align: center;
+#profile-stats li::after {
+    content: "";
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    display: block;
+    width: 2.5em;
+    height: 2.5em;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    justify-self: end;
 }
 
-#fav-artists-title {
-    color: var(--brand-primary-dark);
+#profile-stats li h3 {
+    grid-column: 1;
+    grid-row: 1;
     font-size: var(--font-xxl);
     font-family: var(--font-secondary);
-    font-style: italic;
-    margin-bottom: 1rem;
+    color: var(--text-primary);
+    font-weight: 700;
+    margin: 0;
+    margin-bottom: 0.2rem;
+}
+
+#collection-disk-count-item::after {
+    background-image: url('../assets/images/vinyl-icon.jpg');
+}
+
+#wishlist-disk-count-item::after {
+    background-image: url('../assets/images/wishlist-icon.jpg');
+}
+
+#collection-artist-count-item::after {
+    background-image: url('../assets/images/artist-icon.jpg');
+}
+
+.empty-message {
+    color: var(--text-muted);
+    font-size: var(--font-medium);
+}
+
+#favorite-artists > .center-container {
+    padding-top: 2.5rem;
+    padding-bottom: 3.5em;
+}
+
+#favorite-artists ol {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    padding: 1rem 0;
+    list-style: none;
+    width: 100%;
+}
+
+.artist-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start; 
+    gap: 1.5rem;
+    padding: 1.2rem 1.2rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
+    border-radius: 1.5rem;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+
+.artist-item:hover {
+    transform: translateY(-3px);
+}
+
+.artist-item .artist-image {
+    width: 6em;
+    height: 6rem;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--border-dark);
+    flex-shrink: 0; 
+}
+
+.artist-info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    flex: 1; 
+}
+
+.artist-info h3 {
+    font-size: var(--font-xl);
+    color: var(--text-primary);
+    font-family: var(--font-secondary);
+    margin: 0;
+    line-height: 1.2;
+}
+
+.artist-info p {
+    font-size: var(--font-medium);
+    color: var(--text-secondary);
+    font-weight: 600;
+    margin: 0.2rem 0 0 0;
 }
 
 /* Add Profile page */
