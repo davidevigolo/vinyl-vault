@@ -6,8 +6,6 @@ include 'php/components/header.php';
 include 'php/components/footer.php';
 include 'php/components/top_vinyls.php';
 
-check_user_logged_in();
-
 
 echo Template::render(
     'static/top_vinyls.html',
