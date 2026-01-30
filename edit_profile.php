@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             'username' => $_SESSION['username'],
             'email' => $_SESSION['email'],
             'bio' => $_SESSION['bio'] ?? '',
-            'propic_path' => $_SESSION['propic_path'] ?? 'assets/images/default-avatar.png'
+            'propic_path' => $_SESSION['propic_path'] ?? 'assets/images/default-avatar.jpg'
         ];
         $success_message = $result['message'] ?? '';
     } else {
