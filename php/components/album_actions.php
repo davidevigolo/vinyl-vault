@@ -64,7 +64,7 @@ function album_actions($user_id,$disk_id,$edition_name){
         echo Template::render('static/layout/album/album_actions.html',[
             'album_action_add_collection' => $action_collection,
             'album_action_add_wishlist' => $action_wishlist
-        ],$action_collection,$action_wishlist);
+        ]);
     }else{
         echo '<p class="alert-add-vinyl">Effettua il <a href="login.php">login</a> per aggiungere questo album alla tua collezione o alla lista dei desideri.</p>';
     }
