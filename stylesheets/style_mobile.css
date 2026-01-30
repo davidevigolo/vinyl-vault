@@ -2500,14 +2500,20 @@ html:not(.js-enabled) .load-more-container {
 
 #login-form fieldset,
 #registration-form fieldset,
-#add-pages-form fieldset {
+#add-pages-form fieldset,
+#profile-picture-form fieldset,
+#personal-info-form fieldset, 
+#password-form fieldset {
     border: none;
     padding: 0;
 }
 
 #login-form legend,
 #registration-form legend,
-#add-pages-form legend {
+#add-pages-form legend,
+#profile-picture-form legend,
+#personal-info-form legend, 
+#password-form legend{
     font-weight: 700;
     color: var(--text-secondary);
     font-family: var(--font-secondary);
@@ -2527,7 +2533,10 @@ html:not(.js-enabled) .load-more-container {
 
 #login-form label,
 #registration-form label,
-#add-pages-form label {
+#add-pages-form label,
+#profile-picture-form label,
+#personal-info-form label, 
+#password-form label {
     display: block;
     font-weight: 600;
     font-family: var(--font-secondary);
@@ -2536,14 +2545,20 @@ html:not(.js-enabled) .load-more-container {
 
 #login-form .input-wrapper,
 #registration-form .input-wrapper,
-#add-pages-form .input-wrapper {
+#add-pages-form .input-wrapper,
+#profile-picture-form .input-wrapper,
+#personal-info-form .input-wrapper, 
+#password-form .input-wrapper {
     text-align: left;
     margin-bottom: 2.4rem;
 }
 
 #login-form input,
 #registration-form input,
-#add-pages-form input {
+#add-pages-form input,
+#profile-picture-form input,
+#personal-info-form input, 
+#password-form input{
     width: 100%;
     padding: 0.8rem;
     border: 1px solid var(--border-default);
@@ -2561,7 +2576,10 @@ html:not(.js-enabled) .load-more-container {
 
 #login-form,
 #registration-form,
-#add-pages-form{
+#add-pages-form,
+#profile-picture-form,
+#personal-info-form, 
+#password-form {
     margin-bottom: 1.5em;
 }
 
@@ -2573,7 +2591,10 @@ html:not(.js-enabled) .load-more-container {
 }
 
 #password-requirements,
-#add-pages-form ul {
+#add-pages-form ul,
+#profile-picture-form ul,
+#personal-info-form ul, 
+#password-form ul {
     padding-left: 2rem;
     padding-right: 2rem;
     width: 100%;
@@ -2587,7 +2608,10 @@ html:not(.js-enabled) .load-more-container {
 }
 
 #password-requirements ul li,
-#add-pages-form ul li{
+#add-pages-form ul li,
+#profile-picture-form ul li,
+#personal-info-form ul li, 
+#password-form ul li {
     color: var(--text-muted);
 }
 
@@ -2607,7 +2631,8 @@ html:not(.js-enabled) .load-more-container {
 
 /* Add Pages */
 
-.add-pages-title {
+.add-pages-title,
+.edit-profile-title {
     text-align: center;
     margin-top: 3rem;
     margin-bottom: 2rem;
@@ -2618,7 +2643,9 @@ html:not(.js-enabled) .load-more-container {
     padding-bottom: 0.7em;
 }
 
-#add-pages {
+#add-pages,
+#edit-profile,
+#password-form {
     background-color: var(--bg-section);
     border: 1px solid var(--border-default);
     border-radius: 1.3em;
@@ -2927,4 +2954,3 @@ body.page-transitioning {
     margin: 0.2rem 0 0 0;
 }
 
-/* Add Profile page */
