@@ -44,8 +44,8 @@ function album_actions($user_id,$disk_id,$edition_name){
     if($user_id){
         $in_collection = check_user_has_in_collection($user_id,$disk_id,$edition_name);
         $in_wishlist = check_user_has_in_wishlist($user_id,$disk_id,$edition_name);
-        $action_collection = '<p>Il disco è già nella tua collezione.</p>';
-        $action_wishlist = '<p>Il disco è già nella tua lista dei desideri.</p>';
+        $action_collection = '<p class="alert-add-vinyl">Il disco è nella tua collezione.</p>';
+        $action_wishlist = '<p class="alert-add-vinyl">Il disco è nella tua lista dei desideri.</p>';
         if(!$in_collection){
             $action_collection = Template::render('static/layout/album/album_action_add_collection.html',[
                 'disk_id' => htmlspecialchars($disk_id),
@@ -66,7 +66,7 @@ function album_actions($user_id,$disk_id,$edition_name){
             'album_action_add_wishlist' => $action_wishlist
         ],$action_collection,$action_wishlist);
     }else{
-        echo '<p>Effettua il <a href="login.php">login</a> per aggiungere questo album alla tua collezione o alla lista dei desideri.</p>';
+        echo '<p class="alert-add-vinyl">Effettua il <a href="login.php">login</a> per aggiungere questo album alla tua collezione o alla lista dei desideri.</p>';
     }
     return ob_get_clean();
 }

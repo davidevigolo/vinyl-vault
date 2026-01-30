@@ -29,14 +29,13 @@ function trending_vinyls() {
     $trendingVinyls = get_trending_vinyls();
     if ($trendingVinyls) {
         while ($vinyl = mysqli_fetch_assoc($trendingVinyls)) {
-            // TBD: Usare image_path quando le immagini saranno caricate
             echo Template::render('static/layout/vinyl_card.html', [
                 'disk_id' => $vinyl['disk_id'],
                 'ed_name' => $vinyl['edition_name'],
                 'title' => htmlspecialchars($vinyl['title']),
                 'artist_id' => $vinyl['author_id'],
                 'artist' => htmlspecialchars($vinyl['author_name']),
-                'cover_image' => htmlspecialchars($vinyl['image_path']) ? htmlspecialchars($vinyl['image_path']) : 'assets/images/vinyl_placeholder.jpg',
+                'cover_image' => htmlspecialchars($vinyl['image_path']) ?: 'assets/images/vinyl_placeholder.jpg',
                 'wishlist_count' => $vinyl['wl_count']
             ]);
         }

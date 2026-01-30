@@ -56,7 +56,7 @@ function top_vinyls() {
                 'artist' => htmlspecialchars($vinyl['author_name']),
                 'title' => htmlspecialchars($vinyl['title']),
                 'ed_name' => htmlspecialchars($vinyl['edition_name']),
-                'cover_image' => htmlspecialchars($vinyl['image_path']) ? htmlspecialchars($vinyl['image_path']) : 'assets/images/vinyl_placeholder.jpg',
+                'cover_image' => htmlspecialchars($vinyl['image_path']) ?: 'assets/images/vinyl_placeholder.jpg',
                 'span_class' => $span,
                 'direction' => $i > 3 ? 'direction-vertical' : 'direction-horizontal',
                 'index' => $i,
