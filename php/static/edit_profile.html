@@ -83,10 +83,10 @@
                         <legend>Informazioni Personali</legend>
 
                         <div class="input-wrapper">
-                            <label for="first-name-input">
-                                Nome
-                                <span class="required-field">(Obbligatorio)</span>
-                            </label>
+                            <div class="label-container">
+                                <label for="first-name-input">Nome</label>
+                                <span class="error-message" id="name-error" aria-live="polite">Obbligatorio</span>
+                            </div>
                             <input type="text" name="first-name" id="first-name-input" placeholder="Maria"
                                 autocomplete="given-name" required="required" value="[first-name-value]" pattern="[^0-9]*" title="Il nome non può contenere numeri">
                             <p class="input-example">Esempio: Maria</p>
@@ -94,10 +94,10 @@
                         </div>
 
                         <div class="input-wrapper">
-                            <label for="last-name-input">
-                                Cognome
-                                <span class="required-field">(Obbligatorio)</span>
-                            </label>
+                            <div class="label-container">
+                                <label for="last-name-input">Cognome</label>
+                                <span class="error-message" id="last-name-error" aria-live="polite">Obbligatorio</span>
+                            </div>
                             <input type="text" name="last-name" id="last-name-input" placeholder="Rossi"
                                 autocomplete="family-name" required="required" value="[last-name-value]" pattern="[^0-9]*" title="Il cognome non può contenere numeri">
                             <p class="input-example">Esempio: Rossi</p>
@@ -105,10 +105,11 @@
                         </div>
 
                         <div class="input-wrapper">
-                            <label for="email-input">
-                                <span lang="en">Email</span>
-                                <span class="required-field">(Obbligatorio)</span>
-                            </label>
+                            <div class="label-container">
+                                <label for="email-input"><span lang="en">Email</span></label>
+                                <span class="error-message" id="email-error" aria-live="polite">Obbligatorio</span>
+                            </div>
+                            
                             <input type="email" name="email" id="email-input" placeholder="maria.rossi@gmail.com"
                                 autocomplete="email" required="required" value="[email-value]">
                             <p class="input-example">Esempio: maria.rossi@gmail.com</p>
@@ -116,10 +117,12 @@
                         </div>
 
                         <div class="input-wrapper">
-                            <label for="username-input"><span lang="en">Username</span> <span
-                                    class="required-field">(Obbligatorio)</span></label>
-                            <input type="text" name="username" id="username-input" placeholder="maryrossi4321"
-                                autocomplete="username" required="required" value="[username-value]">
+                            <div class="label-container">
+                                <label for="username-input"><span lang="en">Username</span></label>
+                                <span class="error-message" id="username-error" aria-live="polite">Obbligatorio</span>
+                            </div>
+                            
+                            <input type="text" name="username" id="username-input" placeholder="maryrossi4321" autocomplete="username" required="required" value="[username-value]">
                             <p class="input-example">Esempio: maryrossi4321</p>
                             [username-error]
                         </div>
@@ -147,10 +150,11 @@
                     <legend>Modifica <span lang="en">password</span> - Lascia vuoto per non modificare</legend>
 
                     <div class="input-wrapper">
-                        <label for="new-password-input">
-                            Nuova <span lang="en">password</span>
-                            <span class="required-field">(Obbligatorio)</span>
-                        </label>
+                        <div class="label-container">
+                            <label for="new-password-input">Nuova <span lang="en">password</span></label>
+                            <span class="error-message" id="new-password-error" aria-live="polite">Obbligatorio</span>
+                        </div>    
+
                         <input type="password" name="new-password" id="new-password-input" autocomplete="new-password"
                             required="required">
                         <div id="password-requirements">
@@ -165,13 +169,14 @@
                     </div>
 
                     <div class="input-wrapper">
-                        <label for="confirm-password-input">
-                            Conferma <span lang="en">password</span>
-                            <span class="required-field">(Obbligatorio)</span>
-                        </label>
-                        <input type="password" name="confirm-password" id="confirm-password-input"
-                            autocomplete="new-password" required="required">
-                        [password-confirm-error]
+                        <div class="label-container">
+                            <label for="confirm-password-input">Conferma <span lang="en">password</span></label>
+                            <span class="error-message" id="confirm-password-error" aria-live="polite">Obbligatorio</span>
+                        </div>
+                            
+                            <input type="password" name="confirm-password" id="confirm-password-input"
+                                autocomplete="new-password" required="required">
+                            [password-confirm-error]
                     </div>
 
                     [password-form-error]
