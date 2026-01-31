@@ -58,22 +58,42 @@
       </div>
     </section>
 
-    <div class="center-container">
-      <section class="album-info-section">
-        <dl>
-          <dt>Data di rilascio:</dt>
-          <dd>[release_date]</dd>
-          <dt>Paese:</dt>
-          <dd>[country]</dd>
-          <dt>Etichetta:</dt>
-          <dd>[label]</dd>
-          <dt>Persone che ce l'hanno:</dt>
-          <dd>[ownership_count]</dd>
-          <dt>Persone che lo vogliono:</dt>
-          <dd>[wishlist_count]</dd>
-        </dl>
-      </section>
-    </div>
+    <section id="edition-info-section" aria-labelledby="edition-info-section-title">
+        <div class="center-container">
+            <h2 id="edition-info-section-title">Informazioni edizione</h2>
+            <dl>
+                <div>
+                    <dt>Data di rilascio:</dt>
+                    <dd>[release_date]</dd>
+                </div>
+                <div>
+                    <dt>Paese:</dt>
+                    <dd>[country]</dd>
+                </div>
+                <div>
+                    <dt>Etichetta:</dt>
+                    <dd>[label]</dd>
+                </div>
+            </dl>
+        </div>
+    </section>
+
+    <section id="edition-stats" aria-labelledby="edition-stats-title">
+      <div class="center-container">
+          <h2 id="edition-stats-title">Statistiche</h2>
+          <ol>
+              <li id="ownership-count-item">
+                  <h3>Persone che ce l'hanno</h3>
+                  [ownership_count]
+              </li>
+              <li id="wishlist-count-item">
+                  <h3>Persone che lo vogliono</h3>
+                  [wishlist_count]
+              </li>
+          </ol>
+      </div>
+    </section>
+
 
     [album_tracklist]
 

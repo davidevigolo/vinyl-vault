@@ -119,7 +119,6 @@ function collection_cards() {
     $i = 0;
     while (($vinyl = mysqli_fetch_assoc($collection)) && $i < 4) {
         $i++;
-        // TODO: Usare image_path quando le immagini saranno caricate
         $items .= Template::render('static/layout/vinyl_card.html', [
             'title' => htmlspecialchars($vinyl['title']),
             'artist' => htmlspecialchars($vinyl['author']),
@@ -143,7 +142,6 @@ function wishlist_cards() {
     $i = 0;
     while (($vinyl = mysqli_fetch_assoc($wishlist)) && $i < 4) {
         $i++;
-        // TODO: Usare image_path quando le immagini saranno caricate
         $items .= Template::render('static/layout/vinyl_card.html', [
             'title' => htmlspecialchars($vinyl['title']),
             'artist' => htmlspecialchars($vinyl['author']),

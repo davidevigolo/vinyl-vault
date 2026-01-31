@@ -836,29 +836,34 @@ p#empty-collection-paragraph {
     white-space: nowrap;
 }
 
-#profile-stats-title {
-    font-style: left;
+#profile-stats-title,
+#edition-stats-title {
+    text-align: left;
     text-align: center;
 }
 
-#profile-stats ol {
+#profile-stats ol,
+#edition-stats ol {
     flex-direction: row;
     justify-content: space-between;
     gap: 1.5rem;
 }
 
-#profile-stats li {
+#profile-stats li,
+#edition-stats li {
     flex: 1;
     padding: 1.5rem;
     font-size: var(--font-xl); 
     grid-template-columns: 1fr auto;
 }
 
-#profile-stats li h3 {
+#profile-stats li h3,
+#edition-stats li h3 {
     font-size: var(--font-large);
 }
 
-#profile-stats li::after {
+#profile-stats li::after,
+#edition-stats li::after {
     width: 2em;
     height: 2em;
 }

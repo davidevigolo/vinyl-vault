@@ -14,7 +14,7 @@ echo Template::render(
     [
         'head' => Template::render('static/layout/head.html',[]),
         'header' => _header(),
-        'top_artists' => top_vinyls(),
+        'top_artists' => top_artists(),
         'footer' => footer(),
         ]
 );
