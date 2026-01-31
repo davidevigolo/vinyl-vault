@@ -1,7 +1,6 @@
 <h2 class="add-pages-title">Aggiungi Tracce</h2>
 <div id="add-pages">
 
-    [errors]
     <form id="add-pages-form" action="php/controllers/add_tracks_controller.php" method="POST"
         enctype="multipart/form-data">
 
@@ -72,6 +71,8 @@
         <p class="error-message" id="max-tracks-error"></p>
         <button type="button" id="add-track-button" class="btn-secondary add-pages-btn">Aggiungi un'altra
             traccia</button>
+
+        [errors]
 
         <button type="submit" class="btn-primary add-pages-btn">Salva Tracce</button>
     </form>

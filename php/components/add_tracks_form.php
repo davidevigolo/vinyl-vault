@@ -3,8 +3,7 @@ include_once 'php/classes/Template.php';
 include_once 'php/classes/utils.php';
 include_once 'php/classes/DbConnection.php';
 
-function get_disks()
-{
+function get_disks() {
     $query = "SELECT id, title FROM disk ORDER BY title ASC";
     $connection = DbConnection::get_instance();
     $result = mysqli_query($connection->get_connection(), $query);
@@ -18,8 +17,7 @@ function get_disks()
     return $disks;
 }
 
-function get_editions()
-{
+function get_editions() {
     $query = "SELECT disk_id, edition_name FROM edition ORDER BY edition_name ASC";
     $connection = DbConnection::get_instance();
     $result = mysqli_query($connection->get_connection(), $query);
@@ -33,7 +31,7 @@ function get_editions()
     return $editions;
 }
 
-function get_disk_type($disk_id){
+function get_disk_type($disk_id) {
     $connection = DbConnection::get_instance();
     $query = "SELECT disk_type FROM disk WHERE id = ?";
     $stmt = mysqli_prepare($connection->get_connection(), $query);
@@ -50,8 +48,7 @@ function get_disk_type($disk_id){
     return null;
 }
 
-function add_tracks_form($_disk, $_edition, $_titles, $_durations, $errors = []): string
-{
+function add_tracks_form($_disk, $_edition, $_titles, $_durations, $errors = []): string {
     $disks = get_disks();
     $editions = get_editions();
     $edition_options = '';
@@ -80,14 +77,14 @@ function add_tracks_form($_disk, $_edition, $_titles, $_durations, $errors = [])
 
     $disks = get_disks();
     return Template::render('static/layout/add_tracks/add_tracks_form.html', [
-        'disk_options' => implode('', array_map(function ($disk) use($_disk) {
+        'disk_options' => implode('', array_map(function ($disk) use ($_disk) {
             $selected = (isset($_disk) && intval($_disk) == $disk['id']) ? ' selected' : '';
-            return '<option value="' . htmlspecialchars($disk['id']) . '"' . $selected . ' data-disk-type="' . htmlspecialchars(get_disk_type($disk['id'])) . '">' . htmlspecialchars($disk['title']) .' (' . htmlspecialchars(get_disk_type_display_names()[get_disk_type($disk['id'])]) . ') </option>';
+            return '<option value="' . htmlspecialchars($disk['id']) . '"' . $selected . ' data-disk-type="' . htmlspecialchars(get_disk_type($disk['id'])) . '">' . htmlspecialchars($disk['title']) . ' (' . htmlspecialchars(get_disk_type_display_names()[get_disk_type($disk['id'])]) . ') </option>';
         }, $disks)),
         'edition_options' => $edition_options,
         'track_form_items' => $track_form_items,
         'first_track_title' => $first_track_title,
         'first_track_duration' => $first_track_duration,
-        'errors' => isset($errors) && !empty($errors) ? '<ul>' . implode('', array_map(fn($error) => '<li>' . htmlspecialchars($error) . '</li>', $errors)) . '</ul>' : ''
+        'errors' => isset($errors) && !empty($errors) ? '<div id="add-tracks-error-container" aria-live="assertive" class="error-message">Sono stati riscontrati i seguenti errori: <ul>' . implode('', array_map(fn($error) => '<li>' . htmlspecialchars($error) . '</li>', $errors)) . '</ul></div>' : ''
     ]);
 }

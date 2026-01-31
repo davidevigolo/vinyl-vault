@@ -5,8 +5,7 @@ include_once '../classes/utils.php';
 session_start();
 check_user_logged_in();
 
-function add_edition($disk_id, $name, $release_date, $country, $is_standard_edition, $image)
-{
+function add_edition($disk_id, $name, $release_date, $country, $is_standard_edition, $image) {
     if (!$disk_id || (!$name && !$is_standard_edition) || !$release_date || !$country || !$image) {
         return ['success' => false, 'error' => 'Uno o più campi devono ancora essere compilati'];
     }
@@ -23,8 +22,8 @@ function add_edition($disk_id, $name, $release_date, $country, $is_standard_edit
         return ['success' => false, 'error' => 'Formato immagine non supportato'];
     }
 
-    if ($image['size'] > 2 * 1024 * 1024) { // 2MB limit
-        return ['success' => false, 'error' => 'L\'immagine supera la dimensione massima di 2MB'];
+    if ($image['size'] > 1 * 1024 * 1024) { // 1MB limit
+        return ['success' => false, 'error' => 'Il file supera la dimensione massima di 1<abbr title="Megabyte" lang="en">MB</abbr>'];
     }
 
     $name = trim($name);

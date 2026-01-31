@@ -2626,20 +2626,11 @@ html:not(.js-enabled) .load-more-container {
     padding-right: 2rem;
     width: 100%;
     margin-bottom: 1.5rem;
-    color: var(--text-muted);
 }
 
 #password-requirements ul {
     padding-left: 1em;
     padding-top: 0.5em;
-}
-
-#password-requirements ul li,
-#add-pages-form ul li,
-#profile-picture-form ul li,
-#personal-info-form ul li,
-#password-form ul li {
-    color: var(--text-muted);
 }
 
 .error-message {
