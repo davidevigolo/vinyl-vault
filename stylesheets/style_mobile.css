@@ -780,12 +780,12 @@ footer .profile-links a:hover {
     line-height: 1.5;
 }
 
-#trending-vinyls > .center-container,
-#most-liked-artists > .center-container,
-#recommendations > .center-container,
-#most-collected > .center-container,
-#collection > .center-container,
-#wishlist > .center-container {
+#trending-vinyls>.center-container,
+#most-liked-artists>.center-container,
+#recommendations>.center-container,
+#most-collected>.center-container,
+#collection>.center-container,
+#wishlist>.center-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1561,7 +1561,7 @@ img#empty-collection-image {
     text-align: center;
 }
 
-.album-info-section dt{
+.album-info-section dt {
     font-family: var(--font-secondary);
     color: var(--brand-primary-dark);
     font-size: var(--font-large);
@@ -1726,7 +1726,7 @@ img#empty-collection-image {
 
 /* Catalog Page */
 
-#catalog-title{
+#catalog-title {
     text-align: center;
     font-size: var(--font-xxl);
     padding: 2rem 0 1rem 0;
@@ -1754,7 +1754,7 @@ img#empty-collection-image {
 .search-bar-container {
     max-width: 600px;
     margin: 0 auto;
-    display:flex;
+    display: flex;
     flex-direction: row;
     justify-content: center;
 }
@@ -1779,7 +1779,7 @@ img#empty-collection-image {
     outline: none;
 }
 
-#search-submit-btn{
+#search-submit-btn {
     margin: 0;
     border-radius: 1.5em;
     cursor: pointer;
@@ -2408,11 +2408,11 @@ html:not(.js-enabled) .load-more-container {
     display: block;
 }
 
-#top-vinyls >*:first-child {
+#top-vinyls>*:first-child {
     grid-column: 1 / 3;
 }
 
-#top-vinyls >*:first-child .card-content {
+#top-vinyls>*:first-child .card-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -2446,15 +2446,15 @@ html:not(.js-enabled) .load-more-container {
     padding: 1.2rem;
 }
 
-#top-vinyls >*:first-child .artist-name {
+#top-vinyls>*:first-child .artist-name {
     font-size: var(--font-medium);
 }
 
-#top-vinyls >*:first-child .album-title {
+#top-vinyls>*:first-child .album-title {
     font-size: var(--font-xl);
 }
 
-#top-vinyls >*:first-child .edition-info {
+#top-vinyls>*:first-child .edition-info {
     font-size: var(--font-large);
 }
 
@@ -2527,7 +2527,7 @@ html:not(.js-enabled) .load-more-container {
 #registration-form fieldset,
 #add-pages-form fieldset,
 #profile-picture-form fieldset,
-#personal-info-form fieldset, 
+#personal-info-form fieldset,
 #password-form fieldset {
     border: none;
     padding: 0;
@@ -2537,8 +2537,8 @@ html:not(.js-enabled) .load-more-container {
 #registration-form legend,
 #add-pages-form legend,
 #profile-picture-form legend,
-#personal-info-form legend, 
-#password-form legend{
+#personal-info-form legend,
+#password-form legend {
     font-weight: 700;
     color: var(--text-secondary);
     font-family: var(--font-secondary);
@@ -2560,7 +2560,7 @@ html:not(.js-enabled) .load-more-container {
 #registration-form label,
 #add-pages-form label,
 #profile-picture-form label,
-#personal-info-form label, 
+#personal-info-form label,
 #password-form label {
     display: block;
     font-weight: 600;
@@ -2572,7 +2572,7 @@ html:not(.js-enabled) .load-more-container {
 #registration-form .input-wrapper,
 #add-pages-form .input-wrapper,
 #profile-picture-form .input-wrapper,
-#personal-info-form .input-wrapper, 
+#personal-info-form .input-wrapper,
 #password-form .input-wrapper {
     text-align: left;
     margin-bottom: 2.4rem;
@@ -2582,9 +2582,9 @@ html:not(.js-enabled) .load-more-container {
 #registration-form input,
 #add-pages-form input,
 #profile-picture-form input,
-#personal-info-form input, 
+#personal-info-form input,
 #personal-info-form textarea,
-#password-form input{
+#password-form input {
     width: 100%;
     padding: 0.8rem;
     border: 1px solid var(--border-default);
@@ -2605,7 +2605,7 @@ html:not(.js-enabled) .load-more-container {
 #registration-form,
 #add-pages-form,
 #profile-picture-form,
-#personal-info-form, 
+#personal-info-form,
 #password-form {
     margin-bottom: 1.5em;
 }
@@ -2620,7 +2620,7 @@ html:not(.js-enabled) .load-more-container {
 #password-requirements,
 #add-pages-form ul,
 #profile-picture-form ul,
-#personal-info-form ul, 
+#personal-info-form ul,
 #password-form ul {
     padding-left: 2rem;
     padding-right: 2rem;
@@ -2637,12 +2637,16 @@ html:not(.js-enabled) .load-more-container {
 #password-requirements ul li,
 #add-pages-form ul li,
 #profile-picture-form ul li,
-#personal-info-form ul li, 
+#personal-info-form ul li,
 #password-form ul li {
     color: var(--text-muted);
 }
 
 .error-message {
+    color: var(--bg-error);
+}
+
+.required-field {
     color: var(--bg-error);
 }
 
@@ -2737,7 +2741,7 @@ html:not(.js-enabled) .load-more-container {
 
 }
 
-#add-pages-success a:first-of-type{
+#add-pages-success a:first-of-type {
     margin-top: 2em;
 }
 
@@ -2753,7 +2757,8 @@ html:not(.js-enabled) .load-more-container {
     margin-top: 0.5rem;
     margin-bottom: 1.5rem;
     width: 100%;
-    justify-content: center;/*flex-start;*/
+    justify-content: center;
+    /*flex-start;*/
 }
 
 #add-pages-form .checkbox-wrapper input[type="checkbox"] {
@@ -2765,8 +2770,8 @@ html:not(.js-enabled) .load-more-container {
 }
 
 #add-pages-form .checkbox-wrapper label {
-    display: inline ; 
-    margin-bottom: 0; 
+    display: inline;
+    margin-bottom: 0;
     cursor: pointer;
     font-size: var(--font-medium);
     font-weight: 600;
@@ -2865,7 +2870,7 @@ body.page-transitioning {
 
 #profile-stats li {
     display: grid;
-    grid-template-columns: 1fr 0.5fr; 
+    grid-template-columns: 1fr 0.5fr;
     align-items: left;
     padding: 1.5rem 2rem;
     border: 2px dashed var(--border-dark);
@@ -2918,7 +2923,7 @@ body.page-transitioning {
     font-size: var(--font-medium);
 }
 
-#favorite-artists > .center-container {
+#favorite-artists>.center-container {
     padding-top: 2.5rem;
     padding-bottom: 3.5em;
 }
@@ -2936,7 +2941,7 @@ body.page-transitioning {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-start; 
+    justify-content: flex-start;
     gap: 1.5rem;
     padding: 1.2rem 1.2rem;
     background: var(--bg-surface);
@@ -2956,14 +2961,14 @@ body.page-transitioning {
     border-radius: 50%;
     object-fit: cover;
     border: 1px solid var(--border-dark);
-    flex-shrink: 0; 
+    flex-shrink: 0;
 }
 
 .artist-info {
     display: flex;
     flex-direction: column;
     text-align: left;
-    flex: 1; 
+    flex: 1;
 }
 
 .artist-info h3 {
@@ -2989,5 +2994,3 @@ textarea {
     resize: vertical;
 
 }
-
-
