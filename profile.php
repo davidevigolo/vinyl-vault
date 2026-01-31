@@ -115,17 +115,19 @@ function collection_cards() {
         return ['collection' => Template::render('static/layout/profile/empty_profile_collection.html', [])];
     }
 
+    $nationality_languages = get_nationality_languages();
     $items = '';
     $i = 0;
     while (($vinyl = mysqli_fetch_assoc($collection)) && $i < 4) {
         $i++;
-        // TODO: Usare image_path quando le immagini saranno caricate
         $items .= Template::render('static/layout/vinyl_card.html', [
             'title' => htmlspecialchars($vinyl['title']),
             'artist' => htmlspecialchars($vinyl['author']),
             'ed_name' => htmlspecialchars($vinyl['edition_name']),
+            'ed_name_url' => urlencode($vinyl['edition_name']),
             'cover_image' => htmlspecialchars($vinyl['image_path']) ?: 'assets/images/vinyl_placeholder.jpg',
-            'disk_id' => htmlspecialchars($vinyl['disk_id'])
+            'disk_id' => htmlspecialchars($vinyl['disk_id']),
+            'nationality' => htmlspecialchars($nationality_languages[$vinyl['nationality']] ?? 'en')
         ]);
     }
 
@@ -139,17 +141,19 @@ function wishlist_cards() {
         return ['wishlist' => Template::render('static/layout/profile/empty_profile_wishlist.html', [])];
     }
 
+    $nationality_languages = get_nationality_languages();
     $items = '';
     $i = 0;
     while (($vinyl = mysqli_fetch_assoc($wishlist)) && $i < 4) {
         $i++;
-        // TODO: Usare image_path quando le immagini saranno caricate
         $items .= Template::render('static/layout/vinyl_card.html', [
             'title' => htmlspecialchars($vinyl['title']),
             'artist' => htmlspecialchars($vinyl['author']),
             'ed_name' => htmlspecialchars($vinyl['edition_name']),
+            'ed_name_url' => urlencode($vinyl['edition_name']),
             'cover_image' => htmlspecialchars($vinyl['image_path']) ?: 'assets/images/vinyl_placeholder.jpg',
-            'disk_id' => htmlspecialchars($vinyl['disk_id'])
+            'disk_id' => htmlspecialchars($vinyl['disk_id']),
+            'nationality' => htmlspecialchars($nationality_languages[$vinyl['nationality']] ?? 'en')
         ]);
     }
 
