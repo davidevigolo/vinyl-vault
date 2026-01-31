@@ -1,6 +1,8 @@
 const menuToggle = document.querySelector('.menu-toggle');
 const headerRight = document.querySelector('.header-right');
 
+headerRight.classList.remove('is-open');
+
 if (menuToggle && headerRight) {
     menuToggle.addEventListener('click', () => {
         const isOpen = headerRight.classList.toggle('is-open');

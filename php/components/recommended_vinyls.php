@@ -1,5 +1,6 @@
 <?php
 include_once 'php/classes/DbConnection.php';
+require_once 'php/classes/utils.php';
 
 function get_recommended_vinyls()
 {
@@ -24,7 +25,7 @@ function get_recommended_vinyls()
         
         if ($favorite_genre) {
             $recommendations_query = "SELECT DISTINCT ed.disk_id, ed.edition_name, d.title, 
-                                             au.author_name, au.id as author_id, ed.image_path
+                                             au.author_name, au.id as author_id, ed.image_path, au.nationality
                                       FROM edition as ed
                                       JOIN disk as d ON ed.disk_id = d.id
                                       JOIN disk_author_release as dar ON dar.disk_id = ed.disk_id
@@ -48,7 +49,7 @@ function get_recommended_vinyls()
     }
     
     $fallback_query = "SELECT ed.disk_id, ed.edition_name, d.title, au.author_name, 
-                              au.id as author_id, ed.image_path, COUNT(o.user_id) as ownership_count
+                              au.id as author_id, ed.image_path, au.nationality, COUNT(o.user_id) as ownership_count
                        FROM ownership as o
                        JOIN edition as ed ON o.disk_id = ed.disk_id AND o.edition_name = ed.edition_name
                        JOIN disk as d ON d.id = ed.disk_id
@@ -79,6 +80,8 @@ function recommended_vinyls()
             echo Template::render('static/layout/vinyl_card.html', [
                 'disk_id' => $vinyl['disk_id'],
                 'ed_name' => htmlspecialchars($vinyl['edition_name']),
+                'ed_name_url' => urlencode($vinyl['edition_name']),
+                'nationality' => htmlspecialchars(get_nationality_languages()[$vinyl['nationality']]),
                 'title' => htmlspecialchars($vinyl['title']),
                 'artist' => htmlspecialchars($vinyl['author_name']),
                 'artist_id' => $vinyl['author_id'],

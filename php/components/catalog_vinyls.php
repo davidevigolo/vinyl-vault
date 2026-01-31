@@ -15,8 +15,10 @@ function get_catalog_vinyls($genres = null, $year_min = null, $year_max = null, 
                  LIMIT 1) as author_name,
                 YEAR(ed.release_date) as year,
                 (SELECT COUNT(*) FROM ownership o
-                 WHERE o.disk_id = ed.disk_id AND o.edition_name = ed.edition_name) as collection_count
+                 WHERE o.disk_id = ed.disk_id AND o.edition_name = ed.edition_name) as collection_count, a.nationality
               FROM edition ed
+              JOIN disk_author_release dar ON ed.disk_id = dar.disk_id
+              JOIN author a ON dar.author_id = a.id
               JOIN disk d ON ed.disk_id = d.id";
 
     $conditions = [];
@@ -207,6 +209,8 @@ function render_catalog_cards($vinyls, $search_query = null) {
         echo Template::render('static/layout/vinyl_card.html', [
             'disk_id' => $vinyl['disk_id'],
             'ed_name' => htmlspecialchars($vinyl['edition_name']),
+            'ed_name_url' => urlencode($vinyl['edition_name']),
+            'nationality' => htmlspecialchars(get_nationality_languages()[$vinyl['nationality']]),
             'title' => htmlspecialchars($vinyl['title']),
             'artist_id' => $vinyl['author_id'],
             'artist' => htmlspecialchars($vinyl['author_name']),
@@ -244,7 +248,7 @@ function render_active_filters($filters) {
     foreach ($filters as $filter) {
         if ($filter['type'] === 'year') {
             // Year filter is not removable - show without X button
-            echo '<span class="filter-tag filter-tag-static" aria-label="Filtro anno attivo">';
+            echo '<span class="filter-tag filter-tag-static">';
             echo htmlspecialchars($filter['label']);
             echo '</span>';
         } elseif ($filter['type'] === 'search') {

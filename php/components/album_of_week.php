@@ -4,7 +4,7 @@ include_once 'php/classes/DbConnection.php';
 function get_album_of_week() {
     $connection = DbConnection::get_instance();
     $query = "SELECT ed.disk_id, ed.edition_name, d.title, au.author_name, au.id as author_id, 
-                     ed.image_path, COUNT(o.user_id) as ownership_count
+                     ed.image_path, COUNT(o.user_id) as ownership_count, au.nationality
               FROM ownership as o
               JOIN edition as ed ON o.disk_id = ed.disk_id AND o.edition_name = ed.edition_name
               JOIN disk as d ON d.id = ed.disk_id
@@ -39,8 +39,10 @@ function album_of_week() {
     $cover_image = htmlspecialchars($album['image_path']) ?: 'assets/images/vinyl_placeholder.jpg';
     
     $description = sprintf(
-        "Il vinile di questa settimana è <strong>%s</strong> di <strong>%s</strong>",
+        "Il vinile di questa settimana è <strong><span lang=\"%s\">%s</span></strong> di <strong><span lang=\"%s\">%s</span></strong>",
+        htmlspecialchars(get_nationality_languages()[$album['nationality']]),
         htmlspecialchars($album['title']),
+        htmlspecialchars(get_nationality_languages()[$album['nationality']]),
         htmlspecialchars($album['author_name'])
     );
     
@@ -50,6 +52,7 @@ function album_of_week() {
         'album_week_artist' => htmlspecialchars($album['author_name']),
         'album_week_description' => $description,
         'album_week_id' => $album['disk_id'],
-        'album_week_edition' => htmlspecialchars($album['edition_name'])
+        'album_week_edition' => htmlspecialchars($album['edition_name']),
+        'album_week_edition_url' => urlencode($album['edition_name'])
     ];
 }

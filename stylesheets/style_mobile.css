@@ -854,6 +854,7 @@ footer .profile-links a:hover {
 .vinyl-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 15px rgba(255, 255, 255, 0.25);
+    cursor: pointer;
 }
 
 .card-image img {
@@ -862,6 +863,7 @@ footer .profile-links a:hover {
     aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 1rem;
+    margin: auto;
 }
 
 .artist-name {
@@ -1724,6 +1726,13 @@ img#empty-collection-image {
 
 /* Catalog Page */
 
+#catalog-title{
+    text-align: center;
+    font-size: var(--font-xxl);
+    padding: 2rem 0 1rem 0;
+    width: 100%;
+}
+
 .catalog-header {
     background-color: var(--bg-section);
     padding: 3rem 0;
@@ -1745,6 +1754,9 @@ img#empty-collection-image {
 .search-bar-container {
     max-width: 600px;
     margin: 0 auto;
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .search-bar-container form {
@@ -1755,6 +1767,7 @@ img#empty-collection-image {
     border-radius: 25px;
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    flex: 4;
 }
 
 .search-bar-container input[type="search"] {
@@ -1764,6 +1777,12 @@ img#empty-collection-image {
     font-size: var(--font-medium);
     font-family: var(--font-primary);
     outline: none;
+}
+
+#search-submit-btn{
+    margin: 0;
+    border-radius: 1.5em;
+    cursor: pointer;
 }
 
 /* Hide native browser clear button on search inputs */
@@ -2064,6 +2083,12 @@ img#empty-collection-image {
     margin-top: 0.5rem;
     border-radius: 1.3em;
     font-weight: 500;
+}
+
+#btn-apply-filters {
+    cursor: pointer;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
 }
 
 /* Mobile Filter Toggles */
