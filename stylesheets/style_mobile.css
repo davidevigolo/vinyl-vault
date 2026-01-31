@@ -691,7 +691,7 @@ footer .profile-links a:hover {
 
 .hero-text p {
     font-size: var(--font-medium);
-    max-width: 30em;
+    max-width: 100%;
     color: var(--text-muted);
 }
 
