@@ -1,8 +1,7 @@
 <?php
 include_once 'php/classes/DbConnection.php';
 
-function get_artists()
-{
+function get_artists() {
     $connection = DbConnection::get_instance();
     $query = "SELECT DISTINCT id,author_name,nationality FROM author ORDER BY author_name ASC;";
     $result = mysqli_query($connection->get_connection(), $query);
@@ -19,8 +18,7 @@ function get_artists()
     return $artists;
 }
 
-function get_genre_options()
-{
+function get_genre_options() {
     $connection = DbConnection::get_instance();
     $query = "SELECT DISTINCT genre_name FROM genre ORDER BY genre_name ASC;";
     $result = mysqli_query($connection->get_connection(), $query);
@@ -37,8 +35,7 @@ function get_genre_options()
     return $genres;
 }
 
-function add_disk_form($title, $_artist, $type, $label, $_genres, $errors): string
-{
+function add_disk_form($title, $_artist, $type, $label, $_genres, $errors): string {
     $artists = get_artists();
 
     // Group artists by nationality
@@ -89,8 +86,8 @@ function add_disk_form($title, $_artist, $type, $label, $_genres, $errors): stri
     }, $genres);
 
     $additional_genres = [];
-    for($i = 0; $i < 5; $i++) {
-        if(count($_genres) > 0){
+    for ($i = 0; $i < 5; $i++) {
+        if (count($_genres) > 0) {
             $genre = array_shift($_genres);
             $additional_genre_options = array_map(function ($genre_option) use ($genre) {
                 $selected = ($genre_option === $genre) ? ' selected' : '';
@@ -116,7 +113,7 @@ function add_disk_form($title, $_artist, $type, $label, $_genres, $errors): stri
         'label' => htmlspecialchars($label),
         'genre_options' => implode('', $genre_options),
         'additional_genres' => implode('', $additional_genres),
-        'errors' => isset($errors) && !empty($errors) ? '<ul>' . implode('', array_map(fn($error) => '<li>' . htmlspecialchars($error) . '</li>', $errors)) . '</ul>' : '',
+        'errors' => isset($errors) && !empty($errors) ? '<div id="add-disk-error-container" aria-live="assertive" class="error-message">Sono stati riscontrati i seguenti errori: <ul>' . implode('', array_map(fn($error) => '<li>' . htmlspecialchars($error) . '</li>', $errors)) . '</ul></div>' : '',
         'title' => isset($title) ? htmlspecialchars($title) : ''
     ]);
 }

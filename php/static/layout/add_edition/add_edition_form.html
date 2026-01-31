@@ -1,8 +1,6 @@
 <h2 class="add-pages-title">Aggiungi Edizione</h2>
 <div id="add-pages">
 
-    [errors]
-
     <form id="add-pages-form" action="php/controllers/add_edition_controller.php" method="POST"
         enctype="multipart/form-data">
 
@@ -76,9 +74,15 @@
                     <label for="photo">Foto del vinile</label>
                     <span class="required-field">Obbligatorio</span>
                 </div>
-                <input type="file" id="photo" name="photo" accept="image/*" required>
+                <input type="file" id="photo" name="photo" accept=".jpg,.jpeg,.webp" required>
+                <p class="input-example">Supporta <abbr title="Joint Photographic Experts Group" lang="en">JPG</abbr> o
+                    <abbr title="Web Picture format" lang="en">WEBP</abbr>. Dimensione massima 1<abbr
+                        title="Megabyte">MB</abbr>.
+                </p>
             </div>
         </fieldset>
+
+        [errors]
 
         <button type="submit" class="btn-primary add-pages-btn">Aggiungi Edizione</button>
     </form>
