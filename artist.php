@@ -23,9 +23,13 @@ if (!$artist_data) {
     exit;
 }
 
-$artist_image = !empty($artist_data['image_path']) && file_exists($_SERVER['DOCUMENT_ROOT'] . $artist_data['image_path'])
+//echo $artist_data['image_path'];
+
+$artist_image = !empty($artist_data['image_path'])
     ? $artist_data['image_path']
     : 'assets/images/pollo.webp';
+
+//echo $artist_image;
 
 echo Template::render(
     'static/artist.html',

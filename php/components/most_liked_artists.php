@@ -1,13 +1,14 @@
 <?php
 include_once 'php/classes/DbConnection.php';
+require_once 'php/classes/utils.php';
 function get_most_liked_artists()
 {
     $connection = DbConnection::get_instance();
-    $query = "SELECT a.id, a.author_name, a.image_path, COUNT(DISTINCT o.user_id) as collector_count
+    $query = "SELECT a.id, a.author_name, a.image_path, a.nationality, COUNT(DISTINCT o.user_id) as collector_count
               FROM author as a
               JOIN disk_author_release as dar ON dar.author_id = a.id
               JOIN ownership as o ON o.disk_id = dar.disk_id
-              GROUP BY a.id, a.author_name, a.image_path
+              GROUP BY a.id, a.author_name, a.image_path, a.nationality
               ORDER BY collector_count DESC
               LIMIT 4;";
 
@@ -30,6 +31,7 @@ function most_liked_artists()
             echo Template::render('static/layout/most_liked_artists_card.html', [
                 'artist_id' => $artist['id'],
                 'artist_name' => htmlspecialchars($artist['author_name']),
+                'nationality' => htmlspecialchars(get_nationality_languages()[$artist['nationality']]),
                 'image_path' => $artist_image
             ]);
         }

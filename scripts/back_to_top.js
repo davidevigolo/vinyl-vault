@@ -1,6 +1,8 @@
 const backToTopButton = document.getElementById('back-to-top');
 
-if (!backToTopButton) return;
+if (!backToTopButton) {
+    throw new Error('Back to Top button not found');
+}
 
 backToTopButton.style.display = 'none';
 

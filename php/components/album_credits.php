@@ -25,7 +25,7 @@ function album_credits($disk_id) {
     }
     
     $artist = mysqli_fetch_assoc($result);
-    $image = !empty($artist['image_path']) && file_exists($_SERVER['DOCUMENT_ROOT'] . $artist['image_path'])
+    $image = !empty($artist['image_path'])
         ? $artist['image_path']
         : 'assets/images/pollo.webp';
     

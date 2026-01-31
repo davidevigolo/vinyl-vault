@@ -1,4 +1,4 @@
--- Sample data inserts for Vinyl Vault database
+-- Sample data inserts for VinylVault database
 USE tecweb_db;
 
 -- Disable foreign key checks for smooth import

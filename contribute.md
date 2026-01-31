@@ -18,7 +18,7 @@ Per ogni pagina html deve esserci un corrispondente php. Le parti comuni del cod
     <meta name="description"
         content="Piattaforma dedicata agli appassionati di vinili per esplorare, collezionare e condividere la loro passione per la musica su vinile.">
     <meta name="keywords" content="[keywords]">
-    <title>Vinyl Vault</title>
+    <title>VinylVault</title>
     [head] <!-- qui viene inserita la parte invariante dell'header-->
 </head>
 

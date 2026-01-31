@@ -25,14 +25,14 @@ if (!$album_data) {
     exit;
 }
 
-$album_image = !empty($album_data['image_path']) && file_exists($_SERVER['DOCUMENT_ROOT'] . $album_data['image_path'])
+$album_image = !empty($album_data['image_path'])
     ? $album_data['image_path']
     : 'assets/images/pollo.webp';
 
 echo Template::render(
     'static/album.html',
     [
-        'head' => Template::render('static/layout/head.html',['title' => htmlspecialchars($album_data['title']) . ' - ' . htmlspecialchars($album_data['artist_name']) . ' | Vinyl Vault']),
+        'head' => Template::render('static/layout/head.html', []),
         'header' => _header(),
         'footer' => footer(),
         'album_title' => htmlspecialchars($album_data['title']),

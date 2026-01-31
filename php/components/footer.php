@@ -38,8 +38,8 @@ function footer_guest_profile_nav_links() {
 function footer_site_nav_menu() {
     $currentPage = basename($_SERVER["PHP_SELF"]);
     return [
-        'home' => $currentPage == 'index.php' || $currentPage == '' ? '<span class="current-page" lang="en">Home</span>' : '<a href="index.php"><span lang="en">Home</span></a>',
-        'explore' => $currentPage == 'esplora.php' ? '<span class="current-page">Esplora</span>' : '<a href="esplora.php">Esplora</a>',
-        'catalogue' => $currentPage == 'catalogo.php' ? '<span class="current-page">Catalogo</span>' : '<a href="catalogo.php">Catalogo</a>'
+        'home' => $currentPage == 'index.php' || $currentPage == '' ? '<span class="current-page" lang="en" aria-current="page">Home</span>' : '<a href="index.php"><span lang="en">Home</span></a>',
+        'explore' => $currentPage == 'esplora.php' ? '<span class="current-page" aria-current="page">Esplora</span>' : '<a href="esplora.php">Esplora</a>',
+        'catalogue' => $currentPage == 'catalogo.php' ? '<span class="current-page" aria-current="page">Catalogo</span>' : '<a href="catalogo.php">Catalogo</a>'
     ];
 }
