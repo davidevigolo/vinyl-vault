@@ -1,7 +1,5 @@
 const backToTopButton = document.getElementById('back-to-top');
 
-if (!backToTopButton) return;
-
 backToTopButton.style.display = 'none';
 
 window.addEventListener('scroll', function () {

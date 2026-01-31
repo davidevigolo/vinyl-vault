@@ -64,6 +64,7 @@ CREATE TABLE IF NOT EXISTS review (
     disk_id INT,
     edition_name VARCHAR(100),
     publish_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    rating TINYINT NOT NULL CHECK (rating >= 0 AND rating <= 5),
     content TEXT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (disk_id, edition_name) REFERENCES edition(disk_id, edition_name) ON DELETE CASCADE,

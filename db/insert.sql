@@ -906,55 +906,55 @@ INSERT INTO edition_track_part_of (disk_id, edition_name, track_id, track_number
 
 
 -- rewiews
-INSERT INTO review (user_id, disk_id, edition_name, content) VALUES
+INSERT INTO review (user_id, disk_id, edition_name, rating, content) VALUES
 -- --- DISCO: The Weeknd - After Hours (Disk 29) ---
-(1, 29, 'Standard Edition', 'L''estetica synth-wave di questo album è perfetta. Su vinile, brani come "Blinding Lights" hanno un calore che lo streaming non può replicare.'),
-(2, 29, 'Standard Edition', 'Ho confrontato questa stampa con i file hi-res. La separazione dei canali nelle parti vocali è eccellente, specialmente nei riverberi di "Save Your Tears".'),
-(3, 29, 'Standard Edition', 'Non è il mio genere solito, ma la produzione è così potente che spacca anche per chi ascolta rock. Un disco notturno fantastico.'),
-(4, 29, 'Standard Edition', 'L''album pop dell''anno 2020. Averlo in questa edizione è un obbligo per ogni collezionista di musica moderna.'),
+(1, 29, 'Standard Edition', 5, 'L''estetica synth-wave di questo album è perfetta. Su vinile, brani come "Blinding Lights" hanno un calore che lo streaming non può replicare.'),
+(2, 29, 'Standard Edition', 5, 'Ho confrontato questa stampa con i file hi-res. La separazione dei canali nelle parti vocali è eccellente, specialmente nei riverberi di "Save Your Tears".'),
+(3, 29, 'Standard Edition', 4, 'Non è il mio genere solito, ma la produzione è così potente che spacca anche per chi ascolta rock. Un disco notturno fantastico.'),
+(4, 29, 'Standard Edition', 5, 'L''album pop dell''anno 2020. Averlo in questa edizione è un obbligo per ogni collezionista di musica moderna.'),
 
 -- --- DISCO: The Beatles - Abbey Road (Disk 39) ---
-(1, 39, 'Standard Edition', 'Il lato B di questo disco è probabilmente la sequenza musicale più bella mai incisa. Un pezzo di storia in ogni solco.'),
-(2, 39, 'Standard Edition', 'Questa ristampa mantiene un rumore di fondo bassissimo. Il basso di McCartney in "Come Together" è profondo e controllato.'),
-(3, 39, 'Standard Edition', 'Il miglior album dei Beatles. Fine della discussione. Gli assoli finali di "The End" sono leggenda.'),
-(4, 39, 'Standard Edition', 'La copertina più iconica di sempre per l''album più equilibrato dei Fab Four. Indispensabile.'),
+(1, 39, 'Standard Edition', 5, 'Il lato B di questo disco è probabilmente la sequenza musicale più bella mai incisa. Un pezzo di storia in ogni solco.'),
+(2, 39, 'Standard Edition', 5, 'Questa ristampa mantiene un rumore di fondo bassissimo. Il basso di McCartney in "Come Together" è profondo e controllato.'),
+(3, 39, 'Standard Edition', 5, 'Il miglior album dei Beatles. Fine della discussione. Gli assoli finali di "The End" sono leggenda.'),
+(4, 39, 'Standard Edition', 5, 'La copertina più iconica di sempre per l''album più equilibrato dei Fab Four. Indispensabile.'),
 
 -- --- DISCO: Lana Del Rey - Born to Die (Disk 60) ---
-(1, 60, 'Standard Edition', 'L''album che ha cambiato le regole del pop alternativo. La voce di Lana è ipnotica su questo supporto.'),
-(4, 60, 'Standard Edition', 'Ho questa edizione da anni e non mi stanco mai di ascoltarla. È il manifesto della malinconia moderna.'),
-(2, 60, 'Red Edition', 'Ho preso la Red Edition per l''estetica, ma la qualità della stampa è sorprendentemente alta per un disco colorato. Dinamica ottima.'),
+(1, 60, 'Standard Edition', 5, 'L''album che ha cambiato le regole del pop alternativo. La voce di Lana è ipnotica su questo supporto.'),
+(4, 60, 'Standard Edition', 5, 'Ho questa edizione da anni e non mi stanco mai di ascoltarla. È il manifesto della malinconia moderna.'),
+(2, 60, 'Red Edition', 4, 'Ho preso la Red Edition per l''estetica, ma la qualità della stampa è sorprendentemente alta per un disco colorato. Dinamica ottima.'),
 
 -- --- DISCO: Pinguini Tattici Nucleari - Fake News (Disk 84) ---
-(1, 84, 'Standard Edition', 'I PTN sono la dimostrazione che il pop italiano può ancora essere scritto bene. "Ricordi" mi commuove ogni volta.'),
-(3, 84, 'Standard Edition', 'Testi intelligenti e arrangiamenti mai banali. Dal vivo sono fortissimi, ma il disco si lascia ascoltare che è un piacere.'),
-(4, 84, 'Pink Edition', 'La versione rosa è stupenda da vedere sul piatto. Un acquisto obbligato per supportare la scena italiana.'),
+(1, 84, 'Standard Edition', 4, 'I PTN sono la dimostrazione che il pop italiano può ancora essere scritto bene. "Ricordi" mi commuove ogni volta.'),
+(3, 84, 'Standard Edition', 4, 'Testi intelligenti e arrangiamenti mai banali. Dal vivo sono fortissimi, ma il disco si lascia ascoltare che è un piacere.'),
+(4, 84, 'Pink Edition', 5, 'La versione rosa è stupenda da vedere sul piatto. Un acquisto obbligato per supportare la scena italiana.'),
 
 -- --- DISCO: Dua Lipa - Future Nostalgia (Disk 12) ---
-(1, 12, 'Standard Edition', 'Puro divertimento dall''inizio alla fine. Il basso in "Levitating" ti costringe a ballare.'),
-(2, 12, 'Standard Edition', 'Produzione moderna ma con un cuore funk anni ''70. Tecnicamente è uno dei dischi pop meglio registrati degli ultimi anni.'),
-(4, 12, 'Neon Pink Edition', 'Il colore del vinile si abbina perfettamente all''energia del disco. Uno dei miei pezzi preferiti in bacheca.'),
+(1, 12, 'Standard Edition', 5, 'Puro divertimento dall''inizio alla fine. Il basso in "Levitating" ti costringe a ballare.'),
+(2, 12, 'Standard Edition', 5, 'Produzione moderna ma con un cuore funk anni ''70. Tecnicamente è uno dei dischi pop meglio registrati degli ultimi anni.'),
+(4, 12, 'Neon Pink Edition', 5, 'Il colore del vinile si abbina perfettamente all''energia del disco. Uno dei miei pezzi preferiti in bacheca.'),
 
 -- --- DISCO: Radiohead - A Moon Shaped Pool (Disk 49) ---
-(2, 49, 'Standard Edition', 'Un album intimo e complesso. Gli arrangiamenti d''archi sono riprodotti con una fedeltà incredibile in questa stampa.'),
-(4, 49, 'Standard Edition', 'La chiusura con "True Love Waits" è straziante. I Radiohead non sbagliano un colpo, un disco da ascoltare in cuffia al buio.'),
-(1, 49, 'Opaque White Edition', 'L''edizione bianca è eterea come la musica che contiene. Un oggetto d''arte prima ancora che un disco.'),
+(2, 49, 'Standard Edition', 5, 'Un album intimo e complesso. Gli arrangiamenti d''archi sono riprodotti con una fedeltà incredibile in questa stampa.'),
+(4, 49, 'Standard Edition', 5, 'La chiusura con "True Love Waits" è straziante. I Radiohead non sbagliano un colpo, un disco da ascoltare in cuffia al buio.'),
+(1, 49, 'Opaque White Edition', 5, 'L''edizione bianca è eterea come la musica che contiene. Un oggetto d''arte prima ancora che un disco.'),
 
 -- --- DISCO: Annalisa - E poi siamo finiti nel vortice (Disk 114) ---
-(1, 114, 'Standard Edition', 'Annalisa ha trovato la sua dimensione perfetta. Un disco coerente, potente e pieno di hit.'),
-(2, 114, 'Standard Edition', 'I sintetizzatori in "Bellissima" hanno un taglio molto analogico che su vinile guadagna corpo.'),
-(4, 114, 'Ruby Red Edition', 'Il rosso rubino di questa edizione è profondo. Musicalmente è il miglior lavoro di Annalisa finora.'),
+(1, 114, 'Standard Edition', 5, 'Annalisa ha trovato la sua dimensione perfetta. Un disco coerente, potente e pieno di hit.'),
+(2, 114, 'Standard Edition', 4, 'I sintetizzatori in "Bellissima" hanno un taglio molto analogico che su vinile guadagna corpo.'),
+(4, 114, 'Ruby Red Edition', 5, 'Il rosso rubino di questa edizione è profondo. Musicalmente è il miglior lavoro di Annalisa finora.'),
 
 -- --- DISCO: 5 Seconds of Summer - Youngblood (Disk 93) ---
-(1, 93, 'Standard Edition', 'La svolta pop-rock della band. La title track è un martello, impossibile non cantarla.'),
-(3, 93, 'Standard Edition', 'Hanno abbandonato il pop-punk adolescenziale per un suono più maturo e vicino ai Police. Promossi a pieni voti.'),
+(1, 93, 'Standard Edition', 4, 'La svolta pop-rock della band. La title track è un martello, impossibile non cantarla.'),
+(3, 93, 'Standard Edition', 4, 'Hanno abbandonato il pop-punk adolescenziale per un suono più maturo e vicino ai Police. Promossi a pieni voti.'),
 
 -- --- DISCO: Ariana Grande - thank u, next (Disk 22) ---
-(1, 22, 'Standard Edition', 'Un disco onesto, personale e pieno di groove. Ariana qui ha superato se stessa.'),
-(4, 22, 'Standard Edition', 'L''estetica rosa e nera dell''era "thank u, next" è ovunque. Il vinile suona caldo e avvolgente.'),
+(1, 22, 'Standard Edition', 5, 'Un disco onesto, personale e pieno di groove. Ariana qui ha superato se stessa.'),
+(4, 22, 'Standard Edition', 4, 'L''estetica rosa e nera dell''era "thank u, next" è ovunque. Il vinile suona caldo e avvolgente.'),
 
 -- --- DISCO: AC/DC - Power Up (Disk 130) ---
-(3, 130, 'Standard Edition', 'Rock puro al 100%. Gli AC/DC sono l''unica certezza in un mondo che cambia. Volume a 11!'),
-(2, 130, 'Standard Edition', 'Anche a volumi elevati, la stampa non distorce. Il riff di Angus Young è nitido e tagliente come un rasoio.');
+(3, 130, 'Standard Edition', 5, 'Rock puro al 100%. Gli AC/DC sono l''unica certezza in un mondo che cambia. Volume a 11!'),
+(2, 130, 'Standard Edition', 5, 'Anche a volumi elevati, la stampa non distorce. Il riff di Angus Young è nitido e tagliente come un rasoio.');
 
 -- wishlist's users
 INSERT INTO wishlist (user_id, disk_id, edition_name, priority_level) VALUES
