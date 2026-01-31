@@ -46,8 +46,7 @@ header {
 
 .header-right .nav-links, 
 .header-right .actions-group,
-.header-right .profile-nav,
-.header-right .v-divider {
+.header-right .profile-nav {
     display: flex;
 }
 
@@ -60,17 +59,22 @@ header {
     display: none;
 }
 
-.v-divider {
-    display: block;
-    width: 2px;
-    height: 2em;
-    background-color: #cccccc;
-}
-
 .actions-group {
     display: flex;
     align-items: center;
     gap: 0.8em;
+    margin-right: 1.2rem; 
+    position: relative;
+}
+
+.actions-group::after {
+    content: "";
+    display: block;
+    width: 2px;
+    height: 2.6em;
+    background-color: #cccccc;
+    position: absolute;
+    right: -1.2rem; 
 }
 
 header .profile-nav-links,
@@ -895,3 +899,60 @@ p#empty-collection-paragraph {
 }
 
 /* End Profile Page */
+
+
+/* Edit Profile Page */
+
+.profile-picture-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start; 
+    gap: 3rem;
+    width: 100%;
+    padding: 2rem 0;
+}
+
+#current-profile-img {
+    display: block;
+    margin: 0;
+    flex-shrink: 0;
+    width: 18rem;
+    height: 18rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-picture-info {
+    flex: 1;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.propic-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 1rem;
+    width: 100%;
+}
+
+.propic-actions label[for="propic-upload"] {
+    flex: 0 0 100%;
+    text-align: left;
+    margin-bottom: 0.5rem;
+}
+
+#propic-upload {
+    width: auto;
+    flex: 0 1 auto;
+}
+
+.propic-requirements {
+    text-align: left;
+    margin: 0.5rem 0 1rem 0;
+}
+
+/* End Edit Profile Page */

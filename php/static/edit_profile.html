@@ -54,19 +54,17 @@
                         <legend>Foto Profilo</legend>
 
                         <div class="profile-picture-container">
-                            <img id="current-propic" src="[propic_path]" alt="">
+                            <img id="current-profile-img" src="[propic_path]" alt="">
                             <div class="profile-picture-info">
-                                <p class="propic-requirements">Supporta <abbr title="Joint Photographic Experts Group"
-                                        lang="en">JPG</abbr> o
-                                    <abbr title="Web Picture format" lang="en">WEBP</abbr>.
-                                    Dimensione massima 1<abbr title="Megabyte">MB</abbr>.
-                                </p>
 
                                 <div class="propic-actions">
                                     <label for="propic-upload">Carica Nuova</label>
                                     <input type="file" name="profile-picture" id="propic-upload" accept=".jpg,.jpeg,.webp">
 
-                                    <button type="submit" name="action" value="remove-propic" class="btn-secondary"
+                                <p class="propic-requirements input-example">Supporta <abbr title="Joint Photographic Experts Group" lang="en">JPG</abbr> o <abbr title="Web Picture format" lang="en">WEBP</abbr>. Dimensione massima 1<abbr title="Megabyte">MB</abbr>.
+                                </p>
+
+                                <button type="submit" name="action" value="remove-propic" class="btn-secondary"
                                         [remove-propic-disabled]>Rimuovi</button>
                                 </div>
                                 [propic-error]

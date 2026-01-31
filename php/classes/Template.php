@@ -1,6 +1,6 @@
 <?php
 class Template {
-    /**
+    /*
      * Renders a template file by replacing placeholders with provided values.
      *
      * This method loads a template file from the static directory and replaces
@@ -13,7 +13,7 @@ class Template {
      * 
      * @return string The rendered template with all placeholders replaced
      * 
-     *//*
+     */
     public static function render($file, $vars) {
         $template = file_get_contents(__DIR__ . "/../" . $file);
         foreach ($vars as $key => $value) {
@@ -21,14 +21,14 @@ class Template {
         }
         return $template;
     }
-}*/
+}
     // Array statico che fungerà da memoria temporanea per i file caricati
-    private static $cache = [];
+    //private static $cache = [];
 
     /**
      * Renders a template file by replacing placeholders with provided values.
      * Con ottimizzazione del caricamento tramite cache statica.
-     */
+     *//*
     public static function render($file, $vars) {
         $filePath = __DIR__ . "/../" . $file;
 
@@ -53,4 +53,4 @@ class Template {
 
         return $template;
     }
-}
+}*/

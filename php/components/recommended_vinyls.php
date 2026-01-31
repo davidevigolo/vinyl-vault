@@ -82,7 +82,7 @@ function recommended_vinyls()
                 'title' => htmlspecialchars($vinyl['title']),
                 'artist' => htmlspecialchars($vinyl['author_name']),
                 'artist_id' => $vinyl['author_id'],
-                'cover_image' => htmlspecialchars($vinyl['image_path']) ?: 'assets/images/pollo.webp'
+                'cover_image' => htmlspecialchars($vinyl['image_path']) ?: 'assets/images/vinyl_placeholder.jpg',
             ]);
         }
     } else {

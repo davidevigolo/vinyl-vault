@@ -23,10 +23,6 @@ if (!$artist_data) {
     exit;
 }
 
-$artist_image = !empty($artist_data['image_path']) && file_exists($_SERVER['DOCUMENT_ROOT'] . $artist_data['image_path'])
-    ? $artist_data['image_path']
-    : 'assets/images/pollo.webp';
-
 echo Template::render(
     'static/artist.html',
     [
@@ -34,7 +30,7 @@ echo Template::render(
         'header' => _header(),
         'footer' => footer(),
         'artist_name' => htmlspecialchars($artist_data['author_name']),
-        'artist_image' => htmlspecialchars($artist_image),
+        'artist_image' => htmlspecialchars($artist_data['image_path']) ?: 'assets/images/vinyl_placeholder.jpg',
         'artist_genres' => get_artist_genres($artist_id),
         'artist_albums' => artist_albums($artist_id),
         'artist_singles' => artist_singles($artist_id),

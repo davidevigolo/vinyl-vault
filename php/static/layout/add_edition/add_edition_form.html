@@ -28,12 +28,12 @@
                     <label for="name">Nome dell'edizione</label>
                     <span class="error-message" id="name-error" aria-live="polite">Obbligatorio</span>
                 </div>
-                <p class="input-example"><abbr title="ad esempio">es.</abbr> <span lang="en">"Deluxe Edition"</span></p>
 
                 <input type="text" id="name" name="name" required maxlength="100" pattern="[a-zA-Z0-9àèéìòùÀÈÉÌÒÙ\s]+"
                     value="[name]" [name_enabled] required>
 
                 <ul class="input-">
+                    <li><abbr title="ad esempio">es.</abbr> <span lang="en">"Deluxe Edition"</span></li>
                     <li>Massimo 100 caratteri</li>
                     <li>Caratteri consentiti: lettere, numeri e spazi</li>
                     <li>Se impostata <span lang="en">Standard Edition</span>, non valorizzare il campo</li>
@@ -71,7 +71,7 @@
 
             <div class="input-wrapper">
                 <div class="label-container">
-                    <label for="photo">Foto del vinile</label>
+                    <label for="photo">Foto della copertina del vinile</label>
                     <span class="error-message" id="photo-error" aria-live="polite">Obbligatorio</span>
                 </div>
                 <input type="file" id="photo" name="photo" accept="image/*" required>
