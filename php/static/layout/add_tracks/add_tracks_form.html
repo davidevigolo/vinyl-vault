@@ -4,13 +4,13 @@
     [errors]
     <form id="add-pages-form" action="php/controllers/add_tracks_controller.php" method="POST"
         enctype="multipart/form-data">
-            
+
         <fieldset>
             <legend>Informazioni disco ed edizione</legend>
             <div class="input-wrapper">
                 <div class="label-container">
                     <label for="disk">Seleziona il disco</label>
-                    <span class="error-message" id="disk-error" aria-live="polite">Obbligatorio</span>
+                    <span class="required-field">Obbligatorio</span>
                 </div>
 
                 <select id="disk" name="disk" required>
@@ -23,7 +23,7 @@
             <div class="input-wrapper">
                 <div class="label-container">
                     <label for="edition">Seleziona l'edizione</label>
-                    <span class="error-message" id="edition-error" aria-live="polite">Obbligatorio</span>
+                    <span class="required-field">Obbligatorio</span>
                 </div>
 
                 <select id="edition" name="edition" required>
@@ -35,7 +35,7 @@
                     <li>Caratteri consentiti: lettere, numeri e spazi</li>
                 </ul>
             </div>
-            
+
 
         </fieldset>
 
@@ -45,9 +45,10 @@
                 <div class="input-wrapper input-track-title">
                     <div class="label-container">
                         <label for="title-0">Titolo della traccia</label>
-                        <span class="error-message" id="title-0-error" aria-live="polite">Obbligatorio</span>
+                        <span class="required-field">Obbligatorio</span>
                     </div>
-                    <p class="input-example"><abbr title="ad esempio">es.</abbr> <span lang="en">"Speak to Me"</span></p>
+                    <p class="input-example"><abbr title="ad esempio">es.</abbr> <span lang="en">"Speak to Me"</span>
+                    </p>
                     <input type="text" id="title-0" name="title[]" required maxlength="200"
                         pattern="[a-zA-Z0-9àèéìòùÀÈÉÌÒÙ\s]+" value="[first_track_title]" required>
                 </div>
@@ -55,11 +56,12 @@
                 <div class="input-wrapper input-track-duration">
                     <div class="label-container">
                         <label for="duration-0">Durata (in secondi)</label>
-                        <span class="error-message" id="duration-0-error" aria-live="polite">Obbligatorio</span>
+                        <span class="required-field">Obbligatorio</span>
                     </div>
-                    
-                    <input type="number" id="duration-0" name="duration[]" class="track-duration" value="[first_track_duration]" min="1" max="32767" required>
-                    
+
+                    <input type="number" id="duration-0" name="duration[]" class="track-duration"
+                        value="[first_track_duration]" min="1" max="32767" required>
+
                 </div>
             </div>
 
@@ -68,9 +70,10 @@
         [track_form_items]
 
         <p class="error-message" id="max-tracks-error"></p>
-        <button type="button" id="add-track-button" class="btn-secondary add-pages-btn">Aggiungi un'altra traccia</button>
+        <button type="button" id="add-track-button" class="btn-secondary add-pages-btn">Aggiungi un'altra
+            traccia</button>
 
         <button type="submit" class="btn-primary add-pages-btn">Salva Tracce</button>
     </form>
-    
+
 </div>

@@ -64,7 +64,8 @@
 
                                 <div class="propic-actions">
                                     <label for="propic-upload">Carica Nuova</label>
-                                    <input type="file" name="profile-picture" id="propic-upload" accept=".jpg,.jpeg,.webp">
+                                    <input type="file" name="profile-picture" id="propic-upload"
+                                        accept=".jpg,.jpeg,.webp" required="required">
 
                                     <button type="submit" name="action" value="remove-propic" class="btn-secondary"
                                         [remove-propic-disabled]>Rimuovi</button>
@@ -85,10 +86,11 @@
                         <div class="input-wrapper">
                             <div class="label-container">
                                 <label for="first-name-input">Nome</label>
-                                <span class="error-message" id="name-error" aria-live="polite">Obbligatorio</span>
+                                <span class="required-field">Obbligatorio</span>
                             </div>
                             <input type="text" name="first-name" id="first-name-input" placeholder="Maria"
-                                autocomplete="given-name" required="required" value="[first-name-value]" pattern="[^0-9]*" title="Il nome non può contenere numeri">
+                                autocomplete="given-name" required="required" value="[first-name-value]"
+                                pattern="[^0-9]*" title="Il nome non può contenere numeri">
                             <p class="input-example">Esempio: Maria</p>
                             [first-name-error]
                         </div>
@@ -96,10 +98,11 @@
                         <div class="input-wrapper">
                             <div class="label-container">
                                 <label for="last-name-input">Cognome</label>
-                                <span class="error-message" id="last-name-error" aria-live="polite">Obbligatorio</span>
+                                <span class="required-field">Obbligatorio</span>
                             </div>
                             <input type="text" name="last-name" id="last-name-input" placeholder="Rossi"
-                                autocomplete="family-name" required="required" value="[last-name-value]" pattern="[^0-9]*" title="Il cognome non può contenere numeri">
+                                autocomplete="family-name" required="required" value="[last-name-value]"
+                                pattern="[^0-9]*" title="Il cognome non può contenere numeri">
                             <p class="input-example">Esempio: Rossi</p>
                             [last-name-error]
                         </div>
@@ -107,9 +110,9 @@
                         <div class="input-wrapper">
                             <div class="label-container">
                                 <label for="email-input"><span lang="en">Email</span></label>
-                                <span class="error-message" id="email-error" aria-live="polite">Obbligatorio</span>
+                                <span class="required-field">Obbligatorio</span>
                             </div>
-                            
+
                             <input type="email" name="email" id="email-input" placeholder="maria.rossi@gmail.com"
                                 autocomplete="email" required="required" value="[email-value]">
                             <p class="input-example">Esempio: maria.rossi@gmail.com</p>
@@ -119,10 +122,11 @@
                         <div class="input-wrapper">
                             <div class="label-container">
                                 <label for="username-input"><span lang="en">Username</span></label>
-                                <span class="error-message" id="username-error" aria-live="polite">Obbligatorio</span>
+                                <span class="required-field">Obbligatorio</span>
                             </div>
-                            
-                            <input type="text" name="username" id="username-input" placeholder="maryrossi4321" autocomplete="username" required="required" value="[username-value]">
+
+                            <input type="text" name="username" id="username-input" placeholder="maryrossi4321"
+                                autocomplete="username" required="required" value="[username-value]">
                             <p class="input-example">Esempio: maryrossi4321</p>
                             [username-error]
                         </div>
@@ -139,7 +143,8 @@
                         [personal-info-error]
                         [personal-info-success]
 
-                        <button type="submit" id="personal-info-btn" class="btn-primary edit-profile-btn">Salva Informazioni</button>
+                        <button type="submit" id="personal-info-btn" class="btn-primary edit-profile-btn">Salva
+                            Informazioni</button>
                     </fieldset>
                 </form>
             </div>
@@ -152,8 +157,8 @@
                     <div class="input-wrapper">
                         <div class="label-container">
                             <label for="new-password-input">Nuova <span lang="en">password</span></label>
-                            <span class="error-message" id="new-password-error" aria-live="polite">Obbligatorio</span>
-                        </div>    
+                            <span class="required-field">Obbligatorio</span>
+                        </div>
 
                         <input type="password" name="new-password" id="new-password-input" autocomplete="new-password"
                             required="required">
@@ -171,12 +176,12 @@
                     <div class="input-wrapper">
                         <div class="label-container">
                             <label for="confirm-password-input">Conferma <span lang="en">password</span></label>
-                            <span class="error-message" id="confirm-password-error" aria-live="polite">Obbligatorio</span>
+                            <span class="required-field">Obbligatorio</span>
                         </div>
-                            
-                            <input type="password" name="confirm-password" id="confirm-password-input"
-                                autocomplete="new-password" required="required">
-                            [password-confirm-error]
+
+                        <input type="password" name="confirm-password" id="confirm-password-input"
+                            autocomplete="new-password" required="required">
+                        [password-confirm-error]
                     </div>
 
                     [password-form-error]
@@ -186,7 +191,7 @@
                             lang="en">Password</span></button>
                 </fieldset>
             </form>
-        
+
             <p><a href="profile.php">Torna al profilo</a></p>
         </div>
     </main>

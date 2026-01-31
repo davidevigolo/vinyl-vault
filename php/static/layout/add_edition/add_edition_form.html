@@ -3,15 +3,16 @@
 
     [errors]
 
-    <form id="add-pages-form" action="php/controllers/add_edition_controller.php" method="POST" enctype="multipart/form-data">
+    <form id="add-pages-form" action="php/controllers/add_edition_controller.php" method="POST"
+        enctype="multipart/form-data">
 
         <fieldset>
             <legend>Seleziona disco</legend>
-            
+
             <div class="input-wrapper">
                 <div class="label-container">
                     <label for="disk">Seleziona disco</label>
-                    <span class="error-message" id="disk-error" aria-live="polite">Obbligatorio</span>
+                    <span class="required-field">Obbligatorio</span>
                 </div>
                 <select id="disk" name="disk" required>
                     <option value="" disabled selected>Seleziona un disco</option>
@@ -22,11 +23,11 @@
 
         <fieldset>
             <legend>Dettagli edizione</legend>
-            
+
             <div class="input-wrapper">
                 <div class="label-container">
                     <label for="name">Nome dell'edizione</label>
-                    <span class="error-message" id="name-error" aria-live="polite">Obbligatorio</span>
+                    <span class="required-field">Obbligatorio</span>
                 </div>
                 <p class="input-example"><abbr title="ad esempio">es.</abbr> <span lang="en">"Deluxe Edition"</span></p>
 
@@ -48,10 +49,11 @@
             <div class="input-wrapper">
                 <div class="label-container">
                     <label for="release-date">Data di rilascio</label>
-                    <span class="error-message" id="release-date-error" aria-live="polite">Obbligatorio</span>
+                    <span class="required-field">Obbligatorio</span>
                 </div>
-                
-                <input type="date" id="release-date" name="release-date" min="1887-01-01" required value="[release_date]">
+
+                <input type="date" id="release-date" name="release-date" min="1887-01-01" required
+                    value="[release_date]">
 
                 <ul class="input-">
                     <li>Compresa tra 1887 e l'anno corrente</li>
@@ -61,7 +63,7 @@
             <div class="input-wrapper">
                 <div class="label-container">
                     <label for="country">Paese di rilascio</label>
-                    <span class="error-message" id="country-error" aria-live="polite">Obbligatorio</span>
+                    <span class="required-field">Obbligatorio</span>
                 </div>
                 <select id="country" name="country" required>
                     <option value="" disabled selected>Seleziona un paese</option>
@@ -72,7 +74,7 @@
             <div class="input-wrapper">
                 <div class="label-container">
                     <label for="photo">Foto del vinile</label>
-                    <span class="error-message" id="photo-error" aria-live="polite">Obbligatorio</span>
+                    <span class="required-field">Obbligatorio</span>
                 </div>
                 <input type="file" id="photo" name="photo" accept="image/*" required>
             </div>

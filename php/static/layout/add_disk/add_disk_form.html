@@ -2,18 +2,21 @@
 <div id="add-pages">
 
     [errors]
-    <form id="add-pages-form" action="php/controllers/add_disk_controller.php" method="POST" enctype="multipart/form-data">
+    <form id="add-pages-form" action="php/controllers/add_disk_controller.php" method="POST"
+        enctype="multipart/form-data">
         <fieldset>
             <legend>Informazioni disco</legend>
 
             <div class="input-wrapper">
                 <div class="label-container">
                     <label for="title">Titolo del Disco</label>
-                    <span class="error-message" id="title-error" aria-live="polite">Obbligatorio</span>
+                    <span class="required-field" id="title-error">Obbligatorio</span>
                 </div>
-                <p class="input-example"><abbr title="ad esempio">es.</abbr> <span lang="en">"The Dark Side of the Moon"</span></p>
+                <p class="input-example"><abbr title="ad esempio">es.</abbr> <span lang="en">"The Dark Side of the
+                        Moon"</span></p>
 
-                <input type="text" id="title" name="title" required maxlength="200" pattern="[a-zA-Z0-9àèéìòùÀÈÉÌÒÙ\s]+" value="[title]" required>
+                <input type="text" id="title" name="title" required maxlength="200" pattern="[a-zA-Z0-9àèéìòùÀÈÉÌÒÙ\s]+"
+                    value="[title]" required>
 
                 <ul class="input-examples">
                     <li>Massimo 200 caratteri</li>
@@ -25,7 +28,7 @@
             <div class="input-wrapper">
                 <div class="label-container">
                     <label for="artist">Artista</label>
-                    <span class="error-message" id="artist-error" aria-live="polite">Obbligatorio</span>
+                    <span class="required-field">Obbligatorio</span>
                 </div>
 
                 <select id="artist" name="artist" required>
@@ -40,7 +43,7 @@
             <div class="input-wrapper">
                 <div class="label-container">
                     <label for="type">Tipo</label>
-                    <span class="error-message" id="type-error" aria-live="polite">Obbligatorio</span>
+                    <span class="required-field">Obbligatorio</span>
                 </div>
 
                 <select id="type" name="type" required>
@@ -53,18 +56,19 @@
             <div class="input-wrapper">
                 <div class="label-container">
                     <label for="label">Etichetta discografica</label>
-                    <span class="error-message" id="label-error" aria-live="polite">Obbligatorio</span>
+                    <span class="required-field">Obbligatorio</span>
                 </div>
                 <p class="input-example"><abbr title="ad esempio">es.</abbr> <span lang="en">"Sony Music"</span></p>
 
-                <input type="text" id="label" name="label" required maxlength="200" pattern="[a-zA-Z0-9àèéìòùÀÈÉÌÒÙ\s]+" value="[label]" required>
+                <input type="text" id="label" name="label" required maxlength="200" pattern="[a-zA-Z0-9àèéìòùÀÈÉÌÒÙ\s]+"
+                    value="[label]" required>
 
             </div>
 
             <div class="input-wrapper">
                 <div class="label-container">
                     <label for="genre">Genere</label>
-                    <span class="error-message" id="genre-error" aria-live="polite">Obbligatorio</span>
+                    <span class="required-field">Obbligatorio</span>
                 </div>
 
                 <select id="genre" name="genre[]" required>
