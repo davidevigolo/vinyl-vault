@@ -4,10 +4,16 @@ class DbConnection {
     private static $instance = null;
     private $connection;
     
+    /* per server paolotti
     private $host = 'localhost';
     private $database = 'dvigolo';
     private $username = 'dvigolo';
-    private $password = 'oX2Uheib2phiequi';
+    private $password = 'oX2Uheib2phiequi';*/
+    
+    private $host = 'db';
+    private $database = 'tecweb_db';
+    private $username = 'tecweb_user';
+    private $password = 'tecweb_password';
     
     private function __construct() {
         try {

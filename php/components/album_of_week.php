@@ -38,11 +38,14 @@ function album_of_week() {
     
     $cover_image = htmlspecialchars($album['image_path']) ?: 'assets/images/vinyl_placeholder.jpg';
     
+    $nationality_languages = get_nationality_languages();
+    $lang = $nationality_languages[$album['nationality']] ?? 'en';
+
     $description = sprintf(
         "Il vinile di questa settimana è <strong><span lang=\"%s\">%s</span></strong> di <strong><span lang=\"%s\">%s</span></strong>",
-        htmlspecialchars(get_nationality_languages()[$album['nationality']]),
+        htmlspecialchars($lang),
         htmlspecialchars($album['title']),
-        htmlspecialchars(get_nationality_languages()[$album['nationality']]),
+        htmlspecialchars($lang),
         htmlspecialchars($album['author_name'])
     );
     

@@ -35,7 +35,7 @@ function trending_vinyls() {
         while ($vinyl = mysqli_fetch_assoc($trendingVinyls)) {
             echo Template::render('static/layout/vinyl_card.html', [
                 'disk_id' => $vinyl['disk_id'],
-                'nationality' => htmlspecialchars(get_nationality_languages()[$vinyl['nationality']]),
+                'nationality' => htmlspecialchars(get_nationality_languages()[$vinyl['nationality']] ?? 'en'),
                 'ed_name' => $vinyl['edition_name'],
                 'ed_name_url' => urlencode($vinyl['edition_name']),
                 'title' => htmlspecialchars($vinyl['title']),

@@ -81,7 +81,7 @@ function recommended_vinyls()
                 'disk_id' => $vinyl['disk_id'],
                 'ed_name' => htmlspecialchars($vinyl['edition_name']),
                 'ed_name_url' => urlencode($vinyl['edition_name']),
-                'nationality' => htmlspecialchars(get_nationality_languages()[$vinyl['nationality']]),
+                'nationality' => htmlspecialchars(get_nationality_languages()[$vinyl['nationality']] ?? 'en'),
                 'title' => htmlspecialchars($vinyl['title']),
                 'artist' => htmlspecialchars($vinyl['author_name']),
                 'artist_id' => $vinyl['author_id'],
