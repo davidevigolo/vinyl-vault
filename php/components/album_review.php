@@ -36,7 +36,7 @@ function check_user_has_disk_in_collection($user_id, $disk_id, $edition_name): b
 function album_review($user_id,$disk_id,$edition_name): string{
     ob_start();
     if(!$user_id){
-        return '<p>Effettua il <a href="login.php" lang="en">login</a> per lasciare una recensione.</p>';
+        return '';
     }
     $user_review = get_user_review($user_id, $disk_id, $edition_name);
     $radios = '';
