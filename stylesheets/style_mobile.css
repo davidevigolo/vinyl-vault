@@ -2955,6 +2955,14 @@ body.page-transitioning {
     margin: 0.2rem 0 0 0;
 }
 
+/*
+textarea {
+    width: 100%;
+    padding: 1rem;
+    font-size: var(--font-medium);
+    resize: vertical;
+
+}
 /* Edit Profile Page */
 
 #current-profile-img {
@@ -3013,3 +3021,32 @@ body.page-transitioning {
 
 
 /* Edit Profile Page */
+/* Reviews Section */
+
+section#reviews .center-container{
+    border-radius: 1.3em;
+}
+
+section#reviews h2{
+    border-bottom: 1px solid var(--border-default);
+    margin-bottom: 1.5em;
+}
+
+section#reviews article{
+    border: 0.1em solid var(--border-default);
+    border-radius: 1.3em;
+    background: var(--bg-surface);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+section#reviews article h3{
+    text-align: left;
+    border-bottom: 1px solid var(--border-default);
+    margin-bottom: 1em;
+}
+
+section#reviews article h3{
+    color: var(--text-secondary)
+}
+

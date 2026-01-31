@@ -1,9 +1,7 @@
 // Load More functionality for catalog page
 const loadMoreBtn = document.getElementById('load-more-btn');
 const catalogGrid = document.getElementById('catalog-grid');
-const sortSelect = document.getElementById('sort-select');
-
-if (!loadMoreBtn || !catalogGrid) return;
+const _sortSelect = document.getElementById('sort-select');
 
 const itemsPerLoad = 6;
 
@@ -44,8 +42,8 @@ loadMoreBtn.addEventListener('click', () => {
 updateVisibleCount();
 
 // dropdown change handler
-if (sortSelect) {
-    sortSelect.addEventListener('change', (e) => {
+if (_sortSelect) {
+    _sortSelect.addEventListener('change', (e) => {
         const url = new URL(window.location.href);
         url.searchParams.set('sort', e.target.value);
         window.location.href = url.toString();

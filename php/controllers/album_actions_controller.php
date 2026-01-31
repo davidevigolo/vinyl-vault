@@ -59,7 +59,6 @@ $user_id = $_SESSION['user_id'] ?? null;
 if($action === 'add_to_collection'){
     $result = add_to_collection($disk_id,$edition_name,$user_id);
     if($result){
-        $_SESSION['album_actions_result']['message'] = "Album aggiunto con successo alla tua collezione";
         $_SESSION['album_actions_result']['success'] = true;
     }else{
         $_SESSION['album_actions_result']['message'] = "Non siamo riusciti ad aggiungere l'album alla tua collezione, controlla che non sia già presente.";
@@ -68,7 +67,6 @@ if($action === 'add_to_collection'){
 } elseif ($action ==='add_to_wishlist'){
     $result = add_to_wishlist($disk_id,$edition_name,$user_id);
     if($result){
-        $_SESSION['album_actions_result']['message'] = "Album aggiunto con successo alla tua lista dei desideri";
         $_SESSION['album_actions_result']['success'] = true;
     }else{
         $_SESSION['album_actions_result']['message'] = "Non siamo riusciti ad aggiungere l'album alla tua lista dei desideri, controlla che non sia già presente.";
