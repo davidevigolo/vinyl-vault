@@ -25,10 +25,6 @@ if (!$album_data) {
     exit;
 }
 
-$album_image = !empty($album_data['image_path']) && file_exists($_SERVER['DOCUMENT_ROOT'] . $album_data['image_path'])
-    ? $album_data['image_path']
-    : 'assets/images/pollo.webp';
-
 echo Template::render(
     'static/album.html',
     [
@@ -39,7 +35,7 @@ echo Template::render(
         'artist_name' => htmlspecialchars($album_data['artist_name']),
         'album_edition' => htmlspecialchars($album_data['edition_name']),
         'artist_id' => $album_data['artist_id'],
-        'album_image' => htmlspecialchars($album_image),
+        'album_image' => htmlspecialchars($album_data['image_path']) ?: 'assets/images/vinyl_placeholder.jpg',
         'release_year' => $album_data['release_year'],
         'disk_type' => htmlspecialchars($album_data['disk_type']),
         'release_date' => htmlspecialchars($album_data['release_date']),
