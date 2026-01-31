@@ -539,7 +539,7 @@ header {
     max-width: 20em;
 }
 
-.footer-col h3 {
+.footer-col h2 {
     font-size: var(--font-large);
     font-weight: 700;
     margin-bottom: 1.2rem;
