@@ -3,7 +3,7 @@ include_once 'php/classes/DbConnection.php';
 
 function get_top_vinyls() {
     $connection = DbConnection::get_instance();
-    $query = "SELECT a.author_name, d.title, e.edition_name, e.image_path, COUNT(o.user_id) AS ownership_count
+    $query = "SELECT d.id, a.author_name, d.title, e.edition_name, e.image_path, e.country, COUNT(o.user_id) AS ownership_count
                 FROM disk d
                 JOIN edition e ON d.id = e.disk_id
                 JOIN disk_author_release dar ON d.id = dar.disk_id
@@ -51,16 +51,18 @@ function top_vinyls() {
         while ($vinyl = mysqli_fetch_assoc($topVinyls)) {
             $span = $i === 1 ? 'span-6' : 'span-3';
             $span = $i > 3 ? 'span-2' : $span;
-            // TBD: Usare image_path quando le immagini saranno caricate
             echo Template::render('static/layout/top_vinyls/top_vinyl_card.html', [
                 'artist' => htmlspecialchars($vinyl['author_name']),
                 'title' => htmlspecialchars($vinyl['title']),
                 'ed_name' => htmlspecialchars($vinyl['edition_name']),
+                'ed_link_name' => urlencode($vinyl['edition_name']),
+                'disk_id' => htmlspecialchars($vinyl['id']),
                 'cover_image' => htmlspecialchars($vinyl['image_path']) ?: 'assets/images/vinyl_placeholder.jpg',
                 'span_class' => $span,
                 'direction' => $i > 3 ? 'direction-vertical' : 'direction-horizontal',
                 'index' => $i,
                 'ordinal_index' => $ordinali[$i],
+                'lang' => $vinyl['country'] !== null && $vinyl['country'] !== '' ? get_nationality_languages()[strtolower($vinyl['country'])] : 'it'
             ]);
             $i++;
         }

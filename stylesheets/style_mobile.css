@@ -2393,6 +2393,10 @@ html:not(.js-enabled) .load-more-container {
     padding: 1rem;
 }
 
+#top-vinyls-title {
+    font-size: var(--font-xxxl);
+}
+
 .vinyl-card {
     align-items: center;
     position: relative;
