@@ -4,7 +4,7 @@ include_once 'php/classes/DbConnection.php';
 function get_most_collected_vinyls()
 {
     $connection = DbConnection::get_instance();
-    $query = "SELECT ed.disk_id, ed.edition_name, d.title, ed.image_path, COUNT(o.user_id) as ownership_count, a.nationality,
+    $query = "SELECT ed.disk_id, ed.edition_name, d.title, ed.image_path, COUNT(o.user_id) as ownership_count, ed.country,
                 (SELECT a.id FROM disk_author_release dar 
                  JOIN author a ON dar.author_id = a.id 
                  WHERE dar.disk_id = ed.disk_id 
@@ -18,7 +18,7 @@ function get_most_collected_vinyls()
               JOIN disk as d ON d.id = ed.disk_id
               JOIN disk_author_release as dar ON dar.disk_id = ed.disk_id
               JOIN author as a ON a.id = dar.author_id
-              GROUP BY ed.disk_id, ed.edition_name, d.title, ed.image_path, a.nationality
+              GROUP BY ed.disk_id, ed.edition_name, d.title, ed.image_path, ed.country
               ORDER BY ownership_count DESC
               LIMIT 4;";
     
@@ -39,7 +39,7 @@ function most_collected_vinyls()
         while ($vinyl = mysqli_fetch_assoc($mostCollected)) {
             echo Template::render('static/layout/vinyl_card.html', [
                 'disk_id' => $vinyl['disk_id'],
-                'nationality' => htmlspecialchars(get_nationality_languages()[$vinyl['nationality']]),
+                'nationality' => htmlspecialchars(get_nationality_languages()[strtolower($vinyl['country'])]),
                 'ed_name' => htmlspecialchars($vinyl['edition_name']),
                 'ed_name_url' => urlencode($vinyl['edition_name']),
                 'title' => htmlspecialchars($vinyl['title']),

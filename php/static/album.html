@@ -7,7 +7,7 @@
 </head>
 
 <body>
-  <nav class="list-help">
+  <nav class="list-help" aria-label="Aiuti alla navigazione">
     <ul>
       <li><a href="#content" class="navigation-help">Vai al contenuto</a></li>
       <li><a href="#menu" class="navigation-help">Vai al menu</a></li>
@@ -41,21 +41,22 @@
             <span class="album-year">[release_year]</span>
             <span class="album-type">[disk_type]</span>
           </div>
-          <div class="album-genres" role="list" aria-label="Generi musicali">
+          <ul class="album-genres" aria-label="Generi musicali">
             [album_genres]
-          </div>
+          </ul>
 
           <div class="album-rating" role="img"
             aria-label="Valutazione media [average_rating] su 5 stelle, basata su [review_count] recensioni">
-            <p class="rating-label">Valutazione dei collezionisti</p>
+            <span class="rating-label">Valutazione dei collezionisti</span>
             <div class="rating-stars" aria-hidden="true">
               <span class="stars">★★★★★</span>
             </div>
-            <p class="rating-text">
+            <span class="rating-text">
               <strong>[average_rating]</strong> <span class="review-count">([review_count] recensioni)</span>
-            </p>
+            </span>
           </div>
           [album_actions]
+        </div>
       </div>
     </section>
 

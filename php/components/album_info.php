@@ -96,7 +96,7 @@ function get_album_genres($disk_id) {
     
     $genres = [];
     while ($row = mysqli_fetch_assoc($result)) {
-        $genres[] = '<span class="tag">' . htmlspecialchars($row['genre_name']) . '</span>';
+        $genres[] = '<li><span class="tag">' . htmlspecialchars($row['genre_name']) . '</span></li>';
     }
     
     return implode(' ', $genres);

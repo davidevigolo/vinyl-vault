@@ -1,5 +1,5 @@
-this.document.getElementById('disk').value == '' ? this.document.getElementById('edition').setAttribute('disabled', 'true') : null;
-this.document.getElementById('disk').value == '' ? this.document.getElementById('add-track-button').setAttribute('disabled', 'true') : null;
+this.document.getElementById('disk').value == '' ? this.document.getElementById('edition').disabled = true : null;
+this.document.getElementById('disk').value == '' ? this.document.getElementById('add-track-button').disabled = true : null;
 this.document.querySelectorAll('.track-fieldset').forEach((fieldset, index) => fieldset.getAttribute('data-display') === 'false' ? fieldset.style.display = 'none' : null);
 
 this.document.getElementById('disk').addEventListener('input', function () {
@@ -38,7 +38,7 @@ this.document.getElementById('disk').addEventListener('input', function () {
     if (this.value.trim() !== '') {
         addTrackButton.removeAttribute('disabled');
     } else {
-        addTrackButton.setAttribute('disabled', 'true');
+        addTrackButton.disabled = true;
     }
 });
 

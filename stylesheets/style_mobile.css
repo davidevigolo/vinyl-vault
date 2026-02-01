@@ -1154,6 +1154,12 @@ footer .profile-links a:hover {
     font-size: var(--font-large);
 }
 
+.delete-selection fieldset{
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
 .checkbox-container {
     display: flex;
     align-items: center;
@@ -1192,21 +1198,52 @@ footer .profile-links a:hover {
     overflow: hidden;
 }
 
-.collection-rating-section {
+.rating {
     display: flex;
-    align-items: center;
-    gap: 0.5em;
-    border-top: 1px solid var(--border-default);
-    padding-top: 1.5em;
-    margin-top: 0.5em;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: flex-start;
+    border: none;
+}
+
+.rating input {
+    width: 0;
+    height: 0;
+    position: absolute;
+    opacity: 0;
+}
+
+.rating label:before {
+    content: '★';
+    font-size: 2.5rem;
+    cursor: pointer;
+    color: var(--text-muted);
+}
+
+.rating label:has(~ input:checked)::before {
+    color: var(--text-secondary);
+}
+
+.rating input:checked + label::before{
+    color: var(--text-secondary);
+}
+
+
+.rating input:focus + label {
+    outline: 2px solid #005fcc;
 }
 
 .stars-container {
+    margin: auto;
+    margin-top: 1em;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 0.4em;
     cursor: pointer;
+}
+
+.stars-container label {
+    color: transparent;
 }
 
 .star {
@@ -1469,6 +1506,10 @@ img#empty-collection-image {
     display: flex;
     justify-content: center;
     gap: 0.3em;
+}
+
+.album-genres{
+    list-style: none;
 }
 
 .album-genres span,
@@ -1763,10 +1804,10 @@ img#empty-collection-image {
     display: flex;
     gap: 0;
     background-color: var(--bg-surface);
-    border: 2px solid var(--border-default);
-    border-radius: 25px;
+    border: 0.1em solid var(--border-default);
+    border-radius: 1.3em;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.1em 0.2em rgba(0, 0, 0, 0.1);
     flex: 4;
 }
 
@@ -1780,9 +1821,12 @@ img#empty-collection-image {
 }
 
 #search-submit-btn {
+    border: none;
     margin: 0;
-    border-radius: 1.5em;
+    border-radius: 0.9em;
     cursor: pointer;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
 }
 
 /* Hide native browser clear button on search inputs */

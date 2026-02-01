@@ -8,22 +8,25 @@
             <p class="edition-info">[edition_name]</p>
             <p class="release-info">[country] - <time datetime="[year_datetime]">[year]</time></p>
 
-            <input type="hidden" form="wishlist-form" name="disk_id[]" value="[disk_id]"/>
-            <input type="hidden" form="wishlist-form" name="edition_name[]" value="[edition_name]"/>
+            <input type="hidden" form="wishlist-form" name="disk_id[]" value="[disk_id]" />
+            <input type="hidden" form="wishlist-form" name="edition_name[]" value="[edition_name]" />
 
             <div class="collection-priority-section">
-                <label for="priority-level-[disk_id]-[edition_name]" aria-label="Imposta priorità di [title]">Livello di priorità (0-100): </label>
-                <input form="wishlist-form" id="priority-level-[disk_id]-[edition_name]" type="number" max=100 min=0 name="priority_level[]" value="[priority_level]" required/>
+                <label for="priority-level-[disk_id]-[edition_name_id]">Livello di
+                    priorità (0-100) di [title]: </label>
+                <input form="wishlist-form" id="priority-level-[disk_id]-[edition_name_id]" type="number" max=100 min=0
+                    name="priority_level[]" value="[priority_level]" required/>
             </div>
 
             <p class="priority-error-message" aria-live="polite">Inserire un valore tra 0 e 100</p>
-            
+
         </div>
     </div>
     <div class="delete-selection">
-        <label class="checkbox-container">
-            <label class="label-text" for="delete-[disk_id]-[edition_name]">Seleziona per eliminare</label>
-            <input type="checkbox" form="wishlist-form" id="delete-[disk_id]-[edition_name]" name="items_to_delete[]" value="[disk_id]_[edition_name]" aria-label="Seleziona [title] per l'eliminazione" [checked]/>
-        </label>
+        <fieldset class="checkbox-container">
+            <legend class="sr-only">Seleziona per eliminare [title]</legend>
+            <input type="checkbox" form="wishlist-form" id="delete-[disk_id]-[edition_name_id]" name="items_to_delete[]" value="[disk_id]_[edition_name]" [checked] />
+            <label class="label-text" for="delete-[disk_id]-[edition_name_id]">Seleziona per eliminare</label>
+        </fieldset>
     </div>
 </article>

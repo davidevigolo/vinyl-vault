@@ -4,7 +4,7 @@ include_once 'php/classes/DbConnection.php';
 function similar_artists($artist_id)
 {
     $connection = DbConnection::get_instance();
-    $query = "SELECT DISTINCT a.id, a.author_name, a.image_path
+    $query = "SELECT DISTINCT a.id, a.author_name, a.image_path, a.nationality
               FROM author a
               JOIN disk_author_release dar ON a.id = dar.author_id
               JOIN disk_genre_classification dgc2 ON dar.disk_id = dgc2.disk_id
@@ -15,9 +15,9 @@ function similar_artists($artist_id)
                   JOIN disk_author_release dar2 ON dgc.disk_id = dar2.disk_id
                   WHERE dar2.author_id = ?
               )
-              GROUP BY a.id, a.author_name, a.image_path
+              GROUP BY a.id, a.author_name, a.image_path, a.nationality
               ORDER BY RAND()
-              LIMIT 3";
+              LIMIT 4";
     
     $stmt = mysqli_prepare($connection->get_connection(), $query);
     if (!$stmt) {
@@ -41,6 +41,7 @@ function similar_artists($artist_id)
             echo Template::render('static/layout/most_liked_artists_card.html', [
                 'artist_id' => $artist['id'],
                 'artist_name' => htmlspecialchars($artist['author_name']),
+                'nationality' => htmlspecialchars(get_nationality_languages()[strtolower($artist['nationality'])]),
                 'image_path' => $artist_image
             ]);
         }

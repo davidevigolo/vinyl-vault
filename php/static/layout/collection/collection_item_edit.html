@@ -1,33 +1,41 @@
-<article class="collection-item" role="listitem">
+<article class="collection-item">
     <div class="disk-info">
-        <img src="[image_url]" alt="Copertina dell'album [title] di [author]"  loading="lazy">
+        <img src="[image_url]" alt="Copertina dell'album [title] di [author]" loading="lazy">
         <div class="collection-item-details">
             <p class="artist-name">[author]</p>
             <h2 class="album-title">[title]</h2>
             <p class="edition-info">[edition_name]</p>
             <p class="release-info">[country] - <time datetime="[year_datetime]">[year]</time></p>
-            <fieldset class="collection-rating-section">
+            <fieldset class="rating">
                 <legend class="evaluation-label">Valutazione personale</legend>
-                <div class="stars-container" role="group" aria-label="Seleziona valutazione da 1 a 5 stelle">
-                    <button type="button" class="star" data-value="1" aria-label="1 stella">★</button>
-                    <button type="button" class="star" data-value="2" aria-label="2 stelle">★</button>
-                    <button type="button" class="star" data-value="3" aria-label="3 stelle">★</button>
-                    <button type="button" class="star" data-value="4" aria-label="4 stelle">★</button>
-                    <button type="button" class="star" data-value="5" aria-label="5 stelle">★</button>
+                <div class="stars-container" data-rating="[rating_value]">
+                    <input type="radio" id="star1-[disk_id]-[edition_name_id]" name="rating-[disk_id]-[edition_name_id]" value="1" />
+                    <label for="star1-[disk_id]-[edition_name_id]" title="1 stella">1</label>
 
-                    <button type="button" class="btn-reset-stars" aria-label="Rimuovi valutazione">×</button>
+                    <input type="radio" id="star2-[disk_id]-[edition_name_id]" name="rating-[disk_id]-[edition_name_id]" value="2" />
+                    <label for="star2-[disk_id]-[edition_name_id]" title="2 stelle">2</label>
+
+                    <input type="radio" id="star3-[disk_id]-[edition_name_id]" name="rating-[disk_id]-[edition_name_id]" value="3" />
+                    <label for="star3-[disk_id]-[edition_name_id]" title="3 stelle">3</label>
+
+                    <input type="radio" id="star4-[disk_id]-[edition_name_id]" name="rating-[disk_id]-[edition_name_id]" value="4" />
+                    <label for="star4-[disk_id]-[edition_name_id]" title="4 stelle">4</label>
+
+                    <input type="radio" id="star5-[disk_id]-[edition_name_id]" name="rating-[disk_id]-[edition_name_id]" value="5" />
+                    <label for="star5-[disk_id]-[edition_name_id]" title="5 stelle">5</label>
                 </div>
-
-                <input type="hidden" name="rating[]" form="collection-form" class="rating-input" value="[rating_value]">
             </fieldset>
-            <input type="hidden" form="collection-form" name="disk_id[]" value="[disk_id]"/>
-            <input type="hidden" form="collection-form" name="edition_name[]" value="[edition_name]"/>
+            <input type="hidden" form="collection-form" name="disk_id[]" value="[disk_id]" />
+            <input type="hidden" form="collection-form" name="edition_name[]" value="[edition_name]" />
+            <input type="hidden" form="collection-form" name="rating[]" value="[rating_value]" class="rating-hidden-input" data-item="[disk_id]-[edition_name_id]" />
         </div>
     </div>
     <div class="delete-selection">
-        <label class="checkbox-container">
-            <label class="label-text" for="delete-[disk_id]-[edition_name]">Seleziona per eliminare</label>
-            <input type="checkbox" form="collection-form" id="delete-[disk_id]-[edition_name]" name="items_to_delete[]" value="[disk_id]_[edition_name]" aria-label="Seleziona [title] per l'eliminazione" [checked]/>
-        </label>
+        <fieldset class="checkbox-container">
+            <legend class="sr-only">Seleziona per eliminare [title]</legend>
+            <input type="checkbox" form="collection-form" id="delete-[disk_id]-[edition_name_id]" name="items_to_delete[]"
+                value="[disk_id]_[edition_name]" [checked] />
+            <label class="label-text" for="delete-[disk_id]-[edition_name_id]">Seleziona per eliminare</label>
+        </fieldset>
     </div>
 </article>

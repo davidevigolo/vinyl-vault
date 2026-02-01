@@ -4,7 +4,7 @@ include_once 'php/classes/DbConnection.php';
 function artist_albums($artist_id)
 {
     $connection = DbConnection::get_instance();
-    $query = "SELECT d.id as disk_id, d.title, e.edition_name, e.image_path,
+    $query = "SELECT d.id as disk_id, d.title, e.edition_name, e.image_path, e.country,
                      a.author_name, a.id as author_id
               FROM disk d
               JOIN disk_author_release dar ON d.id = dar.disk_id
@@ -32,6 +32,8 @@ function artist_albums($artist_id)
             echo Template::render('static/layout/vinyl_card.html', [
                 'disk_id' => $album['disk_id'],
                 'ed_name' => htmlspecialchars($album['edition_name']),
+                'ed_name_url' => urlencode($album['edition_name']),
+                'nationality' => htmlspecialchars(get_nationality_languages()[strtolower($album['country'])]),
                 'title' => htmlspecialchars($album['title']),
                 'artist' => htmlspecialchars($album['author_name']),
                 'cover_image' => htmlspecialchars($album['image_path']) ?: 'assets/images/vinyl_placeholder.jpg'

@@ -6,14 +6,19 @@ function album_versions($disk_id) {
     
     $stmt = mysqli_prepare($connection->get_connection(),
         "SELECT DISTINCT d2.id, d2.title, e.edition_name, e.release_date, e.image_path, e.country,
-                a.author_name
+            a.author_name
          FROM disk d1
          JOIN disk_author_release dar1 ON d1.id = dar1.disk_id
          JOIN disk_author_release dar2 ON dar1.author_id = dar2.author_id
          JOIN disk d2 ON dar2.disk_id = d2.id
          JOIN edition e ON d2.id = e.disk_id
          JOIN author a ON dar2.author_id = a.id
-         WHERE d1.id = ? AND d2.id != ?
+         WHERE d1.id = ? AND d2.id = ? AND e.edition_name != (
+             SELECT e2.edition_name
+             FROM edition e2
+             WHERE e2.disk_id = d1.id
+             LIMIT 1
+         )
          ORDER BY e.release_date DESC
          LIMIT 8"
     );
@@ -40,8 +45,10 @@ function album_versions($disk_id) {
         echo Template::render('static/layout/vinyl_card.html', [
             'disk_id' => $row['id'],
             'ed_name' => $edition_info,
+            'ed_name_url' => urlencode($row['edition_name']),
             'title' => htmlspecialchars($row['title']),
             'artist' => htmlspecialchars($row['author_name']),
+            'nationality' => htmlspecialchars(get_nationality_languages()[strtolower($row['country'])]),
             'cover_image' => htmlspecialchars($row['image_path']) ?: 'assets/images/vinyl_placeholder.jpg'
         ]);
     }

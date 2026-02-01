@@ -1,5 +1,7 @@
 <?php
 include_once 'php/classes/DbConnection.php';
+require_once 'php/classes/Template.php';
+require_once 'php/classes/utils.php';
 
 function get_collection() {
     $connection = DbConnection::get_instance();
@@ -34,6 +36,9 @@ function collection($edit_mode = false) {
                 'author' => htmlspecialchars($vinyl['author']),
                 'author_id' => htmlspecialchars($vinyl['author_id']),
                 'edition_name' => htmlspecialchars($vinyl['edition_name']),
+                'edition_name_url' => urlencode($vinyl['edition_name']),
+                'edition_name_id' => htmlspecialchars(str_replace(' ', '-', $vinyl['edition_name'])),
+                'nationality' => htmlspecialchars(get_nationality_languages()[strtolower($vinyl['country'])]),
                 'country' => htmlspecialchars($vinyl['country']),
                 'year' => htmlspecialchars(str_replace('-', '/', $vinyl['release_date'])),
                 'year_datetime' => htmlspecialchars($vinyl['release_date']),

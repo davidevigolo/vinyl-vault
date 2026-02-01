@@ -306,6 +306,11 @@ header .site-nav-links li {
     justify-content: space-between;
 }
 
+.stars-container {
+    margin: 0;
+    justify-content: flex-start;
+}
+
 .star {
     font-size: 2.2rem;
 }

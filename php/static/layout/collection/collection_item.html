@@ -1,5 +1,5 @@
-<article class="collection-item" role="listitem">
-    <a href="album.php?id=[disk_id]&edition=[edition_name]" class="card-link-wrapper disk-info" aria-label="Vai alla pagina di [title] di [author]">
+<article class="collection-item" lang="[nationality]">
+    <a href="album.php?id=[disk_id]&edition=[edition_name_url]" class="card-link-wrapper disk-info" aria-label="[author] [title] [edition_name] [country] - [year] Valutazione personale:[rating_value] su 5 stelle, clicca per andare alla pagina con i dettagli dell'album">
         <img src="[image_url]" alt="" loading="lazy">
         <div class="collection-item-details">
             <p class="artist-name">[author]</p>
@@ -7,7 +7,7 @@
             <p class="release-info">[country] - <time datetime="[year_datetime]">[year]</time></p>
 
             <div class="collection-rating-section" role="img" 
-                 aria-label="Valutazione: [rating_value] su 5 stelle">
+                 aria-label="Valutazione: [rating_value] su 5 stelle" data-rating="[rating_value]">
                 <div class="stars-container readonly" aria-hidden="true">
                     <span class="star" data-value="1">★</span>
                     <span class="star" data-value="2">★</span>
@@ -15,8 +15,7 @@
                     <span class="star" data-value="4">★</span>
                     <span class="star" data-value="5">★</span>
                 </div>
-                <p class="evaluation-label">Valutazione personale</p>
-                <input type="hidden" name="rating" class="rating-input" value="[rating_value]">
+                <span class="evaluation-label">Valutazione personale</span>
             </div>
             
         </div>

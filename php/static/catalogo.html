@@ -2,12 +2,13 @@
 <html lang="it" data-theme="light">
 
 <head>
-    <meta name="description" content="Catalogo completo VinylVault. Esplora e filtra l'intero catalogo di vinili per genere, anno e ordina per preferenza.">
+    <meta name="description"
+        content="Catalogo completo VinylVault. Esplora e filtra l'intero catalogo di vinili per genere, anno e ordina per preferenza.">
     <meta name="keywords" content="catalogo vinili, cerca vinili, filtra vinili, generi musicali, vinili anno">
     <title>Catalogo - VinylVault</title>
     [head]
-    <script src="scripts/catalog_filters.js" defer></script>
-    <script src="scripts/load_more.js" defer></script>
+    <script src="scripts/catalog_filters.js" defer="defer"></script>
+    <script src="scripts/load_more.js" defer="defer"></script>
 </head>
 
 <body>
@@ -43,16 +44,17 @@
                         <label for="catalog-search" class="sr-only">Cerca un disco, un artista o una versione</label>
                         <input type="search" id="catalog-search" name="q" value="[search_value]"
                             placeholder="Cerca un disco, un artista o una versione"
-                            title="Cerca vinili per titolo, artista o versione" autocomplete="off"/>
+                            title="Cerca vinili per titolo, artista o versione" autocomplete="off" />
                         <button type="button" id="clear-search-btn" class="btn-clear-search"
                             aria-label="Cancella ricerca" title="Cancella ricerca" [clear_search_hidden]>
                             <span aria-hidden="true">×</span>
                         </button>
                         <!-- Preserve current filters when searching -->
                         [search_hidden_params]
+                        <button type="submit" class="btn-primary" id="search-submit-btn" form="search-form"
+                            aria-label="Esegui ricerca" title="Esegui ricerca">
+                            <img class="search-icon" src="assets/images/search.png" alt=""></button>
                     </form>
-                    <button type="submit" class="btn-primary" id="search-submit-btn" form="search-form" aria-label="Esegui ricerca" title="Esegui ricerca">
-                        <img class="search-icon" src="assets/images/search.png" alt=""></button>
                 </div>
             </div>
         </section>

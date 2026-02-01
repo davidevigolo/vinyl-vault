@@ -25,7 +25,7 @@ function get_recommended_vinyls()
         
         if ($favorite_genre) {
             $recommendations_query = "SELECT DISTINCT ed.disk_id, ed.edition_name, d.title, 
-                                             au.author_name, au.id as author_id, ed.image_path, au.nationality
+                                             au.author_name, au.id as author_id, ed.image_path, ed.country,
                                       FROM edition as ed
                                       JOIN disk as d ON ed.disk_id = d.id
                                       JOIN disk_author_release as dar ON dar.disk_id = ed.disk_id
@@ -49,13 +49,13 @@ function get_recommended_vinyls()
     }
     
     $fallback_query = "SELECT ed.disk_id, ed.edition_name, d.title, au.author_name, 
-                              au.id as author_id, ed.image_path, au.nationality, COUNT(o.user_id) as ownership_count
+                              au.id as author_id, ed.image_path, ed.country, COUNT(o.user_id) as ownership_count
                        FROM ownership as o
                        JOIN edition as ed ON o.disk_id = ed.disk_id AND o.edition_name = ed.edition_name
                        JOIN disk as d ON d.id = ed.disk_id
                        JOIN disk_author_release as dar ON dar.disk_id = ed.disk_id
                        JOIN author as au ON au.id = dar.author_id
-                       GROUP BY ed.disk_id, ed.edition_name, d.title, au.author_name, au.id, ed.image_path
+                       GROUP BY ed.disk_id, ed.edition_name, d.title, au.author_name, au.id, ed.image_path, ed.country
                        ORDER BY ownership_count DESC
                        LIMIT 4;";
     
@@ -81,7 +81,7 @@ function recommended_vinyls()
                 'disk_id' => $vinyl['disk_id'],
                 'ed_name' => htmlspecialchars($vinyl['edition_name']),
                 'ed_name_url' => urlencode($vinyl['edition_name']),
-                'nationality' => htmlspecialchars(get_nationality_languages()[$vinyl['nationality']]),
+                'nationality' => htmlspecialchars(get_nationality_languages()[strtolower($vinyl['country'])]),
                 'title' => htmlspecialchars($vinyl['title']),
                 'artist' => htmlspecialchars($vinyl['author_name']),
                 'artist_id' => $vinyl['author_id'],

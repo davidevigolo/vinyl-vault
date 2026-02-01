@@ -155,7 +155,7 @@ function get_validation_scripts($script_names)
 {
     $scripts_html = '';
     foreach ($script_names as $script_name) {
-        $scripts_html .= '<script src="scripts/' . htmlspecialchars($script_name) . '" defer></script>' . "\n";
+        $scripts_html .= '<script src="scripts/' . htmlspecialchars($script_name) . '" defer="defer"></script>' . "\n";
     }
     return $scripts_html;
 }
