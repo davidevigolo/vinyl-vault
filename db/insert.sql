@@ -27,25 +27,26 @@ INSERT INTO users (first_name, last_name, username, email, pw_hash, bio, propic_
 
 
 -- Insert authors/artists (no dependencies)
-INSERT INTO author (author_name, image_path, nationality) VALUES
-('Taylor Swift', '/assets/images/artists/taylorswift.jpg', 'us'),
-('Dua Lipa', '/assets/images/artists/dualipa.jpg', 'us'),
-('Ariana Grande', '/assets/images/artists/arianagrande.jpg', 'us'),
-('The Weeknd', '/assets/images/artists/theweeknd.jpg', 'us'),
-('The Beatles', '/assets/images/artists/beatles.jpg', 'us'),
-('Radiohead', '/assets/images/artists/radiohead.jpg', 'us'),
-('Linkin Park', '/assets/images/artists/linkinpark.jpg', 'us'),
-('Lana Del Rey', '/assets/images/artists/lanadelrey.jpg', 'us'),
-('BABYMETAL', '/assets/images/artists/babymetal.jpg', 'jp'),
-('Pink Floyd', '/assets/images/artists/pinkfloyd.jpg', 'us'),
-('Pinguini Tattici Nucleari', '/assets/images/artists/ptn.jpg', 'it'),
-('5 Seconds of Summer', '/assets/images/artists/5sos.jpg', 'au'),
-('Madonna', '/assets/images/artists/madonna.jpg', 'us'),
-('Annalisa', '/assets/images/artists/annalisa.jpg', 'it'),
-('Nirvana', '/assets/images/artists/nirvana.jpg', 'us'),
-('AC/DC', '/assets/images/artists/acdc.jpg', 'au'),
-('The Rolling Stones', '/assets/images/artists/rollingstones.jpg', 'uk'),
-('SZA', '/assets/images/artists/sza.jpg', 'us');
+-- Insert authors/artists con Bio concise (ideali per Mobile)
+INSERT INTO author (author_name, image_path, nationality, bio_author) VALUES
+('Taylor Swift', '/assets/images/artists/taylorswift.jpg', 'us', 'Icona del pop globale nota per la sua scrittura narrativa e la capacità di reinventarsi in ogni "Era" della sua carriera.'),
+('Dua Lipa', '/assets/images/artists/dualipa.jpg', 'uk', 'Cantante britannica che ha ridefinito il pop contemporaneo fondendo sonorità disco-pop anni ''80 e produzione moderna.'),
+('Ariana Grande', '/assets/images/artists/arianagrande.jpg', 'us', 'Popstar internazionale celebre per la sua straordinaria estensione vocale e i successi che spaziano tra R&B e pop teatrale.'),
+('The Weeknd', '/assets/images/artists/theweeknd.jpg', 'ca', 'Artista canadese pioniere del dark R&B e del synth-pop cinematografico, con hit mondiali che dominano le classifiche.'),
+('The Beatles', '/assets/images/artists/beatles.jpg', 'uk', 'Leggendaria band di Liverpool che ha rivoluzionato la musica e la cultura popolare influenzando ogni generazione successiva.'),
+('Radiohead', '/assets/images/artists/radiohead.jpg', 'uk', 'Gruppo rock sperimentale britannico acclamato per la costante innovazione sonora e album che hanno cambiato la musica alternativa.'),
+('Linkin Park', '/assets/images/artists/linkinpark.jpg', 'us', 'Band iconica che ha fuso rock, rap ed elettronica, diventando la voce di una generazione con testi onesti e potenti.'),
+('Lana Del Rey', '/assets/images/artists/lanadelrey.jpg', 'us', 'Cantautrice celebre per il suo stile malinconico e cinematografico che richiama l''estetica e il fascino dell''Americana vintage.'),
+('BABYMETAL', '/assets/images/artists/babymetal.jpg', 'jp', 'Fenomeno giapponese che fonde J-pop e heavy metal estremo, creando l''unico ed energico genere conosciuto come "Kawaii Metal".'),
+('Pink Floyd', '/assets/images/artists/pinkfloyd.jpg', 'uk', 'Maestri del rock progressivo e psichedelico, celebri per concept album filosofici e sperimentazioni sonore leggendarie.'),
+('Pinguini Tattici Nucleari', '/assets/images/artists/ptn.jpg', 'it', 'Protagonisti dell''indie-pop italiano, amati per testi ironici e citazionisti che raccontano con freschezza la quotidianità.'),
+('5 Seconds of Summer', '/assets/images/artists/5sos.jpg', 'au', 'Band australiana evolutasi dal pop-punk a un pop-rock maturo e sperimentale, nota per le grandi doti vocali e le performance live.'),
+('Madonna', '/assets/images/artists/madonna.jpg', 'us', 'La Regina del Pop e icona culturale eterna, celebre per la continua reinvenzione e per aver sfidato i limiti dell''industria musicale.'),
+('Annalisa', '/assets/images/artists/annalisa.jpg', 'it', 'Cantautrice italiana tra le più apprezzate del momento, capace di spaziare con successo tra pop elettronico e ballate raffinate.'),
+('Nirvana', '/assets/images/artists/nirvana.jpg', 'us', 'Band simbolo del movimento grunge degli anni ''90 che, guidata da Kurt Cobain, ha cambiato per sempre il volto del rock mondiale.'),
+('AC/DC', '/assets/images/artists/acdc.jpg', 'au', 'Pilastri dell''hard rock mondiale, famosi per i loro riff elettrizzanti e un''energia inarrestabile che attraversa cinque decenni.'),
+('The Rolling Stones', '/assets/images/artists/rollingstones.jpg', 'uk', 'L''essenza stessa del rock ''n'' roll britannico, con una carriera leggendaria, un carisma senza tempo e hit immortali.'),
+('SZA', '/assets/images/artists/sza.jpg', 'us', 'Voce di spicco dell''R&B contemporaneo, acclamata dalla critica per la sua vulnerabilità e per testi profondamente onesti e personali.');
 
 
 -- Insert disks (no dependencies)

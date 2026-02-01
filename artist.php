@@ -31,6 +31,7 @@ echo Template::render(
         'footer' => footer(),
         'artist_name' => htmlspecialchars($artist_data['author_name']),
         'artist_image' => htmlspecialchars($artist_data['image_path']) ?: 'assets/images/vinyl_placeholder.jpg',
+        'bio_artist' => htmlspecialchars($artist_data['bio_author']),
         'artist_genres' => get_artist_genres($artist_id),
         'artist_albums' => artist_albums($artist_id),
         'artist_singles' => artist_singles($artist_id),

@@ -13,7 +13,6 @@ if (!$disk_id || !$edition_name) {
 require_once 'php/components/album_info.php';
 require_once 'php/components/album_tracklist.php';
 require_once 'php/components/album_versions.php';
-require_once 'php/components/album_credits.php';
 require_once 'php/components/album_actions.php';
 require_once 'php/components/header.php';
 require_once 'php/components/footer.php';
@@ -50,7 +49,6 @@ echo Template::render(
         'review_count' => $album_data['review_count'],
         'album_tracklist' => album_tracklist($disk_id, $edition_name),
         'album_versions' => album_versions($disk_id),
-        'album_credits' => album_credits($disk_id),
         'album_actions' => album_actions($_SESSION['user_id'] ?? null, $disk_id, $edition_name),
         'action_result' => $_SESSION['album_actions_result']['message'] ?? '',
         'album_review' => album_review($_SESSION['user_id'] ?? null, $disk_id, $edition_name),

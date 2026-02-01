@@ -589,7 +589,7 @@ footer .profile-links a:hover {
     color: var(--text-muted);
 }
 
-/* Pulsante Back to Top */
+/* Button Back to Top */
 #back-to-top {
     transition-duration: 0.4s;
     opacity: 0.9;
@@ -1063,8 +1063,6 @@ footer .profile-links a:hover {
     color: var(--bg-surface);
     opacity: 1;
 }
-
-/* sistemare fine footer ------------------------------------------------------------>
 
 /* End 404 Page */
 
@@ -1571,7 +1569,6 @@ img#empty-collection-image {
     color: var(--brand-primary);
 }
 
- /*User's existing review display */
 #review {
     background: var(--bg-section);
     color: var(--brand-primary);
@@ -1606,26 +1603,20 @@ img#empty-collection-image {
     color: var(--text-primary);
     line-height: 1.6;
     word-wrap: break-word;
-} /**/
+} 
 
-/* Error messages inside form */
 .error-message {
-    background-color: rgba(197, 43, 32, 0.1);
     color: var(--bg-error);
     padding: 0.8rem;
-    border-radius: 0.5rem;
     font-size: var(--font-small);
-    margin-bottom: 1rem;
-    border: 1px solid var(--bg-error);
+    font-weight: 500;
 }
 
-/* Spaziatura specifica per l'username nelle recensioni */
 .review-username {
     margin-left: 0.8rem; 
     display: inline-block; 
 }
 
-/* Opzionale: se vuoi dare più risalto all'username rispetto al resto del titolo */
 #reviews article h3 .review-username {
     font-size: var(--font-large);
     color: var(--text-secondary);
@@ -1798,45 +1789,6 @@ img#empty-collection-image {
 }
 
 
-/* Credits --------------------------------------------- da togliere? */
-
-.album-credits-section {
-    padding: 3rem 0;
-}
-
-.credits-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.credit-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.credit-avatar {
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.credit-name {
-    font-weight: 600;
-    margin: 0;
-}
-
-.credit-role {
-    font-size: var(--font-small);
-    color: var(--text-secondary);
-    margin: 0.25rem 0 0;
-}
-
-/* Credits --------------------------------------------- da togliere? */
-
 /* End Album Page */
 
 
@@ -1961,7 +1913,6 @@ img#empty-collection-image {
     display: none;
 }
 
-/* Mobile reset button container - visible on mobile */
 .mobile-reset-container {
     padding-bottom: 2.5rem;
     border-bottom: 1px solid var(--border-default);
@@ -2882,7 +2833,7 @@ html:not(.js-enabled) .load-more-container {
     margin-top: 0.5rem;
     margin-bottom: 1.5rem;
     width: 100%;
-    justify-content: center;/*flex-start;*/
+    justify-content: center;
 }
 
 #add-pages-form .checkbox-wrapper input[type="checkbox"] {
@@ -2910,6 +2861,38 @@ html:not(.js-enabled) .load-more-container {
 #edition:disabled {
     color: var(--text-primary);
     background-color: var(--border-default);
+}
+
+/* --- Errors Section --- */
+
+
+#errors-section ul {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--bg-error);
+    border-radius: 1.3em;
+    padding: 1rem;
+    padding: 0.5em;
+    margin-bottom: 1.5em;
+}
+
+#errors-section li {
+    color: var(--bg-error);
+    font-size: var(--font-small);
+    font-weight: 500;
+    line-height: 1.4;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#errors-section li::before {
+    content: "•";
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+#errors-section:empty {
+    display: none;
 }
 
 /* End Add Pages */
@@ -3184,32 +3167,5 @@ textarea {
 
 
 /* Edit Profile Page */
-/* Reviews Section 
 
-section#reviews .center-container{
-    border-radius: 1.3em;
-}
-
-section#reviews h2{
-    border-bottom: 1px solid var(--border-default);
-    margin-bottom: 1.5em;
-}
-
-section#reviews article{
-    border: 0.1em solid var(--border-default);
-    border-radius: 1.3em;
-    background: var(--bg-surface);
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-}
-
-section#reviews article h3{
-    text-align: left;
-    border-bottom: 1px solid var(--border-default);
-    margin-bottom: 1em;
-}
-
-section#reviews article h3{
-    color: var(--text-secondary)
-}*/
 

@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS author (
     author_name VARCHAR(100) NOT NULL UNIQUE,
     nationality VARCHAR(100),
     image_path VARCHAR(255),
+    bio_author TEXT,
 
     PRIMARY KEY (id)
 );
@@ -69,13 +70,6 @@ CREATE TABLE IF NOT EXISTS review (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (disk_id, edition_name) REFERENCES edition(disk_id, edition_name) ON DELETE CASCADE,
     PRIMARY KEY (user_id, disk_id, edition_name)
-);
-
-CREATE TABLE IF NOT EXISTS featuring (
-    author_id INT NOT NULL,
-    track_id INT NOT NULL,
-
-    PRIMARY KEY (author_id, track_id)
 );
 
 CREATE TABLE IF NOT EXISTS wishlist(
