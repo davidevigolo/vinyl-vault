@@ -5,7 +5,7 @@ require_once 'php/classes/utils.php';
 
 function get_collection() {
     $connection = DbConnection::get_instance();
-    $query = "SELECT o.disk_id, e.image_path, d.title, a.author_name as author, a.id as author_id, e.edition_name, e.country, e.release_date, o.rating
+    $query = "SELECT o.disk_id, e.image_path, d.title, a.author_name as author, a.id as author_id, e.edition_name, e.country, e.release_date, o.rating, a.nationality
        FROM ownership o 
        JOIN edition e ON o.disk_id = e.disk_id AND o.edition_name = e.edition_name
        JOIN disk d ON d.id = e.disk_id 

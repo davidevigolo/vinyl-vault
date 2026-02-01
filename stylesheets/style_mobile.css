@@ -344,10 +344,6 @@ header {
     z-index: 1005;
 }
 
-.header-container {
-    grid-template-columns: 1fr 2.5fr;
-}
-
 .header-right {
     justify-self: end;
     display: flex;
@@ -362,10 +358,17 @@ header {
 
 .header-container {
     display: grid;
-    grid-template-columns: 0.5fr 2fr;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
     align-items: center;
     justify-content: space-between;
     padding-top: 1.3em;
+    padding-bottom: 0;
+}
+
+/* Con JS: header-container torna a una riga normale */
+.header-container.js-enabled,
+.header-container:has(.header-right.js-enabled) {
     padding-bottom: 1.3em;
 }
 
@@ -376,14 +379,20 @@ header {
     display: none;
 }
 
+/* Toggle nascosto di default (senza JS il menu è sempre aperto) */
 .menu-toggle {
-    display: block;
+    display: none;
     background: none;
     border: none;
     font-size: var(--font-xxl);
     cursor: pointer;
     color: var(--text-primary);
     z-index: 1001;
+}
+
+/* Con JS: toggle visibile */
+.header-right.js-enabled .menu-toggle {
+    display: block;
 }
 
 .search-toggle,
@@ -423,25 +432,38 @@ header {
     opacity: 1;
 }
 
-.header-right.is-open {
+/* Senza JS: menu va sulla seconda riga della griglia, spinge il contenuto giù */
+.header-right.is-open:not(.js-enabled) {
+    grid-column: 1 / -1;
+    grid-row: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-items: center;
+    position: static;
+    width: 100%;
+    background: var(--bg-surface);
+    padding: 1rem 0;
+    border-top: 1px solid var(--border-default);
+}
+
+/* Con JS: menu overlay sopra il contenuto */
+.header-right.js-enabled.is-open {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
     min-height: 20em;
-    height: auto;
-    background: var(--bg-surface);
     padding: 4rem 0 2rem 0;
-    border-bottom: 2px solid var(--border-default);
+    background: var(--bg-surface);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
     z-index: 999;
 }
 
-.header-right.is-open .menu-toggle {
+/* Con JS: toggle posizionato nell'overlay */
+.header-right.js-enabled.is-open .menu-toggle {
     position: absolute;
     top: 1rem;
     right: 1.2rem;

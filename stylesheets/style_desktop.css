@@ -42,6 +42,8 @@ header {
 
 .header-container {
     grid-template-columns: 1fr 2.5fr;
+    grid-template-rows: auto;
+    padding-bottom: 1.3em;
 }
 
 .header-right .nav-links, 
@@ -56,8 +58,42 @@ header {
     gap: 1.5rem;    
 }
 
-.menu-toggle {
+.menu-toggle,
+.header-right.js-enabled .menu-toggle {
     display: none;
+}
+
+/* Reset stili mobile per is-open su desktop */
+.header-right.is-open,
+.header-right.is-open:not(.js-enabled) {
+    grid-column: auto;
+    grid-row: auto;
+    position: static;
+    flex-direction: row;
+    width: auto;
+    min-height: auto;
+    padding: 0;
+    border-top: none;
+    border-bottom: none;
+    box-shadow: none;
+    background: none;
+}
+
+/* Override stili colonna mobile per nav items su desktop */
+.header-right.is-open .nav-links,
+.header-right.is-open .actions-group,
+.header-right.is-open .profile-nav {
+    flex-direction: row;
+    width: auto;
+    gap: 1.5rem;
+}
+
+.header-right.is-open .actions-group {
+    gap: 0.8em;
+}
+
+.header-right.is-open .profile-nav ul {
+    flex-direction: row;
 }
 
 .v-divider {

@@ -31,7 +31,7 @@ function most_liked_artists()
             echo Template::render('static/layout/most_liked_artists_card.html', [
                 'artist_id' => $artist['id'],
                 'artist_name' => htmlspecialchars($artist['author_name']),
-                'nationality' => htmlspecialchars(get_nationality_languages()[$artist['nationality']]),
+                'nationality' => htmlspecialchars(get_nationality_languages()[$artist['nationality']] ?? 'en'),
                 'image_path' => $artist_image
             ]);
         }
