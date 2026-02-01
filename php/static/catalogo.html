@@ -186,7 +186,7 @@
                         <!-- Sort Control -->
                         <div class="sort-control">
                             <label for="sort-select" class="sr-only">Ordina risultati per</label>
-                            <select id="sort-select" name="sort" aria-label="Ordina risultati del catalogo per">
+                            <select id="sort-select" name="sort">
                                 <option value="collected" [sort_selected_collected]>Più collezionati</option>
                                 <option value="recent" [sort_selected_recent]>Più recenti</option>
                                 <option value="az" [sort_selected_az]>A-Z</option>
@@ -194,8 +194,7 @@
                         </div>
 
                         <!-- Vinyl Cards Grid -->
-                        <div class="catalog-grid" id="catalog-grid" role="feed" aria-label="Lista vinili"
-                            aria-busy="false">
+                        <div class="catalog-grid" id="catalog-grid" role="[role]" aria-label="Lista vinili" aria-busy="false">
                             [catalog_vinyls]
                         </div>
 
@@ -212,7 +211,7 @@
                         <!-- Messaggio per utenti senza JavaScript -->
                         <noscript>
                             <div class="noscript-message" role="note">
-                                <p><strong>Stai visualizzando i primi 50 vinili.</strong></p>
+                                <p>Stai visualizzando i primi 50 vinili.ù</p>
                                 <p>Per esplorare l'intero catalogo e utilizzare tutte le funzionalità, abilita
                                     JavaScript
                                     nel tuo browser. Sarà un'esperienza molto più ricca!</p>

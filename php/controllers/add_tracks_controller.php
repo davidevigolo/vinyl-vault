@@ -33,7 +33,7 @@ function get_editions_for_disk($disk_id): array
     return $editions;
 }
 
-function add_tracks($disk, $edition, $titles, $durations): array
+function add_tracks($disk, $edition, $titles, $durations, $track_numbers): array
 {
     if (!$disk || !$edition || empty($titles) || !is_array($titles) || empty($durations) || !is_array($durations) || count($titles) !== count($durations)) {
         return ['success' => false, 'error' => 'Uno o più campi devono ancora essere compilati'];
@@ -64,7 +64,7 @@ function add_tracks($disk, $edition, $titles, $durations): array
     }
 
     $connection = DbConnection::get_instance();
-    $query = "SELECT type FROM disk WHERE id = ?";
+    $query = "SELECT disk_type FROM disk WHERE id = ?";
     $stmt = mysqli_prepare($connection->get_connection(), $query);
     if (!$stmt) {
         return ['success' => false, 'error' => 'Errore interno durante il controllo del tipo di disco'];
@@ -107,7 +107,7 @@ function add_tracks($disk, $edition, $titles, $durations): array
     foreach ($titles as $index => $track_name) {
         $track_name = trim($track_name);
         $duration = trim($durations[$index]);
-        $track_number = $index + 1;
+        $track_number = $track_numbers[$index];
         $stmt = mysqli_prepare($connection->get_connection(), $query);
         if (!$stmt) {
             mysqli_rollback($connection->get_connection());
@@ -174,11 +174,12 @@ $disk = $_POST['disk'] ?? null;
 $edition = $_POST['edition'] ?? null;
 $titles = $_POST['title'] ?? [];
 $durations = $_POST['duration'] ?? [];
+$track_numbers = $_POST['track_number'] ?? [];
 
 $titles = array_filter($titles, fn($value) => trim($value) !== '');
 $durations = array_filter($durations, fn($value) => trim($value) !== '');
 
-$_SESSION['add_tracks_result'] = add_tracks($disk, $edition, $titles, $durations);
+$_SESSION['add_tracks_result'] = add_tracks($disk, $edition, $titles, $durations, $track_numbers);
 $_SESSION['add_tracks_result']['disk'] = in_array('disk', $_SESSION['add_tracks_result']['fields_to_reset'] ?? []) ? '' : $disk;
 $_SESSION['add_tracks_result']['edition'] = in_array('edition', $_SESSION['add_tracks_result']['fields_to_reset'] ?? []) ? '' : $edition;
 $_SESSION['add_tracks_result']['titles'] = in_array('titles', $_SESSION['add_tracks_result']['fields_to_reset'] ?? []) ? [] : $titles;

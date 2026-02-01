@@ -1,23 +1,27 @@
 <fieldset id="track-[index]" class="track-fieldset" data-display="[display]">
     <legend>Traccia [index]</legend>
 
+    <button type="button" class="remove-track-button" aria-label="Rimuovi traccia [index]">
+        <span class="icon-remove" aria-hidden="true">Rimuovi</span>
+    </button>
+
     <div class="input-wrapper">
         <label for="title-[index]">
             <span class="label-text"></span>Titolo traccia [index]</span>
-            <span class="required-field">Obbligatorio</span>
+            <span class="required-field" id="title-[index]-error">Obbligatorio</span>
         </label>
         <input type="text" id="title-[index]" name="title[]" maxlength="200" pattern="[a-zA-Z0-9àèéìòùÀÈÉÌÒÙ\s]+"
-            value="[track_title]" required>
-        <span class="error-message" id="title-[index]-error" aria-live="polite"></span>
+            value="[track_title]" [required] />
+        <input type="hidden" name="track_number[]" id="track-number-[index]" value="[index]" />
+        [input_rules]
     </div>
 
     <div class="input-wrapper">
         <label for="duration-[index]">
             <span class="label-text">Durata traccia [index] (in secondi)</span>
-            <span class="required-field">Obbligatorio</span>
+            <span class="required-field" id="duration-[index]-error">Obbligatorio</span>
         </label>
-        <input type="number" id="duration-[index]" name="duration[]" class="track-duration" value="[track_duration]"
-            min="1" max="32767" required>
-        <span class="error-message" id="duration-[index]-error" aria-live="polite"></span>
+        <input type="number" id="duration-[index]" name="duration[]" class="track-duration" [track_duration]
+            min="1" max="32767" [required] />
     </div>
 </fieldset>

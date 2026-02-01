@@ -20,12 +20,15 @@ this.document.getElementById('disk').addEventListener('input', function () {
         
         // Clear all error messages within the fieldset
         fieldset.querySelectorAll('[id$="-error"]').forEach(errorMsg => {
-            errorMsg.textContent = '';
+            errorMsg.textContent = 'Obbligatorio';
         });
         
         // Hide all track fieldsets except the first one
         if (index > 0) {
             fieldset.style.display = 'none';
+            fieldset.querySelectorAll('input').forEach(input => {
+                input.disabled = true;
+            });
         }
     });
     
@@ -43,6 +46,11 @@ this.document.getElementById('disk').addEventListener('input', function () {
 });
 
 this.document.getElementById('edition').addEventListener('input', function () {
+    let selectDiskEditionForm = document.getElementById('select-disk-edition-form');
+    selectDiskEditionForm.submit();
+});
+
+this.document.getElementById('edition').addEventListener('input', function () {
     // Find the error message element
     let errorMessage = document.getElementById('edition-error');
     validateSelect(this, errorMessage);
@@ -55,11 +63,12 @@ this.document.addEventListener('input', function (event) {
         const errorMessage = document.getElementById(`title-${index}-error`);
         if (errorMessage) {
             const error = validateTrackTitle(event.target);
-            // For index 0, always show errors. For others, only show if field has value
-            if (index === '0') {
+            // Show errors only for visible (added) tracks
+            const fieldset = event.target.closest('.track-fieldset');
+            if (fieldset && getComputedStyle(fieldset).display !== 'none') {
                 errorMessage.textContent = error;
             } else {
-                errorMessage.textContent = event.target.value.trim() === '' ? '' : error;
+                errorMessage.textContent = '';
             }
         }
     } else if (event.target.name === 'duration[]') {
@@ -78,29 +87,91 @@ this.document.addEventListener('input', function (event) {
 });
 
 this.document.getElementById('add-track-button').addEventListener('click', function () {
-    const diskSelect = document.getElementById('disk');
-    const selectedOption = diskSelect.options[diskSelect.selectedIndex];
-    const diskType = selectedOption ? selectedOption.getAttribute('data-disk-type') : null;
+    const hiddenFieldset = Array.from(document.querySelectorAll('.track-fieldset')).find(fieldset => getComputedStyle(fieldset).display === 'none');
     
-    const maxTracks = getMaxTracksForDiskType(diskType);
-    const visibleTracksCount = Array.from(document.querySelectorAll('.track-fieldset')).filter(fieldset => getComputedStyle(fieldset).display !== 'none').length;
-    
-    if (visibleTracksCount >= maxTracks) {
+    if (!hiddenFieldset) {
+        // No more tracks available - limit reached
         const errorMessage = document.querySelector('#max-tracks-error');
         if (errorMessage) {
             errorMessage.textContent = 'Hai raggiunto il numero massimo di tracce per il tipo di disco selezionato';
         }
         return;
-    }else{
-        const errorMessage = document.querySelector('#max-tracks-error');
-        if (errorMessage) {
-            errorMessage.textContent = '';
-        }
     }
     
-    const hiddenFieldset = Array.from(document.querySelectorAll('.track-fieldset')).find(fieldset => getComputedStyle(fieldset).display === 'none');
-    if (hiddenFieldset) {
-        hiddenFieldset.style.display = 'block';
+    // Clear any existing error message
+    const errorMessage = document.querySelector('#max-tracks-error');
+    if (errorMessage) {
+        errorMessage.textContent = '';
+    }
+    
+    // Show the next hidden fieldset
+    hiddenFieldset.style.display = 'block';
+    
+    // Make inputs required and enabled when the track is shown
+    hiddenFieldset.querySelectorAll('input:not([type="hidden"])').forEach(input => {
+        input.required = true;
+        input.disabled = false;
+    });
+});
+
+// Handle remove track button clicks using event delegation
+this.document.addEventListener('click', function (event) {
+    if (event.target.closest('.remove-track-button')) {
+        const button = event.target.closest('.remove-track-button');
+        const fieldset = button.closest('.track-fieldset');
+        
+        if (fieldset) {
+            const fieldsetId = fieldset.id;
+            const index = parseInt(fieldsetId.split('-')[1]);
+            
+            // Don't allow removing the first track (index 0)
+            if (index === 0) {
+                return;
+            }
+            
+            // Get all visible fieldsets
+            const allFieldsets = Array.from(document.querySelectorAll('.track-fieldset'));
+            const visibleFieldsets = allFieldsets.filter(fs => getComputedStyle(fs).display !== 'none');
+            
+            // Find the position of the current fieldset among visible ones
+            const currentPosition = visibleFieldsets.indexOf(fieldset);
+            
+            // Shift content from subsequent visible fieldsets
+            for (let i = currentPosition + 1; i < visibleFieldsets.length; i++) {
+                const currentFs = visibleFieldsets[i - 1];
+                const nextFs = visibleFieldsets[i];
+                
+                // Copy input values from next to current
+                const currentInputs = currentFs.querySelectorAll('input');
+                const nextInputs = nextFs.querySelectorAll('input');
+                
+                currentInputs.forEach((input, idx) => {
+                    if (nextInputs[idx]) {
+                        input.value = nextInputs[idx].value;
+                    }
+                });
+            }
+            
+            // Clear and hide the last visible fieldset
+            const lastVisible = visibleFieldsets[visibleFieldsets.length - 1];
+            lastVisible.querySelectorAll('input').forEach(input => {
+                input.value = '';
+                input.required = false;
+                input.disabled = true;
+            });
+            
+            lastVisible.querySelectorAll('[id$="-error"]').forEach(errorMsg => {
+                errorMsg.textContent = 'Obbligatorio';
+            });
+            
+            lastVisible.style.display = 'none';
+            
+            // Clear the max tracks error if it exists
+            const maxTracksError = document.querySelector('#max-tracks-error');
+            if (maxTracksError) {
+                maxTracksError.textContent = '';
+            }
+        }
     }
 });
 

@@ -2574,6 +2574,7 @@ html:not(.js-enabled) .load-more-container {
 #login-form fieldset,
 #registration-form fieldset,
 #add-pages-form fieldset,
+#select-disk-edition-form fieldset,
 #profile-picture-form fieldset,
 #personal-info-form fieldset,
 #password-form fieldset {
@@ -2649,6 +2650,7 @@ html:not(.js-enabled) .load-more-container {
 #login-form,
 #registration-form,
 #add-pages-form,
+#select-disk-edition-form,
 #profile-picture-form,
 #personal-info-form,
 #password-form {
@@ -2729,7 +2731,6 @@ html:not(.js-enabled) .load-more-container {
 #country,
 #artist,
 #type,
-#genre,
 .genre,
 #edition {
     width: 100%;
@@ -2861,6 +2862,16 @@ body.page-transitioning {
     opacity: 0.6;
     cursor: not-allowed;
     transform: none;
+}
+
+.remove-track-button{
+    background-color: var(--bg-page);
+    border-radius: 1em;
+    border: 1px solid var(--border-default);
+    padding: 0.4rem 0.8rem;
+    font-size: var(--font-medium);
+    color: var(--text-primary);
+    cursor: pointer;
 }
 
 /* Profile page */

@@ -32,14 +32,14 @@ function validateFileExtension(input) {
 }
 
 function validateFileSize(input) {
-    const maxSizeInMB = 2;
+    const maxSizeInMB = 1;
     const maxSizeInBytes = maxSizeInMB * 1024 * 1024; // Convert MB to Bytes
     const file = input.files[0];
 
     let errorMessage = '';
 
     if (file && file.size > maxSizeInBytes) {
-        errorMessage += 'Il file supera la dimensione massima di 2MB.';
+        errorMessage += 'Il file supera la dimensione massima di 1MB.';
     } else {
         errorMessage += '';
     }

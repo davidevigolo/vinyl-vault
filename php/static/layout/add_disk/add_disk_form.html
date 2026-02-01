@@ -27,7 +27,7 @@
             <div class="input-wrapper">
                 <label for="artist">
                     <span class="label-text">Artista</span>
-                    <span class="required-field">Obbligatorio</span>
+                    <span class="required-field" id="artist-error">Obbligatorio</span>
                 </label>
 
                 <select id="artist" name="artist" required>
@@ -35,14 +35,14 @@
                     [artist_options]
                 </select>
 
-                <p>Non trovi l'artista? <a href="add_artist.php" aria-label="Aggiungi artista">Aggiungilo</a></p>
+                <p>Non trovi l'artista? <a href="add_artist.php">Aggiungi un nuovo artista</a></p>
 
             </div>
 
             <div class="input-wrapper">
                 <label for="type">
                     <span class="label-text">Tipo</span>
-                    <span class="required-field">Obbligatorio</span>
+                    <span class="required-field" id="type-error">Obbligatorio</span>
                 </label>
 
                 <select id="type" name="type" required>
@@ -55,7 +55,7 @@
             <div class="input-wrapper">
                 <label for="label">
                     <span class="label-text">Etichetta discografica</span>
-                    <span class="required-field">Obbligatorio</span>
+                    <span class="required-field" id="label-error">Obbligatorio</span>
                 </label>
                 <p class="input-example"><abbr title="ad esempio">es.</abbr> <span lang="en">"Sony Music"</span></p>
 
@@ -65,12 +65,11 @@
             </div>
 
             <div class="input-wrapper">
-                <label for="genre">
+                <label for="genre-0">
                     <span class="label-text">Genere</span>
-                    <span class="required-field">Obbligatorio</span>
+                    <span class="required-field" id="genre-0-error" class="genre-error">Obbligatorio</span>
                 </label>
-
-                <select id="genre" name="genre[]" required>
+                <select id="genre-0" class="genre" name="genre[]" required>
                     <option value="" disabled selected>Seleziona un genere</option>
                     [genre_options]
                 </select>

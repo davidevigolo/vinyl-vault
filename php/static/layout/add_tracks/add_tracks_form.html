@@ -1,15 +1,14 @@
 <h2 class="add-pages-title">Aggiungi Tracce</h2>
 <div id="add-pages">
 
-    <form id="add-pages-form" action="php/controllers/add_tracks_controller.php" method="POST"
-        enctype="multipart/form-data">
+    <form id="select-disk-edition-form" action="add_tracks.php" method="GET">
 
         <fieldset>
             <legend>Informazioni disco ed edizione</legend>
             <div class="input-wrapper">
                 <label for="disk">
                     <span class="label-text">Seleziona il disco</span>
-                    <span class="required-field">Obbligatorio</span>
+                    <span class="required-field" id="disk-error">Obbligatorio</span>
                 </label>
 
                 <select id="disk" name="disk" required>
@@ -22,49 +21,26 @@
             <div class="input-wrapper">
                 <label for="edition">
                     <span class="label-text">Seleziona l'edizione</span>
-                    <span class="required-field">Obbligatorio</span>
+                    <span class="required-field" id="edition-error">Obbligatorio</span>
                 </label>
 
                 <select id="edition" name="edition" required>
                     <option value="" disabled selected>Seleziona l'edizione</option>
                     [edition_options]
                 </select>
-                <ul class="input-examples">
-                    <li>Massimo 200 caratteri</li>
-                    <li>Caratteri consentiti: lettere, numeri e spazi</li>
-                </ul>
             </div>
+
+            <noscript>
+                <button type="submit" class="btn-primary add-pages-btn">Seleziona Disco ed Edizione</button>
+            </noscript>
 
 
         </fieldset>
 
-        <fieldset id="track-0" class="track-fieldset">
-            <legend>Traccia 1</legend>
-            <div class="track-inputs">
-                <div class="input-wrapper input-track-title">
-                    <label for="title-0">
-                        <span class="label-text">Titolo traccia 1</span>
-                        <span class="required-field">Obbligatorio</span>
-                    </label>
-                    <p class="input-example"><abbr title="ad esempio">es.</abbr> <span lang="en">"Speak to Me"</span>
-                    </p>
-                    <input type="text" id="title-0" name="title[]" required maxlength="200"
-                        pattern="[a-zA-Z0-9àèéìòùÀÈÉÌÒÙ\s]+" value="[first_track_title]" required>
-                </div>
+    </form>
 
-                <div class="input-wrapper input-track-duration">
-                    <label for="duration-0">
-                        <span class="label-text">Durata traccia 1 (in secondi)</span>
-                        <span class="required-field">Obbligatorio</span>
-                    </label>
-
-                    <input type="number" id="duration-0" name="duration[]" class="track-duration"
-                        value="[first_track_duration]" min="1" max="32767" required>
-
-                </div>
-            </div>
-
-        </fieldset>
+    <form id="add-pages-form" action="php/controllers/add_tracks_controller.php" method="POST"
+        enctype="multipart/form-data">
 
         [track_form_items]
 
@@ -75,6 +51,8 @@
         [errors]
 
         <button type="submit" class="btn-primary add-pages-btn">Salva Tracce</button>
+        <input type="hidden" name="disk" value="[selected_disk]" />
+        <input type="hidden" name="edition" value="[selected_edition]" />
     </form>
 
 </div>

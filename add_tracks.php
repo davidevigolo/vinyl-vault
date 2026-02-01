@@ -23,6 +23,11 @@ if(isset($_SESSION['add_tracks_result']['success']) && $_SESSION['add_tracks_res
     exit();
 }
 
+if(isset($_GET) && isset($_GET['disk']) && isset($_GET['edition'])) {
+    $_SESSION['add_tracks_result']['disk'] = $_GET['disk'];
+    $_SESSION['add_tracks_result']['edition'] = $_GET['edition'];
+}
+
 $disk = $_SESSION['add_tracks_result']['disk'] ?? '';
 $edition = $_SESSION['add_tracks_result']['edition'] ?? '';
 $titles = $_SESSION['add_tracks_result']['titles'] ?? [];

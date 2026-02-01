@@ -93,6 +93,7 @@ echo Template::render(
         'search_results_message' => $search_query ? 'Risultati per "' . htmlspecialchars($search_query) . '"' : '',
         'search_hidden_params' => render_search_hidden_params(),
         'search_hidden_input' => $search_query ? '<input type="hidden" name="q" value="' . htmlspecialchars($search_query) . '">' : '',
-        'clear_search_hidden' => $search_query ? '' : 'hidden'
+        'clear_search_hidden' => $search_query ? '' : 'hidden',
+        'role' => $total_count > 0 ? 'feed' : 'alert'
     ]
 );

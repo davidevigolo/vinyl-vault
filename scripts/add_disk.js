@@ -39,18 +39,18 @@ this.document.getElementById('artist').addEventListener('input', function () {
     validateSelect(this, errorMessage);
 });
 
-this.document.getElementById('genre').addEventListener('input', function () {
+this.document.getElementById('genre-0').addEventListener('input', function () {
     // Find the error message element
-    let errorMessage = document.getElementById('genre-error');
+    let errorMessage = document.getElementById('genre-0-error');
 
     // Validate selected
     validateSelect(this, errorMessage);
 });
 
-this.document.querySelectorAll('.genre').forEach(function (element) {
+this.document.querySelectorAll('.genre').forEach(function (element, index) {
     element.addEventListener('input', function () {
         // Find the error message element
-        let errorMessage = document.getElementById('genre-error');
+        let errorMessage = document.getElementById('genre-' + index + '-error');
 
         // Validate selected
         validateSelect(this, errorMessage);

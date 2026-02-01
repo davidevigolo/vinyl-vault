@@ -3,7 +3,8 @@ include_once 'php/classes/Template.php';
 include_once 'php/classes/utils.php';
 include_once 'php/classes/DbConnection.php';
 
-function get_disks() {
+function get_disks()
+{
     $query = "SELECT id, title FROM disk ORDER BY title ASC";
     $connection = DbConnection::get_instance();
     $result = mysqli_query($connection->get_connection(), $query);
@@ -17,7 +18,8 @@ function get_disks() {
     return $disks;
 }
 
-function get_editions() {
+function get_editions()
+{
     $query = "SELECT disk_id, edition_name FROM edition ORDER BY edition_name ASC";
     $connection = DbConnection::get_instance();
     $result = mysqli_query($connection->get_connection(), $query);
@@ -31,7 +33,8 @@ function get_editions() {
     return $editions;
 }
 
-function get_disk_type($disk_id) {
+function get_disk_type($disk_id)
+{
     $connection = DbConnection::get_instance();
     $query = "SELECT disk_type FROM disk WHERE id = ?";
     $stmt = mysqli_prepare($connection->get_connection(), $query);
@@ -48,7 +51,43 @@ function get_disk_type($disk_id) {
     return null;
 }
 
-function add_tracks_form($_disk, $_edition, $_titles, $_durations, $errors = []): string {
+function get_last_track_number($disk_id, $edition_name)
+{
+    $connection = DbConnection::get_instance();
+    $query = "SELECT MAX(track_number) AS last_track_number FROM edition_track_part_of WHERE disk_id = ? AND edition_name = ?";
+    $stmt = mysqli_prepare($connection->get_connection(), $query);
+    if (!$stmt) {
+        error_log(mysqli_error($connection->get_connection()));
+        return 0;
+    }
+    mysqli_stmt_bind_param($stmt, 'is', $disk_id, $edition_name);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    if ($row = mysqli_fetch_assoc($result)) {
+        return intval($row['last_track_number']);
+    }
+    return 0;
+}
+
+function get_track_number_by_disk_type($disk_id){
+    $connection = DbConnection::get_instance();
+    $query = "SELECT disk_type FROM disk WHERE id = ?";
+    $stmt = mysqli_prepare($connection->get_connection(), $query);
+    if (!$stmt) {
+        error_log(mysqli_error($connection->get_connection()));
+        return null;
+    }
+    mysqli_stmt_bind_param($stmt, 'i', $disk_id);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    if ($row = mysqli_fetch_assoc($result)) {
+        return get_max_tracks_by_type($row['disk_type']);
+    }
+    return null;
+}
+
+function add_tracks_form($_disk, $_edition, $_titles, $_durations, $errors = []): string
+{
     $disks = get_disks();
     $editions = get_editions();
     $edition_options = '';
@@ -64,14 +103,25 @@ function add_tracks_form($_disk, $_edition, $_titles, $_durations, $errors = [])
         }
         $edition_options .= '</optgroup>';
     }
-    $first_track_title = isset($_titles[0]) ? htmlspecialchars($_titles[0]) : '0';
-    $first_track_duration = isset($_durations[0]) ? htmlspecialchars($_durations[0]) : '0';
-    for ($i = 1; $i < 20; $i++) {
+    $first_track_index = get_last_track_number($_disk, $_edition);
+    $input_rules = '<ul class="input-examples">
+                    <li>Massimo 200 caratteri</li>
+                    <li>Caratteri consentiti: lettere, numeri e spazi</li>
+                    </ul>';
+    $_titles[0] = $_titles[0] ? htmlspecialchars($_titles[0]) : '';
+    $_durations[0] = $_durations[0] ? htmlspecialchars($_durations[0]) : '0';
+    $max_tracks = get_track_number_by_disk_type($_disk);
+    if($max_tracks <= $first_track_index){
+        $track_form_items = '<p aria-live="assertive">Questo disco ha già il numero massimo di tracce.</p>';
+    }
+    for ($i = $first_track_index; $i < $max_tracks; $i++) {
         $track_form_items .= Template::render('static/layout/add_tracks/track_form_item.html', [
             'index' => $i + 1,
-            'track_title' => isset($_titles[$i]) ? htmlspecialchars($_titles[$i - 1]) : '',
-            'track_duration' => isset($_durations[$i]) ? htmlspecialchars($_durations[$i - 1]) : '0',
-            'display' => isset($_titles[$i]) ? 'true' : 'false'
+            'track_title' => isset($_titles[$i]) ? htmlspecialchars($_titles[$i]) : '',
+            'track_duration' => isset($_durations[$i]) ? 'value="' . htmlspecialchars($_durations[$i]) . '"' : '',
+            'display' => isset($_titles[$i]) || $i == $first_track_index ? 'true' : 'false',
+            'required' => $i === $first_track_index ? 'required' : '',
+            'input_rules' => $i === $first_track_index ? $input_rules : ''
         ]);
     }
 
@@ -83,8 +133,8 @@ function add_tracks_form($_disk, $_edition, $_titles, $_durations, $errors = [])
         }, $disks)),
         'edition_options' => $edition_options,
         'track_form_items' => $track_form_items,
-        'first_track_title' => $first_track_title,
-        'first_track_duration' => $first_track_duration,
+        'selected_disk' => htmlspecialchars($_disk ?? ''),
+        'selected_edition' => htmlspecialchars($_edition ?? ''),
         'errors' => isset($errors) && !empty($errors) ? '<div id="add-tracks-error-container" aria-live="assertive" class="error-message">Sono stati riscontrati i seguenti errori: <ul>' . implode('', array_map(fn($error) => '<li>' . htmlspecialchars($error) . '</li>', $errors)) . '</ul></div>' : ''
     ]);
 }

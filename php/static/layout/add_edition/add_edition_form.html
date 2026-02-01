@@ -10,7 +10,7 @@
             <div class="input-wrapper">
                 <label for="disk">
                     <span class="label-text">Seleziona disco</span>
-                    <span class="required-field">Obbligatorio</span>
+                    <span class="required-field" id="disk-error">Obbligatorio</span>
                 </label>
                 <select id="disk" name="disk" required>
                     <option value="" disabled selected>Seleziona un disco</option>
@@ -25,7 +25,7 @@
             <div class="input-wrapper">
                 <label for="name">
                     <span class="label-text">Nome dell'edizione</span>
-                    <span class="required-field">Obbligatorio</span>
+                    <span class="required-field" id="name-error">Obbligatorio</span>
                 </label>
                 <p class="input-example"><abbr title="ad esempio">es.</abbr> <span lang="en">"Deluxe Edition"</span></p>
 
@@ -47,7 +47,7 @@
             <div class="input-wrapper">
                 <label for="release-date">
                     <span class="label-text">Data di rilascio</span>
-                    <span class="required-field">Obbligatorio</span>
+                    <span class="required-field" id="release-date-error">Obbligatorio</span>
                 </label>
 
                 <input type="date" id="release-date" name="release-date" min="1887-01-01" required
@@ -61,7 +61,7 @@
             <div class="input-wrapper">
                 <label for="country">
                     <span class="label-text">Paese di rilascio</span>
-                    <span class="required-field">Obbligatorio</span>
+                    <span class="required-field" id="country-error">Obbligatorio</span>
                 </label>
                 <select id="country" name="country" required>
                     <option value="" disabled selected>Seleziona un paese</option>
@@ -72,7 +72,7 @@
             <div class="input-wrapper">
                 <label for="photo">
                     <span class="label-text">Foto del vinile</span>
-                    <span class="required-field">Obbligatorio</span>
+                    <span class="required-field" id="photo-error">Obbligatorio</span>
                 </label>
                 <input type="file" id="photo" name="photo" accept=".jpg,.jpeg,.webp" required>
                 <p class="input-example">Supporta <abbr title="Joint Photographic Experts Group" lang="en">JPG</abbr> o

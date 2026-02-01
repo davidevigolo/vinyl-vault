@@ -8,6 +8,12 @@ this.document.getElementById('name').addEventListener('input', function () {
     validate_name(this);
 });
 
+this.document.getElementById('disk').addEventListener('input', function () {
+    // Find the error message element
+    let errorMessage = document.getElementById('disk-error');
+    validateSelect(this, errorMessage);
+});
+
 this.document.getElementById('standard-edition-checkbox').addEventListener('change', function () {
     let nameInput = document.getElementById('name');
     let nameError = document.getElementById('name-error');
