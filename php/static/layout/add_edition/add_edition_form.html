@@ -8,10 +8,10 @@
             <legend>Seleziona disco</legend>
 
             <div class="input-wrapper">
-                <div class="label-container">
-                    <label for="disk">Seleziona disco</label>
+                <label for="disk">
+                    <span class="label-text">Seleziona disco</span>
                     <span class="required-field">Obbligatorio</span>
-                </div>
+                </label>
                 <select id="disk" name="disk" required>
                     <option value="" disabled selected>Seleziona un disco</option>
                     [disk_options]
@@ -23,10 +23,10 @@
             <legend>Dettagli edizione</legend>
 
             <div class="input-wrapper">
-                <div class="label-container">
-                    <label for="name">Nome dell'edizione</label>
+                <label for="name">
+                    <span class="label-text">Nome dell'edizione</span>
                     <span class="required-field">Obbligatorio</span>
-                </div>
+                </label>
                 <p class="input-example"><abbr title="ad esempio">es.</abbr> <span lang="en">"Deluxe Edition"</span></p>
 
                 <input type="text" id="name" name="name" required maxlength="100" pattern="[a-zA-Z0-9àèéìòùÀÈÉÌÒÙ\s]+"
@@ -45,10 +45,10 @@
             </div>
 
             <div class="input-wrapper">
-                <div class="label-container">
-                    <label for="release-date">Data di rilascio</label>
+                <label for="release-date">
+                    <span class="label-text">Data di rilascio</span>
                     <span class="required-field">Obbligatorio</span>
-                </div>
+                </label>
 
                 <input type="date" id="release-date" name="release-date" min="1887-01-01" required
                     value="[release_date]">
@@ -59,10 +59,10 @@
             </div>
 
             <div class="input-wrapper">
-                <div class="label-container">
-                    <label for="country">Paese di rilascio</label>
+                <label for="country">
+                    <span class="label-text">Paese di rilascio</span>
                     <span class="required-field">Obbligatorio</span>
-                </div>
+                </label>
                 <select id="country" name="country" required>
                     <option value="" disabled selected>Seleziona un paese</option>
                     [country_options]
@@ -70,10 +70,10 @@
             </div>
 
             <div class="input-wrapper">
-                <div class="label-container">
-                    <label for="photo">Foto del vinile</label>
+                <label for="photo">
+                    <span class="label-text">Foto del vinile</span>
                     <span class="required-field">Obbligatorio</span>
-                </div>
+                </label>
                 <input type="file" id="photo" name="photo" accept=".jpg,.jpeg,.webp" required>
                 <p class="input-example">Supporta <abbr title="Joint Photographic Experts Group" lang="en">JPG</abbr> o
                     <abbr title="Web Picture format" lang="en">WEBP</abbr>. Dimensione massima 1<abbr

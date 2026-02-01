@@ -539,7 +539,7 @@ header {
     max-width: 20em;
 }
 
-.footer-col h3 {
+.footer-col h2 {
     font-size: var(--font-large);
     font-weight: 700;
     margin-bottom: 1.2rem;
@@ -691,7 +691,7 @@ footer .profile-links a:hover {
 
 .hero-text p {
     font-size: var(--font-medium);
-    max-width: 30em;
+    max-width: 100%;
     color: var(--text-muted);
 }
 
@@ -2437,6 +2437,10 @@ html:not(.js-enabled) .load-more-container {
     padding: 1rem;
 }
 
+#top-vinyls-title {
+    font-size: var(--font-xxxl);
+}
+
 .vinyl-card {
     align-items: center;
     position: relative;
@@ -2591,25 +2595,22 @@ html:not(.js-enabled) .load-more-container {
     text-align: center;
 }
 
-
-.label-container {
+.input-wrapper label {
     display: flex;
-    justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
+    justify-content: flex-start;
     margin-bottom: 0.8rem;
     width: 100%;
-}
-
-#login-form label,
-#registration-form label,
-#add-pages-form label,
-#profile-picture-form label,
-#personal-info-form label,
-#password-form label {
-    display: block;
     font-weight: 600;
     font-family: var(--font-secondary);
     font-size: var(--font-large);
+}
+
+.required-field {
+    margin-left: auto;
+    font-weight: 400;
+    font-family: var(--font-primary);
+    font-size: var(--font-small)
 }
 
 #login-form .input-wrapper,

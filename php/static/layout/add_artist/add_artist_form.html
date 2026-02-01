@@ -7,10 +7,10 @@
             <legend>Informazioni artista</legend>
 
             <div class="input-wrapper">
-                <div class="label-container">
-                    <label for="name">Nome dell'artista</label>
+                <label for="name">
+                    <span class="label-text">Nome dell'artista</span>
                     <span class="required-field">Obbligatorio</span>
-                </div>
+                </label>
                 <p class="input-example"><abbr title="ad esempio">es.</abbr> Mario Rossi</p>
 
                 <input type="text" id="name" name="name" required maxlength="100" pattern="[a-zA-Z0-9àèéìòùÀÈÉÌÒÙ\s]+"
@@ -23,10 +23,10 @@
             </div>
 
             <div class="input-wrapper">
-                <div class="label-container">
-                    <label for="nationality">Nazionalità</label>
+                <label for="nationality">
+                    <span class="label-text">Nazionalità</span>
                     <span class="required-field">Obbligatorio</span>
-                </div>
+                </label>
 
                 <select id="nationality" name="nationality" required>
                     <option value="" disabled selected>Seleziona la nazionalità</option>
@@ -35,10 +35,10 @@
             </div>
 
             <div class="input-wrapper">
-                <div class="label-container">
-                    <label for="photo">Foto dell'artista</label>
+                <label for="photo">
+                    <span class="label-text">Foto dell'artista</span>
                     <span class="required-field">Obbligatorio</span>
-                </div>
+                </label>
                 <input type="file" id="photo" name="photo" accept=".jpg,.jpeg,.webp" required>
                 <p class="input-example">Supporta <abbr title="Joint Photographic Experts Group" lang="en">JPG</abbr> o
                     <abbr title="Web Picture format" lang="en">WEBP</abbr>. Dimensione massima 1<abbr
