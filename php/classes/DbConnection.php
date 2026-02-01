@@ -18,6 +18,7 @@ class DbConnection {
             }
 
             $this->connection->set_charset("utf8mb4");
+            mysqli_report(MYSQLI_REPORT_OFF); // Disabilita le eccezioni di mysqli, permettendoci di gestire gli errori singolarmente
         } catch (Exception $e) {
             die("Errore di connessione: " . $e->getMessage());
         }

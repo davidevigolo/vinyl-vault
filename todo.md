@@ -1,4 +1,3 @@
-Finire validazione pagine add_*
 Aggiungere .htaccess
 Pull GDF
 Pull SIRIA

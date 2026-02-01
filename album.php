@@ -51,7 +51,7 @@ echo Template::render(
         'average_rating' => number_format($album_data['avg_rating'], 1),
         'review_count' => $album_data['review_count'],
         'album_tracklist' => album_tracklist($disk_id, $edition_name),
-        'album_versions' => album_versions($disk_id),
+        'album_versions' => album_versions($disk_id, $edition_name),
         'album_credits' => album_credits($disk_id),
         'album_actions' => album_actions($_SESSION['user_id'] ?? null, $disk_id, $edition_name),
         'action_result' => $_SESSION['album_actions_result']['message'] ?? ''

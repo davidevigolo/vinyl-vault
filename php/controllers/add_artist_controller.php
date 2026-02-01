@@ -63,7 +63,7 @@ function add_artist($name, $nationality, $image): array {
         mysqli_rollback($connection->get_connection());
         return ['success' => false, 'error' => 'Abbiamo riscontrato un errore, probabilmente stai provando ad inserire un artista già presente nel nostro database. Se il problema persiste contattaci a vinylvault@gmail.com'];
     }
-    $image_path = 'assets/uploaded_images/' . $image_path;
+    $image_path = 'assets/uploaded_images/' . urlencode($image_path);
     mysqli_stmt_bind_param($stmt, 'si', $image_path, $artist_id);
     $success = mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
@@ -79,7 +79,7 @@ function add_artist($name, $nationality, $image): array {
         }
 
         $file_tmp = $image['tmp_name'];
-        $destination = str_replace('assets/uploaded_images/', $upload_dir . '/', $image_path);
+        $destination = $upload_dir . '/' . urlencode(basename($image_path));
         $move_ok = move_uploaded_file($file_tmp, $destination);
         $success = $success && $move_ok;
     }

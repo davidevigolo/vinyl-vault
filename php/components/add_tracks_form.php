@@ -5,7 +5,7 @@ include_once 'php/classes/DbConnection.php';
 
 function get_disks()
 {
-    $query = "SELECT id, title FROM disk ORDER BY title ASC";
+    $query = "SELECT id, title FROM disk WHERE id IN (SELECT DISTINCT disk_id FROM edition) ORDER BY title ASC";
     $connection = DbConnection::get_instance();
     $result = mysqli_query($connection->get_connection(), $query);
     if (!$result) {

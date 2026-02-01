@@ -1,25 +1,24 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 include_once 'php/classes/DbConnection.php';
 
-function album_versions($disk_id) {
+function album_versions($disk_id, $edition_name) {
     $connection = DbConnection::get_instance();
     
     $stmt = mysqli_prepare($connection->get_connection(),
-        "SELECT DISTINCT d2.id, d2.title, e.edition_name, e.release_date, e.image_path, e.country,
+        "SELECT DISTINCT d2.id, d2.title, e2.edition_name, e2.release_date, e2.image_path, e2.country,
             a.author_name
          FROM disk d1
-         JOIN disk_author_release dar1 ON d1.id = dar1.disk_id
-         JOIN disk_author_release dar2 ON dar1.author_id = dar2.author_id
-         JOIN disk d2 ON dar2.disk_id = d2.id
-         JOIN edition e ON d2.id = e.disk_id
+         JOIN disk d2 ON d1.id = d2.id
+         JOIN edition e2 ON d2.id = e2.disk_id
+         JOIN edition e1 ON d1.id = e1.disk_id
+         JOIN disk_author_release dar2 ON d2.id = dar2.disk_id
          JOIN author a ON dar2.author_id = a.id
-         WHERE d1.id = ? AND d2.id = ? AND e.edition_name != (
-             SELECT e2.edition_name
-             FROM edition e2
-             WHERE e2.disk_id = d1.id
-             LIMIT 1
-         )
-         ORDER BY e.release_date DESC
+         WHERE d1.id = ? AND d2.id = ? AND e1.edition_name != e2.edition_name AND e2.edition_name != ?
+         ORDER BY e1.release_date DESC
          LIMIT 8"
     );
     
@@ -28,7 +27,7 @@ function album_versions($disk_id) {
         return '';
     }
     
-    mysqli_stmt_bind_param($stmt, 'ii', $disk_id, $disk_id);
+    mysqli_stmt_bind_param($stmt, 'iis', $disk_id, $disk_id, $edition_name);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
     

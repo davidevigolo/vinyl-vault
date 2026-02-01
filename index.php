@@ -14,6 +14,7 @@ echo Template::render(
         'head' => Template::render('static/layout/head.html', []),
         'header' => _header(),
         'trending_vinyls' => trending_vinyls(),
+        'banner_cta' => isset($_SESSION['user_id']) ? '' : Template::render('static/layout/index/banner_cta.html', []),
         'most_liked_artists' => most_liked_artists(),
         'footer' => footer(),
     ]

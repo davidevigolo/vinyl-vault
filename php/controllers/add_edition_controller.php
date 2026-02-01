@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 include_once '../classes/DbConnection.php';
 include_once '../classes/utils.php';
 
@@ -64,13 +68,14 @@ function add_edition($disk_id, $name, $release_date, $country, $is_standard_edit
     // Generate image path with edition ID
     $image_path = 'edition_' . $disk_id . '_' . $name . '.' . $file_extension;
     // Update edition with image_path
-    $update_query = "UPDATE edition SET image_path = ? WHERE edition_name = ?;";
+    $update_query = "UPDATE edition SET image_path = ? WHERE disk_id = ? AND edition_name = ?;";
     $update_stmt = mysqli_prepare($connection->get_connection(), $update_query);
     if (!$update_stmt) {
         mysqli_rollback($connection->get_connection());
         return ['success' => false, 'error' => 'Abbiamo riscontrato un errore durante l\'inserimento dell\'edizione, probabilmente stai provando ad inserire un\'edizione già presente nel nostro database. Se il problema persiste contattaci a vinylvault@gmail.com'];
     }
-    mysqli_stmt_bind_param($update_stmt, 'ss', $image_path, $name);
+    $image_path = 'assets/uploaded_images/' . urlencode($image_path);
+    mysqli_stmt_bind_param($update_stmt, 'sis', $image_path, $disk_id, $name);
     $success = mysqli_stmt_execute($update_stmt);
     mysqli_stmt_close($update_stmt);
     if ($success) {
@@ -85,7 +90,7 @@ function add_edition($disk_id, $name, $release_date, $country, $is_standard_edit
         }
 
         $file_tmp = $image['tmp_name'];
-        $destination = $upload_dir . '/' . $image_path;
+        $destination = $upload_dir . '/' . urlencode(basename($image_path));
         $move_ok = move_uploaded_file($file_tmp, $destination);
         $success = $success && $move_ok;
     }

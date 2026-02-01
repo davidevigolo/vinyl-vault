@@ -26,6 +26,7 @@ function add_disk($title, $artist, $type, $label, $genres): array
         return ['success' => false, 'error' => 'Formato etichetta discografica non valido', 'fields_to_reset' => ['label']];
     }
 
+    $genres = array_filter($genres, fn($genre) => trim($genre) !== '');
     foreach ($genres as $genre) {
         if (trim($genre) === '') {
             return ['success' => false, 'error' => 'Uno o più generi non sono validi', 'fields_to_reset' => ['genre']];
@@ -109,6 +110,7 @@ $genres = $_POST['genre'] ?? null;
 $_SESSION['add_disk_result'] = add_disk($title, $artist, $type, $label, $genres);
 $_SESSION['add_disk_result']['title'] = in_array('title', $_SESSION['add_disk_result']['fields_to_reset'] ?? []) ? '' : $title;
 $_SESSION['add_disk_result']['type'] = in_array('type', $_SESSION['add_disk_result']['fields_to_reset'] ?? []) ? '' : $type;
+$_SESSION['add_disk_result']['label'] = in_array('label', $_SESSION['add_disk_result']['fields_to_reset'] ?? []) ? '' : $label;
 $_SESSION['add_disk_result']['artist'] = in_array('artist', $_SESSION['add_disk_result']['fields_to_reset'] ?? []) ? '' : $artist;
 $_SESSION['add_disk_result']['genres'] = in_array('genre', $_SESSION['add_disk_result']['fields_to_reset'] ?? []) ? [] : $genres;
 header('Location: ' . '../../add_disk.php');
