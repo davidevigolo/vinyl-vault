@@ -698,8 +698,12 @@ footer .profile-links a:hover {
 
 .hero-text p {
     font-size: var(--font-medium);
-    max-width: 30em;
     color: var(--text-muted);
+    max-width: 30em;
+}
+
+.home p {
+    margin: auto;
 }
 
 .hero-text a {
@@ -1530,8 +1534,105 @@ img#empty-collection-image {
     margin-bottom: 1em;
 }
 
-#content .alert-add-vinyl {
+/* --- Reviews Section --- */
+
+#review-btn {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+#reviews {
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+}
+
+.rating-group {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    gap: 0.2rem;
+    margin-bottom: 1rem;
+}
+
+.rating-group input {
+    display: none;
+}
+
+.rating-group label {
+    font-size: 2.5rem;
+    color: var(--border-dark);
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.rating-group label:hover,
+.rating-group label:hover ~ label,
+.rating-group input:checked ~ label {
+    color: var(--brand-primary);
+}
+
+ /*User's existing review display */
+#review {
+    background: var(--bg-section);
+    color: var(--brand-primary);
+    padding: 1rem;
+    border-radius: 1rem;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    border: 2px dashed var(--brand-primary);
+}
+
+#reviews article {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-dark);
+    border-radius: 1.3em;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+#reviews article h3 {
     font-size: var(--font-xl);
+    color: var(--text-primary);
+    font-family: var(--font-secondary);
+    border-bottom: 1px solid var(--border-default);
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
+}
+
+#reviews article p {
+    font-size: var(--font-medium);
+    color: var(--text-primary);
+    line-height: 1.6;
+    word-wrap: break-word;
+} /**/
+
+/* Error messages inside form */
+.error-message {
+    background-color: rgba(197, 43, 32, 0.1);
+    color: var(--bg-error);
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+    font-size: var(--font-small);
+    margin-bottom: 1rem;
+    border: 1px solid var(--bg-error);
+}
+
+/* Spaziatura specifica per l'username nelle recensioni */
+.review-username {
+    margin-left: 0.8rem; 
+    display: inline-block; 
+}
+
+/* Opzionale: se vuoi dare più risalto all'username rispetto al resto del titolo */
+#reviews article h3 .review-username {
+    font-size: var(--font-large);
+    color: var(--text-secondary);
+}
+
+#content .alert-add-vinyl {
+    font-size: var(--font-large);
     font-family: var(--font-secondary);
     color: var(--text-secondary);
     font-weight: 600;
@@ -1540,16 +1641,13 @@ img#empty-collection-image {
     border-radius: 1.3em;
     border: 2px dashed var(--border-dark);
     width: 60vw;
+
+    margin-top: 1em;
 }
 
 #content #action-result.alert-add-vinyl {
     all: unset;
     display: block;
-    margin-top: 1rem;
-    text-align: center;
-    font-size: var(--font-large);
-    font-family: var(--font-primary);
-    color: var(--text-primary);
 }
 
 
@@ -1627,7 +1725,8 @@ img#empty-collection-image {
 #versions-heading,
 #albums-title,
 #singles-title,
-#similar-artists-title {
+#similar-artists-title,
+.review-title {
     width: 100%;
     color: var(--brand-primary-dark);
     font-size: var(--font-xxxl);
@@ -2585,7 +2684,8 @@ html:not(.js-enabled) .load-more-container {
 #add-pages-form label,
 #profile-picture-form label,
 #personal-info-form label, 
-#password-form label {
+#password-form,
+#review-form label {
     display: block;
     font-weight: 600;
     font-family: var(--font-secondary);
@@ -2597,7 +2697,8 @@ html:not(.js-enabled) .load-more-container {
 #add-pages-form .input-wrapper,
 #profile-picture-form .input-wrapper,
 #personal-info-form .input-wrapper, 
-#password-form .input-wrapper {
+#password-form .input-wrapper,
+#review-form .input-wrapper {
     text-align: left;
     margin-bottom: 2.4rem;
 }
@@ -2608,7 +2709,8 @@ html:not(.js-enabled) .load-more-container {
 #profile-picture-form input,
 #personal-info-form input, 
 #personal-info-form textarea,
-#password-form input{
+#password-form input,
+#review-form textarea {
     width: 100%;
     padding: 0.8rem;
     border: 1px solid var(--border-default);
@@ -2631,7 +2733,8 @@ html:not(.js-enabled) .load-more-container {
 #add-pages-form,
 #profile-picture-form,
 #personal-info-form, 
-#password-form {
+#password-form,
+#review-form {
     margin-bottom: 1.5em;
 }
 
@@ -2697,7 +2800,8 @@ html:not(.js-enabled) .load-more-container {
 
 #add-pages,
 #edit-profile,
-#password-form {
+#password,
+#review-form  {
     background-color: var(--bg-section);
     border: 1px solid var(--border-default);
     border-radius: 1.3em;
@@ -3080,7 +3184,7 @@ textarea {
 
 
 /* Edit Profile Page */
-/* Reviews Section */
+/* Reviews Section 
 
 section#reviews .center-container{
     border-radius: 1.3em;
@@ -3107,5 +3211,5 @@ section#reviews article h3{
 
 section#reviews article h3{
     color: var(--text-secondary)
-}
+}*/
 

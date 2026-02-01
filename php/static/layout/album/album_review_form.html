@@ -1,12 +1,13 @@
 <form id="review-form" method="POST" action="php/controllers/add_review_controller.php">
-    <h2>Scrivi una recensione</h2>
     [errors]
     [radio_buttons]
-    <label for="review-text">Recensione:</label>
-    <textarea id="review-text" name="review_text" rows="4" required>[text]</textarea>
+    <div class="input-wrapper">
+        <label for="review-text">Descrizione della recensione:</label>
+        <textarea id="review-text" name="review_text" rows="4" required>[text]</textarea>
+    </div>
     
     <input type="hidden" name="disk_id" value="[disk_id]">
     <input type="hidden" name="edition_name" value="[edition_name]">
 
-    <button type="submit">Invia Recensione</button>
+    <button type="submit" id="review-btn" class="btn-primary">Invia Recensione</button>
 </form>

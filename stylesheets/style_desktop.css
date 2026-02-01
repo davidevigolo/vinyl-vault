@@ -182,6 +182,10 @@ header .site-nav-links li {
     text-align: left;
 }
 
+.home p {
+    margin: 0;
+}
+
 /* Presentation Section */
 #presentation > .center-container {
     text-align: left;
@@ -371,6 +375,10 @@ p#empty-collection-paragraph {
     margin-top: 0;
 }
 
+.album-hero .album-artist {
+    text-align: left;
+}
+
 .album-genres { 
     grid-column: 1; 
     justify-content: flex-start; 
@@ -399,12 +407,13 @@ p#empty-collection-paragraph {
 }
 
 #content .alert-add-vinyl {
-    width: auto;
+    max-width: 20em;
+    text-align: center;
 }
 
 #content #action-result.alert-add-vinyl {
     text-wrap: balance;
-    max-width: 20em;
+    max-width: 10em;
 }
 
 /* Album info section*/
