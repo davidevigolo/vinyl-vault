@@ -35,6 +35,6 @@ echo Template::render(
         'header' => _header(),
         'add_artist_form' => add_artist_form($name, $nationality, $errors),
         'footer' => footer(),
-        'validation_scripts' => get_validation_scripts(['add_artist.js'])
+        'validation_scripts' => get_validation_scripts(['add_artist.js', 'photo_validator.js'])
     ]
 );

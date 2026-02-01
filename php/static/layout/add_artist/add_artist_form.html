@@ -1,21 +1,24 @@
 <h2 class="add-pages-title">Aggiungi Artista</h2>
 <div id="add-pages">
 
-    <form id="add-pages-form" action="php/controllers/add_artist_controller.php" method="POST"
-        enctype="multipart/form-data">
+    <div id="errors-section">
+        [errors]
+    </div>
+    <form id="add-pages-form" action="php/controllers/add_artist_controller.php" method="POST" enctype="multipart/form-data">
         <fieldset>
             <legend>Informazioni artista</legend>
 
             <div class="input-wrapper">
                 <label for="name">
                     <span class="label-text">Nome dell'artista</span>
-                    <span class="required-field">Obbligatorio</span>
+                    <span class="required-field" id="name-error">Obbligatorio</span>
                 </label>
                 <p class="input-example"><abbr title="ad esempio">es.</abbr> Mario Rossi</p>
 
                 <input type="text" id="name" name="name" required maxlength="100" pattern="[a-zA-Z0-9àèéìòùÀÈÉÌÒÙ\s]+"
                     value="[name]" required>
                 <ul class="input-examples">
+                    <li><abbr title="ad esempio">es.</abbr> Mario Rossi</li>
                     <li>Massimo 100 caratteri</li>
                     <li>Caratteri consentiti: lettere, numeri e spazi</li>
                 </ul>
@@ -25,7 +28,7 @@
             <div class="input-wrapper">
                 <label for="nationality">
                     <span class="label-text">Nazionalità</span>
-                    <span class="required-field">Obbligatorio</span>
+                    <span class="required-field" id="nationality-error">Obbligatorio</span>
                 </label>
 
                 <select id="nationality" name="nationality" required>
@@ -37,7 +40,7 @@
             <div class="input-wrapper">
                 <label for="photo">
                     <span class="label-text">Foto dell'artista</span>
-                    <span class="required-field">Obbligatorio</span>
+                    <span class="required-field" id="photo-error">Obbligatorio</span>
                 </label>
                 <input type="file" id="photo" name="photo" accept=".jpg,.jpeg,.webp" required>
                 <p class="input-example">Supporta <abbr title="Joint Photographic Experts Group" lang="en">JPG</abbr> o

@@ -48,8 +48,7 @@ header {
 
 .header-right .nav-links, 
 .header-right .actions-group,
-.header-right .profile-nav,
-.header-right .v-divider {
+.header-right .profile-nav {
     display: flex;
 }
 
@@ -107,6 +106,18 @@ header {
     display: flex;
     align-items: center;
     gap: 0.8em;
+    margin-right: 1.2rem; 
+    position: relative;
+}
+
+.actions-group::after {
+    content: "";
+    display: block;
+    width: 2px;
+    height: 2.6em;
+    background-color: #cccccc;
+    position: absolute;
+    right: -1.2rem; 
 }
 
 header .profile-nav-links,
@@ -212,6 +223,10 @@ header .site-nav-links li {
 
 .hero-text {
     text-align: left;
+}
+
+.home p {
+    margin: 0;
 }
 
 /* Presentation Section */
@@ -338,17 +353,10 @@ header .site-nav-links li {
     padding: 0 0 0 2em;
 }
 
-.collection-rating-section {
-    justify-content: space-between;
-}
-
 .stars-container {
     margin: 0;
     justify-content: flex-start;
-}
-
-.star {
-    font-size: 2.2rem;
+    gap: 0.2em;
 }
 
 .delete-selection {
@@ -408,6 +416,10 @@ p#empty-collection-paragraph {
     margin-top: 0;
 }
 
+.album-hero .album-artist {
+    text-align: left;
+}
+
 .album-genres { 
     grid-column: 1; 
     justify-content: flex-start; 
@@ -436,12 +448,13 @@ p#empty-collection-paragraph {
 }
 
 #content .alert-add-vinyl {
-    width: auto;
+    max-width: 20em;
+    text-align: center;
 }
 
 #content #action-result.alert-add-vinyl {
     text-wrap: balance;
-    max-width: 20em;
+    max-width: 10em;
 }
 
 /* Album info section*/
@@ -456,7 +469,7 @@ p#empty-collection-paragraph {
     grid-column: 2;
     grid-row: 1 / span 3;
     margin-top: 0;
-    text-align: right;
+    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -873,29 +886,34 @@ p#empty-collection-paragraph {
     white-space: nowrap;
 }
 
-#profile-stats-title {
-    font-style: left;
+#profile-stats-title,
+#edition-stats-title {
+    text-align: left;
     text-align: center;
 }
 
-#profile-stats ol {
+#profile-stats ol,
+#edition-stats ol {
     flex-direction: row;
     justify-content: space-between;
     gap: 1.5rem;
 }
 
-#profile-stats li {
+#profile-stats li,
+#edition-stats li {
     flex: 1;
     padding: 1.5rem;
     font-size: var(--font-xl); 
     grid-template-columns: 1fr auto;
 }
 
-#profile-stats li h3 {
+#profile-stats li h3,
+#edition-stats li h3 {
     font-size: var(--font-large);
 }
 
-#profile-stats li::after {
+#profile-stats li::after,
+#edition-stats li::after {
     width: 2em;
     height: 2em;
 }
@@ -936,3 +954,60 @@ p#empty-collection-paragraph {
 }
 
 /* End Profile Page */
+
+
+/* Edit Profile Page */
+
+.profile-picture-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start; 
+    gap: 3rem;
+    width: 100%;
+    padding: 2rem 0;
+}
+
+#current-profile-img {
+    display: block;
+    margin: 0;
+    flex-shrink: 0;
+    width: 18rem;
+    height: 18rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-picture-info {
+    flex: 1;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.propic-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 1rem;
+    width: 100%;
+}
+
+.propic-actions label[for="propic-upload"] {
+    flex: 0 0 100%;
+    text-align: left;
+    margin-bottom: 0.5rem;
+}
+
+#propic-upload {
+    width: auto;
+    flex: 0 1 auto;
+}
+
+.propic-requirements {
+    text-align: left;
+    margin: 0.5rem 0 1rem 0;
+}
+
+/* End Edit Profile Page */

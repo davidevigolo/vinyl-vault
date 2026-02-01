@@ -134,7 +134,7 @@ La pagina artista (`artist.php`) fornisce una vista dettagliata di un singolo ar
 - `artist_singles.php`: Lista singoli ed EP
 - `similar_artists.php`: Suggerisce artisti con generi in comune
 
-**Fallback immagini**: Tutte le immagini (artista e copertine) implementano un controllo con `file_exists()` per verificare la presenza fisica del file. Se mancante, viene utilizzata automaticamente `assets/images/pollo.webp` come placeholder.
+**Fallback immagini**: Tutte le immagini (artista e copertine) implementano un controllo con `file_exists()` per verificare la presenza fisica del file. Se mancante, viene utilizzata automaticamente `assets/images/vinyl_placeholder.jpg` oppure `assets/images/artist_placeholder.jpg`, come placeholder.
 
 **Accessibilità**: La pagina implementa WCAG 2.1 Level AA con skip links verso le 4 sezioni principali (contenuto, album, singoli, artisti simili), breadcrumb con `aria-current`, landmark regions semantiche, e `role="list"` per i tag dei generi. L'attributo `lang="en"` viene utilizzato per i termini inglesi come "Album" ed "EP".
 

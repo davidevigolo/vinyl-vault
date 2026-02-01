@@ -1,0 +1,140 @@
+# Custom error page
+ErrorDocument 404 /404.php
+ErrorDocument 403 /403.php
+
+# Prevent directory browsing
+Options -Indexes
+
+# Deny access to PHP files in subdirectories
+<FilesMatch "\.php$">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>
+
+# Allow access to PHP files in the root directory only
+<Files "index.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "wishlist.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "add_disk.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "add_artist.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "add_edition.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "add_tracks.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "top_vinyls.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "collection.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "esplora.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "artist.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "album.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "edit_wishlist.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "setuid.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "logout.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "404.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "manage_wishlist_item.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "manage_collection_item.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "add_disk_controller.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "add_artist_controller.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "add_edition_controller.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "add_tracks_controller.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "album_actions_controller.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "add_review_controller.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "login.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "catalogo.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "login_controller.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "register.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "profile.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "edit_profile.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+<Files "passwords.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+# Protect sensitive files
+<FilesMatch "^(\.htaccess|\.gitignore|.*\.md|.*\.sh)$">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>

@@ -1,8 +1,11 @@
 <h2 class="add-pages-title">Aggiungi Edizione</h2>
 <div id="add-pages">
 
-    <form id="add-pages-form" action="php/controllers/add_edition_controller.php" method="POST"
-        enctype="multipart/form-data">
+    <div id="errors-section">
+        [errors]
+    </div>
+    
+    <form id="add-pages-form" action="php/controllers/add_edition_controller.php" method="POST" enctype="multipart/form-data">
 
         <fieldset>
             <legend>Seleziona disco</legend>
@@ -33,6 +36,7 @@
                     value="[name]" [name_enabled]>
 
                 <ul class="input-">
+                    <li><abbr title="ad esempio">es.</abbr> <span lang="en">"Deluxe Edition"</span></li>
                     <li>Massimo 100 caratteri</li>
                     <li>Caratteri consentiti: lettere, numeri e spazi</li>
                     <li>Se impostata <span lang="en">Standard Edition</span>, non valorizzare il campo</li>

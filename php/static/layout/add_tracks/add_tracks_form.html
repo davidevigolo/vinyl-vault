@@ -1,8 +1,12 @@
 <h2 class="add-pages-title">Aggiungi Tracce</h2>
 <div id="add-pages">
 
-    <form id="select-disk-edition-form" action="add_tracks.php" method="GET">
-
+    <div id="errors-section">
+        [errors]
+    </div>
+    <form id="add-pages-form" action="php/controllers/add_tracks_controller.php" method="POST"
+        enctype="multipart/form-data">
+            
         <fieldset>
             <legend>Informazioni disco ed edizione</legend>
             <div class="input-wrapper">

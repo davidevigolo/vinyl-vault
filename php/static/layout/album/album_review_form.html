@@ -1,0 +1,21 @@
+<div id="review-form-section">
+    <h2 class="review-title">Scrivi una recensione</h2>
+    <form id="review-form" method="POST" action="php/controllers/add_review_controller.php">
+        <div id="errors-section">
+            [errors]
+        </div>
+        <fieldset class="rating">
+            <legend class="evaluation-label">Valutazione personale</legend>
+            [radio_buttons]
+        </fieldset>
+        <div class="input-wrapper">
+            <label for="review-text">Descrizione della recensione:</label>
+            <textarea id="review-text" name="review_text" rows="4" required>[text]</textarea>
+        </div>
+
+        <input type="hidden" name="disk_id" value="[disk_id]">
+        <input type="hidden" name="edition_name" value="[edition_name]">
+
+        <button type="submit" id="review-btn" class="btn-primary">Invia Recensione</button>
+    </form>
+</div>

@@ -1,9 +1,5 @@
 const backToTopButton = document.getElementById('back-to-top');
 
-if (!backToTopButton) {
-    throw new Error('Back to Top button not found');
-}
-
 backToTopButton.style.display = 'none';
 
 window.addEventListener('scroll', function () {

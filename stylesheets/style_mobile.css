@@ -72,6 +72,7 @@
 
     /* Borders & Accents */
     --border-default: #49454f;
+    --border-dark: #737272;
     --brand-primary: #3c99dd;
     /* Blu3 - Bottoni */
     --brand-primary-dark: #7dbbe8;
@@ -183,6 +184,17 @@ a:hover {
     text-decoration: none;
 }
 
+.btn-primary.disabled,
+.btn-primary:disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    background-color: var(--border-default);
+    border-color: var(--border-dark);
+    color: var(--text-primary);
+    box-shadow: none;
+    transform: none;
+}
+
 .btn-secondary {
     margin: auto;
     display: inline-block;
@@ -194,7 +206,7 @@ a:hover {
     border-radius: 0.5em;
     border: 0.2em solid var(--brand-primary);
     transition: all 0.3s ease;
-    font-size: 1rem;
+    font-size: var(--font-medium);
     white-space: nowrap;
 }
 
@@ -374,8 +386,7 @@ header {
 
 .header-right .nav-links,
 .header-right .actions-group,
-.header-right .profile-nav,
-.header-right .v-divider {
+.header-right .profile-nav {
     display: none;
 }
 
@@ -503,10 +514,6 @@ header {
     text-decoration: none;
 }
 
-.v-divider {
-    display: none;
-}
-
 /* End Header */
 
 
@@ -604,7 +611,7 @@ footer .profile-links a:hover {
     color: var(--text-muted);
 }
 
-/* Pulsante Back to Top */
+/* Button Back to Top */
 #back-to-top {
     transition-duration: 0.4s;
     opacity: 0.9;
@@ -715,6 +722,11 @@ footer .profile-links a:hover {
     font-size: var(--font-medium);
     max-width: 100%;
     color: var(--text-muted);
+    max-width: 30em;
+}
+
+.home p {
+    margin: auto;
 }
 
 .hero-text a {
@@ -880,7 +892,7 @@ footer .profile-links a:hover {
 }
 
 .card-image img {
-    width: auto;
+    width: 100%;
     height: auto;
     aspect-ratio: 1 / 1;
     object-fit: cover;
@@ -1016,10 +1028,8 @@ footer .profile-links a:hover {
     align-items: center;
     text-align: center;
     flex-direction: column;
-    min-height: 60vh;
     padding-top: 5rem;
     padding-bottom: 0;
-    max-width: 600px;
 }
 
 .error-top-section {
@@ -1029,14 +1039,14 @@ footer .profile-links a:hover {
 
 .error-top-section img {
     margin-top: 1.5em;
-    max-width: 650px;
+    max-width: 50em;
+    width: 100%;
     height: auto;
 }
 
 .error-main-title {
     font-family: var(--font-primary);
     font-size: var(--font-xxl);
-    font-size: 2.8rem;
     margin: 0;
     line-height: 1.1;
     text-align: center;
@@ -1049,14 +1059,14 @@ footer .profile-links a:hover {
 .error-info h3 {
     font-family: var(--font-secondary);
     font-size: var(--font-xl);
-    margin: 25px 0 5px 0;
+    margin: 1em 0 0.7em 0;
     color: var(--text-secondary);
 }
 
 .error-info p {
-    margin: 0 auto 15px auto;
+    margin: 0 auto 1em auto;
     font-size: var(--font-medium);
-    max-width: 650px;
+    max-width: 40em;
     line-height: 1.5;
     padding-bottom: 1em;
 }
@@ -1078,8 +1088,6 @@ footer .profile-links a:hover {
     color: var(--bg-surface);
     opacity: 1;
 }
-
-/* sistemare fine footer ------------------------------------------------------------>
 
 /* End 404 Page */
 
@@ -1270,7 +1278,7 @@ footer .profile-links a:hover {
 
 .star {
     font-size: 3rem;
-    color: var(--border-dark);
+    color: var(--text-muted);
     cursor: pointer;
     line-height: 1;
     transition: color 0.2s ease, transform 0.1s ease;
@@ -1336,7 +1344,7 @@ input[type="number"] {
     border: 0.1em solid var(--border-default);
     border-radius: 0.25em;
     background-color: var(--bg-surface);
-    color: var(--text-primary)
+    color: var(--text-primary);
 }
 
 .save-button {
@@ -1590,8 +1598,98 @@ img#empty-collection-image {
     margin-bottom: 1em;
 }
 
-#content .alert-add-vinyl {
+/* --- Reviews Section --- */
+
+#review-btn {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+#reviews {
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+}
+
+.rating-group {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    gap: 0.2rem;
+    margin-bottom: 1rem;
+}
+
+.rating-group input {
+    display: none;
+}
+
+.rating-group label {
+    font-size: 2.5rem;
+    color: var(--border-dark);
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.rating-group label:hover,
+.rating-group label:hover ~ label,
+.rating-group input:checked ~ label {
+    color: var(--brand-primary);
+}
+
+#review {
+    background: var(--bg-section);
+    color: var(--brand-primary);
+    padding: 1rem;
+    border-radius: 1rem;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    border: 2px dashed var(--brand-primary);
+}
+
+#reviews article {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-dark);
+    border-radius: 1.3em;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+#reviews article h3 {
     font-size: var(--font-xl);
+    color: var(--text-primary);
+    font-family: var(--font-secondary);
+    border-bottom: 1px solid var(--border-default);
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
+}
+
+#reviews article p {
+    font-size: var(--font-medium);
+    color: var(--text-primary);
+    line-height: 1.6;
+    word-wrap: break-word;
+} 
+
+.error-message {
+    color: var(--bg-error);
+    padding: 0.8rem;
+    font-size: var(--font-small);
+    font-weight: 500;
+}
+
+.review-username {
+    margin-left: 0.8rem; 
+    display: inline-block; 
+}
+
+#reviews article h3 .review-username {
+    font-size: var(--font-large);
+    color: var(--text-secondary);
+}
+
+#content .alert-add-vinyl {
+    font-size: var(--font-large);
     font-family: var(--font-secondary);
     color: var(--text-secondary);
     font-weight: 600;
@@ -1600,16 +1698,13 @@ img#empty-collection-image {
     border-radius: 1.3em;
     border: 2px dashed var(--border-dark);
     width: 60vw;
+
+    margin-top: 1em;
 }
 
 #content #action-result.alert-add-vinyl {
     all: unset;
     display: block;
-    margin-top: 1rem;
-    text-align: center;
-    font-size: var(--font-large);
-    font-family: var(--font-primary);
-    color: var(--text-primary);
 }
 
 
@@ -1632,6 +1727,50 @@ img#empty-collection-image {
     font-style: italic;
 }
 
+#edition-info-section {
+    padding: 2.5rem 0;
+}
+
+#edition-info-section-title {
+    width: 100%;
+    color: var(--brand-primary-dark);
+    font-size: var(--font-xxxl);
+    font-family: var(--font-secondary);
+    font-weight: 600;
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+#edition-info-section dl {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    grid-auto-flow: column;
+    
+    text-align: center;
+    padding: 2rem 1rem;
+    border: 2px dashed var(--border-dark);
+    border-radius: 1.5rem;
+    gap: 1rem;
+}
+
+#edition-info-section dt {
+    font-size: var(--font-medium);
+    font-family: var(--font-secondary);
+    color: var(--text-primary);
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+#edition-info-section dd {
+    margin: 0;
+    font-size: var(--font-large);
+    font-weight: 700;
+    color: var(--text-secondary);
+    word-break: break-word;
+}
+
+
 /* Tracklist */
 
 .tracklist-section {
@@ -1643,7 +1782,8 @@ img#empty-collection-image {
 #versions-heading,
 #albums-title,
 #singles-title,
-#similar-artists-title {
+#similar-artists-title,
+.review-title {
     width: 100%;
     color: var(--brand-primary-dark);
     font-size: var(--font-xxxl);
@@ -1714,45 +1854,6 @@ img#empty-collection-image {
     padding-bottom: 4em;
 }
 
-
-/* Credits --------------------------------------------- da togliere? */
-
-.album-credits-section {
-    padding: 3rem 0;
-}
-
-.credits-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.credit-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.credit-avatar {
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.credit-name {
-    font-weight: 600;
-    margin: 0;
-}
-
-.credit-role {
-    font-size: var(--font-small);
-    color: var(--text-secondary);
-    margin: 0.25rem 0 0;
-}
-
-/* Credits --------------------------------------------- da togliere? */
 
 /* End Album Page */
 
@@ -1898,7 +1999,6 @@ img#empty-collection-image {
     display: none;
 }
 
-/* Mobile reset button container - visible on mobile */
 .mobile-reset-container {
     padding-bottom: 2.5rem;
     border-bottom: 1px solid var(--border-default);
@@ -2640,8 +2740,9 @@ html:not(.js-enabled) .load-more-container {
 #registration-form .input-wrapper,
 #add-pages-form .input-wrapper,
 #profile-picture-form .input-wrapper,
-#personal-info-form .input-wrapper,
-#password-form .input-wrapper {
+#personal-info-form .input-wrapper, 
+#password-form .input-wrapper,
+#review-form .input-wrapper {
     text-align: left;
     margin-bottom: 2.4rem;
 }
@@ -2652,13 +2753,15 @@ html:not(.js-enabled) .load-more-container {
 #profile-picture-form input,
 #personal-info-form input,
 #personal-info-form textarea,
-#password-form input {
+#password-form input,
+#review-form textarea {
     width: 100%;
     padding: 0.8rem;
     border: 1px solid var(--border-default);
     border-radius: 0.5em;
     font-size: var(--font-medium);
     background-color: var(--bg-surface);
+    color: var(--text-primary);
 }
 
 #login-btn,
@@ -2674,8 +2777,9 @@ html:not(.js-enabled) .load-more-container {
 #add-pages-form,
 #select-disk-edition-form,
 #profile-picture-form,
-#personal-info-form,
-#password-form {
+#personal-info-form, 
+#password-form,
+#review-form {
     margin-bottom: 1.5em;
 }
 
@@ -2736,7 +2840,8 @@ html:not(.js-enabled) .load-more-container {
 
 #add-pages,
 #edit-profile,
-#password-form {
+#password,
+#review-form  {
     background-color: var(--bg-section);
     border: 1px solid var(--border-default);
     border-radius: 1.3em;
@@ -2817,7 +2922,6 @@ html:not(.js-enabled) .load-more-container {
     margin-bottom: 1.5rem;
     width: 100%;
     justify-content: center;
-    /*flex-start;*/
 }
 
 #add-pages-form .checkbox-wrapper input[type="checkbox"] {
@@ -2845,6 +2949,38 @@ html:not(.js-enabled) .load-more-container {
 #edition:disabled {
     color: var(--text-primary);
     background-color: var(--border-default);
+}
+
+/* --- Errors Section --- */
+
+
+#errors-section ul {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--bg-error);
+    border-radius: 1.3em;
+    padding: 1rem;
+    padding: 0.5em;
+    margin-bottom: 1.5em;
+}
+
+#errors-section li {
+    color: var(--bg-error);
+    font-size: var(--font-small);
+    font-weight: 500;
+    line-height: 1.4;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#errors-section li::before {
+    content: "•";
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+#errors-section:empty {
+    display: none;
 }
 
 /* End Add Pages */
@@ -2915,11 +3051,13 @@ body.page-transitioning {
     font-size: var(--font-medium);
 }
 
-#profile-stats {
+#profile-stats,
+#edition-stats {
     padding: 1.5rem 0;
 }
 
-#profile-stats-title {
+#profile-stats-title,
+#edition-stats-title {
     width: 100%;
     color: var(--brand-primary-dark);
     font-size: var(--font-xxxl);
@@ -2930,14 +3068,16 @@ body.page-transitioning {
     margin-bottom: 0.5em;
 }
 
-#profile-stats ol {
+#profile-stats ol,
+#edition-stats ol {
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
     list-style: none;
 }
 
-#profile-stats li {
+#profile-stats li,
+#edition-stats li {
     display: grid;
     grid-template-columns: 1fr 0.5fr;
     align-items: left;
@@ -2951,7 +3091,8 @@ body.page-transitioning {
     color: var(--text-secondary);
 }
 
-#profile-stats li::after {
+#profile-stats li::after,
+#edition-stats li::after {
     content: "";
     grid-column: 2;
     grid-row: 1 / span 2;
@@ -2961,10 +3102,11 @@ body.page-transitioning {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    justify-self: end;
+    justify-self: center;
 }
 
-#profile-stats li h3 {
+#profile-stats li h3,
+#edition-stats li h3 {
     grid-column: 1;
     grid-row: 1;
     font-size: var(--font-xxl);
@@ -2975,11 +3117,13 @@ body.page-transitioning {
     margin-bottom: 0.2rem;
 }
 
-#collection-disk-count-item::after {
+#collection-disk-count-item::after,
+#ownership-count-item:after {
     background-image: url('../assets/images/vinyl-icon.jpg');
 }
 
-#wishlist-disk-count-item::after {
+#wishlist-disk-count-item::after,
+#wishlist-count-item::after {
     background-image: url('../assets/images/wishlist-icon.jpg');
 }
 
@@ -3063,3 +3207,63 @@ textarea {
     resize: vertical;
 
 }
+/* Edit Profile Page */
+
+#current-profile-img {
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1em;
+}
+
+.propic-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1rem;
+}
+
+.propic-actions label[for="propic-upload"] {
+    flex: 0 0 100%;
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-family: var(--font-secondary);
+    font-size: var(--font-large);
+    text-align: left;
+
+}
+
+#propic-upload {
+    display: block;
+    width: auto;
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid var(--border-default);
+    border-radius: 0.5em;
+}
+
+.propic-actions .btn-secondary {
+    flex: 0 0 auto;
+    margin: 0;
+    padding: 0.6rem 1.2rem;
+}
+
+.propic-requirements {
+    flex: 0 0 100%;
+    order: 3;
+    margin-bottom: 1em;
+    font-size: var(--font-small);
+    text-align: left;
+}
+
+#propic-success-container {
+    margin-bottom: 1em;
+    font-size: var(--font-large);
+}
+
+
+/* Edit Profile Page */
+
+

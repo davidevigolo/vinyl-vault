@@ -4,7 +4,7 @@ include_once 'php/classes/DbConnection.php';
 function get_artist_info($artist_id)
 {
     $connection = DbConnection::get_instance();
-    $query = "SELECT id, author_name, nationality, image_path
+    $query = "SELECT id, author_name, nationality, image_path, bio_author
               FROM author
               WHERE id = ?";
     

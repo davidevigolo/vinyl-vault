@@ -25,25 +25,26 @@ INSERT INTO users (first_name, last_name, username, email, pw_hash, bio, propic_
 
 
 -- Insert authors/artists (no dependencies)
-INSERT INTO author (author_name, image_path, nationality) VALUES
-('Taylor Swift', 'assets/images/artists/taylorswift.jpg', 'us'),
-('Dua Lipa', 'assets/images/artists/dualipa.jpg', 'us'),
-('Ariana Grande', 'assets/images/artists/arianagrande.jpg', 'us'),
-('The Weeknd', 'assets/images/artists/theweeknd.jpg', 'us'),
-('The Beatles', 'assets/images/artists/beatles.jpg', 'us'),
-('Radiohead', 'assets/images/artists/radiohead.jpg', 'us'),
-('Linkin Park', 'assets/images/artists/linkinpark.jpg', 'us'),
-('Lana Del Rey', 'assets/images/artists/lanadelrey.jpg', 'us'),
-('BABYMETAL', 'assets/images/artists/babymetal.jpg', 'jp'),
-('Pink Floyd', 'assets/images/artists/pinkfloyd.jpg', 'us'),
-('Pinguini Tattici Nucleari', 'assets/images/artists/ptn.jpg', 'it'),
-('5 Seconds of Summer', 'assets/images/artists/5sos.jpg', 'au'),
-('Madonna', 'assets/images/artists/madonna.jpg', 'us'),
-('Annalisa', 'assets/images/artists/annalisa.jpg', 'it'),
-('Nirvana', 'assets/images/artists/nirvana.jpg', 'us'),
-('AC/DC', 'assets/images/artists/acdc.jpg', 'au'),
-('The Rolling Stones', 'assets/images/artists/rollingstones.jpg', 'uk'),
-('SZA', 'assets/images/artists/sza.jpg', 'us');
+-- Insert authors/artists con Bio concise (ideali per Mobile)
+INSERT INTO author (author_name, image_path, nationality, bio_author) VALUES
+('Taylor Swift', 'assets/images/artists/taylorswift.jpg', 'us', 'Icona del pop globale nota per la sua scrittura narrativa e la capacità di reinventarsi in ogni "Era" della sua carriera.'),
+('Dua Lipa', 'assets/images/artists/dualipa.jpg', 'uk', 'Cantante britannica che ha ridefinito il pop contemporaneo fondendo sonorità disco-pop anni ''80 e produzione moderna.'),
+('Ariana Grande', 'assets/images/artists/arianagrande.jpg', 'us', 'Popstar internazionale celebre per la sua straordinaria estensione vocale e i successi che spaziano tra R&B e pop teatrale.'),
+('The Weeknd', 'assets/images/artists/theweeknd.jpg', 'ca', 'Artista canadese pioniere del dark R&B e del synth-pop cinematografico, con hit mondiali che dominano le classifiche.'),
+('The Beatles', 'assets/images/artists/beatles.jpg', 'uk', 'Leggendaria band di Liverpool che ha rivoluzionato la musica e la cultura popolare influenzando ogni generazione successiva.'),
+('Radiohead', 'assets/images/artists/radiohead.jpg', 'uk', 'Gruppo rock sperimentale britannico acclamato per la costante innovazione sonora e album che hanno cambiato la musica alternativa.'),
+('Linkin Park', 'assets/images/artists/linkinpark.jpg', 'us', 'Band iconica che ha fuso rock, rap ed elettronica, diventando la voce di una generazione con testi onesti e potenti.'),
+('Lana Del Rey', 'assets/images/artists/lanadelrey.jpg', 'us', 'Cantautrice celebre per il suo stile malinconico e cinematografico che richiama l''estetica e il fascino dell''Americana vintage.'),
+('BABYMETAL', 'assets/images/artists/babymetal.jpg', 'jp', 'Fenomeno giapponese che fonde J-pop e heavy metal estremo, creando l''unico ed energico genere conosciuto come "Kawaii Metal".'),
+('Pink Floyd', 'assets/images/artists/pinkfloyd.jpg', 'uk', 'Maestri del rock progressivo e psichedelico, celebri per concept album filosofici e sperimentazioni sonore leggendarie.'),
+('Pinguini Tattici Nucleari', 'assets/images/artists/ptn.jpg', 'it', 'Protagonisti dell''indie-pop italiano, amati per testi ironici e citazionisti che raccontano con freschezza la quotidianità.'),
+('5 Seconds of Summer', 'assets/images/artists/5sos.jpg', 'au', 'Band australiana evolutasi dal pop-punk a un pop-rock maturo e sperimentale, nota per le grandi doti vocali e le performance live.'),
+('Madonna', 'assets/images/artists/madonna.jpg', 'us', 'La Regina del Pop e icona culturale eterna, celebre per la continua reinvenzione e per aver sfidato i limiti dell''industria musicale.'),
+('Annalisa', 'assets/images/artists/annalisa.jpg', 'it', 'Cantautrice italiana tra le più apprezzate del momento, capace di spaziare con successo tra pop elettronico e ballate raffinate.'),
+('Nirvana', 'assets/images/artists/nirvana.jpg', 'us', 'Band simbolo del movimento grunge degli anni ''90 che, guidata da Kurt Cobain, ha cambiato per sempre il volto del rock mondiale.'),
+('AC/DC', 'assets/images/artists/acdc.jpg', 'au', 'Pilastri dell''hard rock mondiale, famosi per i loro riff elettrizzanti e un''energia inarrestabile che attraversa cinque decenni.'),
+('The Rolling Stones', 'assets/images/artists/rollingstones.jpg', 'uk', 'L''essenza stessa del rock ''n'' roll britannico, con una carriera leggendaria, un carisma senza tempo e hit immortali.'),
+('SZA', 'assets/images/artists/sza.jpg', 'us', 'Voce di spicco dell''R&B contemporaneo, acclamata dalla critica per la sua vulnerabilità e per testi profondamente onesti e personali.');
 
 
 -- Insert disks (no dependencies)
@@ -356,8 +357,7 @@ INSERT INTO disk_genre_classification (disk_id, genre_name) VALUES
 (142, 'R&B'), (143, 'R&B'), (143, 'Hip Hop'), (144, 'R&B'), (145, 'R&B'), (146, 'R&B'), (147, 'R&B'), (148, 'Pop'), (149, 'R&B');
 
 
--- Tracks 
--- Inserimento di tutte le tracce per i dischi selezionati
+-- Tracks
 INSERT INTO track (title, duration_seconds) VALUES
 -- Taylor Swift (1989, reputation, Lover, folklore, Midnights, Holiday Collection, Beautiful Eyes)
 ('Welcome To New York', 212), ('Blank Space', 231), ('Style', 231), ('Out Of The Woods', 235), ('All You Had To Do Was Stay', 193), ('Shake It Off', 202), ('I Wish You Would', 207), ('Bad Blood', 211), ('Wildest Dreams', 220), ('How You Get The Girl', 247), ('This Love', 250), ('I Know Places', 195), ('Clean', 270),
@@ -485,7 +485,74 @@ INSERT INTO track (title, duration_seconds) VALUES
 ('Route 66', 140), ('Not Fade Away', 108), ('(I Can''t Get No) Satisfaction', 223), ('Get Off of My Cloud', 155), ('Paint It, Black', 202), ('Lady Jane', 188), ('Ruby Tuesday', 196), ('Let''s Spend the Night Together', 216), ('Jumpin'' Jack Flash', 222), ('Sympathy for the Devil', 378), ('Gimme Shelter', 271), ('You Can''t Always Get What You Want', 448), ('Brown Sugar', 228), ('Wild Horses', 342), ('Rocks Off', 271), ('Angie', 273), ('It''s Only Rock ''n Roll', 307), ('Miss You', 288), ('Beast of Burden', 265), ('Emotional Rescue', 339), ('Start Me Up', 213), ('Undercover of the Night', 272), ('Mixed Emotions', 279), ('Love Is Strong', 229), ('Angry', 226), ('Sweet Sounds of Heaven', 442),
 
 -- SZA (Ctrl, SOS, Lana, EPs)
-('Supermodel', 181), ('Love Galore', 275), ('Doves in the Wind', 266), ('The Weekend', 272), ('Garden (Say It Like Dat)', 208), ('Broken Clocks', 231), ('Drew Barrymore', 231), ('Good Days', 279), ('I Hate U', 174), ('Shirt', 181), ('Kill Bill', 153), ('Snooze', 201), ('Nobody Gets Me', 180), ('Low', 181), ('Saturn', 186);
+('Supermodel', 181), ('Love Galore', 275), ('Doves in the Wind', 266), ('The Weekend', 272), ('Garden (Say It Like Dat)', 208), ('Broken Clocks', 231), ('Drew Barrymore', 231), ('Good Days', 279), ('I Hate U', 174), ('Shirt', 181), ('Kill Bill', 153), ('Snooze', 201), ('Nobody Gets Me', 180), ('Low', 181), ('Saturn', 186),
+
+-- Taylor Swift Holiday Collection (Disk 6)
+('Last Christmas', 203), ('Christmas When You Were Mine', 186),
+-- My Dear Melancholy, (Disk 32)
+('Call Out My Name', 228), ('Try Me', 221),
+-- The Beatles - Magical Mystery Tour (Disk 36)
+('Magical Mystery Tour', 171), ('The Fool on the Hill', 168), ('I Am the Walrus', 276),
+-- The Beatles - Yellow Submarine (Disk 38)
+('Only a Northern Song', 204), ('All Together Now', 131), ('Hey Bulldog', 191),
+-- The Beatles - Long Tall Sally (Disk 41)
+('Long Tall Sally', 123), ('I Call Your Name', 129),
+-- The Beatles - Magical Mystery Tour EP (Disk 42)
+('Your Mother Should Know', 149), ('Hello, Goodbye', 211),
+-- Linkin Park - Hybrid Theory EP (Disk 56)
+('Carousel', 180), ('Technique', 40),
+-- Lana Del Rey - Lana Del Ray (Disk 59)
+('Kill Kill', 237), ('Queen of the Gas Station', 224), ('Gramma', 230),
+-- Lana Del Rey - Tropico (Disk 65)
+('Body Electric', 233), ('Bel Air', 239),
+-- Pink Floyd - The Endless River (Disk 79)
+('Things Left Unsaid', 266), ('It''s What We Do', 357), ('Ebb and Flow', 115),
+-- PTN - Hello World (Disk 85)
+('Hello World', 212), ('Melting Pot', 200), ('Nightmare', 185),
+-- 5SOS - Sounds Good Feels Good (Disk 92)
+('Money', 174), ('She''s Kicking 20', 195), ('Castaway', 214),
+-- 5SOS - Don't Stop EP (Disk 97)
+('Don''t Stop', 169), ('Rejects', 169),
+-- Madonna - Hard Candy (Disk 103)
+('Candy Shop', 255), ('Miles Away', 288), ('She''s Not Me', 365),
+-- Madonna - MDNA (Disk 104)
+('Girl Gone Wild', 223), ('Gang Bang', 285), ('I''m Addicted', 273),
+-- Madonna - Rebel Heart (Disk 105)
+('Living for Love', 218), ('Devil Pray', 245), ('Ghosttown', 251),
+-- Madonna - Madame X (Disk 106 - Aggiunta)
+('Dark Ballet', 254), ('God Control', 379),
+-- Annalisa - Bye Bye (Disk 112)
+('Ogni festa', 198), ('Il mondo prima di te', 218), ('Un domani', 223),
+-- Annalisa - Nuda (Disk 113 - Aggiunta)
+('Nuda', 181), ('Tsunami', 194),
+
+-- Aggiunte
+('The Lakes', 211), ('Mirrorball (Live)', 232), ('Invisible String (Instrumental)', 252), -- folklore extras
+('Hits Different', 234), ('You''re Losing Me', 278), ('Snow on the Beach (Feat. More Lana)', 230), -- Midnights extras
+('Houdini (Extended Edit)', 359), ('Training Season (Vinyl Version)', 305), ('Illusion (Alternative Mix)', 220), -- Radical Optimism extras
+('Sweetener Live', 208), ('Breathin (Acapella)', 198), ('Eternal Sunshine Mix', 210), -- Ariana extras
+('Abbey Road Medley', 960), ('Yellow Submarine (Alt)', 158), ('Now and Then (Extended)', 300), -- Beatles extras
+('Decks Dark (Live)', 281), ('Ful Stop (Live)', 360), ('Identikit (Live)', 287), -- Radiohead extras
+
+
+
+-- Pink Floyd / Madonna / Annalisa Extras
+('Poles Apart', 424), ('Craving', 201), ('I Don''t Search I Find', 298), ('Graffiti', 210),
+-- Nirvana (Hormoaning)
+('Aneurysm', 276), ('Even in His Youth', 183),
+-- AC/DC (Stiff Upper Lip, Black Ice, Rock or Bust)
+('Stiff Upper Lip', 215), ('Can''t Stop Rock ''n'' Roll', 242), ('Safe in New York City', 233),
+('Rock ''n'' Roll Train', 261), ('Big Jack', 237), ('War Machine', 189),
+('Rock or Bust', 183), ('Play Ball', 167), ('Rock the Blues Away', 204),
+-- Rolling Stones (Bridges to Babylon, A Bigger Bang, Blue & Lonesome)
+('Flip the Switch', 208), ('Anybody Seen My Baby?', 271), ('Saint of Me', 315),
+('Rough Justice', 191), ('Rain Fall Down', 294), ('Streets of Love', 310),
+('Just Your Fool', 136), ('Commit a Crime', 218), ('Blue and Lonesome', 312),
+-- Rolling Stones (EP Extras)
+('2120 South Michigan Avenue', 218), ('Under My Thumb (Live)', 220), ('Get Off of My Cloud (Live)', 175),
+-- SZA (Lana, See.SZA.Run, S, Z)
+('Lana Intro', 90), ('New Song 1', 180), ('New Song 2', 210),
+('Bed', 235), ('Euphraxia', 210), ('Castles', 189), ('Aftermath', 221), ('Ur', 235), ('Child''s Play', 216);
 
 
 -- Editions
@@ -811,8 +878,6 @@ INSERT INTO edition_track_part_of (disk_id, edition_name, track_id, track_number
 (51, 'Standard Single', 297, 1), -- Karma Police
 (52, 'Standard Single', 298, 1), -- No Surprises
 
-
-
 -- LINKIN PARK (Disk 53-58)
 -- Disk 53: The Hunting Party (Tracce ID 342-343)
 (53, 'Standard Edition', 342, 1), (53, 'Standard Edition', 343, 2),
@@ -900,59 +965,265 @@ INSERT INTO edition_track_part_of (disk_id, edition_name, track_id, track_number
 (95, 'Standard Edition', 498, 1), (95, 'Standard Edition', 499, 2), (95, 'Standard Edition', 500, 3), (95, 'Standard Edition', 501, 4),
 
 -- Singles & EPs
-(96, 'Standard EP', 482, 1), (98, 'Standard Single', 482, 1), (99, 'Standard Single', 489, 1), (100, 'Standard Single', 495, 1), (101, 'Standard Single', 501, 1);
+(96, 'Standard EP', 482, 1), (98, 'Standard Single', 482, 1), (99, 'Standard Single', 489, 1), (100, 'Standard Single', 495, 1), (101, 'Standard Single', 501, 1),
+
+-- EP (2 tracce)
+(6, 'Standard Edition', 639, 1), (6, 'Standard Edition', 640, 2),
+(32, 'Standard Edition', 641, 1), (32, 'Standard Edition', 642, 2),
+(41, 'Standard Edition', 649, 1), (41, 'Standard Edition', 650, 2),
+(42, 'Standard Edition', 651, 1), (42, 'Standard Edition', 652, 2),
+(56, 'Standard EP', 653, 1), (56, 'Standard EP', 654, 2),
+(65, 'Standard EP', 658, 1), (65, 'Standard EP', 659, 2),
+(97, 'Standard EP', 669, 1), (97, 'Standard EP', 670, 2),
+
+-- ALBUM (3 tracce)
+(36, 'Standard Edition', 643, 1), (36, 'Standard Edition', 644, 2), (36, 'Standard Edition', 645, 3),
+(38, 'Standard Edition', 646, 1), (38, 'Standard Edition', 647, 2), (38, 'Standard Edition', 648, 3),
+(59, 'Standard Edition', 655, 1), (59, 'Standard Edition', 656, 2), (59, 'Standard Edition', 657, 3),
+(79, 'Standard Edition', 660, 1), (79, 'Standard Edition', 661, 2), (79, 'Standard Edition', 662, 3),
+(85, 'Standard Edition', 663, 1), (85, 'Standard Edition', 664, 2), (85, 'Standard Edition', 665, 3),
+(92, 'Standard Edition', 666, 1), (92, 'Standard Edition', 667, 2), (92, 'Standard Edition', 668, 3),
+(102, 'Pink Edition', 527, 1), (102, 'Pink Edition', 528, 2), (102, 'Pink Edition', 510, 3),
+(103, 'Standard Edition', 671, 1), (103, 'Standard Edition', 672, 2), (103, 'Standard Edition', 673, 3),
+(104, 'Standard Edition', 674, 1), (104, 'Standard Edition', 675, 2), (104, 'Standard Edition', 676, 3),
+(105, 'Standard Edition', 677, 1), (105, 'Standard Edition', 678, 2), (105, 'Standard Edition', 679, 3),
+(106, 'Standard Edition', 533, 1), (106, 'Standard Edition', 680, 2), (106, 'Standard Edition', 681, 3),
+(112, 'Standard Edition', 682, 1), (112, 'Standard Edition', 683, 2), (112, 'Standard Edition', 684, 3),
+(113, 'Standard Edition', 685, 1), (113, 'Standard Edition', 686, 2), (113, 'Standard Edition', 548, 3),
+
+-- SINGOLI (1 traccia)
+(107, 'Standard Single', 504, 1), -- Holiday
+(108, 'Standard Single', 505, 1), -- Like a Virgin
+(109, 'Standard Single', 515, 1), -- Vogue
+(110, 'Standard Single', 527, 1), -- Hung Up
+(111, 'Standard Single', 534, 1), -- Popular
+
+-- TAYLOR SWIFT & DUA LIPA (Album - 3 tracce)
+(4, 'Meet Me Behind The Mall (Grey Edition)', 47, 1), (4, 'Meet Me Behind The Mall (Grey Edition)', 48, 2), (4, 'Meet Me Behind The Mall (Grey Edition)', 687, 3),
+(5, 'Blood Moon Edition', 63, 1), (5, 'Blood Moon Edition', 65, 2), (5, 'Blood Moon Edition', 690, 3),
+(11, 'Pink Edition', 78, 1), (11, 'Pink Edition', 79, 2), (11, 'Pink Edition', 80, 3),
+(12, 'Neon Pink Edition', 89, 1), (12, 'Neon Pink Edition', 90, 2), (12, 'Neon Pink Edition', 93, 3),
+(13, 'Red Edition', 100, 1), (13, 'Red Edition', 101, 2), (13, 'Red Edition', 693, 3),
+
+-- ARIANA GRANDE & THE WEEKND (Album - 3 tracce)
+(21, 'Peach Edition', 126, 1), (21, 'Peach Edition', 127, 2), (21, 'Peach Edition', 696, 3),
+(24, 'Ruby Edition', 171, 1), (24, 'Ruby Edition', 172, 2), (24, 'Ruby Edition', 698, 3),
+(29, 'Gold with Red Splatter Edition', 213, 1), (29, 'Gold with Red Splatter Edition', 221, 2), (29, 'Gold with Red Splatter Edition', 223, 3),
+(30, 'Silver Edition', 226, 1), (30, 'Silver Edition', 229, 2), (30, 'Silver Edition', 231, 3),
+
+-- NIRVANA (Disk 119-121)
+-- Bleach (Standard & White)
+(119, 'Standard Edition', 555, 1), (119, 'Standard Edition', 556, 2), (119, 'Standard Edition', 557, 3),
+(119, 'White Edition', 555, 1), (119, 'White Edition', 556, 2), (119, 'White Edition', 557, 3),
+-- Nevermind (Anniversary & Standard)
+(120, 'Silver Edition (Anniversary)', 558, 1), (120, 'Silver Edition (Anniversary)', 559, 2), (120, 'Silver Edition (Anniversary)', 560, 3),
+(120, 'Standard Edition', 558, 1), (120, 'Standard Edition', 559, 2), (120, 'Standard Edition', 560, 3),
+-- In Utero (Clear & Standard)
+(121, 'Clear Edition', 570, 1), (121, 'Clear Edition', 571, 2), (121, 'Clear Edition', 572, 3),
+(121, 'Standard Edition', 570, 1), (121, 'Standard Edition', 571, 2), (121, 'Standard Edition', 572, 3),
+
+-- AC/DC & ROLLING STONES (Album - 3 tracce)
+-- Power Up (Red & Standard)
+(130, 'Red Edition', 594, 1), (130, 'Red Edition', 595, 2), (130, 'Red Edition', 597, 3),
+(130, 'Standard Edition', 594, 1), (130, 'Standard Edition', 595, 2), (130, 'Standard Edition', 597, 3),
+-- Hackney Diamonds (Clear & Standard)
+(137, 'Clear Edition', 622, 1), (137, 'Clear Edition', 623, 2), (137, 'Clear Edition', 701, 3),
+(137, 'Standard Edition', 622, 1), (137, 'Standard Edition', 623, 2), (137, 'Standard Edition', 701, 3),
+
+-- SZA & SINGOLI (SZA 3 tracce, Singoli 1 traccia)
+(142, 'Translucent Green Edition', 624, 1), (142, 'Translucent Green Edition', 625, 2), (142, 'Translucent Green Edition', 626, 3),
+(143, 'Transparent Blue Edition', 631, 1), (143, 'Transparent Blue Edition', 632, 2), (143, 'Transparent Blue Edition', 633, 3),
+(115, 'Standard Single', 550, 1), -- Bellissima
+(116, 'Standard Single', 551, 1), -- Mon Amour
+(117, 'Standard Single', 552, 1), -- Ragazza Sola
+(118, 'Standard Single', 554, 1), -- Sinceramente
+(123, 'Standard Single', 558, 1), -- Smells Like Teen Spirit
+(124, 'Standard Single', 560, 1), -- Come as You Are
+(132, 'Standard Single', 592, 1), -- Thunderstruck
+(133, 'Standard Single', 597, 1), -- Shot in the Dark
+
+-- Edizioni Speciali (Beatles, Radiohead, Babymetal, Pink Floyd)
+(45, 'Marble Blue Edition', 284, 1), -- Now and Then
+(49, 'Opaque White Edition', 317, 1), (49, 'Opaque White Edition', 318, 2), (49, 'Opaque White Edition', 319, 3), -- A Moon Shaped Pool
+(62, 'Translucent Red Edition', 364, 1), (62, 'Translucent Red Edition', 365, 2), (62, 'Translucent Red Edition', 366, 3), -- Honeymoon
+(69, 'Red Edition', 389, 1), (69, 'Red Edition', 390, 2), (69, 'Red Edition', 391, 3), -- Babymetal
+(71, 'Transparent Red Edition', 400, 1), (71, 'Transparent Red Edition', 401, 2), (71, 'Transparent Red Edition', 402, 3), -- Metal Galaxy
+(72, 'Clear Edition', 404, 1), (72, 'Clear Edition', 405, 2), (72, 'Clear Edition', 406, 3), -- The Other One
+(78, 'Blue Edition', 457, 1), (78, 'Blue Edition', 458, 2), (78, 'Blue Edition', 705, 3), -- The Division Bell (Poles Apart ID: 705)
+
+
+-- Edizioni Speciali (PTN, Calm, Madonna, Annalisa)
+(83, 'Green Edition', 466, 1), (83, 'Green Edition', 467, 2), (83, 'Green Edition', 468, 3), -- Fuori dall'hype
+(84, 'Pink Edition', 476, 1), (84, 'Pink Edition', 477, 2), (84, 'Pink Edition', 478, 3), -- Fake News
+(86, 'White Edition', 472, 1), (86, 'White Edition', 473, 2), -- Ahia! (EP)
+(94, 'Pink Edition', 493, 1), (94, 'Pink Edition', 494, 2), (94, 'Pink Edition', 495, 3), -- Calm
+(106, 'Translucent Blue Edition', 533, 1), (106, 'Translucent Blue Edition', 707, 2), (106, 'Translucent Blue Edition', 680, 3), -- Madame X (I Don't Search ID: 707, Dark Ballet ID: 680)
+(113, 'Red Edition', 548, 1), (113, 'Red Edition', 549, 2), (113, 'Red Edition', 708, 3), -- Nuda (Graffiti ID: 708)
+(114, 'Ruby Red Edition', 550, 1), (114, 'Ruby Red Edition', 551, 2), (114, 'Ruby Red Edition', 552, 3), -- Vortice
+(114, 'Standard Edition', 550, 1), (114, 'Standard Edition', 551, 2), (114, 'Standard Edition', 552, 3),
+
+-- Nirvana, AC/DC, Rolling Stones (Album & EP)
+(122, 'Standard EP', 709, 1), (122, 'Standard EP', 710, 2), -- Hormoaning (Aneurysm ID: 709, Even in His Youth ID: 710)
+(125, 'Standard Single', 562, 1), (126, 'Standard Single', 571, 1), -- Nirvana Singles
+(127, 'Standard Edition', 711, 1), (127, 'Standard Edition', 712, 2), (127, 'Standard Edition', 713, 3), -- Stiff Upper Lip (IDs 711-713)
+(128, 'Standard Edition', 714, 1), (128, 'Standard Edition', 715, 2), (128, 'Standard Edition', 716, 3), -- Black Ice (IDs 714-716)
+(129, 'Standard Edition', 717, 1), (129, 'Standard Edition', 718, 2), (129, 'Standard Edition', 719, 3), -- Rock or Bust (IDs 717-719)
+(131, 'Standard EP', 574, 1), (131, 'Standard EP', 575, 2), -- '74 Jailbreak
+(134, 'Standard Edition', 720, 1), (134, 'Standard Edition', 721, 2), (134, 'Standard Edition', 722, 3), -- Bridges to Babylon (IDs 720-722)
+(135, 'Standard Edition', 723, 1), (135, 'Standard Edition', 724, 2), (135, 'Standard Edition', 725, 3), -- A Bigger Bang (IDs 723-725)
+(136, 'Standard Edition', 726, 1), (136, 'Standard Edition', 727, 2), (136, 'Standard Edition', 728, 3), -- Blue & Lonesome (IDs 726-728)
+(138, 'Standard EP', 598, 1), (138, 'Standard EP', 729, 2), -- Five by Five (2120 S. Michigan ID: 729)
+(139, 'Standard EP', 730, 1), (139, 'Standard EP', 731, 2), -- Got Live (Under My Thumb ID: 730, Cloud ID: 731)
+(140, 'Standard Single', 618, 1), (141, 'Standard Single', 622, 1), -- Stones Singles
+
+-- SZA (Album & EP)
+(144, 'Standard Edition', 732, 1), (144, 'Standard Edition', 733, 2), (144, 'Standard Edition', 734, 3), -- Lana (IDs 732-734)
+(145, 'Standard EP', 735, 1), (145, 'Standard EP', 736, 2), -- See.SZA.Run (IDs 735-736)
+(146, 'Standard EP', 737, 1), (146, 'Standard EP', 738, 2), -- S (IDs 737-738)
+(147, 'Standard EP', 739, 1), (147, 'Standard EP', 740, 2), -- Z (IDs 739-740)
+(148, 'Standard Single', 634, 1), (149, 'Standard Single', 638, 1); -- Kill Bill, Saturn
+
 
 
 -- rewiews
-INSERT INTO review (user_id, disk_id, edition_name, content) VALUES
+INSERT INTO review (user_id, disk_id, edition_name, rating, content) VALUES
 -- --- DISCO: The Weeknd - After Hours (Disk 29) ---
-(1, 29, 'Standard Edition', 'L''estetica synth-wave di questo album è perfetta. Su vinile, brani come "Blinding Lights" hanno un calore che lo streaming non può replicare.'),
-(2, 29, 'Standard Edition', 'Ho confrontato questa stampa con i file hi-res. La separazione dei canali nelle parti vocali è eccellente, specialmente nei riverberi di "Save Your Tears".'),
-(3, 29, 'Standard Edition', 'Non è il mio genere solito, ma la produzione è così potente che spacca anche per chi ascolta rock. Un disco notturno fantastico.'),
-(4, 29, 'Standard Edition', 'L''album pop dell''anno 2020. Averlo in questa edizione è un obbligo per ogni collezionista di musica moderna.'),
+(1, 29, 'Standard Edition', 5, 'L''estetica synth-wave di questo album è perfetta. Su vinile, brani come "Blinding Lights" hanno un calore che lo streaming non può replicare.'),
+(2, 29, 'Standard Edition', 5, 'Ho confrontato questa stampa con i file hi-res. La separazione dei canali nelle parti vocali è eccellente, specialmente nei riverberi di "Save Your Tears".'),
+(3, 29, 'Standard Edition', 4, 'Non è il mio genere solito, ma la produzione è così potente che spacca anche per chi ascolta rock. Un disco notturno fantastico.'),
+(4, 29, 'Standard Edition', 5, 'L''album pop dell''anno 2020. Averlo in questa edizione è un obbligo per ogni collezionista di musica moderna.'),
 
 -- --- DISCO: The Beatles - Abbey Road (Disk 39) ---
-(1, 39, 'Standard Edition', 'Il lato B di questo disco è probabilmente la sequenza musicale più bella mai incisa. Un pezzo di storia in ogni solco.'),
-(2, 39, 'Standard Edition', 'Questa ristampa mantiene un rumore di fondo bassissimo. Il basso di McCartney in "Come Together" è profondo e controllato.'),
-(3, 39, 'Standard Edition', 'Il miglior album dei Beatles. Fine della discussione. Gli assoli finali di "The End" sono leggenda.'),
-(4, 39, 'Standard Edition', 'La copertina più iconica di sempre per l''album più equilibrato dei Fab Four. Indispensabile.'),
+(1, 39, 'Standard Edition', 5, 'Il lato B di questo disco è probabilmente la sequenza musicale più bella mai incisa. Un pezzo di storia in ogni solco.'),
+(2, 39, 'Standard Edition', 5, 'Questa ristampa mantiene un rumore di fondo bassissimo. Il basso di McCartney in "Come Together" è profondo e controllato.'),
+(3, 39, 'Standard Edition', 5, 'Il miglior album dei Beatles. Fine della discussione. Gli assoli finali di "The End" sono leggenda.'),
+(4, 39, 'Standard Edition', 5, 'La copertina più iconica di sempre per l''album più equilibrato dei Fab Four. Indispensabile.'),
 
 -- --- DISCO: Lana Del Rey - Born to Die (Disk 60) ---
-(1, 60, 'Standard Edition', 'L''album che ha cambiato le regole del pop alternativo. La voce di Lana è ipnotica su questo supporto.'),
-(4, 60, 'Standard Edition', 'Ho questa edizione da anni e non mi stanco mai di ascoltarla. È il manifesto della malinconia moderna.'),
-(2, 60, 'Red Edition', 'Ho preso la Red Edition per l''estetica, ma la qualità della stampa è sorprendentemente alta per un disco colorato. Dinamica ottima.'),
+(1, 60, 'Standard Edition', 5, 'L''album che ha cambiato le regole del pop alternativo. La voce di Lana è ipnotica su questo supporto.'),
+(4, 60, 'Standard Edition', 5, 'Ho questa edizione da anni e non mi stanco mai di ascoltarla. È il manifesto della malinconia moderna.'),
+(2, 60, 'Red Edition', 4, 'Ho preso la Red Edition per l''estetica, ma la qualità della stampa è sorprendentemente alta per un disco colorato. Dinamica ottima.'),
 
 -- --- DISCO: Pinguini Tattici Nucleari - Fake News (Disk 84) ---
-(1, 84, 'Standard Edition', 'I PTN sono la dimostrazione che il pop italiano può ancora essere scritto bene. "Ricordi" mi commuove ogni volta.'),
-(3, 84, 'Standard Edition', 'Testi intelligenti e arrangiamenti mai banali. Dal vivo sono fortissimi, ma il disco si lascia ascoltare che è un piacere.'),
-(4, 84, 'Pink Edition', 'La versione rosa è stupenda da vedere sul piatto. Un acquisto obbligato per supportare la scena italiana.'),
+(1, 84, 'Standard Edition', 4, 'I PTN sono la dimostrazione che il pop italiano può ancora essere scritto bene. "Ricordi" mi commuove ogni volta.'),
+(3, 84, 'Standard Edition', 4, 'Testi intelligenti e arrangiamenti mai banali. Dal vivo sono fortissimi, ma il disco si lascia ascoltare che è un piacere.'),
+(4, 84, 'Pink Edition', 5, 'La versione rosa è stupenda da vedere sul piatto. Un acquisto obbligato per supportare la scena italiana.'),
 
 -- --- DISCO: Dua Lipa - Future Nostalgia (Disk 12) ---
-(1, 12, 'Standard Edition', 'Puro divertimento dall''inizio alla fine. Il basso in "Levitating" ti costringe a ballare.'),
-(2, 12, 'Standard Edition', 'Produzione moderna ma con un cuore funk anni ''70. Tecnicamente è uno dei dischi pop meglio registrati degli ultimi anni.'),
-(4, 12, 'Neon Pink Edition', 'Il colore del vinile si abbina perfettamente all''energia del disco. Uno dei miei pezzi preferiti in bacheca.'),
+(1, 12, 'Standard Edition', 5, 'Puro divertimento dall''inizio alla fine. Il basso in "Levitating" ti costringe a ballare.'),
+(2, 12, 'Standard Edition', 5, 'Produzione moderna ma con un cuore funk anni ''70. Tecnicamente è uno dei dischi pop meglio registrati degli ultimi anni.'),
+(4, 12, 'Neon Pink Edition', 5, 'Il colore del vinile si abbina perfettamente all''energia del disco. Uno dei miei pezzi preferiti in bacheca.'),
 
 -- --- DISCO: Radiohead - A Moon Shaped Pool (Disk 49) ---
-(2, 49, 'Standard Edition', 'Un album intimo e complesso. Gli arrangiamenti d''archi sono riprodotti con una fedeltà incredibile in questa stampa.'),
-(4, 49, 'Standard Edition', 'La chiusura con "True Love Waits" è straziante. I Radiohead non sbagliano un colpo, un disco da ascoltare in cuffia al buio.'),
-(1, 49, 'Opaque White Edition', 'L''edizione bianca è eterea come la musica che contiene. Un oggetto d''arte prima ancora che un disco.'),
+(2, 49, 'Standard Edition', 5, 'Un album intimo e complesso. Gli arrangiamenti d''archi sono riprodotti con una fedeltà incredibile in questa stampa.'),
+(4, 49, 'Standard Edition', 5, 'La chiusura con "True Love Waits" è straziante. I Radiohead non sbagliano un colpo, un disco da ascoltare in cuffia al buio.'),
+(1, 49, 'Opaque White Edition', 5, 'L''edizione bianca è eterea come la musica che contiene. Un oggetto d''arte prima ancora che un disco.'),
 
 -- --- DISCO: Annalisa - E poi siamo finiti nel vortice (Disk 114) ---
-(1, 114, 'Standard Edition', 'Annalisa ha trovato la sua dimensione perfetta. Un disco coerente, potente e pieno di hit.'),
-(2, 114, 'Standard Edition', 'I sintetizzatori in "Bellissima" hanno un taglio molto analogico che su vinile guadagna corpo.'),
-(4, 114, 'Ruby Red Edition', 'Il rosso rubino di questa edizione è profondo. Musicalmente è il miglior lavoro di Annalisa finora.'),
+(1, 114, 'Standard Edition', 5, 'Annalisa ha trovato la sua dimensione perfetta. Un disco coerente, potente e pieno di hit.'),
+(2, 114, 'Standard Edition', 4, 'I sintetizzatori in "Bellissima" hanno un taglio molto analogico che su vinile guadagna corpo.'),
+(4, 114, 'Ruby Red Edition', 5, 'Il rosso rubino di questa edizione è profondo. Musicalmente è il miglior lavoro di Annalisa finora.'),
 
 -- --- DISCO: 5 Seconds of Summer - Youngblood (Disk 93) ---
-(1, 93, 'Standard Edition', 'La svolta pop-rock della band. La title track è un martello, impossibile non cantarla.'),
-(3, 93, 'Standard Edition', 'Hanno abbandonato il pop-punk adolescenziale per un suono più maturo e vicino ai Police. Promossi a pieni voti.'),
+(1, 93, 'Standard Edition', 4, 'La svolta pop-rock della band. La title track è un martello, impossibile non cantarla.'),
+(3, 93, 'Standard Edition', 4, 'Hanno abbandonato il pop-punk adolescenziale per un suono più maturo e vicino ai Police. Promossi a pieni voti.'),
 
 -- --- DISCO: Ariana Grande - thank u, next (Disk 22) ---
-(1, 22, 'Standard Edition', 'Un disco onesto, personale e pieno di groove. Ariana qui ha superato se stessa.'),
-(4, 22, 'Standard Edition', 'L''estetica rosa e nera dell''era "thank u, next" è ovunque. Il vinile suona caldo e avvolgente.'),
+(1, 22, 'Standard Edition', 5, 'Un disco onesto, personale e pieno di groove. Ariana qui ha superato se stessa.'),
+(4, 22, 'Standard Edition', 4, 'L''estetica rosa e nera dell''era "thank u, next" è ovunque. Il vinile suona caldo e avvolgente.'),
 
 -- --- DISCO: AC/DC - Power Up (Disk 130) ---
-(3, 130, 'Standard Edition', 'Rock puro al 100%. Gli AC/DC sono l''unica certezza in un mondo che cambia. Volume a 11!'),
-(2, 130, 'Standard Edition', 'Anche a volumi elevati, la stampa non distorce. Il riff di Angus Young è nitido e tagliente come un rasoio.');
+(3, 130, 'Standard Edition', 5, 'Rock puro al 100%. Gli AC/DC sono l''unica certezza in un mondo che cambia. Volume a 11!'),
+(2, 130, 'Standard Edition', 5, 'Anche a volumi elevati, la stampa non distorce. Il riff di Angus Young è nitido e tagliente come un rasoio.'),
+
+-- --- TAYLOR SWIFT: folklore (Disk 4) ---
+(4, 4, 'Standard Edition', 5, 'Il passaggio al folk è stata la mossa migliore di Taylor. "Cardigan" suona divinamente su vinile, molto profondo.'),
+(2, 4, 'Meet Me Behind The Mall (Grey Edition)', 5, 'Stampa silenziosissima. Il grigio del disco è molto elegante e si sposa bene con l''artwork monocromatico.'),
+(3, 4, 'Standard Edition', 4, 'Non sono un fan del pop, ma questo disco ha una scrittura che ricorda i grandi cantautori rock degli anni 70.'),
+
+-- --- PINK FLOYD: The Wall (Disk 75) ---
+(2, 75, 'Standard Edition', 5, 'Un capolavoro tecnico. La dinamica tra i momenti sussurrati e le esplosioni rock è gestita magistralmente in questa edizione.'),
+(3, 75, 'Standard Edition', 5, 'Roger Waters e David Gilmour al loro apice. Ascoltare "Comfortably Numb" a tutto volume è un''esperienza religiosa.'),
+(1, 75, 'Standard Edition', 5, 'Il miglior concept album della storia. La confezione apribile è un pezzo d''arte da esporre assolutamente.'),
+
+-- --- NIRVANA: Nevermind (Disk 120) ---
+(3, 120, 'Standard Edition', 5, 'Il disco che ha cambiato tutto. Il suono della batteria di Dave Grohl in "In Bloom" è potente e secco, perfetto.'),
+(2, 120, 'Silver Edition (Anniversary)', 5, 'Questa rimasterizzazione per l''anniversario pulisce bene le medie frequenze senza togliere il carattere sporco del grunge.'),
+(4, 120, 'Standard Edition', 4, 'Un classico intramontabile. Nonostante sia un disco "rumoroso", su vinile si percepiscono dettagli della chitarra di Cobain mai sentiti prima.'),
+
+-- --- BABYMETAL: Babymetal (Disk 69) ---
+(4, 69, 'Red Edition', 5, 'Kawaii Metal! Il contrasto tra le voci dolci e i riff pesantissimi è geniale. Il vinile rosso è un pezzo da collezione stupendo.'),
+(3, 69, 'Standard Edition', 4, 'Ero scettico, ma tecnicamente la band è mostruosa. "Gimme Chocolate!!" è un tormentone che spacca i diffusori.'),
+
+-- --- LINKIN PARK: From Zero (Disk 55) ---
+(3, 55, 'Standard Edition', 5, 'Un ritorno incredibile. La nuova cantante ha un''energia pazzesca e il suono è un mix perfetto tra Hybrid Theory e modernità.'),
+(1, 55, 'Blue Edition', 4, 'La variante blu è bellissima. Il disco è corto ma intenso, non c''è una traccia riempitiva.'),
+
+-- --- ANNALISA: Nuda (Disk 113) ---
+(1, 113, 'Standard Edition', 4, 'Uno dei dischi pop italiani più coerenti degli ultimi anni. "Tsunami" è un pezzo prodotto con standard internazionali.'),
+(4, 113, 'Red Edition', 5, 'Ho preso l''edizione rossa autografata. Annalisa è una garanzia e il design del packaging è molto curato.'),
+
+-- --- RADIOHEAD: In Rainbows (Disk 47) ---
+(2, 47, 'Standard Edition', 5, 'Probabilmente il disco dei Radiohead che suona meglio su vinile. La caldezza di "Nude" e "Reckoner" è imbattibile.'),
+(4, 47, 'Standard Edition', 5, 'Art rock ai massimi livelli. Ogni volta che lo ascolto scopro un nuovo strato sonoro o un dettaglio di elettronica nascosto.'),
+
+-- --- THE BEATLES: White Album (Disk 37) ---
+(1, 37, 'White Edition', 5, 'Avere il disco bianco in vinile bianco è un sogno. La varietà di generi in questo album è ancora oggi sconvolgente.'),
+(2, 37, 'Standard Edition', 4, 'Alcune tracce sono sperimentali al limite dell''ascoltabile, ma brani come "While My Guitar Gently Weeps" valgono da soli il prezzo.'),
+
+-- --- SZA: CTRL (Disk 142) ---
+(4, 142, 'Standard Edition', 5, 'Il manifesto dell''R&B moderno. La voce di SZA è onesta e vulnerabile. Un disco che ogni ragazza dovrebbe avere.'),
+(1, 142, 'Translucent Green Edition', 5, 'La stampa verde è magnifica e non ha fruscii. Il groove di questo album è incredibile.'),
+
+-- --- AC/DC: Back in Black (Disk 130 - Traccia Thunderstruck assente ma usiamo Power Up) ---
+(4, 130, 'Red Edition', 5, 'Se vuoi testare i bassi del tuo impianto, metti questo. Gli AC/DC non deludono mai, roccia pura.'),
+(1, 130, 'Standard Edition', 4, 'Produzione cristallina di Angus Young. Non inventano nulla di nuovo, ma lo fanno meglio di chiunque altro.'),
+
+-- --- ARIANA GRANDE: eternal sunshine (Disk 24) ---
+(1, 24, 'Standard Edition', 5, 'Il miglior lavoro di Ariana. Un concept album maturo, con sonorità che ricordano il miglior R&B dei primi anni 2000.'),
+(4, 24, 'Ruby Edition', 5, 'L''edizione rossa è semplicemente magnetica. Il vinile suona pulito e mette in risalto le armonie vocali stratificate.'),
+
+-- --- THE ROLLING STONES: Hackney Diamonds (Disk 137) ---
+(3, 137, 'Standard Edition', 4, 'Chi avrebbe mai detto che avrebbero tirato fuori un album così fresco a questa età? "Angry" ha un riff pazzesco.'),
+(2, 137, 'Clear Edition', 5, 'Stampa di alta qualità. Nonostante sia un vinile trasparente, il rumore di fondo è praticamente inesistente. Ottima dinamica.'),
+
+-- --- MADONNA: Confessions on a Dance Floor (Disk 102) ---
+(1, 102, 'Pink Edition', 5, 'Un classico istantaneo del pop. Il vinile rosa è un pezzo da collezione che ogni fan di Madonna dovrebbe avere.'),
+(4, 102, 'Pink Edition', 5, 'Il mix continuo tra le tracce è reso benissimo su vinile. Un viaggio senza interruzioni nel mondo della dance.'),
+
+-- --- NIRVANA: In Utero (Disk 121) ---
+(3, 121, 'Standard Edition', 5, 'Il suono è molto più grezzo e reale rispetto a Nevermind. La batteria in "Scentless Apprentice" è un pugno nello stomaco.'),
+(2, 121, 'Clear Edition', 4, 'La versione trasparente è bellissima. Il suono cattura perfettamente l''estetica lo-fi e abrasiva voluta da Albini.'),
+
+-- --- SZA: SOS (Disk 143) ---
+(4, 143, 'Standard Edition', 5, 'Un disco lungo ma che non annoia mai. SZA riesce a passare dal punk al soul con una naturalezza disarmante.'),
+(1, 143, 'Transparent Blue Edition', 5, 'Il blu del vinile richiama perfettamente la copertina. "Kill Bill" suonata sul piatto ha tutto un altro fascino.'),
+
+-- --- THE BEATLES: Let It Be (Disk 40) ---
+(2, 40, 'Standard Edition', 4, 'Un album sofferto ma con vette altissime. La title track e "Get Back" sono pilastri della musica moderna.'),
+(3, 40, 'Standard Edition', 3, 'Si sente che la band stava per sciogliersi. Alcune tracce sembrano incompiute, ma resta comunque un pezzo di storia.'),
+
+-- --- DUA LIPA: Radical Optimism (Disk 13) ---
+(1, 13, 'Standard Edition', 4, 'Meno disco del precedente, più psichedelico e curato. "Houdini" è un tormentone prodotto in modo eccellente.'),
+(4, 13, 'Red Edition', 4, 'Ho apprezzato molto la virata sonora di Dua Lipa. Il vinile rosso traslucido è uno dei più belli della mia collezione.'),
+
+-- --- PINGUINI TATTICI NUCLEARI: Fuori dall'hype (Disk 83) ---
+(4, 83, 'Green Edition', 5, 'L''album della consacrazione. Ogni canzone racconta una storia in cui è facile immedesimarsi.'),
+(1, 83, 'Standard Edition', 4, 'Un mix perfetto di indie e pop. Testi mai banali e ritornelli che ti entrano subito in testa.'),
+
+-- --- THE WEEKND: Dawn FM (Disk 30) ---
+(2, 30, 'Standard Edition', 5, 'Un concept album radiofonico geniale. La transizione tra le tracce è perfetta, specialmente tra "How Do I Make You Love Me?" e "Take My Breath".'),
+(4, 30, 'Silver Edition', 5, 'L''edizione Silver ha un riflesso metallico stupendo. La voce di Jim Carrey come DJ aggiunge un tocco surreale fantastico.'),
+
+-- --- LINKIN PARK: Hybrid Theory EP (Disk 56) ---
+(3, 56, 'Standard EP', 5, 'Per chi vuole capire le origini della band. "Carousel" è una gemma nascosta che merita di essere ascoltata su supporto fisico.'),
+
+-- --- AC/DC: Stiff Upper Lip (Disk 127) ---
+(3, 127, 'Standard Edition', 4, 'Un ritorno alle radici bluesy della band. Semplice, onesto e con un groove che non ti lascia mai.'),
+
+-- --- TAYLOR SWIFT: Midnights (Disk 5) ---
+(1, 5, 'Moonstone Blue Edition', 5, 'Atmosfere sognanti e testi introspettivi. "Anti-Hero" è già un classico del pop moderno.'),
+(4, 5, 'Blood Moon Edition', 4, 'La variante Blood Moon ha un colore arancio bruciato spettacolare. La produzione di Jack Antonoff qui è molto curata.');
 
 -- wishlist's users
 INSERT INTO wishlist (user_id, disk_id, edition_name, priority_level) VALUES
@@ -1044,198 +1315,6 @@ INSERT INTO ownership (user_id, disk_id, edition_name, date_acquired, rating) VA
 (4, 84, 'Standard Edition', '2024-02-10 09:30:00', 1),   -- Fake News
 (4, 142, 'Standard Edition', '2024-04-22 17:00:00', 2);  -- Ctrl
 
-
-
-
--- aggiunte
-INSERT INTO track (title, duration_seconds) VALUES
--- Taylor Swift Holiday Collection (Disk 6)
-('Last Christmas', 203), ('Christmas When You Were Mine', 186),
--- My Dear Melancholy, (Disk 32)
-('Call Out My Name', 228), ('Try Me', 221),
--- The Beatles - Magical Mystery Tour (Disk 36)
-('Magical Mystery Tour', 171), ('The Fool on the Hill', 168), ('I Am the Walrus', 276),
--- The Beatles - Yellow Submarine (Disk 38)
-('Only a Northern Song', 204), ('All Together Now', 131), ('Hey Bulldog', 191),
--- The Beatles - Long Tall Sally (Disk 41)
-('Long Tall Sally', 123), ('I Call Your Name', 129),
--- The Beatles - Magical Mystery Tour EP (Disk 42)
-('Your Mother Should Know', 149), ('Hello, Goodbye', 211),
--- Linkin Park - Hybrid Theory EP (Disk 56)
-('Carousel', 180), ('Technique', 40),
--- Lana Del Rey - Lana Del Ray (Disk 59)
-('Kill Kill', 237), ('Queen of the Gas Station', 224), ('Gramma', 230),
--- Lana Del Rey - Tropico (Disk 65)
-('Body Electric', 233), ('Bel Air', 239),
--- Pink Floyd - The Endless River (Disk 79)
-('Things Left Unsaid', 266), ('It''s What We Do', 357), ('Ebb and Flow', 115),
--- PTN - Hello World (Disk 85)
-('Hello World', 212), ('Melting Pot', 200), ('Nightmare', 185),
--- 5SOS - Sounds Good Feels Good (Disk 92)
-('Money', 174), ('She''s Kicking 20', 195), ('Castaway', 214),
--- 5SOS - Don't Stop EP (Disk 97)
-('Don''t Stop', 169), ('Rejects', 169),
--- Madonna - Hard Candy (Disk 103)
-('Candy Shop', 255), ('Miles Away', 288), ('She''s Not Me', 365),
--- Madonna - MDNA (Disk 104)
-('Girl Gone Wild', 223), ('Gang Bang', 285), ('I''m Addicted', 273),
--- Madonna - Rebel Heart (Disk 105)
-('Living for Love', 218), ('Devil Pray', 245), ('Ghosttown', 251),
--- Madonna - Madame X (Disk 106 - Aggiunta)
-('Dark Ballet', 254), ('God Control', 379),
--- Annalisa - Bye Bye (Disk 112)
-('Ogni festa', 198), ('Il mondo prima di te', 218), ('Un domani', 223),
--- Annalisa - Nuda (Disk 113 - Aggiunta)
-('Nuda', 181), ('Tsunami', 194);
-
-INSERT INTO edition_track_part_of (disk_id, edition_name, track_id, track_number) VALUES
--- EP (2 tracce)
-(6, 'Standard Edition', 639, 1), (6, 'Standard Edition', 640, 2),
-(32, 'Standard Edition', 641, 1), (32, 'Standard Edition', 642, 2),
-(41, 'Standard Edition', 649, 1), (41, 'Standard Edition', 650, 2),
-(42, 'Standard Edition', 651, 1), (42, 'Standard Edition', 652, 2),
-(56, 'Standard EP', 653, 1), (56, 'Standard EP', 654, 2),
-(65, 'Standard EP', 658, 1), (65, 'Standard EP', 659, 2),
-(97, 'Standard EP', 669, 1), (97, 'Standard EP', 670, 2),
-
--- ALBUM (3 tracce)
-(36, 'Standard Edition', 643, 1), (36, 'Standard Edition', 644, 2), (36, 'Standard Edition', 645, 3),
-(38, 'Standard Edition', 646, 1), (38, 'Standard Edition', 647, 2), (38, 'Standard Edition', 648, 3),
-(59, 'Standard Edition', 655, 1), (59, 'Standard Edition', 656, 2), (59, 'Standard Edition', 657, 3),
-(79, 'Standard Edition', 660, 1), (79, 'Standard Edition', 661, 2), (79, 'Standard Edition', 662, 3),
-(85, 'Standard Edition', 663, 1), (85, 'Standard Edition', 664, 2), (85, 'Standard Edition', 665, 3),
-(92, 'Standard Edition', 666, 1), (92, 'Standard Edition', 667, 2), (92, 'Standard Edition', 668, 3),
-(102, 'Pink Edition', 527, 1), (102, 'Pink Edition', 528, 2), (102, 'Pink Edition', 510, 3), -- Riutilizzo ID Madonna
-(103, 'Standard Edition', 671, 1), (103, 'Standard Edition', 672, 2), (103, 'Standard Edition', 673, 3),
-(104, 'Standard Edition', 674, 1), (104, 'Standard Edition', 675, 2), (104, 'Standard Edition', 676, 3),
-(105, 'Standard Edition', 677, 1), (105, 'Standard Edition', 678, 2), (105, 'Standard Edition', 679, 3),
-(106, 'Standard Edition', 533, 1), (106, 'Standard Edition', 680, 2), (106, 'Standard Edition', 681, 3),
-(112, 'Standard Edition', 682, 1), (112, 'Standard Edition', 683, 2), (112, 'Standard Edition', 684, 3),
-(113, 'Standard Edition', 685, 1), (113, 'Standard Edition', 686, 2), (113, 'Standard Edition', 548, 3),
-
--- SINGOLI (1 traccia - Riutilizzo ID esistenti)
-(107, 'Standard Single', 504, 1), -- Holiday
-(108, 'Standard Single', 505, 1), -- Like a Virgin
-(109, 'Standard Single', 515, 1), -- Vogue
-(110, 'Standard Single', 527, 1), -- Hung Up
-(111, 'Standard Single', 534, 1); -- Popular
-
-
-INSERT INTO track (title, duration_seconds) VALUES
--- Tracce generiche per riempire le edizioni mancanti
-('The Lakes', 211), ('Mirrorball (Live)', 232), ('Invisible String (Instrumental)', 252), -- folklore extras
-('Hits Different', 234), ('You''re Losing Me', 278), ('Snow on the Beach (Feat. More Lana)', 230), -- Midnights extras
-('Houdini (Extended Edit)', 359), ('Training Season (Vinyl Version)', 305), ('Illusion (Alternative Mix)', 220), -- Radical Optimism extras
-('Sweetener Live', 208), ('Breathin (Acapella)', 198), ('Eternal Sunshine Mix', 210), -- Ariana extras
-('Abbey Road Medley', 960), ('Yellow Submarine (Alt)', 158), ('Now and Then (Extended)', 300), -- Beatles extras
-('Decks Dark (Live)', 281), ('Ful Stop (Live)', 360), ('Identikit (Live)', 287); -- Radiohead extras
-
-INSERT INTO edition_track_part_of (disk_id, edition_name, track_id, track_number) VALUES
--- TAYLOR SWIFT & DUA LIPA (Album - 3 tracce)
-(4, 'Meet Me Behind The Mall (Grey Edition)', 47, 1), (4, 'Meet Me Behind The Mall (Grey Edition)', 48, 2), (4, 'Meet Me Behind The Mall (Grey Edition)', 687, 3),
-(5, 'Blood Moon Edition', 63, 1), (5, 'Blood Moon Edition', 65, 2), (5, 'Blood Moon Edition', 690, 3),
-(11, 'Pink Edition', 78, 1), (11, 'Pink Edition', 79, 2), (11, 'Pink Edition', 80, 3),
-(12, 'Neon Pink Edition', 89, 1), (12, 'Neon Pink Edition', 90, 2), (12, 'Neon Pink Edition', 93, 3),
-(13, 'Red Edition', 100, 1), (13, 'Red Edition', 101, 2), (13, 'Red Edition', 693, 3),
-
--- ARIANA GRANDE & THE WEEKND (Album - 3 tracce)
-(21, 'Peach Edition', 126, 1), (21, 'Peach Edition', 127, 2), (21, 'Peach Edition', 696, 3),
-(24, 'Ruby Edition', 171, 1), (24, 'Ruby Edition', 172, 2), (24, 'Ruby Edition', 698, 3),
-(29, 'Gold with Red Splatter Edition', 213, 1), (29, 'Gold with Red Splatter Edition', 221, 2), (29, 'Gold with Red Splatter Edition', 223, 3),
-(30, 'Silver Edition', 226, 1), (30, 'Silver Edition', 229, 2), (30, 'Silver Edition', 231, 3),
-
--- NIRVANA (Disk 119-121)
--- Bleach (Standard & White)
-(119, 'Standard Edition', 555, 1), (119, 'Standard Edition', 556, 2), (119, 'Standard Edition', 557, 3),
-(119, 'White Edition', 555, 1), (119, 'White Edition', 556, 2), (119, 'White Edition', 557, 3),
--- Nevermind (Anniversary & Standard)
-(120, 'Silver Edition (Anniversary)', 558, 1), (120, 'Silver Edition (Anniversary)', 559, 2), (120, 'Silver Edition (Anniversary)', 560, 3),
-(120, 'Standard Edition', 558, 1), (120, 'Standard Edition', 559, 2), (120, 'Standard Edition', 560, 3),
--- In Utero (Clear & Standard)
-(121, 'Clear Edition', 570, 1), (121, 'Clear Edition', 571, 2), (121, 'Clear Edition', 572, 3),
-(121, 'Standard Edition', 570, 1), (121, 'Standard Edition', 571, 2), (121, 'Standard Edition', 572, 3),
-
--- AC/DC & ROLLING STONES (Album - 3 tracce)
--- Power Up (Red & Standard)
-(130, 'Red Edition', 594, 1), (130, 'Red Edition', 595, 2), (130, 'Red Edition', 597, 3),
-(130, 'Standard Edition', 594, 1), (130, 'Standard Edition', 595, 2), (130, 'Standard Edition', 597, 3),
--- Hackney Diamonds (Clear & Standard)
-(137, 'Clear Edition', 622, 1), (137, 'Clear Edition', 623, 2), (137, 'Clear Edition', 701, 3),
-(137, 'Standard Edition', 622, 1), (137, 'Standard Edition', 623, 2), (137, 'Standard Edition', 701, 3),
-
--- SZA & SINGOLI (SZA 3 tracce, Singoli 1 traccia)
-(142, 'Translucent Green Edition', 624, 1), (142, 'Translucent Green Edition', 625, 2), (142, 'Translucent Green Edition', 626, 3),
-(143, 'Transparent Blue Edition', 631, 1), (143, 'Transparent Blue Edition', 632, 2), (143, 'Transparent Blue Edition', 633, 3),
-(115, 'Standard Single', 550, 1), -- Bellissima
-(116, 'Standard Single', 551, 1), -- Mon Amour
-(117, 'Standard Single', 552, 1), -- Ragazza Sola
-(118, 'Standard Single', 554, 1), -- Sinceramente
-(123, 'Standard Single', 558, 1), -- Smells Like Teen Spirit
-(124, 'Standard Single', 560, 1), -- Come as You Are
-(132, 'Standard Single', 592, 1), -- Thunderstruck
-(133, 'Standard Single', 597, 1); -- Shot in the Dark
-
-
-INSERT INTO track (title, duration_seconds) VALUES
--- Pink Floyd / Madonna / Annalisa Extras
-('Poles Apart', 424), ('Craving', 201), ('I Don''t Search I Find', 298), ('Graffiti', 210),
--- Nirvana (Hormoaning)
-('Aneurysm', 276), ('Even in His Youth', 183),
--- AC/DC (Stiff Upper Lip, Black Ice, Rock or Bust)
-('Stiff Upper Lip', 215), ('Can''t Stop Rock ''n'' Roll', 242), ('Safe in New York City', 233),
-('Rock ''n'' Roll Train', 261), ('Big Jack', 237), ('War Machine', 189),
-('Rock or Bust', 183), ('Play Ball', 167), ('Rock the Blues Away', 204),
--- Rolling Stones (Bridges to Babylon, A Bigger Bang, Blue & Lonesome)
-('Flip the Switch', 208), ('Anybody Seen My Baby?', 271), ('Saint of Me', 315),
-('Rough Justice', 191), ('Rain Fall Down', 294), ('Streets of Love', 310),
-('Just Your Fool', 136), ('Commit a Crime', 218), ('Blue and Lonesome', 312),
--- Rolling Stones (EP Extras)
-('2120 South Michigan Avenue', 218), ('Under My Thumb (Live)', 220), ('Get Off of My Cloud (Live)', 175),
--- SZA (Lana, See.SZA.Run, S, Z)
-('Lana Intro', 90), ('New Song 1', 180), ('New Song 2', 210),
-('Bed', 235), ('Euphraxia', 210), ('Castles', 189), ('Aftermath', 221), ('Ur', 235), ('Child''s Play', 216);
-
-
-INSERT INTO edition_track_part_of (disk_id, edition_name, track_id, track_number) VALUES
--- Edizioni Speciali (Beatles, Radiohead, Babymetal, Pink Floyd)
-(45, 'Marble Blue Edition', 284, 1), -- Now and Then
-(49, 'Opaque White Edition', 317, 1), (49, 'Opaque White Edition', 318, 2), (49, 'Opaque White Edition', 319, 3), -- A Moon Shaped Pool
-(62, 'Translucent Red Edition', 364, 1), (62, 'Translucent Red Edition', 365, 2), (62, 'Translucent Red Edition', 366, 3), -- Honeymoon
-(69, 'Red Edition', 389, 1), (69, 'Red Edition', 390, 2), (69, 'Red Edition', 391, 3), -- Babymetal
-(71, 'Transparent Red Edition', 400, 1), (71, 'Transparent Red Edition', 401, 2), (71, 'Transparent Red Edition', 402, 3), -- Metal Galaxy
-(72, 'Clear Edition', 404, 1), (72, 'Clear Edition', 405, 2), (72, 'Clear Edition', 406, 3), -- The Other One
-(78, 'Blue Edition', 457, 1), (78, 'Blue Edition', 458, 2), (78, 'Blue Edition', 705, 3), -- The Division Bell (Poles Apart ID: 705)
-
--- Edizioni Speciali (PTN, Calm, Madonna, Annalisa)
-(83, 'Green Edition', 466, 1), (83, 'Green Edition', 467, 2), (83, 'Green Edition', 468, 3), -- Fuori dall'hype
-(84, 'Pink Edition', 476, 1), (84, 'Pink Edition', 477, 2), (84, 'Pink Edition', 478, 3), -- Fake News
-(86, 'White Edition', 472, 1), (86, 'White Edition', 473, 2), -- Ahia! (EP)
-(94, 'Pink Edition', 493, 1), (94, 'Pink Edition', 494, 2), (94, 'Pink Edition', 495, 3), -- Calm
-(106, 'Translucent Blue Edition', 533, 1), (106, 'Translucent Blue Edition', 707, 2), (106, 'Translucent Blue Edition', 680, 3), -- Madame X (I Don't Search ID: 707, Dark Ballet ID: 680)
-(113, 'Red Edition', 548, 1), (113, 'Red Edition', 549, 2), (113, 'Red Edition', 708, 3), -- Nuda (Graffiti ID: 708)
-(114, 'Ruby Red Edition', 550, 1), (114, 'Ruby Red Edition', 551, 2), (114, 'Ruby Red Edition', 552, 3), -- Vortice
-(114, 'Standard Edition', 550, 1), (114, 'Standard Edition', 551, 2), (114, 'Standard Edition', 552, 3),
-
--- Nirvana, AC/DC, Rolling Stones (Album & EP)
-(122, 'Standard EP', 709, 1), (122, 'Standard EP', 710, 2), -- Hormoaning (Aneurysm ID: 709, Even in His Youth ID: 710)
-(125, 'Standard Single', 562, 1), (126, 'Standard Single', 571, 1), -- Nirvana Singles
-(127, 'Standard Edition', 711, 1), (127, 'Standard Edition', 712, 2), (127, 'Standard Edition', 713, 3), -- Stiff Upper Lip (IDs 711-713)
-(128, 'Standard Edition', 714, 1), (128, 'Standard Edition', 715, 2), (128, 'Standard Edition', 716, 3), -- Black Ice (IDs 714-716)
-(129, 'Standard Edition', 717, 1), (129, 'Standard Edition', 718, 2), (129, 'Standard Edition', 719, 3), -- Rock or Bust (IDs 717-719)
-(131, 'Standard EP', 574, 1), (131, 'Standard EP', 575, 2), -- '74 Jailbreak
-(134, 'Standard Edition', 720, 1), (134, 'Standard Edition', 721, 2), (134, 'Standard Edition', 722, 3), -- Bridges to Babylon (IDs 720-722)
-(135, 'Standard Edition', 723, 1), (135, 'Standard Edition', 724, 2), (135, 'Standard Edition', 725, 3), -- A Bigger Bang (IDs 723-725)
-(136, 'Standard Edition', 726, 1), (136, 'Standard Edition', 727, 2), (136, 'Standard Edition', 728, 3), -- Blue & Lonesome (IDs 726-728)
-(138, 'Standard EP', 598, 1), (138, 'Standard EP', 729, 2), -- Five by Five (2120 S. Michigan ID: 729)
-(139, 'Standard EP', 730, 1), (139, 'Standard EP', 731, 2), -- Got Live (Under My Thumb ID: 730, Cloud ID: 731)
-(140, 'Standard Single', 618, 1), (141, 'Standard Single', 622, 1), -- Stones Singles
-
--- SZA (Album & EP)
-(144, 'Standard Edition', 732, 1), (144, 'Standard Edition', 733, 2), (144, 'Standard Edition', 734, 3), -- Lana (IDs 732-734)
-(145, 'Standard EP', 735, 1), (145, 'Standard EP', 736, 2), -- See.SZA.Run (IDs 735-736)
-(146, 'Standard EP', 737, 1), (146, 'Standard EP', 738, 2), -- S (IDs 737-738)
-(147, 'Standard EP', 739, 1), (147, 'Standard EP', 740, 2), -- Z (IDs 739-740)
-(148, 'Standard Single', 634, 1), (149, 'Standard Single', 638, 1); -- Kill Bill, Saturn
 
 -- Re-enable foreign key checks
 SET FOREIGN_KEY_CHECKS = 1;

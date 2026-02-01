@@ -5,9 +5,9 @@ starContainers.forEach(container => {
 
     if (isReadonly) {
         // --- Modalità READONLY (collection_item.html) ---
-        // Usa <span class="star"> e data-rating su .collection-rating-section
+        // Usa <span class="star"> e data-rating su .rating-section
         const stars = container.querySelectorAll('.star');
-        const ratingSection = container.closest('.collection-rating-section');
+        const ratingSection = container.closest('.rating-section');
         const initialValue = parseInt(ratingSection?.getAttribute('data-rating')) || 0;
 
         // Funzione per colorare le stelle
