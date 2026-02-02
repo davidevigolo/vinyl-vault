@@ -612,21 +612,21 @@ p#empty-collection-paragraph {
 }
 
 #admin-buttons-container {
-    grid-template-columns: repeat(4, auto); 
+    grid-template-columns: repeat(4, auto);
     width: fit-content;
     gap: 1.2rem;
     padding: 2rem;
 }
 
 #admin-options-title {
-    grid-column: span 4; 
+    grid-column: span 4;
     margin-bottom: 1.2rem;
     font-size: var(--font-xl);
 }
 
 #admin-buttons-container .btn-secondary {
     font-size: var(--font-medium);
-    width: auto; 
+    width: auto;
     min-width: 160px;
 }
 
@@ -824,7 +824,7 @@ p#empty-collection-paragraph {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 2rem 0;
+    padding: 2rem;
 }
 
 .login-titles,
