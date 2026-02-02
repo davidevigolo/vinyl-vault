@@ -34,27 +34,23 @@ function isMenuToggleVisible() {
 }
 
 if (menuToggle && headerRight) {
-    // Click toggle per utenti mouse
     menuToggle.addEventListener('click', () => {
         const isOpen = headerRight.classList.contains('is-open');
         isOpen ? closeMenu() : openMenu();
     });
 
-    // Apre il menu quando qualsiasi elemento riceve focus (solo mobile)
     headerRight.addEventListener('focus', () => {
         if (isMenuToggleVisible()) {
             openMenu();
         }
-    });
+    }, true);
 
-    // Chiude il menu quando il focus esce da headerRight (solo mobile)
     headerRight.addEventListener('blur', (e) => {
         if (isMenuToggleVisible() && !headerRight.contains(e.relatedTarget)) {
             closeMenu();
         }
-    });
+    }, true);
 
-    // Chiude il menu con Escape
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && headerRight.classList.contains('is-open')) {
             closeMenu();
