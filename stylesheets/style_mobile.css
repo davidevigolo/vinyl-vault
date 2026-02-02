@@ -485,28 +485,6 @@ header {
     width: 100%;
 }
 
-.header-search-input {
-    flex: 1;
-    padding: 0.55rem 1rem;
-    border: 1px solid var(--border-default);
-    border-radius: 0.5em;
-    font-size: var(--font-medium);
-    font-family: var(--font-primary);
-    min-width: 0;
-}
-
-.header-search-input:focus {
-    outline: 2px solid var(--brand-primary);
-    outline-offset: 2px;
-}
-
-.header-search-form button[type="submit"] {
-    padding: 0.55rem 1.5rem;
-    white-space: nowrap;
-    margin: 0;
-    border-radius: 0.5em;
-}
-
 /* Senza JS: menu va sulla seconda riga della griglia, spinge il contenuto giù */
 .header-right.is-open:not(.js-enabled) {
     grid-column: 1 / -1;
@@ -2839,6 +2817,7 @@ html:not(.js-enabled) .load-more-container {
     margin-bottom: 2.4rem;
 }
 
+#header-search-input,
 #login-form input,
 #registration-form input,
 #add-pages-form input,
