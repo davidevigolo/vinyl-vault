@@ -1,4 +1,8 @@
 // Load More functionality for catalog page
+
+// Abilita JS: nasconde gli items hidden e mostra il bottone Load More
+document.documentElement.classList.add('js-enabled');
+
 const loadMoreBtn = document.getElementById('load-more-btn');
 const catalogGrid = document.getElementById('catalog-grid');
 const _sortSelect = document.getElementById('sort-select');
