@@ -40,14 +40,3 @@ if (headerSearchToggle) {
         }
     });
 }
-
-headerSearchInput.addEventListener('keydown', function (event) {
-    if (event.key === 'Tab' && event.shiftKey) {
-        // Se Shift+Tab sul primo elemento, vai all'ultimo
-        const isVisible = headerSearchContainer.classList.contains('visible');
-        if (isVisible && submitBtn) {
-            event.preventDefault();
-            submitBtn.focus();
-        }
-    }
-});

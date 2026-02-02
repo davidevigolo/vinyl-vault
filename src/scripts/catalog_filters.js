@@ -24,6 +24,11 @@ if (focusElementId) {
         const element = document.getElementById(focusElementId);
         if (element) {
             element.focus();
+            // Force focus-visible for programmatic focus
+            element.setAttribute('data-focus-visible', 'true');
+            setTimeout(() => {
+                element.removeAttribute('data-focus-visible');
+            }, 2000);
         }
     });
 }

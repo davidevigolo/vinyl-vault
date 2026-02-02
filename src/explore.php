@@ -18,7 +18,7 @@ include 'php/components/header.php';
 include 'php/components/footer.php';
 
 echo Template::render(
-    'static/esplora.html',
+    'static/explore.html',
     array_merge([
         'head' => Template::render('static/layout/head.html',[]),
         'header' => _header(),

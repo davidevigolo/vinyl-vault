@@ -135,16 +135,6 @@ html {
     transition-duration: 0.3s;
 }
 
-input:focus,
-button:focus,
-a:focus,
-select:focus,
-textarea:focus {
-    outline: 0.2em solid var(--brand-primary);
-    outline-offset: 0.2em;
-    transition-duration: 0s;
-}
-
 html {
     font-optical-sizing: auto;
     scroll-behavior: smooth;
@@ -908,11 +898,26 @@ footer .profile-links a:hover {
     background-image: url('../assets/images/wishlist-icon.jpg');
 }
 
+#trending-vinyls>.center-container,
+#most-liked-artists>.center-container,
+#recommendations>.center-container,
+#most-collected>.center-container,
+#collection>.center-container,
+#wishlist>.center-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 2.5rem;
+    padding-bottom: 3.5em;
+}
+
 .section-title {
     display: contents;
 }
 
 .section-title h2 {
+    order: 1;
     width: 100%;
     color: var(--brand-primary-dark);
     font-size: var(--font-xxxl);
@@ -922,31 +927,21 @@ footer .profile-links a:hover {
 }
 
 .view-all {
+    order: 3;
     display: inline-block;
     font-size: var(--font-large);
     font-weight: 500;
-    align-self: center;
-    /* O center, se preferisci */
-}
-
-.card-section div.center-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centra il contenuto su mobile */
-    gap: 1.5rem;
-    padding: 2.5rem 1rem;
-}
-
-.section-title {
-    text-align: center;
-    width: 100%;
+    color: var(--link-unvisited);
+    text-decoration: underline;
 }
 
 .cards-container {
     display: grid;
-    /* Crea 2 colonne su mobile come nel tuo screenshot */
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    align-items: flex-start;
+    padding: 1rem 0;
+    order: 2;
     width: 100%;
 }
 
@@ -2025,7 +2020,10 @@ img#empty-collection-image {
 .search-bar-container form {
     display: flex;
     gap: 0;
-    background-color: transparent;
+    background-color: var(--bg-surface);
+    border: 0.1em solid var(--border-default);
+    border-radius: 1.3em;
+    overflow: hidden;
     box-shadow: 0 0.1em 0.2em rgba(0, 0, 0, 0.1);
     flex: 4;
 }
@@ -2034,10 +2032,18 @@ img#empty-collection-image {
     flex: 1;
     padding: 1rem;
     border: none;
-    border-top-left-radius: 0.9em;
-    border-bottom-left-radius: 0.9em;
     font-size: var(--font-medium);
     font-family: var(--font-primary);
+}
+
+.search-bar-container input[type="search"]:focus {
+    outline: 0.2em solid var(--brand-primary);
+    outline-offset: -0.2em;
+}
+
+.search-bar-container input[type="search"][data-focus-visible="true"] {
+    outline: 0.2em solid var(--brand-primary);
+    outline-offset: -0.2em;
 }
 
 #search-submit-btn {
@@ -2144,7 +2150,7 @@ img#empty-collection-image {
     min-width: 0;
 }
 
-#admin-options-title {
+#admin-options-title{
     font-family: var(--font-primary);
     font-size: var(--font-xl);
     margin-bottom: 1em;
