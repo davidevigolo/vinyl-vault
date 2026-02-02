@@ -3,7 +3,7 @@ include_once 'php/classes/DbConnection.php';
 
 function get_top_artists() {
     $connection = DbConnection::get_instance();
-    $query = "SELECT a.author_name, a.nationality, a.image_path, COUNT(o.user_id) AS total_ownership_count
+    $query = "SELECT a.id, a.author_name, a.nationality, a.image_path, COUNT(o.user_id) AS total_ownership_count
                 FROM author a
                 JOIN disk_author_release dar ON a.id = dar.author_id
                 JOIN disk d ON dar.disk_id = d.id
@@ -34,16 +34,13 @@ function top_artists() {
     $topArtists = get_top_artists();
     $i = 1;
     if ($topArtists) {
-        while ($vinyl = mysqli_fetch_assoc($topArtists)) {
-            $span = $i === 1 ? 'span-6' : 'span-3';
-            $span = $i > 3 ? 'span-2' : $span;
-            // TBD: Usare image_path quando le immagini saranno caricate
+        while ($artist = mysqli_fetch_assoc($topArtists)) {
             echo Template::render('static/layout/top_artists/top_artists_card.html', [
-                'artist' => $vinyl['author_name'],
-                'cover_image' => htmlspecialchars($vinyl['image_path']) ? htmlspecialchars($vinyl['image_path']) : 'assets/images/artist_placeholder.jpg',
-                'span_class' => $span,
-                'direction' => $i > 3 ? 'direction-vertical' : 'direction-horizontal',
+                'artist' => $artist['author_name'],
+                'artist_id' => urlencode($artist['id']),
+                'cover_image' => htmlspecialchars($artist['image_path']) ? htmlspecialchars($artist['image_path']) : 'assets/images/artist_placeholder.jpg',
                 'index' => $i,
+                'nationality' => htmlspecialchars(get_nationality_languages()[$artist['nationality']]),
                 'ordinal_index' => $ordinali[$i],
             ]);
             $i++;

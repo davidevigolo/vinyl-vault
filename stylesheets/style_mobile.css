@@ -53,7 +53,6 @@
     --hero-logo-img: url('../assets/images/logo-full-light.webp');
 }
 
-/* colori tema scura */
 :root[data-theme="dark"] {
     /* Backgrounds */
     --bg-page: #1c1c1c;
@@ -103,24 +102,24 @@
 
 @supports (font-size: clamp(1rem, 1vi, 1rem)) {
     :root {
-        --font-small: clamp(1.1rem, 1.08rem + 0.15vw, 1.2rem);
-        --font-medium: clamp(1.25rem, 1.2rem + 0.25vw, 1.4rem);
-        --font-large: clamp(1.4rem, 1.35rem + 0.4vw, 1.6rem);
-        --font-xl: clamp(1.65rem, 1.55rem + 0.7vw, 1.95rem);
-        --font-xxl: clamp(1.8rem, 1.7rem + 0.8vw, 2.15rem);
-        --font-xxxl: clamp(2.15rem, 2rem + 1vw, 2.6rem);
+        --font-small: clamp(0.7rem, 0.52rem + 0.9vw, 1.2rem);
+        --font-medium: clamp(0.85rem, 0.65rem + 1vw, 1.4rem);
+        --font-large: clamp(1rem, 0.78rem + 1.1vw, 1.6rem);
+        --font-xl: clamp(1.2rem, 0.93rem + 1.4vw, 1.95rem);
+        --font-xxl: clamp(1.4rem, 1.13rem + 1.4vw, 2.15rem);
+        --font-xxxl: clamp(1.6rem, 1.24rem + 1.8vw, 2.6rem);
     }
 }
 
-/* Browser che non supportano clamp */
+/* browser that non supports clamp */
 @supports not (font-size: clamp(1rem, 1vi, 1rem)) {
     :root {
-        --font-small: 1.15rem;
-        --font-medium: 1.32rem;
-        --font-large: 1.50rem;
-        --font-xl: 1.80rem;
-        --font-xxl: 1.9rem;
-        --font-xxxl: 2.3rem;
+        --font-small: 0.9rem;
+        --font-medium: 1.1rem;
+        --font-large: 1.3rem;
+        --font-xl: 1.5rem;
+        --font-xxl: 1.7rem;
+        --font-xxxl: 2rem;
     }
 }
 
@@ -556,6 +555,10 @@ header {
     text-decoration: none;
 }
 
+h2.page-title{
+    font-size: var(--font-xxl)
+}
+
 /* End Header */
 
 
@@ -757,9 +760,8 @@ footer .profile-links a:hover {
 }
 
 .hero-logo {
-    width: 100%;
-    max-width: 35em;
-    height: 25em;
+    width: 90%;
+    aspect-ratio: 16 / 9;
     background-image: var(--hero-logo-img);
     background-size: contain;
     background-repeat: no-repeat;
@@ -830,7 +832,7 @@ footer .profile-links a:hover {
     border-top: 0.1em solid var(--border-default);
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 1.5em;
     margin-top: 1.5rem;
     padding-top: 2.5rem;
     list-style: none;
@@ -838,44 +840,62 @@ footer .profile-links a:hover {
 
 .feature {
     display: grid;
-    grid-template-columns: 0.5fr 1fr;
+    grid-template-columns: 1fr; 
     grid-template-rows: auto auto;
-    gap: 0.5rem 1rem;
-    justify-content: center;
-    align-items: center;
-    max-width: 80%;
+    padding: 1.3rem;
     margin: 0 auto;
+    border-radius: 0.8em;
+    align-items: center;
+    border: 1px dashed var(--border-default);
 }
 
-.feature img {
-    grid-column: 1;
+.feature::before, 
+.feature h3 {
     grid-row: 1;
-    width: 50px;
-    height: 50px;
-    object-fit: contain;
-    margin: 0;
-    justify-self: end;
-    margin-right: 0.5em;
+    grid-column: 1;
+}
+
+.feature::before {
+    display: block;
+    content: "";
+    width: 2.5em;
+    height: 2.5em;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    
 }
 
 .feature h3 {
-    grid-column: 2;
-    grid-row: 1;
-    text-align: left;
-    margin: 0;
     font-size: var(--font-xl);
     font-weight: 700;
     color: var(--text-primary);
+    
+    justify-self: center;
+    text-align: center;
 }
 
 .feature>p {
-    grid-column: 1 / span 2;
+    border-top: 0.1em solid var(--border-default);
+    grid-column: 1;
     grid-row: 2;
     font-size: var(--font-medium);
     color: var(--text-muted);
     text-align: center;
+    padding-top: 1rem;
     margin-top: 0.5rem;
-    line-height: 1.5;
+}
+
+.feature:nth-child(1)::before {
+    background-image: url('../assets/images/collection-icon.jpg');
+}
+
+.feature:nth-child(2)::before {
+    background-image: url('../assets/images/compass-icon.jpg');
+}
+
+.feature:nth-child(3)::before {
+    background-image: url('../assets/images/wishlist-icon.jpg');
 }
 
 #trending-vinyls>.center-container,
@@ -969,6 +989,7 @@ footer .profile-links a:hover {
     color: var(--text-secondary);
     margin-bottom: 0.8rem;
     display: -webkit-box;
+    line-clamp: 1;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -981,6 +1002,7 @@ footer .profile-links a:hover {
     line-height: 1.2;
     color: var(--text-primary);
     display: -webkit-box;
+    line-clamp: 1;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -991,6 +1013,7 @@ footer .profile-links a:hover {
     font-family: var(--font-secondary);
     color: var(--text-muted);
     display: -webkit-box;
+    line-clamp: 1;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -1004,6 +1027,7 @@ footer .profile-links a:hover {
     color: var(--text-primary);
     margin-top: 0.5rem;
     display: -webkit-box;
+    line-clamp: 1;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -1292,7 +1316,7 @@ footer .profile-links a:hover {
     font-size: var(--font-medium);
     font-family: var(--font-secondary);
     color: var(--text-muted);
-
+    line-clamp: 1;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -2621,15 +2645,16 @@ html:not(.js-enabled) .load-more-container {
 
 
 /* Top Vinyls Page */
-
-#top-vinyls {
+#top-vinyls,
+#top-artists {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
     padding: 1rem;
 }
 
-#top-vinyls-title {
+#top-vinyls-title,
+#top-artists-title {
     font-size: var(--font-xxxl);
 }
 
@@ -2640,7 +2665,7 @@ html:not(.js-enabled) .load-more-container {
 }
 
 .vinyl-card img {
-    width: 30vw;
+    width: 100%;
     height: auto;
     border-radius: 1.3rem;
     aspect-ratio: 1 / 1;
@@ -2648,11 +2673,25 @@ html:not(.js-enabled) .load-more-container {
     display: block;
 }
 
-#top-vinyls>*:first-child {
+#top-vinyls > *:first-child img,
+#top-artists > *:first-child img {
+    max-width: 10em;
+}
+
+#top-vinyls > *:nth-child(2) img,
+#top-vinyls > *:nth-child(3) img,
+#top-artists > *:nth-child(2) img,
+#top-artists > *:nth-child(3) img {
+    max-width: 17em;
+}
+
+#top-vinyls>*:first-child,
+#top-artists>*:first-child {
     grid-column: 1 / 3;
 }
 
-#top-vinyls>*:first-child .card-content {
+#top-vinyls>*:first-child .card-content,
+#top-artists>*:first-child .card-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -2677,7 +2716,8 @@ html:not(.js-enabled) .load-more-container {
     border-bottom: none;
 }
 
-#top-vinyls>*:first-child.vinyl-card {
+#top-vinyls>*:first-child.vinyl-card,
+#top-artists>*:first-child.vinyl-card {
     display: flex;
     flex-direction: row;
     text-align: left;
@@ -2686,17 +2726,35 @@ html:not(.js-enabled) .load-more-container {
     padding: 1.2rem;
 }
 
-#top-vinyls>*:first-child .artist-name {
+#top-vinyls>*:first-child .artist-name,
+#top-artists>*:first-child .artist-name {
     font-size: var(--font-medium);
 }
 
-#top-vinyls>*:first-child .album-title {
+#top-vinyls>*:first-child .album-title,
+#top-artists>*:first-child .album-title {
     font-size: var(--font-xl);
 }
 
-#top-vinyls>*:first-child .edition-info {
+#top-vinyls>*:first-child .edition-info,
+#top-artists>*:first-child .edition-info {
     font-size: var(--font-large);
 }
+
+#top-artists .artist-name {
+    padding-top: 1em;
+    padding-bottom: 0;
+    font-size: var(--font-xl);
+    font-family: var(--font-secondary);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--text-primary);
+}
+
+#top-artists > *:first-child .artist-name {
+    font-size: var(--font-xxl);
+}
+
 
 /* End Top Vinyls Page */
 
