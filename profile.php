@@ -127,8 +127,7 @@ function collection_cards() {
             'ed_name_url' => urlencode($vinyl['edition_name']),
             'nationality' => htmlspecialchars(get_nationality_languages()[strtolower($vinyl['country'])]),
             'cover_image' => htmlspecialchars($vinyl['image_path']) ?: 'assets/images/vinyl_placeholder.jpg',
-            'disk_id' => htmlspecialchars($vinyl['disk_id']),
-            'nationality' => htmlspecialchars($nationality_languages[$vinyl['nationality']] ?? 'en')
+            'disk_id' => htmlspecialchars($vinyl['disk_id'])
         ]);
     }
 
@@ -154,8 +153,7 @@ function wishlist_cards() {
             'ed_name_url' => urlencode($vinyl['edition_name']),
             'nationality' => htmlspecialchars(get_nationality_languages()[strtolower($vinyl['country'])]),
             'cover_image' => htmlspecialchars($vinyl['image_path']) ?: 'assets/images/vinyl_placeholder.jpg',
-            'disk_id' => htmlspecialchars($vinyl['disk_id']),
-            'nationality' => htmlspecialchars($nationality_languages[$vinyl['nationality']] ?? 'en')
+            'disk_id' => htmlspecialchars($vinyl['disk_id'])
         ]);
     }
 

@@ -2141,6 +2141,14 @@ img#empty-collection-image {
     min-width: 0;
 }
 
+#admin-options-title{
+    font-family: var(--font-primary);
+    font-size: var(--font-xl);
+    margin-bottom: 1em;
+    margin-top: 1.5em;
+    color: var(--text-primary);
+}
+
 /* Filter Groups */
 
 .filter-group {

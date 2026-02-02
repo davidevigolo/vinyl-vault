@@ -67,6 +67,14 @@ function render_year_options($start_year, $end_year, $selected_year) {
 $year_min_options = render_year_options($year_range['min'], $year_range['max'], $year_min ?: $year_range['min']);
 $year_max_options = render_year_options($year_range['min'], $year_range['max'], $year_max ?: $year_range['max']);
 
+$admin_buttons = '<div id="admin-buttons-container">
+                  <p id="admin-options-title">Opzioni admin</p>
+                  <a href="add_artist.php" class="btn-secondary" aria-label="Vai alla pagina di aggiunta artista">Aggiungi Artista</a>
+                  <a href="add_disk.php" class="btn-secondary" aria-label="Vai alla pagina di aggiunta disco">Aggiungi Disco</a>
+                  <a href="add_edition.php" class="btn-secondary" aria-label="Vai alla pagina di aggiunta edizione">Aggiungi Edizione</a>
+                  <a href="add_genre.php" class="btn-secondary" aria-label="Vai alla pagina di aggiunta genere">Aggiungi Genere</a>
+                  </div>';
+
 echo Template::render(
     'static/catalogo.html',
     [
@@ -94,6 +102,7 @@ echo Template::render(
         'search_hidden_params' => render_search_hidden_params(),
         'search_hidden_input' => $search_query ? '<input type="hidden" name="q" value="' . htmlspecialchars($search_query) . '">' : '',
         'clear_search_hidden' => $search_query ? '' : 'hidden',
-        'role' => $total_count > 0 ? 'feed' : 'alert'
+        'role' => $total_count > 0 ? 'feed' : 'alert',
+        'admin_buttons' => isset($_SESSION['user_id']) && $_SESSION['user_id'] == 1 ? $admin_buttons : ''
     ]
 );
