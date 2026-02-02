@@ -76,7 +76,7 @@ $admin_buttons = '<div id="admin-buttons-container">
                   </div>';
 
 echo Template::render(
-    'static/catalogo.html',
+    'static/catalog.html',
     [
         'head' => Template::render('static/layout/head.html',[]),
         'header' => _header(),

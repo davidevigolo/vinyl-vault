@@ -9,7 +9,7 @@ function _header() { /* _header instead of header since header() is a PHP built-
     $page_links = header_site_nav_menu();
     $search_toggle = '<button class="search-toggle" aria-expanded="false" aria-controls="header-search-form"
                     aria-label="Apri ricerca nel catalogo">
-                    <img class="search-icon" src="assets/images/search.webp" alt="" />
+                    <img class="search-icon" src="assets/images/search-light.webp" alt="" />
                 </button>';
 
     echo Template::render('static/layout/header.html', array_merge($page_links, [

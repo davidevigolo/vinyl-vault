@@ -30,9 +30,9 @@
     /* Blu7 - Titoli */
 
     /* Interactive */
-    --link-unvisited: #003861;
+    --link-visited: #003861;
     /* Blu8 - Link non visitati */
-    --link-visited: #0074C7;
+    --link-unvisited: #0074C7;
     /* Blu5 - Link visitati */
 
     /* Search Bar */
@@ -60,7 +60,8 @@
     /* Blu9 - Banner principali */
     --bg-subsection: #003861;
     /* Blu8 - Banner secondari */
-    --bg-surface: #000000;
+    --bg-surface: #0d0d0d;
+    ;
     --bg-header: rgba(36, 40, 44, 0.95);
 
     /* Texts */
@@ -78,9 +79,9 @@
     /* Blu2 - Titoli */
 
     /* Interactive */
-    --link-unvisited: #b8daf3;
+    --link-visited: #b8daf3;
     /* Blu1 - Link non visitati */
-    --link-visited: #2589d0;
+    --link-unvisited: #2589d0;
     /* Blu4 - Link visitati */
 
     /* Search Bar */
@@ -330,7 +331,6 @@ h1.hide {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: left center;
-    width: 8em;
     text-indent: -999.9em;
     overflow: hidden;
 }
@@ -387,7 +387,7 @@ header {
 
 .header-container {
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 2fr 1fr;
     grid-template-rows: auto auto;
     align-items: center;
     justify-content: space-between;
@@ -754,16 +754,20 @@ footer .profile-links a:hover {
     list-style: none;
     display: flex;
     justify-content: center;
-    text-align: center;
     gap: 0.5rem;
     padding: 0;
     margin: 0;
+    white-space: nowrap;
 }
 
 #breadcrumb li:not(:last-child)::after {
     content: " / ";
     margin-left: 0.5rem;
     color: var(--text-muted);
+}
+
+#breadcrumb li:last-child {
+    white-space: wrap;
 }
 
 #breadcrumb li[aria-current="page"] {
@@ -818,7 +822,6 @@ footer .profile-links a:hover {
     font-size: var(--font-medium);
     max-width: 100%;
     color: var(--text-muted);
-    max-width: 30em;
 }
 
 .home p {
@@ -952,7 +955,8 @@ footer .profile-links a:hover {
 .card-section div.center-container {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centra il contenuto su mobile */
+    align-items: center;
+    /* Centra il contenuto su mobile */
     gap: 1.5rem;
     padding: 2.5rem 1rem;
 }
@@ -965,7 +969,7 @@ footer .profile-links a:hover {
 .cards-container {
     display: grid;
     /* Crea 2 colonne su mobile come nel tuo screenshot */
-    grid-template-columns: repeat(2, 1fr); 
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
     width: 100%;
 }
@@ -1376,14 +1380,12 @@ footer .profile-links a:hover {
     color: var(--text-secondary);
 }
 
-
 .rating input:focus+label {
     outline: 2px solid #005fcc;
 }
 
 .stars-container {
     margin: auto;
-    margin-top: 1em;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1621,8 +1623,8 @@ img#empty-collection-image {
 /* Album Page */
 
 .album-cover {
-    width: 20em;
-    height: 20em;
+    width: 100%;
+    max-width: 20em;
     object-fit: cover;
     box-shadow: 0 4px 12px rgba(0, 90, 156, 0.15);
     border-radius: 1.3em;
@@ -1816,8 +1818,6 @@ img#empty-collection-image {
     padding: 0.5em;
     border-radius: 1.3em;
     border: 2px dashed var(--border-dark);
-    width: 60vw;
-
     margin-top: 1em;
 }
 
@@ -2049,6 +2049,7 @@ img#empty-collection-image {
     background-color: transparent;
     box-shadow: 0 0.1em 0.2em rgba(0, 0, 0, 0.1);
     flex: 4;
+    border-radius: 0.9em;
 }
 
 .search-bar-container input[type="search"] {
@@ -2068,6 +2069,9 @@ img#empty-collection-image {
     cursor: pointer;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0 0.5rem;
 }
 
 /* Hide native browser clear button on search inputs */
@@ -2104,6 +2108,39 @@ img#empty-collection-image {
 
 .search-bar-container .btn-clear-search[hidden] {
     display: none;
+}
+
+#admin-buttons-container {
+    background-color: var(--bg-subsection);
+    border: 2px dashed var(--border-default);
+    border-radius: 1.3em;
+    margin: 2.5em auto 1em auto;
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+    width: 100%;
+    justify-items: center;
+}
+
+#admin-options-title {
+    font-family: var(--font-secondary);
+    font-size: var(--font-xxxl);
+    margin-bottom: 0.8rem;
+    color: var(--text-primary);
+    text-align: center;
+    width: 100%;
+    font-weight: 600;
+    grid-column: span 2;
+}
+
+#admin-buttons-container .btn-secondary {
+    width: 100%;
+    margin: 0;
+    font-size: var(--font-large);
+    text-align: center;
+    padding: 0.8rem 1rem;
+    white-space: nowrap;
 }
 
 .catalog-page {
@@ -3385,8 +3422,8 @@ body.page-transitioning {
 /* Edit Profile Page */
 
 #current-profile-img {
-    width: 20rem;
-    height: 20rem;
+    width: 90%;
+    height: auto;
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 1em;

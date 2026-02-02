@@ -599,8 +599,7 @@ p#empty-collection-paragraph {
 /* End Artist Page */
 
 
-/* Catalog Page Desktop Overrides */
-
+/* Catalog Page */
 .catalog-page {
     flex-direction: row;
     gap: 2rem;
@@ -612,13 +611,32 @@ p#empty-collection-paragraph {
     text-align: center;
 }
 
+#admin-buttons-container {
+    grid-template-columns: repeat(4, auto); 
+    width: fit-content;
+    gap: 1.2rem;
+    padding: 2rem;
+}
+
+#admin-options-title {
+    grid-column: span 4; 
+    margin-bottom: 1.2rem;
+    font-size: var(--font-xl);
+}
+
+#admin-buttons-container .btn-secondary {
+    font-size: var(--font-medium);
+    width: auto; 
+    min-width: 160px;
+}
+
+
 .catalog-main {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
 }
 
-/* 2. RIGA 1: Filtri Attivi (Tag) */
 .active-filters-inline {
     order: 1;
     flex: 0 0 100%;
