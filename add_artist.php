@@ -25,6 +25,7 @@ if (isset($_SESSION['add_artist_result']['success']) && $_SESSION['add_artist_re
 
 $name = $_SESSION['add_artist_result']['name'] ?? '';
 $nationality = $_SESSION['add_artist_result']['nationality'] ?? '';
+$biography = $_SESSION['add_artist_result']['biography'] ?? '';
 $errors = isset($_SESSION['add_artist_result']['error']) ? [$_SESSION['add_artist_result']['error']] : [];
 unset($_SESSION['add_artist_result']);
 
@@ -33,7 +34,7 @@ echo Template::render(
     [
         'head' => Template::render('static/layout/head.html', []),
         'header' => _header(),
-        'add_artist_form' => add_artist_form($name, $nationality, $errors),
+        'add_artist_form' => add_artist_form($name, $nationality, $biography, $errors),
         'footer' => footer(),
         'validation_scripts' => get_validation_scripts(['add_artist.js', 'photo_validator.js'])
     ]

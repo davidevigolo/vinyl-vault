@@ -5,8 +5,8 @@ include_once '../classes/utils.php';
 session_start();
 check_user_logged_in();
 
-function add_artist($name, $nationality, $image): array {
-    if (!$name || !$nationality || !$image) {
+function add_artist($name, $nationality, $image, $biography): array {
+    if (!$name || !$nationality || !$image || !$biography) {
         return ['success' => false, 'error' => 'Uno o più campi devono ancora essere compilati'];
     }
     if ($image['error'] !== UPLOAD_ERR_OK) {
@@ -35,13 +35,13 @@ function add_artist($name, $nationality, $image): array {
     mysqli_begin_transaction($connection->get_connection());
 
     // Insert artist without image_path first
-    $query = "INSERT INTO author (author_name, nationality) VALUES (?, ?);";
+    $query = "INSERT INTO author (author_name, nationality, bio_author) VALUES (?, ?, ?);";
     $stmt = mysqli_prepare($connection->get_connection(), $query);
     if (!$stmt) {
         mysqli_rollback($connection->get_connection());
         return ['success' => false, 'error' => 'Abbiamo riscontrato un errore, probabilmente stai provando ad inserire un artista già presente nel nostro database. Se il problema persiste contattaci a vinylvault@gmail.com'];
     }
-    mysqli_stmt_bind_param($stmt, 'ss', $name, $nationality);
+    mysqli_stmt_bind_param($stmt, 'sss', $name, $nationality, $biography);
     $success = mysqli_stmt_execute($stmt);
 
     if (!$success) {
@@ -93,10 +93,12 @@ function add_artist($name, $nationality, $image): array {
 
 $name = $_POST['name'] ?? null;
 $nationality = $_POST['nationality'] ?? null;
+$biography = $_POST['biography'] ?? null;
 $image = $_FILES['photo'] ?? null;
 
-$_SESSION['add_artist_result'] = add_artist($name, $nationality, $image);
+$_SESSION['add_artist_result'] = add_artist($name, $nationality, $image, $biography);
 $_SESSION['add_artist_result']['name'] = in_array('name', $_SESSION['add_artist_result']['fields_to_reset'] ?? []) ? '' : $name;
 $_SESSION['add_artist_result']['nationality'] = in_array('nationality', $_SESSION['add_artist_result']['fields_to_reset'] ?? []) ? '' : $nationality;
+$_SESSION['add_artist_result']['biography'] = in_array('biography', $_SESSION['add_artist_result']['fields_to_reset'] ?? []) ? '' : $biography;
 header('Location: ' . '../../add_artist.php');
 exit();

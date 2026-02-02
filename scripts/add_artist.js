@@ -26,11 +26,27 @@ this.document.getElementById('nationality').addEventListener('input', function (
     validateSelect(this, errorMessage);
 });
 
-function validateSelect(element, errorMessage) {
-    let value = element.value.trim();
-    if (value !== '') {
+this.document.getElementById('biography').addEventListener('input', function () {
+    // Find the error message element
+    let errorMessage = document.getElementById('biography-error');
+
+    // Validate selected
+    if (this.value.trim().length >= 400) {
+        if (errorMessage) {
+            errorMessage.textContent = 'Limite massimo di caratteri superato (400)';
+        }
+    } else {
         if (errorMessage) {
             errorMessage.textContent = '';
         }
     }
-}
+});
+
+function validateSelect(element, errorMessage) {
+        let value = element.value.trim();
+        if (value !== '') {
+            if (errorMessage) {
+                errorMessage.textContent = '';
+            }
+        }
+    }
