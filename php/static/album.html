@@ -2,9 +2,11 @@
 <html lang="it" data-theme="light">
 
 <head>
+  <title>[album_title] ([album_edition]) - VinylVault</title>
+  <meta name="description" content="Scopri [album_title] di [artist_name]. Esplora le edizioni, tracce e recensioni su VinylVault.">
+  <meta name="keywords" content="[album_title], [artist_name], edizioni, tracce, recensioni, VinylVault">
   <script src="scripts/album.js" defer></script>
   [head]
-  <title>[album_title] - VinylVault</title>
 </head>
 
 <body>
@@ -54,16 +56,16 @@
           <div class="album-rating" role="img"
             aria-label="Valutazione media [average_rating] su 5 stelle, basata su [review_count] recensioni">
             <span class="rating-label">Valutazione dei collezionisti</span>
-            <div class="rating-section" role="img" 
-                 aria-label="Valutazione: [average_rating] su 5 stelle" data-rating="[average_rating]">
-                <div class="stars-container readonly" aria-hidden="true">
-                    <span class="star" data-value="1">★</span>
-                    <span class="star" data-value="2">★</span>
-                    <span class="star" data-value="3">★</span>
-                    <span class="star" data-value="4">★</span>
-                    <span class="star" data-value="5">★</span>
-                </div>
-                <span class="evaluation-label">Valutazione personale</span>
+            <div class="rating-section" role="img" aria-label="Valutazione: [average_rating] su 5 stelle"
+              data-rating="[average_rating]">
+              <div class="stars-container readonly" aria-hidden="true">
+                <span class="star" data-value="1">★</span>
+                <span class="star" data-value="2">★</span>
+                <span class="star" data-value="3">★</span>
+                <span class="star" data-value="4">★</span>
+                <span class="star" data-value="5">★</span>
+              </div>
+              <span class="evaluation-label">Valutazione personale</span>
             </div>
             <span class="rating-text">
               <strong>[average_rating]</strong> <span class="review-count">([review_count] recensioni)</span>
@@ -75,38 +77,38 @@
     </section>
 
     <section id="edition-info-section" aria-labelledby="edition-info-section-title">
-        <div class="center-container">
-            <h2 id="edition-info-section-title">Informazioni edizione</h2>
-            <dl>
-                <div>
-                    <dt>Data di rilascio:</dt>
-                    <dd>[release_date]</dd>
-                </div>
-                <div>
-                    <dt>Paese:</dt>
-                    <dd>[country]</dd>
-                </div>
-                <div>
-                    <dt>Etichetta:</dt>
-                    <dd>[label]</dd>
-                </div>
-            </dl>
-        </div>
+      <div class="center-container">
+        <h2 id="edition-info-section-title">Informazioni edizione</h2>
+        <dl>
+          <div>
+            <dt>Data di rilascio:</dt>
+            <dd>[release_date]</dd>
+          </div>
+          <div>
+            <dt>Paese:</dt>
+            <dd>[country]</dd>
+          </div>
+          <div>
+            <dt>Etichetta:</dt>
+            <dd>[label]</dd>
+          </div>
+        </dl>
+      </div>
     </section>
 
     <section id="edition-stats" aria-labelledby="edition-stats-title">
       <div class="center-container">
-          <h2 id="edition-stats-title">Statistiche</h2>
-          <ol>
-              <li id="ownership-count-item">
-                  <h3>Persone che ce l'hanno</h3>
-                  [ownership_count]
-              </li>
-              <li id="wishlist-count-item">
-                  <h3>Persone che lo vogliono</h3>
-                  [wishlist_count]
-              </li>
-          </ol>
+        <h2 id="edition-stats-title">Statistiche</h2>
+        <ol>
+          <li id="ownership-count-item">
+            <h3>Persone che ce l'hanno</h3>
+            [ownership_count]
+          </li>
+          <li id="wishlist-count-item">
+            <h3>Persone che lo vogliono</h3>
+            [wishlist_count]
+          </li>
+        </ol>
       </div>
     </section>
 
@@ -114,10 +116,10 @@
     [album_tracklist]
 
     [album_versions]
-          
+
     <section id="reviews">
       <div class="center-container">
-          [album_review]
+        [album_review]
 
         <h2 class="review-title">Recensioni dei collezionisti</h2>
         [reviews_list]
