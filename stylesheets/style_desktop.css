@@ -582,7 +582,6 @@ p#empty-collection-paragraph {
 
 
 /* Catalog Page */
-
 .catalog-page {
     flex-direction: row;
     gap: 2rem;
@@ -620,7 +619,6 @@ p#empty-collection-paragraph {
     align-items: center;
 }
 
-/* 2. RIGA 1: Filtri Attivi (Tag) */
 .active-filters-inline {
     order: 1;
     flex: 0 0 100%;
