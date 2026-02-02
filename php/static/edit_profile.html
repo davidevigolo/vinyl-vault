@@ -60,17 +60,23 @@
                                 <div class="propic-actions">
                                     <label for="propic-upload">Carica Nuova</label>
                                     <input type="file" name="profile-picture" id="propic-upload"
-                                        accept=".jpg,.jpeg,.webp" required="required">
+                                        accept=".jpg,.jpeg,.webp">
 
+                                    <p class="propic-requirements input-example">Supporta <abbr
+                                            title="Joint Photographic Experts Group" lang="en">JPG</abbr> o <abbr
+                                            title="Web Picture format" lang="en">WEBP</abbr>. Dimensione massima 1<abbr
+                                            title="Megabyte">MB</abbr>.
                                     <p class="propic-requirements input-example">Supporta <abbr
                                             title="Joint Photographic Experts Group" lang="en">JPG</abbr> o <abbr
                                             title="Web Picture format" lang="en">WEBP</abbr>. Dimensione massima 1<abbr
                                             title="Megabyte">MB</abbr>.
                                     </p>
 
-                                    <button type="submit" name="action" value="remove-propic" class="btn-secondary"
-                                        [remove-propic-disabled]>Rimuovi</button>
+                                    <button type="submit" name="action" value="submit-propic"
+                                        class="btn-secondary">Salva</button>
                                 </div>
+                                <button type="submit" name="action" value="remove-propic" class="btn-primary"
+                                    [remove-propic-disabled]>Rimuovi corrente</button>
                                 [propic-error]
                                 [propic-success]
                             </div>
@@ -148,6 +154,7 @@
                     </fieldset>
                 </form>
             </div>
+
             <form id="password-form" action="edit_profile.php" method="POST">
                 <input type="hidden" name="form-type" value="password">
 

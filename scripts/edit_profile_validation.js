@@ -63,13 +63,13 @@ const clearError = (input, errorId) => {
 const showChangeIndicator = (input) => {
     const wrapper = input.parentElement;
     let indicator = wrapper.querySelector('.field-changed-indicator');
-    
+
     if (!indicator) {
         indicator = document.createElement('span');
         indicator.className = 'field-changed-indicator';
         indicator.textContent = ' (modificato)';
         indicator.setAttribute('aria-live', 'polite');
-        
+
         const label = wrapper.querySelector('label');
         if (label) {
             label.appendChild(indicator);
@@ -159,14 +159,14 @@ const checkRequiredText = (event, errorId, fieldName) => {
     } else {
         clearError(input, errorId);
     }
-    
+
     // Check if value changed for first/last name
     if (input === firstNameInput) {
         checkIfChanged(input, initialValues.firstName);
     } else if (input === lastNameInput) {
         checkIfChanged(input, initialValues.lastName);
     }
-    
+
     updatePersonalInfoButtonState();
 };
 
@@ -206,7 +206,7 @@ const updateBioCounter = () => {
 const checkBio = (event) => {
     const input = event.target;
     updateBioCounter();
-    
+
     if (input.value.length > 500) {
         showError(input, 'bio-error', 'La bio non può superare i 500 caratteri');
     } else {
@@ -311,9 +311,6 @@ const handlePropicUpload = (event) => {
         currentPropic.src = e.target.result;
     };
     reader.readAsDataURL(file);
-
-    // Auto-submit the form
-    document.getElementById('profile-picture-form').submit();
 };
 
 // Event listeners for personal info form

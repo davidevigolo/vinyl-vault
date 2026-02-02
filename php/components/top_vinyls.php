@@ -49,8 +49,6 @@ function top_vinyls() {
     $i = 1;
     if ($topVinyls) {
         while ($vinyl = mysqli_fetch_assoc($topVinyls)) {
-            $span = $i === 1 ? 'span-6' : 'span-3';
-            $span = $i > 3 ? 'span-2' : $span;
             echo Template::render('static/layout/top_vinyls/top_vinyl_card.html', [
                 'artist' => htmlspecialchars($vinyl['author_name']),
                 'title' => htmlspecialchars($vinyl['title']),
@@ -58,8 +56,6 @@ function top_vinyls() {
                 'ed_link_name' => urlencode($vinyl['edition_name']),
                 'disk_id' => htmlspecialchars($vinyl['id']),
                 'cover_image' => htmlspecialchars($vinyl['image_path']) ?: 'assets/images/vinyl_placeholder.jpg',
-                'span_class' => $span,
-                'direction' => $i > 3 ? 'direction-vertical' : 'direction-horizontal',
                 'index' => $i,
                 'ordinal_index' => $ordinali[$i],
                 'lang' => $vinyl['country'] !== null && $vinyl['country'] !== '' ? get_nationality_languages()[strtolower($vinyl['country'])] : 'it'
