@@ -611,6 +611,28 @@ footer .profile-links a:hover {
     color: var(--text-muted);
 }
 
+.footer-disclaimer {
+    font-size: 0.85em;
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+.footer-validation {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.footer-validation a {
+    display: inline-block;
+}
+
+.footer-validation img {
+    height: 31px;
+    width: auto;
+}
+
 /* Button Back to Top */
 #back-to-top {
     transition-duration: 0.4s;
