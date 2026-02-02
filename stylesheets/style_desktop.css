@@ -230,37 +230,37 @@ header .site-nav-links li {
 }
 
 /* Presentation Section */
-#presentation > .center-container {
-    text-align: left;
-}
 
 .features {
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-start;
 }
 
 .feature {
     grid-template-columns: auto 1fr;
-    max-width: 350px;
-    margin: 0;
+    grid-template-rows: auto 1fr;
+    align-items: start;
+    margin: 0 auto;
+    flex: 1;
 }
 
 .feature img {
-    width: 60px;
-    height: 60px;
+    width: 12em;
+    height: auto;
     justify-self: start;
+    align-items: start;
     margin-right: 0;
 }
 
 .feature h3 {
     font-size: var(--font-large);
+    align-items: start;
     align-self: center;
 }
 
-.feature > p {
-    text-align: left;
-    line-height: 1.4;
+.feature p {
+    height: 100%;
+    align-items: start;
 }
 
 /* Card Section */
