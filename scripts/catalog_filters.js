@@ -394,6 +394,11 @@ if (searchInput && searchForm) {
     // Initialize visibility
     updateClearButtonVisibility();
 
+    if (searchInput.value) {
+        const len = searchInput.value.length;
+        searchInput.setSelectionRange(len, len);
+    }
+
     // Debounced search on input
     searchInput.addEventListener('input', () => {
         updateClearButtonVisibility();
