@@ -60,7 +60,7 @@
     /* Blu9 - Banner principali */
     --bg-subsection: #003861;
     /* Blu8 - Banner secondari */
-    --bg-surface: #000000;
+    --bg-surface: #0d0d0d;;
     --bg-header: rgba(36, 40, 44, 0.95);
 
     /* Texts */
@@ -1962,8 +1962,8 @@ img#empty-collection-image {
 
 .hero .artist-image,
 .hero #profile-image {
-    width: 20rem;
-    height: 20rem;
+    width: 90%;
+    height: auto;
     border-radius: 50%;
     object-fit: cover;
 }
@@ -2082,6 +2082,39 @@ img#empty-collection-image {
     display: none;
 }
 
+#admin-buttons-container {
+    background-color: var(--bg-subsection);
+    border: 2px dashed var(--border-default);
+    border-radius: 1.3em;
+    margin: 2.5em auto 1em auto;
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+    width: 100%;
+    justify-items: center;
+}
+
+#admin-options-title {
+    font-family: var(--font-secondary);
+    font-size: var(--font-xxxl);
+    margin-bottom: 0.8rem;
+    color: var(--text-primary);
+    text-align: center;
+    width: 100%;
+    font-weight: 600;
+    grid-column: span 2;
+}
+
+#admin-buttons-container .btn-secondary {
+    width: 100%;
+    margin: 0;
+    font-size: var(--font-large);
+    text-align: center;
+    padding: 0.8rem 1rem;
+    white-space: nowrap;
+}
+
 .catalog-page {
     display: flex;
     flex-direction: column;
@@ -2139,14 +2172,6 @@ img#empty-collection-image {
 .catalog-main {
     flex: 1;
     min-width: 0;
-}
-
-#admin-options-title{
-    font-family: var(--font-primary);
-    font-size: var(--font-xl);
-    margin-bottom: 1em;
-    margin-top: 1.5em;
-    color: var(--text-primary);
 }
 
 /* Filter Groups */
@@ -3348,8 +3373,8 @@ textarea {
 /* Edit Profile Page */
 
 #current-profile-img {
-    width: 20rem;
-    height: 20rem;
+    width: 90%;
+    height: auto;
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 1em;

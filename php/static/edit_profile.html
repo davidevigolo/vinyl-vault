@@ -149,51 +149,53 @@
                     </fieldset>
                 </form>
             </div>
+            
+            <div id="password">
+                <form id="password-form" action="edit_profile.php" method="POST">
+                    <input type="hidden" name="form-type" value="password">
 
-            <form id="password-form" action="edit_profile.php" method="POST">
-                <input type="hidden" name="form-type" value="password">
+                    <fieldset>
+                        <legend>Modifica <span lang="en">password</span> - Lascia vuoto per non modificare</legend>
 
-                <fieldset>
-                    <legend>Modifica <span lang="en">password</span> - Lascia vuoto per non modificare</legend>
+                        <div class="input-wrapper">
+                            <label for="new-password-input">
+                                <span class="label-text">Nuova <span lang="en">password</span></span>
+                                <span class="required-field">Obbligatorio</span>
+                            </label>
 
-                    <div class="input-wrapper">
-                        <label for="new-password-input">
-                            <span class="label-text">Nuova <span lang="en">password</span></span>
-                            <span class="required-field">Obbligatorio</span>
-                        </label>
-
-                        <input type="password" name="new-password" id="new-password-input" autocomplete="new-password"
-                            required="required">
-                        <div id="password-requirements">
-                            La <span lang="en">password</span> deve contenere almeno:
-                            <ul>
-                                <li>12 caratteri</li>
-                                <li>2 numeri</li>
-                                <li>2 caratteri speciali</li>
-                            </ul>
+                            <input type="password" name="new-password" id="new-password-input" autocomplete="new-password"
+                                required="required">
+                            <div id="password-requirements">
+                                La <span lang="en">password</span> deve contenere almeno:
+                                <ul>
+                                    <li>12 caratteri</li>
+                                    <li>2 numeri</li>
+                                    <li>2 caratteri speciali</li>
+                                </ul>
+                            </div>
+                            [password-error]
                         </div>
-                        [password-error]
-                    </div>
 
-                    <div class="input-wrapper">
-                        <label for="confirm-password-input">
-                            <span class="label-text">Conferma <span lang="en">password</span></span>
-                            <span class="required-field">Obbligatorio</span>
-                        </label>
+                        <div class="input-wrapper">
+                            <label for="confirm-password-input">
+                                <span class="label-text">Conferma <span lang="en">password</span></span>
+                                <span class="required-field">Obbligatorio</span>
+                            </label>
 
-                        <input type="password" name="confirm-password" id="confirm-password-input"
-                            autocomplete="new-password" required="required">
-                        [password-confirm-error]
-                    </div>
+                            <input type="password" name="confirm-password" id="confirm-password-input"
+                                autocomplete="new-password" required="required">
+                            [password-confirm-error]
+                        </div>
 
-                    [password-form-error]
-                    [password-success]
+                        [password-form-error]
+                        [password-success]
 
-                    <button type="submit" id="password-btn" class="btn-primary edit-profile-btn">Aggiorna <span
-                            lang="en">Password</span></button>
-                </fieldset>
-            </form>
-
+                        <button type="submit" id="password-btn" class="btn-primary edit-profile-btn">Aggiorna <span
+                                lang="en">Password</span></button>
+                    </fieldset>
+                </form>
+            </div>
+            
             <p><a href="profile.php">Torna al profilo</a></p>
         </div>
     </main>

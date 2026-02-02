@@ -1399,8 +1399,8 @@ INSERT INTO track (title, duration_seconds) VALUES
 ('us (feat. Taylor Swift)', 242), ('Close To You', 225);
 
 INSERT INTO edition (disk_id, edition_name, release_date, image_path, country) VALUES
-(150, 'Standard Edition', '2024-06-21', 'assets/images/covers/the_secret_of_us.jpg', 'US'),
-(151, 'Yellow Vinyl Single', '2024-06-07', 'assets/images/covers/close_to_you.jpg', 'US');
+(150, 'Standard Edition', '2024-06-21', 'assets/images/editions/the_secret_of_us.jpg', 'US'),
+(151, 'Yellow Vinyl Single', '2024-06-07', 'assets/images/editions/close_to_you.jpg', 'US');
 
 INSERT INTO edition_track_part_of (disk_id, edition_name, track_id, track_number) VALUES
 (150, 'Standard Edition', 741, 1), (150, 'Standard Edition', 742, 2), (150, 'Standard Edition', 743, 3),
