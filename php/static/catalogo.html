@@ -34,12 +34,12 @@
         <!-- Header Section -->
         <section class="catalog-header">
             <div class="center-container">
-                <h1>Trova musica su <span lang="en">VinylVault</span></h1>
+                <h2 id="catalog-title">Trova musica su <span lang="en">VinylVault</span></h2>
                 <p>Esplora e filtra l'infinito catalogo e trova il vinile adatto a te.</p>
 
                 <!-- Search Bar -->
                 <div class="search-bar-container">
-                    <form method="GET" action="catalogo.php" role="search" aria-label="Cerca nel catalogo"
+                    <form method="GET" action="catalog.php" role="search" aria-label="Cerca nel catalogo"
                         id="search-form">
                         <label for="catalog-search" class="sr-only">Cerca un disco, un artista o una versione</label>
                         <input type="search" id="catalog-search" name="q" value="[search_value]"
@@ -62,7 +62,6 @@
 
         <section class="catalog-content">
             <div class="center-container">
-                <h2 id="catalog-title">Catalogo Vinili</h2>
                 <div class="catalog-page">
                     <!-- Sidebar Filters (Desktop) -->
                     <aside id="filters" class="filters-sidebar" aria-label="Filtri di ricerca">
@@ -71,7 +70,7 @@
                                 aria-label="Elimina tutti i filtri">Elimina tutti i filtri</a>
                         </div>
 
-                        <form method="GET" action="catalogo.php" id="filters-form">
+                        <form method="GET" action="catalog.php" id="filters-form">
                             <!-- Anno di Pubblicazione -->
                             <fieldset class="filter-group">
                                 <legend>Anno di pubblicazione</legend>
@@ -115,8 +114,7 @@
                             </button>
                             <div id="mobile-filter-anno" class="mobile-filter-panel" hidden>
                                 <div class="filter-panel-content">
-                                    <h3>Anno di pubblicazione</h3>
-                                    <form method="GET" action="catalogo.php" class="mobile-filter-form"
+                                    <form method="GET" action="catalog.php" class="mobile-filter-form"
                                         id="mobile-form-anno">
                                         <div class="year-inputs">
                                             <label for="year-min-mobile" class="sr-only">Anno minimo di
@@ -151,8 +149,7 @@
                             </button>
                             <div id="mobile-filter-genere" class="mobile-filter-panel" hidden>
                                 <div class="filter-panel-content">
-                                    <h3>Genere</h3>
-                                    <form method="GET" action="catalogo.php" class="mobile-filter-form"
+                                    <form method="GET" action="catalog.php" class="mobile-filter-form"
                                         id="mobile-form-genere">
                                         <div class="genre-options">
                                             [genres_options_mobile]

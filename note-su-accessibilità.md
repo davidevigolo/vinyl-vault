@@ -35,7 +35,7 @@ Fornisce un'etichetta accessibile quando il testo visibile non è sufficiente o 
 **Esempi implementati:**
 ```html
 <!-- Link "Guarda tutti" con contesto -->
-<a href="catalogo.php?filter=recommended" aria-label="Guarda tutti i vinili raccomandati">Guarda tutti</a>
+<a href="catalog.php?filter=recommended" aria-label="Guarda tutti i vinili raccomandati">Guarda tutti</a>
 
 <!-- Link su card con contesto completo -->
 <a href="artist.php?id=[artist_id]" aria-label="Vai alla pagina di [artist_name]">
@@ -216,7 +216,7 @@ L'attributo `role="status"` con `aria-live="polite"` garantisce che screen reade
 ## Form Ricerca Catalogo
 
 ```html
-<form method="GET" action="catalogo.php" role="search" aria-label="Cerca nel catalogo">
+<form method="GET" action="catalog.php" role="search" aria-label="Cerca nel catalogo">
     <label for="catalog-search" class="sr-only">Cerca un disco, un artista o una versione</label>
     <input type="search" id="catalog-search" name="q" ... >
     <button type="submit" aria-label="Avvia ricerca nel catalogo">

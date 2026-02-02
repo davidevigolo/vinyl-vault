@@ -306,5 +306,5 @@ function build_remove_filter_url($type, $value = null) {
         unset($params['q']);
     }
 
-    return 'catalogo.php' . (count($params) > 0 ? '?' . http_build_query($params) : '');
+    return 'catalog.php' . (count($params) > 0 ? '?' . http_build_query($params) : '');
 }

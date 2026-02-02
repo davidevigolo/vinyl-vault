@@ -22,8 +22,10 @@ function footer_profile_nav_menu() {
 function footer_logged_profile_nav_links() {
     $currentPage = basename($_SERVER["PHP_SELF"]);
     return [
-        'profile' => $currentPage == 'profile.php' ? '<span class="current-page" aria-current="page">Profilo</span>' : '<a href="profile.php">Profilo</a>',
-        'logout' => '<a href="logout.php">Logout</a>'
+        'profile' => $currentPage == 'profile.php' ? '<li><span class="current-page" aria-current="page">Profilo</span></li>' : '<li><a href="profile.php">Profilo</a></li>',
+        'logout' => '<li><a href="logout.php">Logout</a></li>',
+        'wishlist' => $currentPage == 'wishlist.php' ? '<li><span class="current-page" aria-current="page">Lista desideri</span></li>' : '<li><a href="wishlist.php">Lista desideri</a></li>',
+        'collection' => $currentPage == 'collection.php' ? '<li><span class="current-page" aria-current="page">Collezione</span></li>' : '<li><a href="collection.php">Collezione</a></li>',
     ];
 }
 
@@ -39,7 +41,9 @@ function footer_site_nav_menu() {
     $currentPage = basename($_SERVER["PHP_SELF"]);
     return [
         'home' => $currentPage == 'index.php' || $currentPage == '' ? '<span class="current-page" lang="en" aria-current="page">Home</span>' : '<a href="index.php"><span lang="en">Home</span></a>',
-        'explore' => $currentPage == 'esplora.php' ? '<span class="current-page" aria-current="page">Esplora</span>' : '<a href="esplora.php">Esplora</a>',
-        'catalogue' => $currentPage == 'catalogo.php' ? '<span class="current-page" aria-current="page">Catalogo</span>' : '<a href="catalogo.php">Catalogo</a>'
+        'explore' => $currentPage == 'explore.php' ? '<span class="current-page" aria-current="page">Esplora</span>' : '<a href="explore.php">Esplora</a>',
+        'catalogue' => $currentPage == 'catalog.php' ? '<span class="current-page" aria-current="page">Catalogo</span>' : '<a href="catalog.php">Catalogo</a>',
+        'top_artists' => $currentPage == 'top_artists.php' ? '<span class="current-page" aria-current="page">Classifica Artisti</span>' : '<a href="top_artists.php">Classifica Artisti</a>',
+        'top_vinyls' => $currentPage == 'top_vinyls.php' ? '<span class="current-page" aria-current="page">Classifica Vinili</span>' : '<a href="top_vinyls.php">Classifica Vinili</a>'
     ];
 }

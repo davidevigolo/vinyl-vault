@@ -50,7 +50,7 @@ if ($genre_filter && is_array($genre_filter)) {
 }
 
 // Generate reset URL - complete reset to defaults
-$reset_url = 'catalogo.php';
+$reset_url = 'catalog.php';
 
 include 'php/components/header.php';
 include 'php/components/footer.php';
@@ -72,7 +72,7 @@ $admin_buttons = '<div id="admin-buttons-container">
                   <a href="add_artist.php" class="btn-secondary" aria-label="Vai alla pagina di aggiunta artista">Aggiungi Artista</a>
                   <a href="add_disk.php" class="btn-secondary" aria-label="Vai alla pagina di aggiunta disco">Aggiungi Disco</a>
                   <a href="add_edition.php" class="btn-secondary" aria-label="Vai alla pagina di aggiunta edizione">Aggiungi Edizione</a>
-                  <a href="add_genre.php" class="btn-secondary" aria-label="Vai alla pagina di aggiunta genere">Aggiungi Genere</a>
+                  <a href="add_tracks.php" class="btn-secondary" aria-label="Vai alla pagina di aggiunta tracce ad un\'edizione ">Aggiungi Tracce ad un\'Edizione</a>
                   </div>';
 
 echo Template::render(

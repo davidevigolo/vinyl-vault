@@ -10,6 +10,9 @@ const headerSearchForm = document.querySelector('.header-search-form');
 headerSearchContainer.setAttribute('role', 'search');
 
 function openSearch() {
+    if (!headerSearchToggle) {
+        return;
+    }
     headerSearchContainer.classList.add('visible');
     headerSearchToggle.setAttribute('aria-expanded', 'true');
     // Focus sull'input dopo l'animazione
@@ -19,20 +22,24 @@ function openSearch() {
 }
 
 function closeSearch() {
+    if (!headerSearchToggle) {
+        return;
+    }
     headerSearchContainer.classList.remove('visible');
     headerSearchToggle.setAttribute('aria-expanded', 'false');
     headerSearchToggle.focus();
 }
+if (headerSearchToggle) {
+    headerSearchToggle.addEventListener('click', function () {
+        const isVisible = headerSearchContainer.classList.contains('visible');
 
-headerSearchToggle.addEventListener('click', function () {
-    const isVisible = headerSearchContainer.classList.contains('visible');
-
-    if (isVisible) {
-        closeSearch();
-    } else {
-        openSearch();
-    }
-});
+        if (isVisible) {
+            closeSearch();
+        } else {
+            openSearch();
+        }
+    });
+}
 
 headerSearchInput.addEventListener('keydown', function (event) {
     if (event.key === 'Tab' && event.shiftKey) {

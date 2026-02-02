@@ -141,7 +141,7 @@
          </div>[m
      </div>[m
 [32m+[m[32m    <div class="header-search-container center-container" id="header-search-form">[m
-[32m+[m[32m        <form class="header-search-form" action="catalogo.php" method="GET">[m
+[32m+[m[32m        <form class="header-search-form" action="catalog.php" method="GET">[m
 [32m+[m[32m            <label for="header-search-input" class="sr-only">Cerca nel catalogo</label>[m
 [32m+[m[32m            <input type="search" id="header-search-input" name="q" class="header-search-input"[m
 [32m+[m[32m                placeholder="Cerca artisti, album..." aria-describedby="search-hint" />[m

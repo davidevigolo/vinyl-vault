@@ -160,7 +160,7 @@ La pagina album (`album.php`) mostra i dettagli di un singolo disco con tracklis
 
 ## Ricerca Catalogo
 
-Il catalogo (`catalogo.php`) implementa ricerca testuale su titolo, artista e edizione.
+Il catalogo (`catalog.php`) implementa ricerca testuale su titolo, artista e edizione.
 
 **Parametro**: Termine via GET (`?q=termine`), sanitizzato con `trim()` e usato con prepared statements + `LIKE`.
 

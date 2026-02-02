@@ -14,7 +14,7 @@ function _header() { /* _header instead of header since header() is a PHP built-
 
     echo Template::render('static/layout/header.html', array_merge($page_links, [
         'profile_nav_menu' => header_profile_nav_menu($is_logged_in),
-        'search_toggle' => basename($_SERVER["PHP_SELF"]) != 'catalogo.php' ? $search_toggle : '',
+        'search_toggle' => basename($_SERVER["PHP_SELF"]) != 'catalog.php' ? $search_toggle : '',
     ]));
     return ob_get_clean();
 }
@@ -29,8 +29,10 @@ function header_profile_nav_menu($is_logged_in) {
 function header_nav_menu_logged_links() {
     $currentPage = basename($_SERVER["PHP_SELF"]);
     return [
-        'profile' => $currentPage == 'profile.php' ? '<span class="btn-primary disabled" aria-current="page">Profilo</span>' : '<a href="profile.php" class="btn-primary">Profilo</a>',
-        'logout' => '<a href="logout.php" class="btn-primary">Logout</a>'
+        'profile' => $currentPage == 'profile.php' ? '<li><span class="btn-primary disabled" aria-current="page">Profilo</span></li>' : '<li><a href="profile.php" class="btn-primary">Profilo</a></li>',
+        'logout' => '<li><a href="logout.php" class="btn-primary">Logout</a></li>',
+        'wishlist' => '',
+        'collection' => '',
     ];
 }
 
@@ -46,7 +48,7 @@ function header_site_nav_menu() {
     $currentPage = basename($_SERVER["PHP_SELF"]);
     return [
         'home' => $currentPage == 'index.php' || $currentPage == '' ? '<span class="current-page" aria-current="page" lang="en">Home</span>' : '<a href="index.php"><span lang="en">Home</span></a>',
-        'explore' => $currentPage == 'esplora.php' ? '<span class="current-page" aria-current="page">Esplora</span>' : '<a href="esplora.php">Esplora</a>',
-        'catalogue' => $currentPage == 'catalogo.php' ? '<span class="current-page" aria-current="page">Catalogo</span>' : '<a href="catalogo.php">Catalogo</a>'
+        'explore' => $currentPage == 'explore.php' ? '<span class="current-page" aria-current="page">Esplora</span>' : '<a href="explore.php">Esplora</a>',
+        'catalogue' => $currentPage == 'catalog.php' ? '<span class="current-page" aria-current="page">Catalogo</span>' : '<a href="catalog.php">Catalogo</a>'
     ];
 }

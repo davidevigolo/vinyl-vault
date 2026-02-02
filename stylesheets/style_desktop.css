@@ -174,10 +174,6 @@ header .site-nav-links li {
     width: auto;
 }
 
-.footer-col ul {
-    text-align: center;
-}
-
 .footer-bottom {
     padding-top: 2rem;
 }
@@ -398,10 +394,6 @@ header .site-nav-links li {
     width: 24px;
     height: 24px;
     cursor: pointer;
-}
-
-.collection-grid-actions {
-    justify-content: flex-end;
 }
 
 img#empty-collection-image {

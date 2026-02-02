@@ -610,7 +610,7 @@ h2.page-title {
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
     width: 100%;
-    max-width: 20em;
+    max-width: 40em;
 }
 
 .footer-col h2 {
