@@ -29,6 +29,10 @@ function closeMenu() {
     menuToggle.setAttribute('aria-label', 'Apri menù');
 }
 
+function isMenuToggleVisible() {
+    return window.getComputedStyle(menuToggle).display !== 'none';
+}
+
 if (menuToggle && headerRight) {
     // Click toggle per utenti mouse
     menuToggle.addEventListener('click', () => {
@@ -36,14 +40,16 @@ if (menuToggle && headerRight) {
         isOpen ? closeMenu() : openMenu();
     });
 
-    // Apre il menu quando qualsiasi elemento riceve focus
+    // Apre il menu quando qualsiasi elemento riceve focus (solo mobile)
     headerRight.addEventListener('focusin', () => {
-        openMenu();
+        if (isMenuToggleVisible()) {
+            openMenu();
+        }
     });
 
-    // Chiude il menu quando il focus esce da headerRight
+    // Chiude il menu quando il focus esce da headerRight (solo mobile)
     headerRight.addEventListener('focusout', (e) => {
-        if (!headerRight.contains(e.relatedTarget)) {
+        if (isMenuToggleVisible() && !headerRight.contains(e.relatedTarget)) {
             closeMenu();
         }
     });

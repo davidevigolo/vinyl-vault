@@ -255,7 +255,7 @@ button[type="submit"] {
     text-align: center;
 }
 
-.card{
+.card {
     position: relative;
 }
 
@@ -382,13 +382,11 @@ header {
     padding-bottom: 0;
 }
 
-/* Con JS: header-container torna a una riga normale */
 .header-container.js-enabled,
 .header-container:has(.header-right.js-enabled) {
     padding-bottom: 1.3em;
 }
 
-/* Menu chiuso: elementi nascosti visivamente ma focusabili */
 .header-right.js-enabled:not(.is-open) .nav-links,
 .header-right.js-enabled:not(.is-open) .actions-group,
 .header-right.js-enabled:not(.is-open) .profile-nav {
@@ -1116,8 +1114,8 @@ footer .profile-links a:hover {
 
 /* Collection & Wishlist pages */
 
-.card-link{
-    position: absolute; 
+.card-link {
+    position: absolute;
     inset: 0;
     z-index: 1;
 }
