@@ -159,12 +159,18 @@ function handle_profile_picture($req, $files) {
 
     // Handle remove action
     if ($action === 'remove-propic') {
+        $current_propic = $_SESSION['propic_path'] ?? null;
+
         $query = "UPDATE users SET propic_path = NULL WHERE id = ?";
         $stmt = $conn->prepare($query);
         $stmt->bind_param("i", $user_id);
 
         if ($stmt->execute()) {
-            $_SESSION['propic_path'] = 'assets/images/default-avatar.webp';
+            // Delete the old file from the server
+            if ($current_propic && $current_propic !== 'assets/images/default-avatar.png' && file_exists($current_propic)) {
+                unlink($current_propic);
+            }
+            $_SESSION['propic_path'] = 'assets/images/default-avatar.png';
             return ['success' => true, 'message' => 'Foto profilo rimossa con successo'];
         } else {
             return ['success' => false, 'errors' => ['propic' => $internal_error]];
@@ -206,12 +212,15 @@ function handle_profile_picture($req, $files) {
         default => 'jpg'
     };
 
-    $upload_dir = 'assets/uploaded_images/profile_pictures/';
+    // Get current propic path to delete the old file later
+    $current_propic = $_SESSION['propic_path'] ?? null;
+
+    $upload_dir = 'assets/uploaded_images/propics/' . $user_id . '/';
     if (!is_dir($upload_dir)) {
         mkdir($upload_dir, 0755, true);
     }
 
-    $filename = 'user_' . $user_id . '_' . time() . '.' . $extension;
+    $filename = time() . '.' . $extension;
     $upload_path = $upload_dir . $filename;
 
     // Move uploaded file
@@ -222,6 +231,10 @@ function handle_profile_picture($req, $files) {
         $stmt->bind_param("si", $upload_path, $user_id);
 
         if ($stmt->execute()) {
+            // Delete the old file from the server
+            if ($current_propic && $current_propic !== 'assets/images/default-avatar.png' && file_exists($current_propic)) {
+                unlink($current_propic);
+            }
             $_SESSION['propic_path'] = $upload_path;
             return ['success' => true, 'message' => 'Foto profilo aggiornata con successo'];
         } else {

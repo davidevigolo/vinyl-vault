@@ -9,6 +9,11 @@ class DbConnection {
     private $username = 'dvigolo';
     private $password = 'oX2Uheib2phiequi';
 
+    // private $host = 'tecweb_mysql';
+    // private $database = 'tecweb_db';
+    // private $username = 'tecweb_user';
+    // private $password = 'tecweb_password';
+
     private function __construct() {
         try {
             $this->connection = new mysqli($this->host, $this->username, $this->password, $this->database);
