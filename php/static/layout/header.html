@@ -22,12 +22,30 @@
             </nav>
 
             <div class="actions-group"> 
-                <button class="search-toggle" aria-labelledby="search-btn-desc">
-                    <img class="search-icon" src="assets/images/search.webp" alt="" /><span class="sr-only" id="search-btn-desc">Cerca nel catalogo</span>
+                <button class="search-toggle" 
+                        aria-expanded="false" 
+                        aria-controls="header-search-form"
+                        aria-label="Apri ricerca nel catalogo">
+                    <img class="search-icon" src="assets/images/search.webp" alt="" />
                 </button>
-                <button class="theme-toggle" aria-labelledby="theme-btn-desc">
-                    <img class="theme-icon" src="assets/images/moon.webp" alt="" aria-hidden="true" /><span class="sr-only" id="theme-btn-desc">Cambia tema visivo</span>
+                <button class="theme-toggle" aria-label="Cambia tema visivo">
+                    <img class="theme-icon" src="assets/images/moon.webp" alt="" aria-hidden="true" />
                 </button>
+                
+                <!-- Search container posizionato vicino al pulsante -->
+                <div class="header-search-container" id="header-search-form">
+                    <form class="header-search-form" action="catalogo.php" method="GET">
+                        <label for="header-search-input" class="sr-only">Cerca nel catalogo</label>
+                        <input type="search" 
+                               id="header-search-input"
+                               name="q" 
+                               class="header-search-input" 
+                               placeholder="Cerca artisti, album..." 
+                               aria-describedby="search-hint" />
+                        <span id="search-hint" class="sr-only">Inserisci il nome di un artista o album per cercare nel catalogo</span>
+                        <button type="submit" class="btn-primary" aria-label="Esegui ricerca">Cerca</button>
+                    </form>
+                </div>
             </div>
             
             <nav class="profile-nav" aria-label='Menù di navigazione del profilo utente'>[profile_nav_menu]</nav>

@@ -13,24 +13,19 @@ function get_catalog_vinyls($genres = null, $year_min = null, $year_max = null, 
                  JOIN author a ON dar.author_id = a.id
                  WHERE dar.disk_id = ed.disk_id
                  LIMIT 1) as author_name,
+                (SELECT a.nationality FROM disk_author_release dar
+                 JOIN author a ON dar.author_id = a.id
+                 WHERE dar.disk_id = ed.disk_id
+                 LIMIT 1) as nationality,
                 YEAR(ed.release_date) as year,
                 (SELECT COUNT(*) FROM ownership o
-                 WHERE o.disk_id = ed.disk_id AND o.edition_name = ed.edition_name) as collection_count, a.nationality
+                 WHERE o.disk_id = ed.disk_id AND o.edition_name = ed.edition_name) as collection_count
               FROM edition ed
-              JOIN disk_author_release dar ON ed.disk_id = dar.disk_id
-              JOIN author a ON dar.author_id = a.id
               JOIN disk d ON ed.disk_id = d.id";
 
     $conditions = [];
     $params = [];
     $types = '';
-
-    // Join per la ricerca testuale (necessario per cercare nell'autore)
-    $need_author_join = ($search !== null && trim($search) !== '');
-    if ($need_author_join) {
-        $query .= " LEFT JOIN disk_author_release dar_search ON d.id = dar_search.disk_id";
-        $query .= " LEFT JOIN author a_search ON dar_search.author_id = a_search.id";
-    }
 
     if ($genres && is_array($genres) && count($genres) > 0) {
         $query .= " JOIN disk_genre_classification dgc ON d.id = dgc.disk_id";
@@ -45,7 +40,11 @@ function get_catalog_vinyls($genres = null, $year_min = null, $year_max = null, 
     // Ricerca testuale su titolo, artista e edizione
     if ($search !== null && trim($search) !== '') {
         $search_term = '%' . trim($search) . '%';
-        $conditions[] = "(d.title LIKE ? OR a_search.author_name LIKE ? OR ed.edition_name LIKE ?)";
+        $conditions[] = "(d.title LIKE ? OR ed.edition_name LIKE ? OR EXISTS (
+            SELECT 1 FROM disk_author_release dar_s 
+            JOIN author a_s ON dar_s.author_id = a_s.id 
+            WHERE dar_s.disk_id = d.id AND a_s.author_name LIKE ?
+        ))";
         $params[] = $search_term;
         $params[] = $search_term;
         $params[] = $search_term;
@@ -66,11 +65,6 @@ function get_catalog_vinyls($genres = null, $year_min = null, $year_max = null, 
 
     if (count($conditions) > 0) {
         $query .= " WHERE " . implode(' AND ', $conditions);
-    }
-
-    // Group by per evitare duplicati quando si fa JOIN con autori
-    if ($need_author_join) {
-        $query .= " GROUP BY ed.disk_id, ed.edition_name";
     }
     
     switch ($sort_by) {
