@@ -34,15 +34,6 @@ headerSearchToggle.addEventListener('click', function () {
     }
 });
 
-// Chiudi la ricerca se si clicca fuori
-document.addEventListener('click', function (event) {
-    if (!headerSearchContainer.contains(event.target) &&
-        !headerSearchToggle.contains(event.target) &&
-        headerSearchContainer.classList.contains('visible')) {
-        closeSearch();
-    }
-});
-
 headerSearchInput.addEventListener('keydown', function (event) {
     if (event.key === 'Tab' && event.shiftKey) {
         // Se Shift+Tab sul primo elemento, vai all'ultimo

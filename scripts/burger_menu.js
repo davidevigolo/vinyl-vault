@@ -41,14 +41,14 @@ if (menuToggle && headerRight) {
     });
 
     // Apre il menu quando qualsiasi elemento riceve focus (solo mobile)
-    headerRight.addEventListener('focusin', () => {
+    headerRight.addEventListener('focus', () => {
         if (isMenuToggleVisible()) {
             openMenu();
         }
     });
 
     // Chiude il menu quando il focus esce da headerRight (solo mobile)
-    headerRight.addEventListener('focusout', (e) => {
+    headerRight.addEventListener('blur', (e) => {
         if (isMenuToggleVisible() && !headerRight.contains(e.relatedTarget)) {
             closeMenu();
         }
