@@ -121,6 +121,16 @@ header {
     position: relative;
 }
 
+/* Header Search Container - Desktop */
+.header-search-container {
+    left: auto;
+    right: 0;
+    width: auto;
+    min-width: 400px;
+    max-width: 500px;
+    margin: 0;
+}
+
 .actions-group::after {
     content: "";
     display: block;
