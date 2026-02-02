@@ -2137,7 +2137,7 @@ img#empty-collection-image {
 #admin-buttons-container .btn-secondary {
     width: 100%;
     margin: 0;
-    font-size: var(--font-large);
+    font-size: var(--font-small);
     text-align: center;
     padding: 0.8rem 1rem;
     white-space: nowrap;
