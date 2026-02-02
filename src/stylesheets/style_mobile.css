@@ -569,6 +569,26 @@ h2.page-title {
     font-size: var(--font-xxl)
 }
 
+.current-page[aria-current="page"] {
+    font-weight: 600;
+    font-family: var(--font-secondary);
+    font-size: var(--font-large);
+}
+
+/* Icona sinistra */
+.current-page[aria-current="page"]::before {
+    content: "♪";
+    margin-right: 0.6rem;
+    font-size: var(--font-xl);
+}
+
+/* Icona destra */
+.current-page[aria-current="page"]::after {
+    content: "♪";
+    margin-left: 0.6rem;
+    font-size: var(--font-xl);
+}
+
 /* End Header */
 
 
@@ -1967,8 +1987,9 @@ img#empty-collection-image {
 
 .hero .artist-image,
 .hero #profile-image {
-    width: 20rem;
-    height: 20rem;
+    width: 100%;
+    max-width: 20em;
+    height: auto;
     border-radius: 50%;
     object-fit: cover;
 }
@@ -3288,14 +3309,18 @@ body.page-transitioning {
     gap: 1.5rem;
     padding: 1rem 0;
     list-style: none;
+    margin: 0;
+}
+
+#favorite-artists li {
     width: 100%;
 }
 
 .artist-item {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     gap: 1.5rem;
     padding: 1.2rem 1.2rem;
     background: var(--bg-surface);
@@ -3303,6 +3328,7 @@ body.page-transitioning {
     border-radius: 1.5rem;
     text-decoration: none;
     transition: transform 0.2s ease;
+    width: 100%;
 }
 
 .artist-item:hover {
@@ -3310,8 +3336,9 @@ body.page-transitioning {
 }
 
 .artist-item .artist-image {
-    width: 6em;
-    height: 6rem;
+    width: 100%;
+    max-width: 5em;
+    height: auto;
     border-radius: 50%;
     object-fit: cover;
     border: 1px solid var(--border-dark);
@@ -3319,9 +3346,11 @@ body.page-transitioning {
 }
 
 .artist-info {
+    min-width: 0; 
+    width: 100%; /* Forza l'occupazione dello spazio */
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    text-align: left;
     flex: 1;
 }
 
@@ -3331,6 +3360,11 @@ body.page-transitioning {
     font-family: var(--font-secondary);
     margin: 0;
     line-height: 1.2;
+    display: -webkit-box;
+    line-clamp: 1;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .artist-info p {
@@ -3338,16 +3372,16 @@ body.page-transitioning {
     color: var(--text-secondary);
     font-weight: 600;
     margin: 0.2rem 0 0 0;
+    text-align: center;
+    display: -webkit-box;
+    line-clamp: 1;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
-/*
-textarea {
-    width: 100%;
-    padding: 1rem;
-    font-size: var(--font-medium);
-    resize: vertical;
 
-}
+
 /* Edit Profile Page */
 
 #current-profile-img {
