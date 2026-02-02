@@ -783,17 +783,6 @@ footer .profile-links a:hover {
     margin: 0 auto;
 }
 
-.feature img {
-    grid-column: 1;
-    grid-row: 1;
-    width: 50px;
-    height: 50px;
-    object-fit: contain;
-    margin: 0;
-    justify-self: end;
-    margin-right: 0.5em;
-}
-
 .feature h3 {
     grid-column: 2;
     grid-row: 1;
@@ -812,6 +801,33 @@ footer .profile-links a:hover {
     text-align: center;
     margin-top: 0.5rem;
     line-height: 1.5;
+}
+
+.feature::before {
+    display: block;
+    content: "";
+    grid-column: 1;
+    grid-row: 1;
+    width: 50px;
+    height: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    justify-self: end;
+    margin-right: 0.5em;
+}
+
+/* 3. Assegna l'immagine specifica a ogni elemento della lista */
+.feature:nth-child(1)::before {
+    background-image: url('../assets/images/collection-icon.jpg');
+}
+
+.feature:nth-child(2)::before {
+    background-image: url('../assets/images/compass-icon.jpg');
+}
+
+.feature:nth-child(3)::before {
+    background-image: url('../assets/images/wishlist-icon.jpg');
 }
 
 #trending-vinyls>.center-container,
