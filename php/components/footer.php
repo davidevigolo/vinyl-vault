@@ -22,7 +22,7 @@ function footer_profile_nav_menu() {
 function footer_logged_profile_nav_links() {
     $currentPage = basename($_SERVER["PHP_SELF"]);
     return [
-        'profile' => $currentPage == 'profile.php' ? '<span class="current-page">Profilo</span>' : '<a href="profile.php">Profilo</a>',
+        'profile' => $currentPage == 'profile.php' ? '<span class="current-page" aria-current="page">Profilo</span>' : '<a href="profile.php">Profilo</a>',
         'logout' => '<a href="logout.php">Logout</a>'
     ];
 }
@@ -30,8 +30,8 @@ function footer_logged_profile_nav_links() {
 function footer_guest_profile_nav_links() {
     $currentPage = basename($_SERVER["PHP_SELF"]);
     return [
-        'login' => $currentPage == 'login.php' ? '<li>Accedi</li>' : '<li><a href="login.php">Accedi</a></li>',
-        'register' => $currentPage == 'register.php' ? '<li>Registrati</li>' : '<li><a href="register.php">Registrati</a></li>',
+        'login' => $currentPage == 'login.php' ? '<li aria-current="page">Accedi</li>' : '<li><a href="login.php">Accedi</a></li>',
+        'register' => $currentPage == 'register.php' ? '<li aria-current="page">Registrati</li>' : '<li><a href="register.php">Registrati</a></li>',
     ];
 }
 

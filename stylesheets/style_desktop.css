@@ -121,23 +121,12 @@ header {
     position: relative;
 }
 
-/* Header Search Container - Desktop */
-.header-search-container {
-    left: auto;
-    right: 0;
-    width: auto;
-    min-width: 400px;
-    max-width: 500px;
-    margin: 0;
-}
-
 .actions-group::after {
     content: "";
     display: block;
     width: 2px;
     height: 2.6em;
     background-color: #cccccc;
-    position: absolute;
     right: -1.2rem;
 }
 
@@ -172,7 +161,6 @@ header .site-nav-links li {
     justify-content: space-between;
     align-items: center;
     gap: 2rem;
-    padding-right: 8em;
     text-align: left;
 }
 

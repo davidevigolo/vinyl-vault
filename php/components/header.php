@@ -7,9 +7,14 @@ function _header() { /* _header instead of header since header() is a PHP built-
     ob_start();
 
     $page_links = header_site_nav_menu();
+    $search_toggle = '<button class="search-toggle" aria-expanded="false" aria-controls="header-search-form"
+                    aria-label="Apri ricerca nel catalogo">
+                    <img class="search-icon" src="assets/images/search.webp" alt="" />
+                </button>';
 
     echo Template::render('static/layout/header.html', array_merge($page_links, [
         'profile_nav_menu' => header_profile_nav_menu($is_logged_in),
+        'search_toggle' => basename($_SERVER["PHP_SELF"]) != 'catalogo.php' ? $search_toggle : '',
     ]));
     return ob_get_clean();
 }
@@ -24,7 +29,7 @@ function header_profile_nav_menu($is_logged_in) {
 function header_nav_menu_logged_links() {
     $currentPage = basename($_SERVER["PHP_SELF"]);
     return [
-        'profile' => $currentPage == 'profile.php' ? '<span class="btn-primary disabled">Profilo</span>' : '<a href="profile.php" class="btn-primary">Profilo</a>',
+        'profile' => $currentPage == 'profile.php' ? '<span class="btn-primary disabled" aria-current="page">Profilo</span>' : '<a href="profile.php" class="btn-primary">Profilo</a>',
         'logout' => '<a href="logout.php" class="btn-primary">Logout</a>'
     ];
 }

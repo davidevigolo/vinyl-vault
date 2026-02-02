@@ -259,6 +259,10 @@ button[type="submit"] {
     position: relative;
 }
 
+#header-actions.default-hidden {
+    display: none;
+}
+
 /* End general info */
 
 
@@ -465,27 +469,14 @@ header {
 
 /* Header Search Container */
 .header-search-container {
-    position: absolute;
-    top: calc(100% + 0.5rem);
-    left: 0;
-    right: 0;
-    background-color: var(--bg-surface);
-    border: 1px solid var(--border-default);
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     padding: 1rem;
-    z-index: 1002;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
+    display: none;
+    margin: auto;
     transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
-    margin: 0 1rem;
 }
 
 .header-search-container.visible {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+    display: block;
 }
 
 .header-search-form {
