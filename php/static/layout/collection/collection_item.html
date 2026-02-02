@@ -1,10 +1,20 @@
-<article class="collection-item" lang="[nationality]">
-    <a href="album.php?id=[disk_id]&edition=[edition_name_url]" class="card-link-wrapper disk-info" aria-label="[author] [title] [edition_name] [country] - [year] Valutazione personale:[rating_value] su 5 stelle, clicca per andare alla pagina con i dettagli dell'album">
+<article class="collection-item card disk-info ">
         <img src="[image_url]" alt="" loading="lazy">
         <div class="collection-item-details">
-            <p class="artist-name">[author]</p>
-            <h2 class="album-title">[title]</h2> <p class="edition-info">[edition_name]</p>
-            <p class="release-info">[country] - <time datetime="[year_datetime]">[year]</time></p>
+            <dl>
+                <dt class="sr-only">Autore:</dt>
+                <dd class="artist-name" lang="[nationality]">[author]</dd>
+                <dt class="sr-only">Titolo:</dt>
+                <dd>
+                    <h2 class="album-title" lang="[nationality]">[title]</h2>
+                </dd>
+                <dt class="sr-only">Edizione</dt>
+                <dd class="edition-info" lang="en">[edition_name]</dd>
+                <dt class="sr-only">Paese e data di rilascio:</dt>
+                <dd class="release-info">
+                    [country] - <time datetime="[year_datetime]">[year]</time>
+                </dd>
+            </dl>
 
             <div class="rating-section" role="img" 
                  aria-label="Valutazione: [rating_value] su 5 stelle" data-rating="[rating_value]">
@@ -17,7 +27,6 @@
                 </div>
                 <span class="evaluation-label">Valutazione personale</span>
             </div>
-            
+            <a href="album.php?id=[disk_id]&edition=[edition_name_url]" aria-label="Vai alla pagina dell'album [title] [edition_name]" class="card-link"></a>
         </div>
-    </a>
 </article>

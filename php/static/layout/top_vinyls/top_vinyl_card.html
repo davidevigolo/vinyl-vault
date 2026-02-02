@@ -1,14 +1,21 @@
-<a href="album.php?id=[disk_id]&edition=[ed_link_name]" class="card-link-wrapper"
-    aria-label="Vai alla pagina di [index]° [artist] [title] [ed_name]">
-    <article class="vinyl-card card">
-        <div class="card-image">
-            <p class="badge"><abbr title="[ordinal_index] posto">[index]°</abbr></p>
-            <img src="[cover_image]" alt="" loading="lazy">
-        </div>
-        <div class="card-content" lang="[lang]">
-            <p class="artist-name">[artist]</p>
-            <h3 class="album-title">[title]</h3>
-            <p class="edition-info" lang="en">[ed_name]</p>
-        </div>
-    </article>
-</a>
+<article class="vinyl-card card">
+    <div class="card-image">
+        <p class="badge"><abbr title="[ordinal_index] posto">[index]°</abbr></p>
+        <img src="[cover_image]" alt="" loading="lazy">
+    </div>
+    <div class="card-content">
+        <dl>
+            <dt class="sr-only">Autore:</dt>
+            <dd class="artist-name" lang="[lang]">[artist]</dd>
+            <dt class="sr-only">Titolo:</dt>
+            <dd>
+                <h3 class="album-title" lang="[lang]">[title]</h3>
+            </dd>
+            <dt class="sr-only">Edizione:</dt>
+            <dd class="edition-info" lang="en">[ed_name]</dd>
+
+        </dl>
+    </div>
+    <a href="album.php?id=[disk_id]&edition=[ed_link_name]" class="card-link"
+        aria-label="Vai alla pagina di [title] [ed_name]"></a>
+</article>

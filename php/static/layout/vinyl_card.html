@@ -1,13 +1,19 @@
-<article class="vinyl-card card" lang="[nationality]">
-    <a href="album.php?id=[disk_id]&edition=[ed_name_url]" class="card-link-wrapper"
-        aria-label="Vai alla pagina di [artist] [title] [ed_name]">
+<article class="vinyl-card card">
+    
         <div class="card-image">
             <img src="[cover_image]" loading="lazy" alt="" />
         </div>
         <div class="card-content">
-            <p class="artist-name">[artist]</p>
-            <h3 class="album-title">[title]</h3>
-            <p class="edition-info" lang="en">[ed_name]</p>
+            <dl>
+                <dt class="sr-only">Autore:</dt>
+                <dd class="artist-name" lang="[nationality]">[artist]</dd>
+                <dt class="sr-only">Titolo:</dt>
+                <dd>
+                    <h3 class="album-title" lang="[nationality]">[title]</h3>
+                </dd>
+                <dt class="sr-only">Edizione</dt>
+                <dd class="edition-info" lang="en">[ed_name]</dd>
+            </dl>
         </div>
-    </a>
+        <a href="album.php?id=[disk_id]&edition=[ed_name_url]" class="card-link" aria-label="Vai alla pagina di [title] [ed_name]"></a>
 </article>

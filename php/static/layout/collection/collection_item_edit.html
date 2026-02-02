@@ -2,10 +2,20 @@
     <div class="disk-info">
         <img src="[image_url]" alt="Copertina dell'album [title] di [author]" loading="lazy">
         <div class="collection-item-details">
-            <p class="artist-name">[author]</p>
-            <h2 class="album-title">[title]</h2>
-            <p class="edition-info">[edition_name]</p>
-            <p class="release-info">[country] - <time datetime="[year_datetime]">[year]</time></p>
+            <dl>
+                <dt class="sr-only">Autore:</dt>
+                <dd class="artist-name" lang="[nationality]">[author]</dd>
+                <dt class="sr-only">Titolo:</dt>
+                <dd>
+                    <h2 class="album-title" lang="[nationality]">[title]</h2>
+                </dd>
+                <dt class="sr-only">Edizione</dt>
+                <dd class="edition-info" lang="en">[edition_name]</dd>
+                <dt class="sr-only">Paese e data di rilascio:</dt>
+                <dd class="release-info">
+                    [country] - <time datetime="[year_datetime]">[year]</time>
+                </dd>
+            </dl>
             <fieldset class="rating">
                 <legend class="evaluation-label">Valutazione personale</legend>
                 <div class="stars-container" data-rating="[rating_value]">

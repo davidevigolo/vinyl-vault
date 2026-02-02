@@ -55,7 +55,7 @@ function album_versions($disk_id, $edition_name) {
     
     mysqli_stmt_close($stmt);
     
-    return '<section class="album-versions card-section" aria-labelledby="versions-heading">'
+    return '<section id="versions-section" class="album-versions card-section" aria-labelledby="versions-heading">'
          . '<div class="center-container">'
          . '<h2 id="versions-heading">Versioni</h2>'
          . '<div class="cards-container">'

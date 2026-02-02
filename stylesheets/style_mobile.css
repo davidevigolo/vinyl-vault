@@ -255,6 +255,10 @@ button[type="submit"] {
     text-align: center;
 }
 
+.card{
+    position: relative;
+}
+
 /* End general info */
 
 
@@ -1093,6 +1097,12 @@ footer .profile-links a:hover {
 
 
 /* Collection & Wishlist pages */
+
+.card-link{
+    position: absolute; 
+    inset: 0;
+    z-index: 1;
+}
 
 .page-banner {
     background: var(--bg-section);
@@ -2607,7 +2617,7 @@ html:not(.js-enabled) .load-more-container {
     border-bottom: none;
 }
 
-#top-vinyls>*:first-child .vinyl-card {
+#top-vinyls>*:first-child.vinyl-card {
     display: flex;
     flex-direction: row;
     text-align: left;
