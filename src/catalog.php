@@ -69,10 +69,14 @@ $year_max_options = render_year_options($year_range['min'], $year_range['max'], 
 
 $admin_buttons = '<div id="admin-buttons-container">
                   <p id="admin-options-title">Opzioni admin</p>
+                  <a href="add_genre.php" class="btn-secondary" aria-label="Vai alla pagina di aggiunta genere">Aggiungi Genere</a>
                   <a href="add_artist.php" class="btn-secondary" aria-label="Vai alla pagina di aggiunta artista">Aggiungi Artista</a>
                   <a href="add_disk.php" class="btn-secondary" aria-label="Vai alla pagina di aggiunta disco">Aggiungi Disco</a>
                   <a href="add_edition.php" class="btn-secondary" aria-label="Vai alla pagina di aggiunta edizione">Aggiungi Edizione</a>
+<<<<<<< HEAD
                   <a href="add_tracks.php" class="btn-secondary" aria-label="Vai alla pagina di aggiunta tracce ad un\'edizione ">Aggiungi Tracce ad un\'Edizione</a>
+=======
+>>>>>>> 7d714e75120ccb0c1ef17b2e9406ba42fb52144a
                   </div>';
 
 echo Template::render(
