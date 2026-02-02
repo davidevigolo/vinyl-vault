@@ -62,7 +62,6 @@ header {
     display: none;
 }
 
-/* Reset stili mobile per is-open su desktop */
 .header-right.is-open,
 .header-right.is-open:not(.js-enabled) {
     grid-column: auto;
@@ -78,7 +77,6 @@ header {
     background: none;
 }
 
-/* Override stili colonna mobile per nav items su desktop */
 .header-right.is-open .nav-links,
 .header-right.is-open .actions-group,
 .header-right.is-open .profile-nav {
@@ -93,13 +91,6 @@ header {
 
 .header-right.is-open .profile-nav ul {
     flex-direction: row;
-}
-
-.v-divider {
-    display: block;
-    width: 2px;
-    height: 2em;
-    background-color: #cccccc;
 }
 
 .actions-group {
@@ -681,31 +672,38 @@ p#empty-collection-paragraph {
 
 /* Top Vinyls Page */
 
-#top-vinyls {
+#top-vinyls,
+#top-artists {
     grid-template-columns: repeat(6, 1fr);
     gap: 1.5rem;
     margin: 2rem auto;
 }
 
 .vinyl-card img {
-    width: 100%;
+    max-width: 20em;
 }
 
-#top-vinyls > *:first-child {
+#top-vinyls > *:first-child,
+#top-artists > *:first-child {
     grid-column: 1 / 7;
 }
 
 #top-vinyls > *:nth-child(2),
-#top-vinyls > *:nth-child(3) {
+#top-vinyls > *:nth-child(3),
+#top-artists > *:nth-child(2),
+#top-artists > *:nth-child(3) {
     grid-column: span 3;
 }
 
-#top-vinyls > *:nth-child(n+4) {
+#top-vinyls > *:nth-child(n+4),
+#top-artists > *:nth-child(n+4) {
     grid-column: span 2;
 }
 
 #top-vinyls > *:nth-child(2) .vinyl-card,
-#top-vinyls > *:nth-child(3) .vinyl-card {
+#top-vinyls > *:nth-child(3) .vinyl-card,
+#top-artists > *:nth-child(2) .vinyl-card,
+#top-artists > *:nth-child(3) .vinyl-card {
     display: flex;
     flex-direction: row;
     text-align: left;
@@ -713,7 +711,9 @@ p#empty-collection-paragraph {
 
 }
 #top-vinyls > *:nth-child(2) .vinyl-card img,
-#top-vinyls > *:nth-child(3) .vinyl-card img {
+#top-vinyls > *:nth-child(3) .vinyl-card img,
+#top-artists > *:nth-child(2) .vinyl-card img,
+#top-artists > *:nth-child(3) .vinyl-card img  {
     width: 90%;
 }
 
@@ -728,8 +728,17 @@ p#empty-collection-paragraph {
 }
 
 #top-vinyls > *:nth-child(2) .edition-info,
-#top-vinyls > *:nth-child(3) .edition-info {
+#top-vinyls > *:nth-child(3) .edition-info  {
     font-size: var(--font-large);
+}
+
+#top-artists > *:first-child .artist-name {
+    font-size: var(--font-xl);
+}
+
+#top-vinyls > *:first-child img,
+#top-artists > *:first-child img {
+    max-width: 18em;
 }
 
 /* End Top Vinyls Page */
