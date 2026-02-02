@@ -15,16 +15,44 @@ if (headerRight && menuToggle) {
     }
 }
 
+function openMenu() {
+    headerRight.classList.add('is-open');
+    menuToggle.setAttribute('aria-expanded', 'true');
+    menuToggle.innerHTML = '<span aria-hidden="true">✕</span>';
+    menuToggle.setAttribute('aria-label', 'Chiudi menù');
+}
+
+function closeMenu() {
+    headerRight.classList.remove('is-open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.innerHTML = '<span aria-hidden="true">☰</span>';
+    menuToggle.setAttribute('aria-label', 'Apri menù');
+}
+
 if (menuToggle && headerRight) {
+    // Click toggle per utenti mouse
     menuToggle.addEventListener('click', () => {
-        const isOpen = headerRight.classList.toggle('is-open');
+        const isOpen = headerRight.classList.contains('is-open');
+        isOpen ? closeMenu() : openMenu();
+    });
 
-        menuToggle.setAttribute('aria-expanded', isOpen);
+    // Apre il menu quando qualsiasi elemento riceve focus
+    headerRight.addEventListener('focusin', () => {
+        openMenu();
+    });
 
-        menuToggle.innerHTML = isOpen ?
-            '<span aria-hidden="true">✕</span>' :
-            '<span aria-hidden="true">☰</span>';
+    // Chiude il menu quando il focus esce da headerRight
+    headerRight.addEventListener('focusout', (e) => {
+        if (!headerRight.contains(e.relatedTarget)) {
+            closeMenu();
+        }
+    });
 
-        menuToggle.setAttribute('aria-label', isOpen ? 'Chiudi menù' : 'Apri menù');
+    // Chiude il menu con Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && headerRight.classList.contains('is-open')) {
+            closeMenu();
+            menuToggle.focus();
+        }
     });
 }

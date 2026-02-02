@@ -388,10 +388,26 @@ header {
     padding-bottom: 1.3em;
 }
 
-.header-right .nav-links,
-.header-right .actions-group,
-.header-right .profile-nav {
-    display: none;
+/* Menu chiuso: elementi nascosti visivamente ma focusabili */
+.header-right.js-enabled:not(.is-open) .nav-links,
+.header-right.js-enabled:not(.is-open) .actions-group,
+.header-right.js-enabled:not(.is-open) .profile-nav {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Senza JS: menu sempre visibile */
+.header-right:not(.js-enabled) .nav-links,
+.header-right:not(.js-enabled) .actions-group,
+.header-right:not(.js-enabled) .profile-nav {
+    display: flex;
 }
 
 /* Toggle nascosto di default (senza JS il menu è sempre aperto) */
@@ -403,6 +419,8 @@ header {
     cursor: pointer;
     color: var(--text-primary);
     z-index: 1001;
+    order: -1;
+    /* Visivamente primo, ma ultimo nel DOM per tab order corretto */
 }
 
 /* Con JS: toggle visibile */
@@ -1194,7 +1212,7 @@ footer .profile-links a:hover {
     font-size: var(--font-large);
 }
 
-.delete-selection fieldset{
+.delete-selection fieldset {
     border: none;
     padding: 0;
     margin: 0;
@@ -1263,12 +1281,12 @@ footer .profile-links a:hover {
     color: var(--text-secondary);
 }
 
-.rating input:checked + label::before{
+.rating input:checked+label::before {
     color: var(--text-secondary);
 }
 
 
-.rating input:focus + label {
+.rating input:focus+label {
     outline: 2px solid #005fcc;
 }
 
@@ -1548,7 +1566,7 @@ img#empty-collection-image {
     gap: 0.3em;
 }
 
-.album-genres{
+.album-genres {
     list-style: none;
 }
 
@@ -1640,8 +1658,8 @@ img#empty-collection-image {
 }
 
 .rating-group label:hover,
-.rating-group label:hover ~ label,
-.rating-group input:checked ~ label {
+.rating-group label:hover~label,
+.rating-group input:checked~label {
     color: var(--brand-primary);
 }
 
@@ -1679,7 +1697,7 @@ img#empty-collection-image {
     color: var(--text-primary);
     line-height: 1.6;
     word-wrap: break-word;
-} 
+}
 
 .error-message {
     color: var(--bg-error);
@@ -1689,8 +1707,8 @@ img#empty-collection-image {
 }
 
 .review-username {
-    margin-left: 0.8rem; 
-    display: inline-block; 
+    margin-left: 0.8rem;
+    display: inline-block;
 }
 
 #reviews article h3 .review-username {
@@ -1754,9 +1772,9 @@ img#empty-collection-image {
 
 #edition-info-section dl {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); 
+    grid-template-columns: repeat(3, 1fr);
     grid-auto-flow: column;
-    
+
     text-align: center;
     padding: 2rem 1rem;
     border: 2px dashed var(--border-dark);
@@ -2750,7 +2768,7 @@ html:not(.js-enabled) .load-more-container {
 #registration-form .input-wrapper,
 #add-pages-form .input-wrapper,
 #profile-picture-form .input-wrapper,
-#personal-info-form .input-wrapper, 
+#personal-info-form .input-wrapper,
 #password-form .input-wrapper,
 #review-form .input-wrapper {
     text-align: left;
@@ -2788,7 +2806,7 @@ html:not(.js-enabled) .load-more-container {
 #add-pages-form,
 #select-disk-edition-form,
 #profile-picture-form,
-#personal-info-form, 
+#personal-info-form,
 #password-form,
 #review-form {
     margin-bottom: 1.5em;
@@ -2852,7 +2870,7 @@ html:not(.js-enabled) .load-more-container {
 #add-pages,
 #edit-profile,
 #password,
-#review-form  {
+#review-form {
     background-color: var(--bg-section);
     border: 1px solid var(--border-default);
     border-radius: 1.3em;
@@ -3033,7 +3051,7 @@ body.page-transitioning {
     transform: none;
 }
 
-.remove-track-button{
+.remove-track-button {
     background-color: var(--bg-page);
     border-radius: 1em;
     border: 1px solid var(--border-default);
@@ -3276,5 +3294,3 @@ textarea {
 
 
 /* Edit Profile Page */
-
-
