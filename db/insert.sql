@@ -1284,6 +1284,23 @@ INSERT INTO ownership (user_id, disk_id, edition_name, date_acquired, rating) VA
 (1, 28, 'Standard Edition', '2024-01-12 16:30:00', 4),   -- Starboy
 (1, 114, 'Standard Edition', '2024-03-01 11:20:00', NULL),  -- E poi siamo finiti nel vortice
 (1, 143, 'Standard Edition', '2024-05-15 14:00:00', 5),  -- SOS
+(1, 29, 'Standard Edition', '2024-01-01 10:00:00', NULL),
+(1, 39, 'Standard Edition', '2024-01-01 10:00:00', 1),
+(1, 60, 'Standard Edition', '2024-01-01 10:00:00', 2),
+(1, 84, 'Standard Edition', '2024-01-01 10:00:00', 3),
+(1, 49, 'Opaque White Edition', '2024-01-01 10:00:00', 4),
+(1, 75, 'Standard Edition', '2024-01-01 10:00:00', 5),
+(1, 55, 'Blue Edition', '2024-01-01 10:00:00', NULL),
+(1, 113, 'Standard Edition', '2024-01-01 10:00:00', 1),
+(1, 37, 'White Edition', '2024-01-01 10:00:00', 2),
+(1, 142, 'Translucent Green Edition', '2024-01-01 10:00:00', 3),
+(1, 130, 'Standard Edition', '2024-01-01 10:00:00', 4),
+(1, 24, 'Standard Edition', '2024-01-01 10:00:00', 5),
+(1, 102, 'Pink Edition', '2024-01-01 10:00:00', NULL),
+(1, 143, 'Transparent Blue Edition', '2024-01-01 10:00:00', 1),
+(1, 13, 'Standard Edition', '2024-01-01 10:00:00', 2),
+(1, 83, 'Standard Edition', '2024-01-01 10:00:00', 3),
+(1, 5, 'Moonstone Blue Edition', '2024-01-01 10:00:00', 4),
 
 -- Stan Smith (User 2 - L'audiofilo selettivo)
 (2, 39, 'Standard Edition', '2022-12-01 08:30:00', 1),   -- Abbey Road
@@ -1294,6 +1311,18 @@ INSERT INTO ownership (user_id, disk_id, edition_name, date_acquired, rating) VA
 (2, 102, 'Pink Edition', '2023-10-05 13:15:00', NULL),      -- Confessions on a Dance Floor
 (2, 120, 'Standard Edition', '2023-12-24 18:30:00', 2),  -- Nevermind
 (2, 137, 'Standard Edition', '2024-02-14 09:00:00', 4),  -- Hackney Diamonds
+(2, 29, 'Standard Edition', '2024-01-01 10:00:00', 5),
+(2, 60, 'Red Edition', '2024-01-01 10:00:00', NULL),
+(2, 12, 'Standard Edition', '2024-01-01 10:00:00', 1),
+(2, 114, 'Standard Edition', '2024-01-01 10:00:00', 2),
+(2, 130, 'Standard Edition', '2024-01-01 10:00:00', 3),
+(2, 4, 'Meet Me Behind The Mall (Grey Edition)', '2024-01-01 10:00:00', 4),
+(2, 120, 'Silver Edition (Anniversary)', '2024-01-01 10:00:00', 5),
+(2, 37, 'Standard Edition', '2024-01-01 10:00:00', NULL),
+(2, 137, 'Clear Edition', '2024-01-01 10:00:00', 1),
+(2, 121, 'Clear Edition', '2024-01-01 10:00:00', 2),
+(2, 40, 'Standard Edition', '2024-01-01 10:00:00', 3),
+(2, 30, 'Standard Edition', '2024-01-01 10:00:00', 4),
 
 -- Mike Johnson (User 3 - Il rocker puro)
 (3, 53, 'Standard Edition', '2023-02-10 14:00:00', 4),   -- The Hunting Party
@@ -1304,6 +1333,16 @@ INSERT INTO ownership (user_id, disk_id, edition_name, date_acquired, rating) VA
 (3, 121, 'Standard Edition', '2023-09-12 18:10:00', 3),  -- In Utero
 (3, 127, 'Standard Edition', '2023-11-05 09:30:00', 4),  -- Stiff Upper Lip
 (3, 130, 'Standard Edition', '2024-02-28 14:00:00', NULL),  -- Power Up
+(3, 29, 'Standard Edition', '2024-01-01 10:00:00', 5),
+(3, 39, 'Standard Edition', '2024-01-01 10:00:00', NULL),
+(3, 84, 'Standard Edition', '2024-01-01 10:00:00', 1),
+(3, 93, 'Standard Edition', '2024-01-01 10:00:00', 2),
+(3, 4, 'Standard Edition', '2024-01-01 10:00:00', 3),
+(3, 75, 'Standard Edition', '2024-01-01 10:00:00', 4),
+(3, 69, 'Standard Edition', '2024-01-01 10:00:00', 5),
+(3, 137, 'Standard Edition', '2024-01-01 10:00:00', NULL),
+(3, 40, 'Standard Edition', '2024-01-01 10:00:00', 1),
+(3, 56, 'Standard EP', '2024-01-01 10:00:00', 2),
 
 -- Sarah Williams (User 4 - L'alternativa e collezionista di edizioni speciali)
 (4, 3, 'Pink & Blue Edition', '2023-04-12 12:00:00', 5), -- Lover
@@ -1313,7 +1352,119 @@ INSERT INTO ownership (user_id, disk_id, edition_name, date_acquired, rating) VA
 (4, 60, 'Red Edition', '2023-11-12 16:45:00', NULL),        -- Born to Die
 (4, 61, 'Standard Edition', '2023-12-05 13:00:00', 4),   -- Ultraviolence
 (4, 84, 'Standard Edition', '2024-02-10 09:30:00', 1),   -- Fake News
-(4, 142, 'Standard Edition', '2024-04-22 17:00:00', 2);  -- Ctrl
+(4, 142, 'Standard Edition', '2024-04-22 17:00:00', 2),  -- Ctrl
+(4, 29, 'Standard Edition', '2024-01-01 10:00:00', 3),
+(4, 39, 'Standard Edition', '2024-01-01 10:00:00', 4),
+(4, 60, 'Standard Edition', '2024-01-01 10:00:00', 5),
+(4, 84, 'Pink Edition', '2024-01-01 10:00:00', NULL),
+(4, 12, 'Neon Pink Edition', '2024-01-01 10:00:00', 1),
+(4, 49, 'Standard Edition', '2024-01-01 10:00:00', 2),
+(4, 114, 'Ruby Red Edition', '2024-01-01 10:00:00', 3),
+(4, 93, 'Standard Edition', '2024-01-01 10:00:00', 4),
+(4, 22, 'Standard Edition', '2024-01-01 10:00:00', 5),
+(4, 120, 'Standard Edition', '2024-01-01 10:00:00', NULL),
+(4, 69, 'Red Edition', '2024-01-01 10:00:00', 1),
+(4, 113, 'Red Edition', '2024-01-01 10:00:00', 2),
+(4, 47, 'Standard Edition', '2024-01-01 10:00:00', 3),
+(4, 130, 'Red Edition', '2024-01-01 10:00:00', 4),
+(4, 24, 'Ruby Edition', '2024-01-01 10:00:00', 5),
+(4, 102, 'Pink Edition', '2024-01-01 10:00:00', NULL),
+(4, 143, 'Standard Edition', '2024-01-01 10:00:00', 1),
+(4, 13, 'Red Edition', '2024-01-01 10:00:00', 2),
+(4, 83, 'Green Edition', '2024-01-01 10:00:00', 3),
+(4, 30, 'Silver Edition', '2024-01-01 10:00:00', 4),
+(4, 5, 'Blood Moon Edition', '2024-01-01 10:00:00', 5);
+
+
+-- Aggiunta
+INSERT INTO author (author_name, image_path, nationality, bio_author) VALUES
+('Gracie Abrams', 'assets/images/artists/gracie_abrams.jpg', 'us', 'Cantautrice indie-pop nota per i suoi testi confessionali e la collaborazione con Aaron Dessner.');
+
+INSERT INTO disk (title, disk_type, label) VALUES
+('The Secret of Us', 'Album', 'Interscope Records'),
+('Close To You', 'Single', 'Interscope Records');
+
+INSERT INTO disk_author_release (disk_id, author_id) VALUES
+(150, 19),
+(151, 19);
+
+INSERT INTO disk_genre_classification (disk_id, genre_name) VALUES
+(150, 'Pop'),
+(151, 'Pop');
+
+INSERT INTO track (title, duration_seconds) VALUES
+('Felt Good About You', 164), ('Risk', 191), ('Blowing Smoke', 213), ('Free Now', 219),
+('Let It Happen', 260), ('Tough Love', 169), ('I Knew It, I Know You', 252), ('Gave It To You I Did', 141),
+('Normal Thing', 242), ('Good Luck Charlie', 236), ('You Learned It', 171), ('I Love You, I’m Sorry', 157),
+('us (feat. Taylor Swift)', 242), ('Close To You', 225);
+
+INSERT INTO edition (disk_id, edition_name, release_date, image_path, country) VALUES
+(150, 'Standard Edition', '2024-06-21', 'assets/images/covers/the_secret_of_us.jpg', 'US'),
+(151, 'Yellow Vinyl Single', '2024-06-07', 'assets/images/covers/close_to_you.jpg', 'US');
+
+INSERT INTO edition_track_part_of (disk_id, edition_name, track_id, track_number) VALUES
+(150, 'Standard Edition', 741, 1), (150, 'Standard Edition', 742, 2), (150, 'Standard Edition', 743, 3),
+(150, 'Standard Edition', 744, 4), (150, 'Standard Edition', 745, 5), (150, 'Standard Edition', 746, 6),
+(150, 'Standard Edition', 747, 7), (150, 'Standard Edition', 748, 8), (150, 'Standard Edition', 749, 9),
+(150, 'Standard Edition', 750, 10), (150, 'Standard Edition', 751, 11), (150, 'Standard Edition', 752, 12),
+(150, 'Standard Edition', 753, 13), (151, 'Yellow Vinyl Single', 754, 1);
+
+
+INSERT INTO wishlist (user_id, disk_id, edition_name, priority_level) VALUES
+-- Maria Rossi (User 1)
+(1, 29, 'Standard Edition', 3),     -- The Dark Side of the Moon
+(1, 60, 'Standard Edition', 2),     -- Born to Die
+(1, 3, 'Pink & Blue Edition', 3),   -- Lover (Edizione speciale esistente)
+(1, 137, 'Clear Edition', 1),       -- Hackney Diamonds (Edizione speciale esistente)
+(1, 12, 'Neon Pink Edition', 3),    -- Future Nostalgia (Edizione speciale esistente)
+(1, 49, 'Standard Edition', 2),     -- A Moon Shaped Pool
+(1, 84, 'Pink Edition', 1),         -- Fake News (Edizione speciale esistente)
+(1, 75, 'Standard Edition', 3),     -- The Wall
+(1, 130, 'Red Edition', 2),         -- Power Up (Edizione speciale esistente)
+(1, 114, 'Standard Edition', 1),    -- E poi siamo finiti nel vortice
+(1, 142, 'Standard Edition', 2),    -- Ctrl
+(1, 102, 'Pink Edition', 1),        -- Confessions on a Dance Floor
+
+-- Stan Smith (User 2)
+(2, 47, 'Standard Edition', 3),     -- In Rainbows
+(2, 120, 'Standard Edition', 2),    -- Nevermind
+(2, 113, 'Red Edition', 3),         -- Relax (Edizione speciale esistente)
+(2, 69, 'Red Edition', 2),          -- The Fame Monster (Edizione speciale esistente)
+(2, 121, 'Clear Edition', 1),       -- In Utero (Edizione speciale esistente)
+(2, 143, 'Standard Edition', 3),    -- SOS
+(2, 13, 'Red Edition', 2),          -- Radical Optimism (Edizione speciale esistente)
+(2, 83, 'Green Edition', 1),        -- The Dark Side... (altra variante se esiste o disco simile)
+(2, 22, 'Standard Edition', 3),     -- thank u, next
+(2, 114, 'Ruby Red Edition', 2),    -- E poi siamo finiti nel vortice
+(2, 93, 'Standard Edition', 1),     -- AM
+(2, 4, 'Meet Me Behind The Mall (Grey Edition)', 3), -- folklore (Edizione esistente)
+(2, 56, 'Standard EP', 2),          -- Club Future Nostalgia
+
+-- Mike Johnson (User 3)
+(3, 119, 'Standard Edition', 3),    -- Bleach
+(3, 55, 'Standard Edition', 1),     -- From Zero
+(3, 40, 'Standard Edition', 2),     -- Let It Be
+(3, 130, 'Standard Edition', 1),    -- Power Up
+(3, 23, 'Coke Bottle Clear Edition', 3), -- Positions (Edizione speciale esistente)
+(3, 28, 'Translucent Red Edition', 2),   -- Starboy (Edizione speciale esistente)
+(3, 61, 'Standard Edition', 1),     -- Ultraviolence
+(3, 54, 'Standard Edition', 3),     -- One More Light
+(3, 37, 'Standard Edition', 2),     -- White Album
+(3, 142, 'Translucent Green Edition', 1), -- Ctrl (Edizione speciale esistente)
+
+-- Sarah Williams (User 4)
+(4, 30, 'Standard Edition', 3),     -- Dawn FM
+(4, 13, 'Standard Edition', 2),     -- Radical Optimism
+(4, 83, 'Standard Edition', 1),     -- (Disco ID 83)
+(4, 143, 'Transparent Blue Edition', 3), -- SOS (Edizione speciale esistente)
+(4, 12, 'Standard Edition', 2),     -- Future Nostalgia
+(4, 49, 'Opaque White Edition', 1), -- A Moon Shaped Pool (Edizione speciale esistente)
+(4, 120, 'Silver Edition (Anniversary)', 3), -- Nevermind (Edizione speciale esistente)
+(4, 4, 'Standard Edition', 2),      -- folklore
+(4, 137, 'Standard Edition', 1),    -- Hackney Diamonds
+(4, 78, 'Standard Edition', 3),     -- The Division Bell
+(4, 29, 'Standard Edition', 1),     -- The Dark Side of the Moon
+(4, 93, 'Standard Edition', 3);
 
 
 -- Re-enable foreign key checks

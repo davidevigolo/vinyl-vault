@@ -10,7 +10,7 @@
     }
 }
 
-/* browser che non supportano clamp */
+/* browser that non supports clamp */
 @supports not (font-size: clamp(1rem, 1vi, 1rem)) {
     :root {
         --font-small: 0.875rem;
@@ -221,13 +221,21 @@ header .site-nav-links li {
 }
 
 /* Presentation Section */
-
 .features {
+    border-top: 0.1em solid var(--border-default);
+    display: flex;
+    gap: 3rem;
+    margin-top: 1.5rem;
+    padding-top: 2.5rem;
+    list-style: none;
     flex-direction: row;
     justify-content: space-between;
 }
 
 .feature {
+    display: grid;
+    gap: 0.5rem 1rem;
+    justify-content: center;
     grid-template-columns: auto 1fr;
     grid-template-rows: auto 1fr;
     align-items: start;
@@ -236,6 +244,10 @@ header .site-nav-links li {
 }
 
 .feature img {
+    grid-column: 1;
+    grid-row: 1;
+    object-fit: contain;
+    margin: 0;
     width: 12em;
     height: auto;
     justify-self: start;
@@ -244,15 +256,29 @@ header .site-nav-links li {
 }
 
 .feature h3 {
+    grid-column: 2;
+    grid-row: 1;
+    text-align: left;
+    margin: 0;
+    font-weight: 700;
+    color: var(--text-primary);
     font-size: var(--font-large);
     align-items: start;
     align-self: center;
 }
 
-.feature p {
+.feature>p {
+    grid-column: 1 / span 2;
+    grid-row: 2;
+    font-size: var(--font-medium);
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 0.5rem;
+    line-height: 1.5;
     height: 100%;
     align-items: start;
 }
+
 
 /* Card Section */
 #trending-vinyls > .center-container,

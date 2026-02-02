@@ -53,7 +53,6 @@
     --hero-logo-img: url('../assets/images/logo-full-light.png');
 }
 
-/* colori tema scura */
 :root[data-theme="dark"] {
     /* Backgrounds */
     --bg-page: #1c1c1c;
@@ -103,7 +102,6 @@
 
 @supports (font-size: clamp(1rem, 1vi, 1rem)) {
     :root {
-        /* Minimi ridotti drasticamente, massimi ripristinati per schermi grandi */
         --font-small: clamp(0.7rem, 0.52rem + 0.9vw, 1.2rem);
         --font-medium: clamp(0.85rem, 0.65rem + 1vw, 1.4rem);
         --font-large: clamp(1rem, 0.78rem + 1.1vw, 1.6rem);
@@ -113,7 +111,7 @@
     }
 }
 
-/* Fallback per browser che non supportano clamp - valori mediamente piccoli */
+/* browser that non supports clamp */
 @supports not (font-size: clamp(1rem, 1vi, 1rem)) {
     :root {
         --font-small: 0.9rem;
