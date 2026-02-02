@@ -167,10 +167,10 @@ function handle_profile_picture($req, $files) {
 
         if ($stmt->execute()) {
             // Delete the old file from the server
-            if ($current_propic && $current_propic !== 'assets/images/default-avatar.png' && file_exists($current_propic)) {
+            if ($current_propic && $current_propic !== 'assets/images/default-avatar.webp' && file_exists($current_propic)) {
                 unlink($current_propic);
             }
-            $_SESSION['propic_path'] = 'assets/images/default-avatar.png';
+            $_SESSION['propic_path'] = 'assets/images/default-avatar.webp';
             return ['success' => true, 'message' => 'Foto profilo rimossa con successo'];
         } else {
             return ['success' => false, 'errors' => ['propic' => $internal_error]];
@@ -232,7 +232,7 @@ function handle_profile_picture($req, $files) {
 
         if ($stmt->execute()) {
             // Delete the old file from the server
-            if ($current_propic && $current_propic !== 'assets/images/default-avatar.png' && file_exists($current_propic)) {
+            if ($current_propic && $current_propic !== 'assets/images/default-avatar.webp' && file_exists($current_propic)) {
                 unlink($current_propic);
             }
             $_SESSION['propic_path'] = $upload_path;
