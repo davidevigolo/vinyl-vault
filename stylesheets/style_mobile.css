@@ -49,8 +49,8 @@
     --text-on-primary: #FFFFFF;
 
     /* Images */
-    --small-logo-img: url('../assets/images/logo-min-light.png');
-    --hero-logo-img: url('../assets/images/logo-full-light.png');
+    --small-logo-img: url('../assets/images/logo-min-light.webp');
+    --hero-logo-img: url('../assets/images/logo-full-light.webp');
 }
 
 /* colori tema scura */
@@ -97,8 +97,8 @@
     /* Button text on colored backgrounds */
     --text-on-primary: #000000;
 
-    --small-logo-img: url('../assets/images/logo-min-dark.png');
-    --hero-logo-img: url('../assets/images/logo-full-dark.png');
+    --small-logo-img: url('../assets/images/logo-min-dark.webp');
+    --hero-logo-img: url('../assets/images/logo-full-dark.webp');
 }
 
 @supports (font-size: clamp(1rem, 1vi, 1rem)) {

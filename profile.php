@@ -21,13 +21,13 @@ echo Template::render('static/profile.html', array_merge(
         'head' => Template::render('static/layout/head.html', []),
         'header' => _header(),
         'footer' => footer(),
-        'remove-propic-disabled' => ($_SESSION['propic_path'] ?? '') === 'assets/images/default-avatar.png' ? 'disabled="disabled"' : '',
+        'remove-propic-disabled' => ($_SESSION['propic_path'] ?? '') === 'assets/images/default-avatar.webp' ? 'disabled="disabled"' : '',
     ]
 ));
 
 function user_info() {
     return [
-        'propic_path' => $_SESSION['propic_path'] ?? 'assets/images/default-avatar.png',
+        'propic_path' => $_SESSION['propic_path'] ?? 'assets/images/default-avatar.webp',
         'username' => htmlspecialchars($_SESSION['username']),
         'first_name' => htmlspecialchars($_SESSION['first_name']),
         'last_name' => htmlspecialchars($_SESSION['last_name']),
@@ -188,7 +188,7 @@ function favorite_artists() {
     $artists_html = '';
     while ($artist = mysqli_fetch_assoc($result)) {
         $disk_text = $artist['disk_count'] == 1 ? '1 disco' : $artist['disk_count'] . ' dischi';
-        $image = $artist['image_path'] ? htmlspecialchars($artist['image_path']) : 'assets/images/default-artist.png';
+        $image = $artist['image_path'] ? htmlspecialchars($artist['image_path']) : 'assets/images/default-artist.webp';
 
         $artists_html .= Template::render('static/layout/profile/favorite_artist_item.html', [
             'artist-id' => htmlspecialchars($artist['id']),

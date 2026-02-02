@@ -37,7 +37,7 @@
     --bg-error: #d93025;
 
 
-    --hero-logo-img: url('../assets/images/logo-full-light.png');
+    --hero-logo-img: url('../assets/images/logo-full-light.webp');
 }
 
 /* colori tema scura */
@@ -72,7 +72,7 @@
     --bg-error: #ff6f64;
 
 
-    --hero-logo-img: url('../assets/images/logo-full-dark.png');
+    --hero-logo-img: url('../assets/images/logo-full-dark.webp');
 }
 
 /* browser che supportano clamp */
@@ -290,7 +290,7 @@ header {
 h1.hide {
     /* Image Replacement Technique */
     display: block;
-    background-image: url('../assets/images/logo-min.png');
+    background-image: url('../assets/images/logo-min.webp');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: left center;
@@ -464,7 +464,7 @@ header nav.site-nav {
 #main-footer .footer-logo .hide {
     /* Image Replacement Technique */    
     display: block;
-    background-image: url('../assets/images/logo-min.png');
+    background-image: url('../assets/images/logo-min.webp');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: left center;

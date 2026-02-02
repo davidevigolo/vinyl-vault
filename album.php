@@ -41,6 +41,8 @@ echo Template::render(
         'disk_type' => htmlspecialchars($album_data['disk_type']),
         'release_date' => htmlspecialchars($album_data['release_date']),
         'country' => htmlspecialchars($album_data['country']),
+        'artist_nationality' => htmlspecialchars(get_nationality_languages()[strtolower($album_data['nationality'])]),
+        'album_nationality' => htmlspecialchars(get_nationality_languages()[strtolower($album_data['country'])]),
         'label' => htmlspecialchars($album_data['label']),
         'ownership_count' => $album_data['ownership_count'],
         'wishlist_count' => $album_data['wishlist_count'],

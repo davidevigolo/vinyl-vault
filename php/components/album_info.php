@@ -6,7 +6,7 @@ function get_album_info($disk_id, $edition_name) {
     
     // Main album info query without avg_rating
     $stmt = mysqli_prepare($connection->get_connection(), 
-        "SELECT d.id, d.title, d.disk_type, a.id as artist_id, e.edition_name as edition_name, e.release_date as release_date, d.label as label, e.country as country, a.author_name as artist_name, 
+        "SELECT d.id, d.title, d.disk_type, a.id as artist_id, e.edition_name as edition_name, e.release_date as release_date, d.label as label, e.country as country, a.author_name as artist_name, a.nationality,
                 YEAR(e.release_date) as release_year, e.image_path,
                 COUNT(DISTINCT r.user_id) as review_count
          FROM disk d

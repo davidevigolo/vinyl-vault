@@ -5,7 +5,7 @@ html{
 
 header h1{
     margin-left: 0em;
-    content: url('../assets/images/logo-min-light.png');
+    content: url('../assets/images/logo-min-light.webp');
 }
 
 /* Hide navigation and interactive elements */

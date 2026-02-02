@@ -164,7 +164,7 @@ function handle_profile_picture($req, $files) {
         $stmt->bind_param("i", $user_id);
 
         if ($stmt->execute()) {
-            $_SESSION['propic_path'] = 'assets/images/default-avatar.png';
+            $_SESSION['propic_path'] = 'assets/images/default-avatar.webp';
             return ['success' => true, 'message' => 'Foto profilo rimossa con successo'];
         } else {
             return ['success' => false, 'errors' => ['propic' => $internal_error]];

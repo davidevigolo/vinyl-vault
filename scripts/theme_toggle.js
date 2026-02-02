@@ -7,7 +7,7 @@ const applyTheme = (theme) => {
     const themeIcon = themeToggle?.querySelector('.theme-icon');
     if (themeIcon) {
         // switch icon
-        themeIcon.src = theme === 'light' ? 'assets/images/moon.png' : 'assets/images/sun.png';
+        themeIcon.src = theme === 'light' ? 'assets/images/moon.webp' : 'assets/images/sun.webp';
         themeIcon.alt = theme === 'light' ? 'Attiva tema scuro' : 'Attiva tema chiaro';
     }
 

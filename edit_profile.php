@@ -20,7 +20,7 @@ $fields = [
     'username' => $_SESSION['username'] ?? '',
     'email' => $_SESSION['email'] ?? '',
     'bio' => $_SESSION['bio'] ?? '',
-    'propic_path' => $_SESSION['propic_path'] ?? 'assets/images/default-avatar.png',
+    'propic_path' => $_SESSION['propic_path'] ?? 'assets/images/default-avatar.webp',
 ];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             'username' => $_SESSION['username'],
             'email' => $_SESSION['email'],
             'bio' => $_SESSION['bio'] ?? '',
-            'propic_path' => $_SESSION['propic_path'] ?? 'assets/images/default-avatar.png'
+            'propic_path' => $_SESSION['propic_path'] ?? 'assets/images/default-avatar.webp'
         ];
         $success_message = $result['message'] ?? '';
     } else {
@@ -81,7 +81,7 @@ echo Template::render(
         'personal-info-success' => success_container('personal-info-success-container', $success_message, 'personal-info'),
         'password-form-error' => error_container('password-form-error-container', $errors['password_form'] ?? ''),
         'password-success' => success_container('password-success-container', $success_message, 'password'),
-        'remove-propic-disabled' => ($_SESSION['propic_path'] ?? '') === 'assets/images/default-avatar.png' ? 'disabled="disabled"' : '',
+        'remove-propic-disabled' => ($_SESSION['propic_path'] ?? '') === 'assets/images/default-avatar.webp' ? 'disabled="disabled"' : '',
     ]
 );
 
