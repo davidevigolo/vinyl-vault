@@ -61,7 +61,6 @@
     --bg-subsection: #003861;
     /* Blu8 - Banner secondari */
     --bg-surface: #0d0d0d;
-    ;
     --bg-header: rgba(36, 40, 44, 0.95);
 
     /* Texts */
@@ -1065,7 +1064,6 @@ footer .profile-links a:hover {
 /* Call to Action */
 #call-to-action {
     padding: 1.5rem 1rem;
-    margin-bottom: 2em;
 }
 
 .cta-banner {
@@ -1127,7 +1125,7 @@ footer .profile-links a:hover {
 
 #album-week img {
     width: 100%;
-    max-width: 22em;
+    max-width: 17em;
     height: auto;
     object-fit: contain;
     border-radius: 2rem;
@@ -1979,12 +1977,6 @@ img#empty-collection-image {
 
 /* Artist Page */
 
-#albums-title,
-#singles-title,
-#similar-artists-title {
-    margin-top: 1.2em;
-}
-
 .hero .artist-image,
 .hero #profile-image {
     width: 100%;
@@ -2112,7 +2104,7 @@ img#empty-collection-image {
 
 #admin-buttons-container {
     background-color: var(--bg-subsection);
-    border: 2px dashed var(--border-default);
+    border: 2px dashed var(--text-primary);
     border-radius: 1.3em;
     margin: 2.5em auto 1em auto;
     padding: 1.5rem;
@@ -2206,7 +2198,7 @@ img#empty-collection-image {
     font-family: var(--font-primary);
     font-size: var(--font-xl);
     margin-bottom: 1em;
-    margin-top: 1.5em;
+    margin-top: 0.5em;
     color: var(--text-primary);
 }
 
@@ -3296,8 +3288,8 @@ body.page-transitioning {
     grid-column: 2;
     grid-row: 1 / span 2;
     display: block;
-    width: 2.5em;
-    height: 2.5em;
+    width: 2em;
+    height: 2em;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -3308,7 +3300,7 @@ body.page-transitioning {
 #edition-stats li h3 {
     grid-column: 1;
     grid-row: 1;
-    font-size: var(--font-xxl);
+    font-size: var(--font-large);
     font-family: var(--font-secondary);
     color: var(--text-primary);
     font-weight: 700;
