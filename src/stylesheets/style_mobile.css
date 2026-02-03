@@ -2269,7 +2269,7 @@ img#empty-collection-image {
 
 .genre-options {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     gap: 1rem 0.5rem;
 }
 
@@ -2290,6 +2290,7 @@ img#empty-collection-image {
 
 .filter-option label {
     cursor: pointer;
+    text-align: left;
     font-size: var(--font-medium);
 }
 
@@ -3359,8 +3360,9 @@ body.page-transitioning {
 }
 
 .artist-info {
-    min-width: 0; 
-    width: 100%; /* Forza l'occupazione dello spazio */
+    min-width: 0;
+    width: 100%;
+    /* Forza l'occupazione dello spazio */
     overflow: hidden;
     display: flex;
     flex-direction: column;

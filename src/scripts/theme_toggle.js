@@ -19,7 +19,10 @@ const applyTheme = (theme) => {
         }
     }
 
-
+    const searchIconCatalog = document.getElementById('catalog-search-icon');
+    if (searchIconCatalog) {
+        searchIconCatalog.src = theme === 'light' ? 'assets/images/search-dark.webp' : 'assets/images/search-light.webp';
+    }
 
     // save changes
     localStorage.setItem('selected-theme', theme);
