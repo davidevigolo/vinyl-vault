@@ -342,7 +342,6 @@ h1.hide {
 
 .nav-links a {
     position: relative;
-    text-decoration: none;
     font-size: var(--font-medium);
     font-weight: 400;
 }

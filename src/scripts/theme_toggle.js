@@ -12,12 +12,14 @@ const applyTheme = (theme) => {
         themeIcon.alt = theme === 'light' ? 'Attiva tema scuro' : 'Attiva tema chiaro';
     }
 
-    const searchIcon = searchToggle?.querySelector('.search-icon');
-    if (themeIcon) {
-        searchIcon.src = theme === 'light' ? 'assets/images/search-light.webp' : 'assets/images/search-dark.webp';
+    if (searchToggle) {
+        const searchIcon = searchToggle?.querySelector('.search-icon');
+        if (themeIcon) {
+            searchIcon.src = theme === 'light' ? 'assets/images/search-light.webp' : 'assets/images/search-dark.webp';
+        }
     }
 
-    
+
 
     // save changes
     localStorage.setItem('selected-theme', theme);
