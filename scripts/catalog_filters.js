@@ -56,26 +56,6 @@ if (sessionStorage.getItem('showYearHint')) {
 const desktopForm = document.getElementById('filters-form');
 const mobileForms = document.querySelectorAll('.mobile-filter-form');
 
-// Create screen reader announcement area if not exists
-let srAnnouncement = document.getElementById('sr-announcements');
-if (!srAnnouncement) {
-    srAnnouncement = document.createElement('div');
-    srAnnouncement.id = 'sr-announcements';
-    srAnnouncement.setAttribute('role', 'status');
-    srAnnouncement.setAttribute('aria-live', 'polite');
-    srAnnouncement.setAttribute('aria-atomic', 'true');
-    srAnnouncement.className = 'sr-only';
-    document.body.appendChild(srAnnouncement);
-}
-
-// to announce filter change
-function announceFilterChange(message) {
-    const srAnnouncement = document.getElementById('sr-announcements');
-    if (srAnnouncement) {
-        srAnnouncement.textContent = message;
-    }
-}
-
 // to save scroll and submit with smooth transition
 function saveScrollAndSubmit(form) {
     // For mobile forms, sync all URL parameters before submit
@@ -373,13 +353,11 @@ if (sortSelect) {
     });
 }
 
-// Debounced search functionality
-const searchForm = document.getElementById('search-form');
+// search (removed auto-search)
 const searchInput = document.getElementById('catalog-search');
 const clearSearchBtn = document.getElementById('clear-search-btn');
-let searchTimer;
 
-if (searchInput && searchForm) {
+if (searchInput) {
     // Update clear button visibility
     function updateClearButtonVisibility() {
         if (clearSearchBtn) {
@@ -394,26 +372,8 @@ if (searchInput && searchForm) {
     // Initialize visibility
     updateClearButtonVisibility();
 
-    // Debounced search on input
-    searchInput.addEventListener('input', () => {
-        updateClearButtonVisibility();
-
-        clearTimeout(searchTimer);
-        searchTimer = setTimeout(() => {
-            const query = searchInput.value.trim();
-            // Only auto-search if there's text or if clearing a previous search
-            const currentQuery = new URLSearchParams(window.location.search).get('q');
-            if (query !== '' || currentQuery) {
-                announceFilterChange('Ricerca in corso...');
-                sessionStorage.setItem('catalogScrollPosition', window.scrollY.toString());
-                sessionStorage.setItem('focusElementId', 'catalog-search');
-                document.body.classList.add('page-transitioning');
-                setTimeout(() => {
-                    searchForm.submit();
-                }, 150);
-            }
-        }, 1000); // 1 second debounce
-    });
+    // Update clear button visibility on input
+    searchInput.addEventListener('input', updateClearButtonVisibility);
 
     // Clear search button
     if (clearSearchBtn) {
@@ -433,12 +393,4 @@ if (searchInput && searchForm) {
             }, 150);
         });
     }
-
-    // Still allow Enter to search immediately
-    searchInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            clearTimeout(searchTimer);
-            // Let the form submit naturally
-        }
-    });
 }
