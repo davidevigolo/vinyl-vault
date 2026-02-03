@@ -998,6 +998,7 @@ footer .profile-links a:hover {
 }
 
 .card-image img {
+    max-width: 20rem;
     width: 100%;
     height: auto;
     aspect-ratio: 1 / 1;
