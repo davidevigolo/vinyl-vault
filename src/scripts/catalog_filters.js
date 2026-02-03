@@ -403,7 +403,10 @@ if (searchInput && searchForm) {
                 sessionStorage.setItem('focusElementId', 'results-count');
                 document.body.classList.add('page-transitioning');
                 setTimeout(() => {
-                    searchForm.submit();
+                    // Build URL with hash to ensure screen readers jump to results
+                    const formData = new FormData(searchForm);
+                    const params = new URLSearchParams(formData);
+                    window.location.href = searchForm.action.split('#')[0] + '?' + params.toString() + '#results-count';
                 }, 150);
             }
         }, 1000); // 1 second debounce
@@ -414,7 +417,7 @@ if (searchInput && searchForm) {
         if (e.key === 'Enter') {
             clearTimeout(searchTimer);
             sessionStorage.setItem('focusElementId', 'results-count');
-            // Let the form submit naturally
+            // Let the form submit naturally - form action includes #results-count
         }
     });
 }
