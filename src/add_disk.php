@@ -7,6 +7,7 @@ include 'php/components/footer.php';
 include 'php/components/add_disk_form.php';
 
 check_user_logged_in();
+check_user_is_admin();
 
 if (isset($_SESSION['add_disk_result']['success']) && $_SESSION['add_disk_result']['success']) {
     unset($_SESSION['add_disk_result']);

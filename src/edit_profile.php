@@ -20,7 +20,7 @@ $fields = [
     'username' => $_SESSION['username'] ?? '',
     'email' => $_SESSION['email'] ?? '',
     'bio' => $_SESSION['bio'] ?? '',
-    'propic_path' => $_SESSION['propic_path'] ?? 'assets/images/default-avatar.webp',
+    'propic_path' => !isset($_SESSION['propic_path']) || $_SESSION['propic_path'] == '' ? 'assets/images/default-avatar.webp' : $_SESSION['propic_path'],
 ];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             'username' => $_SESSION['username'],
             'email' => $_SESSION['email'],
             'bio' => $_SESSION['bio'] ?? '',
-            'propic_path' => $_SESSION['propic_path'] ?? 'assets/images/default-avatar.webp'
+            'propic_path' => !isset($_SESSION['propic_path']) || $_SESSION['propic_path'] == '' ? 'assets/images/default-avatar.webp' : $_SESSION['propic_path']
         ];
         $success_message = $result['message'] ?? '';
     } else {
@@ -81,7 +81,7 @@ echo Template::render(
         'personal-info-success' => success_container('personal-info-success-container', $success_message, 'personal-info'),
         'password-form-error' => error_container('password-form-error-container', $errors['password_form'] ?? ''),
         'password-success' => success_container('password-success-container', $success_message, 'password'),
-        'remove-propic-disabled' => ($_SESSION['propic_path'] ?? '') === 'assets/images/default-avatar.webp' ? 'disabled="disabled"' : '',
+        'remove-propic-disabled' => !isset($_SESSION['propic_path']) || $_SESSION['propic_path'] === '' || $_SESSION['propic_path'] === 'assets/images/default-avatar.webp' ? 'disabled="disabled"' : '',
     ]
 );
 
@@ -98,7 +98,7 @@ function success_container($id, $success_msg, $form_type) {
     }
     // Only show success message if it matches the form type
     $form_type_map = [
-        'profile-picture' => ['Foto profilo aggiornata'],
+        'profile-picture' => ['Foto profilo'],
         'personal-info' => ['Informazioni personali'],
         'password' => ['Password']
     ];

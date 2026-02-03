@@ -20,8 +20,19 @@ function check_user_logged_in()
         session_start();
     }
     if (!isset($_SESSION['user_id'])) {
-        header("Location: /403.php");
+        header("Location: /dvigolo/403.php");
         //http_response_code(403);
+        exit();
+    }
+}
+
+function check_user_is_admin()
+{
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+    if (!isset($_SESSION['user_id']) || $_SESSION['user_id'] != 1) {
+        header("Location: /dvigolo/403.php");
         exit();
     }
 }
