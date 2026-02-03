@@ -26,6 +26,17 @@ function check_user_logged_in()
     }
 }
 
+function check_user_is_admin()
+{
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+    if (!isset($_SESSION['user_id']) || $_SESSION['user_id'] != 1) {
+        header("Location: /403.php");
+        exit();
+    }
+}
+
 function get_nationality_codes()
 {
     return [

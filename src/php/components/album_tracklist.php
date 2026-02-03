@@ -5,9 +5,10 @@ function album_tracklist($disk_id, $edition_name) {
     $connection = DbConnection::get_instance();
     
     $stmt = mysqli_prepare($connection->get_connection(),
-        "SELECT t.id, t.title, t.duration_seconds, etp.track_number
+        "SELECT t.id, t.title, t.duration_seconds, etp.track_number, e.country
          FROM track t
          JOIN edition_track_part_of etp ON t.id = etp.track_id
+         JOIN edition e ON etp.disk_id = e.disk_id AND etp.edition_name = e.edition_name
          WHERE etp.disk_id = ? AND etp.edition_name = ?
          ORDER BY etp.track_number ASC"
     );
@@ -37,7 +38,9 @@ function album_tracklist($disk_id, $edition_name) {
         echo Template::render('static/layout/album/track_item.html', [
             'track_number' => $row['track_number'],
             'track_title' => htmlspecialchars($row['title']),
-            'track_duration' => $duration
+            'lang' => htmlspecialchars($row['country']),
+            'track_duration' => $duration,
+            'track_duration_datetime' => sprintf('%dm %02ds', $minutes, $seconds),
         ]);
     }
     $tracks_html = ob_get_clean();

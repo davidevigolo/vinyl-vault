@@ -7,6 +7,7 @@ include 'php/components/footer.php';
 include 'php/components/add_tracks_form.php';
 
 check_user_logged_in();
+check_user_is_admin();
 
 if(isset($_SESSION['add_tracks_result']['success']) && $_SESSION['add_tracks_result']['success']) {
     unset($_SESSION['add_tracks_result']);
