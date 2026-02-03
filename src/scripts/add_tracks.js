@@ -2,6 +2,19 @@ this.document.getElementById('disk').value == '' ? this.document.getElementById(
 this.document.getElementById('disk').value == '' ? this.document.getElementById('add-track-button').disabled = true : null;
 this.document.querySelectorAll('.track-fieldset').forEach((fieldset, index) => fieldset.getAttribute('data-display') === 'false' ? fieldset.style.display = 'none' : null);
 
+// Focus on first visible track input after form submission
+requestAnimationFrame(() => {
+    const firstVisibleFieldset = Array.from(document.querySelectorAll('.track-fieldset')).find(fieldset => 
+        fieldset.getAttribute('data-display') === 'true' && getComputedStyle(fieldset).display !== 'none'
+    );
+    if (firstVisibleFieldset) {
+        const firstInput = firstVisibleFieldset.querySelector('input:not([type="hidden"]):not([disabled])');
+        if (firstInput) {
+            firstInput.focus();
+        }
+    }
+});
+
 this.document.getElementById('disk').addEventListener('input', function () {
     let errorMessage = document.getElementById('disk-error');
     let editionInput = document.getElementById('edition');
@@ -112,6 +125,12 @@ this.document.getElementById('add-track-button').addEventListener('click', funct
         input.required = true;
         input.disabled = false;
     });
+    
+    // Set focus on the first input of the newly shown track
+    const firstInput = hiddenFieldset.querySelector('input:not([type="hidden"])');
+    if (firstInput) {
+        firstInput.focus();
+    }
 });
 
 // Handle remove track button clicks using event delegation

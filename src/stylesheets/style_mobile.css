@@ -2882,6 +2882,7 @@ html:not(.js-enabled) .load-more-container {
 #add-pages-form legend,
 #profile-picture-form legend,
 #personal-info-form legend,
+#select-disk-edition-form legend,
 #password-form legend {
     font-weight: 700;
     color: var(--text-secondary);

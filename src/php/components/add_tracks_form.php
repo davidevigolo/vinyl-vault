@@ -105,6 +105,7 @@ function add_tracks_form($_disk, $_edition, $_titles, $_durations, $errors = [])
     }
     $first_track_index = get_last_track_number($_disk, $_edition);
     $input_rules = '<ul class="input-examples">
+                    <li><abbr title="ad esempio">es.</abbr> "Titolo traccia 1"</li>
                     <li>Massimo 200 caratteri</li>
                     <li>Caratteri consentiti: lettere, numeri e spazi</li>
                     </ul>';
