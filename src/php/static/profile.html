@@ -38,9 +38,16 @@
                 <img id="profile-image" src="[propic_path]" alt="">
 
                 <div class="hero-text">
-                    <h2 id="profile-heading"><span class="sr-only">profilo di </span>[username]</h2>
-                    <p id="user-name">[first_name] [last_name]</p>
-                    <p id="user-bio">[user_bio]</p>
+                    <dl>
+                        <dt class="sr-only">Nome Utente</dt>
+                        <dd id="profile-heading">
+                            <h2>[username]</h2>
+                        </dd>
+                        <dt class="sr-only">Nome</dt>
+                        <dd id="user-name">[first_name] [last_name]</dd>
+                        <dt class="sr-only">Biografia</dt>
+                        <dd id="user-bio">[user_bio]</dd>
+                    </dl>
                     <a href="edit_profile.php" id="edit-profile-button" class="btn-primary">Modifica profilo</a>
                 </div>
             </div>
