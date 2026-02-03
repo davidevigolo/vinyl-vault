@@ -1884,6 +1884,10 @@ img#empty-collection-image {
 
 /* Tracklist */
 
+.track-list-item{
+    list-style-type: none;
+}
+
 .tracklist-section {
     padding-top: 3rem;
     padding-bottom: 4em;
