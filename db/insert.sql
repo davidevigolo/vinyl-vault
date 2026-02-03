@@ -1366,104 +1366,63 @@ INSERT INTO edition_track_part_of (disk_id, edition_name, track_id, track_number
 
 INSERT INTO wishlist (user_id, disk_id, edition_name, priority_level) VALUES
 -- Maria Rossi (User 1)
-(1, 29, 'Standard Edition', 4),     -- The Dark Side of the Moon
-(1, 60, 'Standard Edition', 19),     -- Born to Die
-(1, 3, 'Pink & Blue Edition', 3),   -- Lover (Edizione speciale esistente)
-(1, 137, 'Clear Edition', 99),       -- Hackney Diamonds (Edizione speciale esistente)
-(1, 12, 'Neon Pink Edition', 75),    -- Future Nostalgia (Edizione speciale esistente)
-(1, 49, 'Standard Edition', 69),     -- A Moon Shaped Pool
-(1, 84, 'Pink Edition', 67),         -- Fake News (Edizione speciale esistente)
-(1, 75, 'Standard Edition', 3),     -- The Wall
-(1, 130, 'Red Edition', 14),         -- Power Up (Edizione speciale esistente)
-(1, 114, 'Standard Edition', 100),    -- E poi siamo finiti nel vortice
-(1, 142, 'Standard Edition', 76),    -- Ctrl
-(1, 102, 'Pink Edition', 1),        -- Confessions on a Dance Floor
+(1, 3, 'Pink & Blue Edition', 3),
+(1, 137, 'Clear Edition', 99),
+(1, 12, 'Neon Pink Edition', 75),
+(1, 49, 'Standard Edition', 69),
+(1, 84, 'Pink Edition', 67),
+(1, 130, 'Red Edition', 14),
+(1, 142, 'Standard Edition', 76),
+(1, 5, 'Blood Moon Edition', 10),
+(1, 13, 'Red Edition', 41),
+(1, 24, 'Ruby Edition', 67),
+(1, 30, 'Silver Edition', 89),
+(1, 78, 'Blue Edition', 1),
+(1, 114, 'Ruby Red Edition', 99),
 
 -- Stan Smith (User 2)
-(2, 47, 'Standard Edition', 67),     -- In Rainbows
-(2, 120, 'Standard Edition', 67),    -- Nevermind
-(2, 113, 'Red Edition', 67),         -- Relax (Edizione speciale esistente)
-(2, 69, 'Red Edition', 67),          -- The Fame Monster (Edizione speciale esistente)
-(2, 121, 'Clear Edition', 67),       -- In Utero (Edizione speciale esistente)
-(2, 143, 'Standard Edition', 67),    -- SOS
-(2, 13, 'Red Edition', 67),          -- Radical Optimism (Edizione speciale esistente)
-(2, 83, 'Green Edition', 67),        -- The Dark Side... (altra variante se esiste o disco simile)
-(2, 22, 'Standard Edition', 67),     -- thank u, next
-(2, 114, 'Ruby Red Edition', 67),    -- E poi siamo finiti nel vortice
-(2, 93, 'Standard Edition', 67),     -- AM
-(2, 4, 'Meet Me Behind The Mall (Grey Edition)', 67), -- folklore (Edizione esistente)
-(2, 56, 'Standard EP', 67),          -- Club Future Nostalgia
+(2, 113, 'Red Edition', 67),
+(2, 69, 'Red Edition', 67),
+(2, 143, 'Standard Edition', 67),
+(2, 13, 'Red Edition', 67),
+(2, 83, 'Green Edition', 67),
+(2, 22, 'Standard Edition', 67),
+(2, 114, 'Ruby Red Edition', 67),
+(2, 93, 'Standard Edition', 67),
+(2, 56, 'Standard EP', 67),
+(2, 49, 'Opaque White Edition', 3),
+(2, 55, 'Blue Edition', 2),
+(2, 61, 'Blue & Violet Edition', 3),
 
 -- Mike Johnson (User 3)
-(3, 119, 'Standard Edition', 3),    -- Bleach
-(3, 55, 'Standard Edition', 1),     -- From Zero
-(3, 40, 'Standard Edition', 2),     -- Let It Be
-(3, 130, 'Standard Edition', 1),    -- Power Up
-(3, 23, 'Coke Bottle Clear Edition', 3), -- Positions (Edizione speciale esistente)
-(3, 28, 'Translucent Red Edition', 2),   -- Starboy (Edizione speciale esistente)
-(3, 61, 'Standard Edition', 1),     -- Ultraviolence
-(3, 54, 'Standard Edition', 3),     -- One More Light
-(3, 37, 'Standard Edition', 2),     -- White Album
-(3, 142, 'Translucent Green Edition', 1), -- Ctrl (Edizione speciale esistente)
+(3, 23, 'Coke Bottle Clear Edition', 3),
+(3, 28, 'Translucent Red Edition', 2),
+(3, 61, 'Standard Edition', 1),
+(3, 37, 'Standard Edition', 2),
+(3, 142, 'Translucent Green Edition', 1),
+(3, 46, 'Standard Edition', 1),
+(3, 119, 'White Edition', 2),
+(3, 121, 'Clear Edition', 3),
+(3, 130, 'Red Edition', 3),
+(3, 136, 'Standard Edition', 1),
 
 -- Sarah Williams (User 4)
-(4, 30, 'Standard Edition', 3),     -- Dawn FM
-(4, 13, 'Standard Edition', 2),     -- Radical Optimism
-(4, 83, 'Standard Edition', 1),     -- (Disco ID 83)
-(4, 143, 'Transparent Blue Edition', 3), -- SOS (Edizione speciale esistente)
-(4, 12, 'Standard Edition', 2),     -- Future Nostalgia
-(4, 49, 'Opaque White Edition', 1), -- A Moon Shaped Pool (Edizione speciale esistente)
-(4, 120, 'Silver Edition (Anniversary)', 3), -- Nevermind (Edizione speciale esistente)
-(4, 4, 'Standard Edition', 2),      -- folklore
-(4, 137, 'Standard Edition', 1),    -- Hackney Diamonds
-(4, 78, 'Standard Edition', 3),     -- The Division Bell
-(4, 29, 'Standard Edition', 1),     -- The Dark Side of the Moon
-(4, 93, 'Standard Edition', 3);
-
--- Maria Rossi (User 1 - Admin & Pop Fan)
-(1, 5, 'Blood Moon Edition', 3),       -- Midnights (Edizione speciale)
-(1, 13, 'Red Edition', 2),             -- Radical Optimism
-(1, 24, 'Ruby Edition', 3),             -- eternal sunshine
-(1, 30, 'Silver Edition', 1),           -- Dawn FM
-(1, 37, 'White Edition', 3),            -- White Album
-(1, 78, 'Blue Edition', 2),             -- The Division Bell
-(1, 114, 'Ruby Red Edition', 2),        -- E poi siamo finiti nel vortice
-(1, 143, 'Transparent Blue Edition', 3), -- SOS
-
--- Stan Smith (User 2 - Audiophile & Jazz Lover)
-(2, 39, 'Standard Edition', 3),         -- Abbey Road (Classico imperdibile)
-(2, 49, 'Opaque White Edition', 3),     -- A Moon Shaped Pool (Edizione limitata)
-(2, 55, 'Blue Edition', 2),             -- From Zero (Versione colorata)
-(2, 61, 'Blue & Violet Edition', 3),    -- Ultraviolence
-(2, 75, 'Standard Edition', 3),         -- The Wall (Pezzo fondamentale)
-(2, 102, 'Pink Edition', 2),            -- Confessions on a Dance Floor
-(2, 120, 'Silver Edition (Anniversary)', 3), -- Nevermind (Ristampa audiofila)
-(2, 137, 'Clear Edition', 2),           -- Hackney Diamonds
-
--- Mike Johnson (User 3 - Rock and Roll Fan)
-(3, 46, 'Standard Edition', 1),         -- Hail to the Thief
-(3, 53, 'Standard Edition', 2),         -- The Hunting Party
-(3, 56, 'Standard EP', 3),              -- Hybrid Theory EP (Rarità)
-(3, 119, 'White Edition', 2),           -- Bleach
-(3, 121, 'Clear Edition', 3),           -- In Utero
-(3, 127, 'Standard Edition', 2),        -- Stiff Upper Lip
-(3, 130, 'Red Edition', 3),             -- Power Up
-(3, 136, 'Standard Edition', 1),        -- Blue & Lonesome
-
--- Sarah Williams (User 4 - Alternative & Collector)
-(4, 3, 'Pink & Blue Edition', 3),       -- Lover (Edizione colorata)
-(4, 4, 'Meet Me Behind The Mall (Grey Edition)', 3), -- folklore
-(4, 21, 'Peach Edition', 2),            -- Sweetener
-(4, 23, 'Coke Bottle Clear Edition', 3), -- Positions
-(4, 28, 'Translucent Red Edition', 3),  -- Starboy
-(4, 60, 'Red Edition', 2),              -- Born to Die
-(4, 62, 'Translucent Red Edition', 3),  -- Honeymoon
-(4, 71, 'Transparent Red Edition', 2),  -- Metal Galaxy
-(4, 83, 'Green Edition', 1),            -- Fuori dall'hype
-(4, 86, 'White Edition', 2),            -- Ahia!
-(4, 106, 'Translucent Blue Edition', 3), -- Madame X
-(4, 113, 'Red Edition', 2),             -- Nuda
-(4, 142, 'Translucent Green Edition', 3); -- Ctrl
+(4, 30, 'Standard Edition', 3),
+(4, 13, 'Standard Edition', 2),
+(4, 83, 'Standard Edition', 1),
+(4, 143, 'Transparent Blue Edition', 3),
+(4, 12, 'Standard Edition', 2),
+(4, 49, 'Opaque White Edition', 1),
+(4, 120, 'Silver Edition (Anniversary)', 3),
+(4, 137, 'Standard Edition', 1),
+(4, 78, 'Standard Edition', 3),
+(4, 4, 'Meet Me Behind The Mall (Grey Edition)', 3),
+(4, 21, 'Peach Edition', 2),
+(4, 62, 'Translucent Red Edition', 3),
+(4, 71, 'Transparent Red Edition', 2),
+(4, 86, 'White Edition', 2),
+(4, 106, 'Translucent Blue Edition', 3),
+(4, 142, 'Translucent Green Edition', 3);
 
 
 -- Re-enable foreign key checks
