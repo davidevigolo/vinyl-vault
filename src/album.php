@@ -26,6 +26,8 @@ if (!$album_data) {
     exit;
 }
 
+$album_versions = album_versions($disk_id, $edition_name);
+
 echo Template::render(
     'static/album.html',
     [
@@ -50,7 +52,8 @@ echo Template::render(
         'average_rating' => number_format($album_data['avg_rating'], 1),
         'review_count' => $album_data['review_count'],
         'album_tracklist' => album_tracklist($disk_id, $edition_name),
-        'album_versions' => album_versions($disk_id, $edition_name),
+        'album_versions' => $album_versions,
+        'versions_skip_link' => ($album_versions !== '' ? '<li><a href="#versions-section" class="navigation-help">Vai alle versioni dell\'album</a></li>' : ''),
         'album_actions' => album_actions($_SESSION['user_id'] ?? null, $disk_id, $edition_name),
         'action_result' => $_SESSION['album_actions_result']['message'] ?? '',
         'album_review' => album_review($_SESSION['user_id'] ?? null, $disk_id, $edition_name),
