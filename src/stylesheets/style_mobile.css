@@ -594,7 +594,8 @@ h2.page-title {
 /* Footer */
 
 #main-footer {
-    background-color: var(--bg-section);
+    border: 0.1em solid var(--border-default);
+    background-color: var(--bg-header);
     color: var(--text-primary);
     margin-top: 1em;
     padding: 3rem 1.5rem 2rem 1.5rem;
