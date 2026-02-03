@@ -1,5 +1,8 @@
-<article class="collection-item card disk-info ">
-        <img src="[image_url]" alt="" loading="lazy">
+<article class="collection-item card ">
+    <div class="disk-info">
+        <div class="card-image">
+            <img src="[image_url]" alt="" loading="lazy">
+        </div>
         <div class="collection-item-details">
             <dl>
                 <dt class="sr-only">Autore:</dt>
@@ -16,8 +19,8 @@
                 </dd>
             </dl>
 
-            <div class="rating-section" role="img" 
-                 aria-label="Valutazione: [rating_value] su 5 stelle" data-rating="[rating_value]">
+            <div class="rating-section" role="img" aria-label="Valutazione: [rating_value] su 5 stelle"
+                data-rating="[rating_value]">
                 <div class="stars-container readonly" aria-hidden="true">
                     <span class="star" data-value="1">★</span>
                     <span class="star" data-value="2">★</span>
@@ -25,8 +28,10 @@
                     <span class="star" data-value="4">★</span>
                     <span class="star" data-value="5">★</span>
                 </div>
-                <span class="evaluation-label">Valutazione personale</span>
+                <span class="evaluation-label sr-only">Valutazione personale</span>
             </div>
-            <a href="album.php?id=[disk_id]&edition=[edition_name_url]" aria-label="Vai alla pagina dell'album [title] [edition_name]" class="card-link"></a>
+            <a href="album.php?id=[disk_id]&edition=[edition_name_url]"
+                aria-label="Vai alla pagina dell'album [title] [edition_name]" class="card-link"></a>
         </div>
+    </div>
 </article>

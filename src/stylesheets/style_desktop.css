@@ -295,6 +295,11 @@ header .site-nav-links li {
     text-align: left;
 }
 
+.disk-info {
+    flex-direction: row;
+    gap: 0;
+}
+
 .section-title {
     display: flex;
     justify-content: space-between;
@@ -450,6 +455,7 @@ p#empty-collection-paragraph {
     flex-shrink: 0;
     border-radius: 1.3em;
     object-fit: cover;
+    max-width: 20em;
 }
 
 .album-hero .hero-text {
@@ -557,8 +563,8 @@ p#empty-collection-paragraph {
 
 .artist-hero .artist-image {
     flex: 1;
-    max-width: 18rem;
-    height: 18rem;
+    max-width: 20em;
+    height: auto;
     border-radius: 50%;
     object-fit: cover;
 }
@@ -594,6 +600,11 @@ p#empty-collection-paragraph {
     align-items: center;
     margin-top: 0;
     justify-content: center;
+}
+
+#artist-bio {
+    padding-left: 0;
+    padding-right: 0;
 }
 
 /* End Artist Page */
@@ -1064,17 +1075,17 @@ p#empty-collection-paragraph {
 }
 
 .propic-actions {
-    display: contents; 
+    display: contents;
 }
 
 .propic-actions label[for="propic-upload"] {
-    grid-column: 1 / -1; 
+    grid-column: 1 / -1;
     margin-bottom: 0;
 }
 
 #propic-upload {
     grid-column: 1;
-    width: 100%; 
+    width: 100%;
 }
 
 .profile-picture-info .btn-secondary {
@@ -1087,7 +1098,7 @@ p#empty-collection-paragraph {
 #propic-error,
 #propic-success-container {
     grid-column: 1 / -1;
-    justify-self: start; 
+    justify-self: start;
 }
 
 /* End Edit Profile Page */

@@ -3,8 +3,7 @@ include_once 'php/classes/Template.php';
 include_once 'php/classes/utils.php';
 include_once 'php/classes/DbConnection.php';
 
-function get_disks()
-{
+function get_disks() {
     $query = "SELECT id, title FROM disk WHERE id IN (SELECT DISTINCT disk_id FROM edition) ORDER BY title ASC";
     $connection = DbConnection::get_instance();
     $result = mysqli_query($connection->get_connection(), $query);
@@ -18,8 +17,7 @@ function get_disks()
     return $disks;
 }
 
-function get_editions()
-{
+function get_editions() {
     $query = "SELECT disk_id, edition_name FROM edition ORDER BY edition_name ASC";
     $connection = DbConnection::get_instance();
     $result = mysqli_query($connection->get_connection(), $query);
@@ -33,8 +31,7 @@ function get_editions()
     return $editions;
 }
 
-function get_disk_type($disk_id)
-{
+function get_disk_type($disk_id) {
     $connection = DbConnection::get_instance();
     $query = "SELECT disk_type FROM disk WHERE id = ?";
     $stmt = mysqli_prepare($connection->get_connection(), $query);
@@ -51,8 +48,7 @@ function get_disk_type($disk_id)
     return null;
 }
 
-function get_last_track_number($disk_id, $edition_name)
-{
+function get_last_track_number($disk_id, $edition_name) {
     $connection = DbConnection::get_instance();
     $query = "SELECT MAX(track_number) AS last_track_number FROM edition_track_part_of WHERE disk_id = ? AND edition_name = ?";
     $stmt = mysqli_prepare($connection->get_connection(), $query);
@@ -69,7 +65,7 @@ function get_last_track_number($disk_id, $edition_name)
     return 0;
 }
 
-function get_track_number_by_disk_type($disk_id){
+function get_track_number_by_disk_type($disk_id) {
     $connection = DbConnection::get_instance();
     $query = "SELECT disk_type FROM disk WHERE id = ?";
     $stmt = mysqli_prepare($connection->get_connection(), $query);
@@ -86,8 +82,7 @@ function get_track_number_by_disk_type($disk_id){
     return null;
 }
 
-function add_tracks_form($_disk, $_edition, $_titles, $_durations, $errors = []): string
-{
+function add_tracks_form($_disk, $_edition, $_titles, $_durations, $errors = []): string {
     $disks = get_disks();
     $editions = get_editions();
     $edition_options = '';
@@ -109,10 +104,10 @@ function add_tracks_form($_disk, $_edition, $_titles, $_durations, $errors = [])
                     <li>Massimo 200 caratteri</li>
                     <li>Caratteri consentiti: lettere, numeri e spazi</li>
                     </ul>';
-    $_titles[0] = $_titles[0] ? htmlspecialchars($_titles[0]) : '';
-    $_durations[0] = $_durations[0] ? htmlspecialchars($_durations[0]) : '0';
+    $_titles[0] = isset($_titles[0]) ? htmlspecialchars($_titles[0]) : '';
+    $_durations[0] = isset($_durations[0]) ? htmlspecialchars($_durations[0]) : '0';
     $max_tracks = get_track_number_by_disk_type($_disk);
-    if($max_tracks <= $first_track_index){
+    if ($max_tracks <= $first_track_index) {
         $track_form_items = '<p aria-live="assertive">Questo disco ha già il numero massimo di tracce.</p>';
     }
     for ($i = $first_track_index; $i < $max_tracks; $i++) {
