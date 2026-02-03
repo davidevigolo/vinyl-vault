@@ -6,7 +6,7 @@ session_start();
 check_user_logged_in();
 
 function add_artist($name, $nationality, $image, $biography): array {
-    if (!$name || !$nationality || !$image || !$biography) {
+    if (!$name || !$nationality || !$image) {
         return ['success' => false, 'error' => 'Uno o più campi devono ancora essere compilati'];
     }
     if ($image['error'] !== UPLOAD_ERR_OK) {
