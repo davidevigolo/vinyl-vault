@@ -40,6 +40,16 @@ loadMoreBtn.addEventListener('click', () => {
     });
 
     updateVisibleCount();
+    
+    // Focus on the first newly shown item
+    if (itemsToShow.length > 0) {
+        const firstNewItem = itemsToShow[0];
+        // Make it focusable if not already
+        if (!firstNewItem.hasAttribute('tabindex')) {
+            firstNewItem.setAttribute('tabindex', '-1');
+        }
+        firstNewItem.focus();
+    }
 });
 
 // Initial count update
