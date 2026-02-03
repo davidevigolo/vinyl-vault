@@ -341,7 +341,6 @@ h1.hide {
 
 .nav-links a {
     position: relative;
-    text-decoration: none;
     font-size: var(--font-medium);
     font-weight: 400;
 }
@@ -689,22 +688,6 @@ footer .profile-links a:hover {
     font-size: 0.85em;
     margin-top: 0.5rem;
     font-style: italic;
-}
-
-.footer-validation {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 1.5rem;
-}
-
-.footer-validation a {
-    display: inline-block;
-}
-
-.footer-validation img {
-    height: 31px;
-    width: auto;
 }
 
 /* Button Back to Top */
