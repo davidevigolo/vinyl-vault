@@ -381,24 +381,9 @@ if (sortSelect) {
 // Debounced search functionality
 const searchForm = document.getElementById('search-form');
 const searchInput = document.getElementById('catalog-search');
-const clearSearchBtn = document.getElementById('clear-search-btn');
 let searchTimer;
 
 if (searchInput && searchForm) {
-    // Update clear button visibility
-    function updateClearButtonVisibility() {
-        if (clearSearchBtn) {
-            if (searchInput.value.trim() !== '') {
-                clearSearchBtn.removeAttribute('hidden');
-            } else {
-                clearSearchBtn.setAttribute('hidden', '');
-            }
-        }
-    }
-
-    // Initialize visibility
-    updateClearButtonVisibility();
-
     if (searchInput.value) {
         const len = searchInput.value.length;
         searchInput.setSelectionRange(len, len);
@@ -406,7 +391,6 @@ if (searchInput && searchForm) {
 
     // Debounced search on input
     searchInput.addEventListener('input', () => {
-        updateClearButtonVisibility();
 
         clearTimeout(searchTimer);
         searchTimer = setTimeout(() => {
@@ -424,25 +408,6 @@ if (searchInput && searchForm) {
             }
         }, 1000); // 1 second debounce
     });
-
-    // Clear search button
-    if (clearSearchBtn) {
-        clearSearchBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            searchInput.value = '';
-            updateClearButtonVisibility();
-
-            // Remove q parameter and reload
-            const url = new URL(window.location.href);
-            url.searchParams.delete('q');
-            sessionStorage.setItem('catalogScrollPosition', window.scrollY.toString());
-            sessionStorage.setItem('focusElementId', 'catalog-search');
-            document.body.classList.add('page-transitioning');
-            setTimeout(() => {
-                window.location.href = url.toString();
-            }, 150);
-        });
-    }
 
     // Still allow Enter to search immediately
     searchInput.addEventListener('keypress', (e) => {
