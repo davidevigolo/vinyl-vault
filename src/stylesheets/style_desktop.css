@@ -1026,6 +1026,7 @@ p#empty-collection-paragraph {
 }
 
 #favorite-artists .artist-item .artist-image {
+    max-width: none;
     width: 13em;
     height: 13em;
 }

@@ -560,7 +560,6 @@ header {
 
 .header-right.is-open .nav-links a {
     font-size: var(--font-large);
-    text-decoration: none;
 }
 
 h2.page-title {

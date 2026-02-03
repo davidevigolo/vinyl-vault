@@ -39,7 +39,7 @@
 
                 <!-- Search Bar -->
                 <div class="search-bar-container">
-                    <form method="GET" action="catalog.php" role="search" aria-label="Cerca nel catalogo"
+                    <form method="GET" action="catalog.php#results-count" role="search" aria-label="Cerca nel catalogo"
                         id="search-form">
                         <label for="catalog-search" class="sr-only">Cerca un disco, un artista o una versione</label>
                         <input type="search" id="catalog-search" name="q" value="[search_value]"
@@ -68,7 +68,7 @@
                                 aria-label="Elimina tutti i filtri">Elimina tutti i filtri</a>
                         </div>
 
-                        <form method="GET" action="catalog.php" id="filters-form">
+                        <form method="GET" action="catalog.php#results-count" id="filters-form">
                             <!-- Anno di Pubblicazione -->
                             <fieldset class="filter-group">
                                 <legend>Anno di pubblicazione</legend>
@@ -183,7 +183,7 @@
                         </div>
 
                         <div class="results-info">
-                            <p class="results-count" aria-live="polite" aria-atomic="true">
+                            <p class="results-count" id="results-count" aria-live="polite" aria-atomic="true">
                                 <span class="sr-only">Numero di risultati:</span>
                                 [total_results] risultati
                             </p>

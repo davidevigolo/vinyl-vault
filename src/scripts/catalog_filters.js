@@ -400,7 +400,7 @@ if (searchInput && searchForm) {
             if (query !== '' || currentQuery) {
                 announceFilterChange('Ricerca in corso...');
                 sessionStorage.setItem('catalogScrollPosition', window.scrollY.toString());
-                sessionStorage.setItem('focusElementId', 'catalog-search');
+                sessionStorage.setItem('focusElementId', 'results-count');
                 document.body.classList.add('page-transitioning');
                 setTimeout(() => {
                     searchForm.submit();
@@ -413,6 +413,7 @@ if (searchInput && searchForm) {
     searchInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
             clearTimeout(searchTimer);
+            sessionStorage.setItem('focusElementId', 'results-count');
             // Let the form submit naturally
         }
     });
