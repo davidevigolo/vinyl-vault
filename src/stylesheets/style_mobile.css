@@ -1901,6 +1901,10 @@ img#empty-collection-image {
     font-family: var(--font-secondary);
     font-weight: 600;
     font-style: italic;
+}
+#tracklist-heading,
+#versions-heading,
+.review-title {
     margin-bottom: 0.5em;
 }
 
@@ -3414,51 +3418,71 @@ body.page-transitioning {
     margin-bottom: 1em;
 }
 
-.propic-actions {
-    display: flex;
-    flex-wrap: wrap;
+
+
+
+.profile-picture-info {
+    display: grid;
+    grid-template-columns: 1fr auto; 
     align-items: center;
     gap: 0.5rem 1rem;
 }
 
+.propic-actions {
+    display: contents;
+    text-align: left;
+}
+
 .propic-actions label[for="propic-upload"] {
-    flex: 0 0 100%;
-    display: block;
+    grid-column: 1 / -1;
     margin-bottom: 0.5rem;
     font-weight: 600;
     font-family: var(--font-secondary);
     font-size: var(--font-large);
     text-align: left;
-
 }
 
 #propic-upload {
-    display: block;
-    width: auto;
-    flex: 1;
+    grid-column: 1;
+    width: 100%;
     padding: 0.5rem;
     border: 1px solid var(--border-default);
     border-radius: 0.5em;
 }
 
-.propic-actions .btn-secondary {
-    flex: 0 0 auto;
-    margin: 0;
+.profile-picture-info .btn-secondary {
+    grid-column: 2;
     padding: 0.6rem 1.2rem;
+    margin: 0;
 }
 
 .propic-requirements {
-    flex: 0 0 100%;
-    order: 3;
-    margin-bottom: 1em;
+    grid-column: 1 / -1;
+    grid-row: 3;
     font-size: var(--font-small);
+    margin-top: 0.2rem;
+    margin-bottom: 0.7rem;
     text-align: left;
 }
 
-#propic-success-container {
-    margin-bottom: 1em;
-    font-size: var(--font-large);
+.profile-picture-info .btn-primary {
+    grid-column: 1 / -1;
+    justify-self: center;
+    margin-bottom: 1.5em;
 }
 
+#propic-error,
+#propic-success {
+    grid-column: 1 / -1;
+    justify-self: start;
+}
+
+#current-profile-img {
+    width: 90%;
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1em;
+}
 
 /* Edit Profile Page */
