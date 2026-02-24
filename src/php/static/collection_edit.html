@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+
+<head>
+    <title>Modifica Collezione - VinylVault</title>
+    <meta name="description"
+        content="Collezione di vinili personali degli utenti su VinylVault, dove puoi gestire la tua collezione di dischi in vinile.">
+    <meta name="keywords" content="collezione vinili, gestione collezione vinili, VinylVault, collection">
+    <script src="scripts/collection.js" defer="defer"></script>
+    [head] <!-- qui viene inserita la parte invariante dell'header-->
+</head>
+
+<body>
+    <nav aria-label="Aiuti alla navigazione" class="list-help">
+        <ul>
+            <li>
+                <a class="navigation-help" href="#content">Vai al contenuto principale</a>
+            </li>
+        </ul>
+    </nav>
+    [header]
+    <nav id="breadcrumb" aria-label="percorso di navigazione">
+        <div class="center-container">
+            <ol>
+                <li><a href="index.php" lang="en">Home</a></li>
+                <li><a href="profile.php">Profilo</a></li>
+                <li aria-current="page">Collezione (Modifica)</li>
+            </ol>
+        </div>
+    </nav>
+    <main id="content">
+        <div class="page-banner">
+            <img src="assets/images/collection-icon.jpg" alt="">
+            <h2 class="page-title">La mia Collezione (Modifica)</h2>
+        </div>
+        <div class="center-container">
+            [collection]
+        </div>
+    </main>
+    [footer]
+</body>

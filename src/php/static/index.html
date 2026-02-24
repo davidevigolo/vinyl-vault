@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>VinylVault</title>
+    <meta name="description"
+        content="Piattaforma dedicata agli appassionati di vinili per esplorare, collezionare e condividere la loro passione per la musica su vinile." />
+    <meta name="keywords" content="vinili, collezione di vinili, esplora vinili, community vinili, VinylVault" />
+    [head] <!-- qui viene inserita la parte invariante dell'header-->
+</head>
+
+<body>
+    <nav aria-label="Aiuti alla navigazione" class="list-help">
+        <ul>
+            <li>
+                <a class="navigation-help" href="#content">Vai al contenuto principale</a>
+            </li>
+            <li>
+                <a class="navigation-help" href="#trending-vinyls">Vai ai vinili di tendenza</a>
+            </li>
+            <li>
+                <a class="navigation-help" href="#most-liked-artists">Vai agli artisti più amati</a>
+            </li>
+        </ul>
+    </nav>
+
+    [header]
+
+    <nav id="breadcrumb" aria-label="percorso di navigazione">
+        <div class="center-container">
+            <ol>
+                <li aria-current="page" lang="en">Home</li>
+            </ol>
+        </div>
+    </nav>
+
+
+    <main id="content">
+        <!-- Banner iniziale -->
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="center-container">
+                <div class="hero-logo hide" lang="en">VinylVault</div>
+                <div class="hero-text home">
+                    <h2 id="hero-title">Il Tuo Archivio Personale del Vinile</h2>
+                    <p>Cataloga la tua collezione, scopri gemme nascoste e cura la tua lista dei desideri.</p>
+                    <p>Uno spazio puro per collezionisti: niente annunci, solo passione.</p>
+                    <a href="register.php" class="btn-primary">Inizia ora</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Area di presentazione (funzionalità) -->
+        <section id="presentation" aria-labelledby="hero-title">
+            <div class="center-container">
+                <h2 id="presentation-title">Lo strumento definitivo per il collezionista</h2>
+                <p>Progettato da amanti del vinile, per collezionisti del vinile.</p>
+                <ul class="features" aria-label="Le nostre funzionalità">
+                    <li class="feature">
+                        <h3>La tua collezione</h3>
+                        <p>Tieni un archivio digitale dettagliato di ogni vinile nella tua libreria. Ordina per artista,
+                            anno o genere.</p>
+                    </li>
+                    <li class="feature">
+                        <h3>Trova nuovi vinili</h3>
+                        <p>Trova nuove uscite e classici rari nel catalogo. Vedi tendenze o cerca il nome dell'artista,
+                            dell'album o dell'edizione del vinile.</p>
+                    </li>
+                    <li class="feature">
+                        <h3>La tua lista desideri</h3>
+                        <p>Non dimenticare mai un disco. Salva gli album che ti piacciono in un luogo dedicato.</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Vinili di tendenza -->
+        <section id="trending-vinyls" class="card-section" aria-labelledby="trending-title">
+            <div class="center-container">
+                <div class="section-title">
+                    <h2 id="trending-title">Vinili di tendenza</h2>
+                </div>
+                <div class="cards-container">
+                    [trending_vinyls]
+                </div>
+                <a href="top_vinyls.php" class="view-all" aria-label="Guarda tutti i vinili di tendenza">Guarda
+                    tutti</a>
+            </div>
+        </section>
+
+        <!-- Banner Call to Action -->
+        [banner_cta]
+
+        <!-- Artisti più amati -->
+        <section id="most-liked-artists" class="card-section" aria-labelledby="artists-title">
+            <div class="center-container">
+                <div class="section-title">
+                    <h2 id="artists-title">Artisti più amati</h2>
+                </div>
+                <div class="cards-container">
+                    [most_liked_artists]
+                </div>
+                <a href="top_artists.php" class="view-all" aria-label="Guarda tutti gli artisti più amati">Guarda
+                    tutti</a>
+            </div>
+        </section>
+
+    </main>
+    [footer]
+</body>
+
+</html>

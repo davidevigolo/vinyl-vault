@@ -1,0 +1,14 @@
+<section id="collection">
+    [errors]
+    <form id="collection-form" action="php/controllers/manage_collection_item.php" method="POST"
+        aria-label="Modifica collezione">
+        <div class="collection-grid-container">
+            <input type="hidden" name="action" value="edit_multiple" />
+            [collection_items]
+        </div>
+        <div class="collection-actions collection-grid-actions">
+            <button type="submit" form="collection-form" class="btn-primary">Salva Modifiche</button>
+            <a href="collection.php" class="btn-cancel" role="button">Annulla</a>
+        </div>
+    </form>
+</section>

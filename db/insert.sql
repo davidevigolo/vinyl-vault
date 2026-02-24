@@ -1,6 +1,4 @@
--- Sample data inserts for Vinyl Vault database
-USE tecweb_db;
-
+-- Sample data inserts for VinylVault database
 -- Disable foreign key checks for smooth import
 SET FOREIGN_KEY_CHECKS = 0;
 
@@ -19,34 +17,34 @@ INSERT INTO genre (genre_name) VALUES
 
 
 -- Insert users (no dependencies)
-INSERT INTO users (first_name, last_name, username, email, pw_hash, bio, propic_path, is_admin) VALUES
-('Maria', 'Rossi','admin', 'admin@admin.com', '$2y$10$j8Hsc4sabUF5Kv9NfbRTMu/W9aWIzECeTSZEACtqnJ1QeKbN6.KNm' /*admin*/, 'Music enthusiast and vinyl collector', '/assets/images/users/admin.jpg', 1),
-('Stan', 'Smith', 'user', 'user@user.com', '$2y$10$IERZN9gEazLu0ot6Wb.gBerkvFZLnJEAiQOeR3ainGlxA..L2u9c.' /*user*/, 'Jazz lover and audiophile', '/assets/images/users/user.jpg', 0),
-('Mike', 'Johnson', 'mikeJohn1234', 'mike.johnson@example.com', '$2y$10$cdefghijklmnopqrstuvwx', 'Rock and roll fan', '/assets/images/users/mike.jpg', 0),
-('Sarah', 'Williams', 'sssaaraahh','sarah.williams@example.com', '$2y$10$defghijklmnopqrstuvwxy', 'Alternative music collector', '/assets/images/users/sarah.jpg', 0);
+INSERT INTO users (first_name, last_name, username, email, pw_hash, bio, is_admin) VALUES
+('Maria', 'Rossi','admin', 'admin@admin.com', '$2y$10$j8Hsc4sabUF5Kv9NfbRTMu/W9aWIzECeTSZEACtqnJ1QeKbN6.KNm' /*admin*/, 'Ascolto musica, colleziono vinili e amministro il sito! :D', 1),
+('Stan', 'Smith', 'user', 'user@user.com', '$2y$10$IERZN9gEazLu0ot6Wb.gBerkvFZLnJEAiQOeR3ainGlxA..L2u9c.' /*user*/, 'Ascolto musica e colleziono vinili! :D', 0),
+('Mike', 'Johnson', 'mikeJohn1234', 'mike.johnson@example.com', '$2y$10$cdefghijklmnopqrstuvwx', 'Rock and roll fan', 0),
+('Sarah', 'Williams', 'sssaaraahh','sarah.williams@example.com', '$2y$10$defghijklmnopqrstuvwxy', 'Alternative music fan', 0);
 
 
 -- Insert authors/artists (no dependencies)
 -- Insert authors/artists con Bio concise (ideali per Mobile)
 INSERT INTO author (author_name, image_path, nationality, bio_author) VALUES
-('Taylor Swift', '/assets/images/artists/taylorswift.jpg', 'us', 'Icona del pop globale nota per la sua scrittura narrativa e la capacità di reinventarsi in ogni "Era" della sua carriera.'),
-('Dua Lipa', '/assets/images/artists/dualipa.jpg', 'uk', 'Cantante britannica che ha ridefinito il pop contemporaneo fondendo sonorità disco-pop anni ''80 e produzione moderna.'),
-('Ariana Grande', '/assets/images/artists/arianagrande.jpg', 'us', 'Popstar internazionale celebre per la sua straordinaria estensione vocale e i successi che spaziano tra R&B e pop teatrale.'),
-('The Weeknd', '/assets/images/artists/theweeknd.jpg', 'ca', 'Artista canadese pioniere del dark R&B e del synth-pop cinematografico, con hit mondiali che dominano le classifiche.'),
-('The Beatles', '/assets/images/artists/beatles.jpg', 'uk', 'Leggendaria band di Liverpool che ha rivoluzionato la musica e la cultura popolare influenzando ogni generazione successiva.'),
-('Radiohead', '/assets/images/artists/radiohead.jpg', 'uk', 'Gruppo rock sperimentale britannico acclamato per la costante innovazione sonora e album che hanno cambiato la musica alternativa.'),
-('Linkin Park', '/assets/images/artists/linkinpark.jpg', 'us', 'Band iconica che ha fuso rock, rap ed elettronica, diventando la voce di una generazione con testi onesti e potenti.'),
-('Lana Del Rey', '/assets/images/artists/lanadelrey.jpg', 'us', 'Cantautrice celebre per il suo stile malinconico e cinematografico che richiama l''estetica e il fascino dell''Americana vintage.'),
-('BABYMETAL', '/assets/images/artists/babymetal.jpg', 'jp', 'Fenomeno giapponese che fonde J-pop e heavy metal estremo, creando l''unico ed energico genere conosciuto come "Kawaii Metal".'),
-('Pink Floyd', '/assets/images/artists/pinkfloyd.jpg', 'uk', 'Maestri del rock progressivo e psichedelico, celebri per concept album filosofici e sperimentazioni sonore leggendarie.'),
-('Pinguini Tattici Nucleari', '/assets/images/artists/ptn.jpg', 'it', 'Protagonisti dell''indie-pop italiano, amati per testi ironici e citazionisti che raccontano con freschezza la quotidianità.'),
-('5 Seconds of Summer', '/assets/images/artists/5sos.jpg', 'au', 'Band australiana evolutasi dal pop-punk a un pop-rock maturo e sperimentale, nota per le grandi doti vocali e le performance live.'),
-('Madonna', '/assets/images/artists/madonna.jpg', 'us', 'La Regina del Pop e icona culturale eterna, celebre per la continua reinvenzione e per aver sfidato i limiti dell''industria musicale.'),
-('Annalisa', '/assets/images/artists/annalisa.jpg', 'it', 'Cantautrice italiana tra le più apprezzate del momento, capace di spaziare con successo tra pop elettronico e ballate raffinate.'),
-('Nirvana', '/assets/images/artists/nirvana.jpg', 'us', 'Band simbolo del movimento grunge degli anni ''90 che, guidata da Kurt Cobain, ha cambiato per sempre il volto del rock mondiale.'),
-('AC/DC', '/assets/images/artists/acdc.jpg', 'au', 'Pilastri dell''hard rock mondiale, famosi per i loro riff elettrizzanti e un''energia inarrestabile che attraversa cinque decenni.'),
-('The Rolling Stones', '/assets/images/artists/rollingstones.jpg', 'uk', 'L''essenza stessa del rock ''n'' roll britannico, con una carriera leggendaria, un carisma senza tempo e hit immortali.'),
-('SZA', '/assets/images/artists/sza.jpg', 'us', 'Voce di spicco dell''R&B contemporaneo, acclamata dalla critica per la sua vulnerabilità e per testi profondamente onesti e personali.');
+('Taylor Swift', 'assets/images/artists/taylorswift.jpg', 'us', 'Icona del pop globale nota per la sua scrittura narrativa e la capacità di reinventarsi in ogni "Era" della sua carriera.'),
+('Dua Lipa', 'assets/images/artists/dualipa.jpg', 'uk', 'Cantante britannica che ha ridefinito il pop contemporaneo fondendo sonorità disco-pop anni ''80 e produzione moderna.'),
+('Ariana Grande', 'assets/images/artists/arianagrande.jpg', 'us', 'Popstar internazionale celebre per la sua straordinaria estensione vocale e i successi che spaziano tra R&B e pop teatrale.'),
+('The Weeknd', 'assets/images/artists/theweeknd.jpg', 'ca', 'Artista canadese pioniere del dark R&B e del synth-pop cinematografico, con hit mondiali che dominano le classifiche.'),
+('The Beatles', 'assets/images/artists/beatles.jpg', 'uk', 'Leggendaria band di Liverpool che ha rivoluzionato la musica e la cultura popolare influenzando ogni generazione successiva.'),
+('Radiohead', 'assets/images/artists/radiohead.jpg', 'uk', 'Gruppo rock sperimentale britannico acclamato per la costante innovazione sonora e album che hanno cambiato la musica alternativa.'),
+('Linkin Park', 'assets/images/artists/linkinpark.jpg', 'us', 'Band iconica che ha fuso rock, rap ed elettronica, diventando la voce di una generazione con testi onesti e potenti.'),
+('Lana Del Rey', 'assets/images/artists/lanadelrey.jpg', 'us', 'Cantautrice celebre per il suo stile malinconico e cinematografico che richiama l''estetica e il fascino dell''Americana vintage.'),
+('BABYMETAL', 'assets/images/artists/babymetal.jpg', 'jp', 'Fenomeno giapponese che fonde J-pop e heavy metal estremo, creando l''unico ed energico genere conosciuto come "Kawaii Metal".'),
+('Pink Floyd', 'assets/images/artists/pinkfloyd.jpg', 'uk', 'Maestri del rock progressivo e psichedelico, celebri per concept album filosofici e sperimentazioni sonore leggendarie.'),
+('Pinguini Tattici Nucleari', 'assets/images/artists/ptn.jpg', 'it', 'Protagonisti dell''indie-pop italiano, amati per testi ironici e citazionisti che raccontano con freschezza la quotidianità.'),
+('5 Seconds of Summer', 'assets/images/artists/5sos.jpg', 'au', 'Band australiana evolutasi dal pop-punk a un pop-rock maturo e sperimentale, nota per le grandi doti vocali e le performance live.'),
+('Madonna', 'assets/images/artists/madonna.jpg', 'us', 'La Regina del Pop e icona culturale eterna, celebre per la continua reinvenzione e per aver sfidato i limiti dell''industria musicale.'),
+('Annalisa', 'assets/images/artists/annalisa.jpg', 'it', 'Cantautrice italiana tra le più apprezzate del momento, capace di spaziare con successo tra pop elettronico e ballate raffinate.'),
+('Nirvana', 'assets/images/artists/nirvana.jpg', 'us', 'Band simbolo del movimento grunge degli anni ''90 che, guidata da Kurt Cobain, ha cambiato per sempre il volto del rock mondiale.'),
+('AC/DC', 'assets/images/artists/acdc.jpg', 'au', 'Pilastri dell''hard rock mondiale, famosi per i loro riff elettrizzanti e un''energia inarrestabile che attraversa cinque decenni.'),
+('The Rolling Stones', 'assets/images/artists/rollingstones.jpg', 'uk', 'L''essenza stessa del rock ''n'' roll britannico, con una carriera leggendaria, un carisma senza tempo e hit immortali.'),
+('SZA', 'assets/images/artists/sza.jpg', 'us', 'Voce di spicco dell''R&B contemporaneo, acclamata dalla critica per la sua vulnerabilità e per testi profondamente onesti e personali.');
 
 
 -- Insert disks (no dependencies)
@@ -560,227 +558,227 @@ INSERT INTO track (title, duration_seconds) VALUES
 -- Editions
 INSERT INTO edition (disk_id, edition_name, release_date, image_path, country) VALUES
 -- Taylor Swift (IDs 1-23)
-(1, 'Standard Edition', '2014-10-27', '/assets/images/editions/1989_std.jpg', 'US'),
-(1, 'Crystal Skies Blue Edition', '2023-10-27', '/assets/images/editions/1989_blue.jpg', 'US'),
-(2, 'Standard Edition', '2017-11-10', '/assets/images/editions/rep_std.jpg', 'US'),
-(2, 'Picture Disc Edition', '2017-11-10', '/assets/images/editions/rep_pic.jpg', 'US'),
-(3, 'Pink & Blue Edition', '2019-08-23', '/assets/images/editions/lover_colored.jpg', 'US'),
-(4, 'Standard Edition', '2020-07-24', '/assets/images/editions/folk_std.jpg', 'US'),
-(4, 'Meet Me Behind The Mall (Grey Edition)', '2020-07-24', '/assets/images/editions/folk_grey.jpg', 'US'),
-(5, 'Moonstone Blue Edition', '2022-10-21', '/assets/images/editions/mid_blue.jpg', 'US'),
-(5, 'Blood Moon Edition', '2022-10-21', '/assets/images/editions/mid_orange.jpg', 'US'),
-(6, 'Standard Edition', '2007-10-14', '/assets/images/editions/ts_holiday.jpg', 'US'),
-(7, 'Standard Edition', '2008-07-15', '/assets/images/editions/ts_eyes.jpg', 'US'),
-(8, 'Standard Single', '2014-08-18', '/assets/images/editions/ts_shake.jpg', 'US'),
-(9, 'Standard Single', '2014-11-10', '/assets/images/editions/ts_blank.jpg', 'US'),
-(10, 'Standard Single', '2022-10-21', '/assets/images/editions/ts_antihero.jpg', 'US'),
+(1, 'Standard Edition', '2014-10-27', 'assets/images/editions/1989_std.jpg', 'US'),
+(1, 'Crystal Skies Blue Edition', '2023-10-27', 'assets/images/editions/1989_blue.jpg', 'US'),
+(2, 'Standard Edition', '2017-11-10', 'assets/images/editions/rep_std.jpg', 'US'),
+(2, 'Picture Disc Edition', '2017-11-10', 'assets/images/editions/rep_pic.jpg', 'US'),
+(3, 'Pink & Blue Edition', '2019-08-23', 'assets/images/editions/lover_colored.jpg', 'US'),
+(4, 'Standard Edition', '2020-07-24', 'assets/images/editions/folk_std.jpg', 'US'),
+(4, 'Meet Me Behind The Mall (Grey Edition)', '2020-07-24', 'assets/images/editions/folk_grey.jpg', 'US'),
+(5, 'Moonstone Blue Edition', '2022-10-21', 'assets/images/editions/mid_blue.jpg', 'US'),
+(5, 'Blood Moon Edition', '2022-10-21', 'assets/images/editions/mid_orange.jpg', 'US'),
+(6, 'Standard Edition', '2007-10-14', 'assets/images/editions/ts_holiday.jpg', 'US'),
+(7, 'Standard Edition', '2008-07-15', 'assets/images/editions/ts_eyes.jpg', 'US'),
+(8, 'Standard Single', '2014-08-18', 'assets/images/editions/ts_shake.jpg', 'US'),
+(9, 'Standard Single', '2014-11-10', 'assets/images/editions/ts_blank.jpg', 'US'),
+(10, 'Standard Single', '2022-10-21', 'assets/images/editions/ts_antihero.jpg', 'US'),
 
 -- Dua Lipa (IDs 24-32)
-(11, 'Standard Edition', '2017-06-02', '/assets/images/editions/dua_std.jpg', 'UK'),
-(11, 'Pink Edition', '2017-06-02', '/assets/images/editions/dua_pink.jpg', 'UK'),
-(12, 'Standard Edition', '2020-03-27', '/assets/images/editions/future_std.jpg', 'UK'),
-(12, 'Neon Pink Edition', '2020-03-27', '/assets/images/editions/future_pink.jpg', 'UK'),
-(13, 'Standard Edition', '2024-05-03', '/assets/images/editions/radical_std.jpg', 'UK'),
-(13, 'Red Edition', '2024-05-03', '/assets/images/editions/radical_red.jpg', 'UK'),
-(14, 'Standard Single', '2015-08-21', '/assets/images/editions/dua_beone.jpg', 'UK'),
-(15, 'Standard Single', '2017-07-21', '/assets/images/editions/dua_rules.jpg', 'UK'),
-(16, 'Standard Single', '2020-08-13', '/assets/images/editions/dua_lev.jpg', 'UK'),
-(17, 'Standard Single', '2023-11-09', '/assets/images/editions/dua_houdini.jpg', 'UK'),
-(18, 'Standard Single', '2024-02-15', '/assets/images/editions/dua_train.jpg', 'UK'),
-(19, 'Standard Single', '2024-04-11', '/assets/images/editions/dua_illusion.jpg', 'UK'),
+(11, 'Standard Edition', '2017-06-02', 'assets/images/editions/dua_std.jpg', 'UK'),
+(11, 'Pink Edition', '2017-06-02', 'assets/images/editions/dua_pink.jpg', 'UK'),
+(12, 'Standard Edition', '2020-03-27', 'assets/images/editions/future_std.jpg', 'UK'),
+(12, 'Neon Pink Edition', '2020-03-27', 'assets/images/editions/future_pink.jpg', 'UK'),
+(13, 'Standard Edition', '2024-05-03', 'assets/images/editions/radical_std.jpg', 'UK'),
+(13, 'Red Edition', '2024-05-03', 'assets/images/editions/radical_red.jpg', 'UK'),
+(14, 'Standard Single', '2015-08-21', 'assets/images/editions/dua_beone.jpg', 'UK'),
+(15, 'Standard Single', '2017-07-21', 'assets/images/editions/dua_rules.jpg', 'UK'),
+(16, 'Standard Single', '2020-08-13', 'assets/images/editions/dua_lev.jpg', 'UK'),
+(17, 'Standard Single', '2023-11-09', 'assets/images/editions/dua_houdini.jpg', 'UK'),
+(18, 'Standard Single', '2024-02-15', 'assets/images/editions/dua_train.jpg', 'UK'),
+(19, 'Standard Single', '2024-04-11', 'assets/images/editions/dua_illusion.jpg', 'UK'),
 
 -- Ariana Grande (IDs 33-46)
-(20, 'Standard Edition', '2016-05-20', '/assets/images/editions/dangerous_std.jpg', 'US'),
-(21, 'Standard Edition', '2018-08-17', '/assets/images/editions/sweet_std.jpg', 'US'),
-(21, 'Peach Edition', '2018-08-17', '/assets/images/editions/sweet_peach.jpg', 'US'),
-(22, 'Standard Edition', '2019-02-08', '/assets/images/editions/tun_std.jpg', 'US'),
-(23, 'Coke Bottle Clear Edition', '2020-10-30', '/assets/images/editions/pos_clear.jpg', 'US'),
-(24, 'Standard Edition', '2024-03-08', '/assets/images/editions/eternal_std.jpg', 'US'),
-(24, 'Ruby Edition', '2024-03-08', '/assets/images/editions/eternal_red.jpg', 'US'),
-(25, 'Standard Single', '2019-01-18', '/assets/images/editions/ari_7rings.jpg', 'US'),
-(26, 'Standard Single', '2024-01-12', '/assets/images/editions/ari_yesand.jpg', 'US'),
-(27, 'Standard Single', '2024-03-08', '/assets/images/editions/ari_friends.jpg', 'US'),
+(20, 'Standard Edition', '2016-05-20', 'assets/images/editions/dangerous_std.jpg', 'US'),
+(21, 'Standard Edition', '2018-08-17', 'assets/images/editions/sweet_std.jpg', 'US'),
+(21, 'Peach Edition', '2018-08-17', 'assets/images/editions/sweet_peach.jpg', 'US'),
+(22, 'Standard Edition', '2019-02-08', 'assets/images/editions/tun_std.jpg', 'US'),
+(23, 'Coke Bottle Clear Edition', '2020-10-30', 'assets/images/editions/pos_clear.jpg', 'US'),
+(24, 'Standard Edition', '2024-03-08', 'assets/images/editions/eternal_std.jpg', 'US'),
+(24, 'Ruby Edition', '2024-03-08', 'assets/images/editions/eternal_red.jpg', 'US'),
+(25, 'Standard Single', '2019-01-18', 'assets/images/editions/ari_7rings.jpg', 'US'),
+(26, 'Standard Single', '2024-01-12', 'assets/images/editions/ari_yesand.jpg', 'US'),
+(27, 'Standard Single', '2024-03-08', 'assets/images/editions/ari_friends.jpg', 'US'),
 
 -- The Weeknd (IDs 47-60)
-(28, 'Standard Edition', '2016-11-25', '/assets/images/editions/star_std.jpg', 'US'),
-(28, 'Translucent Red Edition', '2016-11-25', '/assets/images/editions/star_red.jpg', 'US'),
-(29, 'Standard Edition', '2020-03-20', '/assets/images/editions/after_std.jpg', 'US'),
-(29, 'Gold with Red Splatter Edition', '2020-03-20', '/assets/images/editions/after_splatter.jpg', 'US'),
-(30, 'Standard Edition', '2022-01-07', '/assets/images/editions/dawn_std.jpg', 'US'),
-(30, 'Silver Edition', '2022-01-07', '/assets/images/editions/dawn_silver.jpg', 'US'),
-(31, 'Standard Edition', '2011-03-21', '/assets/images/editions/balloons_std.jpg', 'US'),
-(32, 'Standard Edition', '2018-03-30', '/assets/images/editions/melancholy_std.jpg', 'US'),
-(33, 'Standard Single', '2019-11-29', '/assets/images/editions/weeknd_blinding.jpg', 'US'),
-(34, 'Standard Single', '2020-08-09', '/assets/images/editions/weeknd_save.jpg', 'US'),
-(35, 'Standard Single', '2024-09-13', '/assets/images/editions/weeknd_flames.jpg', 'US'),
+(28, 'Standard Edition', '2016-11-25', 'assets/images/editions/star_std.jpg', 'US'),
+(28, 'Translucent Red Edition', '2016-11-25', 'assets/images/editions/star_red.jpg', 'US'),
+(29, 'Standard Edition', '2020-03-20', 'assets/images/editions/after_std.jpg', 'US'),
+(29, 'Gold with Red Splatter Edition', '2020-03-20', 'assets/images/editions/after_splatter.jpg', 'US'),
+(30, 'Standard Edition', '2022-01-07', 'assets/images/editions/dawn_std.jpg', 'US'),
+(30, 'Silver Edition', '2022-01-07', 'assets/images/editions/dawn_silver.jpg', 'US'),
+(31, 'Standard Edition', '2011-03-21', 'assets/images/editions/balloons_std.jpg', 'US'),
+(32, 'Standard Edition', '2018-03-30', 'assets/images/editions/melancholy_std.jpg', 'US'),
+(33, 'Standard Single', '2019-11-29', 'assets/images/editions/weeknd_blinding.jpg', 'US'),
+(34, 'Standard Single', '2020-08-09', 'assets/images/editions/weeknd_save.jpg', 'US'),
+(35, 'Standard Single', '2024-09-13', 'assets/images/editions/weeknd_flames.jpg', 'US'),
 
 -- The Beatles (IDs 61-81)
-(36, 'Standard Edition', '1967-11-27', '/assets/images/editions/mmt_std.jpg', 'US'),
-(37, 'Standard Edition', '1968-11-22', '/assets/images/editions/white_std.jpg', 'UK'),
-(37, 'White Edition', '1978-01-01', '/assets/images/editions/white_colored.jpg', 'UK'),
-(38, 'Standard Edition', '1969-01-13', '/assets/images/editions/ys_std.jpg', 'UK'),
-(39, 'Standard Edition', '1969-09-26', '/assets/images/editions/ar_std.jpg', 'UK'),
-(40, 'Standard Edition', '1970-05-08', '/assets/images/editions/lib_std.jpg', 'UK'),
-(41, 'Standard Edition', '1964-06-19', '/assets/images/editions/longtallsally_std.jpg', 'UK'),
-(42, 'Standard Edition', '1967-12-08', '/assets/images/editions/mmt_ep_std.jpg', 'UK'),
-(43, 'Standard Single', '1968-08-26', '/assets/images/editions/beatles_heyjude.jpg', 'UK'),
-(44, 'Standard Single', '1970-03-06', '/assets/images/editions/beatles_letitbe.jpg', 'UK'),
-(45, 'Standard Edition', '2023-11-02', '/assets/images/editions/nat_std.jpg', 'UK'),
-(45, 'Marble Blue Edition', '2023-11-02', '/assets/images/editions/nat_blue.jpg', 'UK'),
+(36, 'Standard Edition', '1967-11-27', 'assets/images/editions/mmt_std.jpg', 'US'),
+(37, 'Standard Edition', '1968-11-22', 'assets/images/editions/white_std.jpg', 'UK'),
+(37, 'White Edition', '1978-01-01', 'assets/images/editions/white_colored.jpg', 'UK'),
+(38, 'Standard Edition', '1969-01-13', 'assets/images/editions/ys_std.jpg', 'UK'),
+(39, 'Standard Edition', '1969-09-26', 'assets/images/editions/ar_std.jpg', 'UK'),
+(40, 'Standard Edition', '1970-05-08', 'assets/images/editions/lib_std.jpg', 'UK'),
+(41, 'Standard Edition', '1964-06-19', 'assets/images/editions/longtallsally_std.jpg', 'UK'),
+(42, 'Standard Edition', '1967-12-08', 'assets/images/editions/mmt_ep_std.jpg', 'UK'),
+(43, 'Standard Single', '1968-08-26', 'assets/images/editions/beatles_heyjude.jpg', 'UK'),
+(44, 'Standard Single', '1970-03-06', 'assets/images/editions/beatles_letitbe.jpg', 'UK'),
+(45, 'Standard Edition', '2023-11-02', 'assets/images/editions/nat_std.jpg', 'UK'),
+(45, 'Marble Blue Edition', '2023-11-02', 'assets/images/editions/nat_blue.jpg', 'UK'),
 
 -- Radiohead (IDs 82-97)
-(46, 'Standard Edition', '2003-06-09', '/assets/images/editions/htt_std.jpg', 'UK'),
-(47, 'Standard Edition', '2007-10-10', '/assets/images/editions/ir_std.jpg', 'UK'),
-(48, 'Standard Edition', '2011-02-18', '/assets/images/editions/kol_std.jpg', 'UK'),
-(49, 'Standard Edition', '2016-05-08', '/assets/images/editions/amsp_std.jpg', 'UK'),
-(49, 'Opaque White Edition', '2016-06-17', '/assets/images/editions/amsp_white.jpg', 'UK'),
-(50, 'Standard EP', '1997-04-21', '/assets/images/editions/airbag_std.jpg', 'UK'),
-(51, 'Standard Single', '1997-08-25', '/assets/images/editions/karma_std.jpg', 'UK'),
-(52, 'Standard Single', '1998-01-12', '/assets/images/editions/surprises_std.jpg', 'UK'),
+(46, 'Standard Edition', '2003-06-09', 'assets/images/editions/htt_std.jpg', 'UK'),
+(47, 'Standard Edition', '2007-10-10', 'assets/images/editions/ir_std.jpg', 'UK'),
+(48, 'Standard Edition', '2011-02-18', 'assets/images/editions/kol_std.jpg', 'UK'),
+(49, 'Standard Edition', '2016-05-08', 'assets/images/editions/amsp_std.jpg', 'UK'),
+(49, 'Opaque White Edition', '2016-06-17', 'assets/images/editions/amsp_white.jpg', 'UK'),
+(50, 'Standard EP', '1997-04-21', 'assets/images/editions/airbag_std.jpg', 'UK'),
+(51, 'Standard Single', '1997-08-25', 'assets/images/editions/karma_std.jpg', 'UK'),
+(52, 'Standard Single', '1998-01-12', 'assets/images/editions/surprises_std.jpg', 'UK'),
 
 -- Linkin Park (IDs 98-111)
-(53, 'Standard Edition', '2014-06-13', '/assets/images/editions/hp_std.jpg', 'US'),
-(54, 'Standard Edition', '2017-05-19', '/assets/images/editions/oml_std.jpg', 'US'),
-(55, 'Standard Edition', '2024-11-15', '/assets/images/editions/fz_std.jpg', 'US'),
-(55, 'Blue Edition', '2024-11-15', '/assets/images/editions/fz_blue.jpg', 'US'),
-(56, 'Standard EP', '1999-05-01', '/assets/images/editions/ht_ep_std.jpg', 'US'),
-(57, 'Standard Single', '2001-10-24', '/assets/images/editions/lp_intend.jpg', 'US'),
-(58, 'Standard Single', '2003-09-08', '/assets/images/editions/lp_numb.jpg', 'US'),
+(53, 'Standard Edition', '2014-06-13', 'assets/images/editions/hp_std.jpg', 'US'),
+(54, 'Standard Edition', '2017-05-19', 'assets/images/editions/oml_std.jpg', 'US'),
+(55, 'Standard Edition', '2024-11-15', 'assets/images/editions/fz_std.jpg', 'US'),
+(55, 'Blue Edition', '2024-11-15', 'assets/images/editions/fz_blue.jpg', 'US'),
+(56, 'Standard EP', '1999-05-01', 'assets/images/editions/ht_ep_std.jpg', 'US'),
+(57, 'Standard Single', '2001-10-24', 'assets/images/editions/lp_intend.jpg', 'US'),
+(58, 'Standard Single', '2003-09-08', 'assets/images/editions/lp_numb.jpg', 'US'),
 
 -- Lana Del Rey (IDs 112-127)
-(59, 'Standard Edition', '2010-01-04', '/assets/images/editions/lana_ray_std.jpg', 'US'),
-(60, 'Standard Edition', '2012-01-27', '/assets/images/editions/btd_std.jpg', 'US'),
-(60, 'Red Edition', '2012-01-27', '/assets/images/editions/btd_red.jpg', 'US'),
-(61, 'Standard Edition', '2014-06-13', '/assets/images/editions/ultra_std.jpg', 'US'),
-(61, 'Blue & Violet Edition', '2014-06-13', '/assets/images/editions/ultra_colored.jpg', 'US'),
-(62, 'Standard Edition', '2015-09-18', '/assets/images/editions/honey_std.jpg', 'US'),
-(62, 'Translucent Red Edition', '2015-09-18', '/assets/images/editions/honey_red.jpg', 'US'),
-(63, 'Standard Edition', '2024-09-01', '/assets/images/editions/lasso_std.jpg', 'US'),
-(64, 'Standard EP', '2012-11-09', '/assets/images/editions/paradise_std.jpg', 'US'),
-(65, 'Standard EP', '2013-12-04', '/assets/images/editions/tropico_std.jpg', 'US'),
-(66, 'Standard Single', '2011-10-07', '/assets/images/editions/lana_video.jpg', 'US'),
-(67, 'Standard Single', '2012-06-22', '/assets/images/editions/lana_summer.jpg', 'US'),
-(68, 'Standard Single', '2013-04-23', '/assets/images/editions/lana_young.jpg', 'US'),
+(59, 'Standard Edition', '2010-01-04', 'assets/images/editions/lana_ray_std.jpg', 'US'),
+(60, 'Standard Edition', '2012-01-27', 'assets/images/editions/btd_std.jpg', 'US'),
+(60, 'Red Edition', '2012-01-27', 'assets/images/editions/btd_red.jpg', 'US'),
+(61, 'Standard Edition', '2014-06-13', 'assets/images/editions/ultra_std.jpg', 'US'),
+(61, 'Blue & Violet Edition', '2014-06-13', 'assets/images/editions/ultra_colored.jpg', 'US'),
+(62, 'Standard Edition', '2015-09-18', 'assets/images/editions/honey_std.jpg', 'US'),
+(62, 'Translucent Red Edition', '2015-09-18', 'assets/images/editions/honey_red.jpg', 'US'),
+(63, 'Standard Edition', '2024-09-01', 'assets/images/editions/lasso_std.jpg', 'US'),
+(64, 'Standard EP', '2012-11-09', 'assets/images/editions/paradise_std.jpg', 'US'),
+(65, 'Standard EP', '2013-12-04', 'assets/images/editions/tropico_std.jpg', 'US'),
+(66, 'Standard Single', '2011-10-07', 'assets/images/editions/lana_video.jpg', 'US'),
+(67, 'Standard Single', '2012-06-22', 'assets/images/editions/lana_summer.jpg', 'US'),
+(68, 'Standard Single', '2013-04-23', 'assets/images/editions/lana_young.jpg', 'US'),
 
 -- BABYMETAL (IDs 128-135)
-(69, 'Standard Edition', '2015-06-17', '/assets/images/editions/bm_std.jpg', 'JP'),
-(69, 'Red Edition', '2015-06-17', '/assets/images/editions/bm_red.jpg', 'JP'),
-(70, 'Standard Edition', '2016-04-01', '/assets/images/editions/mr_std.jpg', 'JP'),
-(71, 'Standard Edition', '2019-10-11', '/assets/images/editions/mg_std.jpg', 'JP'),
-(71, 'Transparent Red Edition', '2019-10-11', '/assets/images/editions/mg_trans.jpg', 'JP'),
-(72, 'Standard Edition', '2023-03-24', '/assets/images/editions/too_std.jpg', 'JP'),
-(72, 'Clear Edition', '2023-03-24', '/assets/images/editions/too_clear.jpg', 'JP'),
-(73, 'Standard Single', '2014-02-26', '/assets/images/editions/bm_chocolate.jpg', 'JP'),
-(74, 'Standard Single', '2015-02-01', '/assets/images/editions/bm_road.jpg', 'JP'),
+(69, 'Standard Edition', '2015-06-17', 'assets/images/editions/bm_std.jpg', 'JP'),
+(69, 'Red Edition', '2015-06-17', 'assets/images/editions/bm_red.jpg', 'JP'),
+(70, 'Standard Edition', '2016-04-01', 'assets/images/editions/mr_std.jpg', 'JP'),
+(71, 'Standard Edition', '2019-10-11', 'assets/images/editions/mg_std.jpg', 'JP'),
+(71, 'Transparent Red Edition', '2019-10-11', 'assets/images/editions/mg_trans.jpg', 'JP'),
+(72, 'Standard Edition', '2023-03-24', 'assets/images/editions/too_std.jpg', 'JP'),
+(72, 'Clear Edition', '2023-03-24', 'assets/images/editions/too_clear.jpg', 'JP'),
+(73, 'Standard Single', '2014-02-26', 'assets/images/editions/bm_chocolate.jpg', 'JP'),
+(74, 'Standard Single', '2015-02-01', 'assets/images/editions/bm_road.jpg', 'JP'),
 
 -- Pink Floyd (IDs 136-154)
-(75, 'Standard Edition', '1979-11-30', '/assets/images/editions/wall_std.jpg', 'UK'),
-(76, 'Standard Edition', '1983-03-21', '/assets/images/editions/final_std.jpg', 'UK'),
-(77, 'Standard Edition', '1987-09-07', '/assets/images/editions/momentary_std.jpg', 'UK'),
-(78, 'Standard Edition', '1994-03-28', '/assets/images/editions/div_std.jpg', 'UK'),
-(78, 'Blue Edition', '1994-03-28', '/assets/images/editions/div_blue.jpg', 'UK'),
-(79, 'Standard Edition', '2014-11-07', '/assets/images/editions/river_std.jpg', 'UK'),
-(80, 'Standard Single', '1967-06-16', '/assets/images/editions/pf_seeemily.jpg', 'UK'),
-(81, 'Standard Single', '1973-05-07', '/assets/images/editions/pf_money.jpg', 'UK'),
-(82, 'Standard Single', '2022-04-08', '/assets/images/editions/hey_hey_rise_up.jpg', 'UK'),
+(75, 'Standard Edition', '1979-11-30', 'assets/images/editions/wall_std.jpg', 'UK'),
+(76, 'Standard Edition', '1983-03-21', 'assets/images/editions/final_std.jpg', 'UK'),
+(77, 'Standard Edition', '1987-09-07', 'assets/images/editions/momentary_std.jpg', 'UK'),
+(78, 'Standard Edition', '1994-03-28', 'assets/images/editions/div_std.jpg', 'UK'),
+(78, 'Blue Edition', '1994-03-28', 'assets/images/editions/div_blue.jpg', 'UK'),
+(79, 'Standard Edition', '2014-11-07', 'assets/images/editions/river_std.jpg', 'UK'),
+(80, 'Standard Single', '1967-06-16', 'assets/images/editions/pf_seeemily.jpg', 'UK'),
+(81, 'Standard Single', '1973-05-07', 'assets/images/editions/pf_money.jpg', 'UK'),
+(82, 'Standard Single', '2022-04-08', 'assets/images/editions/hey_hey_rise_up.jpg', 'UK'),
 
 -- Pinguini Tattici Nucleari (IDs 155-166)
-(83, 'Standard Edition', '2019-04-05', '/assets/images/editions/hype_std.jpg', 'IT'),
-(83, 'Green Edition', '2019-04-05', '/assets/images/editions/hype_green.jpg', 'IT'),
-(84, 'Standard Edition', '2022-12-02', '/assets/images/editions/fake_std.jpg', 'IT'),
-(84, 'Pink Edition', '2022-12-02', '/assets/images/editions/fake_pink.jpg', 'IT'),
-(85, 'Standard Edition', '2024-01-01', '/assets/images/editions/hello_std.jpg', 'IT'),
-(86, 'Standard Edition', '2020-12-04', '/assets/images/editions/ahia_std.jpg', 'IT'),
-(86, 'White Edition', '2020-12-04', '/assets/images/editions/ahia_white.jpg', 'IT'),
-(87, 'Standard Single', '2021-01-08', '/assets/images/editions/ptn_pastello.jpg', 'IT'),
-(88, 'Standard Single', '2022-07-22', '/assets/images/editions/ptn_ricordi.jpg', 'IT'),
-(89, 'Standard Single', '2023-05-19', '/assets/images/editions/ptn_rubami.jpg', 'IT'),
-(90, 'Standard Single', '2024-08-30', '/assets/images/editions/ptn_romantico.jpg', 'IT'),
+(83, 'Standard Edition', '2019-04-05', 'assets/images/editions/hype_std.jpg', 'IT'),
+(83, 'Green Edition', '2019-04-05', 'assets/images/editions/hype_green.jpg', 'IT'),
+(84, 'Standard Edition', '2022-12-02', 'assets/images/editions/fake_std.jpg', 'IT'),
+(84, 'Pink Edition', '2022-12-02', 'assets/images/editions/fake_pink.jpg', 'IT'),
+(85, 'Standard Edition', '2024-01-01', 'assets/images/editions/hello_std.jpg', 'IT'),
+(86, 'Standard Edition', '2020-12-04', 'assets/images/editions/ahia_std.jpg', 'IT'),
+(86, 'White Edition', '2020-12-04', 'assets/images/editions/ahia_white.jpg', 'IT'),
+(87, 'Standard Single', '2021-01-08', 'assets/images/editions/ptn_pastello.jpg', 'IT'),
+(88, 'Standard Single', '2022-07-22', 'assets/images/editions/ptn_ricordi.jpg', 'IT'),
+(89, 'Standard Single', '2023-05-19', 'assets/images/editions/ptn_rubami.jpg', 'IT'),
+(90, 'Standard Single', '2024-08-30', 'assets/images/editions/ptn_romantico.jpg', 'IT'),
 
 -- 5 Seconds of Summer (IDs 167-177)
-(91, 'Standard Edition', '2014-06-27', '/assets/images/editions/5sos_std.jpg', 'AU'),
-(92, 'Standard Edition', '2015-10-23', '/assets/images/editions/sounds_std.jpg', 'AU'),
-(93, 'Standard Edition', '2018-06-15', '/assets/images/editions/young_std.jpg', 'AU'),
-(93, 'Blue Edition', '2018-06-15', '/assets/images/editions/young_blue.jpg', 'AU'),
-(94, 'Standard Edition', '2020-03-27', '/assets/images/editions/calm_std.jpg', 'AU'),
-(94, 'Pink Edition', '2020-03-27', '/assets/images/editions/calm_pink.jpg', 'AU'),
-(95, 'Standard Edition', '2022-09-23', '/assets/images/editions/5sos5_std.jpg', 'AU'),
-(96, 'Standard EP', '2014-02-21', '/assets/images/editions/shelooks_ep.jpg', 'AU'),
-(97, 'Standard EP', '2014-05-09', '/assets/images/editions/dontstop_ep.jpg', 'AU'),
-(98, 'Standard Single', '2014-02-21', '/assets/images/editions/5sos_shelooks.jpg', 'AU'),
-(99, 'Standard Single', '2018-04-12', '/assets/images/editions/5sos_youngblood.jpg', 'AU'),
-(100, 'Standard Single', '2019-08-21', '/assets/images/editions/5sos_teeth.jpg', 'AU'),
-(101, 'Standard Single', '2024-02-09', '/assets/images/editions/5sos_lighter.jpg', 'AU'),
+(91, 'Standard Edition', '2014-06-27', 'assets/images/editions/5sos_std.jpg', 'AU'),
+(92, 'Standard Edition', '2015-10-23', 'assets/images/editions/sounds_std.jpg', 'AU'),
+(93, 'Standard Edition', '2018-06-15', 'assets/images/editions/young_std.jpg', 'AU'),
+(93, 'Blue Edition', '2018-06-15', 'assets/images/editions/young_blue.jpg', 'AU'),
+(94, 'Standard Edition', '2020-03-27', 'assets/images/editions/calm_std.jpg', 'AU'),
+(94, 'Pink Edition', '2020-03-27', 'assets/images/editions/calm_pink.jpg', 'AU'),
+(95, 'Standard Edition', '2022-09-23', 'assets/images/editions/5sos5_std.jpg', 'AU'),
+(96, 'Standard EP', '2014-02-21', 'assets/images/editions/shelooks_ep.jpg', 'AU'),
+(97, 'Standard EP', '2014-05-09', 'assets/images/editions/dontstop_ep.jpg', 'AU'),
+(98, 'Standard Single', '2014-02-21', 'assets/images/editions/5sos_shelooks.jpg', 'AU'),
+(99, 'Standard Single', '2018-04-12', 'assets/images/editions/5sos_youngblood.jpg', 'AU'),
+(100, 'Standard Single', '2019-08-21', 'assets/images/editions/5sos_teeth.jpg', 'AU'),
+(101, 'Standard Single', '2024-02-09', 'assets/images/editions/5sos_lighter.jpg', 'AU'),
 
 -- Madonna (IDs 178-196)
-(102, 'Pink Edition', '2005-11-15', '/assets/images/editions/confessions_pink.jpg', 'UK'),
-(103, 'Standard Edition', '2008-04-19', '/assets/images/editions/hard_std.jpg', 'US'),
-(104, 'Standard Edition', '2012-03-23', '/assets/images/editions/mdna_std.jpg', 'US'),
-(105, 'Standard Edition', '2015-03-06', '/assets/images/editions/rebel_std.jpg', 'US'),
-(106, 'Standard Edition', '2019-06-14', '/assets/images/editions/madame_std.jpg', 'US'),
-(106, 'Translucent Blue Edition', '2019-06-14', '/assets/images/editions/madame_blue.jpg', 'US'),
-(107, 'Standard Single', '1983-09-07', '/assets/images/editions/madonna_holiday.jpg', 'US'),
-(108, 'Standard Single', '1984-10-31', '/assets/images/editions/madonna_virgin.jpg', 'US'),
-(109, 'Standard Single', '1990-03-20', '/assets/images/editions/madonna_vogue.jpg', 'US'),
-(110, 'Standard Single', '2005-10-17', '/assets/images/editions/madonna_hungup.jpg', 'US'),
-(111, 'Standard Single', '2023-06-02', '/assets/images/editions/madonna_popular.jpg', 'US'),
+(102, 'Pink Edition', '2005-11-15', 'assets/images/editions/confessions_pink.jpg', 'UK'),
+(103, 'Standard Edition', '2008-04-19', 'assets/images/editions/hard_std.jpg', 'US'),
+(104, 'Standard Edition', '2012-03-23', 'assets/images/editions/mdna_std.jpg', 'US'),
+(105, 'Standard Edition', '2015-03-06', 'assets/images/editions/rebel_std.jpg', 'US'),
+(106, 'Standard Edition', '2019-06-14', 'assets/images/editions/madame_std.jpg', 'US'),
+(106, 'Translucent Blue Edition', '2019-06-14', 'assets/images/editions/madame_blue.jpg', 'US'),
+(107, 'Standard Single', '1983-09-07', 'assets/images/editions/madonna_holiday.jpg', 'US'),
+(108, 'Standard Single', '1984-10-31', 'assets/images/editions/madonna_virgin.jpg', 'US'),
+(109, 'Standard Single', '1990-03-20', 'assets/images/editions/madonna_vogue.jpg', 'US'),
+(110, 'Standard Single', '2005-10-17', 'assets/images/editions/madonna_hungup.jpg', 'US'),
+(111, 'Standard Single', '2023-06-02', 'assets/images/editions/madonna_popular.jpg', 'US'),
 
 -- Annalisa (IDs 197-210)
-(112, 'Standard Edition', '2018-02-16', '/assets/images/editions/bye_std.jpg', 'IT'),
-(113, 'Standard Edition', '2020-09-18', '/assets/images/editions/nuda_std.jpg', 'IT'),
-(113, 'Red Edition', '2020-09-18', '/assets/images/editions/nuda_red.jpg', 'IT'),
-(114, 'Standard Edition', '2023-09-29', '/assets/images/editions/vortice_std.jpg', 'IT'),
-(114, 'Ruby Red Edition', '2023-09-29', '/assets/images/editions/vortice_red.jpg', 'IT'),
-(115, 'Standard Single', '2022-09-02', '/assets/images/editions/annalisa_bellissima.jpg', 'IT'),
-(116, 'Standard Single', '2023-03-31', '/assets/images/editions/annalisa_monamour.jpg', 'IT'),
-(117, 'Standard Single', '2023-09-08', '/assets/images/editions/annalisa_sola.jpg', 'IT'),
-(118, 'Standard Single', '2024-02-07', '/assets/images/editions/annalisa_sinceramente.jpg', 'IT'),
+(112, 'Standard Edition', '2018-02-16', 'assets/images/editions/bye_std.jpg', 'IT'),
+(113, 'Standard Edition', '2020-09-18', 'assets/images/editions/nuda_std.jpg', 'IT'),
+(113, 'Red Edition', '2020-09-18', 'assets/images/editions/nuda_red.jpg', 'IT'),
+(114, 'Standard Edition', '2023-09-29', 'assets/images/editions/vortice_std.jpg', 'IT'),
+(114, 'Ruby Red Edition', '2023-09-29', 'assets/images/editions/vortice_red.jpg', 'IT'),
+(115, 'Standard Single', '2022-09-02', 'assets/images/editions/annalisa_bellissima.jpg', 'IT'),
+(116, 'Standard Single', '2023-03-31', 'assets/images/editions/annalisa_monamour.jpg', 'IT'),
+(117, 'Standard Single', '2023-09-08', 'assets/images/editions/annalisa_sola.jpg', 'IT'),
+(118, 'Standard Single', '2024-02-07', 'assets/images/editions/annalisa_sinceramente.jpg', 'IT'),
 
 -- Nirvana (IDs 211-218)
-(119, 'Standard Edition', '1989-06-15', '/assets/images/editions/bleach_std.jpg', 'US'),
-(119, 'White Edition', '2009-11-03', '/assets/images/editions/bleach_white.jpg', 'US'),
-(120, 'Standard Edition', '1991-09-24', '/assets/images/editions/never_std.jpg', 'US'),
-(120, 'Silver Edition (Anniversary)', '2021-11-12', '/assets/images/editions/never_silver.jpg', 'US'),
-(121, 'Standard Edition', '1993-09-21', '/assets/images/editions/utero_std.jpg', 'US'),
-(121, 'Clear Edition', '2013-09-24', '/assets/images/editions/utero_clear.jpg', 'US'),
-(122, 'Standard EP', '1992-02-05', '/assets/images/editions/hormoaning_std.jpg', 'JP'),
-(123, 'Standard Single', '1991-09-10', '/assets/images/editions/nirvana_smells.jpg', 'US'),
-(124, 'Standard Single', '1992-03-02', '/assets/images/editions/nirvana_come.jpg', 'US'),
-(125, 'Standard Single', '1992-07-13', '/assets/images/editions/nirvana_lithium.jpg', 'US'),
-(126, 'Standard Single', '1993-08-30', '/assets/images/editions/nirvana_heart.jpg', 'US'),
+(119, 'Standard Edition', '1989-06-15', 'assets/images/editions/bleach_std.jpg', 'US'),
+(119, 'White Edition', '2009-11-03', 'assets/images/editions/bleach_white.jpg', 'US'),
+(120, 'Standard Edition', '1991-09-24', 'assets/images/editions/never_std.jpg', 'US'),
+(120, 'Silver Edition (Anniversary)', '2021-11-12', 'assets/images/editions/never_silver.jpg', 'US'),
+(121, 'Standard Edition', '1993-09-21', 'assets/images/editions/utero_std.jpg', 'US'),
+(121, 'Clear Edition', '2013-09-24', 'assets/images/editions/utero_clear.jpg', 'US'),
+(122, 'Standard EP', '1992-02-05', 'assets/images/editions/hormoaning_std.jpg', 'JP'),
+(123, 'Standard Single', '1991-09-10', 'assets/images/editions/nirvana_smells.jpg', 'US'),
+(124, 'Standard Single', '1992-03-02', 'assets/images/editions/nirvana_come.jpg', 'US'),
+(125, 'Standard Single', '1992-07-13', 'assets/images/editions/nirvana_lithium.jpg', 'US'),
+(126, 'Standard Single', '1993-08-30', 'assets/images/editions/nirvana_heart.jpg', 'US'),
 
 -- AC/DC (IDs 219-240)
-(127, 'Standard Edition', '2000-02-28', '/assets/images/editions/stiff_std.jpg', 'AU'),
-(128, 'Standard Edition', '2008-10-20', '/assets/images/editions/blackice_std.jpg', 'AU'),
-(129, 'Standard Edition', '2014-11-28', '/assets/images/editions/rockbust_std.jpg', 'AU'),
-(130, 'Standard Edition', '2020-11-13', '/assets/images/editions/power_std.jpg', 'AU'),
-(130, 'Red Edition', '2020-11-13', '/assets/images/editions/power_red.jpg', 'AU'),
-(131, 'Standard EP', '1984-10-15', '/assets/images/editions/74jailbreak_std.jpg', 'AU'),
-(132, 'Standard Single', '1990-09-10', '/assets/images/editions/acdc_thunder.jpg', 'AU'),
-(133, 'Standard Single', '2020-10-07', '/assets/images/editions/acdc_shot.jpg', 'AU'),
+(127, 'Standard Edition', '2000-02-28', 'assets/images/editions/stiff_std.jpg', 'AU'),
+(128, 'Standard Edition', '2008-10-20', 'assets/images/editions/blackice_std.jpg', 'AU'),
+(129, 'Standard Edition', '2014-11-28', 'assets/images/editions/rockbust_std.jpg', 'AU'),
+(130, 'Standard Edition', '2020-11-13', 'assets/images/editions/power_std.jpg', 'AU'),
+(130, 'Red Edition', '2020-11-13', 'assets/images/editions/power_red.jpg', 'AU'),
+(131, 'Standard EP', '1984-10-15', 'assets/images/editions/74jailbreak_std.jpg', 'AU'),
+(132, 'Standard Single', '1990-09-10', 'assets/images/editions/acdc_thunder.jpg', 'AU'),
+(133, 'Standard Single', '2020-10-07', 'assets/images/editions/acdc_shot.jpg', 'AU'),
 
 -- The Rolling Stones (IDs 241-269)
-(134, 'Standard Edition', '1997-09-29', '/assets/images/editions/bridges_std.jpg', 'UK'),
-(135, 'Standard Edition', '2005-09-05', '/assets/images/editions/bigger_std.jpg', 'UK'),
-(136, 'Standard Edition', '2016-12-02', '/assets/images/editions/lonesome_std.jpg', 'UK'),
-(137, 'Standard Edition', '2023-10-20', '/assets/images/editions/hackney_std.jpg', 'UK'),
-(137, 'Clear Edition', '2023-10-20', '/assets/images/editions/hackney_clear.jpg', 'UK'),
-(138, 'Standard EP', '1964-08-14', '/assets/images/editions/fivebyfive_std.jpg', 'UK'),
-(139, 'Standard EP', '1965-06-11', '/assets/images/editions/gotlive_std.jpg', 'UK'),
-(140, 'Standard Single', '1981-08-14', '/assets/images/editions/stones_startmeup.jpg', 'UK'),
-(141, 'Standard Single', '2023-09-06', '/assets/images/editions/stones_angry.jpg', 'UK'),
+(134, 'Standard Edition', '1997-09-29', 'assets/images/editions/bridges_std.jpg', 'UK'),
+(135, 'Standard Edition', '2005-09-05', 'assets/images/editions/bigger_std.jpg', 'UK'),
+(136, 'Standard Edition', '2016-12-02', 'assets/images/editions/lonesome_std.jpg', 'UK'),
+(137, 'Standard Edition', '2023-10-20', 'assets/images/editions/hackney_std.jpg', 'UK'),
+(137, 'Clear Edition', '2023-10-20', 'assets/images/editions/hackney_clear.jpg', 'UK'),
+(138, 'Standard EP', '1964-08-14', 'assets/images/editions/fivebyfive_std.jpg', 'UK'),
+(139, 'Standard EP', '1965-06-11', 'assets/images/editions/gotlive_std.jpg', 'UK'),
+(140, 'Standard Single', '1981-08-14', 'assets/images/editions/stones_startmeup.jpg', 'UK'),
+(141, 'Standard Single', '2023-09-06', 'assets/images/editions/stones_angry.jpg', 'UK'),
 
 -- SZA (IDs 270-280)
-(142, 'Standard Edition', '2017-06-09', '/assets/images/editions/ctrl_std.jpg', 'US'),
-(142, 'Translucent Green Edition', '2017-11-24', '/assets/images/editions/ctrl_green.jpg', 'US'),
-(143, 'Standard Edition', '2022-12-09', '/assets/images/editions/sos_std.jpg', 'US'),
-(143, 'Transparent Blue Edition', '2023-05-19', '/assets/images/editions/sos_blue.jpg', 'US'),
-(144, 'Standard Edition', '2024-01-01', '/assets/images/editions/lana_sza_std.jpg', 'US'),
-(145, 'Standard EP', '2012-09-24', '/assets/images/editions/see_sza_std.jpg', 'US'),
-(146, 'Standard EP', '2013-04-10', '/assets/images/editions/s_ep_std.jpg', 'US'),
-(147, 'Standard EP', '2014-04-08', '/assets/images/editions/z_ep_std.jpg', 'US'),
-(148, 'Standard Single', '2023-01-10', '/assets/images/editions/sza_killbill.jpg', 'US'),
-(149, 'Standard Single', '2024-02-22', '/assets/images/editions/sza_saturn.jpg', 'US');
+(142, 'Standard Edition', '2017-06-09', 'assets/images/editions/ctrl_std.jpg', 'US'),
+(142, 'Translucent Green Edition', '2017-11-24', 'assets/images/editions/ctrl_green.jpg', 'US'),
+(143, 'Standard Edition', '2022-12-09', 'assets/images/editions/sos_std.jpg', 'US'),
+(143, 'Transparent Blue Edition', '2023-05-19', 'assets/images/editions/sos_blue.jpg', 'US'),
+(144, 'Standard Edition', '2024-01-01', 'assets/images/editions/lana_sza_std.jpg', 'US'),
+(145, 'Standard EP', '2012-09-24', 'assets/images/editions/see_sza_std.jpg', 'US'),
+(146, 'Standard EP', '2013-04-10', 'assets/images/editions/s_ep_std.jpg', 'US'),
+(147, 'Standard EP', '2014-04-08', 'assets/images/editions/z_ep_std.jpg', 'US'),
+(148, 'Standard Single', '2023-01-10', 'assets/images/editions/sza_killbill.jpg', 'US'),
+(149, 'Standard Single', '2024-02-22', 'assets/images/editions/sza_saturn.jpg', 'US');
 
 
 -- Disk-Edition-Track
@@ -1227,52 +1225,6 @@ INSERT INTO review (user_id, disk_id, edition_name, rating, content) VALUES
 (1, 5, 'Moonstone Blue Edition', 5, 'Atmosfere sognanti e testi introspettivi. "Anti-Hero" è già un classico del pop moderno.'),
 (4, 5, 'Blood Moon Edition', 4, 'La variante Blood Moon ha un colore arancio bruciato spettacolare. La produzione di Jack Antonoff qui è molto curata.');
 
--- wishlist's users
-INSERT INTO wishlist (user_id, disk_id, edition_name, priority_level) VALUES
--- Maria Rossi (User 1 - Admin & Pop Fan)
-(1, 5, 'Blood Moon Edition', 3),       -- Midnights (Edizione speciale)
-(1, 13, 'Red Edition', 2),             -- Radical Optimism
-(1, 24, 'Ruby Edition', 3),             -- eternal sunshine
-(1, 30, 'Silver Edition', 1),           -- Dawn FM
-(1, 37, 'White Edition', 3),            -- White Album
-(1, 78, 'Blue Edition', 2),             -- The Division Bell
-(1, 114, 'Ruby Red Edition', 2),        -- E poi siamo finiti nel vortice
-(1, 143, 'Transparent Blue Edition', 3), -- SOS
-
--- Stan Smith (User 2 - Audiophile & Jazz Lover)
-(2, 39, 'Standard Edition', 3),         -- Abbey Road (Classico imperdibile)
-(2, 49, 'Opaque White Edition', 3),     -- A Moon Shaped Pool (Edizione limitata)
-(2, 55, 'Blue Edition', 2),             -- From Zero (Versione colorata)
-(2, 61, 'Blue & Violet Edition', 3),    -- Ultraviolence
-(2, 75, 'Standard Edition', 3),         -- The Wall (Pezzo fondamentale)
-(2, 102, 'Pink Edition', 2),            -- Confessions on a Dance Floor
-(2, 120, 'Silver Edition (Anniversary)', 3), -- Nevermind (Ristampa audiofila)
-(2, 137, 'Clear Edition', 2),           -- Hackney Diamonds
-
--- Mike Johnson (User 3 - Rock and Roll Fan)
-(3, 46, 'Standard Edition', 1),         -- Hail to the Thief
-(3, 53, 'Standard Edition', 2),         -- The Hunting Party
-(3, 56, 'Standard EP', 3),              -- Hybrid Theory EP (Rarità)
-(3, 119, 'White Edition', 2),           -- Bleach
-(3, 121, 'Clear Edition', 3),           -- In Utero
-(3, 127, 'Standard Edition', 2),        -- Stiff Upper Lip
-(3, 130, 'Red Edition', 3),             -- Power Up
-(3, 136, 'Standard Edition', 1),        -- Blue & Lonesome
-
--- Sarah Williams (User 4 - Alternative & Collector)
-(4, 3, 'Pink & Blue Edition', 3),       -- Lover (Edizione colorata)
-(4, 4, 'Meet Me Behind The Mall (Grey Edition)', 3), -- folklore
-(4, 21, 'Peach Edition', 2),            -- Sweetener
-(4, 23, 'Coke Bottle Clear Edition', 3), -- Positions
-(4, 28, 'Translucent Red Edition', 3),  -- Starboy
-(4, 60, 'Red Edition', 2),              -- Born to Die
-(4, 62, 'Translucent Red Edition', 3),  -- Honeymoon
-(4, 71, 'Transparent Red Edition', 2),  -- Metal Galaxy
-(4, 83, 'Green Edition', 1),            -- Fuori dall'hype
-(4, 86, 'White Edition', 2),            -- Ahia!
-(4, 106, 'Translucent Blue Edition', 3), -- Madame X
-(4, 113, 'Red Edition', 2),             -- Nuda
-(4, 142, 'Translucent Green Edition', 3); -- Ctrl
 
 
 -- Collection's users
@@ -1286,6 +1238,23 @@ INSERT INTO ownership (user_id, disk_id, edition_name, date_acquired, rating) VA
 (1, 28, 'Standard Edition', '2024-01-12 16:30:00', 4),   -- Starboy
 (1, 114, 'Standard Edition', '2024-03-01 11:20:00', NULL),  -- E poi siamo finiti nel vortice
 (1, 143, 'Standard Edition', '2024-05-15 14:00:00', 5),  -- SOS
+(1, 29, 'Standard Edition', '2024-01-01 10:00:00', NULL),
+(1, 39, 'Standard Edition', '2024-01-01 10:00:00', 1),
+(1, 60, 'Standard Edition', '2024-01-01 10:00:00', 2),
+(1, 84, 'Standard Edition', '2024-01-01 10:00:00', 3),
+(1, 49, 'Opaque White Edition', '2024-01-01 10:00:00', 4),
+(1, 75, 'Standard Edition', '2024-01-01 10:00:00', 5),
+(1, 55, 'Blue Edition', '2024-01-01 10:00:00', NULL),
+(1, 113, 'Standard Edition', '2024-01-01 10:00:00', 1),
+(1, 37, 'White Edition', '2024-01-01 10:00:00', 2),
+(1, 142, 'Translucent Green Edition', '2024-01-01 10:00:00', 3),
+(1, 130, 'Standard Edition', '2024-01-01 10:00:00', 4),
+(1, 24, 'Standard Edition', '2024-01-01 10:00:00', 5),
+(1, 102, 'Pink Edition', '2024-01-01 10:00:00', NULL),
+(1, 143, 'Transparent Blue Edition', '2024-01-01 10:00:00', 1),
+(1, 13, 'Standard Edition', '2024-01-01 10:00:00', 2),
+(1, 83, 'Standard Edition', '2024-01-01 10:00:00', 3),
+(1, 5, 'Moonstone Blue Edition', '2024-01-01 10:00:00', 4),
 
 -- Stan Smith (User 2 - L'audiofilo selettivo)
 (2, 39, 'Standard Edition', '2022-12-01 08:30:00', 1),   -- Abbey Road
@@ -1296,6 +1265,18 @@ INSERT INTO ownership (user_id, disk_id, edition_name, date_acquired, rating) VA
 (2, 102, 'Pink Edition', '2023-10-05 13:15:00', NULL),      -- Confessions on a Dance Floor
 (2, 120, 'Standard Edition', '2023-12-24 18:30:00', 2),  -- Nevermind
 (2, 137, 'Standard Edition', '2024-02-14 09:00:00', 4),  -- Hackney Diamonds
+(2, 29, 'Standard Edition', '2024-01-01 10:00:00', 5),
+(2, 60, 'Red Edition', '2024-01-01 10:00:00', NULL),
+(2, 12, 'Standard Edition', '2024-01-01 10:00:00', 1),
+(2, 114, 'Standard Edition', '2024-01-01 10:00:00', 2),
+(2, 130, 'Standard Edition', '2024-01-01 10:00:00', 3),
+(2, 4, 'Meet Me Behind The Mall (Grey Edition)', '2024-01-01 10:00:00', 4),
+(2, 120, 'Silver Edition (Anniversary)', '2024-01-01 10:00:00', 5),
+(2, 37, 'Standard Edition', '2024-01-01 10:00:00', NULL),
+(2, 137, 'Clear Edition', '2024-01-01 10:00:00', 1),
+(2, 121, 'Clear Edition', '2024-01-01 10:00:00', 2),
+(2, 40, 'Standard Edition', '2024-01-01 10:00:00', 3),
+(2, 30, 'Standard Edition', '2024-01-01 10:00:00', 4),
 
 -- Mike Johnson (User 3 - Il rocker puro)
 (3, 53, 'Standard Edition', '2023-02-10 14:00:00', 4),   -- The Hunting Party
@@ -1306,6 +1287,16 @@ INSERT INTO ownership (user_id, disk_id, edition_name, date_acquired, rating) VA
 (3, 121, 'Standard Edition', '2023-09-12 18:10:00', 3),  -- In Utero
 (3, 127, 'Standard Edition', '2023-11-05 09:30:00', 4),  -- Stiff Upper Lip
 (3, 130, 'Standard Edition', '2024-02-28 14:00:00', NULL),  -- Power Up
+(3, 29, 'Standard Edition', '2024-01-01 10:00:00', 5),
+(3, 39, 'Standard Edition', '2024-01-01 10:00:00', NULL),
+(3, 84, 'Standard Edition', '2024-01-01 10:00:00', 1),
+(3, 93, 'Standard Edition', '2024-01-01 10:00:00', 2),
+(3, 4, 'Standard Edition', '2024-01-01 10:00:00', 3),
+(3, 75, 'Standard Edition', '2024-01-01 10:00:00', 4),
+(3, 69, 'Standard Edition', '2024-01-01 10:00:00', 5),
+(3, 137, 'Standard Edition', '2024-01-01 10:00:00', NULL),
+(3, 40, 'Standard Edition', '2024-01-01 10:00:00', 1),
+(3, 56, 'Standard EP', '2024-01-01 10:00:00', 2),
 
 -- Sarah Williams (User 4 - L'alternativa e collezionista di edizioni speciali)
 (4, 3, 'Pink & Blue Edition', '2023-04-12 12:00:00', 5), -- Lover
@@ -1315,7 +1306,123 @@ INSERT INTO ownership (user_id, disk_id, edition_name, date_acquired, rating) VA
 (4, 60, 'Red Edition', '2023-11-12 16:45:00', NULL),        -- Born to Die
 (4, 61, 'Standard Edition', '2023-12-05 13:00:00', 4),   -- Ultraviolence
 (4, 84, 'Standard Edition', '2024-02-10 09:30:00', 1),   -- Fake News
-(4, 142, 'Standard Edition', '2024-04-22 17:00:00', 2);  -- Ctrl
+(4, 142, 'Standard Edition', '2024-04-22 17:00:00', 2),  -- Ctrl
+(4, 29, 'Standard Edition', '2024-01-01 10:00:00', 3),
+(4, 39, 'Standard Edition', '2024-01-01 10:00:00', 4),
+(4, 60, 'Standard Edition', '2024-01-01 10:00:00', 5),
+(4, 84, 'Pink Edition', '2024-01-01 10:00:00', NULL),
+(4, 12, 'Neon Pink Edition', '2024-01-01 10:00:00', 1),
+(4, 49, 'Standard Edition', '2024-01-01 10:00:00', 2),
+(4, 114, 'Ruby Red Edition', '2024-01-01 10:00:00', 3),
+(4, 93, 'Standard Edition', '2024-01-01 10:00:00', 4),
+(4, 22, 'Standard Edition', '2024-01-01 10:00:00', 5),
+(4, 120, 'Standard Edition', '2024-01-01 10:00:00', NULL),
+(4, 69, 'Red Edition', '2024-01-01 10:00:00', 1),
+(4, 113, 'Red Edition', '2024-01-01 10:00:00', 2),
+(4, 47, 'Standard Edition', '2024-01-01 10:00:00', 3),
+(4, 130, 'Red Edition', '2024-01-01 10:00:00', 4),
+(4, 24, 'Ruby Edition', '2024-01-01 10:00:00', 5),
+(4, 102, 'Pink Edition', '2024-01-01 10:00:00', NULL),
+(4, 143, 'Standard Edition', '2024-01-01 10:00:00', 1),
+(4, 13, 'Red Edition', '2024-01-01 10:00:00', 2),
+(4, 83, 'Green Edition', '2024-01-01 10:00:00', 3),
+(4, 30, 'Silver Edition', '2024-01-01 10:00:00', 4),
+(4, 5, 'Blood Moon Edition', '2024-01-01 10:00:00', 5);
+
+
+-- Aggiunta
+INSERT INTO author (author_name, image_path, nationality, bio_author) VALUES
+('Gracie Abrams', 'assets/images/artists/gracie_abrams.jpg', 'us', 'Cantautrice indie-pop nota per i suoi testi confessionali e la collaborazione con Aaron Dessner.');
+
+INSERT INTO disk (title, disk_type, label) VALUES
+('The Secret of Us', 'Album', 'Interscope Records'),
+('Close To You', 'Single', 'Interscope Records');
+
+INSERT INTO disk_author_release (disk_id, author_id) VALUES
+(150, 19),
+(151, 19);
+
+INSERT INTO disk_genre_classification (disk_id, genre_name) VALUES
+(150, 'Pop'),
+(151, 'Pop');
+
+INSERT INTO track (title, duration_seconds) VALUES
+('Felt Good About You', 164), ('Risk', 191), ('Blowing Smoke', 213), ('Free Now', 219),
+('Let It Happen', 260), ('Tough Love', 169), ('I Knew It, I Know You', 252), ('Gave It To You I Did', 141),
+('Normal Thing', 242), ('Good Luck Charlie', 236), ('You Learned It', 171), ('I Love You, I’m Sorry', 157),
+('us (feat. Taylor Swift)', 242), ('Close To You', 225);
+
+INSERT INTO edition (disk_id, edition_name, release_date, image_path, country) VALUES
+(150, 'Standard Edition', '2024-06-21', 'assets/images/editions/the_secret_of_us.jpg', 'US'),
+(151, 'Yellow Vinyl Single', '2024-06-07', 'assets/images/editions/close_to_you.jpg', 'US');
+
+INSERT INTO edition_track_part_of (disk_id, edition_name, track_id, track_number) VALUES
+(150, 'Standard Edition', 741, 1), (150, 'Standard Edition', 742, 2), (150, 'Standard Edition', 743, 3),
+(150, 'Standard Edition', 744, 4), (150, 'Standard Edition', 745, 5), (150, 'Standard Edition', 746, 6),
+(150, 'Standard Edition', 747, 7), (150, 'Standard Edition', 748, 8), (150, 'Standard Edition', 749, 9),
+(150, 'Standard Edition', 750, 10), (150, 'Standard Edition', 751, 11), (150, 'Standard Edition', 752, 12),
+(150, 'Standard Edition', 753, 13), (151, 'Yellow Vinyl Single', 754, 1);
+
+
+INSERT INTO wishlist (user_id, disk_id, edition_name, priority_level) VALUES
+-- Maria Rossi (User 1)
+(1, 3, 'Pink & Blue Edition', 3),
+(1, 137, 'Clear Edition', 99),
+(1, 12, 'Neon Pink Edition', 75),
+(1, 49, 'Standard Edition', 69),
+(1, 84, 'Pink Edition', 67),
+(1, 130, 'Red Edition', 14),
+(1, 142, 'Standard Edition', 76),
+(1, 5, 'Blood Moon Edition', 10),
+(1, 13, 'Red Edition', 41),
+(1, 24, 'Ruby Edition', 67),
+(1, 30, 'Silver Edition', 89),
+(1, 78, 'Blue Edition', 1),
+(1, 114, 'Ruby Red Edition', 99),
+
+-- Stan Smith (User 2)
+(2, 113, 'Red Edition', 67),
+(2, 69, 'Red Edition', 67),
+(2, 143, 'Standard Edition', 67),
+(2, 13, 'Red Edition', 67),
+(2, 83, 'Green Edition', 67),
+(2, 22, 'Standard Edition', 67),
+(2, 114, 'Ruby Red Edition', 67),
+(2, 93, 'Standard Edition', 67),
+(2, 56, 'Standard EP', 67),
+(2, 49, 'Opaque White Edition', 3),
+(2, 55, 'Blue Edition', 2),
+(2, 61, 'Blue & Violet Edition', 3),
+
+-- Mike Johnson (User 3)
+(3, 23, 'Coke Bottle Clear Edition', 3),
+(3, 28, 'Translucent Red Edition', 2),
+(3, 61, 'Standard Edition', 1),
+(3, 37, 'Standard Edition', 2),
+(3, 142, 'Translucent Green Edition', 1),
+(3, 46, 'Standard Edition', 1),
+(3, 119, 'White Edition', 2),
+(3, 121, 'Clear Edition', 3),
+(3, 130, 'Red Edition', 3),
+(3, 136, 'Standard Edition', 1),
+
+-- Sarah Williams (User 4)
+(4, 30, 'Standard Edition', 3),
+(4, 13, 'Standard Edition', 2),
+(4, 83, 'Standard Edition', 1),
+(4, 143, 'Transparent Blue Edition', 3),
+(4, 12, 'Standard Edition', 2),
+(4, 49, 'Opaque White Edition', 1),
+(4, 120, 'Silver Edition (Anniversary)', 3),
+(4, 137, 'Standard Edition', 1),
+(4, 78, 'Standard Edition', 3),
+(4, 4, 'Meet Me Behind The Mall (Grey Edition)', 3),
+(4, 21, 'Peach Edition', 2),
+(4, 62, 'Translucent Red Edition', 3),
+(4, 71, 'Transparent Red Edition', 2),
+(4, 86, 'White Edition', 2),
+(4, 106, 'Translucent Blue Edition', 3),
+(4, 142, 'Translucent Green Edition', 3);
 
 
 -- Re-enable foreign key checks

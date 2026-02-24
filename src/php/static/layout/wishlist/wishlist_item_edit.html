@@ -1,0 +1,43 @@
+<!-- rendere accessibile -->
+<article class="collection-item">
+    <div class="disk-info">
+        <div class="card-image">
+            <img src="[image_url]" alt="" loading="lazy">
+        </div>
+        <div class="collection-item-details">
+            <dl>
+                <dt class="sr-only">Autore:</dt>
+                <dd class="artist-name" lang="[nationality]">[author]</dd>
+                <dt class="sr-only">Titolo:</dt>
+                <dd>
+                    <h3 class="album-title" lang="[nationality]">[title]</h3>
+                </dd>
+                <dt class="sr-only">Edizione</dt>
+                <dd class="edition-info" lang="en">[edition_name]</dd>
+                <dt class="sr-only">Paese e data di rilascio:</dt>
+                <dd class="release-info">
+                    [country] - <time datetime="[year_datetime]">[year]</time>
+                </dd>
+            </dl>
+            <input type="hidden" form="wishlist-form" name="disk_id[]" value="[disk_id]" />
+            <input type="hidden" form="wishlist-form" name="edition_name[]" value="[edition_name]" />
+
+            <div class="collection-priority-section">
+                <label for="priority-level-[disk_id]-[edition_name_id]">Livello di
+                    priorità (0-100) di [title]: </label>
+                <input form="wishlist-form" id="priority-level-[disk_id]-[edition_name_id]" type="number" max=100 min=0
+                    name="priority_level[]" value="[priority_level]" required />
+            </div>
+            <p class="priority-error-message" aria-live="polite">Inserire un valore tra 0 e 100</p>
+
+        </div>
+    </div>
+    <div class="delete-selection">
+        <fieldset class="checkbox-container">
+            <legend class="sr-only">Seleziona per eliminare [title]</legend>
+            <input type="checkbox" form="wishlist-form" id="delete-[disk_id]-[edition_name_id]" name="items_to_delete[]"
+                value="[disk_id]_[edition_name]" [checked] />
+            <label class="label-text" for="delete-[disk_id]-[edition_name_id]">Seleziona per eliminare</label>
+        </fieldset>
+    </div>
+</article>

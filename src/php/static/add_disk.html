@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+
+<head>
+    <title>Aggiungi disco - VinylVault</title>
+    <meta name="description"
+        content="Aggiungi un nuovo vinile su VinylVault. Aiuta anche tu a rendere questa community il più completa possibile!">
+    <meta name="keywords"
+        content="aggiunta vinile, nuovo vinile, VinylVault">
+    [validation_scripts]
+    [head] <!-- qui viene inserita la parte invariante dell'header-->
+</head>
+
+<body>
+    <nav aria-label="Aiuti alla navigazione" class="list-help">
+        <ul>
+            <li>
+                <a class="navigation-help" href="#content">Vai al contenuto principale</a>
+            </li>
+        </ul>
+    </nav>
+    [header]
+    <nav id="breadcrumb" aria-label="percorso di navigazione">
+        <div class="center-container">
+            <ol>
+                <li><a href="index.php" lang="en">Home</a></li>
+                <li><a href="catalog.php">Catalogo</a></li>
+                <li aria-current="page">Aggiungi Disco (Amministratore)</li>
+            </ol>
+        </div>
+    </nav>
+
+    <main id="content">
+        <div class="center-container">
+            [add_disk_form]
+        </div>
+    </main>
+
+    [footer]
+</body>

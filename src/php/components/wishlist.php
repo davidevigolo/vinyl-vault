@@ -1,0 +1,59 @@
+<?php
+include_once 'php/classes/DbConnection.php';
+
+function get_wishlist(){
+    $connection = DbConnection::get_instance();
+    $query = "SELECT w.disk_id, e.image_path, d.title, a.author_name as author, a.id as author_id, e.edition_name, e.country, e.release_date, w.priority_level, a.nationality
+       FROM wishlist w 
+       JOIN edition e ON w.disk_id = e.disk_id AND w.edition_name = e.edition_name
+       JOIN disk d ON d.id = e.disk_id 
+       JOIN disk_author_release dar ON d.id = dar.disk_id
+       JOIN author a ON dar.author_id = a.id
+       WHERE w.user_id = " . intval($_SESSION['user_id']) . "
+       ORDER BY w.priority_level DESC; ";
+    $result = mysqli_query($connection->get_connection(), $query);
+    if (!$result) {
+        error_log("Query failed: " . mysqli_error($connection->get_connection()));
+        return false;
+    }
+    return $result;
+}
+
+function wishlist($edit_mode = false)
+{
+    ob_start();
+    $wishlist = get_wishlist();
+    $items = '';
+    if(!$wishlist || mysqli_num_rows($wishlist) === 0){
+        echo Template::render('static/layout/wishlist/empty_wishlist.html', []);
+        return ob_get_clean();
+    }
+    if ($wishlist) {
+        while ($vinyl = mysqli_fetch_assoc($wishlist)) {
+
+            $items .= Template::render($edit_mode ? 'static/layout/wishlist/wishlist_item_edit.html' : 'static/layout/wishlist/wishlist_item.html', [
+                'title' => htmlspecialchars($vinyl['title']),
+                'author' => htmlspecialchars($vinyl['author']),
+                'author_id' => htmlspecialchars($vinyl['author_id']),
+                'edition_name' => htmlspecialchars($vinyl['edition_name']),
+                'edition_name_url' => urlencode($vinyl['edition_name']),
+                'edition_name_id' => htmlspecialchars(str_replace(' ', '-', $vinyl['edition_name'])),
+                'country' => htmlspecialchars($vinyl['country']),
+                'nationality' => htmlspecialchars(get_nationality_languages()[strtolower($vinyl['country'])]),
+                'year' => htmlspecialchars(str_replace('-', '/', $vinyl['release_date'])),
+                'year_datetime' => htmlspecialchars($vinyl['release_date']),
+                'priority_level' => isset($_SESSION['manage_wishlist_result']['priority_levels'][$vinyl['disk_id'] . '_' . $vinyl['edition_name']]) ? htmlspecialchars($_SESSION['manage_wishlist_result']['priority_levels'][$vinyl['disk_id'] . '_' . $vinyl['edition_name']]) : htmlspecialchars($vinyl['priority_level']),
+                'checked' => (isset($_SESSION['manage_wishlist_result']['items_to_delete'][$vinyl['disk_id'] . '_' . $vinyl['edition_name']]) && $_SESSION['manage_wishlist_result']['items_to_delete'][$vinyl['disk_id'] . '_' . $vinyl['edition_name']]) ? 'checked' : '',
+                'image_url' => htmlspecialchars($vinyl['image_path']) ?: 'assets/images/vinyl_placeholder.jpg',
+                'disk_id' => htmlspecialchars($vinyl['disk_id'])
+            ]);
+        }
+    }
+    echo Template::render($edit_mode ? 'static/layout/wishlist/wishlist_grid_edit.html' : 'static/layout/wishlist/wishlist_grid.html', [
+        'wishlist_items' => $items,
+        'errors' => isset($_SESSION['manage_wishlist_result']['error']) ? $_SESSION['manage_wishlist_result']['error'] : ''
+    ]);
+    unset($_SESSION['manage_wishlist_result']);
+    return ob_get_clean();
+}
+

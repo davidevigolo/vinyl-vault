@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+
+<head>
+    <title>Esplora - VinylVault</title>
+    <meta name="description"
+        content="Esplora il catalogo VinylVault. Scopri l'album della settimana, i vinili che potrebbero piacerti, gli artisti più amati e i più collezionati.">
+    <meta name="keywords" content="esplora vinili, album settimana, artisti, raccomandazioni, VinylVault">
+    [head]
+</head>
+
+<body>
+    <nav aria-label="Aiuti alla navigazione" class="list-help">
+        <ul>
+            <li><a class="navigation-help" href="#content">Vai al contenuto principale</a></li>
+            <li><a class="navigation-help" href="#album-week">Vai all'album della settimana</a></li>
+            <li><a class="navigation-help" href="#recommendations">Vai ai consigliati</a></li>
+            <li><a class="navigation-help" href="#most-liked-artists">Vai agli artisti amati</a></li>
+        </ul>
+    </nav>
+
+    [header]
+
+    <nav id="breadcrumb" aria-label="percorso di navigazione">
+        <div class="center-container">
+            <ol>
+                <li><a href="index.php" lang="en">Home</a></li>
+                <li aria-current="page">Esplora</li>
+            </ol>
+        </div>
+    </nav>
+
+    <main id="content">
+        <!-- Album della settimana banner -->
+        <section id="album-week" class="hero" aria-labelledby="album-week-title">
+            <div class="center-container">
+                <img src="[album_week_image]" alt="Copertina dell'album '[album_week_title]' di [album_week_artist]"
+                    loading="lazy">
+
+                <div class="hero-text">
+                    <p class="hero-label">
+                        <span class="icon" aria-hidden="true">⭐</span>Album della settimana
+                    </p>
+                    <h2 id="album-week-title">Scopri il tuo prossimo disco</h2>
+                    <p>[album_week_description]</p>
+                    <a href="album.php?id=[album_week_id]&edition=[album_week_edition_url]"
+                        class="btn-primary">Visualizza dettagli</a>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Potrebbero piacerti -->
+        <section id="recommendations" class="card-section" aria-labelledby="recommendations-title">
+            <div class="center-container">
+                <div class="section-title">
+                    <h2 id="recommendations-title">Potrebbero Piacerti</h2>
+                </div>
+                <div class="cards-container">
+                    [recommended_vinyls]
+                </div>
+                <a href="catalog.php" class="view-all">Vai al catalogo</a>
+            </div>
+        </section>
+
+        <!-- Artisti più amati -->
+        <section id="most-liked-artists" class="card-section" aria-labelledby="artists-title">
+            <div class="center-container">
+                <div class="section-title">
+                    <h2 id="artists-title">Artisti più amati</h2>
+                </div>
+                <div class="cards-container">
+                    [loved_artists]
+                </div>
+                <a href="top_artists.php" class="view-all">Guarda tutti</a>
+            </div>
+        </section>
+
+        <!-- Banner Call to Action Catalogo -->
+        <section id="call-to-action" class="center-container" aria-labelledby="cta-title">
+            <div class="cta-banner">
+                <div class="cta-content">
+                    <h2 id="cta-title">Non hai trovato quello che cerchi?</h2>
+                    <p>Esplora il nostro catalogo completo, dalle rarità vintage alle ultime uscite.</p>
+                </div>
+                <div class="cta-action">
+                    <a href="catalog.php" class="btn-primary">Mostra tutto il catalogo</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- I vinili più collezionati -->
+        <section id="most-collected" class="card-section" aria-labelledby="most-collected-title">
+            <div class="center-container">
+                <div class="section-title">
+                    <h2 id="most-collected-title">I vinili più collezionati</h2>
+                </div>
+                <div class="cards-container">
+                    [most_collected_vinyls]
+                </div>
+                <a href="catalog.php?filter=collected" class="view-all">Vai al catalogo</a>
+            </div>
+        </section>
+
+    </main>
+    [footer]
+</body>
+
+</html>

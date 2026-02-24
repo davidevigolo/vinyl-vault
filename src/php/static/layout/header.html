@@ -1,0 +1,40 @@
+<header>
+    <div class="center-container header-container">
+        <div class="logo">
+            <h1 class="hide" lang="en">VinylVault</h1> <!-- Sostituito con logo tramite image replacement -->
+        </div>
+        <div class="header-right is-open">
+
+            <nav id="menu" aria-label="Menù di navigazione principale">
+                <ul class="nav-links">
+                    <li>[home]</li>
+                    <li>[explore]</li>
+                    <li>[catalogue]</li>
+                </ul>
+            </nav>
+
+            <div class="actions-group default-hidden" id="header-actions">
+                [search_toggle]
+                <button class="theme-toggle" aria-label="Cambia tema visivo">
+                    <img class="theme-icon" src="assets/images/moon.webp" alt="" aria-hidden="true" />
+                </button>
+            </div>
+
+            <nav class="profile-nav" aria-label='Menù di navigazione del profilo utente'>[profile_nav_menu]</nav>
+
+            <button class="menu-toggle" aria-expanded="true" aria-controls="menu" aria-label="Apri menù di navigazione">
+                <span aria-hidden="true">☰</span>
+            </button>
+        </div>
+    </div>
+    <div class="header-search-container center-container" id="header-search-form">
+        <form class="header-search-form" action="catalog.php" method="GET">
+            <label for="header-search-input" class="sr-only">Cerca nel catalogo</label>
+            <input type="search" id="header-search-input" name="q" class="header-search-input"
+                placeholder="Cerca artisti, album..." aria-describedby="search-hint" />
+            <span id="search-hint" class="sr-only">Inserisci il nome di un artista o album per cercare nel
+                catalogo</span>
+            <button type="submit" class="btn-primary">Cerca</button>
+        </form>
+    </div>
+</header>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+
+<head>
+    <title>Modifica Wishlist - VinylVault</title>
+    <meta name="description"
+        content="Modifica la tua lista dei desideri, aggiorna le priorità o rimuovi vinili dalla tua collezione su VinylVault.">
+    <meta name="keywords"
+        content="vinili desiderati, lista dei desideri, VinylVault">
+    <script src="scripts/wishlist.js" defer="defer"></script>
+    [head] <!-- qui viene inserita la parte invariante dell'header-->
+</head>
+
+<body>
+    <nav aria-label="Aiuti alla navigazione" class="list-help">
+        <ul>
+            <li>
+                <a class="navigation-help" href="#content">Vai al contenuto principale</a>
+            </li>
+        </ul>
+    </nav>
+    [header]
+    <nav id="breadcrumb" aria-label="percorso di navigazione">
+        <div class="center-container">
+            <ol>
+                <li><a href="index.php" lang="en">Home</a></li>
+                <li><a href="profile.php">Profilo</a></li>
+                <li aria-current="page">Lista desideri (Modifica)</li>
+            </ol>
+        </div>
+    </nav>
+    <main id="content">
+        <div class="page-banner">
+            <img src="assets/images/wishlist-icon.jpg" alt="">
+            <h2 class="page-title">La mia Lista Desideri (Modifica)</h2>
+        </div>
+        <div class="center-container">
+            [wishlist]
+        </div>
+    </main>
+    [footer]
+</body>

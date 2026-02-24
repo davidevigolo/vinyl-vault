@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+
+<head>
+    <title>Profilo - VinylVault</title>
+    <meta name="description"
+        content="Visualizza il tuo profilo VinylVault, gestisci la tua collezione di vinili, la lista dei desideri e vedi quali sono i tuoi artisti preferiti">
+    <meta name="keywords" content="vinili, collezione di vinili, musica su vinile, profilo, VinylVault">
+    [head] <!-- qui viene inserita la parte invariante dell'header-->
+</head>
+
+<body>
+    <nav aria-label="Aiuti alla navigazione" class="list-help">
+        <ul>
+            <li><a class="navigation-help" href="#content">Vai al contenuto</a></li>
+            <li><a class="navigation-help" href="#profile-data">Vai all'anagrafica</a></li>
+            <li><a class="navigation-help" href="#profile-stats">Vai alle statistiche</a></li>
+            <li><a class="navigation-help" href="#collection">Vai alla collezione</a></li>
+            <li><a class="navigation-help" href="#wishlist">Vai alla lista dei desideri</a></li>
+            <li><a class="navigation-help" href="#favorite-artists">Vai agli artisti preferiti</a></li>
+        </ul>
+    </nav>
+
+    [header]
+
+    <nav id="breadcrumb" aria-label="percorso di navigazione">
+        <div class="center-container">
+            <ol>
+                <li><a href="index.php" lang="en">Home</a></li>
+                <li aria-current="page">Profilo</li>
+            </ol>
+        </div>
+    </nav>
+
+    <main id="content">
+        <section class="hero profile-hero" aria-labelledby="profile-heading">
+            <div class="center-container">
+                <img id="profile-image" src="[propic_path]" alt="">
+
+                <div class="hero-text">
+                    <dl>
+                        <dt class="sr-only">Nome Utente</dt>
+                        <dd id="profile-heading">
+                            <h2>[username]</h2>
+                        </dd>
+                        <dt class="sr-only">Nome</dt>
+                        <dd id="user-name">[first_name] [last_name]</dd>
+                        <dt class="sr-only">Biografia</dt>
+                        <dd id="user-bio">[user_bio]</dd>
+                    </dl>
+                    <a href="edit_profile.php" id="edit-profile-button" class="btn-primary">Modifica profilo</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="profile-stats" aria-labelledby="profile-stats-title">
+            <div class="center-container">
+                <h2 id="profile-stats-title">Statistiche</h2>
+                <ol>
+                    <li id="collection-disk-count-item">
+                        <h3>Dischi posseduti</h3>
+                        [collection-disk-count]
+                    </li>
+                    <li id="wishlist-disk-count-item">
+                        <h3>Nella lista dei desideri</h3>
+                        [wishlist-disk-count]
+                    </li>
+                    <li id="collection-artist-count-item">
+                        <h3>Artisti collezionati</h3>
+                        [collection-artist-count]
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section id="collection" class="card-section" aria-labelledby="collection-title">
+            <div class="center-container">
+                <div class="section-title">
+                    <h2 id="collection-title">La mia collezione</h2>
+                </div>
+                <div class="cards-container">
+                    [collection]
+                </div>
+                <a href="collection.php" class="view-all">Vai alla collezione completa</a>
+            </div>
+        </section>
+
+        <section id="wishlist" class="card-section" aria-labelledby="wishlist-title">
+            <div class="center-container">
+                <div class="section-title">
+                    <h2 id="wishlist-title">Lista dei Desideri</h2>
+                </div>
+                <div class="cards-container">
+                    [wishlist]
+                </div>
+                <a href="wishlist.php" class="view-all">Vai alla lista dei desideri completa</a>
+            </div>
+        </section>
+
+        <section id="favorite-artists" aria-labelledby="fav-artists-title">
+            <div class="center-container">
+                <div class="section-title">
+                    <h2 id="fav-artists-title">Artisti Preferiti</h2>
+                    [favorite-artists-content]
+                </div>
+            </div>
+        </section>
+    </main>
+
+    [footer]
+
+</body>
+
+</html>

@@ -1,0 +1,3 @@
+ErrorDocument 403 /dvigolo/403.php
+
+ErrorDocument 404 /dvigolo/404.php

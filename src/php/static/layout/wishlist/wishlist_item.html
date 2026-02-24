@@ -1,0 +1,31 @@
+<article class="collection-item card disk-info">
+    <div class="card-image">
+        <img src="[image_url]" alt="" loading="lazy">
+    </div>
+    <div class="collection-item-details">
+        <dl>
+            <dt class="sr-only">Autore:</dt>
+            <dd class="artist-name" lang="[nationality]">[author]</dd>
+            <dt class="sr-only">Titolo:</dt>
+            <dd>
+                <h3 class="album-title" lang="[nationality]">[title]</h3>
+            </dd>
+            <dt class="sr-only">Edizione</dt>
+            <dd class="edition-info" lang="en">[edition_name]</dd>
+            <dt class="sr-only">Paese e data di rilascio:</dt>
+            <dd class="release-info">
+                [country] - <time datetime="[year_datetime]">[year]</time>
+            </dd>
+        </dl>
+
+        <div class="priority-wrapper">
+            <span id="p-label-[disk_id]" class="evaluation-label">Priorità d'acquisto</span>
+            <div class="priority-meter" role="progressbar" aria-hidden="true">
+                <div class="priority-fill" data-level="[priority_level]"></div>
+            </div>
+            <span class="priority-number">[priority_level]%</span>
+        </div>
+        <a href="album.php?id=[disk_id]&edition=[edition_name_url]"
+            aria-label="Vai alla pagina dell'album [title] [edition_name]" class="card-link"></a>
+    </div>
+</article>
