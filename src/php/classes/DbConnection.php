@@ -7,7 +7,7 @@ class DbConnection {
     private $host = 'localhost';
     private $database = 'dvigolo';
     private $username = 'dvigolo';
-    private $password = 'oX2Uheib2phiequi';
+    private $password = 'shieBie3Xoohohp6';
 
     // private $host = 'tecweb_mysql';
     // private $database = 'tecweb_db';

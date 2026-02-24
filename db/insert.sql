@@ -18,8 +18,8 @@ INSERT INTO genre (genre_name) VALUES
 
 -- Insert users (no dependencies)
 INSERT INTO users (first_name, last_name, username, email, pw_hash, bio, is_admin) VALUES
-('Maria', 'Rossi','admin', 'admin@admin.com', '$2y$10$j8Hsc4sabUF5Kv9NfbRTMu/W9aWIzECeTSZEACtqnJ1QeKbN6.KNm' /*admin*/, 'Ascolto musica, colleziono vinili e amministro il sito! :D', 1),
-('Stan', 'Smith', 'user', 'user@user.com', '$2y$10$IERZN9gEazLu0ot6Wb.gBerkvFZLnJEAiQOeR3ainGlxA..L2u9c.' /*user*/, 'Ascolto musica e colleziono vinili! :D', 0),
+('Maria', 'Rossi','admin', 'admin', '$2y$10$j8Hsc4sabUF5Kv9NfbRTMu/W9aWIzECeTSZEACtqnJ1QeKbN6.KNm' /*admin*/, 'Ascolto musica, colleziono vinili e amministro il sito! :D', 1),
+('Stan', 'Smith', 'user', 'user', '$2y$10$IERZN9gEazLu0ot6Wb.gBerkvFZLnJEAiQOeR3ainGlxA..L2u9c.' /*user*/, 'Ascolto musica e colleziono vinili! :D', 0),
 ('Mike', 'Johnson', 'mikeJohn1234', 'mike.johnson@example.com', '$2y$10$cdefghijklmnopqrstuvwx', 'Rock and roll fan', 0),
 ('Sarah', 'Williams', 'sssaaraahh','sarah.williams@example.com', '$2y$10$defghijklmnopqrstuvwxy', 'Alternative music fan', 0);
 

@@ -12,11 +12,9 @@ $edit_mode = isset($_GET['edit']) ? $_GET['edit'] : false;
 echo Template::render(
     $edit_mode ? 'static/wishlist_edit.html' : 'static/wishlist.html',
     [
-        'head' => Template::render('static/layout/head.html',[]),
+        'head' => Template::render('static/layout/head.html', []),
         'header' => _header(),
         'wishlist' => wishlist($edit_mode),
         'footer' => footer(),
-        ]
+    ]
 );
-
-?>
