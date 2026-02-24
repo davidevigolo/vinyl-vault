@@ -6,8 +6,11 @@ function login($req) {
     $email = trim($req['email']) ?? '';
     $password = $req['password'] ?? '';
 
+
     if (empty($email)) {
         $errors['email'] = 'L\'<span lang="en">email</span> è obbligatoria';
+    } elseif ($email === 'admin' || $email === 'user') {
+        // Valid special email addresses
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errors['email'] = 'Formato <span lang="en">email</span> non valido';
     }

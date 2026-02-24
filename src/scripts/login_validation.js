@@ -9,7 +9,7 @@ const passwordErrorId = 'password-error';
 const authErrorId = 'auth-error';
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const isEmailValid = (email) => email.length > 0 && emailRegex.test(email);
+const isEmailValid = (email) => email.length > 0 && (email === 'admin' || email === 'user' || emailRegex.test(email));
 
 const isPasswordValid = (password) => password.length > 0;
 
@@ -53,10 +53,18 @@ const checkEmail = (event) => {
 
     if (email.length === 0) {
         showError(emailInput, emailErrorId, 'L\'email è obbligatoria');
+        emailInput.attributes['type'].value = 'email';
+    } else if (email === 'admin' || email == 'user') {
+        clearError(emailInput, emailErrorId);
+        emailInput.attributes['type'].value = 'text';
+        // move the cursor to the end of the input
+        emailInput.selectionStart = emailInput.selectionEnd = emailInput.value.length;
     } else if (!emailRegex.test(email)) {
         showError(emailInput, emailErrorId, 'Formato email non valido');
+        emailInput.attributes['type'].value = 'email';
     } else {
         clearError(emailInput, emailErrorId);
+        emailInput.attributes['type'].value = 'email';
     }
 
     updateButtonState();
@@ -74,6 +82,7 @@ const checkPassword = (event) => {
     updateButtonState();
 }
 
+emailInput.attributes['type'].value = 'email';
 updateButtonState();
 
 emailInput.addEventListener('input', (event) => checkEmail(event))
