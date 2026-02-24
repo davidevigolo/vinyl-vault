@@ -1,55 +1,140 @@
-html{
+:root {
+    --font-small: 11px;
+    --font-medium: 12px;
+    --font-large: 14px;
+    --font-xl: 15px;
+    --font-xxl: 18px;
+    --font-xxxl: 20px;
+}
+
+@page {
+    margin: 1cm;
+    size: A4 landscape;
+}
+
+html {
     font-family: "Times New Roman", Times, serif;
-    font-size: 12pt;
+    background-color: #fff;
 }
 
-header h1{
-    margin-left: 0em;
-    content: url('../assets/images/logo-min-light.webp');
+body {
+    background-color: #fff;
+    color: #000;
 }
 
-/* Hide navigation and interactive elements */
-/*nav,
-.list-help,
-#breadcrumb {
-    display: none;
-}
-
-header,
-footer {
-    display: none;
-}
-
-main{
-    margin: 0em;
-    width: 100%;
-    padding: 0.3em 0em 0.5em 0em;
-}
-
-/* Hide all form elements and buttons */
-button,
+nav, 
+footer, 
+.view-all, 
+#back-to-top, 
+.theme-toggle, 
+.search-toggle, 
+.burger-menu, 
+form, 
+.header-right,
 input,
 select,
 textarea,
-form,
 [type="submit"],
 [type="button"],
 [type="checkbox"],
 [type="radio"],
 .btn-primary,
+.btn-secondary,
 .remove-button,
 .save-button,
 #add-track-button,
-.collection-grid-actions {
+.collection-grid-actions,
+li.feature::before,
+a {
     display: none;
 }
 
-#search-toggle,
+header h1 {
+    content: url('../assets/images/logo-min-light.webp');
+    width: 160px;
+    height: auto;
+    margin: 0;
+    display: block;
+    background-color: #fff;
+}
 
-/* Display links with their URLs */
-a {
-    text-decoration: none;
-    color: inherit;
+.header-container {
+    padding: 15px 0 15px 0;
+}
+
+.hero > .center-container {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    background-color: #fff;
+    gap: 0;
+    padding: 25px 0 25px 0;
+}
+
+.hero-logo img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+}
+
+.hero-text {
+    text-align: left;
+}
+
+.features {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 15pt;
+    border-top: 1pt solid #eee;
+}
+
+#presentation > .center-container {
+    padding: 20px 0 15px 0;
+}
+
+.feature {
+    flex: 1;
+    display: block;
+    text-align: left;
+}
+
+.features {
+    margin-top: 10px;
+    padding-top: 15px;
+}
+
+.cards-container, 
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+}
+
+.card-section div.center-container {
+    padding: 35px 0 0 0;
+    gap: 5px;
+}
+
+.vinyl-card {
+    page-break-inside: avoid;
+    border: 0.5pt solid #eee;
+    padding: 5pt;
+}
+
+.vinyl-card img {
+    width: 150px;
+    height: auto;
+}
+
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1pt solid #eee;
+    margin-bottom: 10pt;
 }
 
 .nav-links a::after{
@@ -58,55 +143,164 @@ a {
     color: inherit;
 }
 
-#back-to-top{
+#call-to-action {
+    padding: 45px 0 15px 0;
+}
+
+.cta-banner {
+    gap: 0;
+    padding: 25px 0 25px 0; 
+}
+
+/* Explore page */
+#album-week img {
+    width: 200px;
+}
+
+.catalog-page {
+    display: block;
+}
+
+.filters-sidebar, 
+.sort-control, 
+.load-more-container, 
+#admin-buttons-container,
+.mobile-filters-container,
+.btn-reset-all,
+.mobile-reset-container {
     display: none;
 }
 
-#back-to-top::after{
+.catalog-main {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 15pt;
+    width: 100%;
+}
+
+.catalog-grid .vinyl-card {
+    page-break-inside: avoid;
+}
+
+.active-filters-inline {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+.catalog-header {
+    padding: 0;
+    border: 0.5pt solid #eee;
+}
+
+/* Profile page */
+.profile-hero .center-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3rem;
+    text-align: left;
+    border-bottom: 0.5pt solid #eee;
+}
+
+.hero .artist-image,
+.hero #profile-image {
+    width: 180px;
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.profile-hero .hero-text {
+    display: block;
+    flex: 1;
+}
+
+#edit-profile-button, 
+.propic-actions, 
+#propic-upload,
+#profile-stats li::after,
+#edition-stats li::after {
     display: none;
 }
 
-nav#breadcrumb{
-    display: none;
+#favorite-artists .section-title {
+    display: block; 
+    border-bottom: none;
 }
 
-a[href]::after {
-    content: " (" attr(href) ")";
-    font-size: 0.9em;
-    color: #666;
+#profile-stats ol, 
+#edition-stats ol {
+    gap: 10pt;
+    padding: 0;
+    margin: 20pt 0;
 }
 
-/* Skip links and navigation helper links */
-.navigation-help,
-.current-page {
-    display: none;
-}
-
-/* Hide interactive elements in modals, dropdowns, etc. */
-[role="dialog"],
-[role="menu"],
-[role="menuitem"],
-[role="button"] {
-    display: none;
-}
-
-/* Hide theme toggle and other utility buttons */
-.theme-toggle,
-.search-toggle,
-.burger-menu,
-.mobile-menu {
-    display: none;
-}
-
-/* Ensure printed content is readable */
-@page {
-    margin: 1cm;
-}
-
-body {
-    line-height: 1.6;
-    color: #000;
-    background-color: #fff;
+#profile-stats li, 
+#edition-stats li {
+    border: 0.5pt solid #eee;
+    padding: 10pt;
+    text-align: center;
+    background-color: #fafafa;
 }
 
 
+.collection-grid-container {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.collection-item img {
+    width: 100px;
+    height: 100px;
+}
+
+.collection-item-details {
+    padding: 0 0 0 15px;
+}
+
+.star {
+    font-size: 30px;
+}
+
+.stars-container {
+    margin: 0;
+    justify-content: flex-start;
+    gap: 2px; 
+}
+
+img#empty-collection-image {
+    max-width: 250px;
+    margin-top: 20px;
+}
+
+#top-vinyls>*:first-child img, 
+#top-artists>*:first-child img {
+    max-width: 95px;
+}
+
+#top-vinyls>*:nth-child(2) img, 
+#top-vinyls>*:nth-child(3) img, 
+#top-artists>*:nth-child(2) img, 
+#top-artists>*:nth-child(3) img {
+    max-width: 87px;
+}
+
+#top-vinyls img,
+#top-artists img {
+    max-width: 80px;
+}
+
+.page-banner {
+    padding: 0;
+}
+
+.priority-meter {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}

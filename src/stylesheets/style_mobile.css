@@ -278,6 +278,31 @@ button[type="submit"] {
 .card {
     position: relative;
 }
+.vinyl-card, 
+.artist-item, 
+.collection-item {
+    border-color: transparent;
+}
+
+.card-link {
+    border: 1px solid var(--border-default);
+    border-radius: 1.3em;
+    transition: border-color 0.3s ease;
+    z-index: 2;
+}
+
+.card-link:visited {
+    border-color: var(--bg-search);
+    border-width: 2px;
+}
+
+.card-link:hover {
+    border-color: var(--border-dark);
+}
+
+.artist-item a:visited {
+    border-color: var(--bg-search);
+}
 
 #header-actions.default-hidden {
     display: none;
@@ -977,7 +1002,6 @@ footer .profile-links a:hover {
 
 .vinyl-card {
     background: var(--bg-surface);
-    border: 1px solid var(--border-dark);
     border-radius: 1.3em;
     padding: 1.5rem;
     text-align: center;

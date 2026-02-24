@@ -317,7 +317,6 @@ header .site-nav-links li {
 
 .card-section div.center-container {
     display: grid;
-    /* Definiamo le aree: titolo a sinistra, link a destra, cards sotto */
     grid-template-columns: 1fr auto;
     grid-template-areas:
         "titolo link"
@@ -331,13 +330,11 @@ header .site-nav-links li {
 .section-title {
     grid-area: titolo;
     text-align: left;
-    /* Allineamento a sinistra su desktop */
 }
 
 .view-all {
     grid-area: link;
     margin-top: 0;
-    /* Rimuoviamo il margine del mobile */
     justify-self: end;
 }
 
@@ -940,6 +937,8 @@ p#empty-collection-paragraph {
     justify-content: flex-start;
     gap: 4rem;
     grid-template-columns: none;
+    padding-top: 2em;
+    padding-bottom: 2em;
 }
 
 .profile-hero .hero-text {
