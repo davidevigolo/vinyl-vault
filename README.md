@@ -85,7 +85,7 @@ Il progetto utilizza **Docker Compose** per garantire la coerenza dell'ambiente 
 
 ---
 <p align="center">
-  Relazione di progetto per il corso di <b>Tecnologie Web</b><br>
+  Progetto universitario per il corso di <b>Tecnologie Web</b><br>
   AA. 2025/2026
   Università degli Studi di Padova 
 </p>
